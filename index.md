@@ -2,4 +2,4 @@
 layout: default
 ---
 
-[a relative link](BasicsOfInformation.md)
+[a relative link](./BasicsOfInformation.md)
