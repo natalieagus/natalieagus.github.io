@@ -21,6 +21,11 @@
 <li><a href="#switching-nfets-and-pfets-onoff">Switching NFETs and PFETs ON/OFF</a></li>
 <li><a href="#supplementary-sections">Supplementary Sections</a></li>
 <li><a href="#complementary-mos-circuitry">Complementary MOS circuitry</a></li>
+<li><a href="#the-cmos-complements-recipe">The CMOS Complements Recipe</a></li>
+<li><a href="#logic-gates">Logic Gates</a></li>
+<li><a href="#the-combinational-logic-propagation-delay-t_pd">The Combinational Logic Propagation Delay tpdt_{pd}tpd​</a></li>
+<li><a href="#the-combinational-logic-contamination-delay-t_cd">The Combinational Logic Contamination delay tcdt_{cd}tcd​</a></li>
+<li><a href="#exercise">Exercise</a></li>
 </ul>
 </li>
 </ul>
@@ -109,10 +114,6 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <h2 id="switching-nfets-and-pfets-onoff">Switching NFETs and PFETs ON/OFF</h2>
 <p>See the figure below and its corresponding explanation to understand better how NFET and PFET operates. The two drawings on top are PFETS (left: ON and right: OFF). The two drawings below are NFETS (left: ON and right: OFF). You might want to refer to this Figure as well when reading the <strong>Supplementary Sections</strong> below.</p>
 <p><img src="https://www.dropbox.com/s/6fz10qmh6qgvts7/pnfet.png?raw=1" alt=""></p>
-<p>In essence:</p>
-<blockquote>
-<p>MOSFETs operates using VOLTAGES. No current flows from the gate towards source/drain since the gate is insulated from source and drain. This is unlike common (cheaper) PNP and NPN transistor (standard bipolar junction transistor – BJT) that operates using current.</p>
-</blockquote>
 <h3 id="how-nfet-operates">How NFET operates:</h3>
 <ol>
 <li>
@@ -185,6 +186,10 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <p>It is “OFF” when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{gs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is <strong><strong>high</strong></strong>, as it encourages depletion region to form further.</p>
 </li>
 </ol>
+<p>In essence:</p>
+<blockquote>
+<p><mark> MOSFETs operates using <strong>voltages</strong>. No current flows from the gate towards source/drain since the gate is insulated from source and drain. This is unlike common (cheaper) PNP and NPN transistor (standard bipolar junction transistor – BJT) that operates using current. The “output” that we get at the drain of either PFET or NFET is a result of the connection between Source and Drain due to the presence / absence of voltage in the gate. </mark></p>
+</blockquote>
 <h2 id="supplementary-sections">Supplementary Sections</h2>
 <p>Please refer to this section if you have not already understand about p-type and n-type semiconductors, PN junction, and source-drain terminal naming.</p>
 <h3 id="p-type-and-n-type-semiconductors">P-type and N-type Semiconductors</h3>
@@ -205,7 +210,10 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 <p>Note that the position of the source and drain in PFET is switched , compared to what is depicted for NFET. Read the next section for details.</p>
 </blockquote>
 <h3 id="naming-of-source-and-drain">Naming of Source and Drain</h3>
-<p>The naming of the Source and Drain terminal depends on the <strong>majority</strong> of the charge carrier. <em>The majority charge carrier is always meant to be drained at D, meaning that it flows from S to D.</em></p>
+<p>The naming of the Source and Drain terminal depends on the <strong>majority</strong> of the charge carrier.</p>
+<blockquote>
+<p><em>The <strong>majority</strong> charge carrier is always meant to be <strong>drained</strong> at D and <strong>sourced</strong> at S, meaning that it flows from S to D.</em></p>
+</blockquote>
 <p>In PFETs, current flows from Source to Drain, because the majority of the charge carrier is holes (positively charged). In NFETs, current flows from Drain to Source, because the majority of the charge carrier is electrons (negatively charged).</p>
 <blockquote>
 <p>Note: Current (I) <strong>cannot flow out back to the Gate</strong> because there’s a capacitor there (infinite resistance). The function of the gate capacitor is to create electric field enough to pull either electrons up to the gate in NFETS or holes up to gate in PFETs to create a conductive n-type (electrons) or p-type(holes) channel.</p>
@@ -217,147 +225,82 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 <p><img src="https://www.dropbox.com/s/frdjj9kme4cqgjo/p4.png?raw=1" alt=""></p>
 <p>Contents of the pull-up circuit:</p>
 <ol>
-<li>
-<p>All FETs in the pull-up circuit are PFETS</p>
-</li>
-<li>
-<p>Hence all of their bulks are connected to the VDD</p>
-</li>
-<li>
-<p>It is called ‘pull-up’ because when there is open connection to the</p>
-</li>
+<li>All FETs in the pull-up circuit are PFETs.</li>
+<li>Hence all of their bulks are connected to the VDD, and so are all of their Sources.</li>
+<li>It is called ‘pull-up’ because when there is any open connection from the Source (VDD) to the Drain output, then the output of the overall CMOS circuit is 1.</li>
+<li><strong>We call the pull-up circuit to be ON if there exists any direct path for <em>current</em> to flow from any source of the PFETs in the pull-up circuit to the logic output drain.</strong></li>
 </ol>
-<p>VDD (from any path through VDD to output) then the output of the</p>
-<p>overall CMOS circuit is 1</p>
 <p>Contents of the pull-down circuit:</p>
 <ol>
-<li>
-<p>All FETs in the pull-down circuit are NFETS</p>
-</li>
-<li>
-<p>Hence all of their bulks are connected to GND</p>
-</li>
-<li>
-<p>It is called ‘pull-down’ because when there is open connection to</p>
-</li>
+<li>All FETs in the pull-down circuit are NFETS.</li>
+<li>Hence all of their bulks are connected to GND, and so are all of their Sources.</li>
+<li>It is called ‘pull-down’ because when there is open connection to from the Source (GND) to the Drain output, then the output of the overall CMOS circuit is 0</li>
+<li><strong>We call the pull-down circuit to be ON if there exists any direct path for <em>electrons</em> to flow from any source of the NFETs in the pull-up circuit to the logic output drain.</strong></li>
 </ol>
-<p>the GND (from any path through the PD circuit) then the output of</p>
-<p>the overall CMOS circuit is 0</p>
-<p>The CMOS Complements Recipe</p>
-<hr>
-<p>Imagine if pull-up and pull-down is bot “ON”. This means that VDD has</p>
-<p>a straight open connection to GND : resulting in short-circuit. Hence,</p>
-<p>**<strong>it is very important for a CMOS circuit to contain complementary</strong></p>
-<p><strong>pull-ups and pull-downs</strong>**.</p>
-<p>The CMOS complements is summarized as below:</p>
-<p><img src="p5.png" alt=""></p>
-<p>A combinational logic circuit can be made by connecting two NFETs in</p>
-<p>series as a pull-down circuit, and two PFETs in parallel as a pull-up</p>
-<p>circuit. The figure below shows an example of a combinational logic</p>
-<p>device.</p>
-<p><img src="p6.png" alt=""></p>
-<p>There are two inputs to this circuit, called A and B. A low or high</p>
-<p>voltage representing bit 0 and bit 1 can be supplied to both input</p>
-<p>terminals. From the diagram, A is connected to the PFET on the <strong><strong>left</strong></strong></p>
-<p>and the NFET on the <strong><strong>top</strong></strong>. B is connected to the PFET on the <strong><strong>right</strong></strong></p>
-<p>and the NFET on the <strong><strong>bottom</strong></strong>. \</p>
-<p>\</p>
-<p>Case 1:</p>
-<ol>
-<li>Lets see what happens when A = 1 and B = 1 (both at high voltages</li>
-</ol>
-<p>that represent bit 1)</p>
-<ol start="2">
-<li>When A = 1, the PFET on the <strong><strong>left</strong></strong> is “OFF”, the NFET on the</li>
-</ol>
-<p><strong><strong>top</strong></strong> is “ON”</p>
-<ol start="3">
-<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the</li>
-</ol>
-<p><strong><strong>bottom</strong></strong> is “ON”</p>
-<ol start="4">
-<li>Current from VDD <strong><strong>cannot</strong></strong> flow to the output through any of the</li>
-</ol>
-<p>left and the right PFET</p>
-<ol start="5">
-<li>Current at the output <strong><strong>is drained down to the GND</strong></strong> through either</li>
-</ol>
-<p>NFET on the top or NFET on the bottom.</p>
-<ol start="6">
-<li>Hence the output is 0 when A = 1 and B = 1</li>
-</ol>
-<p>Case 2:</p>
-<ol>
-<li>Another case, when A = 0, and B = 1 (A at low voltage that represent</li>
-</ol>
-<p>bit 0, and B at high voltage that represent bit 1)</p>
-<ol start="2">
-<li>When A = 0, the PFET on the <strong><strong>left</strong></strong> is “ON”, the NFET on the</li>
-</ol>
-<p><strong><strong>top</strong></strong> is “OFF”</p>
-<ol start="3">
-<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the</li>
-</ol>
-<p>bottom is “ON”. This draws current from B = 1 and pull it down</p>
-<p>to 0.</p>
-<ol start="4">
-<li>Current from VDD can still flow from the PFET on the <strong><strong>left</strong></strong> to the</li>
-</ol>
-<p>output</p>
-<ol start="5">
-<li>Hence the output is 1 when A = 0 and B = 1</li>
-</ol>
-<p>Notice how there’s parallel PFET in the pull-up, and series NFET in the</p>
-<p>pull-down, hence <strong><strong>they are the CMOS complement</strong></strong>.</p>
-<p>Logic Gates</p>
-<hr>
-<p>Notice how the circuitry in Fig. 7 is called <strong><strong>NAND</strong></strong>. The name comes</p>
-<p>from this particular <strong><strong>functional specification</strong></strong> (truth table) of the</p>
-<p>combinational logic circuit. A device with multiple inputs but **<strong>only</strong></p>
-<p><strong>one output</strong>** is called a <strong><strong>logic gate</strong></strong>. The NAND gate isone of many</p>
-<p>possible gates that we will encounter in this course.</p>
-<p>The Combinational Logic Propagation Delay <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
-<p>==================================================</p>
-<p>So far we haven’t discussed about this term called <em><em>propagation delay</em></em>,</p>
-<p>which is specification that a combinational logic device must possess.</p>
-<p>The propagation delay, denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is the time taken for the</p>
-<p>device to produce a <strong><strong>valid</strong></strong> output given a <strong><strong>valid</strong></strong> input.</p>
-<p>The effective <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of an entire circuit is the <strong><strong>maximum</strong></strong></p>
-<p>cumulative propagation delay over all paths from inputs to outputs **<strong>in</strong></p>
-<p><strong>the combinational logic circuit</strong>**. This works only in **<strong>acyclic</strong></p>
-<p><strong>circuits</strong>**. \</p>
-<p>\</p>
-<p>Why is t<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6222159999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> the maximum cumulative propagation delay over all paths:</p>
-<ol>
-<li>Each component (gates, made up of FETS in CMOS arrangements) in the</li>
-</ol>
-<p>combinational logic circuit must wait for one another to produce a</p>
-<p>valid overall output.</p>
-<ol start="2">
-<li>All components have to produce valid results before final OUTPUT</li>
-</ol>
-<p>(the last logic gate in the circuit) can be produced.</p>
-<p>The Combinational Logic Contamination delay <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
-<p>====================================================</p>
-<p>Another timing specification that is typically measured an indicated on</p>
-<p>a combinational logic device is the contamination delay.</p>
-<p>The contamination delay, denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is the time taken for the</p>
-<p>device to produce an <strong><strong>invalid</strong></strong> output given a <strong><strong>invalid</strong></strong> input.</p>
-<p>The effective <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of an entire circuit is the <strong><strong>minimum</strong></strong></p>
-<p>cumulative contamination delay over all paths from inputs to outputs</p>
-<p><strong><strong>in the combinational logic circuit</strong></strong>. Again, this works only in</p>
-<p><strong><strong>acyclic circuits</strong></strong>. \</p>
-<p>\</p>
-<p>Why is t<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.486108em; vertical-align: -0.15em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> the minimum cumulative contamination delay over all</p>
-<p>paths? It takes the fastest route to propagate <em><em>invalid</em></em> signal and</p>
-<p>finally <em><em>contaminates ANY output</em></em> (to be invalid, if it was initially</p>
-<p>valid).</p>
-<p>Exercise</p>
-<p>========</p>
-<p>Complementary pull-up (made up of PFETs) and pull-down circuits (made up</p>
-<p>of n-FETs) form a CMOS gate. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> are specified per</p>
-<p>gates. Consider the example below on how to calculate these timings,</p>
-<p><img src="p7.png" alt=""></p>
+<h2 id="the-cmos-complements-recipe">The CMOS Complements Recipe</h2>
+<p>Imagine if pull-up and pull-down circuit (as an overall) are both “ON”. This means that there exists a direct open connection to GND from the VDD (the source of the pull-up to the source of the pull-down) resulting in <strong>short-circuit</strong>.</p>
+<p>Hence, <strong><strong>it is very important for a CMOS circuit to contain complementary pull-ups and pull-downs</strong></strong>. This means that only one component – either pull-up or pull-down – is ON.</p>
+<p>The main building blocks of the CMOS complements is summarized as below:</p>
+<p><img src="https://www.dropbox.com/s/ov94a3wkfl9dqum/p5.png?raw=1" alt=""></p>
+<blockquote>
+<p><mark> A combinational logic circuit can be made by connecting two NFETs in <strong>series</strong> as a pull-down circuit, and two PFETs in <strong>parallel</strong> as a pull-up circuit</mark>.</p>
+</blockquote>
+<p>For example:</p>
+<p><img src="https://www.dropbox.com/s/hcli5kx69u0dxof/p6.png?raw=1" alt=""></p>
+<p>There are two inputs to this circuit, called A and B. A low or high voltage representing bit ‘0’ or bit ‘1’ respectively can be supplied to both input terminals. From the diagram, A is connected to the PFET on the <strong><strong>left</strong></strong> and the NFET on the <strong><strong>top</strong></strong>. B is connected to the PFET on the <strong><strong>right</strong></strong> and the NFET on the <strong><strong>bottom</strong></strong>.</p>
+<p>Now we consider several cases. In Case 1, we consider what the output will be when A=1 and B=1. In Case 2, we consider what the output will be when A=0 and B=1. There are actually four cases, as shown on the truth table in the figure, but we will only discuss two here as we can easily extend the logic for the remaining cases.</p>
+<p><strong>Case 1:</strong></p>
+<ul>
+<li>Lets see what happens when A = 1 and B = 1 (both at high voltages that represent bit 1)</li>
+<li>When A = 1, the PFET on the <strong><strong>left</strong></strong> is “OFF”, the NFET on the <strong><strong>top</strong></strong> is “ON”</li>
+<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the <strong><strong>bottom</strong></strong> is “ON”</li>
+<li>Current from VDD <strong><strong>cannot</strong></strong> flow to the output through any of the left and the right PFET</li>
+<li>Current at the output <strong><strong>is drained down to the GND</strong></strong> through either NFET on the top or NFET on the bottom.</li>
+<li>Hence the output of the device is 0 when A = 1 and B = 1</li>
+</ul>
+<p><strong>Case 2:</strong></p>
+<ul>
+<li>Another case, when A = 0, and B = 1 (A at low voltage that represent bit 0, and B at high voltage that represent bit 1)</li>
+<li>When A = 0, the PFET on the <strong><strong>left</strong></strong> is “ON”, the NFET on the <strong><strong>top</strong></strong> is “OFF”</li>
+<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the bottom is “ON”. This draws current from B = 1 and pull it down to 0.</li>
+<li>Current from VDD can still flow from the PFET on the <strong><strong>left</strong></strong> to the output</li>
+<li>Hence the output of the device is 1 when A = 0 and B = 1</li>
+</ul>
+<p>Notice how there’s parallel PFET in the pull-up, and series NFET in the pull-down.</p>
+<blockquote>
+<p>This is exactly the recipe for <strong><strong>CMOS complement</strong></strong>, ensuring that there will be no combination of input that will cause both pull-up and pull-down circuits to be ON.</p>
+</blockquote>
+<h2 id="logic-gates">Logic Gates</h2>
+<p>Notice how the circuitry in the previous section is called <strong><strong>NAND</strong></strong>. The name comes from this particular <strong><strong>functional specification</strong></strong> (truth table) of the combinational logic circuit. A device with multiple inputs but <strong><strong>only one output</strong></strong> is called a <strong><strong>logic gate</strong></strong>.</p>
+<p>The NAND gate is just one of many possible gates that we will encounter in this course. We will learn that in the next notes.</p>
+<h2 id="the-combinational-logic-propagation-delay-t_pd">The Combinational Logic Propagation Delay <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span></h2>
+<p>So far we haven’t discussed about this term called <em><em>propagation delay</em></em>, which is <em>specification</em> that a combinational logic device must have.</p>
+<p>The propagation delay, denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is defined as follows:</p>
+<blockquote>
+<p><mark> The propagation delay is the time taken for the device to<br>
+produce a <strong><strong>valid</strong></strong> output given a <strong><strong>valid</strong></strong> input.</mark></p>
+</blockquote>
+<p>The effective <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of an entire circuit is the <strong><strong>maximum</strong></strong> <em>cumulative</em> propagation delay <em>over all paths from inputs to outputs</em> in the combinational logic circuit.</p>
+<p>The intuition behind why  t<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6222159999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is calculated as the <em>maximum cumulative propagation delay</em> over all paths:</p>
+<ul>
+<li>Each component (gates, made up of FETS in CMOS arrangements) in the combinational logic circuit must wait for one another to produce a valid overall output.</li>
+<li>All components have to produce valid results before final <strong>output</strong> (the last logic gate in the circuit) can be produced.</li>
+</ul>
+<h2 id="the-combinational-logic-contamination-delay-t_cd">The Combinational Logic Contamination delay <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span></h2>
+<p>Another timing specification that is typically measured an indicated on a combinational logic device is the contamination delay.</p>
+<p>The contamination delay  denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is defined as follows:</p>
+<blockquote>
+<p><mark> The contamination delay is the time taken for the device to produce an <strong><strong>invalid</strong></strong> output given a <strong><strong>invalid</strong></strong> input.</mark></p>
+</blockquote>
+<p>The effective <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of an entire circuit is the <strong><strong>minimum</strong></strong> <em>cumulative</em> contamination delay over <em>all paths from inputs to outputs</em> in the combinational logic circuit.</p>
+<p>The intuition behind why t<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.486108em; vertical-align: -0.15em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is calculated as the minimum cumulative contamination delay over all paths:</p>
+<ul>
+<li>It takes the fastest route to propagate <em><em>invalid</em></em> signal and</li>
+<li>Finally <em><em>contaminates ANY output</em></em> (to be invalid, when it was initiall valid).</li>
+</ul>
+<h2 id="exercise">Exercise</h2>
+<p>Complementary pull-up (made up of PFETs) and pull-down circuits (made up of NFETs) form a CMOS gate. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> are specified per-gate as shown below. Study the simple example below to get the intuition behind the timing computations:</p>
+<p><img src="https://www.dropbox.com/s/8kep8gcfjjvdg8k/p7.png?raw=1" alt=""></p>
 
     </div>
   </div>
