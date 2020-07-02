@@ -1,6 +1,6 @@
 ---
-
-
+layout: post
+title:  "Welcome to Jekyll!"
 ---
 
 <p>50.002 Computational Structures<br>
