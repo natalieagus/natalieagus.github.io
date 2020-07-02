@@ -3,6 +3,9 @@
 
 ---
 
+<hr>
+<h2 id="layout--posttitle--welcome--to--jekyll">layout:  post<br>
+title:  “Welcome  to  Jekyll!”</h2>
 <p>50.002 Computational Structures<br>
 Information Systems Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
