@@ -16,7 +16,10 @@
 <li><a href="#the-cmos-technology">The CMOS Technology</a>
 <ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#the-mosfet">The MOSFET</a></li>
+</ul>
+</li>
+<li><a href="#the-mosfet">The MOSFET</a>
+<ul>
 <li><a href="#types-of-mosfets">Types of MOSFETs</a></li>
 <li><a href="#switching-nfets-and-pfets-onoff">Switching NFETs and PFETs ON/OFF</a></li>
 <li><a href="#supplementary-sections">Supplementary Sections</a></li>
@@ -60,9 +63,9 @@ Information Systems Technology and Design<br>
 </blockquote>
 </li>
 </ol>
-<h2 id="the-mosfet">The MOSFET</h2>
+<h1 id="the-mosfet">The MOSFET</h1>
 <p><em>Metal-oxide semiconductor field effect transistors</em> (MOSFET, or shortened as FETs) is the main material that is used to make our combinational device. The basic schematic of a transistor is shown in the figure below:</p>
-<p><img src="https://www.dropbox.com/s/isd75ygtl7pqo2i/p1.png?raw=1" alt=""></p>
+<p>%<img src="https://www.dropbox.com/s/isd75ygtl7pqo2i/p1.png?raw=1" alt=""></p>
 <p>Notable parts in MOSFETS and its function:</p>
 <ol>
 <li>
@@ -95,7 +98,6 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <ol start="2">
 <li><strong><strong>The PFET</strong></strong> : the majority of the charge carrier for the <strong><strong>bulk</strong></strong> are electrons (n-type semiconductor). The majority of the charge carrier for the <strong><strong>source and drain</strong></strong> are holes (p-type semiconductor). Typically, the bulk is connected to VDD to keep the PN junction <em><em>reverse biased</em></em></li>
 </ol>
-<p><img src="https://www.dropbox.com/s/g5f6rzn1bs0a39v/p2.png?raw=1" alt=""></p>
 <p>Some terms we need to set straight before we proceed:</p>
 <ol>
 <li>VDD : voltage source</li>
@@ -105,7 +107,7 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <li>A FET that is  “ON” refers to a state whereby  there exists a connection between D and S, so that current can flow through them.</li>
 <li>A FET that is “OFF” referes to a state whereby there is no connection between D and S. Current cannot flow through them.</li>
 </ol>
-<p>The circuit symbol for NFET and PFET are shown as below,</p>
+<p>The circuit symbol for NFET and PFET are shown as below. Note that the bulk of NFET is connected to GND, and the bulk of PFET is connected to VDD (notice the symbols for GND and VDD).</p>
 <p><img src="https://www.dropbox.com/s/yagpzhkqi0x2f5l/p3.png?raw=1" alt=""></p>
 <h2 id="switching-nfets-and-pfets-onoff">Switching NFETs and PFETs ON/OFF</h2>
 <p>See the figure below and its corresponding explanation to understand better how NFET and PFET operates. The two drawings on top are PFETS (left: ON and right: OFF). The two drawings below are NFETS (left: ON and right: OFF). You might want to refer to this Figure as well when reading the <strong>Supplementary Sections</strong> below.</p>
@@ -123,7 +125,7 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <p>Connections:</p>
 <ul>
 <li>Bulk is connected to GND to keep the PN junction reverse biased, meaning that no current flows or leaks between source and bulk and between drain and bulk.</li>
-<li>S (and also bulk) is connected to GND for NFET. Current from D is therefore <em>drained</em> to GND at S.</li>
+<li>S (and also bulk) is connected to GND for NFET. Current from D is therefore <em>drained</em> to GND connected to S.</li>
 </ul>
 </li>
 <li>
@@ -137,6 +139,11 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <li>
 <p>When it is “ON”, current can pass from D to S.</p>
 <ul>
+<li>Electrons, its <strong>majority</strong> charge carrier flows from S to D
+<blockquote>
+<p>We can say that its majority charge carrier is drained at D.</p>
+</blockquote>
+</li>
 <li>The output of an NFET is at the D terminal.</li>
 <li>Hence, the output of an “ON” N-type is ‘0’</li>
 </ul>
@@ -168,6 +175,11 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <li>
 <p>When it is “ON”, current can pass from S to D.</p>
 <ul>
+<li>Holes, its <strong>majority</strong> charge carrier flows from S to D.
+<blockquote>
+<p>We can say that its majority charge carrier is drained at D.</p>
+</blockquote>
+</li>
 <li>The output of an PFET is also at the D terminal.</li>
 <li>Hence, the output of an “ON” p-type is ‘1’</li>
 </ul>
@@ -190,23 +202,22 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 <p>Eventually, a space-charge builds up forming an <strong>electric field</strong> as denoted in the left drawings (the yellow circles and the grey circles form electric field), <em>preventing</em> more free electrons from the n-type side to the p-type side, thereby forming an insulating layer called <strong><em><em>depletion region</em></em>.</strong></p>
 <h3 id="p-channel-or-n-channel-formation">P-channel or N-channel Formation</h3>
 <p>For NFETs, when there’s presence of high (positive) voltage at the gate, it repels the extra holes at the p-type bulk. Basically, a positive voltage applied to the gate attracts electrons (which are minority in the p-type substrate) to the interface between the gate dielectric and the two n-types semiconductors (drain and source).</p>
-<p>These electrons form a conducting channel between the source and the drain, called the <em><em>inversion layer</em></em>. When there’s potential difference between the drain and the source, the current will flow from source to drain through this inversion layer.</p>
-<p>For PFETs the opposite happens. When there’s presence of low (negative) voltage at the gate, it repels the extra electrons at the n-type bulk. Basically, holes (which are minority in the n-type substrate) are left behind at the interface between the gate dielectric and the two p-types semiconductors. When there’s potential difference between drain and source, then the current will flow from source to drain through this inversion layer. Note that the position of the source and drain in PFET is switched as what is depicted for NFET. Read the next section for details.</p>
-<h3 id="naming-of-source-and-drain">Naming of Source and Drain</h3>
-<p>The naming of the Source terminal depends on the majority of the charge carrier. In PFETs, current flows from Source to Drain, because the majority of the charge carrier is holes (positively charged). In NFETs, current flows from Drain to Source, because the majority of the charge carrier is electrons (negatively charged).</p>
+<p>These electrons form a conducting <strong>n-type channel</strong> between the source and the drain, called the <strong><em>inversion layer</em></strong>. When there’s <em>potential difference</em> between the drain and the source, the current will flow from source to drain through this inversion layer.</p>
+<p>For PFETs the opposite happens. When there’s presence of low (negative) voltage at the gate, it repels the extra electrons at the n-type bulk. Basically, holes (which are minority in the n-type substrate) are the majority in the region between the gate dielectric and the two p-types semiconductors, forming a conducting <strong>p-type channel</strong> (inversion layer). When there’s potential difference between drain and source, then the current will flow from source to drain through this inversion layer.</p>
 <blockquote>
-<p>Note: Current (I) cannot flow out back to the Gate because there’s a capacitor there (infinite resistance). The function of the gate capacitor is to create electric field enough to pull either electrons up to the gate in NFETS or holes up to gate in PFETs to create a conductive n-type (electrons) or p-type(holes) channel.</p>
+<p>Note that the position of the source and drain in PFET is switched , compared to what is depicted for NFET. Read the next section for details.</p>
+</blockquote>
+<h3 id="naming-of-source-and-drain">Naming of Source and Drain</h3>
+<p>The naming of the Source and Drain terminal depends on the <strong>majority</strong> of the charge carrier. <em>The majority charge carrier is always meant to be drained at D, meaning that it flows from S to D.</em></p>
+<p>In PFETs, current flows from Source to Drain, because the majority of the charge carrier is holes (positively charged). In NFETs, current flows from Drain to Source, because the majority of the charge carrier is electrons (negatively charged).</p>
+<blockquote>
+<p>Note: Current (I) <strong>cannot flow out back to the Gate</strong> because there’s a capacitor there (infinite resistance). The function of the gate capacitor is to create electric field enough to pull either electrons up to the gate in NFETS or holes up to gate in PFETs to create a conductive n-type (electrons) or p-type(holes) channel.</p>
 </blockquote>
 <h2 id="complementary-mos-circuitry">Complementary MOS circuitry</h2>
-<p>===========================</p>
-<p>The Pull-up and Pull-down Circuit in CMOS</p>
-<hr>
-<p>To form a fully functional combinational logic device, these PFETS and</p>
-<p>NFETS can be connected together to form a CMOS schematic (Complementary</p>
-<p>Metal-Oxide Semiconductor). There are two parts of CMOS: **<strong>the pull-up</strong></p>
-<p><strong>circuit</strong>** and <strong><strong>the pull-down circuit</strong></strong>. Its general schematic is shown</p>
-<p>in the figure below:</p>
-<p><img src="p4.png" alt=""></p>
+<h3 id="the-pull-up-and-pull-down-circuit-in-cmos">The Pull-up and Pull-down Circuit in CMOS</h3>
+<p>To form a fully functional combinational logic device, these PFETs and NFETs  can be connected together to form a CMOS schematic (Complementary Metal-Oxide Semiconductor).</p>
+<p>There are two parts of CMOS: <strong><strong>the pull-up circuit</strong></strong> and <strong><strong>the pull-down circuit</strong></strong>. Its <em>general schematic</em> is shown in the figure below:</p>
+<p><img src="https://www.dropbox.com/s/frdjj9kme4cqgjo/p4.png?raw=1" alt=""></p>
 <p>Contents of the pull-up circuit:</p>
 <ol>
 <li>
