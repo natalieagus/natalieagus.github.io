@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cmos_technology</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#the-cmos-technology">The CMOS Technology</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+</ul>
+</li>
+<li><a href="#the-mosfet">The MOSFET</a>
+<ul>
+<li><a href="#types-of-mosfets">Types of MOSFETs</a></li>
+<li><a href="#switching-nfets-and-pfets-onoff">Switching NFETs and PFETs ON/OFF</a></li>
+<li><a href="#supplementary-sections">Supplementary Sections</a></li>
+<li><a href="#complementary-mos-circuitry">Complementary MOS circuitry</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computational Structures<br>
+Information Systems Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="the-cmos-technology">The CMOS Technology</h1>
+<p>You can download the .pdf for this notes <a href="https://www.dropbox.com/s/bhzkwfxy0aw4k0w/BasicsOfInformation.pdf?raw=1">here</a>.</p>
+<h2 id="overview">Overview</h2>
+<p>Recall that the ideal behaviors/characteristics of a combinational logic device are:</p>
+<ol>
+<li>The device should be able to tolerate some amount of errors due to its Noise Margins. The Noise Margin exists if its VTC gain <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">&gt;1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> and that it has a nonlinear gain.</li>
+<li>If we have <strong><strong>high gain</strong></strong>, that means we can have <strong><strong>more noise margin</strong></strong>.
+<blockquote>
+<p>Take some time to convince yourself that this ist rue.</p>
+</blockquote>
+</li>
+<li>The device should be cheap, and small sized.
+<blockquote>
+<p>We do not want to have bulky devices, don’t we?</p>
+</blockquote>
+</li>
+<li>The device should have <strong><strong>zero power dissipation</strong></strong> when input voltages aren’t changing.</li>
+<li>Otherwise when voltage is changing from, ‘0’ to ‘1’ or ‘1’ to ‘0’, then power within the device has to dissipate easily.
+<blockquote>
+<p>Meaning that the change is swift is and quick</p>
+</blockquote>
+</li>
+<li>The device has to be <strong>functional</strong>, meaning that it conforms to the assigned <strong><strong>truth table</strong></strong> at all times.
+<blockquote>
+<p>We do not want unpredictable behavior with our devices.</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="the-mosfet">The MOSFET</h1>
+<p><em>Metal-oxide semiconductor field effect transistors</em> (MOSFET, or shortened as FETs) is the main material that is used to make our combinational device. The basic schematic of a transistor is shown in the figure below:</p>
+<p><img src="https://www.dropbox.com/s/isd75ygtl7pqo2i/p1.png?raw=1" alt=""></p>
+<p>Notable parts in MOSFETS and its function:</p>
+<ol>
+<li>
+<p>MOSFETs are devices that are used to ‘switch’ 1s to 0s (high voltage to low voltage) and vice versa, so that we can implement functionalities (truth table or logics)</p>
+</li>
+<li>
+<p>It has 4 terminals. Input is supplied at the <strong><strong>gate</strong></strong>, and output is obtained at the <strong><strong>drain</strong></strong>.</p>
+</li>
+<li>
+<p>The current flow between source and drain <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mrow><mi>D</mi><mi>S</mi></mrow></msub></mrow><annotation encoding="application/x-tex">I_{DS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.07847em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span><span class="mord mathdefault mtight" style="margin-right: 0.05764em;">S</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is proportional to <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>W</mi><mi mathvariant="normal">/</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">W/L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.13889em;">W</span><span class="mord">/</span><span class="mord mathdefault">L</span></span></span></span></span> (the width and the length) of the MOSFET.</p>
+</li>
+<li>
+<p>Source and drain is physically symmetrical, we name them depending on the type of the MOSFET.</p>
+</li>
+</ol>
+<p>Some basic recap before we move on:</p>
+<blockquote>
+<p>Current flows from higher potential (+) to lower potential (-)<br>
+Electron flows from lower potential (-) to higher potential (+)</p>
+</blockquote>
+<h2 id="types-of-mosfets">Types of MOSFETs</h2>
+<p>If we connect these MOSFETs connected in a specific way, we can <strong><strong>create</strong></strong> a combinational logic device that represents our desired <em>truth table</em> or <em>functional logic specification</em> But before we learn how to create such devices, we need to learn two basic types of MOSFETs first.</p>
+<p>There are two types of FETs: the <strong><strong>NFET</strong></strong> and the <strong><strong>PFET</strong></strong>.</p>
+<ol>
+<li><strong><strong>The NFET</strong></strong> : the majority of the charge carrier for the <strong><strong>bulk</strong></strong> are <em>holes</em> (p-type semiconductor). The majority of the charge carrier for the <strong><strong>source and drain</strong></strong> are electrons (n-type semiconductor). Typically, the bulk is connected to GND to keep the PN junction <em><em>reverse biased</em></em>.</li>
+</ol>
+<blockquote>
+<p>Please watch the pre-preading video or refer to the later section if you are unclear about what is a PN junction, p-type, or n-type semiconductors.</p>
+</blockquote>
+<ol start="2">
+<li><strong><strong>The PFET</strong></strong> : the majority of the charge carrier for the <strong><strong>bulk</strong></strong> are electrons (n-type semiconductor). The majority of the charge carrier for the <strong><strong>source and drain</strong></strong> are holes (p-type semiconductor). Typically, the bulk is connected to VDD to keep the PN junction <em><em>reverse biased</em></em></li>
+</ol>
+<p><img src="https://www.dropbox.com/s/g5f6rzn1bs0a39v/p2.png?raw=1" alt=""></p>
+<p>Some terms we need to set straight before we proceed:</p>
+<ol>
+<li>VDD : voltage source</li>
+<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>T</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{TH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>: threshold voltage.</li>
+<li>GND : ground</li>
+<li><em>Reverse-biased:</em> a state whereby D is insulated from S, where current cannot flow from D to S <strong><strong>in the presence of applied voltage</strong></strong>.</li>
+<li>A FET that is  “ON” refers to a state whereby  there exists a connection between D and S, so that current can flow through them.</li>
+<li>A FET that is “OFF” referes to a state whereby there is no connection between D and S. Current cannot flow through them.</li>
+</ol>
+<p>The circuit symbol for NFET and PFET are shown as below,</p>
+<p><img src="https://www.dropbox.com/s/yagpzhkqi0x2f5l/p3.png?raw=1" alt=""></p>
+<h2 id="switching-nfets-and-pfets-onoff">Switching NFETs and PFETs ON/OFF</h2>
+<p>See the figure below and its corresponding explanation to understand better how NFET and PFET operates. The two drawings on top are PFETS (left: ON and right: OFF). The two drawings below are NFETS (left: ON and right: OFF). You might want to refer to this Figure as well when reading the <strong>Supplementary Sections</strong> below.</p>
+<p><img src="https://www.dropbox.com/s/6fz10qmh6qgvts7/pnfet.png?raw=1" alt=""></p>
+<p>In essence:</p>
+<blockquote>
+<p>MOSFETs operates using VOLTAGES. No current flows from the gate towards source/drain since the gate is insulated from source and drain. This is unlike common (cheaper) PNP and NPN transistor (standard bipolar junction transistor – BJT) that operates using current.</p>
+</blockquote>
+<h3 id="how-nfet-operates">How NFET operates:</h3>
+<ol>
+<li>
+<p>The NFET is indicated in the papers by the FET symbol with <strong><strong>no</strong></strong> bubble: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∘</mo></mrow><annotation encoding="application/x-tex">\circ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.44445em; vertical-align: 0em;"></span><span class="mord">∘</span></span></span></span></span>.</p>
+</li>
+<li>
+<p>Connections:</p>
+<ul>
+<li>Bulk is connected to GND to keep the PN junction reverse biased, meaning that no current flows or leaks between source and bulk and between drain and bulk.</li>
+<li>S (and also bulk) is connected to GND for NFET. Current from D is therefore <em>drained</em> to GND at S.</li>
+</ul>
+</li>
+<li>
+<p>It is “ON” when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub><mo>=</mo><msub><mi>V</mi><mi>g</mi></msub><mo>−</mo><msub><mi>V</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">V_{gs} = V_g - V_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is <strong><strong>high</strong></strong> enough. Since source terminal is connected to Ground for NFET,</p>
+<ul>
+<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub><mo>=</mo><msub><mi>V</mi><mi>g</mi></msub><mo>−</mo><mn>0</mn><mo>=</mo><msub><mi>V</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">V_{gs} = V_g - 0 = V_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span>,</li>
+<li>Hence effectively the NFET is “ON” whenever <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">V_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is high enough, i.e: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>T</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">&gt; V_{TH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>.</li>
+<li><mark> When <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>T</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_g &gt; V_{TH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, it draws the electrons towards the gate. An n-channel (made of electrons) will be formed between source and drain.  </mark></li>
+</ul>
+</li>
+<li>
+<p>When it is “ON”, current can pass from D to S.</p>
+<ul>
+<li>The output of an NFET is at the D terminal.</li>
+<li>Hence, the output of an “ON” N-type is ‘0’</li>
+</ul>
+</li>
+<li>
+<p>It is “OFF” when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{gs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is <strong><strong>low</strong></strong>, as it encourages depletion region to form further.</p>
+</li>
+</ol>
+<h3 id="how-pfet-operates">How PFET operates:</h3>
+<ol>
+<li>
+<p>The PFET is indicated in the papers by the FET <strong>with</strong> the bubble <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∘</mo></mrow><annotation encoding="application/x-tex">\circ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.44445em; vertical-align: 0em;"></span><span class="mord">∘</span></span></span></span></span>.</p>
+</li>
+<li>
+<p>Conversely,</p>
+<ul>
+<li>Bulk is connected to VDD to keep the PN junction reverse biased, meaning that no current flows or leaks between source and bulk and between drain and bulk.</li>
+<li>S (and also bulk) is connected to VDD for PFET. Current can flow from S to D.</li>
+</ul>
+</li>
+<li>
+<p>It is “ON” when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{gs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is <strong><strong>low</strong></strong> enough. Since source terminal is connected to VDD for PFET,</p>
+<ul>
+<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub><mo>=</mo><msub><mi>V</mi><mi>g</mi></msub><mo>−</mo><mi>V</mi><mi>D</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">V_{gs} = V_g - VDD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="mord mathdefault" style="margin-right: 0.02778em;">D</span><span class="mord mathdefault" style="margin-right: 0.02778em;">D</span></span></span></span></span>,</li>
+<li>Hence effectively PFET is “ON” whenever <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub><mo>−</mo><mi>V</mi><mi>D</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">V_g - VDD</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="mord mathdefault" style="margin-right: 0.02778em;">D</span><span class="mord mathdefault" style="margin-right: 0.02778em;">D</span></span></span></span></span> is low enough, i.e: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>T</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">&lt; V_{TH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>.</li>
+<li><mark> When <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>g</mi></msub><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>T</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_g &lt; V_{TH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">T</span><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, it draws the holes towards the gate. A p-channel (made of holes) will be formed between source and drain.  </mark></li>
+</ul>
+</li>
+<li>
+<p>When it is “ON”, current can pass from S to D.</p>
+<ul>
+<li>The output of an PFET is also at the D terminal.</li>
+<li>Hence, the output of an “ON” p-type is ‘1’</li>
+</ul>
+</li>
+<li>
+<p>It is “OFF” when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{gs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.969438em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.15139200000000003em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.22222em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is <strong><strong>high</strong></strong>, as it encourages depletion region to form further.</p>
+</li>
+</ol>
+<h2 id="supplementary-sections">Supplementary Sections</h2>
+<p>Please refer to this section if you have not already understand about p-type and n-type semiconductors, PN junction, and source-drain terminal naming.</p>
+<h3 id="p-type-and-n-type-semiconductors">P-type and N-type Semiconductors</h3>
+<blockquote>
+<p><strong><strong>Not to be confused with PFET and NFET.</strong></strong></p>
+</blockquote>
+<p>In the <strong><strong>p-type</strong></strong> semiconductor there are plenty of <strong><strong>acceptor atoms</strong></strong> and in the <strong><strong>n-type</strong></strong> semiconductor there are plenty of <strong><strong>extra electrons (donor atoms)</strong></strong>. We can say that a p-type region is where the majority of the carriers are holes and an n-type region is where the majority of the carriers are electrons.</p>
+<p>To be precise, an electron is one of the <em>constituents</em> of an atom, having a negative charge. An <strong>acceptor</strong> atom has for example 3 electrons in <em>valence shell</em> and can <strong>accept</strong> one electron to complete the covalent bonding. Thus it gains one extra electron and acquires <strong>negative charge</strong>. On the other hand, a donor atom has 5 electrons (one extra) in valence shell and can donate one extra electron. It thus acquires unit positive charge in the process.</p>
+<h3 id="depletion-region">Depletion Region</h3>
+<p>When p-type and n-type semiconductors are placed together, the free electrons from n-type will <strong>flow over (diffuse)</strong> to the p-type and fill its holes (impurities). Filling up a hole results in a negatively charged ion at the p-type semiconductor, as illustrated as the <em>gray<br>
+circles</em> in Figure above. Equally, these free electrons leaving the n-type leaves behind a <strong>positively charged ion</strong> at the n-type semiconductor. This is illustrated as the yellow circles.</p>
+<p>Eventually, a space-charge builds up forming an <strong>electric field</strong> as denoted in the left drawings (the yellow circles and the grey circles form electric field), <em>preventing</em> more free electrons from the n-type side to the p-type side, thereby forming an insulating layer called <strong><em><em>depletion region</em></em>.</strong></p>
+<h3 id="p-channel-or-n-channel-formation">P-channel or N-channel Formation</h3>
+<p>For NFETs, when there’s presence of high (positive) voltage at the gate, it repels the extra holes at the p-type bulk. Basically, a positive voltage applied to the gate attracts electrons (which are minority in the p-type substrate) to the interface between the gate dielectric and the two n-types semiconductors (drain and source).</p>
+<p>These electrons form a conducting channel between the source and the drain, called the <em><em>inversion layer</em></em>. When there’s potential difference between the drain and the source, the current will flow from source to drain through this inversion layer.</p>
+<p>For PFETs the opposite happens. When there’s presence of low (negative) voltage at the gate, it repels the extra electrons at the n-type bulk. Basically, holes (which are minority in the n-type substrate) are left behind at the interface between the gate dielectric and the two p-types semiconductors. When there’s potential difference between drain and source, then the current will flow from source to drain through this inversion layer. Note that the position of the source and drain in PFET is switched as what is depicted for NFET. Read the next section for details.</p>
+<h3 id="naming-of-source-and-drain">Naming of Source and Drain</h3>
+<p>The naming of the Source terminal depends on the majority of the charge carrier. In PFETs, current flows from Source to Drain, because the majority of the charge carrier is holes (positively charged). In NFETs, current flows from Drain to Source, because the majority of the charge carrier is electrons (negatively charged).</p>
+<blockquote>
+<p>Note: Current (I) cannot flow out back to the Gate because there’s a capacitor there (infinite resistance). The function of the gate capacitor is to create electric field enough to pull either electrons up to the gate in NFETS or holes up to gate in PFETs to create a conductive n-type (electrons) or p-type(holes) channel.</p>
+</blockquote>
+<h2 id="complementary-mos-circuitry">Complementary MOS circuitry</h2>
+<p>===========================</p>
+<p>The Pull-up and Pull-down Circuit in CMOS</p>
+<hr>
+<p>To form a fully functional combinational logic device, these PFETS and</p>
+<p>NFETS can be connected together to form a CMOS schematic (Complementary</p>
+<p>Metal-Oxide Semiconductor). There are two parts of CMOS: **<strong>the pull-up</strong></p>
+<p><strong>circuit</strong>** and <strong><strong>the pull-down circuit</strong></strong>. Its general schematic is shown</p>
+<p>in the figure below:</p>
+<p><img src="p4.png" alt=""></p>
+<p>Contents of the pull-up circuit:</p>
+<ol>
+<li>
+<p>All FETs in the pull-up circuit are PFETS</p>
+</li>
+<li>
+<p>Hence all of their bulks are connected to the VDD</p>
+</li>
+<li>
+<p>It is called ‘pull-up’ because when there is open connection to the</p>
+</li>
+</ol>
+<p>VDD (from any path through VDD to output) then the output of the</p>
+<p>overall CMOS circuit is 1</p>
+<p>Contents of the pull-down circuit:</p>
+<ol>
+<li>
+<p>All FETs in the pull-down circuit are NFETS</p>
+</li>
+<li>
+<p>Hence all of their bulks are connected to GND</p>
+</li>
+<li>
+<p>It is called ‘pull-down’ because when there is open connection to</p>
+</li>
+</ol>
+<p>the GND (from any path through the PD circuit) then the output of</p>
+<p>the overall CMOS circuit is 0</p>
+<p>The CMOS Complements Recipe</p>
+<hr>
+<p>Imagine if pull-up and pull-down is bot “ON”. This means that VDD has</p>
+<p>a straight open connection to GND : resulting in short-circuit. Hence,</p>
+<p>**<strong>it is very important for a CMOS circuit to contain complementary</strong></p>
+<p><strong>pull-ups and pull-downs</strong>**.</p>
+<p>The CMOS complements is summarized as below:</p>
+<p><img src="p5.png" alt=""></p>
+<p>A combinational logic circuit can be made by connecting two NFETs in</p>
+<p>series as a pull-down circuit, and two PFETs in parallel as a pull-up</p>
+<p>circuit. The figure below shows an example of a combinational logic</p>
+<p>device.</p>
+<p><img src="p6.png" alt=""></p>
+<p>There are two inputs to this circuit, called A and B. A low or high</p>
+<p>voltage representing bit 0 and bit 1 can be supplied to both input</p>
+<p>terminals. From the diagram, A is connected to the PFET on the <strong><strong>left</strong></strong></p>
+<p>and the NFET on the <strong><strong>top</strong></strong>. B is connected to the PFET on the <strong><strong>right</strong></strong></p>
+<p>and the NFET on the <strong><strong>bottom</strong></strong>. \</p>
+<p>\</p>
+<p>Case 1:</p>
+<ol>
+<li>Lets see what happens when A = 1 and B = 1 (both at high voltages</li>
+</ol>
+<p>that represent bit 1)</p>
+<ol start="2">
+<li>When A = 1, the PFET on the <strong><strong>left</strong></strong> is “OFF”, the NFET on the</li>
+</ol>
+<p><strong><strong>top</strong></strong> is “ON”</p>
+<ol start="3">
+<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the</li>
+</ol>
+<p><strong><strong>bottom</strong></strong> is “ON”</p>
+<ol start="4">
+<li>Current from VDD <strong><strong>cannot</strong></strong> flow to the output through any of the</li>
+</ol>
+<p>left and the right PFET</p>
+<ol start="5">
+<li>Current at the output <strong><strong>is drained down to the GND</strong></strong> through either</li>
+</ol>
+<p>NFET on the top or NFET on the bottom.</p>
+<ol start="6">
+<li>Hence the output is 0 when A = 1 and B = 1</li>
+</ol>
+<p>Case 2:</p>
+<ol>
+<li>Another case, when A = 0, and B = 1 (A at low voltage that represent</li>
+</ol>
+<p>bit 0, and B at high voltage that represent bit 1)</p>
+<ol start="2">
+<li>When A = 0, the PFET on the <strong><strong>left</strong></strong> is “ON”, the NFET on the</li>
+</ol>
+<p><strong><strong>top</strong></strong> is “OFF”</p>
+<ol start="3">
+<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the</li>
+</ol>
+<p>bottom is “ON”. This draws current from B = 1 and pull it down</p>
+<p>to 0.</p>
+<ol start="4">
+<li>Current from VDD can still flow from the PFET on the <strong><strong>left</strong></strong> to the</li>
+</ol>
+<p>output</p>
+<ol start="5">
+<li>Hence the output is 1 when A = 0 and B = 1</li>
+</ol>
+<p>Notice how there’s parallel PFET in the pull-up, and series NFET in the</p>
+<p>pull-down, hence <strong><strong>they are the CMOS complement</strong></strong>.</p>
+<p>Logic Gates</p>
+<hr>
+<p>Notice how the circuitry in Fig. 7 is called <strong><strong>NAND</strong></strong>. The name comes</p>
+<p>from this particular <strong><strong>functional specification</strong></strong> (truth table) of the</p>
+<p>combinational logic circuit. A device with multiple inputs but **<strong>only</strong></p>
+<p><strong>one output</strong>** is called a <strong><strong>logic gate</strong></strong>. The NAND gate isone of many</p>
+<p>possible gates that we will encounter in this course.</p>
+<p>The Combinational Logic Propagation Delay <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
+<p>==================================================</p>
+<p>So far we haven’t discussed about this term called <em><em>propagation delay</em></em>,</p>
+<p>which is specification that a combinational logic device must possess.</p>
+<p>The propagation delay, denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is the time taken for the</p>
+<p>device to produce a <strong><strong>valid</strong></strong> output given a <strong><strong>valid</strong></strong> input.</p>
+<p>The effective <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of an entire circuit is the <strong><strong>maximum</strong></strong></p>
+<p>cumulative propagation delay over all paths from inputs to outputs **<strong>in</strong></p>
+<p><strong>the combinational logic circuit</strong>**. This works only in **<strong>acyclic</strong></p>
+<p><strong>circuits</strong>**. \</p>
+<p>\</p>
+<p>Why is t<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6222159999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> the maximum cumulative propagation delay over all paths:</p>
+<ol>
+<li>Each component (gates, made up of FETS in CMOS arrangements) in the</li>
+</ol>
+<p>combinational logic circuit must wait for one another to produce a</p>
+<p>valid overall output.</p>
+<ol start="2">
+<li>All components have to produce valid results before final OUTPUT</li>
+</ol>
+<p>(the last logic gate in the circuit) can be produced.</p>
+<p>The Combinational Logic Contamination delay <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
+<p>====================================================</p>
+<p>Another timing specification that is typically measured an indicated on</p>
+<p>a combinational logic device is the contamination delay.</p>
+<p>The contamination delay, denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is the time taken for the</p>
+<p>device to produce an <strong><strong>invalid</strong></strong> output given a <strong><strong>invalid</strong></strong> input.</p>
+<p>The effective <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of an entire circuit is the <strong><strong>minimum</strong></strong></p>
+<p>cumulative contamination delay over all paths from inputs to outputs</p>
+<p><strong><strong>in the combinational logic circuit</strong></strong>. Again, this works only in</p>
+<p><strong><strong>acyclic circuits</strong></strong>. \</p>
+<p>\</p>
+<p>Why is t<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.486108em; vertical-align: -0.15em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> the minimum cumulative contamination delay over all</p>
+<p>paths? It takes the fastest route to propagate <em><em>invalid</em></em> signal and</p>
+<p>finally <em><em>contaminates ANY output</em></em> (to be invalid, if it was initially</p>
+<p>valid).</p>
+<p>Exercise</p>
+<p>========</p>
+<p>Complementary pull-up (made up of PFETs) and pull-down circuits (made up</p>
+<p>of n-FETs) form a CMOS gate. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>c</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{cd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">c</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> are specified per</p>
+<p>gates. Consider the example below on how to calculate these timings,</p>
+<p><img src="p7.png" alt=""></p>
+
+    </div>
+  </div>
+</body>
+
+</html>
