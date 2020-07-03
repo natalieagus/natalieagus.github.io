@@ -316,68 +316,26 @@ Almost all computers use a 2's complement representation for integers since the 
 {::options parse_block_html="false" /}
 
 
-
-We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement\footnote{Note: transform the hex to binary first and flip the bits, then transform back to hex}: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
-
-\fi
-
-1. `1101 1110 1010 1101 1011 1110 1110 1111`
-
-\ifanswers
-
-\beginsol
-
-`0x DEAD BEEF`
-
-\fi
-
   
   
 
-\item Calculate the following using 6-bit 2's complement arithmetic (which is just a fancy way of saying to do ordinary addition in base 2, keeping only 6 bits of your answer). Show your work using binary notation. Remember that subtraction can be performed by negating the second operand and then adding to the first operand.
-
-  
-  
-  
+**(e).** Calculate the following using 6-bit 2's complement arithmetic (which is just a fancy way of saying to do ordinary addition in base 2, keeping only 6 bits of your answer). Show your work using binary notation. Remember that subtraction can be performed by negating the second operand and then adding to the first operand.
 
 1. 13 + 10
+2. 15 - 18
+3. 27 - 6
 
-\ifanswers
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\beginsol
+>1. `001101 + 001010 = 010111`
+>2. 18 is `010010`. -18 is `101110`. Hence, `001111 + 101110 = 111101`
+>3. `011011 + 111010 = 010101`
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-`001101 + 001010 = 010111`
-
-\fi
-
-1. 15 - 18
-
-\ifanswers
-
-\beginsol
-
-18 is `010010`. -18 is `101110`. Hence,
-
-`001111 + 101110 = 111101`
-
-\fi
-
-1. 27 - 6
-
-\ifanswers
-
-\beginsol
-
-`011011 + 111010 = 010101`
-
-\fi
-
-  
-  
-
-\end{enumerate}
-
-  
 
 #### Dice Throwing Game -- Intermediate
 
@@ -869,9 +827,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzU5OTE4MzcsLTIwNDkyMDM1MzcsMj
-g2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3
-MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLT
-IwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1
-Nl19
+eyJoaXN0b3J5IjpbNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4Nj
+M4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEs
+LTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMD
+c1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZd
+fQ==
 -->
