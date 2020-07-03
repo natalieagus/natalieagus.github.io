@@ -5,4 +5,5 @@ relative_links:
   collections: true
   
 markdown: kramdown
+mathjax: true
 
