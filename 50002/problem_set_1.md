@@ -512,6 +512,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/the_digi
 
 The behavior of a 1-input 1-output device is measured by hooking a voltage source to its input and measuring the voltage at the output for several different input voltages, resulting in the following VTC plot,
 
+
 ![Figure1](https://www.dropbox.com/s/t6na36ox8r8osef/Q1.png?raw=1)
   
 
@@ -559,7 +560,7 @@ When answering the questions below, assume that all voltages are constrained to 
 
 **(a).** The following graph plots the VTC for a device with one input and one output. **Can this device be used** as a combinational device in logic family with 0.75 noise margins?
 
-<img src="https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1"  alt="Figure2"  width="50%">
+<img src="https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1"  alt="Figure2"  width="50%" height = "50%">
 
 {::options parse_block_html="true" /}
 <details>
@@ -574,7 +575,7 @@ When answering the questions below, assume that all voltages are constrained to 
 
 *Hint: you may want to start by choosing NM to be 0.5V for ease of computation.*
 
-<img src="https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1"  alt="Figure3"  width="50%">
+<img src="https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1"  alt="Figure3"  width="50%" height = "50%">
 
 
 {::options parse_block_html="true" /}
@@ -628,7 +629,7 @@ When answering the questions below, assume that all voltages are constrained to 
 ---
   
 Take a look at the figure below.
-<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  alt="Figure3"  width="50%">
+<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  alt="Figure4"  width="50%" height = "50%">
 
 Which of the following specification(s) **does not obey** the static discipline? Select all that apply.
 
@@ -655,7 +656,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDUwNjkxNDIsLTEyMDU0NjUxOCwxOD
+eyJoaXN0b3J5IjpbLTE1MzI3NDkwODEsLTEyMDU0NjUxOCwxOD
 I0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1
 MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MD
 czMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcw
