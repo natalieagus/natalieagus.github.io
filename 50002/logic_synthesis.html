@@ -12,13 +12,118 @@
   <div class="stackedit__left">
     <div class="stackedit__toc">
       
+<ul>
+<li><a href="#logic-synthesis">Logic Synthesis</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#sum-of-products">Sum of Products</a></li>
+</ul>
+</li>
+</ul>
+
     </div>
   </div>
   <div class="stackedit__right">
     <div class="stackedit__html">
-      <blockquote>
-<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+      <p>50.002 Computational Structures<br>
+Information Systems Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="logic-synthesis">Logic Synthesis</h1>
+<p>You can download the .pdf for this notes <a href="https://www.dropbox.com/s/roao4443ywi4eay/basics_of_information.pdf?raw=1">here</a>.</p>
+<h2 id="overview">Overview</h2>
+<p>The purpose of creating combinational devices is to <strong>synthesise logic</strong>, meaning that we create a device that is able to give a certain combination of output given a certain combination input. In other words, a device that adheres to a truth table, i.e: its <em>functional specification.</em></p>
+<p>Any combinational device has to have a functional specifications. Functional specifications are represented with <strong>truth tables</strong>. So for example, the following is the truth table of an NAND gate <em>(input: A and B, output: Y)</em>:</p>
+
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table><p>The truth table for an AND gate is the opposite (input: A and B, output: Y)*:</p>
+
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table><p>So as you can see, “NAND” is just a short for “not-an-and”. The output of a NAND gate is always 1 unless both A and B are 0. The output of an AND gate is the opposite, that is it is always 0 unless both A <em><strong>and</strong></em> B are 1.</p>
+<h2 id="sum-of-products">Sum of Products</h2>
+<p>We can also have functional specifications in terms of <strong>boolean expression</strong>. To convert truth tables into boolean expressions, we take the following steps:</p>
+<ol>
+<li>Look <strong>only for the rows with output= 1</strong>. In the case of the NAND gate, we look at row 1, 2, and 3.</li>
+<li>For each row in with output = 1, if the value of the input is a 0, then express it with a NOT.</li>
+</ol>
+<blockquote>
+<p>Taking the NAND gate’s truth table as example,</p>
+<ul>
+<li>For row 1 of NAND gate’s truth table, we have <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mtext>&nbsp;</mtext><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{A} \text{ } \overline{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8833300000000001em; vertical-align: 0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault">A</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span><span class="mord text"><span class="mord">&nbsp;</span></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span></span></span></span></span>.</li>
+<li>For row 2, we have <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mi>B</mi></mrow><annotation encoding="application/x-tex">\overline{A}B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8833300000000001em; vertical-align: 0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault">A</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span></span></span></span></span>.</li>
+<li>For row 3 we have <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">A\overline{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8833300000000001em; vertical-align: 0em;"></span><span class="mord mathdefault">A</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span></span></span></span></span>.</li>
+</ul>
 </blockquote>
+<ol start="3">
+<li>Sum all the expressions from the rows with Y=1.</li>
+</ol>
+<blockquote>
+<p>Taking the NAND gate’s truth table as example, the sum of product is:<br>
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mtext>&nbsp;</mtext><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mo>+</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mi>B</mi><mo>+</mo><mi>A</mi><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+Y = \overline{A} \text{ } \overline{B} + \overline{A}B + A\overline{B}
+\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.54333em; vertical-align: -0.5216650000000002em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.021665em;"><span class="" style="top: -3.138335em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.22222em;">Y</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault">A</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span><span class="mord text"><span class="mord">&nbsp;</span></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault">A</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mord mathdefault">A</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.5216650000000002em;"><span class=""></span></span></span></span></span></span></span></span></span></span></span></span></p>
+</blockquote>
+<ol start="4">
+<li>The expression above is called the <strong>sum of products</strong>.</li>
+</ol>
+<p><em>Sometimes in textbooks, it is called as canonical sum of products. They mean the same thing as just “sum of products”.</em></p>
 
     </div>
   </div>
