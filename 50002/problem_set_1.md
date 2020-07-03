@@ -477,7 +477,7 @@ Which of the following signed numbers is **equivalent** to the number -32 for ei
 ### Proof of 2's Complement -- Challenging
 ---
 
-At first blush, "Complement and add 1" doesn't seem like an obvious way to negate a two's complement number. By manipulating the expression $A + (-A) = 0$, show that "complement and add 1" does produce correct representation for the negative of a two's complement number. 
+At first blush, "Complement and add 1" doesn't seem like an obvious way to negate a two's complement number. By manipulating the expression $A + (-A) = 0$, **show** that "complement and add 1" does produce correct representation for the negative of a two's complement number. 
 
 *Hint: express 0 as (-1 + 1) and rearrange the terms to get -A on one side and ZZZ+1 on the other and then think about how the expression ZZZ is related to A using only logical operations (AND, OR, NOT).* 
 
@@ -731,9 +731,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQwNDkyMDEwLDE4MjQ1NDQ0ODcsNjEwND
-c5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODks
-MzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3Nz
-QxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEz
-Miw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbLTEyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMD
+Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
+LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
+c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
+MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
