@@ -343,12 +343,7 @@ Almost all computers use a 2's complement representation for integers since the 
 
 A group of five friends are playing a game that requires them to generate random numbers using 10 fair dice in the beginning before proceeding with the game. They each will throw the 10 dice and sum up all the outcomes of the dice to get the random number. Answer the following questions:
 
-~\\
-
-  
-  
-
-1. How many bits at the minimum (so round up your answer to the nearest integer) are required to encode all distinct numeric outcomes of 10
+**(a).** How many bits at the **minimum** (so round up your answer to the nearest integer) are required to encode all distinct numeric outcomes of 10?
 
   
 
@@ -364,7 +359,7 @@ The maximum number you can get from summing 10 dice throws is 60, and the minimu
 
   
 
-1. Someone in the group suggests that they can just use a die and throw it 10 times to get the random number required for the game. This way, they don't have to deal with carrying so many dice. The game began and then he proceeded with throwing the die. His first 3 throws are: 1, 3, and 4. How many bits of information has been given so far? Give your answer in 3 decimal places.
+**(b).** Someone in the group suggests that they can just use a die and throw it 10 times to get the random number required for the game. This way, they don't have to deal with carrying so many dice. The game began and then he proceeded with throwing the die. His first 3 throws are: 1, 3, and 4. **How many bits of information has been given so far?** Give your answer in 3 decimal places.
 
   
   
@@ -381,7 +376,7 @@ Each dice throw can result in any number between 1 to 6, which requires $\log_2(
 
   
 
-1. After throwing the die 9 times in total, how many new bits of information did he get from making the last (the 10th) throw? Give your answer in 3 decimal places.
+**(c).** After throwing the die 9 times in total, how many new bits of information did he get from making the last (the 10th) throw? Give your answer in 3 decimal places.
 
   
   
@@ -400,7 +395,7 @@ With the same idea as the previous part, the last dice throws solve the mystery 
 
   
 
-1. Finally, he found that the number he got in total from all 10 throws is 53. Express this number in 3-digit hex, formatted as 0xZZZ where Z is your answer.
+**(d).**  Finally, he found that the number he got in total from all 10 throws is 53. Express this number in 3-digit hex, formatted as 0xZZZ where Z is your answer.
 
   
   
@@ -415,7 +410,7 @@ With the same idea as the previous part, the last dice throws solve the mystery 
 
   
 
-1. The second person in the team proceeded to make his 10 throws and found that the number he got is 31. Given that there are five people in the
+**(e).**  The second person in the team proceeded to make his 10 throws and found that the number he got is 31. Given that there are five people in the
 
 team, how many bits of information are revealed when it is known that the first person's random number is 53 and the second person's random number is 31? Recall that the goal is for everybody in the team to each have a random number before proceeding with the game. Give your answer in 3 decimal places.
 
@@ -827,9 +822,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyNDU0NDQ4Nyw2MTA0NzkzNDksNzAyNT
-EwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4OSwzMDI0MTY4NTIs
-MjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OT
-g3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAs
-MTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbMTU2MzU2OTk2OSwxODI0NTQ0NDg3LDYxMD
+Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
+LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
+c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
+MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
