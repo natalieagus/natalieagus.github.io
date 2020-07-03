@@ -163,7 +163,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
   
 
-**(b)** You're given a standard deck of 52 playing cards that you start to turn face up, card by card. So far as you know, they're in completely random order. How many **new bits of information** do you get when the first card is flipped over? The fifth card? The last card?
+**(b)** You're given a standard deck of 52 playing cards that you start to turn face up, card by card. So far as you know, they're in completely random order. How many **new bits of information** do you get when the **first** card is flipped over? The **fifth** card? The **last** card?
 
   
 
@@ -179,7 +179,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
   
 
-**(c).** X is an unknown N-bit binary number $(N>3)$. You are told that the first three bits of X are 011. How many bits of information have you been given?
+**(c).** X is an *unknown* N-bit binary number $(N>3)$. You are told that the first three bits of X are 011. How many bits of *information* have you been given?
 
 {::options parse_block_html="true" /} 
 <details> 
@@ -191,7 +191,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 {::options parse_block_html="false" /}
   
 
-**(d)**. X is an unknown 8-bit binary number. You are given another 8-bit binary number, Y, and told that the Hamming distance (number of different bits) between X and Y is one. How many bits of information about X have you been given when Y is presented to you?
+**(d)**. X is an *unknown* 8-bit binary number. You are given another 8-bit binary number, Y, and told that the *Hamming* distance (number of different bits) between X and Y is one. How many **bits of information** about X have you been given when Y is presented to you?
 
   
 {::options parse_block_html="true" /} 
@@ -222,7 +222,7 @@ After spending the afternoon in the dentist's chair, Ben has invented a new lang
 |O |P(O) = 0.15|
 |U |P(U) = 0.15|
 
-If you're told that the first letter of the message is "A", give an expression for the number of bits of information you have received.
+If you're told that the first letter of the message is "A", **give an expression for the number of bits of information you have received.**
 
   
 
@@ -252,7 +252,7 @@ Almost all computers use a 2's complement representation for integers since the 
   
   
 
-**(a).** How many different values can be encoded in a 32-bit word?
+**(a).** How many **different** values can be encoded in a 32-bit word?
 
 
 {::options parse_block_html="true" /} 
@@ -266,7 +266,7 @@ Almost all computers use a 2's complement representation for integers since the 
 
   
 
-**(b)** Please use a 32-bit 2's complement representation to answer the following questions. What are the representations for:
+**(b)** Please use a *32-bit 2's complement representation* (signed bits) to answer the following questions. What are the **representations** for:
 
 1. Zero
 2. The most positive integer that can be represented
@@ -284,7 +284,7 @@ Almost all computers use a 2's complement representation for integers since the 
 <br/> 
 {::options parse_block_html="false" /}
 
-**(c)** What are the decimal values for the most positive and the most negative number?
+**(c)** What are the **decimal values** for the most positive and the most negative number?
 \ifanswers
 
 {::options parse_block_html="true" /} 
@@ -297,7 +297,7 @@ Almost all computers use a 2's complement representation for integers since the 
 {::options parse_block_html="false" /}
 
   
-**(d)** Since writing a string of 32 bits gets tedious, it's often convenient to use hexadecimal representation where a single digit in the range of 0-9 or A-F is used to represent groups of 4 bits. Give the 8-digit hexadecimal equivalent of the following decimal and binary numbers:
+**(d)** Since writing a string of 32 bits gets tedious, it's often convenient to use hexadecimal representation where a single digit in the range of 0-9 or A-F is used to represent groups of 4 bits. Give the **8-digit hexadecimal equivalent** of the following decimal and binary numbers:
 1. $37_{10}$
 2. $-32768_{10}$
 3. `1101 1110 1010 1101 1011 1110 1110 1111`
@@ -319,7 +319,7 @@ Almost all computers use a 2's complement representation for integers since the 
   
   
 
-**(e).** Calculate the following using 6-bit 2's complement arithmetic (which is just a fancy way of saying to do ordinary addition in base 2, keeping only 6 bits of your answer). Show your work using binary notation. Remember that subtraction can be performed by negating the second operand and then adding to the first operand.
+**(e).** **Calculate** the following using 6-bit 2's complement arithmetic (which is just a fancy way of saying to do ordinary addition in base 2, keeping only 6 bits of your answer). Show your work using binary notation. Remember that subtraction can be performed by negating the second operand and then adding to the first operand.
 
 1. 13 + 10
 2. 15 - 18
@@ -827,9 +827,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjA2MzcxNzAsNzAyNTEwNjY5LC0yMD
-Q5MjAzNTM3LDI4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3
-Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNz
-UxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEz
-Nyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OT
+IwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYs
+NjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MT
+U4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcs
+OTc3NTQ0OTU2XX0=
 -->
