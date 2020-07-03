@@ -1,5 +1,5 @@
 ---
-layout:default
+layout: default
 title: "pset1"
 permalink: /50002/PS1/
 ---
@@ -22,6 +22,6 @@ Obviously $Z_x$ represents 4 bits since these are in hexadecimal number system (
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMTY1MjgzMiw5MDY2NDUyMzEsLTMzNT
-ExODIwMV19
+eyJoaXN0b3J5IjpbMTA0MTk4Niw5MDY2NDUyMzEsLTMzNTExOD
+IwMV19
 -->
