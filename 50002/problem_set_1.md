@@ -214,60 +214,26 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
 After spending the afternoon in the dentist's chair, Ben has invented a new language called DDS made up entirely of vowels (the only sounds he could make with someone's hand in his mouth). The DDS alphabet consists of the five letters: A, E, I, U, O, which occur with the following probabilities,
 
-|A|P(A) = 0.15|
+|Letter|Probability|
 |--|--|
+|A |P(A) = 0.15|
 |E |P(E) = 0.4|
-
-
-\begin{table}[h]
-
-\centering
-
-\begin{tabular}{|c|c|}
-
-\hline
-
-**Letter** & **Prob. of occurrence**\\
-
-\hline
-
-A & $p(A) = 0.15$  \\\\
-
-E & $p(B) = 0.4$  \\\\
-
-I & $p(C) = 0.15$  \\\\
-
-O & $p(D) = 0.15$  \\\\
-
-U & $p(E) = 0.15$  \\\\
-
-\hline
-
-\end{tabular}
-
-\caption{}
-
-\end{table}
-
-  
+|I |P(I) = 0.15|
+|O |P(O) = 0.15|
+|U |P(U) = 0.15|
 
 If you're told that the first letter of the message is "A", give an expression for the number of bits of information you have received.
 
   
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-Recall that the information received is inversely proportional to the probability of that choice occurring, and we take $\log_2$ of the probability of that choice occurring to quantify the information in terms of bits. Hence the expression is,
+>Recall that the information received is inversely proportional to the probability of that choice occurring, and we take $\log_2$ of the probability of that choice occurring to quantify the information in terms of bits. Hence the expression is,
+$$I = \log_2 \frac{1}{p(A)}$$
 
-  
-
-\begin{align}
-
-I = \log_2 \frac{1}{p(A)}
-
-\end{align}
 
   
 
@@ -930,9 +896,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTc4NjE1OTYsLTIwNDkyMDM1MzcsMj
-g2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3
-MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLT
-IwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1
-Nl19
+eyJoaXN0b3J5IjpbLTE1MTkwNzUyOSwtMjA0OTIwMzUzNywyOD
+YzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcx
+LC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMj
+A3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2
+XX0=
 -->
