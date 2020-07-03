@@ -77,7 +77,7 @@ Your cohort contains 100 students, 51 of whom are male and 49 are female. There 
 
 Now someone in your class won "the first to join ISTD" prize. Answer the following questions:
 
-1. If you are told the student ID of this winner, how much information did you receive in bits?
+**(a).** If you are told the student ID of this winner, how much information did you receive in bits?
 
   
 {::options parse_block_html="true" /} 
@@ -89,15 +89,18 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <br/> 
 {::options parse_block_html="false" /}
 
-2. If you are told the student ID of the last 33 students who joined ISTD, how much information did you receive in bits?
+**(b).** If you are told the student ID of the last 33 students who joined ISTD, how much information did you receive in bits?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-If we know the last 33 students who joined ISTD, we know that \textit{these students cannot be the winner}. Hence our pool of candidates are narrowed down into 67 students. We are then given $\log_2(100) - \log_2(67)$ bits of information.
+> If we know the last 33 students who joined ISTD, we know that these students cannot be the winner. Hence our pool of candidates are narrowed down into 67 students. We are then given $\log_2(100) - \log_2(67)$ bits of information.
 
-\fi
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
   
@@ -946,7 +949,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MTE0NDYyOSwzMDI0MTY4NTIsMjEyMz
+eyJoaXN0b3J5IjpbLTM0NDU0MDQ4OCwzMDI0MTY4NTIsMjEyMz
 Y0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2
 NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMD
 A1MjEzNyw5Nzc1NDQ5NTZdfQ==
