@@ -4,6 +4,11 @@ title: "pset1"
 permalink: /50002/PS1/
 ---
 
+{::options parse_block_html="true" /}
+{% include toc.html %}
+{::options parse_block_html="false" /}
+
+
 ### Basics of Information Theory
 
 #### Warm Up
@@ -22,6 +27,6 @@ Obviously $Z_x$ represents 4 bits since these are in hexadecimal number system (
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MTk4Niw5MDY2NDUyMzEsLTMzNTExOD
-IwMV19
+eyJoaXN0b3J5IjpbMTE3NTEyNjU0LDEwNDE5ODYsOTA2NjQ1Mj
+MxLC0zMzUxMTgyMDFdfQ==
 -->
