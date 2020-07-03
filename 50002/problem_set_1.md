@@ -57,17 +57,17 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 <summary markdown="span">Show Answer</summary>
 
 >Initially, there are $101*101$ choices. 
-
+>
 >Pressing two letter keys consecutively (might be repeated) narrows down the choices onto $26_*26$. 
-
-Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
+>
+>Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 </details> 
 <br/> 
 {::options parse_block_html="false" /}
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQzMzU2MDM2LDY1MDczMzI3MSwtMTc3Nz
-c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
-MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nz
+c3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEy
+MTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
 -->
