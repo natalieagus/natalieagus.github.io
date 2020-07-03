@@ -89,7 +89,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <br/> 
 {::options parse_block_html="false" /}
 
-1. If you are told the student ID of the last 33 students who joined ISTD, how much information did you receive in bits?
+2. If you are told the student ID of the last 33 students who joined ISTD, how much information did you receive in bits?
 
 \ifanswers
 
@@ -946,8 +946,8 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTY3ODIzNDgsMzAyNDE2ODUyLDIxMj
-M2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0
-NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMj
-AwNTIxMzcsOTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbMTM4MTE0NDYyOSwzMDI0MTY4NTIsMjEyMz
+Y0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2
+NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMD
+A1MjEzNyw5Nzc1NDQ5NTZdfQ==
 -->
