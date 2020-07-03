@@ -147,41 +147,39 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 #### Deck of Cards -- Intermediate
 
  
-1. Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. How much information have they given you about the selection?
+**(a)** Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. How much information have they given you about the selection?
+
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
+
+>Originally, we have 8 options: $M=8$. The option is narrowed down into 3, hence $N = 3$, we have:
+
+>$$\begin{aligned} I = \log_2 \left(\frac{1}{N/M}\right) = \log_2 \left(\frac{1}{3/8}\right) \text{ bits of information}.
+\end{aligned}$$
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
 
-\ifanswers
-
-\beginsol
-
-Originally, we have 8 options: $M=8$. The option is narrowed down into 3, hence $N = 3$, we have:
-
-\begin{align}
-
-I = \log_2 \left(\frac{1}{N/M}\right) = \log_2 \left(\frac{1}{3/8}\right) \text{ bits of information}.
-
-\end{align}
-
-\fi
+**(b)** You're given a standard deck of 52 playing cards that you start to turn face up, card by card. So far as you know, they're in completely random order. How many new bits of information do you get when the first card is flipped over? The fifth card? The last card?
 
   
 
-1. You're given a standard deck of 52 playing cards that you start to turn face up, card by card. So far as you know, they're in completely random order. How many new bits of information do you get when the first card is flipped over? The fifth card? The last card?
+
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
+
+>The first card has $\log_2 52$ bits of information. The fifth card has $\log_2 48$ bits of information. The last card has 0 bits of information.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
 
-\ifanswers
-
-\beginsol
-
-The first card has $\log_2 52$ bits of information. The fifth card has $\log_2 48$ bits of information. The last card has 0 bits of information.
-
-\fi
-
-  
-
-1. X is an unknown N-bit binary number $(N>3)$. You are told that the first three bits of X are 011. How many bits of information have you been given?
+**(d)** X is an unknown N-bit binary number $(N>3)$. You are told that the first three bits of X are 011. How many bits of information have you been given?
 
   
 
@@ -938,8 +936,8 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNjU5MTAzOSwyODYzODc3ODksMzAyND
-E2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0
-LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MD
-U1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbLTE0Njg0NTcwMjgsMjg2Mzg3Nzg5LDMwMj
+QxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUw
+NCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNj
+A1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
