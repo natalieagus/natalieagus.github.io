@@ -593,7 +593,7 @@ When answering the questions below, assume that all voltages are constrained to 
 ### Static Discipline -- Basic
 ---
 
-**(a).** Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. What can we deduce about the value of $V_{IN}$?
+**(a).** Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. **What can we deduce about the value of $V_{IN}$?**
 
 
 {::options parse_block_html="true" /}
@@ -608,7 +608,7 @@ When answering the questions below, assume that all voltages are constrained to 
 {::options parse_block_html="false" /}
   
 
-**(b).** Now consider an inverter. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$, and find $V_{OUT} > V_{OH}$. What can we deduce about the value of $V_{IN}$?
+**(b).** Now consider an inverter. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$, and find $V_{OUT} > V_{OH}$. **What can we deduce about the value of $V_{IN}$?**
 
 
 {::options parse_block_html="true" /}
@@ -622,15 +622,16 @@ When answering the questions below, assume that all voltages are constrained to 
 <br/>
 {::options parse_block_html="false" /}
 
+ 
+
+### VTC Analysis -- Intermediate
+---
   
+Take a look at the figure below.
+![Figure3](https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1)
 
-#### VTC Analysis -- Intermediate
 
-  
-
-\includepic{0.8}{vtc.png}{VTC Plot}
-
-Which of the following specification(s) does not obey the static discipline? Select all that apply.
+Which of the following specification(s) **does not obey** the static discipline? Select all that apply.
 
   
   
@@ -646,16 +647,16 @@ Which of the following specification(s) does not obey the static discipline? Sel
 1. $V_{IL} = 0.5V, V_{IH} = 3.5V, V_{OL} = 0V, V_{OH} = 4V$
 
   
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-**All** does **not** obey the static discipline. You may easily check whether the device is able to provide the prescribed $V_{OH}$ given a corresponding $V_{IH}$ in the options, and whether it is able to provide as well the given $V_{OL}$ given a coresponding $V_{IL}$ in the options from tracing the graph.
-
-\fi
+>**None of them** obey the static discipline. You may easily check whether the device is able to provide the prescribed $V_{OH}$ given a corresponding $V_{IH}$ in the options, and whether it is able to provide as well the given $V_{OL}$ given a coresponding $V_{IL}$ in the options from tracing the graph.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMjUwMDkyNiwtMTIwNTQ2NTE4LDE4Mj
+eyJoaXN0b3J5IjpbLTEyMzUzNjIwMCwtMTIwNTQ2NTE4LDE4Mj
 Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
 NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
 MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
