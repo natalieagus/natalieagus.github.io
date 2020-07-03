@@ -13,6 +13,12 @@ permalink: /notes/
 ```python
 print('Hello World!')
 ```
+  ## Heading
+  1. A numbered
+  2. list
+     * With some
+     * Sub bullets
+     
 Of course, it has to be Hello World, right?
 </details>
 <br/>
@@ -44,6 +50,6 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDcyNDY2MjMsMjQyMzQ0NDQsLTE2Mz
-gwODY1MzFdfQ==
+eyJoaXN0b3J5IjpbLTEwNzMwMzM1OTYsLTE1MDcyNDY2MjMsMj
+QyMzQ0NDQsLTE2MzgwODY1MzFdfQ==
 -->
