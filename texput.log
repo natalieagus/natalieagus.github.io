@@ -1,0 +1,232 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.11.23)  3 JUL 2020 03:59
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCo
+de"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.
+{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\
+documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname
+ tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{
+\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode .a.b.c.\input
+
+*cc<!--
+! Interruption.
+<*> 
+    cc<!--
+? 1: Using prettify
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+H for help, X to quit.
+? -->
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, 
+H for help, X to quit.
+? 
+! I can't find file `cc<!--'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <!DOCTYPE html>
+! I can't find file `<!DOCTYPE'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <html>
+! I can't find file `<html>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <head>
+! I can't find file `<head>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <meta charset="utf-8">
+! I can't find file `<meta'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <title><%= documentTitle %></title>
+! I can't find file `<title><%='.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `<title><%='.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <link rel="stylesheet" type="text/css" hre
+f="https://www.dropbox.com/s/atz4kqwayz4hlhk/markDown.css?raw=1">
+! I can't find file `<link'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `<link'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <script type="text/javascript" src="https:
+//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></scr
+ipt>
+! I can't find file `<script'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <script type="text/javascript" src="https:
+//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert
+"></script>
+! I can't find file `<script'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `<script'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: </head>
+! I can't find file `</head>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <body><%= documentHTML %></body>
+! I can't find file `<body><%='.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: </html>
+! I can't find file `</html>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `</html>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <!--
+! I can't find file `<!--'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 2: Using highlight.js
+! I can't find file `2:'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <!DOCTYPE html>
+! I can't find file `<!DOCTYPE'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <html>
+! I can't find file `<html>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <head>
+! I can't find file `<head>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <meta charset="utf-8">
+! I can't find file `<meta'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <title><%= documentTitle %></title>
+! I can't find file `<title><%='.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <link rel="stylesheet" type="text/css" hre
+f="https://www.dropbox.com/s/atz4kqwayz4hlhk/markDown.css?raw=1">
+! I can't find file `<link'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <script src="https://cdn.mathjax.org/mathj
+ax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></scr
+ipt>
+! I can't find file `<script'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <link rel="stylesheet" href="https://cdnjs
+.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/agate.min.css">
+! I can't find file `<link'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <script src="https://cdnjs.cloudflare.com/
+ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+! I can't find file `<script'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <script>hljs.initHighlightingOnLoad();</sc
+ript>
+! I can't find file `<script>hljs.initHighlightingOnLoad();</script>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: </head>
+! I can't find file `</head>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: <body><%= documentHTML %></body>
+! I can't find file `<body><%='.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: </html>
+! I can't find file `</html>'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: ^^X
+! I can't find file `^^X'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `^^X'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `^^X'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `^^X'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! I can't find file `^^X'.
+<*> cc<!--
+          
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! Emergency stop.
+<*> cc<!--
+          
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 22 strings out of 492617
+ 238 string characters out of 6129506
+ 57270 words of memory out of 5000000
+ 4028 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 4i,0n,3p,141b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
