@@ -1,9 +1,7 @@
 ---
-
 layout: default
 title: "notes"
 permalink: /notes/
-
 ---
 
 # A collapsible section with markdown
@@ -82,7 +80,7 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MDM1MjU4MCwtMTU2NTQ0NzQsLTE1Nj
-U0NDc0LC0xMDczMDMzNTk2LC0xNTA3MjQ2NjIzLDI0MjM0NDQ0
-LC0xNjM4MDg2NTMxXX0=
+eyJoaXN0b3J5IjpbLTk4NzE2MDcwMCwxNTgwMzUyNTgwLC0xNT
+Y1NDQ3NCwtMTU2NTQ0NzQsLTEwNzMwMzM1OTYsLTE1MDcyNDY2
+MjMsMjQyMzQ0NDQsLTE2MzgwODY1MzFdfQ==
 -->
