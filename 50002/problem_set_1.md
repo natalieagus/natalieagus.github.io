@@ -8,11 +8,14 @@ permalink: /50002/PS1/
 {% include toc.html %}
 {::options parse_block_html="false" /}
 
+This page contains all practice questions that constitutes the topics learned in Week 1: **Basics of Information Theory** and **The Digital Abstraction**. Each topic's questions are grouped into three categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
+
 
 # Basics of Information Theory
-This page contains all practice questions that constitutes this topic. They are grouped into three categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
+You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_of_information.html" target="_blank">here</a> if you need to revise. 
 
-## Warm Up
+### Warm Up
+-------------
 
 Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
 
@@ -28,7 +31,8 @@ We are literally *told* that the first hex digit is $B = 1011$. Hence we are giv
 {::options parse_block_html="false" /}
 
 
-## Keyboard Presses -- Basic
+### Keyboard Presses -- Basic
+-------------
 **(a).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
 
 {::options parse_block_html="true" /} 
@@ -60,6 +64,7 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MD
-U1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNz
+UxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEz
+Nyw5Nzc1NDQ5NTZdfQ==
 -->
