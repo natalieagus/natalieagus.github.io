@@ -425,15 +425,18 @@ Consider an 8-bit number systems. Do the following base conversion, and indicate
 3. 0b10011101 (binary) to hexadecimal
 4. 0xBF (hexadecimal) to binary
 5. 0xC6 (hexadecimal) to octal
+
+
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-1. `0b01001100`
-2. `-127`
-3. `0x9D`
-4. `0b10111111`
-5. `0306`
+> 1. `0b01001100`
+> 2. `-127`
+> 3. `0x9D`
+> 4. `0b10111111`
+> 5. `0306`
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -759,9 +762,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Mzg0NjgxMTAsMTgyNDU0NDQ4Nyw2MT
-A0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4
-OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nz
-c3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEy
-MTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbLTc5MzQ1NTM4NiwxODI0NTQ0NDg3LDYxMD
+Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
+LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
+c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
+MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
