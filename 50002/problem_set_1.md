@@ -557,7 +557,7 @@ When answering the questions below, assume that all voltages are constrained to 
   
   
 
-**(a).** The following graph plots the VTC for a device with one input and one output. Can this device be used as a combinational device in logic family with 0.75 noise margins?
+**(a).** The following graph plots the VTC for a device with one input and one output. **Can this device be used** as a combinational device in logic family with 0.75 noise margins?
 
 ![Figure2](https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1)
 
@@ -570,9 +570,9 @@ When answering the questions below, assume that all voltages are constrained to 
 <br/>
 {::options parse_block_html="false" /}
 
-**(b).** You are designing a new logic family and trying to decide on values of the four parameters: $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ that lead to non-zero noise margins for various possible inverter designs. Four proposed inverter designs exhibit the VTC shown in the diagrams below. For each design, either specify four suitable values of $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ or explain why no values can obey the static discipline. 
+**(b).** You are designing a new logic family and trying to decide on values of the four parameters: $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ that lead to non-zero noise margins for various possible inverter designs. Four proposed inverter designs exhibit the VTC shown in the diagrams below. **For each design, either specify four suitable values** of $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ or **explain why no values can obey the static discipline.** 
 
-*Hint: you may want to start by choosing NM to be 0.5V for ease of calculation.*
+*Hint: you may want to start by choosing NM to be 0.5V for ease of computation.*
 
 ![Figure3](https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1)
 
@@ -590,46 +590,45 @@ When answering the questions below, assume that all voltages are constrained to 
 <br/>
 {::options parse_block_html="false" /}
 
-#### Static Discipline -- Basic
-
+### Static Discipline -- Basic
+---
   
   
   
 
-1. Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. What can we say about $V_{IN}$?
+**(a).** Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. What can we say about $V_{IN}$?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 We have a valid \textit{low} output, but that doesnt mean that we have a valid \textit{low} input. However we know for sure that input cannot be higher than $V_{IH}$ because static discipline requires the output to be higher than $V_{OH}$ if this is the case for a buffer. Hence, the only thing we can infer is that
 
 $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
-
-\fi
-
+</details>
+<br/>
+{::options parse_block_html="false" /}
   
 
-1. Now consider an inverter. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$, and find $V_{OUT} > V_{OH}$. What can we say about $V_{IN}$?
+**(b).** Now consider an inverter. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$, and find $V_{OUT} > V_{OH}$. What can we say about $V_{IN}$?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-We have a valid \textit{high} output, but that doesnt mean that we have a valid \textit{low} input. **Static discipline** states that \textit{given a valid input, the device is always able to give a valid output}, but it does not mean that the reverse is true, i.e: invalid input does NOT have to give out invalid output.
-
-~\\~\\
-
-However we know for sure that input cannot be higher than $V_{IH}$ because static discipline requires the output to be lower than $V_{OH}$ if this is the case for an inverter. Hence, the only thing we can infer is that
-
-$V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
-
-\fi
+>We have a valid \textit{high} output, but that doesnt mean that we have a valid \textit{low} input. **Static discipline** states that \textit{given a valid input, the device is always able to give a valid output}, but it does not mean that the reverse is true, i.e: invalid input does NOT have to give out invalid output.
+>
+>However we know for sure that input cannot be higher than $V_{IH}$ because static discipline requires the output to be lower than $V_{OH}$ if this is the case for an inverter. Hence, the only thing we can infer is that $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
   
   
 
-\newpage
+
 
 #### VTC Analysis -- Intermediate
 
@@ -662,7 +661,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyMDcyMzgxOCwtMTIwNTQ2NTE4LDE4Mj
+eyJoaXN0b3J5IjpbMTIzNDI0NjE4NiwtMTIwNTQ2NTE4LDE4Mj
 Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
 NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
 MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
