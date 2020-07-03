@@ -19,7 +19,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_o
 ### Warm Up
 -------------
 
-Suppose that you are to guess the value of a 16-bit number: $0$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
+Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
 
 {::options parse_block_html="true" /}
 <details>
@@ -68,8 +68,8 @@ Suppose that you are to guess the value of a 16-bit number: $0$Z_1Z_2Z_3Z_4$ You
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkyMzU3MjgsMjEyMzY0MTA3Niw2NTA3Mz
-MyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2
-LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1ND
-Q5NTZdfQ==
+eyJoaXN0b3J5IjpbMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
+MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
+NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NT
+Q0OTU2XX0=
 -->
