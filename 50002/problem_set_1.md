@@ -503,7 +503,7 @@ which is exactly the two complement's steps.
 
 ---
 # The Digital Abstraction
-
+You can refer to the notes <a href="https://natalieagus.github.io/50002/the_digital_abstraction.html" target="_blank">here</a> if you need to revise. 
   
   
 
@@ -731,9 +731,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExNzQyNjQwNCwxODI0NTQ0NDg3LDYxMD
-Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
-LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
-c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
-MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbNTQwNDkyMDEwLDE4MjQ1NDQ0ODcsNjEwND
+c5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODks
+MzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3Nz
+QxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEz
+Miw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
 -->
