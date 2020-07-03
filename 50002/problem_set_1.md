@@ -531,10 +531,10 @@ When answering the questions below, assume that all voltages are constrained to 
   
   
 
-1. Can one choose a $V_{OL}$ of 0V for this device? Explain.
-2. What's the smallest $V_{OL}$ one can choose and still the device obey the static discipline?
-3. Assuming that we want to have 0.5V noise margins for both "0" and "1" values, what are the appropriate voltage levels for $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ so that the device obeys the static discipline? *Hint: there are many choices. Just choose the one that obeys the static discipline and the NM constraint.*
-4. What device is this called?
+1. Can one choose a $V_{OL}$ of 0V for this device? **Explain**.
+2. **What's the smallest** $V_{OL}$ one can choose and still the device obey the static discipline?
+3. Assuming that we want to have 0.5V noise margins for both "0" and "1" values, **what are the appropriate voltage levels** for $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ so that the device obeys the static discipline? *Hint: there are many choices. Just choose the one that obeys the static discipline and the NM constraint.*
+4. **What device** is this called?
 
 
 {::options parse_block_html="true" /}
@@ -565,43 +565,30 @@ When answering the questions below, assume that all voltages are constrained to 
 <details>
 <summary markdown="span">Show Answer</summary>
 
-No. This device gain is $\leq1$, hence it cannot be used as a combinational device.
+>No. This device gain is $\leq1$, hence it cannot be used as a combinational device.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+**(b).** You are designing a new logic family and trying to decide on values of the four parameters: $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ that lead to non-zero noise margins for various possible inverter designs. Four proposed inverter designs exhibit the VTC shown in the diagrams below. For each design, either specify four suitable values of $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ or explain why no values can obey the static discipline. 
+
+*Hint: you may want to start by choosing NM to be 0.5V for ease of calculation.*
+
+![Figure3](https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1)
 
 
-1. You are designing a new logic family and trying to decide on values of the four parameters: $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ that lead to non-zero noise margins for various possible inverter designs. Four proposed inverter designs exhibit the VTC shown in the diagrams below. For each design, either specify four suitable values of $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ or explain why no values can obey the static discipline. \\\\
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\textit{Hint: you may want to start by choosing NM to be 0.5V for ease of calculation}.
+>(B) and (C) cannot be used as inverter (combinational device) as its gain is $\leq1$. 
 
-\begin{figure}[h]
+>For (A), choose NM = 0.5V, then $V_{OL} = 1V$, $V_{IL} = 1.5V$, $V_{IH} = 5V$, and $V_{OH} = 5.5V$. 
 
-\centering
-
-\includegraphics[scale=0.7]{Q3.png}
-
-\caption{}
-
-\end{figure}
-
-  
-
-\ifanswers
-
-\beginsol
-
-(B) and (C) cannot be used as inverter (combinational device) as its gain is $\leq1$. \\\\
-
-For (A), choose NM = 0.5V, then $V_{OL} = 1V$, $V_{IL} = 1.5V$, $V_{IH} = 5V$, and $V_{OH} = 5.5V$. \\\\
-
-For (D), choose NM = 0.5V, then $V_{OL} = 0.5V$, $V_{IL} = 1V$, $V_{IH} = 5$, and $V_{OH}= 5.5V$.
-
-  
-
-\fi
-
-  
-  
-
-\newpage
+>For (D), choose NM = 0.5V, then $V_{OL} = 0.5V$, $V_{IL} = 1V$, $V_{IH} = 5$, and $V_{OH}= 5.5V$.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 #### Static Discipline -- Basic
 
@@ -675,10 +662,10 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNTUxNDQ3LC0xMjA1NDY1MTgsMTgyND
-U0NDQ4Nyw2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3
-LDI4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3Mz
-MyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2
-LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1ND
-Q5NTZdfQ==
+eyJoaXN0b3J5IjpbMTAyMDcyMzgxOCwtMTIwNTQ2NTE4LDE4Mj
+Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
+NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
+MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
+NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NT
+Q0OTU2XX0=
 -->
