@@ -300,34 +300,22 @@ Almost all computers use a 2's complement representation for integers since the 
 **(d)** Since writing a string of 32 bits gets tedious, it's often convenient to use hexadecimal representation where a single digit in the range of 0-9 or A-F is used to represent groups of 4 bits. Give the 8-digit hexadecimal equivalent of the following decimal and binary numbers:
 1. $37_{10}$
 2. $-32768_{10}$
-3. `0x DEAD BEEF`
-4. `0x 0000 0025`
-2. $-32768_{10}$
+3. `1101 1110 1010 1101 1011 1110 1110 1111`
+
+
 
 {::options parse_block_html="true" /} 
 <details> 
 <summary markdown="span">Show Answer</summary>
 
-
-2. We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement\footnote{Note: transform the hex to binary first and flip the bits, then transform back to hex}: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
-
+>1. `0x 0000 0025`
+>2. We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement\footnote{Note: transform the hex to binary first and flip the bits, then transform back to hex}: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
+>3. `0x DEAD BEEF`
 </details> 
 <br/> 
 {::options parse_block_html="false" /}
 
-\ifanswers
 
-\beginsol
-
-
-
-\fi
-
-
-
-\ifanswers
-
-\beginsol
 
 We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement\footnote{Note: transform the hex to binary first and flip the bits, then transform back to hex}: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
 
@@ -881,7 +869,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDE1MTk0NzEsLTIwNDkyMDM1MzcsMj
+eyJoaXN0b3J5IjpbLTE1MzU5OTE4MzcsLTIwNDkyMDM1MzcsMj
 g2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3
 MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLT
 IwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1
