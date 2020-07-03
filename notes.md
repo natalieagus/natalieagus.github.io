@@ -1,11 +1,9 @@
-
-
-
-
 ---
 layout: default
+title: "notes"
 permalink: /notes/
 ---
+
 # A collapsible section with markdown
 <details>
   <summary>Click to expand!</summary>
