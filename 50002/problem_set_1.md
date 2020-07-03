@@ -19,7 +19,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_o
 ### Warm Up
 -------------
 
-Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
+Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. **What is the value of [N]?**
 
 {::options parse_block_html="true" /}
 <details>
@@ -68,7 +68,7 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 
 
 ###  ISTD Prize -- Intermediate
-
+----
   
   
 
@@ -77,7 +77,7 @@ Your cohort contains 100 students, 51 of whom are male and 49 are female. There 
 
 Now someone in your class won "the first to join ISTD" prize. Answer the following questions:
 
-**(a).** If you are told the student ID of this winner, how much information did you receive in bits?
+**(a).** If you are told the student ID of this winner, how much **information** did you receive in bits?
 
   
 {::options parse_block_html="true" /} 
@@ -89,7 +89,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <br/> 
 {::options parse_block_html="false" /}
 
-**(b).** If you are told the student ID of the last 33 students who joined ISTD, how much information did you receive in bits?
+**(b).** If you are told the student ID of the last 33 students who joined ISTD, how much **information** did you receive in bits?
 
 
 {::options parse_block_html="true" /} 
@@ -101,7 +101,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <br/> 
 {::options parse_block_html="false" /}
 
-**(c)** If you are told that the student who won the "first to join ISTD prize" is a male, how much information did you receive in bits?
+**(c)** If you are told that the student who won the "first to join ISTD prize" is a male, how much **information** did you receive in bits?
 
   
 {::options parse_block_html="true" /} 
@@ -115,7 +115,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
   
 
-**(d)** If you are told that the student who won the "first to join ISTD prize" is above 19 years old instead, how much information did you receive in bits?
+**(d)** If you are told that the student who won the "first to join ISTD prize" is above 19 years old instead, how much **information** did you receive in bits?
 
 
 {::options parse_block_html="true" /} 
@@ -129,7 +129,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
   
 
-**(e)** If you are told that the student who won the "first to join ISTD prize" hated a final exam and is below 19 years old, how much information did you receive in bits?
+**(e)** If you are told that the student who won the "first to join ISTD prize" hated a final exam and is below 19 years old, how much **information** did you receive in bits?
 
 
 {::options parse_block_html="true" /} 
@@ -147,7 +147,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 #### Deck of Cards -- Intermediate
 
  
-**(a)** Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. How much information have they given you about the selection?
+**(a)** Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. **How much information have they given you about the selection?**
 
 {::options parse_block_html="true" /} 
 <details> 
@@ -163,7 +163,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
   
 
-**(b)** You're given a standard deck of 52 playing cards that you start to turn face up, card by card. So far as you know, they're in completely random order. How many new bits of information do you get when the first card is flipped over? The fifth card? The last card?
+**(b)** You're given a standard deck of 52 playing cards that you start to turn face up, card by card. So far as you know, they're in completely random order. How many **new bits of information** do you get when the first card is flipped over? The fifth card? The last card?
 
   
 
@@ -209,7 +209,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
   
 
 ### Measuring Information -- Basic
-
+---
   
 
 After spending the afternoon in the dentist's chair, Ben has invented a new language called DDS made up entirely of vowels (the only sounds he could make with someone's hand in his mouth). The DDS alphabet consists of the five letters: A, E, I, U, O, which occur with the following probabilities,
@@ -241,7 +241,7 @@ $$I = \log_2 \frac{1}{p(A)}$$
   
 
 ### Modular arithmetic and 2's complement representation -- Basic
-
+------
 
 Most computers choose a particular word length (measured in bits) for representing integers and provide hardware that performs various arithmetic operations on word-size operands. The current generation of processors have word lengths of 32 bits; restricting the size of the operands and the result to a single word means that the arithmetic operations are actually performing arithmetic modulo $2^{32}$.
 
@@ -827,9 +827,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4Nj
-M4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEs
-LTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMD
-c1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZd
-fQ==
+eyJoaXN0b3J5IjpbLTE1NjA2MzcxNzAsNzAyNTEwNjY5LC0yMD
+Q5MjAzNTM3LDI4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3
+Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNz
+UxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEz
+Nyw5Nzc1NDQ5NTZdfQ==
 -->
