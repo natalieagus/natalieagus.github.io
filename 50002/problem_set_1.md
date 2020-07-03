@@ -488,49 +488,27 @@ At first blush, "Complement and add 1" doesn't seem like an obvious way to negat
 
 $$\begin{aligned} (-A) &= -A - 1 + 1\\ &= (-1 - A) + 1 \end{aligned}$$
 
-In this case, ZZZ is $(-1-A)$. 
+>In this case, ZZZ is $(-1-A)$. 
 
-Let's say we have 8 bit number. 
+>Let's say we have 8 bit number. We can represent -1 using all 1's : `1111 1111`. Then, lets represent A arbitrarily as `a7 a6 a5 a4 a3 a2 a1 a0`, where $a_i$ can be 0 or 1. 
 
--1 is represented by all 1's : `1111 1111`. 
-
-Then, lets represent A arbitrarily as `a7 a6 a5 a4 a3 a2 a1 a0`, where $a_i$ can be 0 or 1. 
-
-Subtracting -1 with A will flip the bits of A, such that if $a_i = 0$, then $1 - a_i = 1$, and if $a_i = 1$ then $1- a_i = 0$ (see how binary subtraction 'borrow' method works [here](https://www.wikihow.com/Subtract-Binary-Numbers) if you dont know how it works). Hence, we can rewrite the above into,
-
-  
-
-\begin{align}
-
+> Subtracting -1 with A will flip the bits of A, such that if $a_i = 0$, then $1 - a_i = 1$, and if $a_i = 1$ then $1- a_i = 0$ (see how binary subtraction 'borrow' method works [here](https://www.wikihow.com/Subtract-Binary-Numbers) if you dont know how it works). Hence, we can rewrite the above into,
+>$$\begin{aligned}
 (-A) &= \text{\textit{bitwise} NOT } A + 1
+\end{aligned}$$
+which is exactly the two complement's steps. 
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-\end{align}
-
-  
-
-\fi
-
-  
-
-%----------------------------------------------------------------------------------------
-
-% DIGITAL ABSTRACTION
-
-%----------------------------------------------------------------------------------------
-
-  
-
-\newpage
-
-### The Digital Abstraction
+---
+# The Digital Abstraction
 
   
   
-  
-  
 
-#### VTC Plot -- Basic
-
+### VTC Plot -- Basic
+---
   
 
 The behavior of a 1-input 1-output device is measured by hooking a voltage source to its input and measuring the voltage at the output for several different input voltages, resulting in the following VTC plot,
@@ -753,9 +731,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDU2MTg2MTMsMTgyNDU0NDQ4Nyw2MT
-A0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4
-OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nz
-c3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEy
-MTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbMTExNzQyNjQwNCwxODI0NTQ0NDg3LDYxMD
+Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
+LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
+c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
+MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
