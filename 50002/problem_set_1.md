@@ -541,80 +541,32 @@ When answering the questions below, assume that all voltages are constrained to 
 <details>
 <summary markdown="span">Show Answer</summary>
 
-
-
-No. From the plot, it can be seen that $V_{OUT}$ can never reach below 0.5V. If $V_{OL}$ is chosen to be 0V, then the device doesn't satisy the static discipline anymore.
-
-\fi
-
-  
-
-
-
-\ifanswers
-
-\beginsol
-
-0.5V. That is the lowest amount of $V_{OUT}$ that the device can produce.
-
-\fi
-
-  
-
-1. 
-
-\ifanswers
-
-\beginsol
-
-We can choose $V_{OL} = 0.5V$ from the graph, since the device is capable of producing such low voltage. With NM of 0.5V, that means that $V_{IL} = V_{OL} + 0.5V = 1V$. From the graph, we can also choose $V_{OH} = 4V$, as the part with the highest gain in the middle of the graph can most probably be the forbidden zone. Therefore, $V_{IH} = V_{OH} - 0.5V.= 3.5V$.
-
-\fi
-
-  
-
-1. 
-
-\ifanswers
-
-\beginsol
-
-This device is an inverter, since a high input produces a low output and vice versa.
-
-\fi
-
+>1. No. From the plot, it can be seen that $V_{OUT}$ can never reach below 0.5V. If $V_{OL}$ is chosen to be 0V, then the device doesn't satisfy the static discipline anymore.
+>2. 0.5V. That is the lowest amount of $V_{OUT}$ that the device can produce.
+>3.  We can choose $V_{OL} = 0.5V$ from the graph, since the device is capable of producing such low voltage. With NM of 0.5V, that means that $V_{IL} = V_{OL} + 0.5V = 1V$. From the graph, we can also choose $V_{OH} = 4V$, as the part with the highest gain in the middle of the graph can most probably be the forbidden zone. Therefore, $V_{IH} = V_{OH} - 0.5V.= 3.5V$.
+>4. This device is an inverter, since a high input produces a low output and vice versa.
+</details>
+<br/>
+{::options parse_block_html="false" /}
   
   
 
-#### Inverter Madness -- Intermediate
-
+###  Inverter Madness -- Intermediate
+---
   
   
   
 
-1. The following graph plots the VTC for a device with one input and one output. Can this device be used as a combinational device in logic family with 0.75 noise margins?
+**(a).** The following graph plots the VTC for a device with one input and one output. Can this device be used as a combinational device in logic family with 0.75 noise margins?
 
-\begin{figure}[h]
+![Figure2](https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1)
 
-\centering
-
-\includegraphics[scale=0.7]{Q2.png}
-
-\caption{}
-
-\end{figure}
-
-\ifanswers
-
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 No. This device gain is $\leq1$, hence it cannot be used as a combinational device.
 
-\fi
-
-  
-
-\newpage
 
 1. You are designing a new logic family and trying to decide on values of the four parameters: $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ that lead to non-zero noise margins for various possible inverter designs. Four proposed inverter designs exhibit the VTC shown in the diagrams below. For each design, either specify four suitable values of $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ or explain why no values can obey the static discipline. \\\\
 
@@ -723,10 +675,10 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxODg3MTQ4NSwtMTIwNTQ2NTE4LDE4Mj
-Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
-NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
-MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
-NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NT
-Q0OTU2XX0=
+eyJoaXN0b3J5IjpbMTgxNTUxNDQ3LC0xMjA1NDY1MTgsMTgyND
+U0NDQ4Nyw2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3
+LDI4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3Mz
+MyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2
+LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1ND
+Q5NTZdfQ==
 -->
