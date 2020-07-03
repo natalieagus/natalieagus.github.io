@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: "notes"
 permalink: /notes/
 ---
@@ -54,6 +54,7 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjU0NDc0LC0xMDczMDMzNTk2LC0xNT
-A3MjQ2NjIzLDI0MjM0NDQ0LC0xNjM4MDg2NTMxXX0=
+eyJoaXN0b3J5IjpbOTI4MTU5NzE4LC0xNTY1NDQ3NCwtMTA3Mz
+AzMzU5NiwtMTUwNzI0NjYyMywyNDIzNDQ0NCwtMTYzODA4NjUz
+MV19
 -->
