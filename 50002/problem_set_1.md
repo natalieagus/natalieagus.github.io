@@ -233,27 +233,18 @@ If you're told that the first letter of the message is "A", give an expression f
 
 >Recall that the information received is inversely proportional to the probability of that choice occurring, and we take $\log_2$ of the probability of that choice occurring to quantify the information in terms of bits. Hence the expression is,
 $$I = \log_2 \frac{1}{p(A)}$$
-
-
-  
-
-\fi
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
   
 
-#### Modular arithmetic and 2's complement representation -- Basic
+### Modular arithmetic and 2's complement representation -- Basic
 
-  
-  
 
 Most computers choose a particular word length (measured in bits) for representing integers and provide hardware that performs various arithmetic operations on word-size operands. The current generation of processors have word lengths of 32 bits; restricting the size of the operands and the result to a single word means that the arithmetic operations are actually performing arithmetic modulo $2^{32}$.
 
-  
-
-~\\
-
-~\\
 
 Almost all computers use a 2's complement representation for integers since the 2's complement addition operation is the same for both positive and negative numbers. In 2's complement notation, one negates a number by forming the 1's complement (i.e: for each bit, changing 0 to a 1 and vice versa) representation of the number and then adding 1. **By convention**, we write 2's complement integers with the most-significant bit (MSB) on the left and the least-significant bit (LSB) on the right. Also, **by convention**, if the MSB is 1, the number is negative, otherwise it's non-negative.
 
@@ -261,24 +252,26 @@ Almost all computers use a 2's complement representation for integers since the 
   
   
 
-1. How many different values can be encoded in a 32-bit word?
+**(a).** How many different values can be encoded in a 32-bit word?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-$2^{32}$.
-
-\fi
+>$2^{32}$.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
 
-1. Please use a 32-bit 2's complement representation to answer the following questions. What are the representations for:
-
-\begin{enumerate}
+**(b)** Please use a 32-bit 2's complement representation to answer the following questions. What are the representations for:
 
 1. Zero
-
+2. The most positive integer that can be represented
+3. The most negative integer that can be represented
+4. 
 \ifanswers
 
 \beginsol
@@ -896,9 +889,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTkwNzUyOSwtMjA0OTIwMzUzNywyOD
-YzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcx
-LC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMj
-A3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2
-XX0=
+eyJoaXN0b3J5IjpbMjc1MTgxNTMxLC0yMDQ5MjAzNTM3LDI4Nj
+M4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEs
+LTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMD
+c1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZd
+fQ==
 -->
