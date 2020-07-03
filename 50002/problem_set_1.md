@@ -8,7 +8,9 @@ permalink: /50002/PS1/
 {% include toc.html %}
 {::options parse_block_html="false" /}
 
-This page contains all practice questions that constitutes the topics learned in Week 1: **Basics of Information Theory** and **The Digital Abstraction**. Each topic's questions are grouped into three categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
+This page contains all practice questions that constitutes the topics learned in <ins>Week 1</ins>: **Basics of Information Theory** and **The Digital Abstraction**. 
+
+Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
 
 # Basics of Information Theory
@@ -23,9 +25,12 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 <details>
 <summary markdown="span">Show Answer</summary>
   
-Obviously $Z_x$ represents **4 bits** since these are in hexadecimal number system (indicated with the prefix  `0x`.) 
 
-We are literally *told* that the first hex digit is $B = 1011$. Hence we are given **4 bits of information**.  There are still other 12 bits which values we do not know.
+> Obviously $Z_x$ represents **4 bits** since these are in hexadecimal
+> number system (indicated with the prefix  `0x`.) 
+> 
+> We are literally *told* that the first hex digit is $B = 1011$. Hence we are given **4 bits of information**.  There are still other 12 bits which values we do not know.
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -39,9 +44,7 @@ We are literally *told* that the first hex digit is $B = 1011$. Hence we are giv
 <details> 
 <summary markdown="span">Show Answer</summary>
 
-Initially, there's 101 choices. The information that Bob gave Alice
-narrows down the choices into 26. The information given is therefore
-$\log_2(101) - \log_2(26) = 1.958$. 
+>Initially, there's 101 choices. The information that Bob gave Alice narrows down the choices into 26. The information given is therefore $\log_2(101) - \log_2(26) = 1.958$. 
 </details> 
 <br/> 
 {::options parse_block_html="false" /}
@@ -53,9 +56,9 @@ $\log_2(101) - \log_2(26) = 1.958$.
 <details> 
 <summary markdown="span">Show Answer</summary>
 
-Initially, there are $101*101$ choices. 
+>Initially, there are $101*101$ choices. 
 
-Pressing two letter keys consecutively (might be repeated) narrows down the choices onto $26_*26$. 
+>Pressing two letter keys consecutively (might be repeated) narrows down the choices onto $26_*26$. 
 
 Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 </details> 
@@ -64,7 +67,7 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOT
-k4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQw
-LDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbODQzMzU2MDM2LDY1MDczMzI3MSwtMTc3Nz
+c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
+MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
