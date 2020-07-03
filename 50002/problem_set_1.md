@@ -485,7 +485,6 @@ At first blush, "Complement and add 1" doesn't seem like an obvious way to negat
 <details>
 <summary markdown="span">Show Answer</summary>
 
-
 $$\begin{aligned} (-A) &= -A - 1 + 1\\ &= (-1 - A) + 1 \end{aligned}$$
 
 >In this case, ZZZ is $(-1-A)$. 
@@ -513,29 +512,16 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/the_digi
 
 The behavior of a 1-input 1-output device is measured by hooking a voltage source to its input and measuring the voltage at the output for several different input voltages, resulting in the following VTC plot,
 
-  
-
-\begin{figure}[h]
-
-\centering
-
-\includegraphics[scale=0.5]{Q1.png}
-
-\caption{}
-
-\end{figure}
-
+![Figure1](https://www.dropbox.com/s/t6na36ox8r8osef/Q1.png?raw=1)
   
 
 We're interested in whether this device can serve as a legal combinational device that obeys the **static discipline**. For this device, obeying the static discipline means that,
 
   
 
-\begin{align}
-
+$$\begin{aligned}
 \text{If } V_{IN} \leq V_{IL} \text{ then } V_{OUT} \geq V_{OH}, \text{ and if } V_{IN} \geq V_{IH} \text{ then } V_{OUT} \leq V_{OL}
-
-\end{align}
+\end{aligned}$$
 
   
 
@@ -546,18 +532,24 @@ When answering the questions below, assume that all voltages are constrained to 
   
 
 1. Can one choose a $V_{OL}$ of 0V for this device? Explain.
+2. What's the smallest $V_{OL}$ one can choose and still the device obey the static discipline?
+3. Assuming that we want to have 0.5V noise margins for both "0" and "1" values, what are the appropriate voltage levels for $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ so that the device obeys the static discipline? *Hint: there are many choices. Just choose the one that obeys the static discipline and the NM constraint.*
+4. What device is this called?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-No. From the plot, it can be seen that $V_{OUT}$ can never reach below 0.5V. If $V_{OL}$ is chosen to be 0V, then the device doesn't satisfy the static discipline anymore.
+
+
+No. From the plot, it can be seen that $V_{OUT}$ can never reach below 0.5V. If $V_{OL}$ is chosen to be 0V, then the device doesn't satisy the static discipline anymore.
 
 \fi
 
   
 
-1. What's the smallest $V_{OL}$ one can choose and still the device obey the static discipline?
+
 
 \ifanswers
 
@@ -569,7 +561,7 @@ No. From the plot, it can be seen that $V_{OUT}$ can never reach below 0.5V. If 
 
   
 
-1. Assuming that we want to have 0.5V noise margins for both "0" and "1" values, what are the appropriate voltage levels for $V_{OL}$, $V_{IL}$, $V_{IH}$, and $V_{OH}$ so that the device obeys the static discipline? \textit{Hint: there are many choices. Just choose the one that obeys the static discipline and the NM constraint}.
+1. 
 
 \ifanswers
 
@@ -581,7 +573,7 @@ We can choose $V_{OL} = 0.5V$ from the graph, since the device is capable of pro
 
   
 
-1. What device is this called?
+1. 
 
 \ifanswers
 
@@ -731,9 +723,10 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMD
-Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
-LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
-c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
-MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbLTcxODg3MTQ4NSwtMTIwNTQ2NTE4LDE4Mj
+Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
+NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
+MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
+NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NT
+Q0OTU2XX0=
 -->
