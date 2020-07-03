@@ -214,7 +214,10 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
 After spending the afternoon in the dentist's chair, Ben has invented a new language called DDS made up entirely of vowels (the only sounds he could make with someone's hand in his mouth). The DDS alphabet consists of the five letters: A, E, I, U, O, which occur with the following probabilities,
 
-  
+|A|P(A) = 0.15|
+|--|--|
+|E |P(E) = 0.4|
+
 
 \begin{table}[h]
 
@@ -927,9 +930,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwMDA5MDE2MiwtMjA0OTIwMzUzNywyOD
-YzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcx
-LC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMj
-A3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2
-XX0=
+eyJoaXN0b3J5IjpbLTExMTc4NjE1OTYsLTIwNDkyMDM1MzcsMj
+g2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3
+MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLT
+IwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1
+Nl19
 -->
