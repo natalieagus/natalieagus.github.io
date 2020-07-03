@@ -444,7 +444,7 @@ Consider an 8-bit number systems. **Do the following base conversion**, and indi
   
   
 
-#### Representing -32 on different number systems -- Basic
+### Representing -32 on different number systems -- Basic
 ---
   
 
@@ -559,6 +559,7 @@ When answering the questions below, assume that all voltages are constrained to 
 
 **(a).** The following graph plots the VTC for a device with one input and one output. **Can this device be used** as a combinational device in logic family with 0.75 noise margins?
 
+<img>
 ![Figure2](https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1)
 
 {::options parse_block_html="true" /}
@@ -656,7 +657,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzUzNjIwMCwtMTIwNTQ2NTE4LDE4Mj
+eyJoaXN0b3J5IjpbMTY0NzIwOTg1NiwtMTIwNTQ2NTE4LDE4Mj
 Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
 NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
 MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
