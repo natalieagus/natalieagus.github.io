@@ -445,7 +445,7 @@ Consider an 8-bit number systems. Do the following base conversion, and indicate
   
 
 #### Representing -32 on different number systems -- Basic
-
+---
   
 
 Which of the following signed numbers is equivalent to the number -32 for either an 8-bit or 16-bit system?
@@ -454,7 +454,6 @@ Which of the following signed numbers is equivalent to the number -32 for either
   
 
 1. `0b1010 0000`
-
 1. `0b1110 0000`
 
 1. `0b0001 0000`
@@ -762,9 +761,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MzQ1NTM4NiwxODI0NTQ0NDg3LDYxMD
-Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
-LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
-c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
-MzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMzEzMTcwNjMxLDE4MjQ1NDQ0ODcsNjEwND
+c5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODks
+MzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3Nz
+QxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEz
+Miw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
 -->
