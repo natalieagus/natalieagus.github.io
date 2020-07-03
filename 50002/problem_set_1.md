@@ -8,7 +8,7 @@ permalink: /50002/PS1/
 {% include toc.html %}
 {::options parse_block_html="false" /}
 
-This page contains all practice questions that constitutes the topics learned in Week 1: **Basics of Information Theory** and **The Digital Abstraction**. They are grouped into three categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
+This page contains all practice questions that constitutes the topics learned in Week 1: **Basics of Information Theory** and **The Digital Abstraction**. Each topic's questions are grouped into three categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
 
 # Basics of Information Theory
@@ -65,7 +65,7 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjA3MTc1MDYsLTc1MTU4NzA3NiwtMj
-A3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2
-XX0=
+eyJoaXN0b3J5IjpbMjMyODQ4MjU1LC03NTE1ODcwNzYsLTIwNz
+UwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+
 -->
