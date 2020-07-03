@@ -512,9 +512,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/the_digi
 
 The behavior of a 1-input 1-output device is measured by hooking a voltage source to its input and measuring the voltage at the output for several different input voltages, resulting in the following VTC plot,
 
-
-![Figure1](https://www.dropbox.com/s/t6na36ox8r8osef/Q1.png?raw=1)
-  
+<img src="https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1"  alt="Figure3"  width="50%" height = "50%">
 
 We're interested in whether this device can serve as a legal combinational device that obeys the **static discipline**. For this device, obeying the static discipline means that,
 
@@ -656,7 +654,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzI3NDkwODEsLTEyMDU0NjUxOCwxOD
+eyJoaXN0b3J5IjpbLTEwMzgzMzIzMjYsLTEyMDU0NjUxOCwxOD
 I0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1
 MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MD
 czMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcw
