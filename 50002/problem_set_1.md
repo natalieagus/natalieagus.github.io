@@ -96,61 +96,53 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <details> 
 <summary markdown="span">Show Answer</summary>
 
-> If we know the last 33 students who joined ISTD, we know that these students cannot be the winner. Hence our pool of candidates are narrowed down into 67 students. We are then given $\log_2(100) - \log_2(67)$ bits of information.
+> If we know the last 33 students who joined ISTD, we know that *these students cannot be the winner.* Hence our pool of candidates are narrowed down into 67 students. We are then given $\log_2(100) - \log_2(67)$ bits of information.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
+**(c)** If you are told that the student who won the "first to join ISTD prize" is a male, how much information did you receive in bits?
+
+  
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
+
+>Similarly, there are 51 males in ISTD. Hence, we are given $\log_2(100) - \log_2(51)$ bits of information.
 </details> 
 <br/> 
 {::options parse_block_html="false" /}
 
   
-  
 
-1. If you are told that the student who won the "first to join ISTD prize" is a male, how much information did you receive in bits?
+**(d)** If you are told that the student who won the "first to join ISTD prize" is above 19 years old instead, how much information did you receive in bits?
 
-  
 
-\ifanswers
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-\beginsol
-
-Similarly, there are 51 males in ISTD. Hence, we are given $\log_2(100) - \log_2(51)$ bits of information.
-
-\fi
-
-  
-
-1. If you are told that the student who won the "first to join ISTD prize" is above 19 years old instead, how much information did you receive in bits?
-
-\ifanswers
-
-\beginsol
-
-Our candidates are narrowed down into 31 + 19 = 50 students instead since there are 50 students who are above 19 years old. The amount of information given is $\log_2(100) - \log_2(50)$ bits.
-
-\fi
+>Our candidates are narrowed down into 31 + 19 = 50 students instead since there are 50 students who are above 19 years old. The amount of information given is $\log_2(100) - \log_2(50)$ bits.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
 
-1. If you are told that the student who won the "first to join ISTD prize" hated a final exam and is below 19 years old, how much information did you receive in bits?
+**(e)** If you are told that the student who won the "first to join ISTD prize" hated a final exam and is below 19 years old, how much information did you receive in bits?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-There are $51-31 = 20$ male students that are below 19 years old. There are also $30$ female students that are below 19 years old. Since there are only 4 people who like exam, and 2 of them are above 19 years old, there's only 2 students who are below 19 years old and like exam as well.
+>There are $51-31 = 20$ male students that are below 19 years old. There are also 30 female students that are below 19 years old. Since there are only 4 people who like exam, and 2 of them are above 19 years old, there's only 2 students who are below 19 years old and like exam as well. 
+>
+>Hence our candidates are further narrowed into 48 students after knowing that the person does not like exam. This gives us $\log_2(100 ) - \log_2(48)$ bits of information.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
-  
-
-~\\~\\
-
-Hence our candidates are further narrowed into 48 students after knowing that the person does not like exam. This gives us $\log_2(100 ) - \log_2(48)$ bits of information.
-
-  
-
-\fi
-
-  
-  
 
 #### Deck of Cards -- Intermediate
 
@@ -949,8 +941,8 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0NDU0MDQ4OCwzMDI0MTY4NTIsMjEyMz
-Y0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2
-NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMD
-A1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNj
+QxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0
+LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMD
+UyMTM3LDk3NzU0NDk1Nl19
 -->
