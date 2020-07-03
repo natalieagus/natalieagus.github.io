@@ -592,43 +592,37 @@ When answering the questions below, assume that all voltages are constrained to 
 
 ### Static Discipline -- Basic
 ---
-  
-  
-  
 
-**(a).** Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. What can we say about $V_{IN}$?
+**(a).** Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. What can we deduce about the value of $V_{IN}$?
 
 
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-We have a valid \textit{low} output, but that doesnt mean that we have a valid \textit{low} input. However we know for sure that input cannot be higher than $V_{IH}$ because static discipline requires the output to be higher than $V_{OH}$ if this is the case for a buffer. Hence, the only thing we can infer is that
-
-$V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
-</details>
-<br/>
-{::options parse_block_html="false" /}
-  
-
-**(b).** Now consider an inverter. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$, and find $V_{OUT} > V_{OH}$. What can we say about $V_{IN}$?
-
-
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
->We have a valid \textit{high} output, but that doesnt mean that we have a valid \textit{low} input. **Static discipline** states that \textit{given a valid input, the device is always able to give a valid output}, but it does not mean that the reverse is true, i.e: invalid input does NOT have to give out invalid output.
+>We have a valid **low** output, but that doesnt mean that we have a valid **low** input. However we know for sure that input cannot be higher than $V_{IH}$ because static discipline requires the output to be higher than $V_{OH}$ if this is the case for a buffer. 
 >
->However we know for sure that input cannot be higher than $V_{IH}$ because static discipline requires the output to be lower than $V_{OH}$ if this is the case for an inverter. Hence, the only thing we can infer is that $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
+>Hence, the only thing we can infer is that$V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
+</details>
+<br/>
+{::options parse_block_html="false" /}
+  
+
+**(b).** Now consider an inverter. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$, and find $V_{OUT} > V_{OH}$. What can we deduce about the value of $V_{IN}$?
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+>We have a valid **high** output, but that doesnt mean that we have a valid **low** input. **Static discipline** states that \textit{given a valid input, the device is always able to give a valid output}, but it does not mean that the reverse is true, i.e: invalid **input does NOT have to give out invalid output.**
+>
+>However we know for sure that *input cannot be higher than* $V_{IH}$ because static discipline requires the output to be lower than $V_{OH}$ if this is the case for an inverter. Hence, the only thing we can infer is that $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
   
-  
-
-
 
 #### VTC Analysis -- Intermediate
 
@@ -661,7 +655,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNDI0NjE4NiwtMTIwNTQ2NTE4LDE4Mj
+eyJoaXN0b3J5IjpbMTkyMjUwMDkyNiwtMTIwNTQ2NTE4LDE4Mj
 Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
 NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
 MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
