@@ -346,87 +346,71 @@ A group of five friends are playing a game that requires them to generate random
 **(a).** How many bits at the **minimum** (so round up your answer to the nearest integer) are required to encode all distinct numeric outcomes of 10?
 
   
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
+>The maximum number you can get from summing 10 dice throws is 60, and the minimum is 10. Therefore you have 51 possible combinations, which require $\log_2(51)$ bits to represent. Rounding up, this results in **6 bits**.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-\beginsol
-
-The maximum number you can get from summing 10 dice throws is 60, and the minimum is 10. Therefore you have 51 possible combinations, which require $\log_2(51)$ bits to represent. Rounding up, this results in **6 bits**.
-
-  
-
-\fi
 
   
 
 **(b).** Someone in the group suggests that they can just use a die and throw it 10 times to get the random number required for the game. This way, they don't have to deal with carrying so many dice. The game began and then he proceeded with throwing the die. His first 3 throws are: 1, 3, and 4. **How many bits of information has been given so far?** Give your answer in 3 decimal places.
 
-  
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-Each dice throw can result in any number between 1 to 6, which requires $\log_2(6)$ bits to encode. Three dice throws give you $3 * \log_2(6) = 7.755$ bits.
-
-  
-
-\fi
+>Each dice throw can result in any number between 1 to 6, which requires $\log_2(6)$ bits to encode. Three dice throws give you $3 * \log_2(6) = 7.755$ bits.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
   
 
 **(c).** After throwing the die 9 times in total, how many new bits of information did he get from making the last (the 10th) throw? Give your answer in 3 decimal places.
 
-  
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
+>With the same idea as the previous part, the last dice throws solve the mystery on whether we will get number 1, 2, 3, 4, 5, or 6. Hence we are given $\log_2(6)=2.585$ bits from the last throw.
 
-\beginsol
+>*Note that this is significantly different from the bits of information that has been given to us so far. The nine dice throws have given us $9*log2(6)$ bits of information. The last nice throws give us another $\log_2(6)$ bits of information. Please be careful with the wording.*
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-With the same idea as the previous part, the last dice throws solve the mystery on whether we will get number 1, 2, 3, 4, 5, or 6. Hence we are given $\log_2(6)=2.585$ bits from the last throw.
-
-~\\~\\\textit{Note that this is significantly different from the bits of information that has been given to us so far. The nine dice throws have given us $9*log2(6)$ bits of information. The last nice throws give us another $\log_2(6)$ bits of information. Please be careful with the wording}
-
-  
-
-\fi
 
   
 
 **(d).**  Finally, he found that the number he got in total from all 10 throws is 53. Express this number in 3-digit hex, formatted as 0xZZZ where Z is your answer.
 
-  
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-`0x035`
-
-\fi
+>`0x035`
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
   
 
-**(e).**  The second person in the team proceeded to make his 10 throws and found that the number he got is 31. Given that there are five people in the
-
-team, how many bits of information are revealed when it is known that the first person's random number is 53 and the second person's random number is 31? Recall that the goal is for everybody in the team to each have a random number before proceeding with the game. Give your answer in 3 decimal places.
+**(e).**  The second person in the team proceeded to make his 10 throws and found that the number he got is 31. Given that there are five people in the team, how many bits of information are revealed when it is known that the first person's random number is 53 and the second person's random number is 31? Recall that the goal is for everybody in the team to each have a random number before proceeding with the game. Give your answer in 3 decimal places.
 
   
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-From part (a), we know that we need $\log_2(51)$ bits of information to encode the possible random number of a person. We are given the random numbers of two people, hence we are given $2*\log_2(51)=11.345$ bits of information.
-
-  
-
-\fi
-
+>From part **(a)**, we know that we need $\log_2(51)$ bits of information to encode the possible random number of a person. We are given the random numbers of two people, hence we are given $2*\log_2(51)=11.345$ bits of information.
+</details>
+<br/>
+{::options parse_block_html="false" /}
   
   
 
@@ -822,7 +806,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MzU2OTk2OSwxODI0NTQ0NDg3LDYxMD
+eyJoaXN0b3J5IjpbLTYxNTM0NjE0MCwxODI0NTQ0NDg3LDYxMD
 Q3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5
 LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nz
 c0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIx
