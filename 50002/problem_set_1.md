@@ -551,15 +551,9 @@ When answering the questions below, assume that all voltages are constrained to 
   
   
 
-###  Inverter Madness -- Intermediate
----
-  
-  
-  
 
-**(a).** The following graph plots the VTC for a device with one input and one output. **Can this device be used** as a combinational device in logic family with 0.75 noise margins?
+<img src="https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1"  alt="Figure2"  width="50%"  height="600">
 
-<img>
 ![Figure2](https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1)
 
 {::options parse_block_html="true" /}
@@ -657,10 +651,10 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NzIwOTg1NiwtMTIwNTQ2NTE4LDE4Mj
-Q1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUz
-NywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNz
-MzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3
-NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NT
-Q0OTU2XX0=
+eyJoaXN0b3J5IjpbLTE2NTk4OTMzNDUsLTEyMDU0NjUxOCwxOD
+I0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1
+MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MD
+czMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcw
+NzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3Nz
+U0NDk1Nl19
 -->
