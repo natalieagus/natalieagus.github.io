@@ -371,7 +371,7 @@ A group of five friends are playing a game that requires them to generate random
 
   
 
-**(c).** After throwing the die 9 times in total, how many new bits of information did he get from making the last (the 10th) throw? Give your answer in 3 decimal places.
+**(c).** After throwing the die 9 times in total, how many **new bits** of information did he get from making the last (the 10th) throw? Give your answer in 3 decimal places.
 
 {::options parse_block_html="true" /}
 <details>
@@ -387,7 +387,7 @@ A group of five friends are playing a game that requires them to generate random
 
   
 
-**(d).**  Finally, he found that the number he got in total from all 10 throws is 53. Express this number in 3-digit hex, formatted as 0xZZZ where Z is your answer.
+**(d).**  Finally, he found that the number he got in total from all 10 throws is 53. **Express this number in 3-digit hex**, formatted as 0xZZZ where Z is your answer.
 
 {::options parse_block_html="true" /}
 <details>
@@ -418,7 +418,7 @@ A group of five friends are playing a game that requires them to generate random
 ---
   
 
-Consider an 8-bit number systems. Do the following base conversion, and indicate with a `0b` prefix for binary systems and `0x` prefix for hexadecimal systems. Octal and decimal systems do not have prefixes.
+Consider an 8-bit number systems. **Do the following base conversion**, and indicate with a `0b` prefix for binary systems and `0x` prefix for hexadecimal systems. Octal and decimal systems do not have prefixes.
 
 1. 76 (decimal) to binary
 2. 0b10000001 (binary) to decimal
@@ -430,6 +430,7 @@ Consider an 8-bit number systems. Do the following base conversion, and indicate
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
+
 
 > 1. `0b01001100`
 > 2. `-127`
@@ -448,41 +449,36 @@ Consider an 8-bit number systems. Do the following base conversion, and indicate
 ---
   
 
-Which of the following signed numbers is equivalent to the number -32 for either an 8-bit or 16-bit system?
+Which of the following signed numbers is **equivalent** to the number -32 for either an 8-bit or 16-bit system?
 
   
   
 
 1. `0b1010 0000`
 1. `0b1110 0000`
-
 1. `0b0001 0000`
-
 1. `0xE0`
-
 1. `0x80E0`
-
 1. `0xFFE0`
-
 1. `0x10E0`
-
 1. `0x800000E0`
-
 1. `0xFFFFFFE0`
 
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+> (b), (d), (f)
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+
   
 
-\ifanswers
-
-\beginsol
-
-(b), (d), (f)
-
-\fi
-
-  
-
-#### Proof of 2's Complement -- Challenging
+### Proof of 2's Complement -- Challenging
+---
 
 At first blush, "Complement and add 1" doesn't seem like an obvious way to negate a two's complement number. By manipulating the expression $A + (-A) = 0$, show that "complement and add 1" does produce correct representation for the negative of a two's complement number. \\\\
 
@@ -761,9 +757,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEzMTcwNjMxLDE4MjQ1NDQ0ODcsNjEwND
-c5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODks
-MzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3Nz
-QxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEz
-Miw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbLTE4NTA0Nzc1ODQsMTgyNDU0NDQ4Nyw2MT
+A0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4
+OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nz
+c3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEy
+MTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
 -->
