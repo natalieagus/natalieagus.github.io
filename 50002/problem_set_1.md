@@ -208,7 +208,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
   
   
 
-#### Measuring Information -- Basic
+### Measuring Information -- Basic
 
   
 
@@ -927,8 +927,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMj
-QxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUw
-NCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNj
-A1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMTIwMDA5MDE2MiwtMjA0OTIwMzUzNywyOD
+YzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcx
+LC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMj
+A3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2
+XX0=
 -->
