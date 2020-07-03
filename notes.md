@@ -16,5 +16,5 @@ permalink: /notes/
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxODczNTAwNCwtMTYzODA4NjUzMV19
+eyJoaXN0b3J5IjpbMTMzMTg4OTAyNSwtMTYzODA4NjUzMV19
 -->
