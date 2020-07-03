@@ -1,8 +1,8 @@
   
 ---
-layout: default
+layout:default
 title: "pset1"
-permalink: /problem_set_1/
+permalink: /50002/PS1/
 ---
 
 ### Basics of Information Theory
