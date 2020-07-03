@@ -144,8 +144,8 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 {::options parse_block_html="false" /}
 
 
-#### Deck of Cards -- Intermediate
-
+### Deck of Cards -- Intermediate
+---
  
 **(a)** Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. **How much information have they given you about the selection?**
 
@@ -337,8 +337,8 @@ Almost all computers use a 2's complement representation for integers since the 
 {::options parse_block_html="false" /}
 
 
-#### Dice Throwing Game -- Intermediate
-
+### Dice Throwing Game -- Intermediate
+---
   
 
 A group of five friends are playing a game that requires them to generate random numbers using 10 fair dice in the beginning before proceeding with the game. They each will throw the 10 dice and sum up all the outcomes of the dice to get the random number. Answer the following questions:
@@ -827,9 +827,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OT
-IwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYs
-NjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MT
-U4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcs
-OTc3NTQ0OTU2XX0=
+eyJoaXN0b3J5IjpbMTgyNDU0NDQ4Nyw2MTA0NzkzNDksNzAyNT
+EwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4OSwzMDI0MTY4NTIs
+MjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OT
+g3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAs
+MTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
 -->
