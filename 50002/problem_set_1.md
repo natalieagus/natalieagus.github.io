@@ -67,31 +67,27 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 {::options parse_block_html="false" /}
 
 
-#### ISTD Prize -- Intermediate
+###  ISTD Prize -- Intermediate
 
   
   
 
 Your cohort contains 100 students, 51 of whom are male and 49 are female. There are 31 male students who are above 19 years old. On the other hand, there are 19 female students who are above 19 years old. There are one male student and three female students who like to have a final exam. You can assume that students either like or hate a final exam and no indifference. Two students like exam and is above 19 years old.
 
-~\\
 
 Now someone in your class won "the first to join ISTD" prize. Answer the following questions:
-
-  
-  
 
 1. If you are told the student ID of this winner, how much information did you receive in bits?
 
   
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-If we are given the student ID, we effectively know who the winner is. We instantly narrow down our pool of winner candidates from 100 students into just 1 student, hence the bits of information given is $\log_2(100)$.
-
-\fi
+>If we are given the student ID, we effectively know who the winner is. We instantly narrow down our pool of winner candidates from 100 students into just 1 student, hence the bits of information given is $\log_2(100)$.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
 1. If you are told the student ID of the last 33 students who joined ISTD, how much information did you receive in bits?
 
@@ -950,8 +946,8 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNzcxNjY0NiwzMDI0MTY4NTIsMjEyMz
-Y0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2
-NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMD
-A1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbLTEyOTY3ODIzNDgsMzAyNDE2ODUyLDIxMj
+M2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0
+NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMj
+AwNTIxMzcsOTc3NTQ0OTU2XX0=
 -->
