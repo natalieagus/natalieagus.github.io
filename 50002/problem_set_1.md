@@ -271,57 +271,36 @@ Almost all computers use a 2's complement representation for integers since the 
 1. Zero
 2. The most positive integer that can be represented
 3. The most negative integer that can be represented
-4. 
+
+
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
+
+>1. `0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0`
+>2. `0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1`
+>3. `1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0`
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
+
+**(c)** What are the decimal values for the most positive and the most negative number?
 \ifanswers
 
-\beginsol
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-`0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0`
-
-\fi
-
-1. The most positive integer that can be represented
-
-\ifanswers
-
-\beginsol
-
-`0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1`
-
-\fi
-
-1. The most negative integer that can be represented
-
-\ifanswers
-
-\beginsol
-
-`1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0`
-
-\fi
+>The most positive value in decimal: 2147483647. The most negative value in decimal: -2147483648
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
-
-What are the decimal values for the most positive and the most negative number?
-
-\ifanswers
-
-\beginsol
-
-The most positive value in decimal: 2147483647. The most negative value in decimal: -2147483648
-
-\fi
-
-  
-  
-
-\item Since writing a string of 32 bits gets tedious, it's often convenient to use hexadecimal representation where a single digit in the range of 0-9 or A-F is used to represent groups of 4 bits. Give the 8-digit hexadecimal equivalent of the following decimal and binary numbers:
-
-  
-  
-  
-
+**(d)** Since writing a string of 32 bits gets tedious, it's often convenient to use hexadecimal representation where a single digit in the range of 0-9 or A-F is used to represent groups of 4 bits. Give the 8-digit hexadecimal equivalent of the following decimal and binary numbers:
 1. $37_{10}$
+2. $-32768_{10}$
+3. 
 
 \ifanswers
 
@@ -889,9 +868,9 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc1MTgxNTMxLC0yMDQ5MjAzNTM3LDI4Nj
-M4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEs
-LTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMD
-c1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZd
-fQ==
+eyJoaXN0b3J5IjpbLTkzMDM1MzUwMSwtMjA0OTIwMzUzNywyOD
+YzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcx
+LC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMj
+A3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2
+XX0=
 -->
