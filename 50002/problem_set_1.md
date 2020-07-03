@@ -26,7 +26,7 @@ Obviously $Z_x$ represents 4 bits since these are in hexadecimal number system (
 
 
 ## Keyboard Presses -- Basic
-1.  Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
+- Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
 
 {::options parse_block_html="true" /}
 <details>
@@ -37,17 +37,21 @@ Initially, there's 101 choices. The information that Bob gave Alice narrows down
 <br/>
 {::options parse_block_html="false" /}
 
-2.  Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed two of the letter keys consecutively. Bob did not mention whether the two keys are the same or not. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
+- Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed two of the letter keys consecutively. Bob did not mention whether the two keys are the same or not. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
 
  {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Initially, there are $101*_101$ choices. Pressing two letter keys consecutively (might be repeated) narrows down the choices onto $26_*26$. Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
+Initially, there are $101*_101$ choices. 
+
+Pressing two letter keys consecutively (might be repeated) narrows down the choices onto $26_*26$. 
+
+Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 </details>
 <br/>
 {::options parse_block_html="false" /}
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMTIxOTE4NCw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbLTQ3NzQ2MTY4MSw5Nzc1NDQ5NTZdfQ==
 -->
