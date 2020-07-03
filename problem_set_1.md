@@ -2,7 +2,7 @@
 ---
 layout: default
 title: "pset1"
-permalink: /50002/problem_set_1/
+permalink: /problem_set_1/
 ---
 
 ### Basics of Information Theory
@@ -30,5 +30,5 @@ Obviously $Z_x$ represents 4 bits since these are in hexadecimal number system (
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNTExODIwMV19
+eyJoaXN0b3J5IjpbOTA2NjQ1MjMxLC0zMzUxMTgyMDFdfQ==
 -->
