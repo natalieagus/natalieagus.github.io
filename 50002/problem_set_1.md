@@ -551,10 +551,15 @@ When answering the questions below, assume that all voltages are constrained to 
   
   
 
+###  Inverter Madness -- Intermediate
+---
+  
+  
+  
 
-<img src="https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1"  alt="Figure2"  width="50%"  height="600">
+**(a).** The following graph plots the VTC for a device with one input and one output. **Can this device be used** as a combinational device in logic family with 0.75 noise margins?
 
-![Figure2](https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1)
+<img src="https://www.dropbox.com/s/q363sc7ov84ww45/Q2.png?raw=1"  alt="Figure2"  width="50%">
 
 {::options parse_block_html="true" /}
 <details>
@@ -569,7 +574,7 @@ When answering the questions below, assume that all voltages are constrained to 
 
 *Hint: you may want to start by choosing NM to be 0.5V for ease of computation.*
 
-![Figure3](https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1)
+<img src="https://www.dropbox.com/s/j8e2aii7x6cjtv2/Q3.png?raw=1"  alt="Figure3"  width="50%">
 
 
 {::options parse_block_html="true" /}
@@ -623,8 +628,7 @@ When answering the questions below, assume that all voltages are constrained to 
 ---
   
 Take a look at the figure below.
-![Figure3](https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1)
-
+<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  alt="Figure3"  width="50%">
 
 Which of the following specification(s) **does not obey** the static discipline? Select all that apply.
 
@@ -651,7 +655,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTk4OTMzNDUsLTEyMDU0NjUxOCwxOD
+eyJoaXN0b3J5IjpbLTE2MDUwNjkxNDIsLTEyMDU0NjUxOCwxOD
 I0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1
 MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MD
 czMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcw
