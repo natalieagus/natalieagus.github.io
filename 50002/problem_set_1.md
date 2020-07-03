@@ -13,7 +13,7 @@ This page contains all practice questions that constitutes the topics learned in
 # Basics of Information Theory
 
 
-## Warm Up
+### Warm Up
 
 Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
 
@@ -29,7 +29,7 @@ We are literally *told* that the first hex digit is $B = 1011$. Hence we are giv
 {::options parse_block_html="false" /}
 
 
-## Keyboard Presses -- Basic
+### Keyboard Presses -- Basic
 **(a).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
 
 {::options parse_block_html="true" /} 
@@ -61,7 +61,7 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEyNzc4OTA2LC03NTE1ODcwNzYsLTIwNz
+eyJoaXN0b3J5IjpbMTcyOTE3MTY0LC03NTE1ODcwNzYsLTIwNz
 UwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 
 -->
