@@ -46,7 +46,7 @@ $\log_2(101) - \log_2(26) = 1.958$.
 <details> 
 <summary markdown="span">Show Answer</summary>
 
-Initially, there are $101*_101$ choices. 
+Initially, there are $101*101$ choices. 
 
 Pressing two letter keys consecutively (might be repeated) narrows down the choices onto $26_*26$. 
 
@@ -57,5 +57,5 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDUwMTUxODAyLDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
 -->
