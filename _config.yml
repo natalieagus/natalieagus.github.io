@@ -1,6 +1,5 @@
 theme: jekyll-theme-slate
 
-markdown: CommonMarkGhPages
 relative_links:
   enabled: true
   collections: true
