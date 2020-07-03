@@ -20,7 +20,9 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 <details>
 <summary markdown="span">Show Answer</summary>
   
-Obviously $Z_x$ represents 4 bits since these are in hexadecimal number system (indicated with the prefix  `0x`.) We are literally told that the first hex digit is $B = 1011$. Hence we are given **4 bits of information**.  There are still other 12 bits that we do not know of its value. 
+Obviously $Z_x$ represents **4 bits** since these are in hexadecimal number system (indicated with the prefix  `0x`.) 
+
+We are literally *told* that the first hex digit is $B = 1011$. Hence we are given **4 bits of information**.  There are still other 12 bits whuc
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -58,6 +60,6 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMD
-UyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbLTM3MjQ2NTM0MSwtMjA3NTAxMjEzMiw2MD
+U1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
 -->
