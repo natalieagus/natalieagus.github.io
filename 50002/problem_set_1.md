@@ -12,7 +12,7 @@ This page contains all practice questions that constitutes the topics learned in
 
 
 # Basics of Information Theory
-
+You can refer to the notes [here](https://natalieagus.github.io/50002/basics_of_information.html) if you need to revise. 
 
 
 ### Warm Up
@@ -65,7 +65,7 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjMyODQ4MjU1LC03NTE1ODcwNzYsLTIwNz
+eyJoaXN0b3J5IjpbMzAwNzA1MzcxLC03NTE1ODcwNzYsLTIwNz
 UwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
 
 -->
