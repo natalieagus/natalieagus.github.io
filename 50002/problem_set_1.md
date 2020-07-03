@@ -179,40 +179,31 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
   
 
-**(d)** X is an unknown N-bit binary number $(N>3)$. You are told that the first three bits of X are 011. How many bits of information have you been given?
+**(c).** X is an unknown N-bit binary number $(N>3)$. You are told that the first three bits of X are 011. How many bits of information have you been given?
 
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
+
+>The bits of information that has been given is 3.
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
   
 
-\ifanswers
-
-\beginsol
-
-The bits of information that has been given is 3.
-
-\fi
+**(d)**. X is an unknown 8-bit binary number. You are given another 8-bit binary number, Y, and told that the Hamming distance (number of different bits) between X and Y is one. How many bits of information about X have you been given when Y is presented to you?
 
   
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary>
 
-1. X is an unknown 8-bit binary number. You are given another 8-bit binary number, Y, and told that the Hamming distance (number of different bits) between X and Y is one. How many bits of information about X have you been given when Y is presented to you?
+>Originally, we have 8 unknown bits, that is $M=2^8$ choices. After given Y, we are down to $N=8$ choices, each having 1 bitt different for X. Therefore, we have been given,
 
-  
-
-\ifanswers
-
-\beginsol
-
-Originally, we have 8 unknown bits, that is $M=2^8$ choices. After given Y, we are down to $N=8$ choices, each having 1 bitt different for X. Therefore, we have been given,
-
-\begin{align}
-
-I = \log_2 \left(\frac{1}{N/M}\right) = \log_2 \left(\frac{1}{8/2^8}\right) = 5 \text{ bits of information}.
-
-\end{align}
-
-  
-  
-
-\fi
+>$$\begin{aligned} I = \log_2 \left(\frac{1}{N/M}\right) = \log_2 \left(\frac{1}{8/2^8}\right) = 5 \text{ bits of information}. \end{aligned}$$
+</details> 
+<br/> 
+{::options parse_block_html="false" /}
 
   
   
@@ -936,7 +927,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Njg0NTcwMjgsMjg2Mzg3Nzg5LDMwMj
+eyJoaXN0b3J5IjpbLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMj
 QxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUw
 NCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNj
 A1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
