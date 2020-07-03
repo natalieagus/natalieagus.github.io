@@ -2,7 +2,10 @@
 
 
 
-
+---
+layout: default
+permalink: /notes/
+---
 # A collapsible section with markdown
 <details>
   <summary>Click to expand!</summary>
@@ -15,5 +18,5 @@
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzgwODY1MzFdfQ==
+eyJoaXN0b3J5IjpbMjAxODczNTAwNCwtMTYzODA4NjUzMV19
 -->
