@@ -10,7 +10,7 @@ permalink: /50002/PS1/
 
 
 # Basics of Information Theory
-
+This 
 ## Warm Up
 
 Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
@@ -57,6 +57,6 @@ Hence the information given is $\log_2(101^2) - \log_2(26^2) = 3.916$.
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0ND
-k1Nl19
+eyJoaXN0b3J5IjpbLTE4NjkwMjU0ODAsNjA1NTg0MCwxMjIwMD
+UyMTM3LDk3NzU0NDk1Nl19
 -->
