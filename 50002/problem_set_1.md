@@ -146,10 +146,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 
 #### Deck of Cards -- Intermediate
 
-  
-  
-  
-
+ 
 1. Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. How much information have they given you about the selection?
 
   
@@ -941,8 +938,8 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNj
-QxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0
-LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMD
-UyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMTIzNjU5MTAzOSwyODYzODc3ODksMzAyND
+E2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0
+LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MD
+U1ODQwLDEyMjAwNTIxMzcsOTc3NTQ0OTU2XX0=
 -->
