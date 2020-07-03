@@ -19,7 +19,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_o
 ### Warm Up
 -------------
 
-Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
+Suppose that you are to guess the value of a 16-bit number: $0$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
 
 {::options parse_block_html="true" /}
 <details>
@@ -38,7 +38,7 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 
 ### Keyboard Presses -- Basic
 -------------
-**(a).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
+**(a).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. **How much information did Bob give to Alice?** Hint: There are 26 letters in an alphabet.
 
 {::options parse_block_html="true" /} 
 <details> 
@@ -50,7 +50,8 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 {::options parse_block_html="false" /}
 
 
-**(b).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed two of the letter keys consecutively. Bob did not mention whether the two keys are the same or not. How much information did Bob give to Alice? Hint: There are 26 letters in an alphabet.
+**(b).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed two of the letter keys consecutively. Bob did not mention whether the two keys are the same or not. **How much information did Bob give to Alice?** 
+*Hint: There are 26 letters in an alphabet.*
 
 {::options parse_block_html="true" /} 
 <details> 
@@ -67,7 +68,8 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nz
-c3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEy
-MTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbMjkyMzU3MjgsMjEyMzY0MTA3Niw2NTA3Mz
+MyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2
+LC0yMDc1MDEyMTMyLDYwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1ND
+Q5NTZdfQ==
 -->
