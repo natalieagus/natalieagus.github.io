@@ -431,7 +431,6 @@ Consider an 8-bit number systems. **Do the following base conversion**, and indi
 <details>
 <summary markdown="span">Show Answer</summary>
 
-
 > 1. `0b01001100`
 > 2. `-127`
 > 3. `0x9D`
@@ -451,8 +450,6 @@ Consider an 8-bit number systems. **Do the following base conversion**, and indi
 
 Which of the following signed numbers is **equivalent** to the number -32 for either an 8-bit or 16-bit system?
 
-  
-  
 
 1. `0b1010 0000`
 1. `0b1110 0000`
@@ -480,27 +477,26 @@ Which of the following signed numbers is **equivalent** to the number -32 for ei
 ### Proof of 2's Complement -- Challenging
 ---
 
-At first blush, "Complement and add 1" doesn't seem like an obvious way to negate a two's complement number. By manipulating the expression $A + (-A) = 0$, show that "complement and add 1" does produce correct representation for the negative of a two's complement number. \\\\
+At first blush, "Complement and add 1" doesn't seem like an obvious way to negate a two's complement number. By manipulating the expression $A + (-A) = 0$, show that "complement and add 1" does produce correct representation for the negative of a two's complement number. 
 
-\textit{Hint: express 0 as (-1 + 1) and rearrange the terms to get -A on one side and ZZZ+1 on the other and then think about how the expression ZZZ is related to A using only logical operations (AND, OR, NOT). }
+*Hint: express 0 as (-1 + 1) and rearrange the terms to get -A on one side and ZZZ+1 on the other and then think about how the expression ZZZ is related to A using only logical operations (AND, OR, NOT).* 
 
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
 
-\beginsol
+$$\begin{aligned} (-A) &= -A - 1 + 1\\ &= (-1 - A) + 1 \end{aligned}$$
 
-\begin{align}
+In this case, ZZZ is $(-1-A)$. 
 
-(-A) &= -A - 1 + 1\\
+Let's say we have 8 bit number. 
 
-&= (-1 - A) + 1
+-1 is represented by all 1's : `1111 1111`. 
 
-\end{align}
+Then, lets represent A arbitrarily as `a7 a6 a5 a4 a3 a2 a1 a0`, where $a_i$ can be 0 or 1. 
 
-In this case, ZZZ is (-1 - A). Let's say we have 8 bit number. -1 is represented by all 1's : `1111 1111`. Let's represent A arbitrarily as `a7 a6 a5 a4 a3 a2 a1 a0`, where $a_i$ can be 0 or 1. \\\\~\\
-
-Subtracting -1 with A will flip the bits of A, such that if $a_i = 0$, then $1 - a_i = 1$, and if $a_i = 1$ then $1- a_i = 0$ (see how binary subtraction 'borrow' method works at \url{https://www.wikihow.com/Subtract-Binary-Numbers} if you dont know how it works). Hence, we can rewrite the above into,
+Subtracting -1 with A will flip the bits of A, such that if $a_i = 0$, then $1 - a_i = 1$, and if $a_i = 1$ then $1- a_i = 0$ (see how binary subtraction 'borrow' method works [here](https://www.wikihow.com/Subtract-Binary-Numbers) if you dont know how it works). Hence, we can rewrite the above into,
 
   
 
@@ -757,7 +753,7 @@ Which of the following specification(s) does not obey the static discipline? Sel
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTA0Nzc1ODQsMTgyNDU0NDQ4Nyw2MT
+eyJoaXN0b3J5IjpbLTE1MDU2MTg2MTMsMTgyNDU0NDQ4Nyw2MT
 A0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4
 OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nz
 c3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEy
