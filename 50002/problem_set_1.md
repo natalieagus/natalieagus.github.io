@@ -25,7 +25,6 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 <details>
 <summary markdown="span">Show Answer</summary>
   
-
 > Obviously $Z_x$ represents **4 bits** since these are in hexadecimal
 > number system (indicated with the prefix  `0x`.) 
 > 
@@ -654,10 +653,10 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODczMDIzODAsLTEwNzEzNTM0NjgsLT
-EyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2
-NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMT
-IzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1
-NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMj
-IwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMT
+IwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2
+OSwtMjA0OTIwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMj
+M2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0
+NjQsLTc1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMj
+AwNTIxMzcsOTc3NTQ0OTU2XX0=
 -->
