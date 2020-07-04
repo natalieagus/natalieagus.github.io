@@ -624,10 +624,11 @@ When answering the questions below, assume that all voltages are constrained to 
 
 ### VTC Analysis -- Intermediate
 ---
+Take a look at the figure below.
  
 <img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  alt="Figure4"  width="50%" height = "50%">
 
-Take a look at the figure provided. Which of the following specification(s) **does not obey** the static discipline? Select all that apply.
+Which of the following specification(s) **does not obey** the static discipline? Select all that apply.
 
   
   
@@ -652,10 +653,10 @@ Take a look at the figure provided. Which of the following specification(s) **do
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzMjU2MjA2LDE1MzgwMzU4NDIsLTEwNz
-EzNTM0NjgsLTEyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0
-OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMj
-QxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUw
-NCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNj
-A1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1Nl19
+eyJoaXN0b3J5IjpbMjAyNDA3MjA3MiwxNTM4MDM1ODQyLC0xMD
+cxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Nyw2MTA0Nzkz
+NDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4OSwzMD
+I0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1
+MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLD
+YwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
 -->
