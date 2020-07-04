@@ -493,7 +493,7 @@ $$\begin{aligned} (-A) &= -A - 1 + 1\\ &= (-1 - A) + 1 \end{aligned}$$
 
 > Subtracting -1 with A will flip the bits of A, such that if $a_i = 0$, then $1 - a_i = 1$, and if $a_i = 1$ then $1- a_i = 0$ (see how binary subtraction 'borrow' method works [here](https://www.wikihow.com/Subtract-Binary-Numbers) if you dont know how it works). Hence, we can rewrite the above into,
 >$$\begin{aligned}
-(-A) &= \text{\textit{bitwise} NOT } A + 1
+(-A) &= \text{bitwise NOT } A + 1
 \end{aligned}$$
 which is exactly the two complement's steps. 
 </details>
@@ -592,7 +592,7 @@ When answering the questions below, assume that all voltages are constrained to 
 ### Static Discipline -- Basic
 ---
 
-**(a).** Consider a combinational \textit{buffer} with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. **What can we deduce about the value of $V_{IN}$?**
+**(a).** Consider a combinational *buffer* with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. **What can we deduce about the value of $V_{IN}$?**
 
 
 {::options parse_block_html="true" /}
@@ -614,7 +614,7 @@ When answering the questions below, assume that all voltages are constrained to 
 <details>
 <summary markdown="span">Show Answer</summary>
 
->We have a valid **high** output, but that doesnt mean that we have a valid **low** input. **Static discipline** states that \textit{given a valid input, the device is always able to give a valid output}, but it does not mean that the reverse is true, i.e: invalid **input does NOT have to give out invalid output.**
+>We have a valid **high** output, but that doesnt mean that we have a valid **low** input. **Static discipline** states that *given a valid input, the device is always able to give a valid output,* but it does not mean that the reverse is true, i.e: invalid **input does NOT have to give out invalid output.**
 >
 >However we know for sure that *input cannot be higher than* $V_{IH}$ because static discipline requires the output to be lower than $V_{OH}$ if this is the case for an inverter. Hence, the only thing we can infer is that $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
 </details>
@@ -654,10 +654,10 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzEzNTM0NjgsLTEyMDU0NjUxOCwxOD
-I0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1
-MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MD
-czMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcw
-NzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3Nz
-U0NDk1Nl19
+eyJoaXN0b3J5IjpbLTE3ODczMDIzODAsLTEwNzEzNTM0NjgsLT
+EyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2
+NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMT
+IzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1
+NDY0LC03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMj
+IwMDUyMTM3LDk3NzU0NDk1Nl19
 -->
