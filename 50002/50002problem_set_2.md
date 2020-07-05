@@ -280,7 +280,7 @@ Choose all the correct Boolean expression of this circuit:
 ### Reading ROM (Basic)
 
 
-What is the the sum-of-products for the following ROM (Read Only Memory)?
+What is the the **sum-of-products** for the following ROM (Read Only Memory)?
 
 <img src="  https://www.dropbox.com/s/7kymm3qcwldfd9q/rom.png?raw=1"  width="50%" height = "50%">
 
@@ -298,31 +298,28 @@ What is the the sum-of-products for the following ROM (Read Only Memory)?
 
   
 
-### Half-Adder Implemented as ROM
+###  Implementing Half-Adder using ROM (Basic)
 
   
+<img src="https://www.dropbox.com/s/m643xvogmyh405r/farom.png?raw=1"  width="50%" height = "50%">
 
-\includepic{0.4}{farom.png}{}
 
-Take a look at the figure above. Which of the above ROM represents the functionality of a half adder?
-
-  
-
-\ifanswers
-
-\beginsol
+Take a look at the figure above. **Which** of the above ROM represents the functionality of a **half adder**?
 
   
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-ROM [3] represents half-adder functionality. Y's output shows a XOR(A,B) while Z's output shows an AND(A,B). Hence this make Y to be the SUM output and Z to be the CARRY output.
-
+> ROM [3] represents half-adder functionality. Y's output shows a XOR(A,B) while Z's output shows an AND(A,B). 
+> Hence this make Y to be the SUM output and Z to be the CARRY output.
+</details>
+<br/>
+{::options parse_block_html="false" /}
   
 
-\fi
 
-\newpage
-
-### CMOS Gate Analysis
+### CMOS Gate Analysis (Intermediate)
 
   
 
@@ -992,8 +989,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTMyNDY1OTIsLTE4Mzk1NjUzNDIsMT
-gwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3
-MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2Mi
-wyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MD
+Q1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4
+MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMj
+EwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
