@@ -472,33 +472,26 @@ Answer the following questions based on the truth table:
 
 Given the following Karnaugh's Map, write the **simplified boolean equation**.
 $$\begin{matrix}
- & $\bar{A}$  $\bar{B}$ & $\bar{A} B$ & $A$$B$ & $A$$\bar{B}$  \\\\
-
+ & \bar{A} \bar{B} &\bar{A} B & AB & A\bar{B}  \\
 \hline
+\bar{C}\bar{D} & 1 & 0 & 0 & 1 \\
+C\bar{D} & 1 & 0 & 0 & 1\\
+CD  & 0 & 0& 1 & 1\\
+\bar{C}D & 1 & 0 & 1 & 1\\
+\end{matrix}$$
 
-$\bar{C}\bar{D}$ & 1 & 0 & 0 & 1 \\\\
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-$C\bar{D}$ & 1 & 0 & 0 & 1\\
+> The minimised boolean expression is$AD + \bar{B}\bar{C} + \bar{B} \bar{D}$. They're obtained from "three" boxes: 
+> - on the lower right corner (row 3 and 4, with column 3 and 4), on the sides (row 1 and 2, with column 1 and 4), and on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
 
-$CD $ & 0 & 0& 1 & 1\\
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-$\bar{C}D$ & 1 & 0 & 1 & 1\\
 
-\hline
-
-\end{tabular}
-
-\caption{}
-
-\end{table}
-
-  
-
-\ifanswers
-
-\beginsol
-
-$AD + \bar{B}\bar{C} + \bar{B} \bar{D}$, obtained from "three" boxes: on the lower right corner (row 3 and 4, with column 3 and 4), on the sides (row 1 and 2, with column 1 and 4), and on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
 
 \fi
 
@@ -885,11 +878,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NDg4NTAyMiwyOTQ4NTE4NSwtMTI0Nj
-Q2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5NjcxLDE1NDAxMjYw
-NzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLT
-E4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1
-MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MD
-QsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEw
-MzMzODcwMV19
+eyJoaXN0b3J5IjpbNTc5ODQ3Njc4LDI5NDg1MTg1LC0xMjQ2ND
+Y4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3
+OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMT
+gyNTAzMzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUw
+MDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNC
+wtNjAyODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAz
+MzM4NzAxXX0=
 -->
