@@ -533,13 +533,15 @@ The multiplexer select signals (labeled "Mx" in the diagram) are also set by the
 
 The following is **a list of the possible configurations.** 
 
-For each configuration indicate **how** each the control signals should be programmed, which of the input lines (C1-C4, F1-F4, and G1-G4) are used, and what output lines (X, Y, or Z) the result(s) appear on.
+For each configuration indicate **how**:
+- Each the **control signals** (MA, MB, MC, MD, and ME) should be programmed**? 
+- Which of the **input lines** (C1-C4, F1-F4, and G1-G4) are used?
+- And what **output lines** (X, Y, or Z) the result(s) appear on?
 
-  
+ 
+1. An arbitrary function F of **up to four unrelated input variables**, plus another arbitrary function G of **up to four unrelated input variables,** plus a third arbitrary function H of **up to three unrelated input variables.**
 
-
-1. An arbitrary function F of up to four input variables, plus another arbitrary function G of up to four unrelated input variables, plus a third arbitrary function H of up to three unrelated input variables.
-
+3. An arbitrary single function of five variables.
   
 
 \ifanswers
@@ -567,7 +569,7 @@ Let X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, C2, C3). The necessa
 
 \fi
 
-\item An arbitrary single function of five variables.
+\item 
 
   
 
@@ -742,11 +744,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ5NjgwNTAzLDM1MzAzMjM5NiwyOTQ4NT
-E4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5Njcx
-LDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MT
-AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
-MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
-wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
-OTkzNjJdfQ==
+eyJoaXN0b3J5IjpbLTEyMTU3MzkxMiwzNTMwMzIzOTYsMjk0OD
+UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
+MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
+EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
+NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1Mj
+IsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3
+NDk5MzYyXX0=
 -->
