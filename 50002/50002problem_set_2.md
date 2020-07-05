@@ -456,10 +456,6 @@ A certain function F has the following truth table:
 
 <img src="https://www.dropbox.com/s/klra9666sk8rcuz/Q3.png?raw=1"  width="50%" height = "50%">
 
-\includepic{0.6}{Q3.png}
-
-  
-  
 
 Answer the following questions based on the truth table:
 
@@ -599,11 +595,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDc1MTYyMTg2LC0xODc0NzE0MTAyLDM1Mz
-AzMjM5NiwyOTQ4NTE4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMz
-LC0xNjg2MzI5NjcxLDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOT
-c0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQz
-NjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4OD
-IsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTcz
-MDE3ODU3XX0=
+eyJoaXN0b3J5IjpbLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4Nz
+Q3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3
+LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMT
+I5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAz
+Mzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNC
+wtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAy
+ODU0MjldfQ==
 -->
