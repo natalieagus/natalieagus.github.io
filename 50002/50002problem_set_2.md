@@ -12,6 +12,9 @@ This page contains all practice questions that constitutes the topics learned in
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
+# CMOS Technology
+You can refer to the notes <a href="https://natalieagus.github.io/50002/cmos_technology.html" target="_blank">here</a> if you need to revise. 
+
 ### Warm Up -- Combinational Logic Timing (Basic)
 
 Consider the following combinational logic device.
@@ -154,6 +157,10 @@ x & y & z \\
 <br/>
 {::options parse_block_html="false" /}
 
+# Logic Synthesis
+
+You can refer to the notes <a href="https://natalieagus.github.io/50002/logic_synthesis.html" target="_blank">here</a> if you need to revise. 
+
 ### CMOS Circuit Boolean Expression (Basic)
 
 
@@ -178,7 +185,7 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MjA2MjE0MSwtMTE3MzAxNzg1NywyMD
-E3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0
-NTg0XX0=
+eyJoaXN0b3J5IjpbLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMT
+c0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1
+ODRdfQ==
 -->
