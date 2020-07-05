@@ -176,7 +176,8 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/logic_sy
 <details>
 <summary markdown="span">Show Answer</summary>
 
->1.  The truth table of the CMOS circuit contains 16 lines since theres $2^4$ possible input combinations and 1 possible output bit: $$\begin{matrix} 
+>1.  The truth table of the CMOS circuit contains 16 lines since theres $2^4$ possible input combinations and 1 possible output bit: 
+	>$$\begin{matrix} 
 A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{matrix}$$
 >2. $F = \overline{A(B+C)D}$
 
@@ -951,7 +952,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5MDM3Mzk3OSwtOTc0NzYzNDE4LDE0MT
+eyJoaXN0b3J5IjpbMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MT
 AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
 MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
 wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
