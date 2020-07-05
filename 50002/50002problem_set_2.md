@@ -581,7 +581,31 @@ MC = X (value doesn't matter)
 >>-  MD = 0 (select C1)
 >>-  ME = 1 (select C2)
 >
->4. Let: X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, X, Z) = H(C1, F(F1, F2, F3, F4), G(G1, G2, G3, G4))
+>4. Let: X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, X, Z) = H(C1, F(F1, F2, F3, F4), G(G1, G2, G3, G4)). The functions of nine variables that can be implemented are all those functions that can be re-written as a function of 3 variables. The inputs to this three-variable function will be one of the original variables, plus two separate functions of 4 variables (these two 4-variable functions will have the remaining 8 original variables as inputs).
+>
+>>-  MA = 0
+>>- MB = 0
+>>-  MC = X (value doesn't matter)
+>>- MD = X (value doesn't matter)
+>>-  ME = 0 (select C1)
+>
+>5.  The functions of 6 variables which we can implement must be of the form: Y = y(C1, C2, f(F1,F2,F3,F4)) or the form of Y = y(C1,F(F1, F2, F3, F4), G(G1, G2, G3, G4))
+
+\]
+
+(this second function will have some overlap between C1, F1-4, and G1-4; some variables will be connected to multiple inputs) Essentially, the functions we are able to implement are only those for which we can factor a set of 4 variables out of the equation. For example, the following function cannot be implemented by the CLB:
+
+\[
+
+Y = A1A2A3A4A5 + A1A2A3A4A6 + A1A2A3A5A6 + A1A2A4A5A6 +
+
+\]
+
+\[ A1A3A4A5A6 +A2A3A4A5A6
+
+\]
+
+This function cannot be broken down into either of the forms mentioned above.
 
   
 
@@ -640,31 +664,7 @@ MC = X (value doesn't matter)
 Let:
 
   
-  
-  
 
-1. X = F(F1, F2, F3, F4)
-
-1. Z = G(G1, G2, G3, G4)
-
-1. Y = H(C1, X, Z) = H(C1, F(F1, F2, F3, F4), G(G1, G2, G3, G4))
-
-  
-
-The functions of nine variables that can be implemented are all those functions that can be re-written as a function of 3 variables. The inputs to this three-variable function will be one of the original variables, plus two separate functions of 4 variables (these two 4-variable functions will have the remaining 8 original variables as inputs).
-
-  
-  
-
-1. MA = 0
-
-1. MB = 0
-
-1. MC = X (value doesn't matter)
-
-1. MD = X (value doesn't matter)
-
-1. ME = 0 (select C1)
 
   
   
@@ -682,35 +682,6 @@ The functions of nine variables that can be implemented are all those functions 
 
   
 
-The functions of 6 variables which we can implement must be of the form:
-
-  
-
-\[Y = y(C1, C2, f(F1,F2,F3,F4))
-
-\]
-
-or of the form:
-
-\[
-
-Y = y(C1, f(F1, F2, F3, F4), g(G1, G2, G3, G4))
-
-\]
-
-(this second function will have some overlap between C1, F1-4, and G1-4; some variables will be connected to multiple inputs) Essentially, the functions we are able to implement are only those for which we can factor a set of 4 variables out of the equation. For example, the following function cannot be implemented by the CLB:
-
-\[
-
-Y = A1A2A3A4A5 + A1A2A3A4A6 + A1A2A3A5A6 + A1A2A4A5A6 +
-
-\]
-
-\[ A1A3A4A5A6 +A2A3A4A5A6
-
-\]
-
-This function cannot be broken down into either of the forms mentioned above.
 
   
   
@@ -722,11 +693,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzI4ODg3ODksLTE4NzQ3MTQxMDIsMz
-UzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0zOTIwMzU5
-MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMTI5MTIyMTA3LC
-05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAzMzc2NCw4NDI1
-NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4OD
-g4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTEx
-NzMwMTc4NTddfQ==
+eyJoaXN0b3J5IjpbLTI5NTQ4MTUwMywtMTg3NDcxNDEwMiwzNT
+MwMzIzOTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkz
+MywtMTY4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLT
+k3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0
+MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4OD
+gyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3
+MzAxNzg1N119
 -->
