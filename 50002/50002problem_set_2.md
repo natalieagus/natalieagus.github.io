@@ -436,6 +436,7 @@ She has burned out 97 of her chips, and needs your help before destroying the re
 
 A certain function F has the following truth table:
 
+<img src="https://www.dropbox.com/s/klra9666sk8rcuz/Q3.png?raw=1"  width="50%" height = "50%">
 
 \includepic{0.6}{Q3.png}
 
@@ -444,34 +445,45 @@ A certain function F has the following truth table:
 
 Answer the following questions based on the truth table:
 
-  
-  
-
 1. Write a sum-of-products expression for F
 
-  
+3. Write a minimal sum-of-products expression for F. Show a combinational circuit that implements F using only INV and NAND gates.
+4. Implement F using one 4-input MUX and inverter.
+1. Write a minimal sum-of-products expression for NOT(F).
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+>1. $\overline{A}\text{ }\overline{B}\text{ }\overline{C} + \overline{A}BC + A \overline{B}\text{ }\overline{C} + A \overline{B}C + ABC$.
+>
+>2. The minimal sum of products is : $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV and AND gate for every pair of input in the minimal sum of products.
+
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 \ifanswers
 
 \beginsol
 
-$\overline{A}\text{ }\overline{B}\text{ }\overline{C} + \overline{A}BC + A \overline{B}\text{ }\overline{C} + A \overline{B}C + ABC$.
+
 
 \fi
 
-1. Write a minimal sum-of-products expression for F. Show a combinational circuit that implements F using only INV and NAND gates.
+
 
 \ifanswers
 
 \beginsol
 
-The minimal sum of products is : $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, inverter, and AND gate for every pair of input in the minimal sum of products.
 
 \fi
 
   
 
-1. Implement F using one 4-input MUX and inverter.
 
   
 
@@ -487,7 +499,7 @@ If we use A and B as the select inputs for the MUX then the four data inputs of 
 
 \fi
 
-1. Write a minimal sum-of-products expression for NOT(F).
+
 
 \ifanswers
 
@@ -926,7 +938,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMzkwNzU5NSwtMTY4NjMyOTY3MSwxNT
+eyJoaXN0b3J5IjpbMTUzOTc0NTgzOSwtMTY4NjMyOTY3MSwxNT
 QwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDky
 ODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0Mi
 wxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcy
