@@ -589,111 +589,17 @@ MC = X (value doesn't matter)
 >>- MD = X (value doesn't matter)
 >>-  ME = 0 (select C1)
 >
->5.  The functions of 6 variables which we can implement must be of the form: Y = y(C1, C2, f(F1,F2,F3,F4)) or the form of Y = y(C1,F(F1, F2, F3, F4), G(G1, G2, G3, G4))
-
-\]
-
-(this second function will have some overlap between C1, F1-4, and G1-4; some variables will be connected to multiple inputs) Essentially, the functions we are able to implement are only those for which we can factor a set of 4 variables out of the equation. For example, the following function cannot be implemented by the CLB:
-
-\[
-
-Y = A1A2A3A4A5 + A1A2A3A4A6 + A1A2A3A5A6 + A1A2A4A5A6 +
-
-\]
-
-\[ A1A3A4A5A6 +A2A3A4A5A6
-
-\]
-
-This function cannot be broken down into either of the forms mentioned above.
-
-  
-
-
+>5.  The functions of 6 variables which we can implement must be of the form: Y = y(C1, C2, F(F1,F2,F3,F4)) or the form of Y = y(C1,F(F1, F2, F3, F4), G(G1, G2, G3, G4)). *This second function will have some overlap between C1, F1-4, and G1-4; some variables will be connected to multiple inputs.* 
+>
+>>Essentially, the functions we are able to implement are only those for which **we can factor a set of 4 variables out of the equation.** For example, the following function cannot be implemented by the CLB: Y = A1A2A3A4A5 + A1A2A3A4A6 + A1A2A3A5A6 + A1A2A4A5A6 + A1A3A4A5A6 +A2A3A4A5A6. This function cannot be broken down into either of the forms mentioned above.
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
 
 
-
-
-  
-  
-
-
-  
-
-
-
-  
-  
-  
-
-  
-
-\fi
-
-
-
-  
-  
-
-\ifanswers
-
-\beginsol
-
-
-
-  
-
-
-
-  
-
-\fi
-
-
-
-  
-
-\ifanswers
-
-\beginsol
-
-Let:
-
-  
-
-
-  
-  
-
-\fi
-
-
-  
-
-\ifanswers
-
-  
-
-\beginsol
-
-  
-
-
-  
-  
-  
-  
-  
-
-\fi
-
-\end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5NTQ4MTUwMywtMTg3NDcxNDEwMiwzNT
+eyJoaXN0b3J5IjpbMTM5Nzc1MDU0NCwtMTg3NDcxNDEwMiwzNT
 MwMzIzOTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkz
 MywtMTY4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLT
 k3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0
