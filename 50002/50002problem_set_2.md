@@ -337,15 +337,14 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 <details>
 <summary markdown="span">Show Answer</summary>
 
-1. The output for the pullup circuitry is the inversion of the output of the pulldown circuitry: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
-*Note: We don't need to add inverter in the inputs. Convince yourself that this is true by tracing the int.*
+>1. The output for the pullup circuitry is the inversion of the output of the pulldown circuitry: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
+*Note: We don't need to add inverter in the inputs. Convince yourself that this is true by tracing some input combinations to the output terminal.*
 <img src="
 https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
 
+>2. From the pulldown diagram, it seems like the output is 0 if D is 1, or A and C is 1, or B and C is 1. Therefore, the output for the gate is the **inverse** of the expression of the pulldown circuitry, which is the output of the pullup circuitry above: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$.
 
-2. From the pulldown diagram, it seems like the output is 0 if D is 1, or A and C is 1, or B and C is 1. Therefore, the output for the gate is the **inverse** of the expression of the pulldown circuitry, which is the output of the pullup circuitry above: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$.
-
-3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
+>3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -360,39 +359,25 @@ https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "5
 
 Simplify the following expression:
 
-~\\~\\
-
-$Y = AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}$.
+$$\begin{aligned} Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD \\
+&+ ABCD + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\end{aligned}$$
 
   
-
-\ifanswers
-
-\beginsol
-
 The final simplified form is $Y = AB + CD + \bar{B}C$. The steps are as follows:
 
   
 
-\begin{align}
-
-Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\\\
+$$\begin{aligned}
+Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 
 & + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\\
-
 &= AB\bar{C} + \bar{A}CD + ACD + \bar{B}CD + ABC\bar{D}\\
-
 &= CD + AB\bar{C} + \bar{B}CD + ABC\bar{D}\\
-
 &= C(D + \bar{B} \bar{D}) + AB(\bar{C} + C\bar{D} )\\
-
 &= C(D + \bar{B} ) + AB(\bar{C} + \bar{D} )\\
-
 &=CD + C\bar{B} + AB(\overline{CD} )\\
-
 &= CD + C\bar{B} + AB
-
-\end{align}
+\end{aligned}$$
 
 \fi
 
@@ -964,9 +949,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NTY3MDA4Myw4NDI1NDM2MzAsLTE4Mz
-k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
-NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
-AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
-NDU4NF19
+eyJoaXN0b3J5IjpbLTExNTU5ODM3NTksODQyNTQzNjMwLC0xOD
+M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
+NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
+IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
+NjQ1ODRdfQ==
 -->
