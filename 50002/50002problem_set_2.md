@@ -341,8 +341,7 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 *Note: We don't need to add inverter in the inputs anymore. Convince yourself that this is true.*
 <img src="
 https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
-
-Recap: the complete circuit will constitute the pulldown circuitry, the pullup circuitry, and
+*What is the  boolean expression for the complete CMOS circuit?*. From the pulldown diagram, it seems like the output is 
 2. The output for the gate is the output of the pullup circuitry above: $\overline{(A+B) C + D}$.
 
 3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
@@ -964,9 +963,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxNTU5NDA3Nyw4NDI1NDM2MzAsLTE4Mz
-k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
-NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
-AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
-NDU4NF19
+eyJoaXN0b3J5IjpbNjcyNzc4ODUsODQyNTQzNjMwLC0xODM5NT
+Y1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUy
+MiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMT
+c0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1
+ODRdfQ==
 -->
