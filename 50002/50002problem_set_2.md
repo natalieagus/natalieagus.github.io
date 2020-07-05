@@ -15,7 +15,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 # CMOS Technology
 You can refer to the notes <a href="https://natalieagus.github.io/50002/cmos_technology.html" target="_blank">here</a> if you need to revise. 
 
-### Warm Up -- Combinational Logic Timing (Basic)
+### Combinational Logic Timing (Basic)
 
 Consider the following combinational logic device.
 <img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1" width="70%" height="70%">
@@ -190,7 +190,7 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
   
   
 
-### Warm Up -- Combinational Circuit
+### Combinational Circuit (Basic)
 
   
   
@@ -1077,7 +1077,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA4MjM3NjYyLC02MDI4NTQyOSwtMTE3Mz
-AxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYx
-NiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbMTg1Njg0ODU3MSwtNjAyODU0MjksLTExNz
+MwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2
+MTYsMTAyNTM2NDU4NF19
 -->
