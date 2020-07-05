@@ -15,7 +15,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 ### Warm Up -- Combinational Logic Timing (Basic)
 
 Consider the following combinational logic device.
-<img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1"  alt="Figure3"  width="70%" height="70%>
+<img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1"  alt="Figure3"  width="70%" height="70%">
 
  Each logic gate has the same:
  - Propagation delay,  t_{pd}= 2ns, 
@@ -42,9 +42,23 @@ Draw the truth table for the following CMOS circuitry:
 <img src="https://www.dropbox.com/s/crosfbfiqf1iueg/Q11.png?raw=1"  alt="Figure3"  width="50%" height="50%">
 
 
-\ifanswers \beginsol 
 
-\begin{table}[h] \centering \begin{tabular} {c|c|c|c} A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ \hline \end{tabular} \caption{} 
+
+{::options parse_block_html="true" /}<br/> <details> <br/> <summary markdown="span">Show Answer</summary><br/>
+$$ \begin{matrix}
+A & b
+\end{matrix}
+$$
+  
+
+</details>  <br/>  {::options parse_block_html="false" /}
+
+  
+
+
+\begin{table}[h] \centering \begin{tabular} {c|c|c|c} 
+
+A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ \hline \end{tabular} \caption{} 
 \end{table}
 
 \fi
@@ -119,5 +133,5 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDA5NDcxMjEsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTcyNjU2OTc3MywxMDI1MzY0NTg0XX0=
 -->
