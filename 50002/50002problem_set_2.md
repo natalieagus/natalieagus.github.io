@@ -178,7 +178,6 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/logic_sy
 >
 >$$\begin{matrix} 
 A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{matrix}$$
->
 >2. $F = \overline{A(B+C)D}$
 
 </details>
@@ -951,9 +950,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3NTk5NjQ5NSwtMTgyNTAzMzc2NCw4ND
-I1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4
-ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLT
-ExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0
-NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbLTIwNDM3ODk3MDMsLTE4MjUwMzM3NjQsOD
+QyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAz
+ODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC
+0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAy
+NDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
