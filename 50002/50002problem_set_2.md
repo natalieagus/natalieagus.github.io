@@ -103,11 +103,15 @@ We also learned a second set of rules, that a set of interconnected elements ***
 In this problem, we ask you to think carefully about why these rules work - in particular, why *an acyclic circuit of combinational devices,* constructed according to the second principle, is itself a combinational device as defined by the first. 
 
 Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices. You may assume for the following that every input and output is a logical 0 or 1. 
+<img src="https://www.dropbox.com/s/divqzx422azog4h/Q1.png?raw=1"  width="70%" height = "70%">
 
-\includepic{0.5}{Q1.png}
 
-The propagation delay - the upper bound on the output settling time - for each device is specified in nanoseconds. The functional specifications for each component are given as truth tables detailing output values for each combination of inputs:
+The propagation delay for each device is specified in nanoseconds. The functional specifications for each component are given as truth tables detailing output values for each combination of inputs:
 
+$$\begin{matrix}
+$a_0$  & $a_1$  &  A _{a_0, a_1}  &  $b_0​$  &  b_1  &  B_{b_0. b_1}Bb0​.b1​​  \\ \hline 0 & 0 & 1 & & 0 & 0 & 0\ 0 & 1 & 0 & & 0 & 1 & 0\ 1 & 0 & 0 & & 1 & 0 & 0\ 1 & 1 & 1 & & 1 & 1 & 1\ \hline 
+
+\end{matrix}$$
 \begin{table}[h] \centering \begin{tabular}{c c|c c c c | c}  a_0a0​  &  a_1a1​  &  A _{a_0, a_1}Aa0​,a1​​  & \hspace{2cm} &  b_0b0​  &.  b_1b1​  &  B_{b_0. b_1}Bb0​.b1​​  \\ \hline 0 & 0 & 1 & & 0 & 0 & 0\ 0 & 1 & 0 & & 0 & 1 & 0\ 1 & 0 & 0 & & 1 & 0 & 0\ 1 & 1 & 1 & & 1 & 1 & 1\ \hline \end{tabular} \caption{} \end{table}
 
 Answer the following questions,
@@ -147,6 +151,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI4ODQ0NzI1LDIwMTc0OTkzNjIsMjEwMz
+eyJoaXN0b3J5IjpbNzMxMzIxNTQ4LDIwMTc0OTkzNjIsMjEwMz
 MzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
