@@ -519,21 +519,24 @@ CD  & 0 & 0& 1 & 1\\
 
 The Xilinx 4000 series field-programmable gate array (FPGA) can be programmed to emulate a circuit made up of many thousands of gates; for example, the *XC4025E* can emulate circuits with up to **25,000 gates**. 
 
-The heart of the FPGA architecture is a configurable logic block (CLB) which has a combinational logic subsection with the following circuit diagram:
+The heart of the FPGA architecture is a *configurable logic block (CLB)* which has a c**ombinational logic subsection** with the following circuit diagram:
 
-\includepic{0.5}{Q5}
+
+<img src="https://www.dropbox.com/s/kyx7a79owajbxde/Q5.png?raw=1"  width="50%" height = "50%">
+
+
+There are **two 4-input function generators** and **one 3-input function generator**, each capable of implementing an **arbitrary** Boolean function of its inputs.
+
+The function generators are actually **small** 16-by-1 and 8-by-1 memories that are used as lookup tables. When the Xilinx device is "*programmed*" these memories are *filled with the appropriate values* so that each generator produces the desired outputs. 
+
+The multiplexer select signals (labeled "Mx" in the diagram) are also set by the programming process to configure the CLB. After programming, these Mx signals remain constant during CLB operation.
+
+The following is **a list of the possible configurations.** 
+
+For each configuration indicate **how** each the control signals should be programmed, which of the input lines (C1-C4, F1-F4, and G1-G4) are used, and what output lines (X, Y, or Z) the result(s) appear on.
 
   
 
-There are two 4-input function generators and one 3-input function generator, each capable of implementing an arbitrary Boolean function of its inputs.
-
-The function generators are actually small 16-by-1 and 8-by-1 memories that are used as lookup tables; when the Xilinx device is "programmed" these memories are filled with the appropriate values so that each generator produces the desired outputs. The multiplexer select signals (labeled "Mx" in the diagram) are also set by the programming process to configure the CLB. After programming, these Mx signals remain constant during CLB operation.
-
-The following is a list of the possible configurations. For each configuration indicate how each the control signals should be programmed, which of the input lines (C1-C4, F1-F4, and G1-G4) are used, and what output lines (X, Y, or Z) the result(s) appear on.
-
-  
-  
-  
 
 1. An arbitrary function F of up to four input variables, plus another arbitrary function G of up to four unrelated input variables, plus a third arbitrary function H of up to three unrelated input variables.
 
@@ -739,11 +742,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNjgzODY2NSwzNTMwMzIzOTYsMjk0OD
-UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
-MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
-EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
-NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1Mj
-IsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3
-NDk5MzYyXX0=
+eyJoaXN0b3J5IjpbNjQ5NjgwNTAzLDM1MzAzMjM5NiwyOTQ4NT
+E4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5Njcx
+LDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MT
+AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
+MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
+wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
+OTkzNjJdfQ==
 -->
