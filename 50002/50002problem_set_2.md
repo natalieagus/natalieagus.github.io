@@ -487,7 +487,7 @@ Answer the following questions based on the truth table:
 
 ### Reading Karnaugh's Map
 
-Given the following Karnaugh's Map, write the **simplified boolean equation**.
+Given the following Karnaugh's Map, write its **simplified boolean equation**.
 $$\begin{matrix}
  & \bar{A} \bar{B} &\bar{A} B & AB & A\bar{B}  \\
 \hline
@@ -501,7 +501,7 @@ CD  & 0 & 0& 1 & 1\\
 <details>
 <summary markdown="span">Show Answer</summary>
 
-> The minimised boolean expression is$AD + \bar{B}\bar{C} + \bar{B} \bar{D}$. They're obtained from "three" boxes: 
+> The minimised boolean expression is $AD + \bar{B}\bar{C} + \bar{B} \bar{D}$. They're obtained from "three" boxes: 
 > - on the lower right corner (row 3 and 4, with column 3 and 4), 
 > - on the sides (row 1 and 2, with column 1 and 4), and 
 > - on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
@@ -595,11 +595,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTE3NjkxNzEsLTU2Njk5OTcxOSw0Nz
-UxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1
-LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMT
-U0MDEyNjA3OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5
-MjgwMSwtMTgyNTAzMzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzND
-IsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3
-MjA3MjgwNF19
+eyJoaXN0b3J5IjpbMTYxODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NT
+E2MjE4NiwtMTg3NDcxNDEwMiwzNTMwMzIzOTYsMjk0ODUxODUs
+LTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3MSwxNT
+QwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDky
+ODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0Mi
+wxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcy
+MDcyODA0XX0=
 -->
