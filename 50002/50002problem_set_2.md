@@ -339,6 +339,10 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 
 The output for the pullup circuitry is the inversion of the output of the pulldown circuitry, $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
 
+
+<img src="
+https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
+
   
 
 \includepic{0.7}{A1.png}
@@ -986,7 +990,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MzY3MDg5Nyw4NDI1NDM2MzAsLTE4Mz
+eyJoaXN0b3J5IjpbMTI4ODE3NzQwNSw4NDI1NDM2MzAsLTE4Mz
 k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
 NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
 AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
