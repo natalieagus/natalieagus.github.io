@@ -229,9 +229,7 @@ $$
 >- Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combining this with the above expression, we reduce and apply de Morgan's law:
 	> $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B\\
 \end{aligned}$$
->3. The contamination delay is the path  (from any input to any output)  that results in the shortest time: NR2 + NR2 + ND2 = 5 + 5 + 5 = 15. 
->
->The propagation delay is the path (from any input to any output) that results in the longest time: AN2 + NR2 + ND2 = 50 + 30 + 30 = 110.
+>3. **The contamination delay** is the path  (from any input to any output)  that results in the shortest time: NR2 + NR2 + ND2 = 5 + 5 + 5 = 15. **The propagation delay** is the path (from any input to any output) that results in the longest time: AN2 + NR2 + ND2 = 50 + 30 + 30 = 110.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -895,11 +893,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMT
-Y4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2
-MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMC
-wtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04
-NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNz
-g1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwx
-MDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5Mj
+AzNTkzMywtMTY4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIx
+MDcsLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LD
+g0MjU0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIw
+Mzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOS
+wtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkw
+MjQ0OTYxNl19
 -->
