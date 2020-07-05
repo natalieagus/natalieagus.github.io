@@ -212,7 +212,8 @@ Consider the following circuit that implements the 2-input function $H(A,B)$:
 <details>
 <summary markdown="span">Show Answer</summary>
 
->1. The truth table is as follows: $$\begin{matrix}
+>1. The truth table is as follows: 
+>$$\begin{matrix}
 A & B & H \\
 \hline
 0 & 0 & 1\\
@@ -952,9 +953,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xOD
-M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
-NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
-IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
-NjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbMjAzODQ0MTY2LC0xODI1MDMzNzY0LDg0Mj
+U0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4
+ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMT
+E3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0
+OTYxNiwxMDI1MzY0NTg0XX0=
 -->
