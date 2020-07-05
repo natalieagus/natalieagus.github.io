@@ -468,6 +468,43 @@ Answer the following questions based on the truth table:
 
 
 
+### Reading Karnaugh's Map
+
+Given the following Karnaugh's Map, write the **simplified boolean equation**.
+$$\begin{matrix}
+ & $\bar{A}$  $\bar{B}$ & $\bar{A} B$ & $A$$B$ & $A$$\bar{B}$  \\\\
+
+\hline
+
+$\bar{C}\bar{D}$ & 1 & 0 & 0 & 1 \\\\
+
+$C\bar{D}$ & 1 & 0 & 0 & 1\\
+
+$CD $ & 0 & 0& 1 & 1\\
+
+$\bar{C}D$ & 1 & 0 & 1 & 1\\
+
+\hline
+
+\end{tabular}
+
+\caption{}
+
+\end{table}
+
+  
+
+\ifanswers
+
+\beginsol
+
+$AD + \bar{B}\bar{C} + \bar{B} \bar{D}$, obtained from "three" boxes: on the lower right corner (row 3 and 4, with column 3 and 4), on the sides (row 1 and 2, with column 1 and 4), and on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
+
+\fi
+
+\newpage
+
+
 ### Gates and Boolean Equations
 
   
@@ -598,51 +635,6 @@ There will be $2^{2^5}$ 5-input boolean functions.
 
 \newpage
 
-### Reading Karnaugh's Map
-
-  
-
-Given the following Karnaugh's Map, write the **simplified** boolean equation.
-
-  
-
-\begin{table}[h]
-
-\centering
-
-\begin{tabular}{c|c|c|c|c}
-
-& $\bar{A}$  $\bar{B}$ & $\bar{A} B$ & $A$$B$ & $A$$\bar{B}$  \\\\
-
-\hline
-
-$\bar{C}\bar{D}$ & 1 & 0 & 0 & 1 \\\\
-
-$C\bar{D}$ & 1 & 0 & 0 & 1\\
-
-$CD $ & 0 & 0& 1 & 1\\
-
-$\bar{C}D$ & 1 & 0 & 1 & 1\\
-
-\hline
-
-\end{tabular}
-
-\caption{}
-
-\end{table}
-
-  
-
-\ifanswers
-
-\beginsol
-
-$AD + \bar{B}\bar{C} + \bar{B} \bar{D}$, obtained from "three" boxes: on the lower right corner (row 3 and 4, with column 3 and 4), on the sides (row 1 and 2, with column 1 and 4), and on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
-
-\fi
-
-\newpage
 
 ### Universal Gates
 
@@ -893,11 +885,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5Mj
-AzNTkzMywtMTY4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIx
-MDcsLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LD
-g0MjU0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIw
-Mzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOS
-wtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkw
-MjQ0OTYxNl19
+eyJoaXN0b3J5IjpbLTU0NDg4NTAyMiwyOTQ4NTE4NSwtMTI0Nj
+Q2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5NjcxLDE1NDAxMjYw
+NzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLT
+E4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1
+MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MD
+QsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEw
+MzMzODcwMV19
 -->
