@@ -568,11 +568,22 @@ For each configuration indicate **how**:
 >>The necessary control signals are:
 >> - MA = 0
 >> - MB = 0
->>- MC = X (value doesn't matter)
+MC = X (value doesn't matter)
 >>- MD = X (value doesn't matter)
 >> -  ME = 0 (select C1)
 >
->3. 
+>3. Let Z = G(G1, G2, G3, G4) : any function of 4 variables. X = F(F1, F2, F3, F4) and Y = H(C1, C2, X) = H(C1, C2, F(F1, F2, F3, F4)).
+>The functions of six variables which can be implemented (along with the 4-variable function) are all those functions that can be re-written as a function of 3 variables. The inputs to this function of three variables must be 2 of the original variables and some function of the remaining four variables. The necessary control signals are:
+>
+>>- MA = 0
+>>-  MB = 1
+>>- MC = X (value doesn't matter)
+>>-  MD = 0 (select C1)
+>>-  ME = 1 (select C2)
+>
+>4. 
+
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -606,32 +617,11 @@ For each configuration indicate **how**:
 
 \beginsol
 
-Let Z = G(G1, G2, G3, G4) : any function of 4 variables.
 
-  
-  
-  
-
-1. X = F(F1, F2, F3, F4)
-
-1. Y = H(C1, C2, X) = H(C1, C2, F(F1, F2, F3, F4))
 
   
 
-The functions of six variables which can be implemented (along with the 4-variable function) are all those functions that can be re-written as a function of 3 variables. The inputs to this function of three variables must be 2 of the original variables and some function of the remaining four variables. The necessary control signals are:
 
-  
-  
-
-1. MA = 0
-
-1. MB = 1
-
-1. MC = X (value doesn't matter)
-
-1. MD = 0 (select C1)
-
-1. ME = 1 (select C2)
 
   
 
@@ -730,11 +720,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMwNzg0MjYyLC0xODc0NzE0MTAyLDM1Mz
-AzMjM5NiwyOTQ4NTE4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMz
-LC0xNjg2MzI5NjcxLDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOT
-c0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQz
-NjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4OD
-IsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTcz
-MDE3ODU3XX0=
+eyJoaXN0b3J5IjpbMTQwMTA4NTA3NiwtMTg3NDcxNDEwMiwzNT
+MwMzIzOTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkz
+MywtMTY4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLT
+k3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0
+MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4OD
+gyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3
+MzAxNzg1N119
 -->
