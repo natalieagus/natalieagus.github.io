@@ -562,8 +562,9 @@ For each configuration indicate **how**:
 >> -  Z=f(A1, A2, A3, A4, 0),
 >>-  X=f(A1, A2, A3, A4, 1),
 >> -  Y= Z if A5=0, else Y=X
+>So Z is calculating F for the case when A5 = 0, X is calculating F for the case when A5 = 1, and Y is selecting between X and Z with a multiplexer function. A1-A4 represents F1-F4 and G1-G4 (they're connected to the same 4 inputs) and A5 represents C1. 
 >
->So Z is calculating F for the case when A5 = 0, X is calculating F for the case when A5 = 1, and Y is selecting between X and Z with a multiplexer function. A1-A4 represents F1-F4 and G1-G4 (they're connected to the same 4 inputs) and A5 represents C1. The necessary control signals are:
+>>The necessary control signals are:
 >> - MA = 0
 >> - MB = 0
 >>- MC = X (value doesn't matter)
@@ -728,11 +729,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MTg3NTQ2NiwzNTMwMzIzOTYsMjk0OD
-UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
-MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
-EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
-NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1Mj
-IsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3
-NDk5MzYyXX0=
+eyJoaXN0b3J5IjpbLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5ND
+g1MTg1LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2
+NzEsMTU0MDEyNjA3OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMT
+QxMDA5MjgwMSwtMTgyNTAzMzc2NCw4NDI1NDM2MzAsLTE4Mzk1
+NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NT
+IyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMjAx
+NzQ5OTM2Ml19
 -->
