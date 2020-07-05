@@ -137,15 +137,16 @@ Answer the following questions,
 <details>
 <summary markdown="span">Show Answer</summary>
 
-1. The truth table is as follows:
+>1. The truth table is as follows:
 $$\begin{matrix}
 x & y & z \\ 
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
-2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
-3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
-4. One has to find the **longest** path from (any) input to (any) output to find the **total** propagation delay of the combinational circuit.
-5. No, the signal can **propagate** **back** in the circuit so using the *longest* path to calculate  $t_{pd}$  is not applicable anymore. 
+>2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
+>
+>3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
+>4. One has to find the **longest** path from (any) input to (any) output to find the **total** propagation delay of the combinational circuit.
+>5. No, the signal can **propagate** **back** in the circuit so using the *longest* path to calculate  $t_{pd}$  is not applicable anymore. 
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -163,17 +164,17 @@ x & y & z \\
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
-1. $F = \overline{A(B+C)D}$
-2. $$\begin
+
+>1.  The truth table of the CMOS circuit contains 16 lines since theres $2^4$ possible input combinations and 1 possible output bit:
+$$\begin{matrix} 
+A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{matrix}$$
+>2. $F = \overline{A(B+C)D}$
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
-\ifanswers \beginsol 
 
-A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{tabular} \caption{} \end{table}
-
-\fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMjk0MDAwNCwyMDE3NDk5MzYyLDIxMD
-MzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMT
+AzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
