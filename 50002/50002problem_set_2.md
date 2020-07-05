@@ -192,29 +192,24 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
   
 
 ### Combinational Circuit's Functional Specs (Basic)
-
-  
 Consider the following circuit that implements the 2-input function $H(A,B)$:
 
 <img src="  https://www.dropbox.com/s/2vy52yuzs24xfc4/Q2new.png?raw=1"  width="50%" height = "50%">
 
-1. Give the truth table for $H$.
-2. Give a sum-of-products expression that corresponds to your truth table.
-3. Using the information below, what are the $t_{cd}$ and $t_{pd}$ of the circuit?
+1. Write down the **truth table** for $H$.
+2. Give a **sum-of-products expression** that corresponds to your truth table.
+3. Using the information below, **what are the $t_{cd}$ and $t_{pd}$ of the circuit?**
 	- $t_{cd}$ and $t_{pd}$ of NR2:  5, 30
 	- $t_{cd}$ and $t_{pd}$ of ND2: 5, 30
 	- $t_{cd}$ and $t_{pd}$ of AN2:  6, 50
 	- $t_{cd}$ and $t_{pd}$ of OR2: 10, 20
 	- $t_{cd}$ and $t_{pd}$ of INV: 1, 3
 
-
-
-
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-1. The truth table is as follows: $$\begin{matrix}
+>1. The truth table is as follows: $$\begin{matrix}
 A & B & H \\
 \hline
 0 & 0 & 1\\
@@ -224,7 +219,7 @@ A & B & H \\
 \hline
 \end{matrix}
 $$
-?2. We begin by finding the expression of the topmost two circuits:, and applying de Morgan's law:
+>2. We begin by finding the expression of the topmost two circuits:, and applying de Morgan's law:
 $$\overline{A + \overline{B}} = \overline{A}B$$ Then, we find the expression of the next pair, which is $AB$.  We combine this with the above using a NOR gate and reduce the result,
 $$\overline{\overline{A}B + AB} = \overline{B}$$Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combining this with the above expression, we reduce and apply de Morgan's law:
 $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B\\
@@ -239,41 +234,24 @@ The propagation delay is the path (from any input to any output) that results in
   
   
 
-### Warm Up -- Boolean Algebra
-
+### Simple Boolean Algebra (Basic)
   
 
 Given the following truth table,
 
-\begin{table}[h]
-
-\centering
-
-\begin{tabular} {c|c|c|c}
-
-A & B & C & OUT \\\\
-
+$$\begin{matrix}
+A & B & C & OUT \\
 \hline
-
-0 & 0 & 0 & 1 \\\\
-
-0 & 0 & 1 & 1 \\\\
-
-0 & 1 & 0 & 1 \\\\
-
-0 & 1 & 1 & 0 \\\\
-
-1 & 0 & 0 & 1 \\\\
-
-1 & 0 & 1 & 1 \\\\
-
-1 & 1 & 0 & 1 \\\\
-
-1 & 1 & 1 & 0 \\\\
-
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 1 & 0 \\
+1 & 0 & 0 & 1 \\
+1 & 0 &  1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0 \\
 \hline
-
-\end{tabular}
+\end{matrix}$$
 
 \caption{}
 
@@ -1026,7 +1004,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDIxNjg1OSwtMTgzOTU2NTM0MiwxOD
+eyJoaXN0b3J5IjpbLTM3NDU1MTk1OSwtMTgzOTU2NTM0MiwxOD
 A0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcy
 ODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLD
 IxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
