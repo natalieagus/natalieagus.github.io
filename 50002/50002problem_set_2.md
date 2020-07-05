@@ -200,6 +200,7 @@ Consider the following circuit that implements the 2-input function $H(A,B)$:
 
 1. Give the truth table for $H$.
 2. Give a sum-of-products expression that corresponds to your truth table.
+3. Using the information below, what are the $t_{cd}$ and $t_{pd}$ of the circuit?
 
 $$\begin{matrix}
 A & B & H \\
@@ -231,9 +232,7 @@ $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \
 \end{aligned}$$
 
 
-  
 
-1. Using the information below, what are the $t_{cd}$ and $t_{pd}$ of the circuit?
 
   
 
@@ -1040,8 +1039,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtOD
-Q3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4
-NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMT
-AyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTg0MjMzMTU4OCwxODA0NTAwNTA0LC0xNz
+IwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQy
+OSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLT
+kwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
