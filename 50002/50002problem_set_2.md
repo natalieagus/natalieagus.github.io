@@ -144,7 +144,8 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
 <summary markdown="span">Show Answer</summary>
 
 >1. The truth table is as follows:
-$$\begin{matrix}
+>
+>$$\begin{matrix}
 x & y & z \\ 
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
@@ -1075,7 +1076,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3Mz
-AxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYx
-NiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMj
+g1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcw
+MSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
