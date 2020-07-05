@@ -37,7 +37,7 @@ Compute the **overall** propagation delay and contamination delay for the circui
 
 ### Tracing CMOS Circuit (Basic)
 
-Draw the truth table for the following CMOS circuitry:
+**Draw** the truth table for the following CMOS circuitry:
 
 <img src="https://www.dropbox.com/s/crosfbfiqf1iueg/Q11.png?raw=1"  width="50%" height="50%">
 
@@ -63,7 +63,7 @@ Refer to the FA circuitry below:
 <img src="https://www.dropbox.com/s/nqfbozivm2mdrvf/Q12.png?raw=1" width="50%" height = "50%">
 
 Answer the following questions:
-1. Compute the  $t_{pd}$​  and  $t_{cd}$ of the full adder above.
+1. **Compute** the  $t_{pd}$​  and  $t_{cd}$ of the full adder above.
 2.  If we were to put several of these FAs to form an 8-bit ripple-carry adder as shown, **compute** the $t_{pd}$ and $t_{cd}$  of an 8-bit ripple-carry adder made of 8 of these FA circuits. 
 
 	<img src="https://www.dropbox.com/s/y30lar5nypnbh52/Q13.png?raw=1" width="70%" height = "70%">
@@ -88,7 +88,7 @@ Answer the following questions:
 
 ### Combinational Construction Rules
 
-In lecture, we learned two basic principles regarding the class of combinational devices. The first allows us to build a combinational device from, e.g., electronic components. A combinational device is a circuit element that has:
+During lecture, we learned two basic principles regarding the class of combinational devices. The first allows us to build a combinational device from, e.g., electronic components. A combinational device is a circuit element that has:
 
 1.  one or more digital inputs
 2.  one or more digital outputs
@@ -146,6 +146,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MDI3MzkwNSwtOTAyNDQ5NjE2LDEwMj
+eyJoaXN0b3J5IjpbMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMj
 UzNjQ1ODRdfQ==
 -->
