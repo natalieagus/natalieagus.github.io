@@ -46,24 +46,12 @@ Draw the truth table for the following CMOS circuitry:
 
 {::options parse_block_html="true" /}<br/> <details> <br/> <summary markdown="span">Show Answer</summary><br/>
 $$ \begin{matrix}
-A & b
+A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ 
 \end{matrix}
 $$
-  
-
 </details>  <br/>  {::options parse_block_html="false" /}
 
-  
 
-
-\begin{table}[h] \centering \begin{tabular} {c|c|c|c} 
-
-A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ \hline \end{tabular} \caption{} 
-\end{table}
-
-\fi
-
-\newpage
 
 ### Full Adder Timing Analysis
 
@@ -133,5 +121,5 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNjU2OTc3MywxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTE2MDAzNTM5OTksMTAyNTM2NDU4NF19
 -->
