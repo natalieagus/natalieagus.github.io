@@ -12,7 +12,7 @@ This page contains all practice questions that constitutes the topics learned in
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
-### Warm Up -- Combinational Logic Timing
+### Warm Up -- Combinational Logic Timing (Basic)
 
 Consider the following combinational logic device.
 <img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1"  alt="Figure3"  width="70%">
@@ -23,15 +23,17 @@ Consider the following combinational logic device.
 
 Compute the **overall** propagation delay and contamination delay for the circuit. 
 
-{::options parse_block_html="true" /}  <details>  <summary markdown="span">Show Answer</summary>
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 Overal  t_{pd} = 6nstpd​=6ns  (counting paths from the AND gate, OR gate, and XOR gate). 
 
 Overall  t_{cd} = 1nstcd​=1ns  (counting the shortest path from XOR gate only). 
 
-\fi
-
-\newpage
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 ### Warm Up -- Tracing CMOS Circuit
 
@@ -113,5 +115,5 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMzA3NDkwNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTE0NTQ3MDQ0NzcsMTAyNTM2NDU4NF19
 -->
