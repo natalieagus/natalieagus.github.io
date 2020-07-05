@@ -436,7 +436,6 @@ She has burned out 97 of her chips, and needs your help before destroying the re
 
 A certain function F has the following truth table:
 
-  
 
 \includepic{0.6}{Q3.png}
 
@@ -927,10 +926,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMT
-I5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAz
-Mzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNC
-wtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAy
-ODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4Nz
-AxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTgyMzkwNzU5NSwtMTY4NjMyOTY3MSwxNT
+QwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDky
+ODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0Mi
+wxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcy
+MDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5Mz
+YyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+
 -->
