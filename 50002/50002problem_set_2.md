@@ -319,13 +319,13 @@ Take a look at the figure above. **Which** of the above ROM represents the funct
   
 
 
-### CMOS Gate Analysis (Intermediate)
+### CMOS Gate Analysis (Basic)
 
   
 
 The following diagram shows a schematic for the pulldown circuitry for a particular CMOS gate:
 
-<img src="  https://www.dropbox.com/s/40jd3vijlsjq12v/Q1%202.png?raw=1"  width="50%" height = "50%">
+<img src="  https://www.dropbox.com/s/40jd3vijlsjq12v/Q1%202.png?raw=1"  width="60%" height = "60%">
 
 1. What is the correct schematic for the **pullup** circuitry?
 
@@ -345,14 +345,15 @@ https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "5
 2. The output for the gate is the output of the pullup circuitry above: $\overline{(A+B) C + D}$.
 
 3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
-
-\fi
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
   
   
   
 
-### Simplifying a Rather Complicated Boolean Expression
+### Simplifying a Rather Complicated Boolean Expression (Intermediate)
 
   
 
@@ -962,9 +963,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDE5NjQwODMsODQyNTQzNjMwLC0xOD
-M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
-NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
-IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
-NjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbODgxMjk0NjY5LDg0MjU0MzYzMCwtMTgzOT
+U2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1
+MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMD
+E3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0
+NTg0XX0=
 -->
