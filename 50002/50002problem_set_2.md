@@ -109,9 +109,16 @@ Consider the following 2-input acyclic circuit whose two components, A and B, ar
 The propagation delay for each device is specified in nanoseconds. The functional specifications for each component are given as truth tables detailing output values for each combination of inputs:
 
 $$\begin{matrix}
-$a_0$  & $a_1$  &  A _{a_0, a_1}  &  $b_0​$  &  b_1  &  B_{b_0. b_1}Bb0​.b1​​  \\ \hline 0 & 0 & 1 & & 0 & 0 & 0\ 0 & 1 & 0 & & 0 & 1 & 0\ 1 & 0 & 0 & & 1 & 0 & 0\ 1 & 1 & 1 & & 1 & 1 & 1\ \hline 
-
+a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\ 
+\hline \\
+0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 1 & 0 & 0 & 1 & 0\\
+ 1 & 0 & 0 & 1 & 0 & 0\\ 
+ 1 & 1 & 1 & & 1 & 1 & 1\\
+ \hline 
 \end{matrix}$$
+
+
 \begin{table}[h] \centering \begin{tabular}{c c|c c c c | c}  a_0a0​  &  a_1a1​  &  A _{a_0, a_1}Aa0​,a1​​  & \hspace{2cm} &  b_0b0​  &.  b_1b1​  &  B_{b_0. b_1}Bb0​.b1​​  \\ \hline 0 & 0 & 1 & & 0 & 0 & 0\ 0 & 1 & 0 & & 0 & 1 & 0\ 1 & 0 & 0 & & 1 & 0 & 0\ 1 & 1 & 1 & & 1 & 1 & 1\ \hline \end{tabular} \caption{} \end{table}
 
 Answer the following questions,
@@ -151,6 +158,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMxMzIxNTQ4LDIwMTc0OTkzNjIsMjEwMz
-MzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTExMTkwMTk3MDAsMjAxNzQ5OTM2MiwyMT
+AzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
