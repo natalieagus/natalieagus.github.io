@@ -355,21 +355,18 @@ https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "5
 
 ### Simplifying a Rather Complicated Boolean Expression (Intermediate)
 
-  
-
-Simplify the following expression:
+Simplify the following boolean expression:
 
 $$\begin{aligned} Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD \\
 &+ ABCD + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\end{aligned}$$
 
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
 The final simplified form is $Y = AB + CD + \bar{B}C$. The steps are as follows:
-
-  
-
 $$\begin{aligned}
 Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
-
 & + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\\
 &= AB\bar{C} + \bar{A}CD + ACD + \bar{B}CD + ABC\bar{D}\\
 &= CD + AB\bar{C} + \bar{B}CD + ABC\bar{D}\\
@@ -378,8 +375,10 @@ Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 &=CD + C\bar{B} + AB(\overline{CD} )\\
 &= CD + C\bar{B} + AB
 \end{aligned}$$
-
-\fi
+*Note: convince yourself that the simplified form allows you to make a cheaper and smaller combinational logic device (because we use lesser number of gates).*
+</details>
+<br/>
+{::options parse_block_html="false" /}  
 
   
 
@@ -949,7 +948,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTU5ODM3NTksODQyNTQzNjMwLC0xOD
+eyJoaXN0b3J5IjpbLTE3ODA1MTcwMDUsODQyNTQzNjMwLC0xOD
 M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
 NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
 IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
