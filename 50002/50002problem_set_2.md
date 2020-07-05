@@ -88,14 +88,14 @@ Answer the following questions:
 
 ### Combinational Construction Rules
 
-During lecture, we learned two basic principles regarding the class of combinational devices. The first allows us to build a combinational device from, e.g., electronic components. A combinational device is a circuit element that has:
+During lecture, we learned that a combinational device is a circuit element that has:
+1.  One or more digital inputs
+2.  One or more digital outputs
+3.  A **functional** specification that details the value of each output for every possible combination of valid input values
+4.  A **timing** specification consisting (at minimum) of an upper bound  $t_{pd}$  on the required time for the device to compute the specified output values from an arbitrary set of stable, valid input values.
 
-1.  one or more digital inputs
-2.  one or more digital outputs
-3.  a functional specification that details the value of each output for every possible combination of valid input values
-4.  a timing specification consisting (at minimum) of an upper bound  t_{pd}tpd​  on the required time for the device to compute the specified output values from an arbitrary set of stable, valid input values.
 
-while the second allows us to construct complex combinational devices from acyclic circuits containing simpler ones. A set of interconnected elements is a combinational device if:
+A set of interconnected elements is a combinational device if:
 
 1.  each circuit element is combinational
 2.  every input is connected to exactly one output or to some vast supply of 0's and 1's
@@ -146,6 +146,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMj
-UzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTI1OTc1NTcxMSwyMTAzMzM4NzAxLC05MD
+I0NDk2MTYsMTAyNTM2NDU4NF19
 -->
