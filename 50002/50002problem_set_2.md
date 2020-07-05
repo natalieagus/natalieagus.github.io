@@ -341,8 +341,10 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 *Note: We don't need to add inverter in the inputs anymore. Convince yourself that this is true.*
 <img src="
 https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
-*What is the  boolean expression for the complete CMOS circuit?*. From the pulldown diagram, it seems like the output is 0 if D is 1, or A and C is 1, or B and C is 1. 
-2. The output for the gate is the output of the pullup circuitry above: $\overline{(A+B) C + D}$.
+*What is the  boolean expression for the complete CMOS circuit?*. From the pulldown diagram, it seems like the output is 0 if D is 1, or A and C is 1, or B and C is 1. Therefore the expression for output is:
+$$ OUTPUT = \overline{(A+B)C + D}$$
+
+2. The output for the gate is the inverse of the expression of the pulldown circuitry, which is the output of the pullup circuitry above: $\overline{(A+B) C + D}$.
 
 3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
 </details>
@@ -963,7 +965,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODcyNzk0MzQsODQyNTQzNjMwLC0xOD
+eyJoaXN0b3J5IjpbLTEyNTQ0OTAyMDcsODQyNTQzNjMwLC0xOD
 M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
 NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
 IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
