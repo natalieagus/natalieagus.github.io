@@ -511,7 +511,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/the_digi
   
   
 
-### VTC Plot -- Basic
+### VTC Plot (Basic)
 ---
   
 
@@ -555,7 +555,7 @@ When answering the questions below, assume that all voltages are constrained to 
   
   
 
-###  Inverter Madness -- Intermediate
+###  Inverter Madness (Intermediate)
 ---
   
   
@@ -594,7 +594,7 @@ When answering the questions below, assume that all voltages are constrained to 
 <br/>
 {::options parse_block_html="false" /}
 
-### Static Discipline -- Basic
+### Static Discipline (Basic)
 ---
 
 **(a).** Consider a combinational *buffer* with one input and one output. Suppose we set its input to some voltage $V_{IN}$, wait for the device to reach a steady state, then measure the voltage on its output $V_{OUT}$ and find out $V_{OUT} < V_{OL}$. **What can we deduce about the value of $V_{IN}$?**
@@ -628,7 +628,7 @@ When answering the questions below, assume that all voltages are constrained to 
 
  
 
-### VTC Analysis -- Intermediate
+### VTC Analysis (Intermediate)
 ---
 Take a look at the figure below.
  
@@ -659,7 +659,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjE4MjIyNDMsLTI3MDkzNDc0OCwyMD
+eyJoaXN0b3J5IjpbLTExNzk3MTk1NDMsLTI3MDkzNDc0OCwyMD
 I0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0
 NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLT
 IwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQx
