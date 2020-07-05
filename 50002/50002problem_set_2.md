@@ -15,11 +15,21 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 ### Warm Up -- Combinational Logic Timing
 
 Consider the following combinational logic device.
-<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  alt="Figure3"  width="50%">
+<img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1"  alt="Figure3"  width="70%">
 
- Each logic gate has the same propagation delay,  t_{pd}= 2ns, t_{cd}=1nstpd​=2ns,tcd​=1ns. Compute the overall propagation delay and contamination delay for the circuit. \includepic{0.6}{Q10}{}
+ Each logic gate has the same:
+ - Propagation delay,  t_{pd}= 2ns, 
+ - Contamination delay, t_{cd}=1ns
 
-\ifanswers \beginsol Overal  t_{pd} = 6nstpd​=6ns  (counting paths from the AND gate, OR gate, and XOR gate). Overall  t_{cd} = 1nstcd​=1ns  (counting the shortest path from XOR gate only). \fi
+Compute the **overall** propagation delay and contamination delay for the circuit. 
+
+{::options parse_block_html="true" /}  <details>  <summary markdown="span">Show Answer</summary>
+
+Overal  t_{pd} = 6nstpd​=6ns  (counting paths from the AND gate, OR gate, and XOR gate). 
+
+Overall  t_{cd} = 1nstcd​=1ns  (counting the shortest path from XOR gate only). 
+
+\fi
 
 \newpage
 
@@ -103,5 +113,5 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExOTgyNjAwLDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbMjEyMzA3NDkwNiwxMDI1MzY0NTg0XX0=
 -->
