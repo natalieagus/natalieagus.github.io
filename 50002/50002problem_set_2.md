@@ -201,7 +201,7 @@ Consider the following circuit that implements the 2-input function $H(A,B)$:
 1. Give the truth table for $H$.
 2. Give a sum-of-products expression that corresponds to your truth table.
 3. Using the information below, what are the $t_{cd}$ and $t_{pd}$ of the circuit?
-- $t_{cd}$ and $t_{pd}$ of NR2:  5 30
+- $t_{cd}$ and $t_{pd}$ of NR2:  5, 30
 - $t_{cd}$ and $t_{pd}$ of ND2: 5 30
 - $t_{cd}$ and $t_{pd}$ of AN2:  8 50
 - $t_{cd}$ and $t_{pd}$ of OR2: 10, 20
@@ -1044,8 +1044,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwMzg2NjIxMiwxODA0NTAwNTA0LC0xNz
-IwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQy
-OSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLT
-kwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbNDI1NTY5MTEwLDE4MDQ1MDA1MDQsLTE3Mj
+AzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5
+LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOT
+AyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
