@@ -66,10 +66,15 @@ Answer the following questions:
 1. Compute the  $t_{pd}$​  and  $t_{cd}$ of the full adder above.
 2.  If we were to put several of these FAs to form an 8-bit ripple-carry adder as shown, **compute** the $t_{pd}$ and $t_{cd}$  of an 8-bit ripple-carry adder made of 8 of these FA circuits. 
 
+<img src="https://www.dropbox.com/s/y30lar5nypnbh52/Q13.png?raw=1" width="70%" height = "70%">
 
-In the figure,  $C_0$​  is assumed to be grounded for this particular instance, so this sample device can only add two numbers and not subtract them. 
 
-However, is the computation of  $t_{pd}tpd​  and  t_{cd}tcd​  of an 8-bit ripple carry adder usage specific. \includepic{0.45}{Q13}{} \ifanswers \beginsol  t_{pd}tpd​  is 1.8 and the  t_{cd}tcd​  is 0.3 for the FA. For the 8-bit ripple-carry adder, we do not have an input  C_0C0​  as it is grounded. However the  t_{cd}tcd​  is \textit{still} 0.3 as the specification of contamination delay is not usage specific. Its  t_{pd}tpd​  is eight times bigger than a single FA,  t_{pd} = 14.4tpd​=14.4.~\ ~\ However if the question is asking for the  t_{cd}tcd​  of  **this**  particular device with no  C_0C0​  at all (and not 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  C_0C0​.
+*Hint: In the figure,  $C_0$​  is assumed to be **grounded** for this particular **instance**, so this sample device can only add two numbers and not subtract them.*
+
+*However, is the computation of $t_{pd}$​  and  $t_{cd}$ of an 8-bit ripple carry adder usage specific?* 
+
+
+\ifanswers \beginsol  t_{pd}tpd​  is 1.8 and the  t_{cd}tcd​  is 0.3 for the FA. For the 8-bit ripple-carry adder, we do not have an input  C_0C0​  as it is grounded. However the  t_{cd}tcd​  is \textit{still} 0.3 as the specification of contamination delay is not usage specific. Its  t_{pd}tpd​  is eight times bigger than a single FA,  t_{pd} = 14.4tpd​=14.4.~\ ~\ However if the question is asking for the  t_{cd}tcd​  of  **this**  particular device with no  C_0C0​  at all (and not 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  C_0C0​.
 
 \fi
 
@@ -135,6 +140,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjE1NjY3MzksLTkwMjQ0OTYxNiwxMD
-I1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTI2NTQyNjEwMCwtOTAyNDQ5NjE2LDEwMj
+UzNjQ1ODRdfQ==
 -->
