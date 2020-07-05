@@ -479,7 +479,7 @@ Which of the following signed numbers is **equivalent** to the number -32 for ei
 
   
 
-### Proof of 2's Complement -- Challenging
+### Proof of 2's Complement (Challenging)
 ---
 
 At first blush, "Complement and add 1" doesn't seem like an obvious way to negate a two's complement number. By manipulating the expression $A + (-A) = 0$, **show** that "complement and add 1" does produce correct representation for the negative of a two's complement number. 
@@ -659,11 +659,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzk3MTk1NDMsLTI3MDkzNDc0OCwyMD
-I0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0
-NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLT
-IwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQx
-MDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC
-03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUy
-MTM3XX0=
+eyJoaXN0b3J5IjpbMTMxMzgwNTM1MCwtMjcwOTM0NzQ4LDIwMj
+QwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2
+NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMj
+A0OTIwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEw
+NzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLT
+c1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIx
+MzddfQ==
 -->
