@@ -152,14 +152,28 @@ x & y & z \\
 
 ### CMOS Circuit Boolean Expression
 
-\includepic{0.5}{Q9}{} Draw the truth table of the CMOS circuit above. What is the boolean expression for the CMOS circuit shown?
 
-\ifanswers \beginsol  F = \overline{A(B+C)D}F=A(B+C)D​
 
-\begin{table}[h] \centering \begin{tabular} {c|c|c|c|c} A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{tabular} \caption{} \end{table}
+<img src="https://www.dropbox.com/s/x1surj7fotwv45a/Q9.png?raw=1"  width="50%" height = "50%">
+
+1. **Draw** the truth table of the CMOS circuit above. 
+2. What is the **boolean** expression for the CMOS circuit shown?
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+1. $F = \overline{A(B+C)D}$
+2. $$\begin
+</details>
+<br/>
+{::options parse_block_html="false" /}
+\ifanswers \beginsol 
+
+A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{tabular} \caption{} \end{table}
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODYwMDc2NDYsMjAxNzQ5OTM2MiwyMT
-AzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTAzMjk0MDAwNCwyMDE3NDk5MzYyLDIxMD
+MzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
