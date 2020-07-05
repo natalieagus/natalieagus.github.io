@@ -223,9 +223,8 @@ A & B & H \\
 \hline
 \end{matrix}
 $$
->2. We begin by finding the expression of the topmost two circuits and applying de Morgan's law:
-	>$$\overline{A + \overline{B}} = \overline{A}B$$
->- Then, we find the expression of the next pair, which is $AB$.  We combine this with the above using a NOR gate and reduce the result,
+>2. We begin by finding the expression of the topmost two circuits and applying de Morgan's law $$\overline{A + \overline{B}} = \overline{A}B$$. Then:
+>- We find the expression of the next pair, which is $AB$.  We combine this with the above using a NOR gate and reduce the result,
 	>$$\overline{\overline{A}B + AB} = \overline{B}$$
 >- Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combining this with the above expression, we reduce and apply de Morgan's law:
 	> $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B\\
@@ -896,11 +895,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5MjAzNTkzMywtMTY4NjMyOTY3MSwxNT
-QwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDky
-ODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0Mi
-wxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcy
-MDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5Mz
-YyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
-
+eyJoaXN0b3J5IjpbLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMT
+Y4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2
+MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMC
+wtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04
+NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNz
+g1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwx
+MDI1MzY0NTg0XX0=
 -->
