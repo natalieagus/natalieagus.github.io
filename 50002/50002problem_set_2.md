@@ -347,7 +347,8 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 <details>
 <summary markdown="span">Show Answer</summary>
 
->1. The output for the pullup circuitry is the inversion of the output of the pulldown circuitry: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
+>1. The output for the pullup circuitry is the inversion of the output of the pulldown circuitry: 
+	>$$\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$$ 
 *Note: We don't need to add inverter in the inputs. Convince yourself that this is true by tracing some input combinations to the output terminal.*
 <img src="
 https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
@@ -374,8 +375,8 @@ $$\begin{aligned} Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \b
 <details>
 <summary markdown="span">Show Answer</summary>
 
-The final simplified form is $Y = AB + CD + \bar{B}C$. The steps are as follows:
-$$\begin{aligned}
+>The final simplified form is $Y = AB + CD + \bar{B}C$. The steps are as follows:
+	>$$\begin{aligned}
 Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 & + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\\
 &= AB\bar{C} + \bar{A}CD + ACD + \bar{B}CD + ABC\bar{D}\\
@@ -385,7 +386,8 @@ Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 &=CD + C\bar{B} + AB(\overline{CD} )\\
 &= CD + C\bar{B} + AB
 \end{aligned}$$
-*Note: convince yourself that the simplified form allows you to make a cheaper and smaller combinational logic device (because we use lesser number of gates).*
+>
+>*Note: convince yourself that the simplified form allows you to make a cheaper and smaller combinational logic device (because we use lesser number of gates).*
 </details>
 <br/>
 {::options parse_block_html="false" /}  
@@ -958,10 +960,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk3MTAzODkxLDE1NDAxMjYwNzksMTEyOT
-EyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3
-NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLT
-E3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1
-NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMS
-wtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbMTI4OTA5MzIwOSwxNTQwMTI2MDc5LDExMj
+kxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMz
+NzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC
+0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4
+NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MD
+EsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
