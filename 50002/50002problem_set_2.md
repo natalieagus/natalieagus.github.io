@@ -533,12 +533,12 @@ The multiplexer select signals (labeled "Mx" in the diagram) are also set by the
 
 The following is **a list of the possible configurations.** 
  
-1. An arbitrary function F of **up to four unrelated input variables**, plus another arbitrary function G of **up to four unrelated input variables,** plus a third arbitrary function H of **up to three unrelated input variables.**
+**(a)**. An arbitrary function F of **up to four unrelated input variables**, plus another arbitrary function G of **up to four unrelated input variables,** plus a third arbitrary function H of **up to three unrelated input variables.**
 
-2. **An arbitrary single function of five variables.**
-3.  **An arbitrary function of four variables** together *with some functions of six variables.* Characterize the functions of six variables that can be implemented.  
-4. **Some functions of up to nine variables.** Characterize the functions of up to nine variables that can be implemented.
-5. **Can every function of six inputs be implemented?** If so, explain how. If not, give a 6-input function and explain why it can't be implemented in the CLB.
+**(b)**. **An arbitrary single function of five variables.**
+**(c)**.  **An arbitrary function of four variables** together *with some functions of six variables.* Characterize the functions of six variables that can be implemented.  
+**(d)**. **Some functions of up to nine variables.** Characterize the functions of up to nine variables that can be implemented.
+**(e)**. **Can every function of six inputs be implemented?** If so, explain how. If not, give a 6-input function and explain why it can't be implemented in the CLB.
 
 
 For each configuration indicate **how**:
@@ -551,14 +551,14 @@ For each configuration indicate **how**:
 <details>
 <summary markdown="span">Show Answer</summary>
 
->1. Let X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, C2, C3). The necessary control signals are:
+>**(a)**. Let X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, C2, C3). The necessary control signals are:
 >> - MA = 1
 >> - MB = 1
 >> - MC = 0 (select C1)
 >> - MD = 1 (select C2)
 >> - ME = 2 (select C3)
 >
-> 2. Let Y = F(A1, A2, A3, A4, A5). This can be implemented using both 4-input logic functions, and selecting between the two outputs with the 3-input logic function.
+> **(b)**. Let Y = F(A1, A2, A3, A4, A5). This can be implemented using both 4-input logic functions, and selecting between the two outputs with the 3-input logic function.
 >> -  Z=f(A1, A2, A3, A4, 0),
 >>-  X=f(A1, A2, A3, A4, 1),
 >> -  Y= Z if A5=0, else Y=X
@@ -572,7 +572,7 @@ MC = X (value doesn't matter)
 >>- MD = X (value doesn't matter)
 >> -  ME = 0 (select C1)
 >
->3. Let Z = G(G1, G2, G3, G4) be the function of the 4 variables. Let X = F(F1, F2, F3, F4) and  let Y = H(C1, C2, X) = H(C1, C2, F(F1, F2, F3, F4)).
+>**(c)**. Let Z = G(G1, G2, G3, G4) be the function of the 4 variables. Let X = F(F1, F2, F3, F4) and  let Y = H(C1, C2, X) = H(C1, C2, F(F1, F2, F3, F4)).
 >The functions of six variables which can be implemented (along with the 4-variable function) are all those functions that can be re-written as a function of 3 variables. The inputs to this function of three variables must be 2 of the original variables and some function of the remaining four variables. The necessary control signals are:
 >
 >>- MA = 0
@@ -581,7 +581,7 @@ MC = X (value doesn't matter)
 >>-  MD = 0 (select C1)
 >>-  ME = 1 (select C2)
 >
->4. Let: X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, X, Z) = H(C1, F(F1, F2, F3, F4), G(G1, G2, G3, G4)). The functions of nine variables that can be implemented are all those functions that can be re-written as a function of 3 variables. The inputs to this three-variable function will be one of the original variables, plus two separate functions of 4 variables (these two 4-variable functions will have the remaining 8 original variables as inputs).
+>**(d)**. Let: X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, X, Z) = H(C1, F(F1, F2, F3, F4), G(G1, G2, G3, G4)). The functions of nine variables that can be implemented are all those functions that can be re-written as a function of 3 variables. The inputs to this three-variable function will be one of the original variables, plus two separate functions of 4 variables (these two 4-variable functions will have the remaining 8 original variables as inputs).
 >
 >>-  MA = 0
 >>- MB = 0
@@ -589,7 +589,7 @@ MC = X (value doesn't matter)
 >>- MD = X (value doesn't matter)
 >>-  ME = 0 (select C1)
 >
->5.  The functions of 6 variables which we can implement must be of the form: Y = C(C1, C2, F(F1,F2,F3,F4)) or the form of Y = C(C1,F(F1, F2, F3, F4), G(G1, G2, G3, G4)). *This second function will have some overlap between C1, F1-4, and G1-4; some variables will be connected to multiple inputs.* 
+>**(e)**.  The functions of 6 variables which we can implement must be of the form: Y = C(C1, C2, F(F1,F2,F3,F4)) or the form of Y = C(C1,F(F1, F2, F3, F4), G(G1, G2, G3, G4)). *This second function will have some overlap between C1, F1-4, and G1-4; some variables will be connected to multiple inputs.* 
 >
 >>Essentially, the functions we are able to implement are only those for which **we can factor a set of 4 variables out of the equation.** For example, the following function cannot be implemented by the CLB: Y = A1A2A3A4A5 + A1A2A3A4A6 + A1A2A3A5A6 + A1A2A4A5A6 + A1A3A4A5A6 +A2A3A4A5A6. This function cannot be broken down into either of the forms mentioned above.
 </details>
@@ -599,11 +599,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY4Njg2ODgsLTE4NzQ3MTQxMDIsMzUzMD
-MyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMs
-LTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMTI5MTIyMTA3LC05Nz
-Q3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAzMzc2NCw4NDI1NDM2
-MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4Mi
-wtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMw
-MTc4NTddfQ==
+eyJoaXN0b3J5IjpbNDc1MTYyMTg2LC0xODc0NzE0MTAyLDM1Mz
+AzMjM5NiwyOTQ4NTE4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMz
+LC0xNjg2MzI5NjcxLDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOT
+c0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQz
+NjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4OD
+IsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTcz
+MDE3ODU3XX0=
 -->
