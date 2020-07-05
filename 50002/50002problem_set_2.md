@@ -149,7 +149,6 @@ x & y & z \\
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
 >2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
->
 >3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
 >4. One has to find the **longest** path from (any) input to (any) output to find the **total** propagation delay of the combinational circuit.
 >5. No, the signal can **propagate** **back** in the circuit so using the *longest* path to calculate  $t_{pd}$  is not applicable anymore. 
@@ -951,7 +950,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxODU3NjkzLC0xODI1MDMzNzY0LDg0Mj
+eyJoaXN0b3J5IjpbNDg4OTA3MjQzLC0xODI1MDMzNzY0LDg0Mj
 U0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4
 ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMT
 E3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0
