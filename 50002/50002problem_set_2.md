@@ -532,18 +532,20 @@ The function generators are actually **small** 16-by-1 and 8-by-1 memories that 
 The multiplexer select signals (labeled "Mx" in the diagram) are also set by the programming process to configure the CLB. After programming, these Mx signals remain constant during CLB operation.
 
 The following is **a list of the possible configurations.** 
+ 
+1. An arbitrary function F of **up to four unrelated input variables**, plus another arbitrary function G of **up to four unrelated input variables,** plus a third arbitrary function H of **up to three unrelated input variables.**
+
+2. **An arbitrary single function of five variables.**
+3.  **An arbitrary function of four variables** together *with some functions of six variables.* Characterize the functions of six variables that can be implemented.  
+4. **Some functions of up to nine variables.** Characterize the functions of up to nine variables that can be implemented.
+5. **Can every function of six inputs be implemented?** If so, explain how. If not, give a 6-input function and explain why it can't be implemented in the CLB.
+
 
 For each configuration indicate **how**:
 - Each the **control signals** (MA, MB, MC, MD, and ME) should be programmed**? 
 - Which of the **input lines** (C1-C4, F1-F4, and G1-G4) are used?
 - And what **output lines** (X, Y, or Z) the result(s) appear on?
-
- 
-1. An arbitrary function F of **up to four unrelated input variables**, plus another arbitrary function G of **up to four unrelated input variables,** plus a third arbitrary function H of **up to three unrelated input variables.**
-
-3. An arbitrary single function of five variables.
-  
-
+- 
 \ifanswers
 
 \beginsol
@@ -610,7 +612,7 @@ So Z is calculating F for the case when A5 = 0, X is calculating F for the case 
 
 \fi
 
-\item An arbitrary function of four variables together with some functions of six variables. Characterize the functions of six variables that can be implemented.
+
 
   
   
@@ -650,7 +652,7 @@ The functions of six variables which can be implemented (along with the 4-variab
 
 \fi
 
-\item Some functions of up to nine variables. Characterize the functions of up to nine variables that can be implemented.
+
 
   
 
@@ -692,7 +694,6 @@ The functions of nine variables that can be implemented are all those functions 
 
 \fi
 
-\item (Optional challenge) Can every function of six inputs be implemented? If so, explain how. If not, give a 6-input function and explain why it can't be implemented in the CLB.
 
   
 
@@ -744,11 +745,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTU3MzkxMiwzNTMwMzIzOTYsMjk0OD
-UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
-MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
-EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
-NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1Mj
-IsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3
-NDk5MzYyXX0=
+eyJoaXN0b3J5IjpbODIwMzM1MTM1LDM1MzAzMjM5NiwyOTQ4NT
+E4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5Njcx
+LDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MT
+AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
+MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
+wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
+OTkzNjJdfQ==
 -->
