@@ -147,6 +147,7 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
 x & y & z \\ 
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
+>
 >2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
 >
 >3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
@@ -952,10 +953,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MT
-AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
-MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
-wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
-OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1OD
-RdfQ==
+eyJoaXN0b3J5IjpbLTIwNjE1NTU0NzMsMTEyOTEyMjEwNywtOT
+c0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQz
+NjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4OD
+IsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTcz
+MDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5Nj
+E2LDEwMjUzNjQ1ODRdfQ==
 -->
