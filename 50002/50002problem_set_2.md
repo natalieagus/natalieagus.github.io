@@ -94,12 +94,10 @@ During lecture, we learned that a combinational device is a circuit element that
 3.  A **functional** specification that details the value of each output for every possible combination of valid input values
 4.  A **timing** specification consisting (at minimum) of an upper bound  $t_{pd}$  on the required time for the device to compute the specified output values from an arbitrary set of stable, valid input values.
 
-
-A set of interconnected elements is a combinational device if:
-
-1.  each circuit element is combinational
-2.  every input is connected to exactly one output or to some vast supply of 0's and 1's
-3.  the circuit contains no directed cycles
+We also learned that a set of interconnected elements ***is*** a combinational device if:
+1.  Each circuit element is combinational
+2.  Every input is connected to exactly one output or to some vast supply of 0's and 1's. 
+3.  The circuit contains no directed cycles
 
 In this problem, we ask you to think carefully about why these rules work - in particular, why an acyclic circuit of combinational devices, constructed according to the second principle, is itself a combinational device as defined by the first. You may assume for the following that every input and output is a logical 0 or 1. Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices:
 
@@ -146,6 +144,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1OTc1NTcxMSwyMTAzMzM4NzAxLC05MD
+eyJoaXN0b3J5IjpbMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MD
 I0NDk2MTYsMTAyNTM2NDU4NF19
 -->
