@@ -59,6 +59,30 @@ $$
 {::options parse_block_html="false" /}
 
 
+### Universal Gates (Basic)
+
+  
+
+Use only NAND gates to redraw the circuit below. Use as few NAND gates as possible.
+
+  
+<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  width="50%" height = "50%">
+
+
+<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  width="50%" height = "50%">
+
+
+  
+
+\ifanswers
+
+\beginsol
+
+\includepic{0.5}{Q8}
+
+\fi
+
+
 
 ### Full Adder Timing Analysis (Intermediate)
 
@@ -492,13 +516,6 @@ CD  & 0 & 0& 1 & 1\\
 <br/>
 {::options parse_block_html="false" /}
 
-
-
-\fi
-
-\newpage
-
-
 ### Gates and Boolean Equations
 
   
@@ -630,25 +647,7 @@ There will be $2^{2^5}$ 5-input boolean functions.
 \newpage
 
 
-### Universal Gates
 
-  
-
-Use NAND gates to redraw the circuit. Use as few NAND gates as possible.
-
-  
-
-\includepic{0.6}{Q7}{}
-
-  
-
-\ifanswers
-
-\beginsol
-
-\includepic{0.5}{Q8}
-
-\fi
 
   
   
@@ -879,11 +878,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2ND
-Y4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3
-OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMT
-gyNTAzMzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUw
-MDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNC
-wtNjAyODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAz
-MzM4NzAxXX0=
+eyJoaXN0b3J5IjpbMjEzNjIzNzY1OCwzNTMwMzIzOTYsMjk0OD
+UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
+MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
+EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
+NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1Mj
+IsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3
+NDk5MzYyXX0=
 -->
