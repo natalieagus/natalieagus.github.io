@@ -454,7 +454,7 @@ She has burned out 97 of her chips, and needs your help before destroying the re
 
 A certain function F has the following truth table:
 
-<img src="https://www.dropbox.com/s/klra9666sk8rcuz/Q3.png?raw=1"  width="50%" height = "50%">
+<img src="https://www.dropbox.com/s/klra9666sk8rcuz/Q3.png?raw=1"  width="20%" height = "20%">
 
 
 Answer the following questions based on the truth table:
@@ -595,11 +595,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4Nz
-Q3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3
-LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMT
-I5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAz
-Mzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNC
-wtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAy
-ODU0MjldfQ==
+eyJoaXN0b3J5IjpbLTE4MDMwMTIzNTksLTU2Njk5OTcxOSw0Nz
+UxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1
+LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMT
+U0MDEyNjA3OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5
+MjgwMSwtMTgyNTAzMzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzND
+IsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3
+MjA3MjgwNF19
 -->
