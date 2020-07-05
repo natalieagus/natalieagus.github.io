@@ -15,7 +15,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 ### Warm Up -- Combinational Logic Timing (Basic)
 
 Consider the following combinational logic device.
-<img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1"  alt="Figure3"  width="70%" height="70%">
+<img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1"  alt="1"  width="70%" height="70%">
 
  Each logic gate has the same:
  - Propagation delay,  t_{pd}= 2ns, 
@@ -42,14 +42,13 @@ Draw the truth table for the following CMOS circuitry:
 <img src="https://www.dropbox.com/s/crosfbfiqf1iueg/Q11.png?raw=1"  alt="Figure3"  width="50%" height="50%">
 
 
-
-
 {::options parse_block_html="true" /} 
 <details> 
 <summary markdown="span">Show Answer</summary> 
 
-$$ \begin{matrix}
+>$$ \begin{matrix}
 A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ 
+\hline
 \end{matrix}
 $$
 </details>  
@@ -60,7 +59,12 @@ $$
 
 ### Full Adder Timing Analysis
 
-Refer to the FA circuitry below, \includepic{0.3}{Q12}{} Compute the  t_{pd}tpd​  and  t_{cd}tcd​  of the full adder above.~\ If we were to put several of these FAs to form an 8-bit ripple-carry adder as shown, **compute the  t_{pd**  and  t_{cd}tcd​  of an 8-bit ripple-carry adder made of 8 of these FA circuits}. In the figure,  C_0C0​  is assumed to be grounded for this particular instance, so this sample device can only add two numbers and not subtract them. \textit{However, is the computation of  t_{pd}tpd​  and  t_{cd}tcd​  of an 8-bit ripple carry adder usage specific?}. \includepic{0.45}{Q13}{} \ifanswers \beginsol  t_{pd}tpd​  is 1.8 and the  t_{cd}tcd​  is 0.3 for the FA. For the 8-bit ripple-carry adder, we do not have an input  C_0C0​  as it is grounded. However the  t_{cd}tcd​  is \textit{still} 0.3 as the specification of contamination delay is not usage specific. Its  t_{pd}tpd​  is eight times bigger than a single FA,  t_{pd} = 14.4tpd​=14.4.~\ ~\ However if the question is asking for the  t_{cd}tcd​  of  **this**  particular device with no  C_0C0​  at all (and not 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  C_0C0​.
+Refer to the FA circuitry below, \includepic{0.3}{Q12}{}
+<img src="https://www.dropbox.com/s/nqfbozivm2mdrvf/Q12.png?raw=1"  alt="Figure4"  width="50%" height = "50%">
+
+
+
+Compute the  t_{pd}tpd​  and  t_{cd}tcd​  of the full adder above.~\ If we were to put several of these FAs to form an 8-bit ripple-carry adder as shown, **compute the  t_{pd**  and  t_{cd}tcd​  of an 8-bit ripple-carry adder made of 8 of these FA circuits}. In the figure,  C_0C0​  is assumed to be grounded for this particular instance, so this sample device can only add two numbers and not subtract them. \textit{However, is the computation of  t_{pd}tpd​  and  t_{cd}tcd​  of an 8-bit ripple carry adder usage specific?}. \includepic{0.45}{Q13}{} \ifanswers \beginsol  t_{pd}tpd​  is 1.8 and the  t_{cd}tcd​  is 0.3 for the FA. For the 8-bit ripple-carry adder, we do not have an input  C_0C0​  as it is grounded. However the  t_{cd}tcd​  is \textit{still} 0.3 as the specification of contamination delay is not usage specific. Its  t_{pd}tpd​  is eight times bigger than a single FA,  t_{pd} = 14.4tpd​=14.4.~\ ~\ However if the question is asking for the  t_{cd}tcd​  of  **this**  particular device with no  C_0C0​  at all (and not 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  C_0C0​.
 
 \fi
 
@@ -126,5 +130,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTE1NjMwNjE4OTcsLTkwMjQ0OTYxNiwxMD
+I1MzY0NTg0XX0=
 -->
