@@ -417,61 +417,20 @@ She has burned out 97 of her chips, and needs your help before destroying the re
 <details>
 <summary markdown="span">Show Answer</summary>
 
->1. When $A=0, B=1$ or $A=1, B=0$, then there's an open connection between VDD and GND. This caused the gate to short circuit, and hence its burning out.
+>1. When $A=0, B=1$ or $A=1, B=0$, then there's an **open connection** between VDD and GND. This caused the gate to short circuit, and hence its burning out.
 >
->1. Yes, when $A=1, B=1$ then $C=0$, or $A=0, B=0$, then $C=1$. This is when the pullup and pulldown circuit aren't both ON at the same time.
-
+>1. **Yes**, when $A=1, B=1$ then $C=0$, or $A=0, B=0$, then $C=1$. This is when the pullup and pulldown circuit aren't both ON at the same time.
+>
+>1. **No.** When $A=1, B=0$, the circuit will burn out again, since the pullup and pulldown will be active, thus burning out the circuit. Also, the output is not defined when $A=0, B=1$, since neither the pullup or pulldown are active.
+>
+>1. **Yes**. It exhibits the behavior of an **inverter**, i.e: A and B are connected to the same $V_{IN}$.
 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
 
-
-
-\fi
-
-  
-
-
-
-\ifanswers
-
-\beginsol
-
-\fi
-
-  
-
-
-
-  
-
-\ifanswers
-
-\beginsol
-
-No. When $A=1, B=0$, the circuit will burn out again, since the pullup and pulldown will be active, thus burning out the circuit. Also, the output is not defined when $A=0, B=1$, since neither the pullup or pulldown are active.
-
-\fi
-
-  
-
-
-  
-
-\ifanswers
-
-\beginsol
-
-Yes. It exhibits the behavior of an inverter, i.e: A and B are connected to the same $V_{IN}$.
-
-\fi
-
-  
-  
-
-### Sum Of Products
+### Another Boolean Minimisation (Basic)
 
   
 
@@ -968,7 +927,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTMyNjE2NjUsMTU0MDEyNjA3OSwxMT
+eyJoaXN0b3J5IjpbLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMT
 I5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAz
 Mzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNC
 wtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAy
