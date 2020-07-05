@@ -223,7 +223,6 @@ A & B & H \\
 \hline
 \end{matrix}
 $$
-
 >2. We begin by finding the expression of the topmost two circuits:, and applying de Morgan's law:
 $$\overline{A + \overline{B}} = \overline{A}B$$ Then, we find the expression of the next pair, which is $AB$.  We combine this with the above using a NOR gate and reduce the result,
 $$\overline{\overline{A}B + AB} = \overline{B}$$Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combining this with the above expression, we reduce and apply de Morgan's law:
@@ -953,7 +952,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzODQ0MTY2LC0xODI1MDMzNzY0LDg0Mj
+eyJoaXN0b3J5IjpbODgyNjQ2MjMyLC0xODI1MDMzNzY0LDg0Mj
 U0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4
 ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMT
 E3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0
