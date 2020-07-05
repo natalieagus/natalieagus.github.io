@@ -59,7 +59,7 @@ $$
 
 ### Full Adder Timing Analysis
 
-Refer to the FA circuitry below, \includepic{0.3}{Q12}{}
+Refer to the FA circuitry below:
 <img src="https://www.dropbox.com/s/nqfbozivm2mdrvf/Q12.png?raw=1" width="50%" height = "50%">
 
 Answer the following questions:
@@ -147,6 +147,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MzIyNjkxMCwtOTAyNDQ5NjE2LDEwMj
-UzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTEyNjM0NjA2ODUsLTkwMjQ0OTYxNiwxMD
+I1MzY0NTg0XX0=
 -->
