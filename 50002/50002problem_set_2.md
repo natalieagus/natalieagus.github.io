@@ -44,12 +44,17 @@ Draw the truth table for the following CMOS circuitry:
 
 
 
-{::options parse_block_html="true" /} <details> <br/> <summary markdown="span">Show Answer</summary> <br/>
+{::options parse_block_html="true" /} 
+<details> 
+<summary markdown="span">Show Answer</summary> 
+
 $$ \begin{matrix}
 A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ 
 \end{matrix}
 $$
-</details>  <br/>  {::options parse_block_html="false" /}
+</details>  
+<br/>  
+{::options parse_block_html="false" /}
 
 
 
@@ -121,5 +126,5 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDE4NTEzNTAsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
