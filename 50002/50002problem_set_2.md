@@ -57,7 +57,7 @@ $$
 
 
 
-### Full Adder Timing Analysis
+### Full Adder Timing Analysis (Intermediate)
 
 Refer to the FA circuitry below:
 <img src="https://www.dropbox.com/s/nqfbozivm2mdrvf/Q12.png?raw=1" width="50%" height = "50%">
@@ -86,7 +86,7 @@ Answer the following questions:
 <br/>
 {::options parse_block_html="false" /}
 
-### Combinational Construction Rules
+### Combinational Construction Rules (Challenging)
 
 During lecture, we learned a first set of principles that define a combinational device. A combinational device is a circuit element that has:
 1.  One or more digital inputs
@@ -154,7 +154,7 @@ x & y & z \\
 <br/>
 {::options parse_block_html="false" /}
 
-### CMOS Circuit Boolean Expression
+### CMOS Circuit Boolean Expression (Basic)
 
 
 
@@ -178,7 +178,7 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2NjU5MDIyNSwtMTE3MzAxNzg1NywyMD
+eyJoaXN0b3J5IjpbLTU1MjA2MjE0MSwtMTE3MzAxNzg1NywyMD
 E3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0
 NTg0XX0=
 -->
