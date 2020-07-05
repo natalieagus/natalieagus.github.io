@@ -123,7 +123,7 @@ Answer the following questions,
 
 1.  Give a truth table for the **overall** acyclic circuit, i.e. a table that specifies the value of z for each of the possible combinations of input values on x and y.
 
-2.  Describe a general procedure by which a truth table can be computed for each output of an arbitrary acyclic circuit containing only combinational components. \textit{Hint : construct a functional specification to each circuit node}. 
+2.  Describe a general procedure by which a truth table can be computed for each output of an arbitrary acyclic circuit containing only combinational components. *Hint : construct a functional specification to each circuit node.* 
 
 3.  Specify a propagation delay (the upper bound required for each combinational device) for the circuit.
 
@@ -136,8 +136,14 @@ Answer the following questions,
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
-1. $
 
+1. The truth table is as follows:
+$$\begin{matrix}
+x & y & z \\ 
+\hline 
+0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
+2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
+3. 
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -172,6 +178,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MDI0MDEwMCwyMDE3NDk5MzYyLDIxMD
+eyJoaXN0b3J5IjpbLTgzMjg2MDgzMCwyMDE3NDk5MzYyLDIxMD
 MzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
