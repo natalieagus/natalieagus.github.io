@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Problem Set Week 1"
+title: "Problem Set Week 2"
 permalink: /50002/PS2/
 ---
 
@@ -147,6 +147,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTA3OTc4MjUsLTkwMjQ0OTYxNiwxMD
-I1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbMjA0MzIyNjkxMCwtOTAyNDQ5NjE2LDEwMj
+UzNjQ1ODRdfQ==
 -->
