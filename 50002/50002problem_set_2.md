@@ -211,41 +211,27 @@ A & B & H \\
 \hline
 \end{matrix}
 $$
-\caption{}
-
-\end{table}
 
   
 
 We begin by finding the expression of the topmost two circuits:, and applying de Morgan's law:
 
-\begin{align}
+$$\overline{A + \overline{B}} = \overline{A}B$$
 
-\overline{A + \overline{B}} = \overline{A}B
+Then, we find the expression of the next pair, which is $AB$. 
 
-\end{align}
+We combine this with the above using a NOR gate and reduce the result,
 
-  
+$$\overline{\overline{A}B + AB} = \overline{B}$$
 
-Then find the expression of the next pair, which is $AB$. We combine this with the above using a NOR gate and reduce the result,
-
-\begin{align}
-
-\overline{\overline{A}B + AB} = \overline{B}
-
-\end{align}
-
-  
-
+ 
 Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combine this with the above expression, we reduce and apply de Morgan's law:
 
-\begin{align}
+\begin{aligned}
+\overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B\\
+\overline{B}} &= \overline{A\overline{B}} = \overline{A} + B
+\end{aligned}
 
-\overline{(A+B)\overline{B}} = \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B
-
-\end{align}
-
-\fi
 
   
 
@@ -1056,8 +1042,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTczNjMyMDgsLTg0NzczNjUyMiwyNz
-IwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkz
-NjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ
-==
+eyJoaXN0b3J5IjpbMTA3Njc1MDM3MCwtODQ3NzM2NTIyLDI3Mj
+A3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2
+MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
