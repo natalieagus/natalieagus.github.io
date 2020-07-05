@@ -351,9 +351,9 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 *Note: We don't need to add inverter in the inputs. Convince yourself that this is true by tracing some input combinations to the output terminal.*
 <img src="
 https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
-
+>
 >2. From the pulldown diagram, it seems like the output is 0 if D is 1, or A and C is 1, or B and C is 1. Therefore, the output for the gate is the **inverse** of the expression of the pulldown circuitry, which is the output of the pullup circuitry above: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$.
-
+>
 >3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
 </details>
 <br/>
@@ -958,10 +958,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzkxMjg1ODEsMTU0MDEyNjA3OSwxMTI5MT
-IyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAzMzc2
-NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNCwtMT
-cyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0
-MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC
-05MDI0NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbNjk3MTAzODkxLDE1NDAxMjYwNzksMTEyOT
+EyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3
+NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLT
+E3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1
+NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMS
+wtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
