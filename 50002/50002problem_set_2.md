@@ -190,11 +190,9 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
   
   
 
-### Combinational Circuit (Basic)
+### Combinational Circuit's Functional Specs (Basic)
 
   
-  
-
 Consider the following circuit that implements the 2-input function $H(A,B)$:
 
 \includepic{0.5}{Q2new.png}
@@ -1077,7 +1075,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1Njg0ODU3MSwtNjAyODU0MjksLTExNz
-MwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2
-MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3Mz
+AxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYx
+NiwxMDI1MzY0NTg0XX0=
 -->
