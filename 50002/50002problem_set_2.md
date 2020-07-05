@@ -74,17 +74,18 @@ Answer the following questions:
 	*However, is the computation of $t_{pd}$​  and  $t_{cd}$ of an 8-bit ripple carry adder usage specific?* 
 
 
-\ifanswers \beginsol  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 The $t_{pd}$ is 1.8 and the $t_{cd}$  is 0.3 for a single FA. 
 
 For the 8-bit ripple-carry adder, we do not have an input  $C_0$ as it is grounded. However the $t_{cd}$​  is *still* 0.3 as the specification of contamination delay is **not** usage specific. 
 
 Its  $t_{pd}$  is 8 times bigger than a single FA,  $t_{pd}$= 14.4. However if the question is asking for the  $t_{cd}$  of  **this**  particular device with no  $C_0$ input terminal at all (and not generic 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  $C_0$. 
-
-\fi
-
-\newpage
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 ### Combinational Construction Rules
 
@@ -146,6 +147,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjQyMDY5MTMsLTkwMjQ0OTYxNiwxMD
+eyJoaXN0b3J5IjpbLTE0OTA3OTc4MjUsLTkwMjQ0OTYxNiwxMD
 I1MzY0NTg0XX0=
 -->
