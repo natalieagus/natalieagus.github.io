@@ -39,7 +39,7 @@ Compute the **overall** propagation delay and contamination delay for the circui
 
 **Draw** the truth table for the following CMOS circuitry:
 
-<img src="https://www.dropbox.com/s/crosfbfiqf1iueg/Q11.png?raw=1"  width="50%" height="50%">
+<img src="https://www.dropbox.com/s/crosfbfiqf1iueg/Q11.png?raw=1"  width="30%" height="30%">
 
 
 {::options parse_block_html="true" /} 
@@ -103,10 +103,13 @@ We also learned a second set of rules, that a set of interconnected elements ***
 In this problem, we ask you to think carefully about why these rules work - in particular, why *an acyclic circuit of combinational devices,* constructed according to the second principle, is itself a combinational device as defined by the first. 
 
 Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices. You may assume for the following that every input and output is a logical 0 or 1. 
+
 <img src="https://www.dropbox.com/s/divqzx422azog4h/Q1.png?raw=1"  width="70%" height = "70%">
 
 
-The propagation delay for each device is specified in nanoseconds. The functional specifications for each component are given as truth tables detailing output values for each combination of inputs, where $A _{a_0, a_1}$ denotes the output from device A, and $B _{a_0, a_1}$ denotes the output from device B:
+The propagation delay for each device is specified in nanoseconds. 
+
+The **functional specifications for each component** are given as truth tables detailing output values for each combination of inputs, where $A _{a_0, a_1}$ denotes the output from device A, and $B _{a_0, a_1}$ denotes the output from device B:
 
 $$\begin{matrix}
 a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\ 
@@ -119,17 +122,17 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
 \end{matrix}$$
 
 
-Answer the following questions,
+**Answer** the following questions,
 
 1.  Give a truth table for the **overall** acyclic circuit, i.e. a table that specifies the value of z for each of the possible combinations of input values on x and y.
 
-2.  Describe a general procedure by which a truth table can be computed for each output of an arbitrary acyclic circuit containing only combinational components. *Hint : construct a functional specification to each circuit node.* 
+2.  **Describe** a general procedure by which a truth table can be computed for each output of an arbitrary acyclic circuit containing only combinational components. *Hint : construct a functional specification to each circuit node.* 
 
-3.  Specify a propagation delay (the upper bound required for each combinational device) for the circuit.
+3.  **Specify a propagation delay** (the upper bound required for each combinational device) for the circuit.
 
-4.  Describe a general procedure by which a propagation delay can be computed for an arbitrary acyclic circuit containing only combinational components. \textit{Hint: add a timing specification to each circuit node}.
+4.  **Describe** a general procedure by which a propagation delay can be computed for an arbitrary acyclic circuit containing only combinational components. \textit{Hint: add a timing specification to each circuit node}.
 
-5.  Do your general procedures for computing functional specifications and propagation delays work if the restriction to acyclic circuits is relaxed (lifted)? Explain.
+5.  Do your general procedures for computing functional specifications and propagation delays work if the restriction to acyclic circuits is relaxed (lifted)? **Explain**.
 
 
 
@@ -175,6 +178,7 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMT
-AzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTk2NjU5MDIyNSwtMTE3MzAxNzg1NywyMD
+E3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0
+NTg0XX0=
 -->
