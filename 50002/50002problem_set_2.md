@@ -143,11 +143,11 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
 <summary markdown="span">Show Answer</summary>
 
 >1. The truth table is as follows:
->
 >$$\begin{matrix}
 x & y & z \\ 
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
+
 >2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
 >3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
 >4. One has to find the **longest** path from (any) input to (any) output to find the **total** propagation delay of the combinational circuit.
@@ -950,9 +950,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg4OTA3MjQzLC0xODI1MDMzNzY0LDg0Mj
-U0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4
-ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMT
-E3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0
-OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTE1NzI3ODUwNjMsLTE4MjUwMzM3NjQsOD
+QyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAz
+ODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC
+0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAy
+NDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
