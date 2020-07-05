@@ -78,11 +78,11 @@ Answer the following questions:
 <details>
 <summary markdown="span">Show Answer</summary>
 
-The $t_{pd}$ is 1.8 and the $t_{cd}$  is 0.3 for a single FA. 
+>1. The $t_{pd}$ is 1.8 and the $t_{cd}$  is 0.3 for a single FA. 
+>2. For the 8-bit ripple-carry adder, we do not have an input  $C_0$ as it is grounded,
+	>	 - However the $t_{cd}$​  is *still* 0.3 as the specification of contamination delay is **not** usage specific. 
 
-For the 8-bit ripple-carry adder, we do not have an input  $C_0$ as it is grounded. However the $t_{cd}$​  is *still* 0.3 as the specification of contamination delay is **not** usage specific. 
-
-Its  $t_{pd}$  is 8 times bigger than a single FA,  $t_{pd}$= 14.4. However if the question is asking for the  $t_{cd}$  of  **this**  particular device with no  $C_0$ input terminal at all (and not generic 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  $C_0$. 
+	> - Its  $t_{pd}$  is 8 times bigger than a single FA,  $t_{pd}$= 14.4. However if the question is asking for the  $t_{cd}$  of  **this**  particular device with no  $C_0$ input terminal at all (and not generic 8-bit ripple carry adder), then the answer is  **0.6ns**  since there's no  $C_0$. 
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -147,6 +147,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjM0NjA2ODUsLTkwMjQ0OTYxNiwxMD
-I1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbMTY5MzQ0OTE4NiwtOTAyNDQ5NjE2LDEwMj
+UzNjQ1ODRdfQ==
 -->
