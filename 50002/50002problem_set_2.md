@@ -330,10 +330,12 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 1. What is the correct schematic for the **pullup** circuitry?
 
 2. Assuming the pullup circuitry is designed correctly, what is the **logic function** (boolean function) implemented this gate?
-3. Assuming the pullup circuitry is designed correctly, when the output of the CMOS gate above is a logic "0", in the steady state what would we expect the voltage of the output terminal to be? What would be the voltage if the output were a logic "1"?
-\ifanswers
+3. Assuming the pullup circuitry is designed correctly, when the output of the CMOS gate above is a **logic "0"** in the steady state, what would we expect the ***voltage* value** of the output terminal to approximately be? What would be the approximate voltage output value if the output were a **logic "1"?**
 
-\beginsol
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 The output for the pullup circuitry is the inversion of the output of the pulldown circuitry, $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
 
@@ -984,7 +986,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NjMzNzgxNyw4NDI1NDM2MzAsLTE4Mz
+eyJoaXN0b3J5IjpbMTA5MzY3MDg5Nyw4NDI1NDM2MzAsLTE4Mz
 k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
 NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
 AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
