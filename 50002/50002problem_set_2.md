@@ -196,41 +196,21 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
   
 Consider the following circuit that implements the 2-input function $H(A,B)$:
 
-\includepic{0.5}{Q2new.png}
+<img src="  https://www.dropbox.com/s/2vy52yuzs24xfc4/Q2new.png?raw=1"  width="50%" height = "50%">
 
-  
-  
+1. Give the truth table for $H$.
+2. Give a sum-of-products expression that corresponds to your truth table.
 
-1. Give the truth table for $H$.Give a sum-of-products expression that corresponds to your truth table.
-
-  
-
-\ifanswers
-
-\beginsol
-
-\begin{table}[h]
-
-\centering
-
-\begin{tabular}{c c | c}
-
-A & B & H \\\\
-
+$$\begin{matrix}
+A & B & H \\
 \hline
-
 0 & 0 & 1\\
-
-0 & 1 & 1 \\\\
-
-1 & 0 & 0 \\\\
-
+0 & 1 & 1 \\
+1 & 0 & 0 \\
 1 & 1 & 1\\
-
 \hline
-
-\end{tabular}
-
+\end{matrix}
+$$
 \caption{}
 
 \end{table}
@@ -1076,7 +1056,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMj
-g1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcw
-MSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTE5MTczNjMyMDgsLTg0NzczNjUyMiwyNz
+IwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkz
+NjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ
+==
 -->
