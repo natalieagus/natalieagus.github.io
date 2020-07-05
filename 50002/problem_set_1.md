@@ -16,7 +16,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 # Basics of Information Theory
 You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_of_information.html" target="_blank">here</a> if you need to revise. 
 
-### Warm Up
+### Warm Up (Basic)
 -------------
 
 Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. **What is the value of [N]?**
@@ -35,7 +35,7 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 {::options parse_block_html="false" /}
 
 
-### Keyboard Presses -- Basic
+### Keyboard Presses (Basic)
 -------------
 **(a).** Bob used an enhanced keyboard that was made up of 101 keys. He told Alice that he pressed one of the letter keys. **How much information did Bob give to Alice?** Hint: There are 26 letters in an alphabet.
 
@@ -66,7 +66,7 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
 {::options parse_block_html="false" /}
 
 
-###  ISTD Prize -- Intermediate
+###  ISTD Prize (Intermediate)
 ----
   
   
@@ -149,7 +149,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 {::options parse_block_html="false" /}
 
 
-### Deck of Cards -- Intermediate
+### Deck of Cards (Intermediate)
 ---
  
 **(a)** Someone picks a name out of a hat known to contain the names of 5 women and 3 men, and tells you a man has been selected. **How much information have they given you about the selection?**
@@ -213,7 +213,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
   
   
 
-### Measuring Information -- Basic
+### Measuring Information (Basic)
 ---
   
 
@@ -245,7 +245,7 @@ $$I = \log_2 \frac{1}{p(A)}$$
   
   
 
-### Modular arithmetic and 2's complement representation -- Basic
+### Modular arithmetic and 2's complement representation (Basic)
 ------
 
 Most computers choose a particular word length (measured in bits) for representing integers and provide hardware that performs various arithmetic operations on word-size operands. The current generation of processors have word lengths of 32 bits; restricting the size of the operands and the result to a single word means that the arithmetic operations are actually performing arithmetic modulo $2^{32}$.
@@ -342,7 +342,7 @@ Almost all computers use a 2's complement representation for integers since the 
 {::options parse_block_html="false" /}
 
 
-### Dice Throwing Game -- Intermediate
+### Dice Throwing Game (Intermediate)
 ---
   
 
@@ -419,7 +419,7 @@ A group of five friends are playing a game that requires them to generate random
   
   
 
-### Another Base Conversion -- Basic
+### Another Base Conversion (Basic)
 ---
   
 
@@ -449,7 +449,7 @@ Consider an 8-bit number systems. **Do the following base conversion**, and indi
   
   
 
-### Representing -32 on different number systems -- Basic
+### Representing -32 on different number systems (Basic)
 ---
   
 
@@ -659,11 +659,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3MDkzNDc0OCwyMDI0MDcyMDcyLDE1Mz
-gwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0NjUxOCwxODI0NTQ0
-NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMj
-g2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3
-MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLT
-IwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1
-Nl19
+eyJoaXN0b3J5IjpbLTIwMjE4MjIyNDMsLTI3MDkzNDc0OCwyMD
+I0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0
+NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLT
+IwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQx
+MDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC
+03NTE1ODcwNzYsLTIwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUy
+MTM3XX0=
 -->
