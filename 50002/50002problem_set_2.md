@@ -459,7 +459,7 @@ A certain function F has the following truth table:
 
 Answer the following questions based on the truth table:
 
-1. Write a sum-of-products expression for F
+1. Write a sum-of-products expression for F.
 
 3. Write a minimal sum-of-products expression for F. Show a combinational circuit that implements F using only INV and NAND gates.
 4. Implement F using one 4-input MUX and inverter.
@@ -595,7 +595,7 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDMwMTIzNTksLTU2Njk5OTcxOSw0Nz
+eyJoaXN0b3J5IjpbLTEyNTE3NjkxNzEsLTU2Njk5OTcxOSw0Nz
 UxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1
 LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMT
 U0MDEyNjA3OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5
