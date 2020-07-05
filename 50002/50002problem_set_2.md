@@ -129,7 +129,7 @@ Answer the following questions,
 
 4.  Describe a general procedure by which a propagation delay can be computed for an arbitrary acyclic circuit containing only combinational components. \textit{Hint: add a timing specification to each circuit node}.
 
-5.  Do your general procedures for computing functional specifications and propagation delays work if the restriction to acyclic circuits is relaxed? Explain.
+5.  Do your general procedures for computing functional specifications and propagation delays work if the restriction to acyclic circuits is relaxed (lifted)? Explain.
 
 
 
@@ -143,30 +143,12 @@ x & y & z \\
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
 2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
-3. 
+3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
+4. One has to find the **longest** path from (any) input to (any) output to find the **total** propagation delay of the combinational circuit.
+5. No, the signal can **propagate** **back** in the circuit so using the *longest* path to calculate  $t_{pd}$  is not applicable anymore. 
 </details>
 <br/>
 {::options parse_block_html="false" /}
-
-
-\ifanswers \beginsol
-
-
-
-
-\ifanswers \beginsol We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost one by one. \fi
-
-
-
-\ifanswers \beginsol The total propagation delay is  3 + 2 = 53+2=5.
-
-\fi
-
-\ifanswers \beginsol One has to find the longest path from input to output to find the total propagation delay of the combinational circuit. \fi
-
-\ifanswers \beginsol No, the signal can propagate back in the circuit so using the longest path to calculate  t_{pd}tpd​  is not accurate. \fi
-
-\newpage
 
 ### CMOS Circuit Boolean Expression
 
@@ -178,6 +160,6 @@ x & y & z \\
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMjg2MDgzMCwyMDE3NDk5MzYyLDIxMD
-MzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTExODYwMDc2NDYsMjAxNzQ5OTM2MiwyMT
+AzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
