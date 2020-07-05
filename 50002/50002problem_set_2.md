@@ -61,26 +61,23 @@ $$
 
 ### Universal Gates (Basic)
 
-  
-
 Use only NAND gates to redraw the circuit below. Use as few NAND gates as possible.
 
   
-<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  width="50%" height = "50%">
+<img src="https://www.dropbox.com/s/ri0c3l74ormsqwa/Q7.png?raw=1"  width="50%" height = "50%">
 
 
-<img src="https://www.dropbox.com/s/kuplff553g8jdff/vtc.png?raw=1"  width="50%" height = "50%">
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+> <img src="https://www.dropbox.com/s/ekfful2ybo9n5je/Q8.png?raw=1"  width="50%" height = "50%">
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 
-  
 
-\ifanswers
-
-\beginsol
-
-\includepic{0.5}{Q8}
-
-\fi
 
 
 
@@ -516,149 +513,13 @@ CD  & 0 & 0& 1 & 1\\
 <br/>
 {::options parse_block_html="false" /}
 
-### Gates and Boolean Equations
+### The FPGA (Challenging)
 
   
 
-For the questions below, refer to the figure:
+The Xilinx 4000 series field-programmable gate array (FPGA) can be programmed to emulate a circuit made up of many thousands of gates; for example, the *XC4025E* can emulate circuits with up to **25,000 gates**. 
 
-  
-
-\includepic{0.5}{Q4new.png}{}
-
-  
-  
-  
-
-1. Show the Boolean equation for the function F described by the circuit on the left.
-
-\ifanswers
-
-\beginsol
-
-$\overline{A}B + A\overline{C}D + A \overline{B}C$
-
-\fi
-
-  
-
-1. Consider the circuit shown on the right. Each of the control inputs, $C_0$ through $C_3$, must be tied to a constant, either 0 or 1. What are the values of $C_0$ through $C_3$ that would cause F to be the \textit{exclusive} OR (XOR) of A and B?
-
-  
-
-\ifanswers
-
-\beginsol
-
-The truth table for A XOR B is: $A=0, B=0, F =0$, $A=0, B=1, F=1$, $A=1, B=0, F=1$, $A=1, B=1, F=0$. In class, we know that XOR is equivalent to $A\overline{B} + \overline{A}B$. Since all the gates in the first column of the circuit on the right is an AND, setting any $C_i$ coefficient to 0 'disables' the gate, i.e: produces a zero. Hence, we can set $C_1$=1 and $C_2=1$ to follow the aforementioned boolean expression for XOR gate, and set $C_0$ and $C_3$ to zero to disable the rest if the AND gates.
-
-  
-
-\fi
-
-  
-
-1. Can any arbitrary Boolean function of A and B be realized through appropriate wiring of the control signals C0 through C3?
-
-\ifanswers
-
-\beginsol
-
-Yes, the circuit on the right represents the sum of products, which can realise any boolean function, but it is not necessarily the smallest or the most efficient to build.
-
-\fi
-
-  
-
-1. Give a sum-of-products expression for each of the following circuits:
-
-\includepic{0.3}{Q5new.png}{}
-
-\ifanswers
-
-\beginsol
-
-\begin{enumerate}
-
-1. $F = \overline{\overline{\overline{A} {B}} \cdot \overline{C}B} = \overline{A}B + \overline{\overline{C}B}=\overline{A}B + \overline{B} + C$
-
-1. $F = \overline{(A+\overline{C})(B+\overline{C})} = \overline{(A+\overline{C})} + \overline{(B+\overline{C})} = \overline{A}C + \overline{B}C$
-
-1. $F = \overline{A+\overline{C}} + \overline{\overline{B}+C} = \overline{A}C + B\overline{C} $
-
-1. $F = \overline{A}B+A\overline{C}D + A\overline{B}C$
-
-1. $F = \overline{A}\text{ }\overline{D} + BC + B\overline{D}$
-
-  
-  
-
-\fi
-
-  
-
-\item Give a canonical sum-of-products expression for the Boolean function described by each truth table shown in Fig. 10.
-
-  
-
-\includepic{0.3}{Q6.png}
-
-\ifanswers
-
-\beginsol
-
-The canonical sum-of-products expression only take into account the rows where F is 1. So for the table on the left,
-
-\begin{align}
-
-\overline{A}\text{ } \overline{B} \text{ }\overline{C} + A \overline{B} \text{ }\overline{C} + A \overline{B} C + ABC
-
-\end{align}
-
-For the table on the right,
-
-\begin{align}
-
-\overline{A} B C + A \overline{B} C + AB\overline{C} + ABC
-
-\end{align}
-
-\fi
-
-  
-
-\item We've seen that there are a total of sixteen 2-input Boolean functions: AND, OR, XOR, NOR, etc. How many 5-input Boolean functions are there?
-
-  
-
-\ifanswers
-
-\beginsol
-
-There will be $2^{2^5}$ 5-input boolean functions.
-
-\fi
-
-  
-  
-
-\end{enumerate}
-
-\newpage
-
-
-
-
-  
-  
-
-\newpage
-
-### Challenge -- FPGA
-
-  
-
-The Xilinx 4000 series field-programmable gate array (FPGA) can be programmed to emulate a circuit made up of many thousands of gates; for example, the XC4025E can emulate circuits with up to 25,000 gates. The heart of the FPGA architecture is a configurable logic block (CLB) which has a combinational logic subsection with the following circuit diagram:
+The heart of the FPGA architecture is a configurable logic block (CLB) which has a combinational logic subsection with the following circuit diagram:
 
 \includepic{0.5}{Q5}
 
@@ -878,7 +739,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNjIzNzY1OCwzNTMwMzIzOTYsMjk0OD
+eyJoaXN0b3J5IjpbLTIyNjgzODY2NSwzNTMwMzIzOTYsMjk0OD
 UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
 MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
 EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
