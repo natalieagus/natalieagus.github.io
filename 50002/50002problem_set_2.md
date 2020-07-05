@@ -253,17 +253,10 @@ A & B & C & OUT \\
 \hline
 \end{matrix}$$
 
-\caption{}
-
-\end{table}
 
   
 
 Choose all the correct Boolean expression of this circuit:
-
-  
-  
-
 1. $OUT = \bar{C} + \bar{B}$
 
 1. $OUT = \bar{A} \cdot \bar{B} + A \cdot \bar{B} + B \cdot \bar{C}$
@@ -272,20 +265,19 @@ Choose all the correct Boolean expression of this circuit:
 
 1. $OUT = \bar{A} \cdot B + A \cdot B \cdot \bar{C} + \bar{B}$
 
+  {::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+**(a), (b), and (c)** are all **equivalent** and represents the truth table. 
+*Hint: express the table in terms of sum of products first and then simplify the expression.*
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
   
-  
 
-\ifanswers
-
-\beginsol
-
-(a), (b), and (c) are all equivalent and represents the truth table. \textit{Hint: express the table in terms of sum of products first and simplify the expression.}
-
-\fi
-
-  
-
-### Warm up -- Reading ROM
+### Reading ROM (Basic)
 
   
 
@@ -1004,8 +996,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3NDU1MTk1OSwtMTgzOTU2NTM0MiwxOD
-A0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcy
-ODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLD
-IxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTEyNDg5MDA4NzUsLTE4Mzk1NjUzNDIsMT
+gwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3
+MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2Mi
+wyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
