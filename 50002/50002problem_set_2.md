@@ -545,26 +545,29 @@ For each configuration indicate **how**:
 - Each the **control signals** (MA, MB, MC, MD, and ME) should be programmed**? 
 - Which of the **input lines** (C1-C4, F1-F4, and G1-G4) are used?
 - And what **output lines** (X, Y, or Z) the result(s) appear on?
-- 
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+> 1. Let X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, C2, C3). The necessary control signals are:
+	> 1. MA = 1
+	> 1. MB = 1
+	> 1. MC = 0 (select C1)
+	> 1. MD = 1 (select C2)
+	> 1. ME = 2 (select C3)
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 \ifanswers
 
 \beginsol
 
-Let X = F(F1, F2, F3, F4), Z = G(G1, G2, G3, G4), Y = H(C1, C2, C3). The necessary control signals are:
 
-  
 
-\begin{enumerate}
-
-1. MA = 1
-
-1. MB = 1
-
-1. MC = 0 (select C1)
-
-1. MD = 1 (select C2)
-
-1. ME = 2 (select C3)
 
   
   
@@ -745,11 +748,11 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODIwMzM1MTM1LDM1MzAzMjM5NiwyOTQ4NT
-E4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5Njcx
-LDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MT
-AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
-MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
-wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
-OTkzNjJdfQ==
+eyJoaXN0b3J5IjpbLTI4NTcxNTkyNywzNTMwMzIzOTYsMjk0OD
+UxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3
+MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxND
+EwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2
+NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1Mj
+IsMjcyMDcyODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3
+NDk5MzYyXX0=
 -->
