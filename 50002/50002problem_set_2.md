@@ -337,42 +337,14 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 <details>
 <summary markdown="span">Show Answer</summary>
 
-The output for the pullup circuitry is the inversion of the output of the pulldown circuitry, $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
-
-
+1. The output for the pullup circuitry is the inversion of the output of the pulldown circuitry, $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
+*Note: we don't need to add inverter in the inputs anymore, convince yourself that this is true.*
 <img src="
 https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
 
-  
+2. The output for the gate is the output of the pullup circuitry above: $\overline{(A+B) C + D}$.
 
-\includepic{0.7}{A1.png}
-
-\fi
-
-  
-
-
-  
-
-\ifanswers
-
-\beginsol
-
-The output for the gate is the output of the pullup circuitry above: $\overline{(A+B) C + D}$.
-
-\fi
-
-  
-
-
-
-  
-
-\ifanswers
-
-\beginsol
-
-The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
+3. The voltage of the output terminal at "0" steady state is 0 (GND). The voltage of the output terminal at "1" steady state is VDD's voltage.
 
 \fi
 
@@ -990,9 +962,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4ODE3NzQwNSw4NDI1NDM2MzAsLTE4Mz
-k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
-NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
-AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
-NDU4NF19
+eyJoaXN0b3J5IjpbLTEwMDE5NjQwODMsODQyNTQzNjMwLC0xOD
+M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
+NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
+IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
+NjQ1ODRdfQ==
 -->
