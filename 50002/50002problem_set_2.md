@@ -396,22 +396,22 @@ Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 
 ### CMOS Gate Design (Challenging)
 
-  
-
 Anna Logue, a circuit designer who missed several early 6.004 lectures, is struggling to design her first CMOS logic gate. She has implemented the following circuit:
 
-\includepic{0.6}{Q2.png}
+<img src="https://www.dropbox.com/s/4a5ipod927ton7h/Q2.png?raw=1"  width="50%" height = "50%">
 
-Anna has fabricated 100 test chips containing this circuit, and has a simple testing circuit which allows her to try out her proposed gate statically for various combinations of the A and B inputs. She has burned out 97 of her chips, and needs your help before destroying the remaining three. She is certain she is applying only valid input voltages, and expects to find a valid output at terminal C. Anna also keeps noticing a very faint smell of smoke.
 
-  
-  
-  
+Anna has fabricated 100 test chips containing this circuit, and has a simple testing circuit which allows her to try out her proposed gate statically for various combinations of the A and B inputs. 
 
-1. What is burning out Anna's test chips? Give a specific scenario, including input values together with a description of the failure scenario. For what input combinations will this failure occur?
+She has burned out 97 of her chips, and needs your help before destroying the remaining three. She is certain she is applying only valid input voltages, and expects to find a valid output at terminal C. Anna also keeps noticing a very faint *smell of smoke.*
 
-  
+ 
+1. **What is burning out Anna's test chips?** Give a specific scenario, including input values together with a description of the failure scenario. For what input combinations will this failure occur?
 
+3. Are there input combinations for which Anna can expect a valid output at C? **Explain**.
+4. One of Anna's test chips has failed by **burning out the pullup** connected to A as well as the pulldown connected to B. Each of the burned out FETs appears as an open circuit, but the rest of the circuit remains functional. Can the resulting circuit be used as a combinational device whose two inputs are A and B? Explain its behavior for each combination of valid inputs.  
+5. In order to salvage her remaining two chips, Anna connects the A and B inputs of each and tries to use it as a single-input gate. Can the result be used as a single-input combinational device? Explain.
+6. 
 \ifanswers
 
 \beginsol
@@ -422,7 +422,7 @@ When $A=0, B=1$ or $A=1, B=0$, then there's an open connection between VDD and G
 
   
 
-1. Are there input combinations for which Anna can expect a valid output at C? Explain.
+
 
 \ifanswers
 
@@ -434,7 +434,7 @@ Yes, when $A=1, B=1$ then $C=0$, or $A=0, B=0$, then $C=1$. This is when the pul
 
   
 
-1. One of Anna's test chips has failed by burning out the pullup connected to A as well as the pulldown connected to B. Each of the burned out FETs appears as an open circuit, but the rest of the circuit remains functional. Can the resulting circuit be used as a combinational device whose two inputs are A and B? Explain its behavior for each combination of valid inputs.
+
 
   
 
@@ -448,7 +448,6 @@ No. When $A=1, B=0$, the circuit will burn out again, since the pullup and pulld
 
   
 
-1. In order to salvage her remaining two chips, Anna connects the A and B inputs of each and tries to use it as a single-input gate. Can the result be used as a single-input combinational device? Explain.
 
   
 
@@ -960,10 +959,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4OTA5MzIwOSwxNTQwMTI2MDc5LDExMj
-kxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMz
-NzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC
-0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4
-NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MD
-EsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbNjc2OTUwOTMzLDE1NDAxMjYwNzksMTEyOT
+EyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3
+NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLT
+E3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1
+NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMS
+wtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
