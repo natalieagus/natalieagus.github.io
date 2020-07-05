@@ -227,10 +227,7 @@ $$\overline{\overline{A}B + AB} = \overline{B}$$
  
 Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combine this with the above expression, we reduce and apply de Morgan's law:
 
-$\begin{aligned}
-\overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \\
-\overline{B}} &= \overline{A\overline{B}} = \overline{A} + B
-\end{aligned}$
+\begin{aligned} (a+b)^2 &= (a+b)(a+b) \\ &= a^2 + ab + ba + b^2 \\ &= a^2 + 2ab + b^2 \end{aligned}
 
 
   
@@ -1042,8 +1039,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3OTQ4ODgsLTE3MjAzODg4ODIsLTg0Nz
-czNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3
-LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMj
-UzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTExOTgwODczNTEsLTE3MjAzODg4ODIsLT
+g0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3
+ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LD
+EwMjUzNjQ1ODRdfQ==
 -->
