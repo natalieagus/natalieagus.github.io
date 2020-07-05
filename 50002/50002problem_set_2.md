@@ -88,19 +88,21 @@ Answer the following questions:
 
 ### Combinational Construction Rules
 
-During lecture, we learned that a combinational device is a circuit element that has:
+During lecture, we learned a first set of principles that define a combinational device. A combinational device is a circuit element that has:
 1.  One or more digital inputs
 2.  One or more digital outputs
 3.  A **functional** specification that details the value of each output for every possible combination of valid input values
 4.  A **timing** specification consisting (at minimum) of an upper bound  $t_{pd}$  on the required time for the device to compute the specified output values from an arbitrary set of stable, valid input values.
 
-We also learned that a set of interconnected elements ***is*** a combinational device if:
+We also learned a second set of rules, that a set of interconnected elements ***is*** a combinational device if:
 1.  **Each** circuit element is combinational
 2.  Every input is connected to exactly **one** output or to some vast supply of 0's and 1's. 
 	> *Note: read this carefully. This does NOT mean that a combinational device must just have one output and one input. **This means that *for each input of a combinational device*, it is connected to *exactly ONE output* of the "previous" device.*** 
 3.  The circuit contains **no** directed cycles
 
-In this problem, we ask you to think carefully about why these rules work - in particular, why an acyclic circuit of combinational devices, constructed according to the second principle, is itself a combinational device as defined by the first. You may assume for the following that every input and output is a logical 0 or 1. Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices:
+In this problem, we ask you to think carefully about why these rules work - in particular, why *an acyclic circuit of combinational devices,* constructed according to the second principle, is itself a combinational device as defined by the first. 
+
+Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices. You may assume for the following that every input and output is a logical 0 or 1. 
 
 \includepic{0.5}{Q1.png}
 
@@ -145,6 +147,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwMDg4NzI2MywyMDE3NDk5MzYyLDIxMD
-MzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbODI4ODQ0NzI1LDIwMTc0OTkzNjIsMjEwMz
+MzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
