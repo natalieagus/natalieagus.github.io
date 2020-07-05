@@ -279,11 +279,13 @@ Choose all the correct Boolean expression of this circuit:
 
 ### Reading ROM (Basic)
 
-  
+  https://www.dropbox.com/s/7kymm3qcwldfd9q/rom.png?dl=0
 
 \includepic{0.4}{rom}{}
 
 What is the the sum-of-products for the following ROM (Read Only Memory)?
+
+<img src="  https://www.dropbox.com/s/7kymm3qcwldfd9q/rom.png?raw=1"  width="50%" height = "50%">
 
   
 
@@ -996,8 +998,8 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDg5MDA4NzUsLTE4Mzk1NjUzNDIsMT
-gwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3
-MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2Mi
-wyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTcyMjAwMzIyNSwtMTgzOTU2NTM0MiwxOD
+A0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcy
+ODA0LC02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLD
+IxMDMzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
