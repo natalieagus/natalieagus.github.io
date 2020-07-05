@@ -325,21 +325,17 @@ Take a look at the figure above. **Which** of the above ROM represents the funct
 
 The following diagram shows a schematic for the pulldown circuitry for a particular CMOS gate:
 
-  
+<img src="  https://www.dropbox.com/s/40jd3vijlsjq12v/Q1%202.png?raw=1"  width="50%" height = "50%">
 
-\includepic{0.5}{Q1.png}
+1. What is the correct schematic for the **pullup** circuitry?
 
-  
-  
-  
-
-1. What is the correct schematic for the pullup circuitry?
-
+2. Assuming the pullup circuitry is designed correctly, what is the **logic function** (boolean function) implemented this gate?
+3. Assuming the pullup circuitry is designed correctly, when the output of the CMOS gate above is a logic "0", in the steady state what would we expect the voltage of the output terminal to be? What would be the voltage if the output were a logic "1"?
 \ifanswers
 
 \beginsol
 
-The output for the pullup circuitry is the inversion of the output of the pulldown circuitry, $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. The plot is located at the first diagram on the next page.
+The output for the pullup circuitry is the inversion of the output of the pulldown circuitry, $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$. 
 
   
 
@@ -349,7 +345,6 @@ The output for the pullup circuitry is the inversion of the output of the pulldo
 
   
 
-1. Assuming the pullup circuitry is designed correctly, what is the logic function implemented this gate?
 
   
 
@@ -363,7 +358,7 @@ The output for the gate is the output of the pullup circuitry above: $\overline{
 
   
 
-1. Assuming the pullup circuitry is designed correctly, when the output of the CMOS gate above is a logic "0", in the steady state what would we expect the voltage of the output terminal to be? What would be the voltage if the output were a logic "1"?
+
 
   
 
@@ -989,8 +984,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MD
-Q1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4
-MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMj
-EwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbMjA3NjMzNzgxNyw4NDI1NDM2MzAsLTE4Mz
+k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
+NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
+AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
+NDU4NF19
 -->
