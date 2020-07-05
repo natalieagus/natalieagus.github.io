@@ -149,6 +149,7 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
 x & y & z \\ 
 \hline 
 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{matrix}$$
+
 >2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
 >
 >3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
@@ -179,6 +180,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/logic_sy
 >1.  The truth table of the CMOS circuit contains 16 lines since theres $2^4$ possible input combinations and 1 possible output bit:
 $$\begin{matrix} 
 A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 & 1 \\ 1 & 0 & 1 & 0 & 0 \\ 1 & 0 & 1 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \\ 1 & 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 & 0 \\ \hline \end{matrix}$$
+
 >2. $F = \overline{A(B+C)D}$
 
 </details>
@@ -197,8 +199,9 @@ Consider the following circuit that implements the 2-input function $H(A,B)$:
 <img src="  https://www.dropbox.com/s/2vy52yuzs24xfc4/Q2new.png?raw=1"  width="50%" height = "50%">
 
 1. Write down the **truth table** for $H$.
-2. Give a **sum-of-products expression** that corresponds to your truth table.
-3. Using the information below, **what are the $t_{cd}$ and $t_{pd}$ of the circuit?**
+
+3. Give a **sum-of-products expression** that corresponds to your truth table.
+4. Using the information below, **what are the $t_{cd}$ and $t_{pd}$ of the circuit?**
 	- $t_{cd}$ and $t_{pd}$ of NR2:  5, 30
 	- $t_{cd}$ and $t_{pd}$ of ND2: 5, 30
 	- $t_{cd}$ and $t_{pd}$ of AN2:  6, 50
@@ -219,6 +222,7 @@ A & B & H \\
 \hline
 \end{matrix}
 $$
+
 >2. We begin by finding the expression of the topmost two circuits:, and applying de Morgan's law:
 $$\overline{A + \overline{B}} = \overline{A}B$$ Then, we find the expression of the next pair, which is $AB$.  We combine this with the above using a NOR gate and reduce the result,
 $$\overline{\overline{A}B + AB} = \overline{B}$$Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combining this with the above expression, we reduce and apply de Morgan's law:
@@ -948,9 +952,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNDM3MzIxNCw4NDI1NDM2MzAsLTE4Mz
-k1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4ODg4MiwtODQ3NzM2
-NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLTExNzMwMTc4NTcsMj
-AxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0NDk2MTYsMTAyNTM2
-NDU4NF19
+eyJoaXN0b3J5IjpbLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xOD
+M5NTY1MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0Nzcz
+NjUyMiwyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LD
+IwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUz
+NjQ1ODRdfQ==
 -->
