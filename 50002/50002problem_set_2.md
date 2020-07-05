@@ -412,11 +412,22 @@ She has burned out 97 of her chips, and needs your help before destroying the re
 4. One of Anna's test chips has failed by **burning out the pullup** connected to A as well as the pulldown connected to B. Each of the burned out FETs appears as an open circuit, but the rest of the circuit remains functional. *Can the resulting circuit be used as a combinational device whose two inputs are A and B?* **Explain** its behavior for each combination of valid inputs.  
 5. In order to salvage her remaining two chips, Anna *connects the A and B inputs of each and tries to use it as a single-input gate.* Can the result be used as a single-input combinational device? **Explain**.
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-When $A=0, B=1$ or $A=1, B=0$, then there's an open connection between VDD and GND. This caused the gate to short circuit, and hence its burning out.
+>1. When $A=0, B=1$ or $A=1, B=0$, then there's an open connection between VDD and GND. This caused the gate to short circuit, and hence its burning out.
+>
+>1. Yes, when $A=1, B=1$ then $C=0$, or $A=0, B=0$, then $C=1$. This is when the pullup and pulldown circuit aren't both ON at the same time.
+
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+
+
 
 \fi
 
@@ -427,8 +438,6 @@ When $A=0, B=1$ or $A=1, B=0$, then there's an open connection between VDD and G
 \ifanswers
 
 \beginsol
-
-Yes, when $A=1, B=1$ then $C=0$, or $A=0, B=0$, then $C=1$. This is when the pullup and pulldown circuit aren't both ON at the same time.
 
 \fi
 
@@ -959,7 +968,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzIxNzk5NjksMTU0MDEyNjA3OSwxMT
+eyJoaXN0b3J5IjpbLTExMTMyNjE2NjUsMTU0MDEyNjA3OSwxMT
 I5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAz
 Mzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNC
 wtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAy
