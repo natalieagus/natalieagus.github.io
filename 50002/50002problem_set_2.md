@@ -150,7 +150,9 @@ x & y & z \\
 >2. We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost, one by one.
 >
 >3. The total propagation delay is the sum of each device's (A and B) propagation delay: 3 + 2 = 5.
+>
 >4. One has to find the **longest** path from (any) input to (any) output to find the **total** propagation delay of the combinational circuit.
+>
 >5. No, the signal can **propagate** **back** in the circuit so using the *longest* path to calculate  $t_{pd}$  is not applicable anymore. 
 </details>
 <br/>
@@ -221,9 +223,9 @@ $$
 >2. We begin by finding the expression of the topmost two circuits and applying de Morgan's law:
 >- $$\overline{A + \overline{B}} = \overline{A}B$$ 
 >- Then, we find the expression of the next pair, which is $AB$.  We combine this with the above using a NOR gate and reduce the result,
->$$\overline{\overline{A}B + AB} = \overline{B}$$
+	>$$\overline{\overline{A}B + AB} = \overline{B}$$
 >- Finally, we find the expression for the bottom two pairs, which is simply $A+B$. Combining this with the above expression, we reduce and apply de Morgan's law:
-> $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B\\
+	> $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B\\
 \end{aligned}$$
 >3. The contamination delay is the path  (from any input to any output)  that results in the shortest time: NR2 + NR2 + ND2 = 5 + 5 + 5 = 15. 
 >The propagation delay is the path (from any input to any output) that results in the longest time: AN2 + NR2 + ND2 = 50 + 30 + 30 = 110.
@@ -949,9 +951,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0xOD
-I1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAw
-NTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC
-02MDI4NTQyOSwtMTE3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMz
-Mzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
+eyJoaXN0b3J5IjpbLTk5NjA0NTIzMiwtOTc0NzYzNDE4LDE0MT
+AwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1
+MzQyLDE4MDQ1MDA1MDQsLTE3MjAzODg4ODIsLTg0NzczNjUyMi
+wyNzIwNzI4MDQsLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMTc0
+OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1OD
+RdfQ==
 -->
