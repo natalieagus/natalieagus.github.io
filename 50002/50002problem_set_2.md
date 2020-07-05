@@ -184,8 +184,10 @@ A & B & C & D & F \\ \hline 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 1 \\ 0 & 0 & 1 
 <br/>
 {::options parse_block_html="false" /}
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMjg1NDI5LC0xMTczMDE3ODU3LDIwMT
-c0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1
-ODRdfQ==
+eyJoaXN0b3J5IjpbLTEzOTQyNTE0MTcsLTYwMjg1NDI5LC0xMT
+czMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMSwtOTAyNDQ5
+NjE2LDEwMjUzNjQ1ODRdfQ==
 -->
