@@ -409,9 +409,9 @@ She has burned out 97 of her chips, and needs your help before destroying the re
 1. **What is burning out Anna's test chips?** Give a specific scenario, including input values together with a description of the failure scenario. For what input combinations will this failure occur?
 
 3. Are there input combinations for which Anna can expect a valid output at C? **Explain**.
-4. One of Anna's test chips has failed by **burning out the pullup** connected to A as well as the pulldown connected to B. Each of the burned out FETs appears as an open circuit, but the rest of the circuit remains functional. Can the resulting circuit be used as a combinational device whose two inputs are A and B? Explain its behavior for each combination of valid inputs.  
-5. In order to salvage her remaining two chips, Anna connects the A and B inputs of each and tries to use it as a single-input gate. Can the result be used as a single-input combinational device? Explain.
-6. 
+4. One of Anna's test chips has failed by **burning out the pullup** connected to A as well as the pulldown connected to B. Each of the burned out FETs appears as an open circuit, but the rest of the circuit remains functional. *Can the resulting circuit be used as a combinational device whose two inputs are A and B?* **Explain** its behavior for each combination of valid inputs.  
+5. In order to salvage her remaining two chips, Anna *connects the A and B inputs of each and tries to use it as a single-input gate.* Can the result be used as a single-input combinational device? **Explain**.
+
 \ifanswers
 
 \beginsol
@@ -959,10 +959,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc2OTUwOTMzLDE1NDAxMjYwNzksMTEyOT
-EyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3
-NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLT
-E3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1
-NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMS
-wtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTIxMzIxNzk5NjksMTU0MDEyNjA3OSwxMT
+I5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAz
+Mzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNC
+wtMTcyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAy
+ODU0MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4Nz
+AxLC05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
