@@ -27,9 +27,9 @@ Compute the **overall** propagation delay and contamination delay for the circui
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Overal  t_{pd} = 6nstpd​=6ns  (counting paths from the AND gate, OR gate, and XOR gate). 
-
-Overall  t_{cd} = 1nstcd​=1ns  (counting the shortest path from XOR gate only). 
+>Overal  $t_{pd}$ = 6ns, $t_{pd​}$ = 6ns  (counting paths from the AND gate, OR gate, and XOR gate). 
+>
+>Overall  $t_{cd}$ = 1ns, $t_{cd}$ ​= 1ns  (counting the shortest path from XOR gate only). 
 
 </details>
 <br/>
@@ -45,6 +45,7 @@ Draw the truth table for the following CMOS circuitry:
 
 
 {::options parse_block_html="true" /}<br/> <details> <br/> <summary markdown="span">Show Answer</summary><br/>
+
 $$ \begin{matrix}
 A & B & C & OUT \\ \hline 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 1 & 1 & 0 \\ 
 \end{matrix}
@@ -121,5 +122,5 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDAzNTM5OTksMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbMTMyMDI1NzkzNSwxMDI1MzY0NTg0XX0=
 -->
