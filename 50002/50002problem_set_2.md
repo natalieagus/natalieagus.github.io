@@ -105,7 +105,7 @@ We also learned a second set of rules, that a set of interconnected elements ***
 
 In this problem, we ask you to think carefully about why these rules work - in particular, why *an acyclic circuit of combinational devices,* constructed according to the second principle, is itself a combinational device as defined by the first. 
 
-Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices. You may assume for the following that every input and output is a logical 0 or 1. 
+Consider the following 2-input acyclic circuit whose two components, A and B, are each combinational devices. 
 
 <img src="https://www.dropbox.com/s/divqzx422azog4h/Q1.png?raw=1"  width="70%" height = "70%">
 
@@ -123,7 +123,6 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
  1 & 1 & 1 & 1 & 1 & 1\\
  \hline 
 \end{matrix}$$
-
 
 **Answer** the following questions,
 
@@ -953,9 +952,9 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NDM3NjQyNiwtMTgyNTAzMzc2NCw4ND
-I1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNCwtMTcyMDM4
-ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0MjksLT
-ExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC05MDI0
-NDk2MTYsMTAyNTM2NDU4NF19
+eyJoaXN0b3J5IjpbOTY4MzI3MDg3LC0xODI1MDMzNzY0LDg0Mj
+U0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4
+ODgyLC04NDc3MzY1MjIsMjcyMDcyODA0LC02MDI4NTQyOSwtMT
+E3MzAxNzg1NywyMDE3NDk5MzYyLDIxMDMzMzg3MDEsLTkwMjQ0
+OTYxNiwxMDI1MzY0NTg0XX0=
 -->
