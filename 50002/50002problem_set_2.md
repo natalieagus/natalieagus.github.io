@@ -485,8 +485,9 @@ CD  & 0 & 0& 1 & 1\\
 <summary markdown="span">Show Answer</summary>
 
 > The minimised boolean expression is$AD + \bar{B}\bar{C} + \bar{B} \bar{D}$. They're obtained from "three" boxes: 
-> - on the lower right corner (row 3 and 4, with column 3 and 4), on the sides (row 1 and 2, with column 1 and 4), and on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
-
+> - on the lower right corner (row 3 and 4, with column 3 and 4), 
+> - on the sides (row 1 and 2, with column 1 and 4), and 
+> - on the four corners (row 1 col 1, and row 1 col 4, and row 4 col 1, and row 4 col 4).
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -878,7 +879,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc5ODQ3Njc4LDI5NDg1MTg1LC0xMjQ2ND
+eyJoaXN0b3J5IjpbMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2ND
 Y4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3
 OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMT
 gyNTAzMzc2NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUw
