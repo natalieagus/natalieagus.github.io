@@ -121,26 +121,42 @@ a_0  & a_1  &  A _{a_0, a_1}  &  b_0​  &  b_1  & B_{b_0, b_1}\\
 
 Answer the following questions,
 
-1.  Give a truth table for the acyclic circuit, i.e. a table that specifies the value of z for each of the possible combinations of input values on x and y.
+1.  Give a truth table for the **overall** acyclic circuit, i.e. a table that specifies the value of z for each of the possible combinations of input values on x and y.
+
+2.  Describe a general procedure by which a truth table can be computed for each output of an arbitrary acyclic circuit containing only combinational components. \textit{Hint : construct a functional specification to each circuit node}. 
+
+3.  Specify a propagation delay (the upper bound required for each combinational device) for the circuit.
+
+4.  Describe a general procedure by which a propagation delay can be computed for an arbitrary acyclic circuit containing only combinational components. \textit{Hint: add a timing specification to each circuit node}.
+
+5.  Do your general procedures for computing functional specifications and propagation delays work if the restriction to acyclic circuits is relaxed? Explain.
+
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+1. $
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 
 \ifanswers \beginsol
 
-\begin{table}[h] \centering \begin{tabular}{c c | c} x & y & z \\ \hline 0 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \\ 1 & 1 & 1 \\ \hline \end{tabular} \caption{} \end{table} \fi
 
-1.  Describe a general procedure by which a truth table can be computed for each output of an arbitrary acyclic circuit containing only combinational components. \textit{Hint : construct a functional specification to each circuit node}. \ifanswers \beginsol We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost one by one. \fi
-    
-2.  Specify a propagation delay (the upper bound required for each combinational device) for the circuit.
-    
+
+
+\ifanswers \beginsol We can construct the truth table from left to right, i.e: solve the truth table for each component from the leftmost all the way to the rightmost one by one. \fi
+
+
 
 \ifanswers \beginsol The total propagation delay is  3 + 2 = 53+2=5.
 
 \fi
 
-1.  Describe a general procedure by which a propagation delay can be computed for an arbitrary acyclic circuit containing only combinational components. \textit{Hint: add a timing specification to each circuit node}.
-
 \ifanswers \beginsol One has to find the longest path from input to output to find the total propagation delay of the combinational circuit. \fi
-
-1.  Do your general procedures for computing functional specifications and propagation delays work if the restriction to acyclic circuits is relaxed? Explain.
 
 \ifanswers \beginsol No, the signal can propagate back in the circuit so using the longest path to calculate  t_{pd}tpd​  is not accurate. \fi
 
@@ -156,6 +172,6 @@ Answer the following questions,
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUxMzM4MjI3LDIwMTc0OTkzNjIsMjEwMz
-MzODcwMSwtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbLTM2MDI0MDEwMCwyMDE3NDk5MzYyLDIxMD
+MzMzg3MDEsLTkwMjQ0OTYxNiwxMDI1MzY0NTg0XX0=
 -->
