@@ -71,7 +71,13 @@ Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You
   
   
 
-Your cohort contains 100 students, 51 of whom are male and 49 are female. There are 31 male students who are above 19 years old. On the other hand, there are 19 female students who are above 19 years old. There are one male student and three female students who like to have a final exam. You can assume that students either like or hate a final exam and no indifference. Two students like exam and is above 19 years old.
+Your cohort in ISTD contains 100 students:
+- 51 of whom are male and 49 are female. 
+- There are 31 male students who are above 19 years old. 
+- On the other hand, there are 19 female students who are above 19 years old. 
+- There are one male student and three female students who like to have a final exam. 
+	> You can assume that students either *like* or *hate* a final exam and **no indifference**. 
+- Two students like exam and is above 19 years old.
 
 
 Now someone in your class won "the first to join ISTD" prize. Answer the following questions:
@@ -653,10 +659,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyNDA3MjA3MiwxNTM4MDM1ODQyLC0xMD
-cxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Nyw2MTA0Nzkz
-NDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4OSwzMD
-I0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1
-MDQsMTE5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLD
-YwNTU4NDAsMTIyMDA1MjEzNyw5Nzc1NDQ5NTZdfQ==
+eyJoaXN0b3J5IjpbLTI3MDkzNDc0OCwyMDI0MDcyMDcyLDE1Mz
+gwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0NjUxOCwxODI0NTQ0
+NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMj
+g2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQxMDc2LDY1MDczMzI3
+MSwtMTc3Nzc0MTUwNCwxMTk5ODc1NDY0LC03NTE1ODcwNzYsLT
+IwNzUwMTIxMzIsNjA1NTg0MCwxMjIwMDUyMTM3LDk3NzU0NDk1
+Nl19
 -->
