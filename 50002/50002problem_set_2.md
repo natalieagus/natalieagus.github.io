@@ -231,6 +231,7 @@ $$
 	> $$\begin{aligned} \overline{(A+B)\overline{B}} &= \overline{A \overline{B} + B \overline{B}} = \overline{A\overline{B}} = \overline{A} + B\\
 \end{aligned}$$
 >3. The contamination delay is the path  (from any input to any output)  that results in the shortest time: NR2 + NR2 + ND2 = 5 + 5 + 5 = 15. 
+>
 >The propagation delay is the path (from any input to any output) that results in the longest time: AN2 + NR2 + ND2 = 50 + 30 + 30 = 110.
 </details>
 <br/>
@@ -317,7 +318,10 @@ Take a look at the figure above. **Which** of the above ROM represents the funct
 <details>
 <summary markdown="span">Show Answer</summary>
 
-> ROM [3] represents half-adder functionality. Y's output shows a XOR(A,B) while Z's output shows an AND(A,B). 
+> ROM [3] represents half-adder functionality. 
+>
+>Y's output shows a XOR(A,B) while Z's output shows an AND(A,B). 
+> 
 > Hence this make Y to be the SUM output and Z to be the CARRY output.
 </details>
 <br/>
@@ -954,10 +958,10 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3OTUwOTEzLDE1NDAxMjYwNzksMTEyOT
-EyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MDEsLTE4MjUwMzM3
-NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4MDQ1MDA1MDQsLT
-E3MjAzODg4ODIsLTg0NzczNjUyMiwyNzIwNzI4MDQsLTYwMjg1
-NDI5LC0xMTczMDE3ODU3LDIwMTc0OTkzNjIsMjEwMzMzODcwMS
-wtOTAyNDQ5NjE2LDEwMjUzNjQ1ODRdfQ==
+eyJoaXN0b3J5IjpbMzkxMjg1ODEsMTU0MDEyNjA3OSwxMTI5MT
+IyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAzMzc2
+NCw4NDI1NDM2MzAsLTE4Mzk1NjUzNDIsMTgwNDUwMDUwNCwtMT
+cyMDM4ODg4MiwtODQ3NzM2NTIyLDI3MjA3MjgwNCwtNjAyODU0
+MjksLTExNzMwMTc4NTcsMjAxNzQ5OTM2MiwyMTAzMzM4NzAxLC
+05MDI0NDk2MTYsMTAyNTM2NDU4NF19
 -->
