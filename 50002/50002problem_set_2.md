@@ -458,66 +458,18 @@ Answer the following questions based on the truth table:
 
 >1. $\overline{A}\text{ }\overline{B}\text{ }\overline{C} + \overline{A}BC + A \overline{B}\text{ }\overline{C} + A \overline{B}C + ABC$.
 >
->2. The minimal sum of products is : $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products.
+>2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products.
 >
 >3. If we use A and B as the ***select*** inputs for the MUX, then the four data inputs of the MUX should be tied to one of "0" (ground), "1" (VDD), "C" or "NOT C". 
 >For this function the following is the correct schematic. Note that by changing the connections on the data inputs we could implement any function of A, B and C.
 ><img src="https://www.dropbox.com/s/st56a1de8lffmmn/Q4.png?raw=1"  width="50%" height = "50%">
 >
->4. We can just write equations for r that cover the '0's in the table above, and then reduce the expression into: $\overline{F} = B \overline{C} + \overline{A} \text{ } \overline{B} C$
-
-
+>4. We can just write *sum of produc*t for rows that results the '0's in the table above, and then reduce the expression into: $\overline{F} = B \overline{C} + \overline{A} \text{ } \overline{B} C$
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
-\ifanswers
 
-\beginsol
-
-
-
-\fi
-
-
-
-\ifanswers
-
-\beginsol
-
-
-\fi
-
-  
-
-
-  
-
-\ifanswers
-
-\beginsol
-
-
-
-
-
-  
-
-\fi
-
-
-
-\ifanswers
-
-\beginsol
-
-
-
-\fi
-
-  
-  
-  
 
 ### Gates and Boolean Equations
 
@@ -944,7 +896,7 @@ This function cannot be broken down into either of the forms mentioned above.
 
 \end{enumerate}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyNjEyMzg3MywtMTY4NjMyOTY3MSwxNT
+eyJoaXN0b3J5IjpbLTM5MjAzNTkzMywtMTY4NjMyOTY3MSwxNT
 QwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDky
 ODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0Mi
 wxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcy
