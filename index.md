@@ -7,3 +7,5 @@
 
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
+
+[Problem Set Week 2](https://natalieagus.github.io/50002/PS2/)
