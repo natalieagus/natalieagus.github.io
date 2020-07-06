@@ -3,6 +3,10 @@ layout: default
 title: "Problem Set Week 2"
 permalink: /50002/PS2/
 ---
+50.002 Computational Structures
+Information Systems Technology and Design
+Singapore University of Technology and Design
+**Natalie Agus (Fall 2020)**
 
 {::options parse_block_html="true" /}
 {% include toc.html %}
@@ -595,11 +599,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NT
-E2MjE4NiwtMTg3NDcxNDEwMiwzNTMwMzIzOTYsMjk0ODUxODUs
-LTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3MSwxNT
-QwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDky
-ODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMCwtMTgzOTU2NTM0Mi
-wxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04NDc3MzY1MjIsMjcy
-MDcyODA0XX0=
+eyJoaXN0b3J5IjpbLTE2MDk5NjU4MDAsMTYxODU4Mzk0MCwtNT
+Y2OTk5NzE5LDQ3NTE2MjE4NiwtMTg3NDcxNDEwMiwzNTMwMzIz
+OTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5MjAzNTkzMywtMT
+Y4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkxMjIxMDcsLTk3NDc2
+MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNzY0LDg0MjU0MzYzMC
+wtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0xNzIwMzg4ODgyLC04
+NDc3MzY1MjJdfQ==
 -->
