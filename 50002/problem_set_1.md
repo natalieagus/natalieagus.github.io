@@ -12,14 +12,14 @@ Singapore University of Technology and Design
 
 **Natalie Agus (Fall 2020)**
 
-{::options parse_block_html="true" /}
-{% include toc.html %}
-{::options parse_block_html="false" /}
-
 This page contains all practice questions that constitutes the topics learned in <ins>Week 1</ins>: **Basics of Information Theory** and **The Digital Abstraction**. 
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
+
+{::options parse_block_html="true" /}
+{% include toc.html %}
+{::options parse_block_html="false" /}
 
 # Basics of Information Theory
 You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_of_information.html" target="_blank">here</a> if you need to revise. 
@@ -667,11 +667,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzA1ODEwMCwtMzM0ODg3MzY2LC0yNz
-A5MzQ3NDgsMjAyNDA3MjA3MiwxNTM4MDM1ODQyLC0xMDcxMzUz
-NDY4LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Nyw2MTA0NzkzNDksNz
-AyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4OSwzMDI0MTY4
-NTIsMjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMT
-E5OTg3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4
-NDBdfQ==
+eyJoaXN0b3J5IjpbODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzND
+g4NzM2NiwtMjcwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0
+MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNj
+EwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3
+ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNz
+c3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAx
+MjEzMl19
 -->
