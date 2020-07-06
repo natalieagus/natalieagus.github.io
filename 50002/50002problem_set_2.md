@@ -12,13 +12,16 @@ Singapore University of Technology and Design
 **Natalie Agus (Fall 2020)**
 
 
-{::options parse_block_html="true" /}
-{% include toc.html %}
-{::options parse_block_html="false" /}
 
 This page contains all practice questions that constitutes the topics learned in <ins>Week 2</ins>: **CMOS Technology** and **Logic Synthesis**. 
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
+
+
+
+{::options parse_block_html="true" /}
+{% include toc.html %}
+{::options parse_block_html="false" /}
 
 # CMOS Technology
 You can refer to the notes <a href="https://natalieagus.github.io/50002/cmos_technology.html" target="_blank">here</a> if you need to revise. 
@@ -603,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODMwMzEzODIsLTE2NjU2NzY0NzQsMT
-YxODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NTE2MjE4NiwtMTg3NDcx
-NDEwMiwzNTMwMzIzOTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLT
-M5MjAzNTkzMywtMTY4NjMyOTY3MSwxNTQwMTI2MDc5LDExMjkx
-MjIxMDcsLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0xODI1MDMzNz
-Y0LDg0MjU0MzYzMCwtMTgzOTU2NTM0MiwxODA0NTAwNTA0LC0x
-NzIwMzg4ODgyXX0=
+eyJoaXN0b3J5IjpbLTY1NTExNjA0MiwtMTk4MzAzMTM4MiwtMT
+Y2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5OTk3MTksNDc1MTYy
+MTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5NiwyOTQ4NTE4NSwtMT
+I0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5NjcxLDE1NDAx
+MjYwNzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MD
+EsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4
+MDQ1MDA1MDRdfQ==
 -->
