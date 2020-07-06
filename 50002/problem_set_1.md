@@ -5,11 +5,8 @@ permalink: /50002/PS1/
 ---
 
 50.002 Computational Structures
-
 Information Systems Technology and Design
-
 Singapore University of Technology and Design
-
 **Natalie Agus (Fall 2020)**
 
 {::options parse_block_html="true" /}
@@ -667,11 +664,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNDg4NzM2NiwtMjcwOTM0NzQ4LDIwMj
-QwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2
-NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMj
-A0OTIwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEw
-NzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLT
-c1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIx
-MzddfQ==
+eyJoaXN0b3J5IjpbLTg5ODgwNCwtMzM0ODg3MzY2LC0yNzA5Mz
+Q3NDgsMjAyNDA3MjA3MiwxNTM4MDM1ODQyLC0xMDcxMzUzNDY4
+LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Nyw2MTA0NzkzNDksNzAyNT
+EwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4Nzc4OSwzMDI0MTY4NTIs
+MjEyMzY0MTA3Niw2NTA3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OT
+g3NTQ2NCwtNzUxNTg3MDc2LC0yMDc1MDEyMTMyLDYwNTU4NDBd
+fQ==
 -->
