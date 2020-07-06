@@ -4,6 +4,11 @@ title: "Problem Set Week 1"
 permalink: /50002/PS1/
 ---
 
+50.002 Computational Structures
+Information Systems Technology and Design
+Singapore University of Technology and Design
+**Natalie Agus (Fall 2020)**
+
 {::options parse_block_html="true" /}
 {% include toc.html %}
 {::options parse_block_html="false" /}
@@ -659,11 +664,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMzgwNTM1MCwtMjcwOTM0NzQ4LDIwMj
-QwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2
-NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMj
-A0OTIwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEw
-NzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLT
-c1MTU4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIx
-MzddfQ==
+eyJoaXN0b3J5IjpbLTg5ODgwNCwtMjcwOTM0NzQ4LDIwMjQwNz
+IwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2NTE4
+LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OT
+IwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYs
+NjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0NjQsLTc1MT
+U4NzA3NiwtMjA3NTAxMjEzMiw2MDU1ODQwLDEyMjAwNTIxMzdd
+fQ==
 -->
