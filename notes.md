@@ -17,7 +17,7 @@ permalink: /notes/
 
 Suppose that you are to guess the value of a 16-bit number: 0x$Z_1Z_2Z_3Z_4$ You are told that the value of $Z_1$ is B. Thus you have been given [N] bits of information. What is the value of [N]?
 
-  
+<mark>In laymen terms: *If an event is bound to happen, then the fact that the event happens does not give any kind of information*</mark>
 
 
 {::options parse_block_html="true" /}
@@ -80,7 +80,8 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NzE2MDcwMCwxNTgwMzUyNTgwLC0xNT
-Y1NDQ3NCwtMTU2NTQ0NzQsLTEwNzMwMzM1OTYsLTE1MDcyNDY2
-MjMsMjQyMzQ0NDQsLTE2MzgwODY1MzFdfQ==
+eyJoaXN0b3J5IjpbLTEwMjM2NTI0ODUsLTk4NzE2MDcwMCwxNT
+gwMzUyNTgwLC0xNTY1NDQ3NCwtMTU2NTQ0NzQsLTEwNzMwMzM1
+OTYsLTE1MDcyNDY2MjMsMjQyMzQ0NDQsLTE2MzgwODY1MzFdfQ
+==
 -->
