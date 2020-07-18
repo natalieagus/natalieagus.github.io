@@ -5,6 +5,8 @@
 
 [The CMOS Technology](https://natalieagus.github.io/50002/cmos_technology.html)
 
+[Logic Synthesis](https://natalieagus.github.io/50002/logic_synthesis.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
