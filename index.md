@@ -7,6 +7,8 @@
 
 [Logic Synthesis](https://natalieagus.github.io/50002/logic_synthesis.html)
 
+[Sequential Logic and Synchronization](https://natalieagus.github.io/50002/sequential_logic.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
