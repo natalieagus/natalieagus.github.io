@@ -24,6 +24,7 @@
 <li><a href="#sequential-logic-device-timing-constraint">Sequential Logic Device Timing Constraint</a></li>
 <li><a href="#synchronization">Synchronization</a></li>
 <li><a href="#the-metastable-state">The Metastable State</a></li>
+<li><a href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -37,14 +38,21 @@ Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="sequential-logic-and-sychronization">Sequential Logic and Sychronization</h1>
-<p>You can download the .pdf for this notes <a href="https://www.dropbox.com/s/roao4443ywi4eay/basics_of_information.pdf?raw=1">here</a>.</p>
 <h2 id="overview">Overview</h2>
-<p>So far we have learned the basics of <strong>combinational logic device</strong>, which is in essence a device that is capable to adhere to a given functional specification (truth table). However, it isn’t enough to make a complete computer that we know today. We are missing a <strong>storage (memory) device</strong>.</p>
-<p>A simple combinational logic device <strong>does not remember its output value</strong>. It only gives an output when there’s an input, and the output(s) stay(s) stable for as long as its input(s) is/are stable. A memory device on the other hand, is a device of which we can <em>write</em> new values to and is able to <em>remember</em> this value for a period of time.</p>
-<p>We can connect memory device(s) together with combinational logic device(s) to form a sequential logic device, which general structure is as shown below:</p>
+<p>So far we have learned the basics of <strong>combinational logic device</strong>, which is in essence a device that is capable to adhere to a given functional specification (truth table). One apparent feature of a combinational logic device is that its output always depend on the <strong>current</strong> input.  We need to create another type of device, called the sequential logic device, whereby its output depends not only on the current input, but a <em>series of past inputs</em> as well.  If a sequential logic device has a finite number of states, it also known as the finite state machine (FSM). The FSM can be seen as an abstract mathematical model of a <strong>sequential</strong> logic function. More about FSM can be learned in the next chapter.</p>
+<p>However, our knowledge so far is not enough to create sequential logic devices. To remember the “series of past inputs”, we need to have the <strong>storage (memory) device</strong>.</p>
+<blockquote>
+<p>Recap: simple combinational logic device <strong>does not remember its output value</strong>. It only gives an output when there’s an input, and the output(s) stay(s) stable for as long as its input(s) is/are stable.</p>
+</blockquote>
+<blockquote>
+<p>A memory device on the other hand, is a device of which we can <em>write</em> new values to and is able to <em>remember</em> this value for a period of time.</p>
+</blockquote>
+<p>We can connect memory device(s) together with combinational logic device(s) to form a sequential logic device.</p>
+<p>A sequential logic device has a <em>general</em> structure as shown below:</p>
 <img src="https://www.dropbox.com/s/7crg33w0e7yg2hn/Q1.png?raw=1" alt="F1" width="80%" height="80%">
+<p>In the next few sections we will learn how to create this memory device labeled as <strong>Registers</strong> above (or more specifically, it is called <em>D Flip-Flop</em>).</p>
 <h2 id="storage-device-d-latch">Storage Device: D-Latch</h2>
-<p>A D-latch is essentially a multiplexer with a <strong>feedback</strong> <strong>loop</strong>,</p>
+<p>A D Flip-Flop (memory device) is made using another device called a D-latch.  A D-latch can be created using a multiplexer with a <strong>feedback</strong> <strong>loop</strong>,</p>
 <img src="https://www.dropbox.com/s/612f6bsfepegsbb/Q2.png?raw=1" alt="Fig2" width="30%" height="30%">
 <p>How it works:</p>
 <ul>
@@ -290,6 +298,10 @@ clock signal</p>
 <p><strong>In other words, we cannot completely avoid the metastable state</strong>. If a SL device enters the metastable state, it <em>might</em> eventually settle to a valid zero… or a valid one, but there is no guarantee when this will happen. It may take a second,  or it may take forever to settle.</p>
 <p>The only thing we can do is to <em><strong>minimize</strong></em> its probability from happening. We can do that by introducing more <strong>delays</strong> between the Flip-Flops and the CL devices downstream in the hopes that the signal will somehow settle towards either end before reaching the CL, as illustrated here,</p>
 <img src="https://www.dropbox.com/s/nltf6f15ljs8nej/Q10.png?raw=1" alt="Figure12" width="50%" height="50%">
+<h2 id="summary">Summary</h2>
+<p>As stated above, a <strong>sequential</strong> logic device has a <em>general</em> structure as shown below:</p>
+<img src="https://www.dropbox.com/s/7crg33w0e7yg2hn/Q1.png?raw=1" alt="F1" width="80%" height="80%">
+<p>During each clock period, it should be able to compute the next value (next state), and output value. The output at any point in time, is always affected by the current state, which is the state computed in the previous clock period / time step. Hence the name <strong>sequential logic</strong> comes from the fact that it is a type of <strong>logic</strong> circuit whose output depends <strong>not only on the present</strong> value of its input signals but on the <em>sequence of past inputs, the input history as well.</em></p>
 
     </div>
   </div>
