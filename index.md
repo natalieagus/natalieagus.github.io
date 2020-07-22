@@ -9,6 +9,8 @@
 
 [Sequential Logic and Synchronization](https://natalieagus.github.io/50002/sequential_logic.html)
 
+[Finite State Machine](https://natalieagus.github.io/50002/finite_state_machine.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
