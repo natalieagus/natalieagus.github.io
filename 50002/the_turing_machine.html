@@ -20,6 +20,7 @@
 <li><a href="#implementing-an-incrementer-as-a-turing-machine">Implementing an Incrementer as a Turing Machine</a></li>
 <li><a href="#turing-machine-as-a-function">Turing Machine as a Function</a></li>
 <li><a href="#summary-the-computer-science-revolution">Summary: The Computer Science Revolution</a></li>
+<li><a href="#programmability">Programmability</a></li>
 </ul>
 </li>
 </ul>
@@ -28,7 +29,7 @@
   </div>
   <div class="stackedit__right">
     <div class="stackedit__html">
-      <p>50.002 Computational Structures<br>
+      <p>50.002 Computation Structures<br>
 Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
@@ -249,6 +250,30 @@ f_M(M) = &amp;\text{loops forever} \text{ if } (f_{H'}(M)== 1) \\
 <p>In order to be efficient, we need to replace each of these hardwares with a <em>coded description</em> of that piece of hardware (i.e: a software), then its easy to cut, change, mix, and modify them around. Writing a merge-sort algorithm is so much easier (instead of building a physical machine that can perform sorting). Also, programs can easily receive another program as input and output other programs.</p>
 <p><strong>This is the universal Turing Machine:</strong> a c<em>oded description</em> of a piece of hardware. It allows us to migrate from hardware paradigm into software paradigm. People are no longer spending their time sitting in workshops making physical systems but they are now sitting in front of computers writing programs.</p>
 <p>Until this point, we have learned how Turing machine works, and  its advantage over  FSM. Our final goal is to realise a <strong>Universal Turing machine</strong>, that is a machine that is <strong>programmable</strong> so that it can be used for a <strong>general purpose</strong>.</p>
+<h2 id="programmability">Programmability</h2>
+<p>The concept of a universal Turing Machine is an <em>ideal abstraction</em>, since we can never create a machine with infinitely long tape. However, physically creating something that is “infinite” is not possible.</p>
+<blockquote>
+<p>We can only create a very long “tape” such that it appears “infinite” to some extent.</p>
+</blockquote>
+<p>If we manage to create a physical manifestation of Universal Turing Machine, we need to ensure that this machine <strong>programmable</strong>. This can be achieved by designing an <strong>instruction set</strong> so that we can write “programs” / “algorithms” <em>using these instruction set</em>.</p>
+<blockquote>
+<p>Hence allowing it to emulate the behavior of whatever machine <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.03148em;">k</span></span></span></span></span> when running the program with its corresponding input <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.85396em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05724em;">j</span></span></span></span></span> on this machine.</p>
+</blockquote>
+<p>An instruction set is a set of standard <em>basic</em> commands that we can use as <strong>building blocks</strong> so that we can write a bigger programs that will cause the machine running it to emulate complex tasks.</p>
+<p>For example:</p>
+<ul>
+<li>
+<p>We are familiar with high level programming languages, such as C/C++, Java, and Python.  You can write a program using any of these languages, lets say a calculator app. When we <em>compile</em> or <em>interpret</em>, and then <em>run</em> the program, our code is translated into a set of instructions that are understandable by our machine, hence turning it into a calculator.</p>
+</li>
+<li>
+<p>We can also write another program, lets say a music player app. When we run this program, our computer turns into a music player.</p>
+</li>
+</ul>
+<p>Therefore, we can say that our computer is <strong>programmable</strong>, because the program that we wrote is translated into <strong>a set of instructions</strong> that our machine can understand.</p>
+<blockquote>
+<p>Our (general purpose) computer is a (close enough) physical manifestation of a Universal Turing Machine (albeit with “finite” tape).</p>
+</blockquote>
+<p>In the next chapter, we will learn further on how our general purpose computer is programmable by designing a proper instruction set for it.</p>
 
     </div>
   </div>
