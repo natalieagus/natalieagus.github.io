@@ -11,6 +11,12 @@
 
 [Finite State Machine](https://natalieagus.github.io/50002/finite_state_machine.html)
 
+[Turing Machine](https://natalieagus.github.io/50002/the_turing_machine.html)
+
+[Designing an Instruction Set](https://natalieagus.github.io/50002/instruction_set.html)
+
+[Building the $\beta$ CPU](https://natalieagus.github.io/50002/building_beta.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
