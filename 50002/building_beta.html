@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>building_beta</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#building-the-beta-cpu">Building the β\betaβ CPU</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#instruction-cycles">Instruction Cycles</a></li>
+<li><a href="#detailed-anatomy-of-the-beta-cpu">Detailed Anatomy of the β\betaβ CPU</a></li>
+<li><a href="#beta-datapaths">Beta Datapaths</a></li>
+<li><a href="#op-datapath">OP datapath</a></li>
+<li><a href="#opc-datapath">OPC datapath</a></li>
+<li><a href="#memory-access-datapath">Memory Access Datapath</a></li>
+<li><a href="#branching-datapath">Branching Datapath</a></li>
+<li><a href="#exception-handling">Exception Handling</a></li>
+<li><a href="#cpu-benchmarking">CPU Benchmarking</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="building-the-beta-cpu">Building the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU</h1>
+<h2 id="overview">Overview</h2>
+<p>In the previous chapter, we were introduced to the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, a CPU blueprint that specifies what instructions the CPU can process, how it interacts with the memory unit, the basic CPU components, instruction formats, and many more.</p>
+<p>In this chapter, we will study how each of the 32 <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions is supposed to work, and how the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> <strong>CPU</strong> (an implementation of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA) is able to compute each and every one of them by reprogramming its datapath without physically changing its hardware.</p>
+<p>The key is to have a proper <strong>Control Logic</strong> unit (a combinational logic device) that is able to <em><strong>decode</strong></em>  current instruction’s <code>OPCODE</code> and give out the correct control signals (PCSEL, RA2SEL, ASEL, etc) to reprogram the datapath. The complete truth table of the control logic unit is as shown below,</p>
+<p><img src="
+https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="50%" height="50%"></p>
+<p>We will go through the workings of each instruction and understand how the given <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> datapath is able to execute the instruction properly by producing appropriate control signals as shown above.</p>
+<h2 id="instruction-cycles">Instruction Cycles</h2>
+<h3 id="instruction-fetch">Instruction Fetch</h3>
+<p>The first thing a CPU must do is to figure out:</p>
+<ul>
+<li>What is the <em>address</em> of the instruction to execute next and</li>
+<li>Fetch (read) them from the Memory Unit</li>
+</ul>
+<p>Instructions are produced by a compiler and are specific to the CPU’s ISA. The control unit will know what control signals to produce and which signals need to be <em>routed</em> where for each type of instruction.</p>
+<blockquote>
+<p>For example, when you double-click (run) an executable <code>.exe</code> on Windows, the code for that program is moved from Disk into the Memory Unit (RAM), and the CPU is told what address the first instruction of that program starts at.</p>
+<p>The CPU <strong>always</strong> maintains an internal register called the Program Counter (PC) that holds the memory location of the next instruction to be executed.</p>
+</blockquote>
+<p>Once the CPU knows the address of the first instruction to be executed, it can fetch it from the Memory Unit and execute it. The next steps are easy.</p>
+<ul>
+<li>The first instruction will then tell the CPU what to do next, where is the second instruction, and so on.</li>
+<li>The second instruction will also tell the CPU what to do next, where is the third instruction, and so on.</li>
+<li>This is repeated until the CPU met a <code>HALT()</code> instruction.</li>
+</ul>
+<blockquote>
+<p>As of now, you always assume that the content of the PC register is always initially zero (32-bit of zeroes), and that the first line of your program instruction is always put at memory address zero.</p>
+</blockquote>
+<h3 id="instruction-decoding">Instruction Decoding</h3>
+<p>When the CPU has an instruction, it needs to figure out (decode) specifically what type of instruction it is. Each instruction will have a certain set of bits called the <code>OPCODE</code> that tells the CPU how to interpret it. In the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the <code>OPCODE</code> can be found in the 6 most significant bits of the 32-bits instruction. The <code>OPCODE</code> is given as an input to the Control Unit, it will compute the appropriate control signals to program the datapath.</p>
+<p>This decoding step depends on how complex the ISA is. An ISA like RISC (e.g: the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA) has a smaller number of instructions (a few dozens) while x86 has thousands. The most common family of instructions are:</p>
+<ul>
+<li><strong>Memory</strong>: anything regarding loading and storing of data between the REGFILE (CPU internal storage) and the Memory Unit. No other computation is performed.</li>
+<li><strong>Arithmetic</strong>: anything that requires computation using the ALU, and inputs are taken from the REGFILE.</li>
+<li><strong>Branch instructions</strong>: anything pertaining to changing the value of PC Register to load instructions in different Memory Address, (<em>conditional</em>) based on a content of a specific register in the REGFILE.</li>
+</ul>
+<h2 id="detailed-anatomy-of-the-beta-cpu">Detailed Anatomy of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU</h2>
+<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU  is comprised of the following standard parts that typically make up a CPU:  PC,  REGFILE,  ALU, and CU.</p>
+<h3 id="program-counter">Program Counter</h3>
+<p>The PC is a 32-bit register (i.e: a set of <strong>32</strong> 1-bit registers). Its job is to store the address of the <strong>current</strong> instruction that is executed.</p>
+<blockquote>
+<p>For now, we can safely assume that the initial content of the PC REG is always zero.</p>
+</blockquote>
+<p>The datapath of the components involving the PC is shown in the figure below:</p>
+<img src="https://www.dropbox.com/s/mx1cjmc3ugmcdc8/pcreg.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>Two important things happened <strong>simultaneously</strong> at every clock cycle:</p>
+<ul>
+<li>
+<p><em>As highlighted in red,</em> the output of the PC is connected to the <code>IA</code> port (the input address port) of the Memory Unit (RAM), hence the Memory Unit will produce the content of that address through the <code>Ins</code> port.</p>
+</li>
+<li>
+<p><em>As highlighted in green</em>, the output of the PC REG will also be added by 4.</p>
+<ul>
+<li>If <code>PCSEL=0</code> and <code>RESET=0</code>,  this value will enter the PC REG in the next clock cycle.</li>
+<li>If <code>PCSEL=0</code> and <code>RESET=0</code> is always true, the value in PC REG will always be increased by 4 at each clock cycle.</li>
+</ul>
+</li>
+</ul>
+<h3 id="register-files">Register Files</h3>
+<p>The REGFILE in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA is the CPU’s internal storage unit that is comprised of 32 sets of 32-bit registers, denoted as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>R</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>R</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>R</mi><mn>31</mn></msub></mrow><annotation encoding="application/x-tex">R_0, R_1, ...., R_{31}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8777699999999999em; vertical-align: -0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.00773em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.00773em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.00773em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>. <strong>Each register is addressable in 5 bits</strong>. For example: <code>00000</code> is the address of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>R</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">R_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.00773em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, <code>00001</code> is the address of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">R_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.00773em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, <code>00010</code> is the address of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.00773em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, and so on.</p>
+<blockquote>
+<p>Remember, a 32-bit register simply means a set of <strong>32</strong> 1-bit registers</p>
+</blockquote>
+<p>The figure below shows the anatomy of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> REGFILE component:</p>
+<img src="https://www.dropbox.com/s/03v5c3gy4ucoga6/regfiles.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>It has two <strong>combinational</strong> read ports: <code>RD1</code> and <code>RD2</code>, and one <strong>clocked / sequential</strong> write port: <code>WD</code>.</p>
+<p>We can simultaneously, at the same clock cycle, <strong>read</strong> the contents of two selected registers, addressable in 5 bits denoted as <code>Ra</code> and <code>Rb</code>, :</p>
+<ul>
+<li>The 5-bit address <code>Ra</code> is supplied through port <code>RA1</code></li>
+<li>The 5-bit address <code>Rb</code> is supplied through <code>RA2</code></li>
+</ul>
+<p>We can also <strong>write</strong> data supplied at the <code>WD</code> port to any of the registers in the REGFILE:</p>
+<ul>
+<li>In order to write, a valid <code>1</code> must be supplied at the <code>WE</code> port</li>
+<li>The address of the register to write into is determined by the 5-bit input supplied at the <code>WA</code> port.</li>
+</ul>
+<h4 id="the-write-enable-signal">The Write Enable Signal</h4>
+<p>Recall that a register / D Flip-Flop “captures” a new input at each CLK rise, and is able to maintain that <strong>stable</strong> value for the period of the CLK.</p>
+<p>However, in practice, we might not want our register to “capture” new input all the time, but only on certain moments. Therefore, there exist a <code>WE</code> signal such that:</p>
+<ul>
+<li>When it’s value is <code>1</code>, the register “captures” and stores the current input.</li>
+<li>Otherwise, the register will ignore the input and will output the last stored value regardless of the CLK edge.</li>
+</ul>
+<h4 id="detailed-anatomy-of-the-regfile">Detailed Anatomy of the REGFILE</h4>
+<p>To understand how the <code>WE</code> signal works more clearly, we need to dive deeper into the inner circuitry of the REGFILE. The figure below shows a more detailed anatomy of the REGFILE unit.</p>
+<img src="https://www.dropbox.com/s/yi9exbpy2vhgz14/regfile_inside.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The <code>WE</code> signal is fed into a 1-to-32 demultiplexer unit. The <code>WA</code> signal is the selector of this demux. As a result, only 1 out of the 32 outputs of the demux will follow exactly the value of <code>WE</code>.</p>
+<p>The outputs of the demux is used a selector (<code>EN</code> port) to each of the <em>2-to-1</em> 32-bit multiplexer connected to each 32-bit register.</p>
+<blockquote>
+<p>Note: although not drawn (to not clutter the figure further), all the registers are synchronized with the same CLK.</p>
+</blockquote>
+<h4 id="the-static-and-dynamic-discipline-of-the-regfile">The Static and Dynamic Discipline of the REGFILE</h4>
+<p>As mentioned above, the REGFILE unit has <strong>2 combinational read ports</strong> that is made up by the two large <em>32-to-1</em> 32-bit multiplexers drawn at the bottom of the figure. We can supply two read addresses: <code>RA1</code> and <code>RA2</code>. They are the selector signals of these two multiplexers. Therefore the time taken to produce valid output (32-bit) data at <code>RD1</code> and <code>RD2</code> equals to the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the multiplexer.</p>
+<p>This unit also have <strong>1 sequential write port</strong>. The write data is always supplied at <code>WD</code>. When the <code>EN</code> signal of a target register is a valid <code>1</code>, we need to wait until the nearest CLK rise edge in order for <code>WD</code> to be reflected at the <code>Q</code> port of that register.</p>
+<p><mark> In register transfer language, the content of register with address <code>A</code> is often denoted as : <code>Reg[A]</code> </mark></p>
+<p>The timing diagram for read and write is shown below. Please take some time to study them:<br>
+<img src="https://www.dropbox.com/s/rvpovodxab54ywl/timing_reg.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<p>Notice how the new data denoted as <code>new Reg[A]</code> supplied at port <code>WD</code> (to be written onto <code>Reg[A]</code>) must fulfill both <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">t_S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>h</mi></msub></mrow><annotation encoding="application/x-tex">t_h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.33610799999999996em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> requirement of the hardware.</p>
+<h3 id="control-logic-unit">Control Logic Unit</h3>
+<p>The control logic unit (CU) is a <strong><strong>combinational logic device</strong></strong> that receives 6-bit <code>OPCODE</code> signal, 1-bit <code>z</code> signal, 1-bit <code>RESET</code> signal, and 1-bit <code>IRQ</code> signal as input. We will discuss about <code>RESET</code>, <code>z</code> and <code>IRQ</code> much later on.</p>
+<p>At each CLK cycle, the PC will supply a new 32-bit address to the Memory Unit, and in turn, 32-bit instruction data is produced by the Memory Unit. The first 6 bits of the instruction, called the <code>OPCODE</code> is supplied as an input to the CU.</p>
+<p>The CU will decode the input combination consisted of <code>OPCODE</code>, <code>z</code>, <code>RESET</code>, and <code>IRQ</code>, and produce various control signals as shown in the figure below. In practice, this unit can be made using a ROM.</p>
+<img src="https://www.dropbox.com/s/p73ywj1ju4fu3ed/Cu.png?raw=1" alt="“F1”" width="50%" height="50%">
+<p>Note that the <code>ALUFN</code> is 6 bits long, <code>PCSEL</code> is 3 bits long, <code>WDSEL</code> is 2 bits long, <code>RA2SEL</code>, <code>BSEL</code> <code>ASEL</code>, <code>WASEL</code>, <code>WR</code>, and <code>WERF</code> (<code>WE</code> to REGFILE) are all 1 bit long. The total number of output bits of the CU is therefore 17 bits.</p>
+<h2 id="beta-datapaths">Beta Datapaths</h2>
+<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> datapath can be reprogrammed by setting the appropriate control signals depending on the current instruction’s <code>OPCODE</code>. In general, we can separate the instructions into four categories, and explain the datapath for each:</p>
+<ul>
+<li>The <code>OP</code> datapath (Type 1)</li>
+<li>The <code>OPC</code> datapath (Type 2)</li>
+<li>Memory access datapath (Type 2)</li>
+<li>Branching datapath (Type 2)</li>
+</ul>
+<h2 id="op-datapath"><code>OP</code> datapath</h2>
+<p>This datapath involves:</p>
+<ul>
+<li>Any logical computations using the ALU, and</li>
+<li>The inputs to the <code>A</code> and <code>B</code> port of the ALU is taken from the contents of any two registers <code>Reg[Ra]</code> and <code>Reg[Rb]</code> from the REGFILE.</li>
+<li>The result is stored as a content of <code>Reg[Rc]</code></li>
+</ul>
+<p>The instructions that fall under <code>OP</code> category are: <code>ADD, SUB, MUL, DIV, AND, OR, XOR, CMPEQ, CMPLT, CMPLE, SHL, SHR</code>, and <code>SRA</code>. Its general format is:</p>
+<img src="https://www.dropbox.com/s/sufiy5rhdo5k2j0/op_ins.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]</code> <code>(OP)</code>   <code>Reg[Rb]</code></p>
+<blockquote>
+<p><strong>Important:</strong> Read the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> documentation and fully study the functionalities of each instruction.</p>
+</blockquote>
+<p>The figure below shows the datapath for all <code>OP</code> instructions:</p>
+<img src="https://www.dropbox.com/s/xidshs27kjyzyc6/op.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The highlighted lines show how the signals should flow in order for the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> to support <code>OP</code> instructions.</p>
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = F(OP)</code></p>
+<blockquote>
+<p>the <code>ALUFN</code> signal for the corresponding operation <code>OP</code>, for example, if <code>OPCODE = SUB</code> then <code>ALUFN = 000001</code>, and so on.</p>
+</blockquote>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = 0</code></p>
+</li>
+<li>
+<p><code>WDSEL = 01</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = 0</code></p>
+</li>
+<li>
+<p><code>PCSEL = 000</code></p>
+</li>
+<li>
+<p><code>ASEL = 0</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<blockquote>
+<p>Take some time to understand why the value of these control signals must be set this way to support the <code>OP</code> instructions.</p>
+</blockquote>
+<h2 id="opc-datapath"><code>OPC</code> datapath</h2>
+<p>The <code>OPC</code> (Type 2 instruction) datapath is similar to the <code>OP</code> datapath, except that input to the <code>B</code> port of the ALU must comes from <code>c = I[16:0]</code>.</p>
+<p><strong>There is no <code>Rc</code> field in Type 2 instruction</strong>.</p>
+<p>The instructions that fall under <code>OP</code> category are: <code>ADDC, SUBC, MULC, DIVC, ANDC, ORC, XORC, CMPEQC, CMPLTC, CMPLEC, SHLC, SHRC</code>, and <code>SRAC</code>. It’s general format is:</p>
+<img src="https://www.dropbox.com/s/wcirw4bgwhh2xbg/opc_ins.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]</code> <code>(OP)</code>   <code>SEXT(C)</code></p>
+<blockquote>
+<p>Again, don’t forget to read <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> documentation to understand each functionalities.</p>
+</blockquote>
+<p>The figure below shows the datapath for all <code>OPC</code> instructions:</p>
+<img src="https://www.dropbox.com/s/dfhi9j45vnuw7n0/opc.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The control signals for <code>OPC</code> instructions are almost identical to <code>OP</code> operations, except that we need to have  <code>BSEL = 1</code>.</p>
+<h2 id="memory-access-datapath">Memory Access Datapath</h2>
+<p>There are three instructions that involve access to the Memory Unit: <code>LD</code>, <code>LDR</code> and <code>ST</code>. All of them are Type 2 instructions.</p>
+<p>###<code>LD</code> Datapath</p>
+<p>The general format of the <code>LD</code> instruction is:</p>
+<img src="https://www.dropbox.com/s/bicusis1a1cx707/ld_ins.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra] + SEXT(C)</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Mem[EA]</code></p>
+<ul>
+<li>
+<p>The LD instruction allows the CPU to <strong>load</strong> one word (32-bit) of data from the Memory Unit and store it to <code>Rc</code></p>
+</li>
+<li>
+<p>The <strong>effective address</strong> (<code>EA</code>) of the data is computed using the content of <code>Ra</code>  (32-bit) added with <code>c</code> (sign extended to be 32-bit).</p>
+</li>
+</ul>
+<p>The figure below shows the datapath for  <code>LD</code>:</p>
+<img src="https://www.dropbox.com/s/4ypnvylpadz8q3z/ld.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = ADD (000000)</code></p>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = 1</code></p>
+</li>
+<li>
+<p><code>WDSEL = 10</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = --</code></p>
+</li>
+<li>
+<p><code>PCSEL = 000</code></p>
+</li>
+<li>
+<p><code>ASEL = 0</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<h3 id="ldr-datapath"><code>LDR</code> datapath</h3>
+<p>The <code>LDR</code> instruction is similar to the <code>LD</code> instruction, except in the method of computing the <code>EA</code> of the data loaded.</p>
+<p>The general format of the <code>LDR</code> instruction is:</p>
+<img src="https://www.dropbox.com/s/5kj00vwcw0ghlfp/ldr_inst.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4*SEXT(C)</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Mem[EA]</code></p>
+<ul>
+<li>The <code>LDR</code> instruction does not require the CPU to utilise the <code>Ra</code> field at all.</li>
+<li>It computes <code>EA</code> <strong>relative</strong> to the current address pointed by <code>PC</code>.</li>
+</ul>
+<p>The figure below shows the datapath for <code>LDR</code>:</p>
+<img src="https://www.dropbox.com/s/479io11h24i9yl3/ldr.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = 'A' (011010)</code></p>
+<blockquote>
+<p>The ALU is simply required to be <em>transparent</em>, i.e: “pass” the input at the <code>A</code> port through to its output port.</p>
+</blockquote>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = 1</code></p>
+</li>
+<li>
+<p><code>WDSEL = 10</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = --</code></p>
+</li>
+<li>
+<p><code>PCSEL = 000</code></p>
+</li>
+<li>
+<p><code>ASEL = 1</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<h3 id="st-datapath"><code>ST</code> datapath</h3>
+<p>The <code>ST</code> instruction does the opposite to what the <code>LD</code> instruction does. It allows the CPU to store contents from one of its REGFILE registers to the Memory Unit.</p>
+<blockquote>
+<p>Note that the instruction <code>ST</code> and <code>LD</code>/<code>LDR</code> allows the CPU to have access to an expandable memory unit without changing its datapath, although the CPU itself has a limited amount of internal storage in the REGFILE.</p>
+</blockquote>
+<p>The general format of the <code>ST</code> instruction is:</p>
+<img src="https://www.dropbox.com/s/is3q37kvo167325/st_ins.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]+SEXT(C)</code><br>
+<code>Mem[EA]</code>  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span>   <code>Reg[Rc]</code></p>
+<ul>
+<li>
+<p>The ST instruction <strong>stores</strong>  data present in <code>Rc</code> to the Memory Unit.</p>
+</li>
+<li>
+<p>Similar to how <code>EA</code> is computed for <code>LD</code>, the <strong>effective address</strong> (<code>EA</code>) of where the data is supposed to be stored is computed using the content of <code>Ra</code>  (32-bit) added with <code>c</code> (sign extended to be 32-bit).</p>
+</li>
+</ul>
+<p>The figure below shows the datapath for  <code>ST</code>:</p>
+<img src="https://www.dropbox.com/s/bbvysz2jvud00s1/st.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = 'ADD' (000000)</code></p>
+</li>
+<li>
+<p><code>WERF = 0</code></p>
+</li>
+<li>
+<p><code>BSEL = 1</code></p>
+</li>
+<li>
+<p><code>WDSEL = --</code></p>
+</li>
+<li>
+<p><code>WR = 1</code></p>
+</li>
+<li>
+<p><code>RA2SEL = 1</code></p>
+</li>
+<li>
+<p><code>PCSEL = 000</code></p>
+</li>
+<li>
+<p><code>ASEL = 0</code></p>
+</li>
+<li>
+<p><code>WASEL = --</code></p>
+</li>
+</ul>
+<h2 id="branching-datapath">Branching Datapath</h2>
+<p>There are three instructions that involves branching, that is to change the value of <code>PC</code> so that we can execute instruction from other <code>EA</code> in the Memory Unit instead of going to the next line. These instructions are <code>BEQ</code>, <code>BNE</code>, and <code>JMP</code>.</p>
+<p>We will not use the ALU at all when branching.</p>
+<blockquote>
+<p>So far, we have only seen <code>PC</code> to be advanced by 4:  <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code>. With branching instructions, we are going to set <code>PC</code> a little bit differently.</p>
+</blockquote>
+<h3 id="beq-datapath"><code>BEQ</code> datapath</h3>
+<p>This instruction allows the <code>PC</code> to <em>branch</em> to a particular <code>EA</code> if the content of <code>Ra</code> is zero.  It is commonly used when checking for condition prior to branching, e.g: <code>if x==0, else</code>.</p>
+<p>The general format of the <code>BEQ</code> instruction is:</p>
+<img src="https://www.dropbox.com/s/hla3dyi15xjxocf/beq_inst.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC + 4*SEXT(C)</code><br>
+<code>if (Reg[Ra] == 0)</code> then <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>EA</code></p>
+<ul>
+<li>The <strong>address</strong> of the instruction following the <code>BEQ</code> instruction is written to <code>Rc</code>.</li>
+<li>If the contents of  <code>Ra</code> are zero, the <code>PC</code> is loaded with the target address <code>EA</code>;</li>
+<li>Otherwise, execution continues with the next sequential instruction.</li>
+<li><mark> The checking of the content of <code>Ra</code> is not done through ALU, but rather through the 32-bit NOR gate that produces <code>Z</code> (1-bit) </mark>, The value of <code>Z</code> is fed to the CONTROL UNIT to determine whether PCSEL should be <code>001</code> or <code>000</code> depending on the value of <code>Z</code>.</li>
+</ul>
+<p>The figure below shows the datapath for the <code>BEQ</code>:<br>
+<img src="https://www.dropbox.com/s/xgapxsuqjnjl4rv/beq.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = --</code></p>
+<blockquote>
+<p>We aren’t using the ALU at all when branching.</p>
+</blockquote>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = --</code></p>
+</li>
+<li>
+<p><code>WDSEL = 00</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = --</code></p>
+</li>
+<li>
+<p><code>PCSEL = Z ? 010 : 000</code></p>
+</li>
+<li>
+<p><code>ASEL = --</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<h3 id="bne-datapath"><code>BNE</code> datapath</h3>
+<p><code>BNE</code> is similar to  <code>BEQ</code>, but branches <code>PC</code> in the opposite way, i.e: when <code>Ra != 0</code>.</p>
+<p>The general format of the <code>BNE</code> instruction is:</p>
+<img src="https://www.dropbox.com/s/wrqpdsusx3g7lkd/bne_ins.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC + 4*SEXT(C)</code><br>
+<code>if (Reg[Ra] != 0)</code> then <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>EA</code></p>
+<p>The figure below shows the datapath for the <code>BNE</code>:<br>
+<img src="https://www.dropbox.com/s/sp2ee8dny2n2qzs/bne.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = --</code></p>
+<blockquote>
+<p>We aren’t using the ALU at all when branching.</p>
+</blockquote>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = --</code></p>
+</li>
+<li>
+<p><code>WDSEL = 00</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = --</code></p>
+</li>
+<li>
+<p><code>PCSEL = Z ? 000 : 010</code></p>
+</li>
+<li>
+<p><code>ASEL = --</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<h3 id="jmp-datapath"><code>JMP</code> Datapath</h3>
+<p><code>JMP</code> also allows the CPU to change its <code>PC</code> value, but without any condition.</p>
+<p>The general format of the <code>JMP</code> instruction is:</p>
+<img src="" alt="“F1”" width="80%" height="80%">
+<p>The register transfer language for this instruction is:<br>
+<code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
+<code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra] &amp; 0xFFFFFFFC</code> (masked)<br>
+<code>PC</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>EA</code></p>
+<ul>
+<li>The <strong>address</strong> of the instruction following the <code>JMP</code> instruction is written to <code>Rc</code>, then  <code>PC</code> is loaded with the contents of  <code>Ra</code>.</li>
+<li>The low two bits of <code>Ra</code> are <strong>masked</strong> to ensure that the target address is aligned on a 4-byte boundary.</li>
+</ul>
+<p>The figure below shows the datapath for the <code>JMP</code>:<br>
+<img src="https://www.dropbox.com/s/94bul2ifo7a3afj/jmp_inst.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
+<p>The control signals therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = --</code></p>
+<blockquote>
+<p>We aren’t using the ALU at all when branching.</p>
+</blockquote>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = --</code></p>
+</li>
+<li>
+<p><code>WDSEL = 00</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = --</code></p>
+</li>
+<li>
+<p><code>PCSEL = 010</code></p>
+</li>
+<li>
+<p><code>ASEL = --</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<h2 id="exception-handling">Exception Handling</h2>
+<p><strong>Exceptions</strong> as the name suggests, is an event generated by the CPU when an <em>error</em> occurs.</p>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> exceptions come in three flavors: traps, faults, and interrupts.</p>
+<ol>
+<li>
+<p><strong>Traps</strong> (<em>intentional</em>) and <strong>faults</strong> (<em>unintentional</em>) are both the <strong>direct outcome of an instruction</strong> and are distinguished by the programmer’s <strong>intentions</strong>.</p>
+<ul>
+<li>These happens for example when we supply an illegal <code>OPCODE</code>, i.e: it does not correspond to any of the instructions defined in the ISA.</li>
+</ul>
+</li>
+<li>
+<p><strong>Interrupts</strong>  are <strong>asynchronous</strong> with respect to the instruction stream, and are usually caused by <strong>external events</strong>, for example from I/O devices, or network devices. 	This would require us to “<em>pause</em>” the execution of the current program and handle the interrupt.</p>
+<ul>
+<li>At the beginning of each cycle, the CPU will always check whether <code>IRQ == 1</code>.</li>
+<li>If <code>IRQ != 1</code>, the CPU will continue with normal execution.</li>
+<li>If <code>IRQ == 1</code>, the CPU will <em>pause</em> the current execution and handle the interrupt request first (and eventually <em>resume</em> back the paused execution <em>after the interrupt handling is done</em>).</li>
+</ul>
+</li>
+</ol>
+<p>The datapath that handles <strong>trap/fault</strong> (due to Illegal <code>OPCODE</code>)  is shown on the left, and the datapath that handles <strong>interrupt</strong> is shown on the right:</p>
+<img src="https://www.dropbox.com/s/hfyi0bx54tptiyr/illopirq.png?raw=1" alt="“F1”" width="100%" height="100%">
+<blockquote>
+<p>There’s only one difference between the two, the datapath at the PCSEL mux.</p>
+</blockquote>
+<p>The PCSEL multiplexer’s fourth and fifth input are called <code>ILLOP</code> and <code>XAdr</code>. These refers to the address of the <strong>instruction branching</strong> to the <strong><code>interrupt handling</code></strong> code, in the events that trap, fault, or interrupt occurs.  In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA,</p>
+<ul>
+<li><code>ILLOP</code> is set at <code>0x80000004</code></li>
+<li><code>XAdr</code> is set at <code>0x80000008</code></li>
+</ul>
+<p>The control signals in the events of these exceptions therefore must be set to:</p>
+<ul>
+<li>
+<p><code>ALUFN = --</code></p>
+<blockquote>
+<p>We aren’t using the ALU at all when branching.</p>
+</blockquote>
+</li>
+<li>
+<p><code>WERF = 1</code></p>
+</li>
+<li>
+<p><code>BSEL = --</code></p>
+</li>
+<li>
+<p><code>WDSEL = 00</code></p>
+</li>
+<li>
+<p><code>WR = 0</code></p>
+</li>
+<li>
+<p><code>RA2SEL = --</code></p>
+</li>
+<li>
+<p><code>PCSEL</code>:</p>
+<ul>
+<li><code>Illegal_Opcode ? 011 : 000</code></li>
+<li><code>IRQ ? 100 : 000</code></li>
+</ul>
+</li>
+<li>
+<p><code>ASEL = --</code></p>
+</li>
+<li>
+<p><code>WASEL = 0</code></p>
+</li>
+</ul>
+<h2 id="cpu-benchmarking">CPU Benchmarking</h2>
+<p>We always want a CPU that has a high performance (most instruction per second) at a low cost. Unfortunately there will always be a tradeoff between the two. We can benchmark the quality of a CPU by computing its <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>I</mi><mi>P</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">MIPS</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">M</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.05764em;">S</span></span></span></span></span> (million instruction per second),</p>
+<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>I</mi><mi>P</mi><mi>S</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>R</mi><mi>a</mi><mi>t</mi><mi>e</mi></mrow><mrow><mi>C</mi><mi>P</mi><mi>I</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">MIPS = \frac{Clock Rate }{CPI}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">M</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.05764em;">S</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 2.05744em; vertical-align: -0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.37144em;"><span class="" style="top: -2.314em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.677em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right: 0.03148em;">k</span><span class="mord mathdefault" style="margin-right: 0.00773em;">R</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.686em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>where <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">CPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span></span></span></span></span> means “Clocks per Instruction”.</p>
+<p>Although it is common to judge a CPU’s performance from its <em>clock rate</em> (cycles per second, typically ranging between 2-4 GHz per core for modern computers), we also need to consider another metric called the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">CPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span></span></span></span></span>, that is the <em>average clock cycles</em> used to execute a single instruction.</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, each instruction requires only 1 clock cycle to complete (atomic execution). It is possible for other ISA to take more than 1 clock cycle <em>on average</em> to complete an instruction.</p>
+<p>Typically, one will choose a particular program (with fixed number of instructions) for benchmarking purposes, and <strong>the same benchmark program</strong> is run on different CPUs with potentially different Clock Rate and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">CPI</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span></span></span></span></span>.</p>
+<p>The higher the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>I</mi><mi>P</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">MIPS</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">M</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.05764em;">S</span></span></span></span></span>, the faster it takes to run the benchmark program. Therefore we can say that a CPU with the highest <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>I</mi><mi>P</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">MIPS</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">M</span><span class="mord mathdefault" style="margin-right: 0.07847em;">I</span><span class="mord mathdefault" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault" style="margin-right: 0.05764em;">S</span></span></span></span></span> has the best performance.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
