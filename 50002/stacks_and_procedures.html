@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stacks_and_procedures</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#stack-and-procedures">Stack and Procedures</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#procedures-and-functions">Procedures and Functions</a></li>
+<li><a href="#procedure-linkage-and-stack">Procedure Linkage and Stack</a></li>
+<li><a href="#implementing-procedure-linkage-contract-using-stack">Implementing Procedure Linkage Contract Using Stack</a></li>
+<li><a href="#an-example-with-recursion">An example with recursion</a></li>
+<li><a href="#instruction-loading-address">Instruction Loading Address</a></li>
+<li><a href="#an-example-with-multiple-arguments">An Example with Multiple Arguments</a></li>
+<li><a href="#tough-problems">Tough Problems</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="stack-and-procedures">Stack and Procedures</h1>
+<h2 id="overview">Overview</h2>
+<p>In the previous chapter, we learned the basics of how to naively compile C-language into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly language. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> UASM provides a layer of abstraction such that we don’t need to bother ourselves with the details on how to load each and every bytes of instruction onto the memory unit, or keeping up with accounting matters such as physical memory addresses (we can replace these with <em>labels</em> instead).</p>
+<p>In this chapter, we will learn about <em>function call procedures</em>, and why we need to understand another concept called the <em>stacks</em>. Both will allow us to have reusable code fragments that are <em>called</em> as needed.</p>
+<h2 id="procedures-and-functions">Procedures and Functions</h2>
+<p>Consider the following declaration and implementation of function <code>fact</code>  below. It receives one argument <code>int n</code>, and returns an <code>int</code>.</p>
+<pre><code>int fact(int n){
+	int r = 1;
+	while (n &gt; 0){
+		r = r*n;
+		n = n-1;
+	}
+	return r;
+}
+</code></pre>
+<p>The function is implemented as a fixed set of procedure / instructions.  We can call it anywhere afterwards:</p>
+<pre><code>int result_1 = fact(4);
+int result_2 = fact(9);
+</code></pre>
+<p>If we were to naively assemble this, we can translate this into the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly source code:</p>
+<pre><code>.include beta.uasm
+|| we call fact(4) first
+LD(R31, n_1, R1)	| load 4 to R1
+LD(R31, r_1, R2) 
+
+check_while_fact_4: CMPLT(R31, R1, R0)	| compute whether n_1 &gt; 0
+BNE(R0, while_true_fact_4, R31)	| if R0 != 0, go to while_true_fact_4
+ST(R2, n_1, R31)	| store to n_1
+
+|| then we call fact(9)
+LD(R31, n_2, R1) 	| load 9 to R1, rewriting its old value
+LD(R31, r_2, R2) 
+
+check_while_fact_9: CMPLT(R31, R1, R0)	| compute whether n_1 &gt; 0
+BNE(R0, while_true_fact_9, R31)	| if R0 != 0, go to while_true_fact_9
+ST(R2, n_2, R31)	| store to n_2
+
+HALT() | stop
+
+while_true_fact_9: MUL(R1, R2, R2)	| r = r*n
+SUBC(R1, 1, R1)	| n = n-1
+BEQ(R31, check_while_fact_9, R31)	| always go back to check_while_fact_9
+
+
+while_true_fact_4: MUL(R1, R2, R2)	| r = r*n
+SUBC(R1, 1, R1)	| n = n-1
+BEQ(R31, check_while_fact_4, R31)	| always go back to check_while_fact_4
+
+n_1 : LONG(4)
+n_2 : LONG(9)
+r_1 : LONG(1)
+r_2 : LONG(1)
+</code></pre>
+<p><strong>There’s obviously a few issues here:</strong></p>
+<ol>
+<li>The code is <strong>not scalable</strong>. What if we call the function <code>fact</code> many more times? How long the assembly code is going to be?:</li>
+</ol>
+<pre><code>int result_1 = fact(4);
+int result_2 = fact(9);
+int result_3 = fact(20);
+int result_4 = fact(39);
+int result_5 = fact(18);
+int result_6 = fact(99);
+</code></pre>
+<ol start="2">
+<li>There’s so many <strong>repeated</strong>, <strong>boilerplate</strong> code. We are <strong>wasting memory</strong> (RAM) space.
+<ul>
+<li><code>while_true_fact_4</code> and <code>while_true_fact_9</code> is technically identical for all 3 instructions <code>MUL</code>, <code>SUBC</code>, and <code>BEQ</code>, only differ in the second argument of <code>BEQ</code>: either branching to  <code>check_while_fact_4</code> and <code>check_while_fact_9</code>.</li>
+<li>Same issue with <code>check_while_fact_4</code> and <code>check_while_fact_9</code> (the <code>CMPLT</code>, <code>BNE</code>, and <code>ST</code> instructions)</li>
+</ul>
+</li>
+<li>How do we know if we can <em>overwrite</em> the existing contents on any register <code>Rx</code>?</li>
+</ol>
+<p>In principle, a function:</p>
+<ul>
+<li>Is a callable, <em><strong>reusable</strong></em> series of instructions.</li>
+<li>It has a single <strong>“named” entry point</strong>. We know the address of first instruction for this function in memory.</li>
+<li><strong>Parameterizable</strong> (can access or receive a predefined number of arguments).</li>
+<li>Has <em><strong>local variables,</strong></em> which cannot be accessed anymore once the function returned.</li>
+</ul>
+<p>Once a function returns, the CPU needs to know how to return to the <em>caller</em>, i.e: to know where is the return address of the caller.</p>
+<p>For example, given this simple code:</p>
+<pre><code>int fact(int n){ --- (2) 
+	int r = 1;  --- (3) 
+	while (n &gt; 0){ --- (4) 
+		r = r*n; --- (5) 
+		n = n-1; --- (6) 
+	}
+	return r; --- (7) 
+}
+
+int result_1 = fact(4); --- (1) 
+int result_2 = fact(9); --- (8)
+</code></pre>
+<p>We know that we need to execute <code>fact</code> twice, the first run with argument <code>4</code> and the second run with argument <code>9</code>.</p>
+<ul>
+<li>
+<p>The first line of instruction that is executed is labeled with (1) above. We then enter the function, executing the lines labeled as (2)  to (7) in sequence.</p>
+</li>
+<li>
+<p><mark> After (7), the CPU must know how to return to the caller, that is the address of instruction (8).</mark></p>
+</li>
+<li>
+<p>Instruction (8) tells the CPU to enter the function again for the <strong>second run</strong>, thus executing (2) to (7) for another round, before finally stopping.</p>
+</li>
+</ul>
+<h2 id="procedure-linkage-and-stack">Procedure Linkage and Stack</h2>
+<p>Referring to the <code>fact</code> example in the previous section, notice a few <em>accounting issues</em> that we need to address in order to have a scalable and memory efficient function calls.</p>
+<p>Assuming we have a single CPU, and that the instructions are loaded to the Memory Unit from address <code>0</code> and onwards sequentially,</p>
+<p>We know that <code>r</code> and <code>n</code> are local variables within function <code>fact</code>. We can no longer access them, e.g: print them <em>outside</em> of the function. This means that we need to <strong>clean them up</strong> (from any storage unit) once the function returns.</p>
+<p>We also need to establish a location where:</p>
+<ul>
+<li>The function can always access its arguments: <code>4</code> and <code>9</code>  for the first and second run respectively.</li>
+<li>The function is expected to put the return value</li>
+<li>The CPU can find the address of the caller, i.e: where instruction (8) is in memory.</li>
+</ul>
+<h3 id="procedure-linkage-problem">Procedure Linkage Problem</h3>
+<p>In summary, the procedure linkage problems that we need to solve are:</p>
+<ol>
+<li>We need to find a way to pass arguments into procedures</li>
+<li>Procedures need their own local variables</li>
+<li>Procedures need to be able to use the CPU registers without worrying about overwriting their original content.</li>
+<li>Procedures might need to call other procedures, including themselves (recursion)</li>
+</ol>
+<h3 id="procedure-linkage-convention">Procedure Linkage Convention</h3>
+<p>These issues can be solved by establishing a kind of <strong>procedure linkage convention</strong>. We assume that  the following is always obeyed whenever we are executing instructions within a function:</p>
+<ul>
+<li>Return value is always stored at <code>R0</code></li>
+<li>Arguments can be found in a dedicated space in the Memory Unit, called the <strong>Stack</strong>. The address of the <em>top</em> of the stack (first unused location) can always be found in <code>R29</code>. The address of the <em>base</em> of the stack can always be found in <code>R27</code>.
+<blockquote>
+<p>We label <code>R29</code> as <code>SP</code> (<em><strong>Stack Pointer</strong></em>), and <code>R28</code> as <code>BP</code> (<em><strong>Base Pointer</strong></em>).</p>
+</blockquote>
+</li>
+<li>Return address is always stored at <code>R28</code>.
+<blockquote>
+<p>We label <code>R28</code> as <code>LP</code> (<em><strong>Linkage Pointer</strong></em>).</p>
+</blockquote>
+</li>
+</ul>
+<p><mark> A <strong>caller</strong> must obey the following <strong>sequence</strong> </mark>:</p>
+<ol>
+<li>Put arguments on the <strong>stack</strong></li>
+<li>Branch to the target function, leaving return address in <code>LP</code></li>
+<li>Remove arguments on stack upon return</li>
+<li>Obtain return value from <code>R0</code> (if any)</li>
+</ol>
+<p><mark> A <strong>callee</strong> must obey the following sequence </mark>:</p>
+<ol>
+<li><strong>Perform</strong> promised <strong>computation</strong></li>
+<li>Leave result in <code>R0</code> (if any)</li>
+<li>Leave the state of all <em>registers</em> in REGFILE except <code>R0</code> <strong>unchanged</strong> upon returning to the caller.</li>
+<li>Leave <em>stack data</em> <strong>unchanged</strong>  upon returning to the caller.</li>
+</ol>
+<h3 id="the-stack-implementation">The “Stack” implementation</h3>
+<p>In general, a stack is a type of data structure where you can perform two essential operations: <code>PUSH</code> and <code>POP</code>.  Its principle is <em>last-in-first-out</em>.</p>
+<p>You always add item via <code>PUSH</code> operation to the top of the stack, and can only remove the topmost item in succession via <code>POP</code> operation from the top of the stack.</p>
+<p><mark> How do we implement the stack data structure to aid our function execution? </mark></p>
+<p>We <strong>reserve</strong> an arbitrary block of location in our Memory Unit to be space for the stack. Illustrated below is a block of memory unit from address <code>0x010C</code> to <code>0x0128</code> reserved as our stack:</p>
+<img src="https://www.dropbox.com/s/zwaa983jxrmq78n/stack_empty.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>We have conventions as mentioned:</p>
+<ul>
+<li><code>R29 (SP)</code> contains the address of the <em>top</em> of the stack (available location to write to).</li>
+<li>Addresses are increasing <em>downwards</em>, hence our stack <em>grows</em> <em>downwards</em>.</li>
+</ul>
+<p>We can <code>PUSH</code> (add data) to the stack via these two instructions:</p>
+<ul>
+<li><code>ADDC(SP, 4, SP)</code>  (increase <code>SP</code>'s content by <code>4</code> so that it points to the next line address)</li>
+<li><code>ST(Rx, -4, SP)</code> (store content of chosen register <code>Rx</code> to address pointed by <code>Reg[SP]-4</code>).</li>
+</ul>
+<p>To <code>POP</code> (remove data) from the stack, we can do so via these two instructions:</p>
+<ul>
+<li><code>LD(SP , -4, Rx)</code> (load the content pointed by <code>Reg[SP]-4</code> to a chosen <code>Rx</code>)</li>
+<li><code>SUBC(SP, 4, SP)</code> (decrease <code>SP</code>'s content by <code>4</code> so that it points to the previous line address)</li>
+</ul>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> <code>uasm</code>, we simply create these macros for <code>PUSH</code> and <code>POP</code>:</p>
+<ul>
+<li><code>PUSH(Rx)</code> : push <code>Reg[Rx]</code> onto the stack</li>
+<li><code>POP(Rx)</code>: pop the value on top of the stack to <code>Reg[Rx]</code></li>
+</ul>
+<p>And also the following macros for easier stack management:<br>
+* <code>ALLOCATE(k) : ADDC(SP, 4*k, SP)</code><br>
+* <code>DEALLOCATE(k) : SUBC(SP, 4*k, SP)</code></p>
+<blockquote>
+<p>They’re both used to <em>move</em> <code>SP</code> to a reserved location for the start of the stack.</p>
+</blockquote>
+<h3 id="example-of-stack-usage">Example of stack usage:</h3>
+<p><mark>  <strong>Allocating the stack</strong></mark><br>
+Assuming the initial content of <code>SP</code> is <code>0</code>, then in order for <code>SP</code> to point to the address <code>0x010C</code> shown in the figure above, we can write:</p>
+<pre><code>.include beta.uasm
+
+ALLOCATE(67)
+</code></pre>
+<p>This is done to tell the CPU that the stack starts at address <code>0x010C</code> onwards, so that whatever content stored in the earlier addresses will not be overwritten by the stack.</p>
+<blockquote>
+<p>Otherwise, the stack will start at address 0. Typically what is stored address <code>0</code> is the <strong>first executable instruction</strong> (i.e: the beginning of our program). We usually don’t want to overwrite any instructions.</p>
+</blockquote>
+<p><mark> <strong>Adding items to the stack</strong> </mark><br>
+Suppose we put the following values: <code>16, 17, 18</code> to <code>R1</code>, <code>R2</code>, and <code>R3</code> respectively:</p>
+<pre><code>ADDC(R31, 16, R1)
+ADDC(R31, 17, R2)
+ADDC(R31, 18, R3)
+</code></pre>
+<p>We can put these values into the stack using:</p>
+<pre><code>PUSH(R1)
+PUSH(R2)
+PUSH(R3)
+</code></pre>
+<p>Upon execution of these series of instruction, the state of the stack is:</p>
+<img src="https://www.dropbox.com/s/h6ra945bysxu8tb/stack_3.png?raw=1" alt="“F1”" width="60%" height="60%">
+<blockquote>
+<p>Notice that the “top” of the stack is at the <em>bottom</em>, and that the stack grows <em>downwards</em> by convention.</p>
+</blockquote>
+<p><mark> <strong>Heads up:</strong> familiarize yourself and get used to tracking the “<em>state</em>” of the stack, <code>PC</code>, and all registers in the REGFILE  after executing each line of instruction </mark>.</p>
+<p>Now suppose we use <code>R1</code>, <code>R2</code>, <code>R3</code> for other stuffs and <em>overwrite</em> its values:</p>
+<pre><code>MULC(R1, 2, R1)
+MULC(R2, 3, R2)
+MULC(R3, 4, R3)
+</code></pre>
+<p>The <strong>new</strong> state of the registers are now written in red. <strong>The stack stays the same,</strong> and so does <code>SP</code>.</p>
+<p>We can now say that <strong>the stack contains the old value of the registers</strong> <code>R1, R2, R3</code>, as shown:</p>
+<img src="https://www.dropbox.com/s/4v4l61monn1ktwy/stack_new.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p><mark> <strong>Removing items from the stack</strong> </mark></p>
+<p>To remove items from the top of the stack, we can use <code>POP</code> instruction:</p>
+<pre><code>POP(R1)
+POP(R2)
+POP(R3)
+</code></pre>
+<p>The state of the stack and the registers is therefore as shown. Notice how <code>POP</code> instructions can be used to <em>restore</em> the registers state to before as in <strong>Step 1</strong>.</p>
+<img src="https://www.dropbox.com/s/j47t1dnw70hbz6v/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p><mark> <strong>Resetting the stack</strong> </mark><br>
+Finally, we reset a stack by simply changing the value <code>SP</code>. For example, we can return the state of <code>SP</code> to <code>0</code> as it was before <strong>Step 1</strong>.</p>
+<pre><code>DEALLOCATE(67)
+</code></pre>
+<blockquote>
+<p>Try out these instructions in <code>bsim</code>, and observe the state of the stack and registers after executing each instruction as practice.</p>
+</blockquote>
+<h2 id="implementing-procedure-linkage-contract-using-stack">Implementing Procedure Linkage Contract Using Stack</h2>
+<p>Recall that:</p>
+<p><mark> A (function) <strong>caller</strong> must obey the following calling sequence </mark>,</p>
+<ol>
+<li>Put arguments on the <strong>stack</strong>
+<blockquote>
+<p>Put them in <strong>reverse order.</strong> Last argument is pushed first. First argument is pushed last.</p>
+</blockquote>
+</li>
+<li>Branch to the target function, leaving return address in <code>LP</code></li>
+<li>Remove arguments on stack upon return
+<blockquote>
+<p>Can be done using <code>DEALLOCATE(N)</code>where <code>N</code> is the number of arguments</p>
+</blockquote>
+</li>
+<li>Obtain return value from <code>R0</code> (if any)
+<blockquote>
+<p>For example: <code>ST(R0, location, Rx)</code></p>
+</blockquote>
+</li>
+</ol>
+<p>Let’s use our factorial function again:</p>
+<pre><code>int fact(int n){
+	int r = 1;
+	while (n &gt; 0){
+		r = r*n;
+		n = n-1;
+	}
+	return r;
+}
+
+int result_1 = fact(4) -- (first call)
+int result_2 = fact(9) -- (second call)
+</code></pre>
+<p>The function <code>fact</code> is called twice, so we have two callers.</p>
+<p>We can hand assemble the first caller following the caller procedure above.</p>
+<h3 id="firstly-allocate-some-memory-space-for-caller-variables-and-instructions.">Firstly, allocate some memory space for caller variables and instructions.</h3>
+<p>To allocate memory space for variables, we can either:</p>
+<ul>
+<li>Write them after all the instructions</li>
+<li>Use the <code>.</code> operator to load them at the desired memory location, e.g: <code>0x01B0</code>
+<ul>
+<li>Define labels and its values</li>
+<li>Then, redirect the instruction back at address <code>0</code> using the <code>.</code> operator again</li>
+</ul>
+</li>
+</ul>
+<p>To allocate memory space for instructions (i.e: make <code>SP</code> point to some unused memory location), we can use <code>ALLOCATE</code>.</p>
+<pre><code>.include beta.uasm 
+. = 0x01B0 | load values at fixed location
+result_1 : LONG(0)
+result_2 : LONG(0)
+
+. = 0x0000 | load instructions from address 0 onwards
+ALLOCATE(50) 
+</code></pre>
+<h3 id="secondly--implement-the-calling-sequence">Secondly,  implement the calling sequence</h3>
+<pre><code>|| Calling sequence
+ADDC(R31, 4, R1) | put 4 to R1 
+
+|| (1) put argument on the stack
+PUSH(R1) 
+
+|| (2) branch to the function, storing return address at LP 
+BEQ(R31, fact, LP) 
+
+|| (3) remove argument from stack after function returns
+DEALLOCATE(1) 
+
+|| (4) obtain return value at R0 
+ST(R0, result_1, R31) 
+HALT()
+</code></pre>
+<p>We assume that <code>fact</code> is a label that contains the address of the first instruction of the factorial function.</p>
+<h3 id="thirdly-implement-callee-entry-sequence-and-computation-body-of-the-function">Thirdly, implement callee entry sequence and computation (body of the function)</h3>
+<p>Recall that a callee must:</p>
+<ul>
+<li>Leave the state of all <em>registers</em> in REGFILE except <code>R0</code> <strong>unchanged</strong> upon returning to the caller.</li>
+<li>Leave <em>stack data</em> <strong>unchanged</strong>  upon returning to the caller.</li>
+</ul>
+<p>This is possible by implementing two parts: callee entry sequence and callee exit/return sequence.</p>
+<p>The entry sequence is consisted of five steps:</p>
+<ol>
+<li><code>PUSH(LP)</code> : to preserve the state of <code>LP</code> which containts the return address to the caller of this function.</li>
+<li><code>PUSH(BP)</code>: to preserve the state of <code>Reg[R27]</code></li>
+<li><code>ADD(SP, R31, BP)</code>: move the content of <code>SP</code> to <code>BP</code>.  This is to set the <strong>stack frame base</strong> for this function call.
+<blockquote>
+<p>We have  macro for this: <code>MOVE(SP, BP)</code></p>
+</blockquote>
+</li>
+<li>Push all registers that we will use for the computation (except <code>R0</code>)</li>
+<li>Load arguments from the stack</li>
+</ol>
+<p>Afterwards, we then proceed with actually implementing the function.</p>
+<p>Continuing our assembly code, writing the entry procedure is straightforward.</p>
+<pre><code>|| Callee entry sequence
+fact: PUSH(LP) | (1) 
+PUSH(BP) | (2) 
+MOVE(SP, BP) | (3) 
+</code></pre>
+<p>Now to figure out (4), we need to know the registers that we will use for computation of <code>fact</code>.</p>
+<p>Recall the <em>implementation</em> of the function <code>fact</code>:</p>
+<pre><code>|| Assume (value of) n in R1 and (value of) r in R2 
+check_while_fact: CMPLT(R31, R1, R0)
+BNE(R0, while_true_fact, R31)
+BEQ(R31, done, R31)	
+
+while_true_fact: MUL(R1, R2, R2)	
+SUBC(R1, 1, R1)	
+BEQ(R31, check_while_fact, R31)	
+</code></pre>
+<p>We can see that the registers that are used for the computation (apart from <code>R0</code>) are : <code>R1</code> and <code>R2</code></p>
+<blockquote>
+<p><code>R31</code> is “not counted” as it is always <code>0</code> and you cannot rewrite new values into it.</p>
+</blockquote>
+<p>Therefore the next instructions for the callee should be:</p>
+<pre><code>|| (4) Push the contents of all registers we will use for the computations onto to stack to preserve its old value
+PUSH(R1) 
+PUSH(R2) 
+</code></pre>
+<p>Then, we load the argument <code>n</code> onto <code>R1</code>, and put <code>1</code> in <code>R2</code>. <code>R1</code> holds the value of <code>n</code> and <code>R2</code> holds the value of <code>r</code>.</p>
+<pre><code>|| (5) get arguments. 
+LD(BP, -12, R1) | Note: the first argument is at memory address BP-12
+ADDC(R31, 1, R2) 
+</code></pre>
+<p>Afterwards, we can continue with the implementation of <code>fact</code> above as it is.</p>
+<blockquote>
+<p><mark> Think carefully about why the first argument is always at address pointed by <code>Reg[BP]-12</code>. This is a direct result of caller procedure and callee entry sequence (1) to (3). </mark></p>
+</blockquote>
+<h3 id="fourthly-implement-callee-exit-sequence.">Fourthly, implement callee exit sequence.</h3>
+<p>The exit sequence is consisted of six steps:</p>
+<ol>
+<li>Put return value at <code>R0</code>.</li>
+<li>Restore all registers’ state that were used by the function computations using <code>POP</code>, in <strong>reverse</strong> order.</li>
+<li><code>ADDC(BP, R31, SP)</code>: move the content of <code>BP</code> to <code>SP</code>.  This is to set the stack pointer back to the <strong>stack frame base</strong> for this function call.
+<blockquote>
+<p>Remember, we need to leave the stack state as is when the function returns. So whatever stuffs are added to the stack by this function must be removed.<br>
+We can also use the macro for this: <code>MOVE(BP, SP)</code></p>
+</blockquote>
+</li>
+<li><code>POP(BP)</code> : restore <code>Reg[BP]</code> to its original value</li>
+<li><code>POP(LP)</code> : restore <code>Reg[LP]</code> to its original value – remember, this register <strong>contains the caller’s <em>return</em> address.</strong></li>
+<li><code>JMP(LP, R31)</code>: return to the <strong>caller</strong>.</li>
+</ol>
+<p>Let’s write them out in assembly, continuing our <code>fact</code> example above:</p>
+<pre><code>|| (1) put return value r (originally in R2) at R0
+done: ADD(R2, R31, R0) 
+
+|| (2) restore register contents
+POP(R2) 
+POP(R1) 
+
+MOVE(BP, SP) | (3) 
+POP(BP) | (4)
+POP(LP) | (5)
+JMP(LP, 0, R31) | (6)
+</code></pre>
+<p>Now to call <code>fact</code> for the second time, we can simply write another calling sequence. <strong>The <code>fact</code> instructions remain intact and reusable.</strong></p>
+<p>Combining everything, we have:</p>
+<pre><code>.include beta.uasm 
+
+||| Space allocation for variables and instructions (set start of stack)
+. = 0x01B0 | load values at fixed location
+result_1 : LONG(0)
+result_2 : LONG(0)
+
+. = 0x0000 | load instructions from address 0 onwards
+ALLOCATE(50) 
+
+||| First caller "calling sequence" -- fact(4)
+ADDC(R31, 4, R1) | put 4 to R1 
+PUSH(R1) | step (1) 
+BEQ(R31, fact, LP) | step (2) 
+DEALLOCATE(1) | step (3) 
+ST(R0, result_1, R31) | step (4) 
+
+||| Second caller "calling sequence" -- fact(9)
+ADDC(R31, 9, R1) | put 9 to R1 
+PUSH(R1) | step (1) 
+BEQ(R31, fact, LP) | step (2) 
+DEALLOCATE(1) | step (3) 
+ST(R0, result_2, R31) | step (4) 
+HALT()
+
+||| Callee entry sequence
+fact: PUSH(LP) | step (1) 
+PUSH(BP) | step (2) 
+MOVE(SP, BP) |  step (3) 
+
+| step (4) 
+PUSH(R1) | n
+PUSH(R2) | r
+
+LD(BP, -12, R1) | step (5) 
+ADDC(R31, 1, R2)
+
+||| Computation 
+check_while_fact: CMPLT(R31, R1, R0)
+BNE(R0, while_true_fact, R31)	
+BEQ(R31, done, R31)
+
+while_true_fact: MUL(R1, R2, R2)	
+SUBC(R1, 1, R1)	
+BEQ(R31, check_while_fact, R31)	
+
+||| Callee exit (return) sequence
+done: ADD(R2, R31, R0) | step (1)
+POP(R2) | step (2) 
+POP(R1) 
+
+MOVE(BP, SP) | step (3) 
+POP(BP) | step (4) 
+POP(LP) | step (5) 
+JMP(LP,R31) | step (6) 
+</code></pre>
+<p>Run the program in <code>bsim</code> <strong>step by step</strong>. At each instruction, pay attention on the state of all registers, the stack, and PC.</p>
+<blockquote>
+<p>In this course, you are expected to mentally run each instruction line by line and give the state of all registers involved, the PC, and the stack at all times. Lots of practice is definitely needed.</p>
+</blockquote>
+<p>At the end of the program, you should see that you have each answer in the memory address <code>0x01B0</code> and <code>0x01B4</code>:</p>
+<img src="https://www.dropbox.com/s/g7l4l0tkcyl08jj/mem_Res.png?raw=1" alt="“F1”" width="30%" height="30%">
+<h2 id="an-example-with-recursion">An example with recursion</h2>
+<p>We can also implement <code>fact</code> recursively:</p>
+<pre><code>int fact(int n){
+	if (n &gt; 1){
+		return n * fact(n-1);
+	}
+	return 1;
+}
+
+int result_1 = fact(3);
+</code></pre>
+<p>The recursive function <code>fact</code> can be hand assembled into:</p>
+<pre><code>||| callee entry procedure
+fact: PUSH(LP)
+PUSH(BP)
+MOVE(SP, BP)
+
+| Preserve old register values before using them
+PUSH(R1)	| n
+PUSH(R2)	| temp reg
+PUSH(R3)	| temp reg
+PUSH(R4) 	| for constant
+
+LD(BP, -12, R1) | get first argument
+ADDC(R31, 1, R4) | put 2 to R4 as a constant 
+
+||| Computation Part 1
+begin_fact_check: CMPLT(R4, R1, R2) | compare if 1 &lt; n, store in R2
+BNE(R2, if_true, R31) 
+|| leave 1 in R0
+ADDC(R31, 1, R0) 
+
+||| Callee exit sequence
+exit_sequence: POP(R4) | Pop registers in reverse order, to restore each old register value
+POP(R3)
+POP(R2)
+POP(R1) 
+
+MOVE(BP, SP)
+POP(BP)
+POP(LP)
+JMP(LP, R31)
+
+||| Computation Part 2 
+if_true: SUBC(R1, 1, R3) | compute n-1, store at R3
+
+||| Recursive calling sequence
+PUSH(R3) 
+BEQ(R31, fact, LP) | recurse
+
+|| remove unused argument from stack when recursion returns
+DEALLOCATE(1) 
+
+|| compute n * fact(n-1), store at R0 before returning
+MUL(R0, R1, R0) 
+
+BEQ(R31, exit_sequence, R31) | return
+</code></pre>
+<p>The calling sequence is simple:</p>
+<pre><code>.include beta.uasm
+
+ALLOCATE(100)
+
+ADDC(R31, 3, R1)
+PUSH(R1)
+BEQ(R31, fact, LP) | call fact(3) 
+DEALLOCATE(1) 
+HALT()
+</code></pre>
+<p>You can add <code>.breakpoint</code> in the code to allow for debugging, and observe the stack frame for each function call.</p>
+<p>In this example, calling <code>fact(3)</code> will cause <code>fact(2)</code>, and <code>fact(1)</code>  to be called recursively.</p>
+<p>The state of the stack frame <em>right</em> before <code>fact(3)</code> branching, <em>right</em> before <code>fact(2)</code> branching, <em>right</em> before <code>fact(1)</code> branching, and <em>right</em> before <code>fact(1)</code>calls its <code>exit_sequence</code> is as follows:</p>
+<img src="https://www.dropbox.com/s/mu8aq0id2y1pir5/stack_states.png?raw=1" alt="“F1”" width="100%" height="100%">
+<p>Notice several things:</p>
+<ul>
+<li>
+<p>The stack size for each callee frame is constant.</p>
+<ul>
+<li>In this example, it is 7 <strong>words</strong> (1 word is 32 bytes).</li>
+<li>This is caused by 1 argument <code>PUSH</code>, two <code>PUSH</code> from callee entry sequence, and four <code>PUSH</code> of registers (to be used for computation).</li>
+</ul>
+</li>
+<li>
+<p>The current <code>BP</code> and <code>SP</code> (rendered in black) points to the <strong>base</strong> and the <strong>top</strong> of the stack of the <em>current</em> caller.</p>
+<blockquote>
+<p><strong>Base</strong> of the stack <em>is not the start</em> <em>of the stack frame</em>. It is defined as the location of the first item pushed into the stack by that caller after <code>MOVE(SP, BP)</code> step.</p>
+</blockquote>
+</li>
+<li>
+<p>The <strong>location of the argument for the current callee</strong> is always 3 lines above the location pointed by the current <code>BP</code>.</p>
+<ul>
+<li>It is the address pointed by the <em>current</em> <code>BP</code> subtracted by 12 (bytes).</li>
+</ul>
+</li>
+<li>
+<p>The <strong>return address</strong> of the current caller is always placed <em>after</em> the argument in the stack.</p>
+<ul>
+<li>This is the direct result of 	<code>PUSH(LP)</code> as the first instruction in the callee entry sequence.</li>
+<li>For example, the return address for the first <code>fact</code> call: <code>fact(3)</code> is at <code>0x0014</code> (just look at the lower 16 bits for simplicity).</li>
+<li>This is the address of instruction:  <code>DEALLOCATE(1)</code> <strong>(see next section to understand why this is so).</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Again, test your understanding and sharpen your skills by mentally running each instruction one by one from the top and be aware of the current instruction, stack state, PC state, and register states <strong>at all times.</strong></p>
+</blockquote>
+<h2 id="instruction-loading-address">Instruction Loading Address</h2>
+<p>To figure out the address of each instruction, we can assume (if not given) that the address of the first instruction is at <code>0x0000</code>.</p>
+<ul>
+<li>Recall that each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instruction is 32 bits long (4 bytes).</li>
+<li>Therefore, the address of subsequent instructions are always increased by 4.</li>
+</ul>
+<p>For instance, if we simply load this instruction into the memory unit starting from address <code>0x0000</code>:</p>
+<pre><code>.include beta.uasm
+
+ALLOCATE(100)
+
+ADDC(R31, 3, R1)
+PUSH(R1)
+BEQ(R31, fact, LP) | call fact(3) 
+DEALLOCATE(1) 
+HALT()
+
+||| callee entry procedure
+fact: PUSH(LP)
+PUSH(BP)
+MOVE(SP, BP)
+
+...
+</code></pre>
+<p>It will obtain the following addresses:<br>
+<img src="https://www.dropbox.com/s/ae8mgejz3jgyavo/instr_eg.png?raw=1" alt="“F1”" width="50%" height="50%"></p>
+<blockquote>
+<p>This screenshot is taken from <code>bsim</code> just before we branch to <code>fact</code> for the first time with argument <code>3</code>. That is why the <code>PC</code> is pointing to address <code>0x0010</code>.</p>
+</blockquote>
+<p>Notice that as mentioned, the address of instruction <code>DEALLOCATE(1)</code> (macro for <code>SUBC(SP, 4, SP)</code>) is <code>0x0014</code>.</p>
+<h3 id="detail-about-pc">Detail: About PC</h3>
+<p>We have learned before that <code>PC</code> register always contain the address of the <em>next</em> instruction to be executed.</p>
+<p>There’s one subtle point to realise: when the <code>PC</code> is currently pointing to an address <code>A</code>, the instruction at <code>A</code> is actually already <strong>computed</strong> in the current cycle, but the <em>result</em> (of this computation) hasn’t been stored <em>yet</em>. The result will only be stored (in some register or memory address) only in the next cycle.</p>
+<blockquote>
+<p>Remember that memory write is synchronized with the clock.</p>
+</blockquote>
+<p>Take for example this particular execution state in the  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU:</p>
+<img src="https://www.dropbox.com/s/raqf5k421kfi2i7/pc_state.png?raw=1" alt="“F1”" width="100%" height="100%">
+<ul>
+<li>
+<p>The current content of register <code>PC</code> is <code>0x004</code>, that is where instruction: <code>ADDC(R31, 3, R1)</code> resides.</p>
+</li>
+<li>
+<p>The output of <code>ADDC</code> <strong>has already been computed</strong> in this cycle, as denoted in the blue value at the output port of the ALU: <code>0x00000003</code>.</p>
+<ul>
+<li>All values in blue are computed values (in this  cycle) due to this current instruction <code>ADDC</code>.</li>
+</ul>
+</li>
+<li>
+<p>However, notice <code>Reg[R1]</code> still contains <code>0</code> and not the new result <code>3</code> <em>yet</em>. In this cycle, we are trying to <strong>write</strong> <code>3</code> into <code>R1</code>.</p>
+</li>
+<li>
+<p>Only at the next cycle,<code>Reg[R1]</code> finally stores the new value <code>3</code>. The figure below shows the state of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU at the following cycle:</p>
+</li>
+</ul>
+<img src="https://www.dropbox.com/s/qzf1rxs5rshfzeo/pc_state_2.png?raw=1" alt="“F1”" width="100%" height="100%">
+<p>Therefore, what we <em>actually mean</em> when we say that the <code>PC</code> always point to the <code>next</code> instruction executed is precisely that the <strong>result</strong> will only be synchronized in the <strong>next</strong> cycle (but computation is done in the current cycle).</p>
+<blockquote>
+<p>Don’t worry too much about it. It’s just some subtle detail to appreciate.</p>
+</blockquote>
+<h2 id="an-example-with-multiple-arguments">An Example with Multiple Arguments</h2>
+<p>Consider the following function with multiple arguments:</p>
+<pre><code>int y(int m, int x, int c){
+	return m*x + c;
+}
+
+int result = y(2, 5, 3);
+</code></pre>
+<p>In order to call this function, we need to push each argument in the <em>reverse</em> order:</p>
+<pre><code>.include beta.uasm 
+. = 0x0CC
+result: LONG(0)
+
+. = 0x000
+ADDC(R31, 2, R1) | first argument
+ADDC(R31, 5, R2) | second argument
+ADDC(R31, 3, R3) | third argument
+
+|| Calling Sequence
+|| Push arguments in the reverse order
+PUSH(R3) 
+PUSH(R2)
+PUSH(R1) 
+
+|| Branch to the function
+BEQ(R31, y, LP)
+|| Deallocate the arguments
+DEALLOCATE(3)
+|| Store return value
+ST(R0, result, R31)
+HALT()
+</code></pre>
+<p>Then in the function <code>y</code>, we obtain the arguments sequentially, starting from <code>BP-12</code> for the first argument, <code>BP-16</code> for the second argument, and so on:</p>
+<pre><code>||| Callee entry sequence
+y : PUSH(LP)
+PUSH(BP)
+MOVE(SP, BP)
+
+| Preserve old register values before using them
+PUSH(R1)
+PUSH(R2)
+PUSH(R3)
+
+| Load arguments
+LD(BP, -12, R1) | m
+LD(BP, -16, R2) | x
+LD(BP, -20, R3) | c
+
+| Computation
+MUL(R1, R2, R1) 
+ADD(R1, R3, R0) | leave the answer at R0
+
+||| Callee exit sequence
+| Return all register values (POP in reverse order)
+POP(R3)
+POP(R2)
+POP(R1)
+
+MOVE(BP, SP)
+POP(BP)
+POP(LP)
+JMP(LP, R31)
+</code></pre>
+<h2 id="tough-problems">Tough Problems</h2>
+<p>The sequences that we learned don’t really solve all problems.</p>
+<p><ins> Problem 1: Nested procedure definitions </ins></p>
+<p>In Python, we can define nested procedure as follows:</p>
+<pre><code>def f(x):
+	def g(y):
+		return x+y;
+	return g
+</code></pre>
+<p>This requires <code>g</code> to access <em>non-local variable</em> <code>x</code>. We would require some kind of “static-links” in stack frames.</p>
+<blockquote>
+<p>C avoids this problem by outlawing nested procedure declarations.</p>
+</blockquote>
+<p><ins> Problem 2: Dangling references </ins></p>
+<pre><code>int *p; /* a pointer */ 
+int h(x) { 
+	int y = x*3; 
+	p = &amp;y;  // set p to be pointing to address of y, a local variable
+	return 37; 
+	} 
+h(10); 
+print(*p);
+</code></pre>
+<p>The C-code above will compile, but when executed, unexpected behavior can happen.</p>
+<blockquote>
+<p>Crash (segmentation fault), random stuffs being printed, etc.</p>
+</blockquote>
+<p>In C/C++, <em>life is harsh</em> and it is the responsibility of the programmer to ensure that mistakes like these do not happen.</p>
+<p>Java and Python will <em>babysit</em> and protect us from these mistakes, as there’s language restriction that forbids constructs that could lead to dangling references (we are also given automatic storage management, and lots of things are taken care of – garbage collection, variables allocation, etc).</p>
+<h2 id="summary">Summary</h2>
+<p>The calling and callee sequence is designed such that we have a fixed convention for <strong>linking procedures</strong>. The data structure needed for procedure linkage is a <strong>stack</strong>, and it can simply be implemented using macroinstructions: <code>PUSH</code> and <code>POP</code> on some unused memory block, which address is stored in register <code>R29: SP</code>.</p>
+<p>It is extremely important to change the content of SP to reflect a memory address where there isn’t any important instruction or data in it.</p>
+<p><mark> Remember that <code>PUSH</code> and <code>POP</code> each require <strong>two clock cycles to complete</strong>, because each of them is consisted of two atomic <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions. </mark></p>
+<p>We also <strong>reserve</strong> two other registers: <code>R27: BP</code> and <code>R28: LP</code> for this purpose, so that we know where to get the function arguments from the stack, and return address (back to the caller).</p>
+<blockquote>
+<p>We do not use these registers <code>R27, R28, and R29</code> for other purposes.</p>
+</blockquote>
+<p>The callee has to leave <em>stack data</em> <strong>unchanged</strong>  upon returning to the caller, that is to clear whatever data that was put in the stack during its execution. As a result, we might find <strong>dangling pointers:</strong></p>
+<blockquote>
+<p>e.g: pointer that points to an address that is no longer used.</p>
+</blockquote>
+<p>when we try to access a function’s local variable long after the function has returned. ,</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
