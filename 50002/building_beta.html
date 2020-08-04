@@ -207,8 +207,8 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <h2 id="opc-datapath"><code>OPC</code> datapath</h2>
 <p>The <code>OPC</code> (Type 2 instruction) datapath is similar to the <code>OP</code> datapath, except that input to the <code>B</code> port of the ALU must comes from <code>c = I[16:0]</code>.</p>
 <p><strong>There is no <code>Rc</code> field in Type 2 instruction</strong>.</p>
-<p>The instructions that fall under <code>OP</code> category are: <code>ADDC, SUBC, MULC, DIVC, ANDC, ORC, XORC, CMPEQC, CMPLTC, CMPLEC, SHLC, SHRC</code>, and <code>SRAC</code>. It’s general format is:</p>
-<img src="https://www.dropbox.com/s/dfhi9j45vnuw7n0/opc.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The instructions that fall under <code>OPC</code> category are: <code>ADDC, SUBC, MULC, DIVC, ANDC, ORC, XORC, CMPEQC, CMPLTC, CMPLEC, SHLC, SHRC</code>, and <code>SRAC</code>. It’s general format is:</p>
+<img src="https://www.dropbox.com/s/wcirw4bgwhh2xbg/opc_ins.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>The register transfer language for this instruction is:<br>
 <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
 <code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]</code> <code>(OP)</code>   <code>SEXT(C)</code></p>
@@ -236,7 +236,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 </li>
 </ul>
 <p>The figure below shows the datapath for  <code>LD</code>:</p>
-<img src="https://www.dropbox.com/s/4ypnvylpadz8q3z/ld.png?raw=1" alt="“F1”" width="80%" height="80%">
+<img src="https://www.dropbox.com/s/479io11h24i9yl3/ld.png?raw=1" alt="“F1”" width="80%" height="80%">
 <p>The control signals therefore must be set to:</p>
 <ul>
 <li>
