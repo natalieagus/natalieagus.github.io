@@ -21,6 +21,9 @@
 <li><a href="#implementing-procedure-linkage-contract-using-stack">Implementing Procedure Linkage Contract Using Stack</a></li>
 <li><a href="#an-example-with-recursion">An example with recursion</a></li>
 <li><a href="#instruction-loading-address">Instruction Loading Address</a></li>
+<li><a href="#an-example-with-multiple-arguments">An Example with Multiple Arguments</a></li>
+<li><a href="#tough-problems">Tough Problems</a></li>
+<li><a href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -54,7 +57,7 @@ int result_2 = fact(9);
 </code></pre>
 <p>If we were to naively assemble this, we can translate this into the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly source code:</p>
 <pre><code>.include beta.uasm
-| we do fact(4) first
+|| we call fact(4) first
 LD(R31, n_1, R1)	| load 4 to R1
 LD(R31, r_1, R2) 
 
@@ -62,7 +65,7 @@ check_while_fact_4: CMPLT(R31, R1, R0)	| compute whether n_1 &gt; 0
 BNE(R0, while_true_fact_4, R31)	| if R0 != 0, go to while_true_fact_4
 ST(R2, n_1, R31)	| store to n_1
 
-| then we do fact(9)
+|| then we call fact(9)
 LD(R31, n_2, R1) 	| load 9 to R1, rewriting its old value
 LD(R31, r_2, R2) 
 
@@ -326,11 +329,20 @@ result_2 : LONG(0)
 ALLOCATE(50) 
 </code></pre>
 <h3 id="secondly--implement-the-calling-sequence">Secondly,  implement the calling sequence</h3>
-<pre><code>ADDC(R31, 4, R1) | put 4 to R1 
-PUSH(R1) | (1) put argument on the stack
-BEQ(R31, fact, LP) | (2) branch to fact function, storing return address at LP 
-DEALLOCATE(1) | (3) remove argument from stack 
-ST(R0, result_1, R31) | (4) obtain return value at R0 
+<pre><code>|| Calling sequence
+ADDC(R31, 4, R1) | put 4 to R1 
+
+|| (1) put argument on the stack
+PUSH(R1) 
+
+|| (2) branch to the function, storing return address at LP 
+BEQ(R31, fact, LP) 
+
+|| (3) remove argument from stack after function returns
+DEALLOCATE(1) 
+
+|| (4) obtain return value at R0 
+ST(R0, result_1, R31) 
 HALT()
 </code></pre>
 <p>We assume that <code>fact</code> is a label that contains the address of the first instruction of the factorial function.</p>
@@ -355,14 +367,14 @@ HALT()
 </ol>
 <p>Afterwards, we then proceed with actually implementing the function.</p>
 <p>Continuing our assembly code, writing the entry procedure is straightforward.</p>
-<pre><code>| callee entry sequence
+<pre><code>|| Callee entry sequence
 fact: PUSH(LP) | (1) 
 PUSH(BP) | (2) 
 MOVE(SP, BP) | (3) 
 </code></pre>
 <p>Now to figure out (4), we need to know the registers that we will use for computation of <code>fact</code>.</p>
 <p>Recall the <em>implementation</em> of the function <code>fact</code>:</p>
-<pre><code>| Assume (value of) n in R1 and (value of) r in R2 
+<pre><code>|| Assume (value of) n in R1 and (value of) r in R2 
 check_while_fact: CMPLT(R31, R1, R0)
 BNE(R0, while_true_fact, R31)
 BEQ(R31, done, R31)	
@@ -376,12 +388,13 @@ BEQ(R31, check_while_fact, R31)
 <p><code>R31</code> is “not counted” as it is always <code>0</code> and you cannot rewrite new values into it.</p>
 </blockquote>
 <p>Therefore the next instructions for the callee should be:</p>
-<pre><code>| (4) Push the contents of all registers we will use for the computations onto to stack to preserve its old value
+<pre><code>|| (4) Push the contents of all registers we will use for the computations onto to stack to preserve its old value
 PUSH(R1) 
 PUSH(R2) 
 </code></pre>
 <p>Then, we load the argument <code>n</code> onto <code>R1</code>, and put <code>1</code> in <code>R2</code>. <code>R1</code> holds the value of <code>n</code> and <code>R2</code> holds the value of <code>r</code>.</p>
-<pre><code>LD(BP, -12, R1) | (5) the first argument is at memory address BP-12
+<pre><code>|| (5) get arguments. 
+LD(BP, -12, R1) | Note: the first argument is at memory address BP-12
 ADDC(R31, 1, R2) 
 </code></pre>
 <p>Afterwards, we can continue with the implementation of <code>fact</code> above as it is.</p>
@@ -404,8 +417,11 @@ We can also use the macro for this: <code>MOVE(BP, SP)</code></p>
 <li><code>JMP(LP, R31)</code>: return to the <strong>caller</strong>.</li>
 </ol>
 <p>Let’s write them out in assembly, continuing our <code>fact</code> example above:</p>
-<pre><code>done: ADD(R2, R31, R0) | (1) put return value r (originally in R2) at R0
-POP(R2) | (2) restore register contents
+<pre><code>|| (1) put return value r (originally in R2) at R0
+done: ADD(R2, R31, R0) 
+
+|| (2) restore register contents
+POP(R2) 
 POP(R1) 
 
 MOVE(BP, SP) | (3) 
@@ -506,7 +522,8 @@ ADDC(R31, 1, R4) | put 2 to R4 as a constant
 ||| Computation Part 1
 begin_fact_check: CMPLT(R4, R1, R2) | compare if 1 &lt; n, store in R2
 BNE(R2, if_true, R31) 
-ADDC(R31, 1, R0) | leave 1 in R0
+|| leave 1 in R0
+ADDC(R31, 1, R0) 
 
 ||| Callee exit sequence
 exit_sequence: POP(R4) | Pop registers in reverse order, to restore each old register value
@@ -521,11 +538,17 @@ JMP(LP, R31)
 
 ||| Computation Part 2 
 if_true: SUBC(R1, 1, R3) | compute n-1, store at R3
+
 ||| Recursive calling sequence
 PUSH(R3) 
 BEQ(R31, fact, LP) | recurse
-DEALLOCATE(1) | remove unused argument from stack
-MUL(R0, R1, R0) | compute n * fact(n-1), store at R0 before returning
+
+|| remove unused argument from stack when recursion returns
+DEALLOCATE(1) 
+
+|| compute n * fact(n-1), store at R0 before returning
+MUL(R0, R1, R0) 
+
 BEQ(R31, exit_sequence, R31) | return
 </code></pre>
 <p>The calling sequence is simple:</p>
@@ -636,6 +659,111 @@ MOVE(SP, BP)
 <blockquote>
 <p>Don’t worry too much about it. It’s just some subtle detail to appreciate.</p>
 </blockquote>
+<h2 id="an-example-with-multiple-arguments">An Example with Multiple Arguments</h2>
+<p>Consider the following function with multiple arguments:</p>
+<pre><code>int y(int m, int x, int c){
+	return m*x + c;
+}
+
+int result = y(2, 5, 3);
+</code></pre>
+<p>In order to call this function, we need to push each argument in the <em>reverse</em> order:</p>
+<pre><code>.include beta.uasm 
+. = 0x0CC
+result: LONG(0)
+
+. = 0x000
+ADDC(R31, 2, R1) | first argument
+ADDC(R31, 5, R2) | second argument
+ADDC(R31, 3, R3) | third argument
+
+|| Calling Sequence
+|| Push arguments in the reverse order
+PUSH(R3) 
+PUSH(R2)
+PUSH(R1) 
+
+|| Branch to the function
+BEQ(R31, y, LP)
+|| Deallocate the arguments
+DEALLOCATE(3)
+|| Store return value
+ST(R0, result, R31)
+HALT()
+</code></pre>
+<p>Then in the function <code>y</code>, we obtain the arguments sequentially, starting from <code>BP-12</code> for the first argument, <code>BP-16</code> for the second argument, and so on:</p>
+<pre><code>||| Callee entry sequence
+y : PUSH(LP)
+PUSH(BP)
+MOVE(SP, BP)
+
+| Preserve old register values before using them
+PUSH(R1)
+PUSH(R2)
+PUSH(R3)
+
+| Load arguments
+LD(BP, -12, R1) | m
+LD(BP, -16, R2) | x
+LD(BP, -20, R3) | c
+
+| Computation
+MUL(R1, R2, R1) 
+ADD(R1, R3, R0) | leave the answer at R0
+
+||| Callee exit sequence
+| Return all register values (POP in reverse order)
+POP(R3)
+POP(R2)
+POP(R1)
+
+MOVE(BP, SP)
+POP(BP)
+POP(LP)
+JMP(LP, R31)
+</code></pre>
+<h2 id="tough-problems">Tough Problems</h2>
+<p>The sequences that we learned don’t really solve all problems.</p>
+<p><ins> Problem 1: Nested procedure definitions </ins></p>
+<p>In Python, we can define nested procedure as follows:</p>
+<pre><code>def f(x):
+	def g(y):
+		return x+y;
+	return g
+</code></pre>
+<p>This requires <code>g</code> to access <em>non-local variable</em> <code>x</code>. We would require some kind of “static-links” in stack frames.</p>
+<blockquote>
+<p>C avoids this problem by outlawing nested procedure declarations.</p>
+</blockquote>
+<p><ins> Problem 2: Dangling references </ins></p>
+<pre><code>int *p; /* a pointer */ 
+int h(x) { 
+	int y = x*3; 
+	p = &amp;y;  // set p to be pointing to address of y, a local variable
+	return 37; 
+	} 
+h(10); 
+print(*p);
+</code></pre>
+<p>The C-code above will compile, but when executed, unexpected behavior can happen.</p>
+<blockquote>
+<p>Crash (segmentation fault), random stuffs being printed, etc.</p>
+</blockquote>
+<p>In C/C++, <em>life is harsh</em> and it is the responsibility of the programmer to ensure that mistakes like these do not happen.</p>
+<p>Java and Python will <em>babysit</em> and protect us from these mistakes, as there’s language restriction that forbids constructs that could lead to dangling references (we are also given automatic storage management, and lots of things are taken care of – garbage collection, variables allocation, etc).</p>
+<h2 id="summary">Summary</h2>
+<p>The calling and callee sequence is designed such that we have a fixed convention for <strong>linking procedures</strong>. The data structure needed for procedure linkage is a <strong>stack</strong>, and it can simply be implemented using macroinstructions: <code>PUSH</code> and <code>POP</code> on some unused memory block, which address is stored in register <code>R29: SP</code>.</p>
+<p>It is extremely important to change the content of SP to reflect a memory address where there isn’t any important instruction or data in it.</p>
+<p><mark> Remember that <code>PUSH</code> and <code>POP</code> each require <strong>two clock cycles to complete</strong>, because each of them is consisted of two atomic <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions. </mark></p>
+<p>We also <strong>reserve</strong> two other registers: <code>R27: BP</code> and <code>R28: LP</code> for this purpose, so that we know where to get the function arguments from the stack, and return address (back to the caller).</p>
+<blockquote>
+<p>We do not use these registers <code>R27, R28, and R29</code> for other purposes.</p>
+</blockquote>
+<p>The callee has to leave <em>stack data</em> <strong>unchanged</strong>  upon returning to the caller, that is to clear whatever data that was put in the stack during its execution. As a result, we might find <strong>dangling pointers:</strong></p>
+<blockquote>
+<p>e.g: pointer that points to an address that is no longer used.</p>
+</blockquote>
+<p>when we try to access a function’s local variable long after the function has returned. ,</p>
 
     </div>
   </div>
