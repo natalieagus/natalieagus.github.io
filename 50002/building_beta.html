@@ -276,8 +276,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4*SEXT(C)</code><br>
 <code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Mem[EA]</code></p>
 <ul>
-<li>The <code>LDR</code> instruction does not require the CPU to utilise the <code>Ra</code> field at all.</li>
-<li>It computes <code>EA</code> <strong>relative</strong> to the current address pointed by <code>PC</code>.</li>
+<li>The <code>LDR</code> instruction computes <code>EA</code> <strong>relative</strong> to the current address pointed by <code>PC</code>.</li>
 </ul>
 <p>The figure below shows the datapath for <code>LDR</code>:</p>
 <img src="https://www.dropbox.com/s/479io11h24i9yl3/ldr.png?raw=1" alt="“F1”" width="80%" height="80%">
