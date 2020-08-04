@@ -17,6 +17,12 @@
 
 [Building the $\beta$ CPU](https://natalieagus.github.io/50002/building_beta.html)
 
+[Assemblers and Compilers](https://natalieagus.github.io/50002/assemblers_and_compilers.html)
+
+[Stack and Procedures](https://natalieagus.github.io/50002/stacks_and_procedures.html)
+
+[Memory Hierarchy](https://natalieagus.github.io/50002/memory_hierarchy.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
