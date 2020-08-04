@@ -183,22 +183,28 @@ The above is an <code>ADDC</code> instruction, to add contents of <code>R15</cod
 <p><code>beta.uasm</code> provides support for all <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions so that we can write instructions for <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> in a <em>much more intuitive way without caring about the details on how to load these values properly into memory</em> (<strong>abstraction provided</strong>).</p>
 <pre><code>| BETA Instructions:
 
+|| OP instructions
 .macro ADD(RA,RB,RC) betaop(0x20,RA,RB,RC)
-.macro ADDC(RA,C,RC) betaopc(0x30,RA,C,RC)
 .macro AND(RA,RB,RC) betaop(0x28,RA,RB,RC)
-.macro ANDC(RA,C,RC) betaopc(0x38,RA,C,RC)
 .macro MUL(RA,RB,RC) betaop(0x22,RA,RB,RC)
+
+|| OPC instructions
+.macro ADDC(RA,C,RC) betaopc(0x30,RA,C,RC)
+.macro ANDC(RA,C,RC) betaopc(0x38,RA,C,RC)
 .macro MULC(RA,C,RC) betaopc(0x32,RA,C,RC) 
+
 ...
+|| Memory Access instructions
 .macro LD(RA,CC,RC) betaopc(0x18,RA,CC,RC)
-.macro LD(CC,RC) betaopc(0x18,R31,CC,RC)
 .macro ST(RC,CC,RA) betaopc(0x19,RA,CC,RC)
-.macro ST(RC,CC) betaopc(0x19,R31,CC,RC)
+.macro LDR(CC, RC) betabr(0x1F, R31, RC, CC)
+...
+
+|| Transfer Control instructions
+.macro betabr(OP,RA,RC,LABEL)	betaopc(OP,RA,((LABEL-.)&gt;&gt;2)-1, RC)
 .macro JMP(RA, RC) betaopc(0x1B,RA,0,RC)
 .macro BEQ(RA,LABEL,RC) betabr(0x1D,RA,RC,LABEL)
-.macro BEQ(RA,LABEL) betabr(0x1D,RA,r31,LABEL)
 .macro BNE(RA,LABEL,RC) betabr(0x1E,RA,RC,LABEL)
-.macro BNE(RA,LABEL) betabr(0x1E,RA,r31,LABEL)
 ...
 </code></pre>
 <h2 id="interpreter-and-compiler">Interpreter and Compiler</h2>
