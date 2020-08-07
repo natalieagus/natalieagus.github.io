@@ -23,6 +23,8 @@
 
 [Memory Hierarchy](https://natalieagus.github.io/50002/memory_hierarchy.html)
 
+[Cache Design Issues](https://natalieagus.github.io/50002/cache_issues.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
