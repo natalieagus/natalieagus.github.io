@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cache_issues</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#cache-issues">Cache Issues</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#cache-design-issues">Cache Design Issues</a></li>
+<li><a href="#comparing-fa-and-dm-cache">Comparing FA and DM Cache</a></li>
+<li><a href="#improving-associativity">Improving Associativity</a></li>
+<li><a href="#replacement-policies">Replacement Policies</a></li>
+<li><a href="#the-cache-block-size">The Cache Block Size</a></li>
+<li><a href="#write-policies">Write Policies</a></li>
+<li><a href="#the-helper-bits">The Helper Bits</a></li>
+<li><a href="#word-addressing">Word Addressing</a></li>
+<li><a href="#cache-benchmarking">Cache Benchmarking</a></li>
+<li><a href="#the-caching-algorithm">The Caching Algorithm</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="cache-issues">Cache Issues</h1>
+<h2 id="overview">Overview</h2>
+<p>Recall that  <strong>cache</strong> is a small and fast (and expensive, made of <code>SRAM</code>) memory unit assembled near the CPU core, which function is to reduce the <strong>average</strong> time and energy required for the CPU to access some requested data <code>Mem[A]</code> located in the Main Memory (RAM).</p>
+<p>The cache contains  a <strong>copy</strong> of some recently or frequently used data <code>Mem[A]</code> and its address <code>A</code>. The hardware is assembled in such a way that the CPU will always look for that particular data in the cache first, and only look for the requested information in the Physical Memory if cache <code>MISS</code> occurs (and then the cache will be updated to contain this new information).</p>
+<blockquote>
+<p>Note that the CPU is able to both <strong>read</strong> from the cache and <strong>write</strong> to the cache (like normal <code>LD</code> and <code>ST</code> to the RAM).</p>
+</blockquote>
+<p>Without the presence of cache device, the CPU has to frequently access the RAM. Frequent <code>LD</code> and <code>ST</code> to the Physical Memory becomes the main <em>bottleneck</em> for CPU performance. This is because the time taken for a <em>write</em> and <em>read</em> in <code>DRAM</code>  is significantly longer than optimum  CPU <code>CLK</code> cycle.</p>
+<p>In this chapter, we will learn various cache design issues such as its (hardware) <strong>parameters</strong>, i.e: <em>block size,</em> cache size, <em>associativity</em>, and <strong>management</strong>, i.e: <em>write</em> policy and <em>replacement</em> policy.</p>
+<h2 id="cache-design-issues">Cache Design Issues</h2>
+<p>The cache design issues are categorised as follows:</p>
+<ol>
+<li>
+<p><strong>Associativity</strong> : we need to determine how many <em>different</em> addresses can be stored in a cache line. <mark> It implies <strong>choice</strong> </mark>.</p>
+<ul>
+<li>For DM cache, there is no choice on which cache line is used or looked up. <strong>A 1-to-1 mapping</strong> between each combination of the last <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.03148em;">k</span></span></span></span></span> bit of the query address <code>A</code> to the cache line (entry) is required. Hence, the DM cache has <strong>no associativity</strong>.</li>
+<li>An FA cache, as the name suggests: has <strong>complete associativity</strong>. We have <code>N</code> choices of cache lines in an FA cache of size <code>N</code>: any <code>Tag</code>-<code>Content</code> can reside on any cache line in FA cache.</li>
+</ul>
+</li>
+<li>
+<p><strong>Replacement policy</strong> : refers to the decision on which entry of the cache should we <em>replace</em> in the event of cache <code>MISS</code>.</p>
+</li>
+<li>
+<p><strong>Block size</strong> : refers to the problem on deciding <em>how many sets</em> of 32-bits data do we want to <strong>write</strong> to the cache at a time.</p>
+</li>
+<li>
+<p><strong>Write policy</strong> :  refers to the decision on <strong>when</strong> do we <em>write</em> (updated entries) from cache to the main memory.</p>
+</li>
+</ol>
+<h2 id="comparing-fa-and-dm-cache">Comparing FA and DM Cache</h2>
+<p>We compare the two designs via various metrics:</p>
+
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>FA Cache</th>
+<th>DM Cache</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>TAG</code> field</strong></td>
+<td>All address bits</td>
+<td>Higher <code>T</code> address bits</td>
+</tr>
+<tr>
+<td><strong><code>Content</code> field</strong></td>
+<td>All N bits of Data: <code>Mem[A]</code></td>
+<td>All N  bits Data: <code>Mem[A]</code></td>
+</tr>
+<tr>
+<td><strong><code>TAG</code> Indexing</strong></td>
+<td>None</td>
+<td>Lower <code>K</code> address bits</td>
+</tr>
+<tr>
+<td><strong>Cache Size</strong></td>
+<td>Any</td>
+<td><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>K</mi></msup></mrow><annotation encoding="application/x-tex">2^K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8413309999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">K</span></span></span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+<tr>
+<td><strong>Memory Cell Technology</strong></td>
+<td>SRAM</td>
+<td>SRAM</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Very fast (gold standard)</td>
+<td>Slower than FA cache on average</td>
+</tr>
+<tr>
+<td><strong>Contention Risk</strong></td>
+<td>None</td>
+<td>Inversely proportional to cache size</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Expensive</td>
+<td>Cheaper than FA</td>
+</tr>
+<tr>
+<td><strong>Replacement policy</strong></td>
+<td>LRU, FIFO, Random</td>
+<td>Not Applicable</td>
+</tr>
+<tr>
+<td><strong>Associativity</strong></td>
+<td>Fully associative, any <code>Tag</code>-<code>Content</code> can be placed on any cache line</td>
+<td>None. Each cache line can only contain matching lower <code>k</code>-bits <code>TAG</code></td>
+</tr>
+</tbody>
+</table><p>It is obvious that each design has its own pros and cons depending its application. FA cache is superior in certain applications where small cache size is sufficient. The DM cache suffers from severe contention when the cache size is small, but perform reasonably well on average when its size is large.</p>
+<h2 id="improving-associativity">Improving Associativity</h2>
+<p>In this section, we will learn a new cache design called the N-way set associative (NWSA) cache, which is a <em>hybrid</em> design between FA and DM cache architecture.</p>
+<h3 id="motivation">Motivation</h3>
+<ul>
+<li>
+<p>Although DM cache is cheap, it suffers from the <strong>contention</strong> problem.</p>
+<ul>
+<li>Contention mostly occurs within a certain block of addresses (called independent <strong>hot-spots</strong>), due to the <strong>locality of reference</strong> in each different address <em>range</em>.</li>
+<li>For example, if instructions for Program A lies in memory address range <code>0x1000</code> to <code>0x1111</code>, and instructions for Program B lies in memory address range <code>0xB000</code> to <code>0xB111</code>,</li>
+<li>and if <code>k=3</code> in the CPU DM cache, <strong>concurrent execution</strong> of Program A and B will cause major <strong>contention</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Hence, <em>some degree</em> of associativity is needed.</p>
+<ul>
+<li>Full associativity will be expensive, so we try to just have <em>some</em> of it.</li>
+</ul>
+</li>
+</ul>
+<h3 id="n-way-set-associative-cache">N-Way Set Associative Cache</h3>
+<p>One solution is increase the associativity of a DM cache is to build an <strong><code>N</code>-way set associative cache</strong> (NWSA cache).</p>
+<ul>
+<li>NWSA cache will be <em>cheaper</em> to produce than FA cache (of the same storage capacity), but slightly more expensive than its full DM cache counterpart.</li>
+<li>NWSA cache has lesser risk of contention (proportional to the value of <code>N</code>).</li>
+</ul>
+<p>The figure below illustrates the structure of an NWSA cache:</p>
+<img src="https://www.dropbox.com/s/jbg0b7ajjcn79mg/nway.png?raw=1" alt="“F1”" width="100%" height="100%">
+<ul>
+<li>
+<p>An NWSA cache is made up of  <code>N</code> DM caches, connected in a <em>parallel</em> fashion.</p>
+</li>
+<li>
+<p>The cells in the same ‘<em>row</em>’ marked in red is called as belonging in the same <strong>set</strong>.</p>
+</li>
+<li>
+<p>The cells in the same ‘<em>column</em>’ of DM caches  is said to belong in the same <strong>way</strong>. Each <strong>way</strong> is basically a DM cache that has <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></span> cache lines.</p>
+</li>
+<li>
+<p>Given a combination of <code>K</code>-bits lower address, the higher <code>T</code> bits <code>TAG</code> and its <code>Content</code> can be stored in <strong>any</strong> <em>of the N cache lines in the same set.</em></p>
+</li>
+<li>
+<p>Given a query address <code>A</code>:</p>
+<ul>
+<li>we will need to wait for the device to <em>decode</em> its last <code>K</code> bits and find the right set.</li>
+<li>Then, the device will perform a <strong>parallel</strong> lookup operation for all <code>N</code> cache lines same set.</li>
+</ul>
+</li>
+</ul>
+<h2 id="replacement-policies">Replacement Policies</h2>
+<p>Cache replacement policy is required in both FA cache and NWSA cache.  In the event of cache <code>MISS</code>, we need to <strong>replace</strong> the <em>old</em> cache line 	<code>TAG</code>-<code>Content</code> field with this <em>newly requested</em> one.</p>
+<blockquote>
+<p>In DM cache, do we need a replacement policy? Why or why not?</p>
+</blockquote>
+<p>There are three common cache replacement strategies. Usually they’re implemented <strong>in hardware</strong>, and carries varying degree of <em>overhead</em>.</p>
+<blockquote>
+<p>Overhead: additional cost (time, energy, money) to maintain and implement.</p>
+</blockquote>
+<h3 id="least-recently-used-lru">Least Recently Used (LRU)</h3>
+<p><strong>The idea:</strong> To always replace the least recently used item in the cache.</p>
+<p><strong>Overhead computation:</strong></p>
+<ul>
+<li>
+<p>To know which item is the least recently used, we need to <strong>keep an ordered list</strong> of <code>N</code> items in the cache (FA) or set <em>at all times</em>. This takes up <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span> bits <em>per cache line</em>. In total, there’s <code>N</code> cache lines, hence we need to have some hardware of size <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N\log_2(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">N</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.20696799999999996em;"><span class="" style="top: -2.4558600000000004em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span> bits to contain the necessary information for  supporting LRU replacement policy.</p>
+</li>
+<li>
+<p>We also need a <strong>complex logic unit</strong> for implementing LRU algorithm and to re-order the LRU bits <em>after every cache access.</em></p>
+</li>
+</ul>
+<p><strong>Example:</strong> Given an FA cache of size <code>N=4</code>, and the event where we request addresses in this sequence: <code>0x0004,0x000C,0x0C08,0x0004,0xFF00,0xAACC</code> at <code>t=0,1,2,3,4,5</code> respectively.</p>
+<p>At <code>t=2</code>, the state of the FA cache with LRU as replacement policy will be:</p>
+<blockquote>
+<p>The smallest LRU bit indicates the most recently accessed data</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>TAG</th>
+<th>Content</th>
+<th>LRU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x0004</code></td>
+<td><code>Mem[0x0004]</code></td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>0x000C</code></td>
+<td><code>Mem[0x000C]</code></td>
+<td>01</td>
+</tr>
+<tr>
+<td><code>0x0C08</code></td>
+<td><code>Mem[0x0C08]</code></td>
+<td>00</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table><p>At <code>t=3</code>, we access <code>A=0x000C</code> again. This <strong>updates</strong> all LRU bits:</p>
+
+<table>
+<thead>
+<tr>
+<th>TAG</th>
+<th>Content</th>
+<th>LRU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x0004</code></td>
+<td><code>Mem[0x0004]</code></td>
+<td>00</td>
+</tr>
+<tr>
+<td><code>0x000C</code></td>
+<td><code>Mem[0x000C]</code></td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>0x0C08</code></td>
+<td><code>Mem[0x0C08]</code></td>
+<td>01</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table><p>At <code>t=5</code>, the entry <code>0x0011-Mem[0x0011]</code> is replaced because its the <em>least recently used</em> entry:</p>
+
+<table>
+<thead>
+<tr>
+<th>TAG</th>
+<th>Content</th>
+<th>LRU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x0004</code></td>
+<td><code>Mem[0x0004]</code></td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>0xAACC</code></td>
+<td><code>Mem[0xAACC]</code></td>
+<td>00</td>
+</tr>
+<tr>
+<td><code>0x0C08</code></td>
+<td><code>Mem[0x0C08]</code></td>
+<td>11</td>
+</tr>
+<tr>
+<td><code>0xFF00</code></td>
+<td><code>Mem[0xFF00]</code></td>
+<td>01</td>
+</tr>
+</tbody>
+</table><p><mark> The LRU bits is  updated at <strong>every</strong> cache <strong>access</strong>, regardless of whether there’s a replacement or not. </mark></p>
+<h3 id="least-recently-replaced-lrr">Least Recently Replaced (LRR)</h3>
+<p><strong>The idea:</strong> To always replace the <strong>oldest</strong> recently used item in the cache, <em>regardless of the last access time</em>.</p>
+<p><strong>Overhead computation:</strong></p>
+<ul>
+<li>We need to know which is <strong>oldest</strong> cache line  in the device.</li>
+<li>If there are <code>N</code> items in the cache, we need  to have a pointer of size <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log_2 N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.20696799999999996em;"><span class="" style="top: -2.4558600000000004em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span> bits that can point to the oldest cache line.</li>
+<li>+ (not as complex) logic unit to perform the LRR algorithm.</li>
+</ul>
+<p><strong>Example:</strong> (Same example as above) Given an FA cache of size <code>N=4</code>, and the event where we request addresses in this sequence: <code>0x0004,0x000C,0x0C08,0x0004,0xFF00,0xAACC</code> at <code>t=0,1,2,3,4,5</code> respectively.</p>
+<blockquote>
+<p>Assume that we will always fill <em>empty</em> cache from the smallest index to the largest index.</p>
+</blockquote>
+<p>At<code>t=2</code>, the state of the FA cache with LRR as replacement policy will be:</p>
+<blockquote>
+<p>The LRR is a pointer containing the index of the “oldest” item in the cache.</p>
+</blockquote>
+<p><code>LRR: 00</code></p>
+
+<table>
+<thead>
+<tr>
+<th>TAG</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x0004</code></td>
+<td><code>Mem[0x0004]</code></td>
+</tr>
+<tr>
+<td><code>0x000C</code></td>
+<td><code>Mem[0x000C]</code></td>
+</tr>
+<tr>
+<td><code>0x0C08</code></td>
+<td><code>Mem[0x0C08]</code></td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table><p>At <code>t=3</code>, we  access <code>A=1</code> again, but the <code>LRR</code> pointer <strong>will not be updated.</strong></p>
+<p>At <code>t=5</code>, the one that is replaced is <code>A=0x0004</code>, and the <code>LRR</code> pointer can be increased to be the next oldest entry (the next index):<br>
+<code>LRR: 01</code></p>
+
+<table>
+<thead>
+<tr>
+<th>TAG</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x0004</code></td>
+<td><code>Mem[0x0004]</code></td>
+</tr>
+<tr>
+<td><code>0xAACC</code></td>
+<td><code>Mem[0xAACC]</code></td>
+</tr>
+<tr>
+<td><code>0x0C08</code></td>
+<td><code>Mem[0x0C08]</code></td>
+</tr>
+<tr>
+<td><code>0xFF00</code></td>
+<td><code>Mem[0xFF00]</code></td>
+</tr>
+</tbody>
+</table><h3 id="random">Random</h3>
+<p><strong>The idea:</strong> Very simple – to replace a random cache line.</p>
+<p><strong>Overhead computation:</strong></p>
+<ul>
+<li>We simply need some logic unit to behave like a  random generator, and we use this to select the cache line to replace when the cache is full.</li>
+</ul>
+<h3 id="comparing-between-strategies">Comparing Between Strategies</h3>
+<p>There’s no one superior replacement policy. One replacement policy can be better than the other <em>depending on our use case</em> i.e: pattern of addresses enquired.</p>
+<blockquote>
+<p>Refer to Problem Set for various examples</p>
+</blockquote>
+<p><strong>LRU</strong> conforms to locality of reference, and is excellent when <code>N</code> is small (since it is expensive to implement). <strong>Random</strong> method is good when <code>N</code> is large. <strong>LRR</strong> is good on specific pattern of usage where we don’t frequently revisit oldest cached data.</p>
+<h2 id="the-cache-block-size">The Cache Block Size</h2>
+<p>We can further improve cache performance by <strong>increasing the capacity of each cache line</strong>. We can <strong>fetch  <code>B</code> words of data at a time</strong>, and this is especially useful if there’s high locality of reference.  The figure below illustrates a cache line with <code>B=4</code>:</p>
+<img src="https://www.dropbox.com/s/ceamhyfon0dsofw/blocksize.png?raw=1" alt="“F1”" width="80%" height="80%">
+<p><mark> The number of data <strong>words</strong> in each cache line is called the <strong>block size</strong> and is always a power of two. </mark></p>
+<p><mark> Recall that <code>1 word = 32 bits</code>, and we address the entire word by its smallest byte address. </mark></p>
+<p>Hence to index or address each word in the cache line, we need <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>=</mo><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">b = \log_2(B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.20696799999999996em;"><span class="" style="top: -2.4558600000000004em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span><span class="mclose">)</span></span></span></span></span> bits. In the example above, we need <code>b=2</code> to address each column, taken from <code>A[3:2]</code> (assuming that <code>A</code> uses byte addressing).</p>
+<p>There are tradeoffs in determining the block size of our cache, since we always fetch (and / or overwrite) <code>B</code> words – the entire block – together at a time:</p>
+<ul>
+<li>
+<p><strong>Pros</strong>: If high locality of reference is present, there’s high likelihood that the words from the same block will be required together. Fetching a large block upon the first <code>MISS</code> will be beneficial later on, thus improving the average performance.</p>
+</li>
+<li>
+<p><strong>Cons</strong>: Risk of fetching <strong>unused</strong> words. With a larger block size, we have to fetch more words on a cache <code>MISS</code> and the <code>MISS</code> penalty grows linearly with increasing block size if there’s low locality of reference.</p>
+</li>
+</ul>
+<h2 id="write-policies">Write Policies</h2>
+<p>When the CPU executes a <code>ST</code> instruction, it will first write the <code>TAG = Address</code>-<code>Content = new content</code> to the cache. We will then have to decide <em>when</em> to actually update the physical memory.</p>
+<blockquote>
+<p>Sometimes we do not need to update the physical memory at each <code>ST</code> as what was stored might only be intermediary or temporary values. This is where the act of “writing to cache first” instead of directly to physical memory speeds up execution.</p>
+</blockquote>
+<p>To update the physical memory, the CPU must first fetch the data from the cache and then write it to the physical memory. This <strong>pauses</strong> execution of the ongoing program as the CPU will be busy writing to the physical memory and updating it.</p>
+<p>There are three common cache write strategies.</p>
+<h3 id="write-through">Write-through</h3>
+<p><strong>The main idea:</strong>  CPU writes are done in the cache first by setting <code>TAG = Address</code>, and <code>Content = new content</code> in an available cache line, and is also <strong>immediately</strong> written to the physical memory.</p>
+<p>This policy <strong>stalls</strong> the CPU until write to memory is complete, but memory always holds the “truth”, and is never oudated.</p>
+<h3 id="write-back">Write-back</h3>
+<p><strong>The main idea:</strong>: Similarly, CPU writes are done in the cache first by setting <code>TAG = Address</code>, and <code>Content = new content</code> in an available cache line, <strong>but not immediately written to the main memory.</strong></p>
+<p>The contents in the physical memory can be “<em>stale</em>” (outdated).</p>
+<p>To support this policy, the cache needs to have a helper bit called the <strong>dirty bit</strong> (see next section for more information) for each cache line – to indicate whether the corresponding copy of the content in the main memory is outdated. The CPU will write to the physical memory only if the data in cache line <em>needs to be replaced</em> and that the cache line is <strong>dirty</strong>. If the data is not dirty, then the cache line can simply be replaced without any writes.</p>
+<blockquote>
+<p>There is no best overall policy. Think about the pros and cons of each policy, and think about specific cases where one policy is superior than the other.</p>
+</blockquote>
+<h3 id="write-behind">Write-behind</h3>
+<p><strong>The main idea:</strong>: CPU writes are also done in the cache first by setting <code>TAG = Address</code>, and <code>Content = new content</code> in an available cache line, and write to the physical memory is <strong>immediate</strong> but <strong>buffered</strong> or <strong>pipelined</strong>.</p>
+<p>CPU will not stall and will be executing next instructions while writes are <em>completed in the background.</em> It also needs the dirty bit indicator that will be cleared once the background write finishes.</p>
+<p>This policy might require slightly complex hardware to implement as opposed to the other policies, e.g: the pipeline and the background, asynchronous write system.</p>
+<h2 id="the-helper-bits">The Helper Bits</h2>
+<p>The cache device may need to store not just <code>Tag</code>-<code>Content</code> per cache line, but also some “helper bits” that are used to perform some write or replacement policy, and the overall caching algorithm.</p>
+<h3 id="v-valid-bit"><code>V</code>: <strong>Valid Bit</strong></h3>
+<p>The valid bit (either <code>1</code> or <code>0</code>) is used to indicate whether the particular cache line  contains <em>valid</em> and <em>important</em> values (valid copy of data from memory unit) and not an <em>invalid</em> or <em>empty</em> or <em>redundant</em> in value.</p>
+<blockquote>
+<p>Think about it: in electronics, information is encoded in voltage. The device do not know what is the difference in usage between valid information vs invalid gibberish in a memory cell until it attempts to <strong>compute</strong>  its value – which takes <em>time</em>.</p>
+</blockquote>
+<blockquote>
+<p>Also, it does not know the difference between redundant (old) information vs new information. Therefore the valid bit is used as a quick indicator whether the content in the cache line is important or not.</p>
+</blockquote>
+<p>The cache performance can be further sped up if it is made to check (compare <code>TAG</code>) if <code>V = 1</code> for the cache line – and skip comparison of <code>TAG</code> when <code>V=0</code>.</p>
+<p>This allows for a faster <code>HIT</code> computation in the event of cache <code>MISS</code>.</p>
+<p><strong>The cost</strong>: just 1 extra storage bit per cache line. For cache lines with block size larger than 1, there’s still only one <code>V</code> bit per cache line (so the entire <code>b</code> block of words are either <em>present</em> or <em>not present</em>).</p>
+<h3 id="d-dirty-bit"><code>D</code>: Dirty Bit</h3>
+<p>The dirty bit (<code>1</code> or <code>0</code>) is used to indicate whether we need to update the memory unit to reflect the new updated version in the cache.</p>
+<p>The dirty bit is set to <code>1</code> <strong>iff</strong> the cache line is updated (CPU writes new values to cache) but this new value <strong>hasn’t been stored</strong> to the physical memory. In other words, the copy in the physical memory is <em>outdated</em>.</p>
+<h3 id="lru-least-recently-used-bits"><code>LRU</code>: Least Recently Used Bits</h3>
+<p>The LRU bit is present in each cache line for FA and NWSA cache only regardless of the block size.  DM cache does not have a replacement policy. For a cache of size <code>N</code>, we need <code>N log N</code> bits per cache line.</p>
+<p>The helper bits can be illustrated in a diagram like below. Below we have a sample of 3WSA cache with <code>b=2</code>:</p>
+<img src="https://www.dropbox.com/s/jdzkblgoyb6dh7i/3way.png?raw=1" alt="“F1”" width="100%" height="100%">
+<blockquote>
+<p>Test your understanding: How many LRU bits are needed?</p>
+</blockquote>
+<h2 id="word-addressing">Word Addressing</h2>
+<p>Previously, we learned that byte addressing is used by convention.</p>
+<p>However <strong>for ease of calculation in practice questions</strong> and <strong>problem sets</strong>, we can use <strong>word addressing</strong> instead (we give an address for each word instead of each byte).</p>
+<p>Given a memory unit of fixed size <code>M</code>, can use 2 bits lesser if we were to use word addressing instead of byte addressing.</p>
+<p>For DM/NWSA cache with <code>B</code> blocks and <strong>word addressing</strong>, we need to divide the original requested address into the same <strong>three segments</strong>, but we don’t have the default <code>00</code> in the lowest 2 bits of the address (as when byte addressing is used) anymore:<br>
+<img src="https://www.dropbox.com/s/2dsjsjurxtndevq/wordbyte.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<ul>
+<li>Lowest<code>B</code>-bits to index each word in a cache line block.</li>
+<li><code>K</code>-bits to index each cache line or set.</li>
+<li>Highest (remainder) <code>T</code>-bits of the original requested address to be stored in the <code>TAG</code> field.</li>
+</ul>
+<h2 id="cache-benchmarking">Cache Benchmarking</h2>
+<p>We can  compute <strong>average cache performance</strong> by counting how many <code>HIT</code>s  (and <code>MISS</code>) are there given <code>N</code> queries in sequence, and dividing the number of <code>HIT</code> with <code>N</code>, given its hardware specification such as block size, replacement policy, and cache size.</p>
+<p>If the query sequences repeat itself, we can compute the number of <code>HIT</code> and <code>MISS</code> from its <strong>steady state</strong>.</p>
+<h3 id="example">Example</h3>
+<p>We want to measure the performance of an FA cache that has <code>4</code> cache lines with <strong>LRR</strong> replacement policy.</p>
+<p>Assume that the cache is initially <em>empty</em> (or contains redundant values – nothing relevant is cached before), we let the CPU execute the following program consisted of 9 <code>READ</code> (<code>LD</code>) requests for a few <em>rounds</em>:</p>
+<p><code>At t=0: 0x0014</code><br>
+<code>At t=1: 0x0011</code><br>
+<code>At t=2: 0x0022</code><br>
+<code>At t=3: 0x0014</code><br>
+<code>At t=4: 0x0043</code><br>
+<code>At t=5: 0x0012</code><br>
+<code>At t=6: 0x0014</code><br>
+<code>At t=7: 0x00AB</code><br>
+<code>At t=8: 0x0033</code></p>
+<blockquote>
+<p>We repeat the same 9 input sequences again for the second “round”:</p>
+</blockquote>
+<p><code>At t=9: 0x0014</code><br>
+<code>At t=10: 0x0011</code><br>
+<code>At t=11: 0x0022</code><br>
+<code>At t=12: 0x0014</code><br>
+<code>At t=13: 0x0043</code><br>
+<code>At t=14: 0x0012</code><br>
+<code>At t=15: 0x0014</code><br>
+<code>At t=16: 0x00AB</code><br>
+<code>At t=17: 0x0033</code><br>
+…<br>
+And repeated again, for the third “round”, and so on.</p>
+<blockquote>
+<p>For ease of computation, word addressing is used (you can also tell that this is true as the addresses no longer have the suffix <code>00</code>.</p>
+</blockquote>
+<p>To benchmark this cache, we need to count how many <code>MISS</code> and <code>HIT</code> are there at the <strong>steady state.</strong> Hence, <em>we need to figure out which rounds make up the steady state.</em></p>
+<p><strong>At the first round</strong>, <code>t=0</code> to <code>t=8</code>, we have:</p>
+<p><code>At t=0: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code></strong>, <code>EMPTY</code>, <code>EMPTY</code>, <code>EMPTY</code>.<br>
+Oldest entry is bolded.</p>
+</blockquote>
+<p><code>At t=1: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached).</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code>,</strong> <code>0x0011</code>, <code>EMPTY</code>, <code>EMPTY</code>.</p>
+</blockquote>
+<p><code>At t=2: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached).</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>EMPTY</code>.</p>
+</blockquote>
+<p><code>At t=3: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code><br>
+<code>At t=4: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>0x0043</code>.</p>
+</blockquote>
+<p><code>At t=5: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0011</code></strong>, <code>0x0022</code>, <code>0x0043</code>, <code>0x0012</code>.</p>
+</blockquote>
+<p><code>At t=6: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0022</code></strong>, <code>0x0043</code>, <code>0x0012</code>, <code>0x0014</code>.</p>
+</blockquote>
+<p><code>At t=7: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0043</code></strong>, <code>0x0012</code>, <code>0x0014</code>, <code>0x00AB</code>.</p>
+</blockquote>
+<p><code>At t=8: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0012</code></strong>, <code>0x0014</code>, <code>0x00AB</code>, <code>0x0033</code>.</p>
+</blockquote>
+<p>Now during the <strong>second round</strong>, <code>t=10</code> to <code>t=19</code>, we have the same 9 input sequences. Let’s observe the result:</p>
+<p><code>At t=10: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
+<p><code>At t=11: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0012</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x00AB</code>, <code>0x0033</code>, <code>0x0011</code>.</p>
+</blockquote>
+<p><code>At t=12: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x00AB</code></strong>, <code>0x0033</code>, <code>0x0011</code>, <code>0x0022</code>.</p>
+</blockquote>
+<p><code>At t=13: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x00AB</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0033</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>0x0014</code>.</p>
+</blockquote>
+<p><code>At t=14: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached by replacing oldest entry:<code>0x0033</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0011</code></strong>, <code>0x0022</code>, <code>0x0014</code>, <code>0x0043</code>.</p>
+</blockquote>
+<p><code>At t=15: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0022</code></strong>, <code>0x0014</code>, <code>0x0043</code>, <code>0x0012</code>.</p>
+</blockquote>
+<p><code>At t=16: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
+<p><code>At t=17: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0043</code>, <code>0x0012</code>, <code>0x00AB</code>.</p>
+</blockquote>
+<p><code>At t=18: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0043</code></strong>, <code>0x0012</code>, <code>0x00AB</code>, <code>0x0033</code>.</p>
+</blockquote>
+<p>Running the cache for <strong>another round</strong> (the third time) at <code>t=19</code> to <code>t=27</code> with the same 9 input sequences:</p>
+<p><code>At t=19: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span>  <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0012</code></strong>, <code>0x00AB</code>, <code>0x0033</code>, <code>0x0014</code>.</p>
+</blockquote>
+<p><code>At t=20: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0012</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x00AB</code></strong>, <code>0x0033</code>, <code>0x0014</code>, <code>0x0011</code>.</p>
+</blockquote>
+<p><code>At t=21: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x00AB</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0033</code></strong>, <code>0x0014</code>, <code>0x0011</code>, <code>0x0022</code>.</p>
+</blockquote>
+<p><code>At t=22: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
+<p><code>At t=23: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached by replacing oldest entry:<code>0x0033</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>0x0043</code>.</p>
+</blockquote>
+<p><code>At t=24: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0011</code></strong>, <code>0x0022</code>, <code>0x0043</code>, <code>0x0012</code>.</p>
+</blockquote>
+<p><code>At t=25: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span>  <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0022</code></strong>, <code>0x0043</code>, <code>0x0012</code>, <code>0x0014</code>.</p>
+</blockquote>
+<p><code>At t=26: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0043</code></strong>, <code>0x0012</code>, <code>0x0014</code>, <code>0x00AB</code>.</p>
+</blockquote>
+<p><code>At t=27: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
+<blockquote>
+<p>Cache content after:  <strong><code>0x0012</code></strong>, <code>0x0014</code>, <code>0x00AB</code>, <code>0x0033</code>.</p>
+</blockquote>
+<p>If we run it again for the <em>fourth</em> round, we will have the same <code>HIT</code> and <code>MISS</code> sequences as the <em>second</em> round. This implies that the result of running it for the <em>fifth</em> round will be identical to the <em>third</em> round.</p>
+<p>Hence <em>on average</em> we can count the number of <code>HIT</code> for the second and third round: 3 <code>HIT</code> in total for 18 address calls.</p>
+<blockquote>
+<p>We ignore results from the first round because that result will never repeat itself again as we begin with empty cache only once in the beginning.</p>
+</blockquote>
+<p>That means out of the 18 address calls, we have 15 <code>MISS</code>. The miss rate of this cache is therefore pretty high at <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>83.33</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">83.33\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">8</span><span class="mord">3</span><span class="mord">.</span><span class="mord">3</span><span class="mord">3</span><span class="mord">%</span></span></span></span></span>.</p>
+<blockquote>
+<p>Test yourself: If the FA cache uses LRU, will it have a better performance? i.e: lesser miss rate. What about when DM cache of same size (4 cache lines) is used? <em>Which cache design is better for this particular program running in a loop</em>?</p>
+</blockquote>
+<h2 id="the-caching-algorithm">The Caching Algorithm</h2>
+<p>The caching algorithm computes what the cache must do in general when:</p>
+<ul>
+<li>CPU sends a read or write request,</li>
+<li>Cache is full and it has to make room for new items when its full based on the chosen replacement policy.</li>
+<li>It needs to write updated values back to the physical memory, based on the chosen write policy.</li>
+</ul>
+<blockquote>
+<p>The actual implementation of the caching algorithm is done via <strong>hardware implementation</strong> for fastest possible performance.</p>
+</blockquote>
+<pre><code>On CPU READ/LOAD request for address A:
+
+	check for A in TAG field of cache lines with V==1
+
+	if HIT: 
+		return the corresponding content from cache to CPU
+
+	else if MISS:
+		if DM cache:
+			selected cache line to replace is cache line with index matching last K bits of A
+		else if FA cache:
+			selected cache line to replace depends on replacement policy
+		else if NWSA cache:
+			selected cache line to replace depends on replacement policy in the set with index matching last K bits of A
+		
+		if cache line is dirty:
+			if write policy == WRITE-BACK:
+				compute the content's address and update physical memory
+			else if write policy == WRITE-BEHIND: 
+				wait until update is done
+
+		// at this point, selected cache line is safe to be overwritten 
+		
+		fetch A and Mem[A] from physical memory
+		if DM cache:
+			write higher T bits of A to the TAG field of the selected cache line, and Mem[A] as its content
+
+		if FA cache:
+			write A to TAG field of the selected cache line, and Mem[A] as its content
+
+			if replacement policy == LRU:
+				update LRU bit
+			else if replacement policy == LRR:
+				update LRR pointer
+
+		return Mem[A] to CPU
+
+On CPU WRITE/STORE (new_content) request to address A:
+
+	check for A in TAG field of cache lines with V==1
+	
+	if HIT:
+		if DM cache:
+			selected cache line to replace is cache line with index matching last K bits of A
+		else if FA cache:
+			selected cache line to replace depends on replacement policy
+		else if NWSA cache:
+			selected cache line to replace depends on replacement policy in the set with index matching last K bits of A
+			
+		if cache line is dirty:
+			if write policy == WRITE-BEHIND:
+				wait
+			else if write policy == WRITE-BACK:
+				compute the content's address and update physical memory
+		
+		// at this point the cache line is safe to be overwritten
+		if DM cache:
+			write higher T bits of A to the TAG field of the selected cache line, and  new_content from CPU as its content
+
+		if FA cache:
+			write A to TAG field of the selected cache line, and new_content from CPU as its content
+
+			if replacement policy == LRU:
+				update LRU bit
+			else if replacement policy == LRR:
+				update LRR pointer
+		
+		if write policy == WRITE-THROUGH:
+			compute the content's address and update physical memory
+			return to CPU
+		else:
+			set cache line's dirty bit to 1
+			return to CPU
+			
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The four cache design issues discussed in this chapter are: associativity, replacement policies, write policies, and block size. There is no <em>golden cache design</em>  that suits all kinds of situations. The performance of a cache depends on its use case.</p>
+<blockquote>
+<p>For example, associativity is <strong>less important</strong> when <code>N</code> is large, because the risk for contention is inversely proportional to <code>N</code>.</p>
+</blockquote>
+<p>We can attempt to analyse cache performance by building intuition from simple examples or using computer simulations of cache behaviors on real programs. Through various analysis with different use cases, we can fine tune and establish the basis for cache design decisions.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
