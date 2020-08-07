@@ -13,10 +13,10 @@
     <div class="stackedit__toc">
       
 <ul>
-<li><a href="#cache-issues">Cache Issues</a>
+<li><a href="#cache-design-issues">Cache Design Issues</a>
 <ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#cache-design-issues">Cache Design Issues</a></li>
+<li><a href="#cache-design-issues-1">Cache Design Issues</a></li>
 <li><a href="#comparing-fa-and-dm-cache">Comparing FA and DM Cache</a></li>
 <li><a href="#improving-associativity">Improving Associativity</a></li>
 <li><a href="#replacement-policies">Replacement Policies</a></li>
@@ -39,7 +39,7 @@
 Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
-<h1 id="cache-issues">Cache Issues</h1>
+<h1 id="cache-design-issues">Cache Design Issues</h1>
 <h2 id="overview">Overview</h2>
 <p>Recall that  <strong>cache</strong> is a small and fast (and expensive, made of <code>SRAM</code>) memory unit assembled near the CPU core, which function is to reduce the <strong>average</strong> time and energy required for the CPU to access some requested data <code>Mem[A]</code> located in the Main Memory (RAM).</p>
 <p>The cache contains  a <strong>copy</strong> of some recently or frequently used data <code>Mem[A]</code> and its address <code>A</code>. The hardware is assembled in such a way that the CPU will always look for that particular data in the cache first, and only look for the requested information in the Physical Memory if cache <code>MISS</code> occurs (and then the cache will be updated to contain this new information).</p>
@@ -48,7 +48,7 @@ Singapore University of Technology and Design<br>
 </blockquote>
 <p>Without the presence of cache device, the CPU has to frequently access the RAM. Frequent <code>LD</code> and <code>ST</code> to the Physical Memory becomes the main <em>bottleneck</em> for CPU performance. This is because the time taken for a <em>write</em> and <em>read</em> in <code>DRAM</code>  is significantly longer than optimum  CPU <code>CLK</code> cycle.</p>
 <p>In this chapter, we will learn various cache design issues such as its (hardware) <strong>parameters</strong>, i.e: <em>block size,</em> cache size, <em>associativity</em>, and <strong>management</strong>, i.e: <em>write</em> policy and <em>replacement</em> policy.</p>
-<h2 id="cache-design-issues">Cache Design Issues</h2>
+<h2 id="cache-design-issues-1">Cache Design Issues</h2>
 <p>The cache design issues are categorised as follows:</p>
 <ol>
 <li>
