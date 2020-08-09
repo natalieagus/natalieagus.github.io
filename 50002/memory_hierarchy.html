@@ -47,13 +47,10 @@ Singapore University of Technology and Design<br>
 <p>Note: This limitation can be removed on certain x86 32-bit architectures via the use of a particular memory management hardware called the <a href="http://en.wikipedia.org/wiki/Physical_Address_Extension">PAE (Physical Address Extension)</a>. PAE was first introduced by Intel in their Pentium Pro processor,  and later by AMD (Athlon processor). We will not touch about PAE in this course.</p>
 </blockquote>
 <p>The REGFILE in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> is <strong>very expensive</strong> to manufacture, but they are <strong>extremely fast,</strong> meaning that we can write to or read from the REGFILE unit at a very high frequency <em>(low latency)</em>.</p>
-<p>Since it is a very expensive memory unit, we can only afford to pack a few registers within the CPU while keeping it at a reasonable cost, and <strong>extend the storage space</strong> using this external memory unit we commonly call as <strong>RAM</strong> or <mark> physical memory</mark>.</p>
-<blockquote>
-<p>Memory unit, RAM, and physical memory are often  synonymous.</p>
-</blockquote>
-<p>The  materials that make up the physical memory unit are <em>way cheaper</em> (than those that make up the REGFILE), hence we can have bigger storage space at a fraction of the price.</p>
-<p><em>The caveat:</em> writing to or reading from the physical memory is <em>much slower</em> and therefore memory access becomes the <strong>bottleneck</strong> of the computer performance.</p>
-<p>In this chapter, we will learn two more ways to create 1-bit memory cell: <code>SRAM</code> and <code>DRAM</code>, with varying <em>cost</em> and <em>latency</em>. They’re summarised below:</p>
+<p>Since REGFILE is a very expensive memory device, we can only afford to pack a few registers within the CPU while keeping it at a reasonable cost, and <strong>extend the storage space</strong> using some external memory device we previously label as The Memory Unit.</p>
+<p>The  materials that make up the external memory unit should be <em>cheaper</em> (than those that make up the REGFILE), hence we can have bigger storage space at a fraction of the price (and we won’t have to spend so much money just to buy a reasonably practical computer).</p>
+<p><em>The caveat:</em> depending on the technology, writing to or reading from the external memory unit can be <em>much slower</em> (than writing to and reading from the REGFILE), and therefore memory access becomes the <strong>bottleneck</strong> of the computer performance.</p>
+<p>In this chapter, we will learn a few more ways to create 1-bit memory cell: SRAM and DRAM, with varying <em>cost</em> and <em>latency</em>. They’re summarised below:</p>
 <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><menclose notation="right"><mtable rowspacing="0.15999999999999992em" columnspacing="1em" rowlines="solid none none none"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Types</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Latency</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Cost</mtext></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Register</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>100</mn><mtext>’s&nbsp;of&nbsp;bytes</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>20</mn><mi>p</mi><mi>s</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">$</mi><mi mathvariant="normal">$</mi><mi mathvariant="normal">$</mi><mi mathvariant="normal">$</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>SRAM</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>100</mn><mtext>’s&nbsp;of&nbsp;Kbytes</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>1</mn><mi>n</mi><mi>s</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">$</mi><mi mathvariant="normal">$</mi><mi mathvariant="normal">$</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>DRAM</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>100</mn><mtext>’s&nbsp;of&nbsp;Mbytes</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>40</mn><mi>n</mi><mi>s</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi mathvariant="normal">$</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Disk</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>100</mn><mtext>’s&nbsp;of&nbsp;Gbytes</mtext></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>10</mn><mi>m</mi><mi>s</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>c</mi></mstyle></mtd></mtr></mtable></menclose></mrow><annotation encoding="application/x-tex">\begin{matrix}
 \text{Types} &amp; \text{Latency} &amp; \text{Cost}\\
 \hline
@@ -124,6 +121,7 @@ DFlipflop uses 2 muxes = 32T + 2T for the inverter</p>
 <p>The problem with DRAM is that the capacitor <em><strong>will lose charge</strong></em> over time, so the data stored in the cells will fade over time.</p>
 <p>To tackle this problem, each DRAM cell has to be <strong>refreshed</strong> very frequently to keep the data intact.</p>
 <p>These refresh cycles cause DRAM to be <em><strong>significantly slower</strong></em> than SRAM, although a DRAM cell is cheaper to make as compared to an SRAM cell (fewer number of transistors in a DRAM  cell).</p>
+<p>We name the memory device that uses DRAM as its main technology as the <strong>physical memory.</strong></p>
 <h3 id="disk">Disk</h3>
 <p>A disk (also known as Hard Disk Drive) is an old-school <em>mechanical</em> data storage device. Data is typically  <em>written</em> onto a round, spinning aluminum that’s been coated with <strong>magnetic material</strong> that we call a “disk”. Several of these round platters are<br>
 put together on a shaft, and they make up a <em>cylinder</em>. The cylinders are able to <em>spin</em> at around 7000 revolutions per minute.</p>
@@ -153,10 +151,7 @@ put together on a shaft, and they make up a <em>cylinder</em>. The cylinders are
 <blockquote>
 <p>To change its values, we need to reset and rewrite an entire large block at once, which is a much slower process for a write as compared to a RAM.</p>
 </blockquote>
-<p>However, flash memory is still cheaper than RAM because we can store way more data for the same number of transistor.</p>
-<blockquote>
 <p>Of course the charge  stored in the NAND flash can still fade over time if we never power it back up anymore. Therefore it is important to power the flash storage from time to time to retain its data.</p>
-</blockquote>
 <p>Although not needed for our course syllabus, if you’re curious you can read more about how HDD and SSD work <a href="https://www.dropbox.com/s/tlaek0wyljpr74s/Hard%20Drives%3A%20How%20Do%20They%20Work%3F%20%E2%80%93%20Techbytes.pdf?dl=1">here</a> to understand how each of the work and the pros and cons of each device.</p>
 <h2 id="memory-addressing">Memory Addressing</h2>
 <p>Billions of these SRAM or DRAM cells are assembled together to form a large memory unit. Each <em>byte</em> (4 cells) has a <em>specific address</em>.</p>
@@ -164,16 +159,23 @@ put together on a shaft, and they make up a <em>cylinder</em>. The cylinders are
 <img src="https://www.dropbox.com/s/kc5atqtnyuo5dg7/decoding.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>We often read hundreds of bits in parallel, for example, one <em>“row”</em> might contains hundreds of bit lines, and the lower <code>M</code> address bits will select which of group of 32 bits (or 64 bits, depending on the ISA) we want to read.</p>
 <h2 id="the-idea-of-memory-hierarchy">The Idea of Memory Hierarchy</h2>
-<p>Since what we want is a large, fast, and cheap memory – that is to perform with <code>SRAM</code> speed at the cost of a disk –  we need to <strong>use a hierarchy of memory technologies:</strong></p>
+<p>Since what we want is a large, fast, and cheap memory – that is to perform with SRAM speed at the cost of a disk –  we need to <strong>use a hierarchy of memory technologies</strong>  to form the external <em>Memory Unit</em>:</p>
 <ul>
 <li>Keep the most often used data at a small <strong>special device</strong> made of SRAMs. We call this unit: <strong>cache</strong>. They’re usually assembled very near to the processor <em>core</em>, and is considered part of the CPU.</li>
-<li>Refer to main memory (DRAM) rarely.</li>
+<li>Refer to physical memory (DRAM) rarely.
+<blockquote>
+<p>The physical memory is often refered to as <em>main memory</em> or simply “<em>RAM</em>”.</p>
+</blockquote>
+</li>
 <li>Refer to disk (secondary storage) even more rarely.</li>
 </ul>
 <p>As illustrated in the figure below, our computer is consisted not only of CPU and RAM, but also cache and disk.</p>
 <img src="https://www.dropbox.com/s/9v2wj0zf64zbclo/memhierarchy.png?raw=1" alt="“F1”" width="90%" height="90%">
 <p>It is possible to give the user an illusion that they’re running at SRAM speed at all times due to the <strong>locality of reference.</strong></p>
 <p><mark> The locality of reference states that reference to memory location <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07847em;">X</span></span></span></span></span> at time <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span></span></span></span></span> implies that reference to  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">X+\Delta X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76666em; vertical-align: -0.08333em;"></span><span class="mord mathdefault" style="margin-right: 0.07847em;">X</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord">Δ</span><span class="mord mathdefault" style="margin-right: 0.07847em;">X</span></span></span></span></span> at <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">t + \Delta t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69841em; vertical-align: -0.08333em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span></span></span> becomes <strong>more probable</strong> as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>X</mi><mo separator="true">,</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta X, \Delta t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8777699999999999em; vertical-align: -0.19444em;"></span><span class="mord">Δ</span><span class="mord mathdefault" style="margin-right: 0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord">Δ</span><span class="mord mathdefault">t</span></span></span></span></span> approaches zero. </mark></p>
+<blockquote>
+<p>In laymen terms: there exists the tendency of a CPU to access the <em>same set of memory locations</em> <strong>repetitively</strong> over a short period of time.</p>
+</blockquote>
 <p>Evidence that memory reference patterns exhibit <em>locality of reference</em>:</p>
 <ol>
 <li>Local stack frame grows <em>nearby</em> to one another.</li>
@@ -181,7 +183,7 @@ put together on a shaft, and they make up a <em>cylinder</em>. The cylinders are
 <li>Data (e.g: arrays) are also <em>nearby</em> one another</li>
 </ol>
 <h2 id="the-cache-idea">The Cache Idea</h2>
-<p>The <strong>cache</strong> is a small storage device assembled close to a processor core within a CPU.  It contains <em>temporary copies</em> of <strong>selected memory addresses</strong> <code>A</code> and <strong>their content</strong> <code>Mem[A]</code>. The CPU now will always look for the requested instruction or data on the cache first, before starting to look for it in the RAM in the event of cache <code>MISS</code>.</p>
+<p>The <strong>cache</strong> is a small storage device assembled close to a processor core within a CPU.  It contains <em>temporary copies</em> of <strong>selected memory addresses</strong> <code>A</code> and <strong>their content</strong> <code>Mem[A]</code>. The CPU now will always look for the requested instruction or data on the cache first, before starting to look for it in the physical memory in the event of cache <code>MISS</code>.</p>
 <p>The cache principles work as follows:</p>
 <ol>
 <li>
@@ -203,11 +205,11 @@ put together on a shaft, and they make up a <em>cylinder</em>. The cylinders are
 <p>Once the content is found, <em>replace</em> the some (unused) cache content with this new content</p>
 </li>
 </ol>
-<p>In the event that the content is also not found in the RAM, we look for the content in the <em>swap space</em> region of the disk, and perform necessary updates on both RAM and cache.</p>
+<p>In the event that the content is also not found in the RAM, we look for the content in the <em>swap space</em> region of the disk, and perform necessary updates on both physical memory and cache.</p>
 <blockquote>
 <p>Swap space is a a dedicated space on the disk that is set aside to serve as an (virtual) <em>extension</em> of the RAM. We will learn more about this in the next chapter.</p>
 </blockquote>
-<p>The average time-taken (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mtext>ave</mtext></msub></mrow><annotation encoding="application/x-tex">t_{\text{ave}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ave</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>) to access a particular content in a system with a cache and a RAM is:</p>
+<p>The average time-taken (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mtext>ave</mtext></msub></mrow><annotation encoding="application/x-tex">t_{\text{ave}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">ave</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>) to access a particular content in a system with a cache and a physical memory is:</p>
 <p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable rowspacing="0.24999999999999992em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><msub><mi>t</mi><mtext>ave</mtext></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mi>α</mi><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><msub><mi>t</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="false">)</mo><msub><mi>t</mi><mi>m</mi></msub></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
 t_{\text{ave}} &amp;= \alpha t_c + (1-\alpha) (t_c + t_m) \\
 &amp;= t_c + (1-\alpha) t_m
@@ -216,12 +218,12 @@ t_{\text{ave}} &amp;= \alpha t_c + (1-\alpha) (t_c + t_m) \\
 <ul>
 <li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.0037em;">α</span></span></span></span></span> is cache hit ratio (count of requests with a <code>HIT</code> / total request count),</li>
 <li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">t_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is cache access time, and</li>
-<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is RAM access time</li>
+<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is physical memory access time</li>
 </ul>
 <blockquote>
 <p>You easily simply extend the formula to incorporate the events where disk is used.</p>
 </blockquote>
-<p>The above steps are very simplified and incomplete. It does not address more details such as how can we store data in the cache, what to do in the event of cache miss in more detail, what happens when RAM is full as well, etc. We will perfect the cache principle to form what we call *<strong>the caching algorithm</strong> in the next lesson.</p>
+<p>The above steps are very simplified and incomplete. It does not address more details such as how can we store data in the cache, what to do in the event of cache miss in more detail, what happens when the physical memory itself is full, etc. We will perfect the cache principle to form what we call *<strong>the caching algorithm</strong> in the next lesson.</p>
 <blockquote>
 <p>Most modern CPUs have at least three independent caches: an <strong>instruction cache</strong> to speed up executable instruction fetch, a <strong>data cache</strong> to speed up data fetch and store, and a Translation Lookaside Buffer (TLB) used to speed up virtual-to-physical address translation <em>for both (executable) instructions and data</em>. Data cache is usually organized as a hierarchy of more cache levels (L1, L2, L3, L4, etc.).</p>
 </blockquote>
@@ -261,7 +263,7 @@ A &amp; X &amp; Y \\
 <li>
 <p><strong>Expensive,</strong> made up of SRAMS for both <code>TAG</code> and <code>Data</code> (content) field (i.e: 64 bits in total for <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>) and lots of other hardware:</p>
 <ul>
-<li>Bitwise comparator at each entry (illustrated as a <em>row</em>).</li>
+<li>Bitwise comparator at each <em>cache line</em> (i.e: an “entry”: <code>TAG</code>-<code>Content</code>, illustrated as a <em>row</em> in the figure above).</li>
 <li>Tri-state buffer at each row</li>
 <li>Large <code>OR</code> gate to compute <code>HIT</code></li>
 </ul>
@@ -269,11 +271,11 @@ A &amp; X &amp; Y \\
 <li>
 <p><strong>Very fast</strong>, it does <strong>parallel</strong> lookup when given an incoming address:</p>
 <ul>
-<li>Comparison between incoming address and all <code>TAG</code> in each entry  happens <strong>simultaneously</strong>.</li>
+<li>Comparison between incoming address and all <code>TAG</code> in each cache line  happens <strong>simultaneously</strong>.</li>
 </ul>
 </li>
 <li>
-<p><strong>Flexible</strong> because memory address <code>A</code> + its content <code>Mem[A]</code> can be <strong>copied</strong> and <strong>stored</strong> on <strong>any</strong> <code>TAG</code>-<code>Content</code> entry.</p>
+<p><strong>Flexible</strong> because memory address <code>A</code> + its content <code>Mem[A]</code> can be <strong>copied</strong> and <strong>stored</strong> on <strong>any</strong> cache line: <code>TAG</code>-<code>Content</code> entry.</p>
 </li>
 </ol>
 <p>FA cache is the <strong>gold standard</strong> on how well a cache should perform</p>
@@ -286,11 +288,11 @@ A &amp; X &amp; Y \\
 <p><strong>Cheaper:</strong> less SRAM is used as the <code>TAG</code> field <strong>contains only the T-upper bits</strong> of address <code>A</code>.</p>
 <ul>
 <li>Also less of other hardwares: only 1 bit-wise comparator (to compare T-bits) needed.</li>
-<li>But we need <em>K-bits selector</em> Decoder to address each entry and activate the entry’s word line.</li>
+<li>But we need <em>K-bits selector</em> Decoder to address each cache line and activate its word line.</li>
 </ul>
 </li>
 <li>
-<p><strong>Not that flexible:</strong> A unique combination of K-bits of <code>A</code> is <strong>mapped</strong> to <strong>exactly one</strong> of the entries / row of DM cache. Each entry of the DM cache is addressable by the lower <code>K</code>-bits of the address. The lower K-bits of <code>A</code> decides which entry (row) of DM cache we are looking for.</p>
+<p><strong>Not that flexible:</strong> A unique combination of K-bits of <code>A</code> is <strong>mapped</strong> to <strong>exactly one</strong> of the entries / row of DM cache. Each cache line in DM cache is addressable by the lower <code>K</code>-bits of the address. The lower K-bits of <code>A</code> decides which cache line (row) of DM cache we are looking for.</p>
 <ul>
 <li>The number of entries in the DM cache is depends on the value of <code>K</code>.</li>
 <li>The DM cache is able to store up to <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>K</mi></msup></mrow><annotation encoding="application/x-tex">2^K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8413309999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">K</span></span></span></span></span></span></span></span></span></span></span></span> <code>TAG</code>-<code>Content</code> entries.</li>
@@ -300,9 +302,9 @@ A &amp; X &amp; Y \\
 <p>The <code>Content</code> field contains a copy of all bits of data at <code>Mem[A]</code>.</p>
 <ol start="3">
 <li>
-<p><strong>Contention problem:</strong> DM cache suffers contention (<em>collision problem</em>) due to the way it strictly maps the lower <code>K</code> address bits to each entry:</p>
+<p><strong>Contention problem:</strong> DM cache suffers contention (<em>collision problem</em>) due to the way it strictly maps the lower <code>K</code> address bits to each cache line:</p>
 <ul>
-<li>Two or more <em>different</em> addresses <code>A1</code> and <code>A2</code> can be mapped to the <strong>same</strong> DM cache entry  <strong>if both have the same</strong> lower <code>K</code> bits.</li>
+<li>Two or more <em>different</em> addresses <code>A1</code> and <code>A2</code> can be mapped to the <strong>same</strong> cache line  <strong>if both have the same</strong> lower <code>K</code> bits.</li>
 </ul>
 <blockquote>
 <p>The choice of using  <code>K</code>-<strong>lower</strong> bits for DM cache <em>mapping</em> is better than using the <strong>upper</strong> <code>T</code> bits <strong>due to locality of reference</strong>, but it does not completely eliminate contention.</p>
@@ -311,14 +313,14 @@ A &amp; X &amp; Y \\
 <li>
 <p><strong>Slower</strong>: There’s <em>no parallel searching</em>:</p>
 <ul>
-<li>At first, DM cache has to decode the K-bit address to find the correct <code>TAG</code>-<code>Content</code> entry.</li>
+<li>At first, DM cache has to decode the K-bit address to find the correct cache line: <code>TAG</code>-<code>Content</code> entry.</li>
 <li>Then, perform comparison with between <code>TAG</code> and the upper T-bit address input.</li>
 </ul>
 </li>
 </ol>
 <h2 id="summary">Summary</h2>
 <p>In this chapter, we are given a glimpse of various memory technology: from slowest to fastest, cheapest to the most expensive.</p>
-<p>We use a hierarchy of memory technology in our computer system to give it an <em>illusion</em> that it is running at a high (<code>SRAM</code> level) speed at the size and cost of a Disk. The idea is to use a small, but fast (and expensive) device made of SRAMs to <strong>cache</strong> most recently and frequently used information, and refer to the RAM or disk as rarely as possible.</p>
+<p>We use a hierarchy of memory technology in our computer system to give it an <em>illusion</em> that it is running at a high (SRAM level) speed at the size and cost of a Disk. The idea is to use a small, but fast (and expensive) device made of SRAMs to <strong>cache</strong> most recently and frequently used information, and refer to the physical memory or disk as rarely as possible.</p>
 <blockquote>
 <p>Remember, <em>locality of reference</em> allows us to predict and keep a small copy of recently used instruction and data in <strong>cache</strong>.</p>
 </blockquote>
