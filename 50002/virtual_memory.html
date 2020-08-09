@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>virtual_memory</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#virtual-memory">Virtual Memory</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#memory-paging">Memory Paging</a></li>
+<li><a href="#virtual-memory-1">Virtual Memory</a></li>
+<li><a href="#demand-paging">Demand Paging</a></li>
+<li><a href="#context-switch">Context Switch</a></li>
+<li><a href="#using-caches-with-virtual-memory">Using Caches with Virtual Memory</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="virtual-memory">Virtual Memory</h1>
+<h2 id="overview">Overview</h2>
+<p>The physical memory can contain all kinds of information, and is typically segmented as shown below to run a single process:</p>
+<blockquote>
+<p>A <strong>program</strong> and a <strong>process</strong> are terms that are  very closely related. Formally, we refer to a <strong>program</strong> as a group of instructions made carry out a specified task whereas a process simply means <em>a program that is currently run</em> or <em>a program in execution</em>. We can open and run the same program <code>N</code> times simultaneously, forming <code>N</code> distinct processes (e.g: opening multiple instances of text editors).</p>
+</blockquote>
+<img src="https://www.dropbox.com/s/m1vg38rki9m5z1i/memimage.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>In the lower address (address <code>0</code> onwards), we typically have executable instructions loaded there (PC starts from <code>0</code>).</p>
+<p><strong>Stack</strong> can grow during runtime mainly due to recursion and creation of <em>local</em> variables. There is another data structure called the <strong>Heap</strong>, that grows upwards (towards lower addresses) and is used to store <em>global</em> variables.</p>
+<blockquote>
+<p>We don’t go into too much details on how to maintain Heap during runtime in this course. For those who are interested, you may educate yourselves further with <a href="http://www.enderunix.org/docs/memory.pdf">external materials</a>.</p>
+</blockquote>
+<blockquote>
+<p>Note that an <em>operating system</em> (OS) may not know in advance whether stack or heap will be used predominantly before the program is actually run. Therefore, an OS must layout these two memory regions in a way to guarantee <strong>maximum space</strong> for both.</p>
+</blockquote>
+<p>The point of this illustration is to show that a single physical memory alone definitely is not enough to hold all information required to open too many programs at once. A typical size of physical memory in general-purpose computers is 4-32GB.</p>
+<p>We often open and run several programs <strong>simultaneously</strong>: multiple web browsers with gazzilion tabs, music player, video editor, photo editors, IDEs, video games, etc.</p>
+<p>When each of these programs are run, they’re first <strong>loaded</strong> (copied) from disk onto the physical memory before they can be accessed and executed by the CPU. The total space required to contain all the information needed to run these programs at the same time is definitely more than 4-32GB.</p>
+<p>Hence, we need to “<em>borrow</em>” some free space on the Disk (<em>that are not used to store data</em>) to store the <strong>state</strong> of <strong>currently-run programs</strong>. This section is called the disk <strong>swap space</strong> and it serves as an <em>extension</em> to our physical memory.</p>
+<blockquote>
+<p>Of course we have to <em>prioritize</em>. When <code>N</code> programs are opened at the same time, we do not necessarily use them all at once. There are some processes that are <em><strong>idling</strong></em> and <strong>not currently in-use.</strong> <mark> These are the ones that are stored in the swap space </mark>. They will be loaded over to the physical memory again when users resume their usage on these programs. The part of the computer system that’s responsible for process management is the <em>Operating System Kernel</em>. We will learn more about it next term.</p>
+</blockquote>
+<p>This motivates the idea of the <strong>virtual memory</strong>.</p>
+<p><mark> <em>Virtual Memory</em> is a <strong>memory management technique</strong> that provides an <strong>abstraction</strong> of the storage resources so that </mark>:</p>
+<ol>
+<li>
+<p>It is <strong>easier</strong> for <code>N</code> processes to share the same <em>limited</em> physical storage without interfering with one another.</p>
+</li>
+<li>
+<p>It allows for the <strong>illusion</strong> (to users) of a <em>very large physical memory space</em> without being limited by how much space that are <em>actually</em> available on the physical memory device.</p>
+</li>
+</ol>
+<p>In virtual memory, we use a part of the disk as an <em>extension</em> to the physical memory, and let the programs <em>work</em> in the virtual address space instead of the physical (actual) address space. This is  so that it possible for <em>many programs</em> to <em>seemingly</em> loaded onto the physical memory and run <em>at the same time</em>, even when their total size exceeds the physical memory capacity.</p>
+<h2 id="memory-paging">Memory Paging</h2>
+<blockquote>
+<p>An important concept to highlight before we dive into how virtual memory works is memory paging.</p>
+</blockquote>
+<p><strong>Paging</strong> is a memory management scheme that is used to store and load data from the disk (large capacity secondary storage) for use in the physical memory efficiently.</p>
+<blockquote>
+<p>For ease of explanation in this notes, you can assume that the word “disk” and “secondary storage” is synonymous.</p>
+</blockquote>
+<p><mark> A <strong>page</strong> is a fixed-size block of data that forms   <em>contiguous</em> physical memory addresses, </mark> as illustrated in the figure below:</p>
+<img src="https://www.dropbox.com/s/janbxcdijndlhc4/page.png?raw=1" alt="“F1”" width="30%" height="30%">
+<blockquote>
+<p>It is very <em>useful</em> and <em>efficient</em> to transfer data in <em>pages</em> (instead of word by word) between the physical memory and disk due to <strong>locality of reference.</strong></p>
+</blockquote>
+<p>A <strong>page</strong> is identified by two things:</p>
+<ul>
+<li>A Physical Page Number (<code>PPN</code>)
+<ul>
+<li>This identifies the entire <em>page</em></li>
+</ul>
+</li>
+<li>+ and <code>offset</code>
+<ul>
+<li>This identifies the <strong>word</strong> line in a page</li>
+</ul>
+</li>
+</ul>
+<p><mark> <code>PPN + offset</code> actually makes up the entire Physical Address <code>PA</code> space. </mark></p>
+<p><strong>The number of bits required for <code>PO</code></strong> depends on how many 32-bit words are there in a page (page size).<br>
+<strong>Example:</strong></p>
+<ul>
+<li>Suppose we have 9 words of data for each page like the page size in the figure above.</li>
+<li>The minimum bits required for <code>PO</code> is:
+<ul>
+<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\max(log_2(9)) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.03588em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">9</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">4</span></span></span></span></span> bits if <em>word addressing</em> is used.</li>
+<li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">\max(log_2(9)) + 2= 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.03588em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">9</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">6</span></span></span></span></span> bits if <em>byte addressing</em> is used.</li>
+</ul>
+</li>
+</ul>
+<p><strong>The number of bits required for <code>PPN</code></strong> depends on how many pages are there that can fit in the physical memory (physical memory size).</p>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>Suppose there are only 20 pages in total that can fit in the physical memory.</li>
+<li>The minimum bits required for <code>PPN</code> is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mn>20</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\max(log_2(20)) = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.03588em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">2</span><span class="mord">0</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">5</span></span></span></span></span> bits.</li>
+</ul>
+<p>Common misunderstanding: <em>page size</em> has nothing to do with <em>block size</em> we learned in the previous chapter.</p>
+<h2 id="virtual-memory-1">Virtual Memory</h2>
+<p>Before we begin, we need to remind ourselves that programs  are <strong>loaded</strong> to physical memory  <strong>only when we open (run) them</strong>, so that the CPU has <em>direct access to its instructions</em> for execution later on.</p>
+<blockquote>
+<p>The majority of your installed programs <em>that are not opened and not run stays on disk.</em></p>
+</blockquote>
+<p>A computer can run many programs at a time, and therefore <strong>all of them have to share</strong> the same physical memory.</p>
+<p>For <em>ease of execution</em> and <em>security</em>, the burden of process management is passed to a very special program: the OS Kernel.</p>
+<blockquote>
+<p>Each process does not know the existence of another process and everything else that lives in the physical memory. They don’t have to keep track of which addresses in the physical is occupied or free to use, and one process wont be able to corrupt another.</p>
+</blockquote>
+<p><mark> <em>This provides a layer of <strong>abstraction</strong>, as the OS Kernel is the only <em>program</em> that needs to be carefully designed to perform good memory management.</em> </mark></p>
+<p>The rest of the processes in the computer can proceed <strong>as if they’re the only process running in the computer</strong>.</p>
+<p>This way we can say that each program has their own <em>memory</em>, that is the  <strong>virtual memory</strong>.</p>
+<p><em>Recap: <strong>Virtual memory is a memory management technique that provides abstraction</strong>, in the sense that it allows the system to give each process an illusion that it is running on its own memory space isolated from other processes.</em></p>
+<h3 id="virtual-address">Virtual Address</h3>
+<p>When we open a program, OS Kernel allocates <strong>a dedicated virtual address space</strong> for all of its instructions (and data required for execution) – spanning from low address <code>0</code> up to some high address.</p>
+<p>Therefore, the addresses requested by the <code>PC</code>  are actually <em>virtual addresses</em> (VA) instead of  <em>physical addresses</em> (PA).</p>
+<blockquote>
+<p><strong>Physical address (PA)</strong>: actual addresses of each (32 bit) word in the physical memory.</p>
+</blockquote>
+<p>Each VA has to be then mapped to a PA, so that the system may return the requested data to the CPU (upon instruction fetch, or <code>LD</code>), or complete the execution of <code>ST</code> related instructions. This mapping is done via the <strong>memory management unit</strong> (MMU).</p>
+<img src="https://www.dropbox.com/s/s5mgxqim69a98o6/cpummu.png?raw=1" alt="“F1”" width="70%" height="70%">
+<blockquote>
+<p>An MMU is a small hardware unit where  all <em>memory references</em> from the CPU  is <em>passed through itself,</em> and its primary function is to translate of VA to PA. Refer to the next section on MMU for further information</p>
+</blockquote>
+<blockquote>
+<p>The CPU frequently makes memory references through instruction fetch from <code>PC</code>, or <code>LD</code> and <code>ST</code> related instructions.</p>
+</blockquote>
+<p>This arrangement allows for each program to have the <strong><em>same</em> set of VA,</strong> e.g: its <code>PC</code> can always start from 0, but are in reality are physically separated from one another.</p>
+<p>The figure below illustrates this scenario:</p>
+<img src="https://www.dropbox.com/s/1h5q5heph7vp3yy/detailVM.png?raw=1" alt="“F1”" width="60%" height="80%">
+<blockquote>
+<p>In the example above, there are two currently running programs: process <code>1</code> and process <code>2</code>, each running in its own VM. The actuall <em>content</em> of each VM may reside on physical memory, or disk swap space. <mark></mark></p>
+</blockquote>
+<blockquote>
+<p>The contents of the virtual memory can either be in the  physical memory or at the disk swap space. The processes themselves <strong>are not aware</strong> that their actual <em>memory space</em> are <em>not contiguous</em> and <strong>spans over two or more different storage hardware.</strong> The virtual addresses however, are contiguous.</p>
+</blockquote>
+<p><strong>Although it goes without saying, it is worth reminding that only contents that reside on the physical memory has a physical address (PA).</strong></p>
+<blockquote>
+<p>Contents that are on the disk swap space <em>does not have a PA</em>. If they are needed for access by the CPU, the OS Kernel needs to migrate a them over to the RAM first, so that they have a corresponding VA-PA translation and are <strong>accessible</strong> by the CPU. </p>
+</blockquote>
+<h3 id="pagetable">Pagetable</h3>
+<p>The OS Kernel maintains a <em><strong>Pagetable</strong></em> (sometimes it is called <em>pagemap</em> too) that keeps track of the translation between each VA of each program to its corresponding PA.</p>
+<blockquote>
+<p>The <em>Pagetable</em> contains <strong>all possible combination of virtual address of a program</strong>, but not all VA has corresponding PA at a time in the RAM (it may be in the disk).</p>
+</blockquote>
+<p>The MMU utilizes the <em>Pagetable</em> to translate every memory reference requests from the CPU to an actual, physical address as illustrated below:</p>
+<img src="https://www.dropbox.com/s/rek05rsjagk2m43/mmuusage.png?raw=1" alt="“F1”" width="60%" height="60%">
+<ul>
+<li>The <em>Pagetable</em> is stores mapping of the higher <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.03588em;">v</span></span></span></span></span> bits of virtual address (called the <strong>VPN</strong> - Virtual Page Number) to a corresponding <strong>PPN</strong> (physical page number).</li>
+</ul>
+<p><mark> The number of entries in the <em>Pagetable</em> is  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">2^v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span>, because <strong>exactly one entry</strong> is needed <em>for every possible virtual page</em>. </mark></p>
+<p><mark> The PO field of VA is <strong>the same</strong> as the PO field of its PA.</mark></p>
+<p>The MMU <em>is the device</em> that helps to perform these operations upon CPU memory reference requests:</p>
+<ol>
+<li>Extract VPN out of VA,</li>
+<li>Find the corresponding entry in the <em>Pagetable</em></li>
+<li>Extract the PPN (if any)</li>
+<li>Perform necessary tasks (<strong>page-fault</strong> handling) if the entry is <em>not resident</em></li>
+<li>If PPN found, append PO with PPN to form a complete PA</li>
+<li>Pass PA to other relevant units so CPU request can be completed</li>
+</ol>
+<p>There are three other columns, <code>D</code>, <code>R</code>, and <code>LRU</code> (if <code>LRU</code> is the chosen replacement policy) in the Pagetable that contains helper bits, analogous to the ones we learned in cache before:</p>
+<ol>
+<li>
+<p>The Resident Bit <code>R</code>:</p>
+<ul>
+<li>
+<p>if <code>R==1</code>, then the requested <em>content</em> is in the physical memory – PPN in the pagetable can be returned immediately for further processing to result in a complete PA.</p>
+<blockquote>
+<p>Note: “content” here refers to <code>Mem[PA]</code>.</p>
+</blockquote>
+</li>
+<li>
+<p>if <code>R==0</code>, then the requested <em>content</em> is not in the physical memory, but in the swap space of the disk.  <strong>page-fault</strong> exception occur and it has to be handled.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The Dirty Bit <code>D</code>:</p>
+<ul>
+<li>if <code>D==1</code>, then a write update of the <em>data</em> (to the secondary storage) has to be done before it is replaced / removed from the physical memory.</li>
+</ul>
+</li>
+<li>
+<p>The LRU Bit <code>LRU</code>:</p>
+<ul>
+<li>This bit is present only if replacement policy used is LRU.</li>
+<li>It indicates the LRU ordering of the <em>pages</em> <strong>resident</strong> in the physical memory.
+<blockquote>
+<p>This information is used to decide which page in the physical memory can be <em>replaced</em> in the event that it is full and the CPU asks for a VA which actual <em>content</em> is not resident.</p>
+</blockquote>
+</li>
+<li>The number of LRU bits <em>needed per entry in the pagetable</em> is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.03588em;">v</span></span></span></span></span> bits, since the number of entries in the pagetable is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">2^v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+</ul>
+</li>
+</ol>
+<h4 id="pagetable-arithmetic">Pagetable Arithmetic</h4>
+<p>Given a VA of <code>(v+p+2)</code> bits and a PA of <code>(m+p+2)</code> bits, we can deduce the following information:</p>
+<ul>
+<li>
+<p>The size of VM is: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mi>v</mi><mo>+</mo><mi>p</mi><mo>+</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{v+p+2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8141079999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">p</span><span class="mbin mtight">+</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span> bytes</p>
+</li>
+<li>
+<p>The actual size of the physical memory is: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mi>m</mi><mo>+</mo><mi>p</mi><mo>+</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{m+p+2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8141079999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mbin mtight">+</span><span class="mord mathdefault mtight">p</span><span class="mbin mtight">+</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p>The Pagetable must store <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>m</mi><mo>+</mo><mi>v</mi><mo stretchy="false">)</mo><mo>×</mo><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">(2 + m + v) \times 2^v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span> bits:</p>
+<ul>
+<li>There are <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">2^v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span> rows,</li>
+<li>each row stores <code>m</code> bits of <code>PPN</code></li>
+<li>plus helper bits:  <code>2</code> bits for <code>D</code> and <code>R</code>, <code>v</code> bits for <code>LRU</code> ordering.</li>
+</ul>
+</li>
+<li>
+<p>There are <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">2^p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span></span></span></span> bytes per page</p>
+</li>
+</ul>
+<h4 id="pagetable-location">Pagetable Location</h4>
+<p>The <em>Pagetable</em> is <strong>stored in the Physical Memory</strong> for practical reasons <em>because of its rather large size</em>.</p>
+<blockquote>
+<p>Given a VA of size <code>(v+p+2)</code> bits, the pagetable must store <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>m</mi><mo>+</mo><mi>v</mi><mo stretchy="false">)</mo><mo>×</mo><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">(2 + m + v) \times 2^v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span> bits</p>
+</blockquote>
+<p>It is expensive to store it in SRAM-based memory device. The OS Kernel manages a portion of the physical memor, dedicated to store the pagetable.</p>
+<p>The MMU device has a component called the <code>Pagetable Pointer</code>, and it can be set to point <em>to the first entry</em> of the pagetable in the physical memory (see the figure in the next section for illustration).</p>
+<p>There is only one problem with storing the Pagetable in the physical memory: It causes us to access the (slow) physical memory twice.</p>
+<ol>
+<li>
+<p>Look up Pagetable to translate the VA to PA</p>
+</li>
+<li>
+<p>Access the Physical Memory again to get the content <code>Mem[PA]</code>.</p>
+</li>
+</ol>
+<p>Therefore this <em>cheap</em> solution to utilize a portion of the Physical Memory to store the Pagetable <em>comes at the cost of reduced performance.</em></p>
+<blockquote>
+<p>But if we implement the entire Pagetable using SRAM, it is too expensive.</p>
+</blockquote>
+<p>The solution to this issue to build a small SRAM-based memory device to <em>cache</em>  a few of the most recently used entries of the Pagetable. This cache device is called the <strong>Translation Lookaside Buffer</strong> (TLB).</p>
+<h3 id="tlb-translation-lookaside-buffer">TLB: Translation Lookaside Buffer</h3>
+<p>The TLB is a small, FA-design cache to store a copy some recently used Pagetable entries, as shown in the figure below:</p>
+<img src="https://www.dropbox.com/s/g0ydenuirecwtwo/mmutlb.png?raw=1" alt="“F1”" width="70%" height="70%">
+<blockquote>
+<p>We also use a hierarchy of memory devices here, just like what we learned in the previous chapter where we <em>cache</em> a few of the most recently used contents and its address: <code>A, Mem[A]</code> in another faster (but smaller) SRAM-based memory device to reduce the frequency of access to the slower (but larger) DRAM-based Physical Memory device.</p>
+</blockquote>
+<h4 id="super-locality-of-reference-with-tlb">Super Locality of Reference with TLB</h4>
+<p><mark> We know that there is <em>locality of reference</em> in <em>memory address</em> reference patterns. Therefore there is <strong>super locality</strong> of <em>page number</em> reference patterns (hit-rate of the TLB <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> 99% in practice). </mark></p>
+<p>Also, note that the LRU bits in the TLB <em>is not the same</em> as the LRU bits in the Pagetable.</p>
+<blockquote>
+<p>The reason is that the number of <code>N</code> entries in the TLB is always the <code>N</code> most recently accessed pages <em>out of</em> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">2^{v}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span></span> possible entries in the pagetable, where <code>N &lt; v</code> in practice.</p>
+</blockquote>
+<h2 id="demand-paging">Demand Paging</h2>
+<p>This section explains the procedure of <em>demand paging</em>: a method of virtual memory management. The OS Kernel is responsible in the implementation of demand paging, and it may vary from system to system.</p>
+<p>However, the main idea of demand paging is that <em>data is not copied from the swap space to the physical memory until they are needed or being demanded by some program.</em></p>
+<blockquote>
+<p>We ignore the presence of <em>data cache</em> and TLB for now, for the sake of simplicity in explanation. We will add it back to the picture later on.</p>
+</blockquote>
+<ul>
+<li>
+<p><em><strong>At first</strong></em> (when the program has just been opened) its entire content is placed on the swap space of the disk.</p>
+</li>
+<li>
+<p>Pages will only be brought up to physical memory if the program code asks for it.</p>
+</li>
+</ul>
+<p>When a computer is turned off, every bits of information is stored its non-volatile memory storage (disk, NAND flash, etc).</p>
+<blockquote>
+<p>The physical memory is incapable of storing any information when it does not receive any power source. *.</p>
+</blockquote>
+<p>The OS Kernel is (<em>one of the</em>) first programs that is loaded onto the physical memory when our computer is started up.  It maintains an organised <em>array of pages on disk</em>.</p>
+<blockquote>
+<p>Do not trouble yourself at this point at figuring out how <em>bootstrap</em> works, i.e: how to load the OS Kernel from the secondary storage to the physical memory. We will learn this next term.</p>
+</blockquote>
+<p>The moment a request to open a program is made,  the OS Kernel:</p>
+<ol>
+<li>
+<p>Allocates and prepares the <em>almost the entire virtual memory space</em> for this program on the disk’s swap space,</p>
+<blockquote>
+<p>Only <em>a small subset</em>, essentially the program’s <em>entry point</em> (elf table, main function, initial stack) is put onto the physical memory, and everything else is loaded later.</p>
+</blockquote>
+</li>
+<li>
+<p>and <em>copies</em> contents required for execution over to this designated swap space from the <em>storage</em> part of the disk.</p>
+<blockquote>
+<p>All <em>instructions</em> necessary for this program to run, its <em>stack space</em>, <em>heap space</em>, etc are nicely prepared by the OS Kernel before the program begins execution.</p>
+</blockquote>
+</li>
+</ol>
+<p>Therefore, <strong>almost all of its VA initially corresponds to some address on disk.</strong></p>
+<h3 id="page-fault-exception">Page-Fault Exception</h3>
+<p>Upon execution of the first few lines of instruction of the program’s entry point, the CPU will request to refer to some VA, and it will result in <strong>page-fault</strong> exception because almost all of its virtual addresses <em>aren’t resident</em> in the physical memory yet at this point.</p>
+<p>The OS Kernel will then handle this “<em>missing</em>” page and start copying them over to the physical memory from the swap space, hence turning these pages to be <strong>resident</strong> – and has a <code>PPN</code> assigned to it.</p>
+<blockquote>
+<p>The kernel updates the corresponding entry of the Pagetable and the TLB.</p>
+</blockquote>
+<p>Many page faults will occur as the program begins its execution <strong>until most of the working set of pages are in physical memory</strong> (not the entire program, as some programs can be way larger than the actual size of your physical memory, e.g: your video games.</p>
+<p><mark> In other words, the OS  Kernel bring only necessary pages that are going to be executed onto the physical memory  as the program runs, thus the name: <strong><strong>demand paging</strong></strong> for this technique.</mark></p>
+<h3 id="replacing-resident-pages">Replacing Resident Pages</h3>
+<p>This process (of fetching new pages from swap space to the physical memory)  eventually fills up the latter.</p>
+<p>If a non-resident VA is enquired and the physical memory is <strong>full</strong>, the OS Kernel needs to <em>remove</em> some pages  (LRU/FIFO, depends on the replacement policy)  that are currently resident to make space for this newly requested page.</p>
+<p>If these to-be-removed pages are <em>dirty</em>, a <strong>write</strong> onto the disk swap space is required before they’re being overwritten.</p>
+<h3 id="termination">Termination</h3>
+<p>Finally when the program terminates, the OS Kernel  and free up all the space initially allocated for this program’s VM (both on physical memory and disk swap space).</p>
+<h2 id="context-switch">Context Switch</h2>
+<p>A single core CPU is capable of running many programs <em>at the same time.</em> Actually, the CPU switches the execution of the programs from time to time – so rapidly that it seems like all programs are all running at once and that we have more than one CPU. <strong>This technique is called rapid context switching.</strong></p>
+<p><strong>Context switch</strong> refers to the procedure that a CPU must follow when changing the execution of one process with another. This is done to ensure that the process can be <em>restored</em> and its execution can be <em>resumed</em> again at a later point.</p>
+<blockquote>
+<p><em>A proper hardware support that enables rapid context switching <strong>is crucial</strong> as it enables users to multitask when using the machine.</em></p>
+</blockquote>
+<p><strong>Recall that:</strong></p>
+<ul>
+<li>
+<p>Each program <em>has its own virtual memory</em> (its like giving the illusion that each program has independent physical memory unit all for itself)</p>
+</li>
+<li>
+<p>Therefore every program can be written as if it has access to all memory, without considering where other programs reside.</p>
+</li>
+<li>
+<p>So for example, the VA of each program can start from <code>0x00000000</code> onwards but it actually points to different physical addresses on disk.</p>
+</li>
+</ul>
+<p>To distinguish between one program’s VA address space with another, the OS Kernel assigns a unique identifier<code>C</code> called <strong>context number</strong> <em>for each program</em>.</p>
+<blockquote>
+<p>“<em>Context</em>” means the set of crucial information required for a process to run (to run a program). They’re made up of  the <code>PC</code> state, all register states, its stack and heap state, etc. We will not dive into what makes up a process’ <em>context</em> in this course, and will only learn about that next term.</p>
+</blockquote>
+<p>The context number can be appended to the requested VPN to find its correct PPN mapping:</p>
+<ul>
+<li>
+<p>A register can be used (added to the MMU hardware) to hold the current context number <code>C</code>.</p>
+</li>
+<li>
+<p>The TLB <code>TAG</code> field contains both <code>C</code> and <code>VPN</code>.</p>
+</li>
+<li>
+<p>In the case of <code>MISS</code>, the Pagetable Pointer is updated to point to the <em>beginning</em> of the pagetable section for context <code>C</code>, and the index based on <code>VPN</code> finds the corresponding entry.</p>
+</li>
+</ul>
+<img src="https://www.dropbox.com/s/ckevn475pf7ar4s/mmuusagecontext.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>This way <strong>we do not have to “flush” the TLB whenever the CPU changes <em>context</em></strong> – that is <em>switching the execution of one program with another.</em></p>
+<blockquote>
+<p>It only needs to update the <em>pagetable pointer</em> so that it points to the start of the pagetable section for this new context.</p>
+</blockquote>
+<h2 id="using-caches-with-virtual-memory">Using Caches with Virtual Memory</h2>
+<p>Recall that a <em>cache</em> is used to store copies of memory addresses and its content: <code>A, Mem[A]</code>, so that access to the physical memory can be reduced on average.</p>
+<p>There are two possible options on where to assemble the cache hardware, <strong><strong>before</strong></strong> or <strong><strong>after</strong></strong> the MMU, each having its pros and cons.</p>
+  <img src="https://www.dropbox.com/s/j7l3t20a9cmt2ez/cacheMMU.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>Note that if cache is placed before the MMU, then the cache stores VA (instead of PA) in its <code>TAG</code> field.</p>
+<p>Observe that if cache line selection is based on <code>PO</code> (unmapped, identical on both VA and PA), <strong>then two computations can happen in parallel</strong>:</p>
+<ol>
+<li>VPN to PPN translation and,</li>
+<li>Finding the correct cache line in DM / NWSA cache</li>
+</ol>
+<p>Therefore we can arrange the components as such:</p>
+ <img src="https://www.dropbox.com/s/mdgucv6qubun01l/cachemmu2.png?raw=1" alt="“F1”" width="90%" height="90%">
+<p>Each cache line in the DW/NWSA used in the design above stores a <em>single word</em>  <strong>(not pages)</strong> in the <code>Content</code> field and its physical address in the <code>TAG</code> field.</p>
+<p>The index of the tag in the cache is set to be the <code>PO</code> of the VA due to locality of reference. If higher order bit is used to index the cache lines then we will end up with <strong>contention.</strong></p>
+<h3 id="further-analysis">Further Analysis</h3>
+<blockquote>
+<p>What happens if the page is <code>Resident</code> but there’s a cache <code>MISS</code>?</p>
+</blockquote>
+<p>Cache <em>must be updated</em> by fetching the data from the Physical Memory.</p>
+<blockquote>
+<p>What happens if the page is <code>Not Resident</code>?</p>
+</blockquote>
+<p>Page must be fetched from the swap space and copied over to the Physical Memory. Then, we <em>update</em> the cache.</p>
+<blockquote>
+<p>Ask yourself these questions to enhance your understanding.</p>
+<ul>
+<li>
+<p>What happens if the page is <code>Not Resident</code> and if Physical Memory is full? Assume LRU policy is used.</p>
+</li>
+<li>
+<p>Which part of the TLB that we need to update on each memory reference request? What about the cache? Why?</p>
+</li>
+<li>
+<p>What should be done if TLB <code>MISS</code> happens?</p>
+</li>
+<li>
+<p><em>Is it possible</em> for cache <code>HIT</code> to occur but the requested page is <strong>not resident</strong>? Why or why not?</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p><mark> <em>Virtual Memory</em> is a <strong>memory management technique</strong> that provides an <strong>abstraction</strong> of the storage resources so that programs can be written as if they have <strong>full access</strong> to the physical memory without having to consider where other programs reside </mark>.</p>
+<p>A small hardware called the <strong>MMU</strong> is used to implement support this technique.</p>
+<p>Since each program is running in an isolated manner from one another (in its own <em>virtual space</em>, unaware of the presence of other programs), the OS Kernel can switch execution between programs – giving the users an <em>illusion</em> as if these programs are running <strong>simultaneously</strong> with just a single CPU. The procedure that allows for this to happen seamlessly is called <strong>rapid context switching.</strong></p>
+<p>Context switching allows for <strong>timesharing</strong> among several programs.</p>
+<blockquote>
+<p>The OS Kernel simply loads the appropriate context number and pagetable pointer when switching among programs. This way, the CPU can have access to instructions or data required to execute each program and seamlessly restore or resume any of them later on.</p>
+</blockquote>
+<p>In the next chapter we will learn more about how there exist a separate <em>context</em> for the OS Kernel, and it can seamlessly perform process management, thus allowing each process  to run idenpendently on its own <em><strong>virtual machine.</strong></em></p>
+
+    </div>
+  </div>
+</body>
+
+</html>
