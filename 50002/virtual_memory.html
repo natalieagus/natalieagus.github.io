@@ -264,7 +264,8 @@ Singapore University of Technology and Design<br>
 <p>The reason is that the number of <code>N</code> entries in the TLB is always the <code>N</code> most recently accessed pages <em>out of</em> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">2^{v}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span></span> possible entries in the pagetable, where <code>N &lt; v</code> in practice.</p>
 </blockquote>
 <h2 id="demand-paging">Demand Paging</h2>
-<p>This section explains the procedure of <em>demand paging</em>: a method of virtual memory management. The OS Kernel is responsible in the implementation of demand paging, and it may vary from system to system.</p>
+<p>Demand paging is a method of virtual memory management. This section explains how <em>demand paging</em> works.</p>
+<p>The OS Kernel is responsible in the implementation of demand paging, and it may vary from system to system.</p>
 <p>However, the main idea of demand paging is that <em>data is not copied from the swap space to the physical memory until they are needed or being demanded by some program.</em></p>
 <blockquote>
 <p>We ignore the presence of <em>data cache</em> and TLB for now, for the sake of simplicity in explanation. We will add it back to the picture later on.</p>
@@ -315,8 +316,68 @@ Singapore University of Technology and Design<br>
 <p>If these to-be-removed pages are <em>dirty</em>, a <strong>write</strong> onto the disk swap space is required before they’re being overwritten.</p>
 <h3 id="termination">Termination</h3>
 <p>Finally when the program terminates, the OS Kernel  and free up all the space initially allocated for this program’s VM (both on physical memory and disk swap space).</p>
+<h3 id="an-example">An example</h3>
+<img src="https://www.dropbox.com/s/r8nia46u4gdw6gk/vmexample.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>The figure above shows a snapshot of the physical memory state at some point in time. There exist a pagetable with 16 entries and 8 pages of data labeled as <code>A</code> to <code>H</code> in the physical memory. LRU replacement policy with write back policy is used. <strong>Lower</strong> LRU means that the data is <strong>more recently used.</strong></p>
+<p>Each <em>page</em> contains exactly 256 <em>bytes</em> of data.</p>
+<p>This information gives us five <strong>clues</strong>:</p>
+<ul>
+<li><code>VPN</code> is <code>4</code> bits long</li>
+<li><code>PPN</code> is at least <code>3</code> bits long</li>
+<li><code>PO</code> is <code>8</code> bits long</li>
+<li><code>VA</code> is <code>8+4 = 12</code> bits long</li>
+<li><code>PA</code> is <code>3+8 = 11</code> bits long</li>
+</ul>
+<p><strong>Example 1:</strong> Now suppose the current instruction pointed by the PC is <strong><code>LD(R31, 0x2C8, R0)</code></strong>.</p>
+<blockquote>
+<p>A memory reference to address <code>0x2C8</code> is required.</p>
+</blockquote>
+<p><code>0x2C8</code> is <em>a virtual address</em>, and hence we need to obtain its physical address. Segmenting the VA into <code>VPN</code> and <code>PO</code>:</p>
+<ul>
+<li><code>VPN: 0x2</code> (higher 4 bits)</li>
+<li><code>PO: 0xC8</code> (lower 8 bits)</li>
+</ul>
+<p>Looking at the pagetable, we see that <code>VPN: 0x2</code> is <strong>resident</strong>, and can be translated into <code>PPN: 100</code>. The translated physical address is therefore <code>100 1100 1000</code>. In hex, this is <code>0x4C8</code>. The content that we are looking for exists within page <code>E</code>.</p>
+<p><strong>Example 2:</strong>  Suppose the next instruction is <strong><code>ST(R31, 0x600, R0)</code>.</strong></p>
+<blockquote>
+<p>This means a memory reference to address <code>0x600</code> is required:</p>
+</blockquote>
+<p>We can segment the VA into:</p>
+<ul>
+<li><code>VPN: 0x6</code> (higher 4 bits)</li>
+<li><code>PO: 0x00</code> (lower 8 bits)</li>
+</ul>
+<p>From the pagetable, we see that <code>VPN: 0x6</code> is <strong>not resident.</strong></p>
+<blockquote>
+<p>Even though <code>PPN: 5</code> is written at the row <code>VPN: 6</code>, we can <em>ignore</em> this value as the resident bit is <code>0</code>. <strong>The values at the entry is irrelevant when <code>R=0</code>.</strong></p>
+</blockquote>
+<p>This memory reference request will result in <mark> <strong>page fault</strong>.</mark> The OS Kernel will handle this exception, and bring the requested page (lets label it as  page <code>I</code>) into the RAM.</p>
+<p><strong>Now suppose the RAM is currently full.</strong></p>
+<ul>
+<li>We need to figure out which page can be <em>replaced</em></li>
+<li>Since LRU policy is used, we need to find the <em>least recently used page</em> with the biggest <code>LRU</code> index</li>
+<li>This points to the last entry where <code>PPN:3</code>  (containing page <code>D</code>) and <code>LRU:7</code>.</li>
+</ul>
+<p>However, we cannot immediately <em>overwrite</em> page <code>D</code> since its dirty bit is activated. A <strong>write</strong> (from the physical memory to the swap space of page <code>D</code>) must be performed first before page <code>D</code> is replaced with the new page <code>I</code>.</p>
+<p>After page <code>D</code> write is done, the OS Kernel can copy page <code>I</code> over from the swap space to the physical memory, and <strong>update the pagetable:</strong></p>
+<ul>
+<li><code>VPN:F</code> dirty bit is cleared, and resident bit is set to <code>0</code>.</li>
+<li><code>VPN:6</code> is updated, as now it is mapped to <code>PPN:3</code>. Its resident bit is set to <code>1</code>.</li>
+<li>After <em>write</em> (<code>ST</code>), its dirty bit is also set to <code>1</code>.</li>
+<li>All entries’ LRU bits must be updated accordingly.</li>
+</ul>
+<p>The state of the physical memory after <strong>both</strong> instructions are executed in sequence is:</p>
+<blockquote>
+<p><code>I'</code> is just a symbol of an updated page <code>I</code> after a <code>ST</code> instruction is completed</p>
+</blockquote>
+<img src="https://www.dropbox.com/s/mis63e6z0nm0n3b/vmexample-after.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>The new changes are written in blue.</p>
+<blockquote>
+<p>Enhance your understanding by adding TLB into the picture. If a TLB of size 2 (stores the 2 most recently used mapping) is used, what will its state be in the beginning? After <strong><code>LD(R31, 0x2C8, R0)</code></strong> is executed? Then after <strong><code>ST(R31, 0x600, R0)</code></strong> is executed next?</p>
+</blockquote>
 <h2 id="context-switch">Context Switch</h2>
-<p>A single core CPU is capable of running many programs <em>at the same time.</em> Actually, the CPU switches the execution of the programs from time to time – so rapidly that it seems like all programs are all running at once and that we have more than one CPU. <strong>This technique is called rapid context switching.</strong></p>
+<p>A single core CPU is capable of running <strong>many</strong> programs – seemingly <em>at the same time.</em></p>
+<p>Actually, the CPU <strong>switches</strong> the execution of each programs from time to time; <em>so rapidly</em> that it <em>seems</em> like all programs are all running at once as if we have more than one CPU. <strong>This technique is called rapid context switching.</strong></p>
 <p><strong>Context switch</strong> refers to the procedure that a CPU must follow when changing the execution of one process with another. This is done to ensure that the process can be <em>restored</em> and its execution can be <em>resumed</em> again at a later point.</p>
 <blockquote>
 <p><em>A proper hardware support that enables rapid context switching <strong>is crucial</strong> as it enables users to multitask when using the machine.</em></p>
