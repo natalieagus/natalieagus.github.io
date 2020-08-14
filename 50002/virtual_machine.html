@@ -19,6 +19,7 @@
 <li><a href="#os-multiplexing-and-context-switching">OS Multiplexing and Context Switching</a></li>
 <li><a href="#hardware-support-for-os-multiplexing">Hardware Support for OS Multiplexing</a></li>
 <li><a href="#trap">Trap</a></li>
+<li><a href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -165,7 +166,8 @@ Singapore University of Technology and Design<br>
 <p>The asynchronous interrupt handler is located at <code>XAddr</code>, which is usually pre-determined memory address. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU, <code>XAddr</code> is set at <code>0x8000 0008</code>.</p>
 <p>The first few instructions of the interrupt handler saves current process states (<code>R0</code> to <code>R30</code> contents, PC state, stack, and others) in <strong>process table</strong>.</p>
 <blockquote>
-<p><strong>Process table:</strong> a Kernel data structure that stores all the states of running processes in the machine.</p>
+<p><strong>Process table:</strong> a Kernel data structure that stores all the states of running processes in the machine. It lives in the Kernel memory space. The kernel keeps track on which process is currently scheduled to run in the CPU.<br>
+<img src="https://www.dropbox.com/s/ypgac0w1uotc471/proctable.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 </blockquote>
 <p>Then, the handler will figure out which specific <strong>service routine</strong> needs to be called to <em>service</em> the interrupt, e.g: scheduler, or I/O routines.</p>
 <p>Afterwards, the service routine returns back to this interrupt handler. The handler finally sets  <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[XP]-4</code>.</p>
@@ -275,43 +277,53 @@ JMP(XP)  || Resume execution
 </blockquote>
 <p>Observation:  in this simple example, the handler is written such that it <em>always branches to the scheduler</em>. In practice, there are many kinds of hardware interrupts (not just from a timer) that needs to be handled differently depending on its <em>type</em>. We will have a hands-on experience about this in Lab 8, and also in the next term.</p>
 <h2 id="trap">Trap</h2>
-<p>A trap, is type of <strong>synchronous interrupt</strong> caused by an <em>exceptional</em> condition when the CPU executes an instruction, such as illegal operations, division by zero, invalid memory access, etc.</p>
+<p>A trap, is type of <strong>synchronous interrupt</strong> caused by an <em>exceptional</em> condition when the CPU executes an instruction, such as illegal operations, division by zero, invalid memory access, system calls etc.</p>
 <p>This results in a switch to kernel mode via trap handler (e.g: <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>ILLOP</code>). The handler will examine the cause of the trap, and perform the appropriate action before (<em>if possible</em>) returning control to the originating process.</p>
-<p>Recall how user programs do not have privileged access, which means that they do not have access to the hardwares directly. This is because hardwares <strong><strong>are shared</strong></strong> among programs, and in order to allow \textit{convenience when writing programs} (programs are run in virtual machine and written with complete disregard of the existence of other programs in memory), we trade the freedom of direct access to the hardwares.</p>
-<p>~\</p>
-<p>~\</p>
-<p>This section explains how user programs can communicate with the OS Kernel if they need input from I/O devices or output to I/O devices.</p>
-<p>\begin{theorem}</p>
-<p>The process of  transferring control of the CPU to Kernel voluntarily is <strong><strong>known as the supervisor call (SVC)</strong></strong> (sometimes it is also called ‘system call’ as well). A user program can invoke the Kernel from its code by executing \textit{a particular <strong><strong>ILLOP</strong></strong> (bad opcode)} and leaving its request at R0.</p>
-<p>\end{theorem}</p>
-<p>In other words, the user program may purpose cause an exception to occur. In this SVC event, the <strong><strong>hardware</strong></strong> causes the PC to jump to the ILLOP handler and returns control to the kernel (the ILLOP handler itself \textit{is part of the kernel code in the event of illegal operation – bad opcode}.</p>
-<p><sub>\</sub>\</p>
-<p>The kernel will recognise this particular ILLOP as user-mode supervisor call. The procedure for SVC is as follows:</p>
-<ol>
-<li>
-<p>The user program has to provide arguments in R0</p>
+<blockquote>
+<p>If it is not possible to return control to the originating processes, then the Kernel may choose to terminate it.</p>
+</blockquote>
+<p>User processes do not have <em>privileged</em> access, meaning that they <em>do not directly control the use of</em> any hardware (I/O) devices, such as getting keyboard input, mouse click, perform disk saves, etc, <em>without the help of the OS Kernel program</em>.</p>
+<blockquote>
+<p>This is because hardware devices <strong>are actually shared</strong> among all processes in the system, but  their programs are written with complete disregard for other processes in the memory.</p>
+</blockquote>
+<p>Therefore, user processes may utilise <strong>traps</strong> to synchronously interrupt themselves, and <em>legally</em> switch to the Kernel mode whenever they need access to the I/O devices (or other kernel services).</p>
+<p><mark> The event of transferring control of the CPU to OS Kernel synchronously / voluntarily when a process needs Kernel’s services is known as the <strong>system call</strong> (a.k.a: <strong>SVC</strong>, or <strong>supervisor call</strong>). This can be done by leaving the index of the requested service at <code>Reg[R0]</code> and executing a specific <em>illegal operation</em>. </mark></p>
+<blockquote>
+<p>There are many types of Kernel services, one of them includes read/write access from/to the I/O devices. They are typically <em>indexed</em>, and the process needs to leave the index of the needed system call in <code>Reg[R0]</code> before trapping itself to the Kernel Program. We will learn about Kernel services next term.</p>
+</blockquote>
+<p>The datapath in the event of <em>illegal operation</em> is:<br>
+<img src="https://www.dropbox.com/s/w963kj8ugebu9xr/illop.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>During this event,</p>
+<ul>
+<li>Control unit sets <code>PCSEL = 100</code>, and saves <code>PC+4</code> into <code>Reg[XP]</code></li>
+<li>The PC will execute the instruction at location <code>ILLOP</code> in the <em>next cycle</em> where the illegal operation handler resides.</li>
+<li>The <em>illop</em> handler will  look at <code>Reg[R0]</code> and invoke the right <em>service routine</em> to provide the requested service.
+<ul>
+<li>Upon returning, the service routine will put its return the result in <code>Reg[R0]</code>.</li>
+</ul>
 </li>
-<li>
-<p>The ILLOP handler will  look at R0 and invoke the right Kernel program to provide the requested service</p>
+<li>The <em>illop</em> handler resumes the execution of the originating process:
+<ul>
+<li><code>Reg[XP] = Reg[XP] -4</code></li>
+<li><code>JMP[XP]</code></li>
+</ul>
 </li>
-<li>
-<p>The Kernel Program that tends to this service  will return the result in R0</p>
-</li>
-<li>
-<p>The ILLOP handler resumes the execution of the user program</p>
-</li>
-</ol>
-<p>One common scenario where a user program needs to communicate with the Kernel OS is when asking for keyboard / mouse input, or when requesting to print certain output to the screen. For example, the code <code>printf</code> (to print to screen in C) itself is actually a specific ILLOP when translated into assembly. It will trap the program into the ILLOP handler, transferring the control to the kernel to print the output to screen, and resuming back the program after the print task is done.</p>
-<h3 id="summary">Summary</h3>
-<p>So far, we have learned the existence of \textit{user mode}  and \textit{kernel mode} execution. Programs which code resides at addresses with MSB of 0 are user programs. Programs which code resides at addresses with MSB of 1 are kernel programs. Likewise for its stack (user stack vs kernel stack). Only kernel programs have access to all hardwares, and lives in the \textit{physical memory space}. User programs live in the \textit{virtual memory space}.</p>
-<p>~\</p>
-<p>~\</p>
-<p>The kernel manages the execution of all programs, as well as all I/O units. It stores the states of all programs inside the process table in the kernel space. There are two ways to transfer control between user programs to kernel programs. Firstly, is by the IRQ signal (external interrupt, non-voluntary), and secondly is by invoking the Supervisor Call (voluntary interrupt as the program needs the kernel’s help, typically for I/O data).</p>
-<p>~\</p>
-<p>~\</p>
-<p>During either case of interrupt, PC+4 is stored at register XP so that the user program may \textit{resume later}. The PC then \textit{traps} to the corresponding handler code, and the handler calls the appropriate programs that either invoke the IRQ call during interrupts or programs that can service the requested values during SVC. The handler knows which following service programs to invoke due to the arguments provided by the user program in R0 during SVC event.</p>
-<p><sub>\</sub>\</p>
-<p>When running in kernel mode, the kernel code <strong><strong>cannot be interrupted</strong></strong> to prevent security breach, data loss, or trapping into itself in a loop. Therefore, writing kernel code is a very difficult task. However, it brings convenience for the writing and execution of other user programs.</p>
+</ul>
+<p>One common scenario where a process running in user mode needs the Kernel service is when it asks for keyboard / mouse input, for example:</p>
+<pre><code>int c;
+c = getchar();
+</code></pre>
+<p>The function  <code>getchar</code> contains several instructions that perform a <strong>supervisor call</strong> in order to fetch any character input from the keyboard. When translated into assembly, the supervisor call is made by <em>trapping</em> the process into the <em>illop</em> handler, thus <strong>transferring</strong> CPU control to the Kernel so that it can fetch any character input from the keyboard, and <strong>resuming</strong> the process execution after the task is done.</p>
+<blockquote>
+<p>The process stores the character input left at <code>Reg[R0]</code> by the Kernel into memory location <code>c</code>.</p>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p>In summary, we have learned how the presence of OS Kernel and hardware support provide an abstraction for each running process, thus allowing them to run in an isolated manner; on their own virtual machine.</p>
+<p>The Kernel <strong>manages</strong>  the execution of all processes, as well as all I/O devices, and provides <strong>services</strong> to all these processes. There are two ways to transfer CPU control between user programs to kernel programs:<br>
+*Firstly, is through <strong>asynchronous interrupt</strong>: <code>IRQ</code> is set to <code>1</code><br>
+*Secondly, is through <strong>synchronous interrupt</strong>: when the process generates an <strong>exception</strong> hence <strong>trapping</strong> itself to the handler and enters Kernel mode.</p>
+<p>During either case of interrupt, <code>PC+4</code> is stored at <code>Reg[XP]</code> so that the system knows how to resume the process later on.</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the Kernel is <strong>non-preemptive</strong> (the CPU cannot be interrupted while in Kernel Mode). It is designed as such to prevent security breach, data loss if it traps into itself while still being in the Kernel Mode, etc. However, careful writing and construction of the Kernel program is required.</p>
 
     </div>
   </div>
