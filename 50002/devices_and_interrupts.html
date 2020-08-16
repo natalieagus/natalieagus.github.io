@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>devices_and_interrupts</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#asynchronous-handling-of-io-devices">Asynchronous Handling of I/O Devices</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#recap-operating-system-kernel">Recap: Operating System Kernel</a></li>
+<li><a href="#the-supervisor-call">The Supervisor Call</a></li>
+<li><a href="#asynchronous-input-handling">Asynchronous Input Handling</a></li>
+<li><a href="#putting-processes-to-sleep">Putting Processes to Sleep</a></li>
+<li><a href="#real-time-io-handling">Real-Time I/O Handling</a></li>
+<li><a href="#scheduling-multiple-interrupts">Scheduling multiple interrupts</a></li>
+<li><a href="#worked-example-on-scheduling-policy">Worked Example on Scheduling Policy</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="asynchronous-handling-of-io-devices">Asynchronous Handling of I/O Devices</h1>
+<h2 id="overview">Overview</h2>
+<p>A single CPU can only do <em>one thing at a time</em>: execute an operation, load from one memory location, branch to another location, store to one memory location, attend to I/O requests (fetch input or write output to other devices), etc.</p>
+<p>The OS Kernel allows users to <em>multitask</em>, by <strong>performing rapid context switching</strong> between processes in the system, and giving each process the abstraction of being in the only process running in its own (isolated) <strong>virtual machine</strong>.</p>
+<p>We can attach multiple I/O devices to a computer: <em>mouse, keyboard, hard disk, monitor, printer, etc.</em></p>
+<p><mark> Each I/O device runs <em>independently</em> of the CPU. They’re asynchronous and is <strong>not controlled</strong> by the CPU. </mark></p>
+<ul>
+<li>They have their own simple processing unit (logic devices), and memory units to contain temporary data, e.g: input values such as mouse click or keyboard key presses – that will eventually be fetched by the CPU.</li>
+<li>They’re typically orders of magnitude <strong>slower</strong> than a CPU in operation and data processing.</li>
+</ul>
+<blockquote>
+<p>Further details on how I/O devices work are beyond the scope of this course. Right now it is sufficient to think of them as independent devices, asynchronous from the CPU.</p>
+</blockquote>
+<p>In this chapter, we will learn how I/O requests are handled. The main idea for asynchronous I/O handling is follows:</p>
+<ul>
+<li>
+<p>Each process that requires usage of I/O devices will make have to make a supervisor call. This <strong>traps</strong> to the Kernel mode, and the Kernel will handle this request.</p>
+</li>
+<li>
+<p>Each I/O devices will invoke an (asynchronous) <strong>interrupt request</strong> when there’s data in it that has to be fetched (mouse click, keyboard touch, touch screen input, incoming fax, etc). Whenever possible, the execution of the running process will be paused, and the Kernel will tend to this request.</p>
+</li>
+</ul>
+<p>Upon completion (of either case), the Kernel will return control (of CPU) to the originating process (<em>resume the process</em>).</p>
+<h2 id="recap-operating-system-kernel">Recap: Operating System Kernel</h2>
+<p>The Kernel (the core of an OS) is <strong>a set of instructions</strong> that lives in the "<em>kernel space"</em> of the physical memory, and it manages the execution of all apps in the computer, as well as the hardware (including I/O).</p>
+<blockquote>
+<p>Note that the Kernel <strong>is not</strong> the entire OS. There are other parts of an OS (that is not run in kernel mode), and we will learn more about these other parts of the OS next semester.</p>
+</blockquote>
+<p>Kernel serves as an <em>intermediary</em> between any I/O devices (hardware) and user processes. It provides a level of abstraction such that programs can be written and run as if it has access to the entire machine to itself.</p>
+<img src="https://www.dropbox.com/s/5p53t1w1towhslg/osview.png?raw=1" alt="“F1”" width="60%" height="80%">
+<h2 id="the-supervisor-call">The Supervisor Call</h2>
+<p>SVC is a 32-bit instruction that  triggers an <em>illop</em> exception, hence trapping the process onto the Kernel whenever it is executed.</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the SVC has the opcode: <code>000001</code>.</p>
+<p>It has the following format:<br>
+<code>000001</code> <code>26 SVC-bits</code>,<br>
+where up to lower 26 bits can be used to “<em>index</em>” the Kernel service requested.</p>
+<blockquote>
+<p>In Lab 8, we have only 7 service routines by default, so only 3 lower bits of the instruction will encode the index of the requested service routines.</p>
+</blockquote>
+<p>This instruction allows processes to “<em>communicate</em>” with the Kernel by interrupting its own operation and transferring CPU control to the Kernel (<em>illop</em> handler)</p>
+<p>The Illop handler saves the states of the calling process, before it checks if the Opcode of the instruction that triggers the trap is <code>000001</code>.</p>
+<p>If so, it will branch to a generic <code>SVC_handler</code> (else it will branch to error exception handler).</p>
+<p><code>SVC_handler</code> does the following:</p>
+<ol>
+<li>Examine the last faulting instruction,</li>
+<li>Extract its lower <code>N</code> bits and</li>
+<li>Branch to the appropriate service routine as requested by the calling process based on the value of <code>N</code>:</li>
+</ol>
+<pre><code>SVC_Handler: 
+LD(XP, -4, R0)	| examine the faulting instruction
+ANDC(R0, 0xN, R0) | mask out lower N bits
+SHLC(R0, 2, R0) | make a word index
+LD(R0, SVCtbl, R0) | load service table entry
+JMP(R0) | jump to the appropriate handler
+</code></pre>
+<p><code>SVCtbl</code> is a label for specific Kernel subroutines, such as writing output or fetching input from each devices.</p>
+<blockquote>
+<p><code>UUO</code> is a macro that directs the PC to each subroutine: <code>HaltH</code>, <code>WrMsgH</code>. You can read <code>lab8.uasm</code> to for more details.</p>
+</blockquote>
+<pre><code>SVCTbl: UUO(HaltH) | SVC(0): User-mode HALT instruction
+UUO(WrMsgH) | SVC(1): Write message
+UUO(WrChH) | SVC(2): Write Character
+UUO(GetKeyH) | SVC(3): Get Key
+UUO(HexPrtH) | SVC(4): Hex Print
+UUO(WaitH) | SVC(5): Wait(S), S in R3
+UUO(SignalH) | SVC(6): Signal(S), S in R3
+UUO(YieldH) | SVC(7): Yield()
+</code></pre>
+<h3 id="example-svc">Example SVC</h3>
+<p>One common example where SVC is made is when a process checks for <em>keyboard input</em>.</p>
+<blockquote>
+<p>Processes running in user mode do not have <em>direct</em> access to any of the hardware, so they cannot simply check the keyboard for new keystrokes. Moreover, the keyboard is shared for usage by many processes running in the system, for example: text editors, web browsers, video game, etc.</p>
+</blockquote>
+<ul>
+<li>
+<p>For example, the execution of <code>getchar()</code> in C.</p>
+</li>
+<li>
+<p>This means that the process needs to switch to the Kernel mode, and the Kernel helped to check if there’s such input from the keyboard.</p>
+</li>
+<li>
+<p>The function <code>getchar()</code> is translated into <code>SVC(j)</code> (among other things):</p>
+<blockquote>
+<p>The value of <code>j</code> is OS dependent.</p>
+</blockquote>
+</li>
+<li>
+<p><code>SVC(j)</code> traps the user process, switching it to the Kernel mode and execute Kernel <em>illop</em> handler.</p>
+</li>
+<li>
+<p>It eventually examines the value of <code>j</code> and branch to the appropriate service routine that is able fetch the input for the keyboard: <code>GetKeyH</code>.</p>
+</li>
+<li>
+<p>Instructions in <code>GetKeyH</code> fetches the requested  (assuming there’s an input), and  leave it in <code>Reg[R0]</code></p>
+</li>
+<li>
+<p><code>GetKeyH</code> returns the <em>illop</em> handler. The handler  restores the state of the calling process and resume it.</p>
+</li>
+<li>
+<p>The process can now get the requested keyboard character from <code>Reg[R0]</code></p>
+</li>
+</ul>
+<h2 id="asynchronous-input-handling">Asynchronous Input Handling</h2>
+<p>Since I/O devices are asynchronous, an efficient way has to be devised to pass <strong>new inputs</strong>  to the CPU to be stored in the physical memory.</p>
+<blockquote>
+<p>Asynchronous input: We <strong>cannot guarantee</strong> that there’s any process that asks for an input at the <strong>exact moment</strong> <em>that new input</em> is detected by  the I/O devices. Therefore, the Kernel has to temporarily <strong>store</strong> these new inputs in the Kernel Space until there’s some process that asks for it (and then it can be <em>cleared</em> from the Kernel Space).</p>
+</blockquote>
+<p>Most modern system is <strong>interrupt-driven</strong>. That is, devices may request for <em>interrupts</em>:</p>
+<ul>
+<li>
+<p>Any I/O device can <em>request</em> for an I/O interrupt;  in the presence of new input or update, etc.</p>
+</li>
+<li>
+<p>This will <em>interrupt</em> the execution of the current process in the CPU, causing the PC to switch to <code>XAddr</code> (<em>interrupt handler</em>).</p>
+<blockquote>
+<p>Recall how <code>IRQ</code> works in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
+</blockquote>
+</li>
+<li>
+<p>The interrupt handler:</p>
+<ul>
+<li><strong>Saves</strong> the states of the interrupted process,</li>
+<li>Examines the <strong>cause</strong> of the interrupt, and</li>
+<li>Branch to an appropriate I/O interrupt handler (if the interrupt was caused by an I/O device).</li>
+</ul>
+</li>
+<li>
+<p>The <strong>device-specific</strong> I/O interrupt handler will fulfil the request, e.g: fetching new input from the device and putting it to a dedicated buffer in the Kernel space. This value stays in the Kernel buffer until a <em>related</em> SVC is made.</p>
+</li>
+<li>
+<p>When an SVC is made, the Kernel fetches the  requested item from the buffer (if any) and put it in <code>Reg[R0]</code> before returning to the originating process.</p>
+</li>
+</ul>
+<h2 id="putting-processes-to-sleep">Putting Processes to Sleep</h2>
+<p>\includepic{0.6}{sleep}</p>
+<p>The “sleep” status in the proctable in kernel memory (shown in blue in Figure 2 above) is useful to allow a particular program A to “sleep” when it is waiting for a certain input from user, and hence allow the kernel to resume the operation of other programs instead until the required user input  for program A arrives.</p>
+<p>~\</p>
+<p><strong><strong>Consider the scenario where program A requests for user input, i.e: keyboard strokes</strong></strong>:</p>
+<ol>
+<li>
+<p><strong><strong>A bad approach:</strong></strong> wait and loop in kernel when buffer is still empty. This is bad because you <strong><strong>cannot interrupt a kernel</strong></strong>. If buffer never gets filled then the computer “hangs”.</p>
+</li>
+<li>
+<p><strong><strong>A better approach:</strong></strong> if buffer is empty, returns to the user mode (the app) again and ask the user to request raw_input() again. However it is still a waste of time go to back and forth between app and kernel mode only to wait for the user to press the key.</p>
+</li>
+<li>
+<p><strong><strong>A good approach</strong></strong>: OS performs scheduling by executing another program B first, and then returning to this particular program A with the \textit{hope} that by then, the user has already pressed the key and this program A can continue.</p>
+</li>
+<li>
+<p><strong><strong>The best approach</strong></strong>: If buffer is empty, the kernel exits program A and execute another program B, and \textit{will not return to A UNTIL there’s a key pressed by the user}. <strong><strong>This is possible if one adds the sleep status in the proctable</strong></strong>:</p>
+</li>
+</ol>
+<p>\begin{itemize}</p>
+<ol>
+<li>
+<p>The kernel decides that the process has to sleep if the keyboard buffer is empty using the command : <strong><strong>sleep(x)</strong></strong></p>
+</li>
+<li>
+<p><strong><strong>x</strong></strong> is an integer and it is the  program wake-up <strong><strong>trigger</strong></strong></p>
+</li>
+<li>
+<p>Sleep(x) transforms the status of the corresponding process into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span></p>
+</li>
+<li>
+<p>Status of 0 means that the program is <strong><strong>active</strong></strong></p>
+</li>
+<li>
+<p>The Kernel scheduler only rotate the execution among active programs, i.e: those with status of 0</p>
+</li>
+<li>
+<p>When the buffer is finally filled, the IRQ code for I/O contains <strong><strong>wakeup(<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span>)</strong></strong>, which will change the statuses of the processes with the same status <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span> back into 0</p>
+</li>
+<li>
+<p>This changes the processes that were “sleeping” into active mode, and will be executed by the scheduler</p>
+</li>
+</ol>
+<p>\end{itemize}</p>
+<h2 id="real-time-io-handling">Real-Time I/O Handling</h2>
+ <img src="https://www.dropbox.com/s/npup101nnubwohm/rth.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>When I/O interrupt requests are made by devices, they may not be immediately serviced by the Kernel. The figure above illustrates a general timeline from when a particular <strong>interrupt request</strong> is first made to the moment it is serviced.</p>
+<p>Each interrupt request usually have a <strong>deadline</strong>, and the Kernel has to service the request before the said deadline.</p>
+<blockquote>
+<p>For example, the Kernel has to service each keyboard input interrupt request quick enough so as to give the experience of a responsive system.</p>
+</blockquote>
+<p><em>Latency</em> is defined as the amount of elapsed time from interrupt is first requested up until  the Kernel services it.</p>
+<p>The Kernel scheduler in the kernel has to ensure that the interrupt request is serviced <strong>before its deadline</strong>.</p>
+<p>The amount of <em>latency</em> affects how “<em>real-time</em>” the machine reacts. The shorter the latency, the more responsive it will seem.</p>
+<h2 id="scheduling-multiple-interrupts">Scheduling multiple interrupts</h2>
+<p>The computer is connected to multiple I/O devices (disk, keyboard, mouse, printer, monitor, etc). Each device is capable of making asynchronous interrupt requests. Whenever multiple interrupt requests are invoked, the Kernel has to decide how to schedule these interrupt requests.</p>
+<p>There are two different policies that can be adopted to handle I/O interrupts:</p>
+<ol>
+<li>
+<p><strong>Weak, non-preemptive measure</strong>: The machine has a <em>fixed ordering of device handling</em>, but it will not pre-empt current service. It will only <strong>reorder</strong> requests in the interrupt queue based on the types of device.</p>
+</li>
+<li>
+<p><strong>Strong, preemptive measure</strong>: Allow interrupt <strong>handlers</strong> with <em>lower</em> priority to be interrupted <strong>only</strong> by other handlers with <em>higher</em> priority level.</p>
+<ul>
+<li>Handlers of the same priority level <strong>can never</strong> interrupt each other.</li>
+<li>If the CPU runs a handler of lower priority, it will be <em>forced</em> to perform a <strong>context switch</strong> to run the handler with the higher priority (required to service the interrupt).
+<ul>
+<li>The interrupted handler can be <strong>resumed</strong> later on (<em>not restarted</em>, as its old state was saved) after the interrupting higher has finished execution.</li>
+<li>We call this type of Kernel that permits <strong>context switch</strong> even when the CPU is running in Kernel mode as <strong>preemptive Kernel</strong> (but not <em>reentrant</em>) – and it requires more complex development as opposed to non-preemptive ones.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>A <em>reentrant</em> kernel is made such that it allows multiple processes (running in different cores) to be executing in the kernel mode <em>at any given point of time</em> without causing any consistency problems among the kernel data structures.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="setting-handler-priority-level">Setting Handler Priority Level</h3>
+<p>Th <strong>priority level</strong> for each interrupt handler can be illustrated using the  higher <code>p</code> bits of PC – meaning that the <em>location</em> of the handler in memory <em>matters</em>; it defines the handler’s priority level.</p>
+<blockquote>
+<p>Some hardware tweaks on the CPU is needed to support this feature, but we don’t have to dwell too deep into that at this point.</p>
+</blockquote>
+<img src="https://www.dropbox.com/s/7w7oy1jyaa5trnq/pc.png?raw=1" alt="“F1”" width="60%" height="60%">
+<ul>
+<li>The value <code>p</code> depends on how many priority levels you want the machine to have, e.g: 3 bits for 8 levels.</li>
+</ul>
+<blockquote>
+<p>This is analogous to what we have learned before. A system two mode: Kernel and user mode, is differentiated only with the MSB of the PC – <code>1</code> for Kernel mode (hence enabling the highest privilege) and <code>0</code> for user mode.</p>
+</blockquote>
+<h3 id="recurring-interrupts">Recurring Interrupts</h3>
+<p>Some interrupts may happen periodically, or at a bounded rate.</p>
+<blockquote>
+<p>For example: a system autosave feature that requires periodic disk writes, periodic timer, maximum mouse interrupt per second, etc.</p>
+</blockquote>
+<p><em>Consequence</em>: If higher priority interrupts happen at a high rate, requests with lower priorities might be interrupted repeatedly – potentially resulting in <em>starvation</em>.</p>
+<h2 id="worked-example-on-scheduling-policy">Worked Example on Scheduling Policy</h2>
+<p>Each scheduling policy has its own pros and cons. Non-preemptive Kernel is simpler to develop, but without it the device with the slowest service time constraints response to the fastest devices.</p>
+<p>With preemption, latency for higher priority devices is not affected by service times of the lower priority devices. However, this additional feature will complicate the Kernel code.</p>
+<p>We will use some examples to understand how each policy works, and justify whether there’s any one that is better than the other.</p>
+<h3 id="setup">Setup</h3>
+<p>Consider a computer that has three devices: disk, keyboard and printer.</p>
+<p>Each has the following specs for service time, average period, and deadline:</p>
+
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Service Time (ms)</th>
+<th>Deadline (ms)</th>
+<th>Period (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyboard</td>
+<td>0.8</td>
+<td>3</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>0.5</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Printer</td>
+<td>0.4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table><h3 id="case-1-without-scheduling">Case 1: Without scheduling</h3>
+<p>Without any scheduling measure, the worst case latency seen <strong>by each device</strong> is the total service time of the other devices, as the interrupt requests <em>can arrive in any order.</em></p>
+
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Service Time (ms)</th>
+<th>Deadline (ms)</th>
+<th>Period (ms)</th>
+<th>Worst-case Latency (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyboard</td>
+<td>0.8</td>
+<td>3</td>
+<td>10</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>0.5</td>
+<td>3</td>
+<td>2</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>Printer</td>
+<td>0.4</td>
+<td>3</td>
+<td>1</td>
+<td>1.3</td>
+</tr>
+</tbody>
+</table><h3 id="case-2-weak-non-preemptive-policy">Case 2: Weak, Non-Preemptive Policy</h3>
+<p>Assume now we have the following hardware priority ordering: <strong>Disk <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Printer <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Keyboard.</strong></p>
+<p>Recall that in this weak policy, we</p>
+<ul>
+<li><strong>Cannot interrupt</strong> whatever service that is currently going on, but</li>
+<li>Can <strong>re-order</strong> other interrupt requests in the queue</li>
+</ul>
+<p>The <strong>worst case</strong> latency for each device is:</p>
+
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Service Time (ms)</th>
+<th>Deadline (ms)</th>
+<th>Period (ms)</th>
+<th>Worst-case Latency (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyboard</td>
+<td>0.8</td>
+<td>3</td>
+<td>10</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>0.5</td>
+<td>3</td>
+<td>2</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>Printer</td>
+<td>0.4</td>
+<td>3</td>
+<td>1</td>
+<td>1.3</td>
+</tr>
+</tbody>
+</table><ul>
+<li>
+<p>The worst case latency for <em>disk</em> is 0.8ms despite having the highest priority, because it has to acccount for service time for the <em>keyboard</em>, if the keyboard service has just started when interrupt by disk arrives.</p>
+</li>
+<li>
+<p>The worst case latency for <em>printer</em> is 1.3 because it has to take into account the scenario that the <em>keyboard</em> has just started when the interrupt by <em>printer</em> and <em>disk</em> arrive.</p>
+<blockquote>
+<p>The printer, which has lower priority than disk will have to wait for both disk and keyboard to finish execution before it can be serviced.</p>
+</blockquote>
+</li>
+<li>
+<p>The worst case latency for keyboard, with the lowest priority is the service time for <em>disk</em> + <em>printer</em>.</p>
+</li>
+</ul>
+<h3 id="case-3-stricter-deadline-with-weak-policy">Case 3: Stricter Deadline with Weak Policy</h3>
+<p>Suppose the system requires a stricter <strong>deadline</strong> as shown int he table below.</p>
+<p>The hardware priority ordering: <strong>Disk <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Printer <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Keyboard</strong> with <em>weak policy</em> results in the following worst-case latency:</p>
+
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Service Time (ms)</th>
+<th>Deadline (ms)</th>
+<th>Period (ms)</th>
+<th>Worst-case Latency (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyboard</td>
+<td>0.8</td>
+<td>1.1</td>
+<td>10</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>0.5</td>
+<td>0.8</td>
+<td>2</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>Printer</td>
+<td>0.4</td>
+<td>0.7</td>
+<td>1</td>
+<td>1.3</td>
+</tr>
+</tbody>
+</table><p>We can see that the deadline for Disk will not be met, despite having the highest priority:</p>
+<ul>
+<li>Its max latency is 0.8ms, and its service time is 0.5ms</li>
+<li>Adding the two, we have 1.3ms of (worst case) total time to service the disk. This violates the deadline that’s set at 0.8ms.</li>
+</ul>
+<p>Therefore the weak, non-pre-emptive policy will not work for this specification anymore.</p>
+<blockquote>
+<p>There’s a need to somehow pre-empt the keyboard when the interrupt request for disk arrives so that the disk will not miss its deadline (see next section).</p>
+</blockquote>
+<h3 id="case-4-strong-pre-emptive-policy">Case 4: Strong, Pre-emptive Policy</h3>
+<p>Suppose we have the following interrupt handler priority ordering: <strong>Disk handler <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Printer  handler<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Keyboard handler</strong>.</p>
+<p>The worst-case latency for each device is now:</p>
+
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Service Time (ms)</th>
+<th>Deadline (ms)</th>
+<th>Period (ms)</th>
+<th>Worst-case Latency (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keyboard</td>
+<td>0.8</td>
+<td>1.1</td>
+<td>10</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td>0.5</td>
+<td>0.8</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Printer</td>
+<td>0.4</td>
+<td>0.7</td>
+<td>1</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table><p>The disk has <em>zero</em> latency because pre-emption is enabled.</p>
+<p>The <em>keyboard</em> with the lowest priority still has to wait for the disk and printer to <em>complete</em> regardless.</p>
+<p>The interrupt requests from these devices are recurring with certain frequency. For example, the keyboard interrupt occurs once every 10ms, and so on.</p>
+<p>We can draw the timeline of these interrupts as follows:</p>
+<img src="https://www.dropbox.com/s/vn644mg6ifqnqd1/irqstimeline.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>Since the <em>disk</em> has the highest priority, it will be serviced first. Once finished, the <em>printer</em> will be serviced.</p>
+<p>After both <em>disk</em> and <em>printer</em> are serviced, the <em>keyboard</em> is serviced at <code>t=0.9</code>. However, it will be interrupted by the printer at <code>t=1</code>. Therefore, the keyboard service time is spread out due to interrupts from printer and disks:</p>
+<img src="https://www.dropbox.com/s/5wodlj3hwpx9ltm/interruptsvc.png?raw=1" alt="“F1”" width="100%" height="100%">
+<ul>
+<li>The keyboard service time is spread out (red region) due to interrupts from printer and disks</li>
+</ul>
+<blockquote>
+<p>To test your understanding, ask yourselves if another priority ordering such as <strong>Printer handler &gt; Disk handler &gt; Keyboard handler</strong> is <em>plausible</em>?  Why or why not?</p>
+</blockquote>
+<h3 id="effective-interrupt--load">Effective Interrupt  Load</h3>
+<p>The effective <strong>Interrupt Load</strong> these devices impose to the CPU is computed by multiplying the <em>maximum frequency</em> of each device interrupt with its own <strong>service time</strong>.</p>
+<p>We can easily compute the max frequency of each device:</p>
+<ul>
+<li>Keyboard: 100/s</li>
+<li>Disk: 500/s</li>
+<li>Printer: 1000/s</li>
+</ul>
+<p>The load % from each device is therefore:</p>
+<ul>
+<li>Keyboard: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mo>×</mo><mn>0.008</mn><mo>=</mo><mn>0.08</mn><mo>=</mo><mn>8</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">100 \times 0.008 = 0.08 = 8\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">8</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">8</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">8</span><span class="mord">%</span></span></span></span></span></li>
+<li>Disk: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>500</mn><mo>×</mo><mn>0.005</mn><mo>=</mo><mn>0.25</mn><mo>=</mo><mn>25</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">500 \times 0.005 = 0.25 = 25\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">5</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">2</span><span class="mord">5</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">%</span></span></span></span></span></li>
+<li>Printer: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1000</mn><mo>×</mo><mn>0.004</mn><mo>=</mo><mn>0.4</mn><mo>=</mo><mn>40</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">1000 \times 0.004 = 0.4 = 40\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">4</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">4</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">%</span></span></span></span></span></li>
+</ul>
+<p>The total Interrupt load of these devices on the CPU is 73%. The remaining fraction, 27% is what is left for processes to use to do <em>work</em> (computation).</p>
+<blockquote>
+<p>The computer will not be able to run any other processes if the Interrupt load reaches 100 %.</p>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p>In this chapter, we have learned that there are two parts of <em>device interface</em>:</p>
+<ol>
+<li>Device side: via asynchronous interrupt requests.</li>
+<li>Application (Process) side: via supervisor calls.</li>
+</ol>
+<p>The OS Kernel acts as an intermediary between processes and shared hardware.</p>
+<p>It has to carefully schedule real-time interrupt requests such that each can be serviced without violating the deadlines. We learned a couple of policies: weak non-preemptive and strong pre-emptive measure. Real-time constraints are however complex to solve, and each policies have its own pros and cons. It is also not a trivial job to determine the best priority ordering for each device or handler.</p>
+<p>We have come to the end of this course, and we have learned quite a great deal on how a computer is built,  what it means by having a “general-purpose” device and how to design an instruction set for it, along with memory and machine virtualisation. The OS Kernel is a program that enables machine abstraction; in a way such that each process can run in isolation from one another (great for both convenience in development and system security).</p>
+<p>In the next term, we will build on this knowledge and learn more about the fuller extent of the role of an OS Kernel: supporting interprocesses communcation, synchronizing between processes, and guarding shared resources between processes running in the system.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
