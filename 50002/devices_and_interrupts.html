@@ -19,7 +19,6 @@
 <li><a href="#recap-operating-system-kernel">Recap: Operating System Kernel</a></li>
 <li><a href="#the-supervisor-call">The Supervisor Call</a></li>
 <li><a href="#asynchronous-input-handling">Asynchronous Input Handling</a></li>
-<li><a href="#putting-processes-to-sleep">Putting Processes to Sleep</a></li>
 <li><a href="#real-time-io-handling">Real-Time I/O Handling</a></li>
 <li><a href="#scheduling-multiple-interrupts">Scheduling multiple interrupts</a></li>
 <li><a href="#worked-example-on-scheduling-policy">Worked Example on Scheduling Policy</a></li>
@@ -65,7 +64,7 @@ Singapore University of Technology and Design<br>
 <p>Note that the Kernel <strong>is not</strong> the entire OS. There are other parts of an OS (that is not run in kernel mode), and we will learn more about these other parts of the OS next semester.</p>
 </blockquote>
 <p>Kernel serves as an <em>intermediary</em> between any I/O devices (hardware) and user processes. It provides a level of abstraction such that programs can be written and run as if it has access to the entire machine to itself.</p>
-<img src="https://www.dropbox.com/s/5p53t1w1towhslg/osview.png?raw=1" alt="“F1”" width="60%" height="80%">
+<img src="https://www.dropbox.com/s/5p53t1w1towhslg/osview.png?raw=1" alt="“F1”" width="80%" height="80%">
 <h2 id="the-supervisor-call">The Supervisor Call</h2>
 <p>SVC is a 32-bit instruction that  triggers an <em>illop</em> exception, hence trapping the process onto the Kernel whenever it is executed.</p>
 <p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the SVC has the opcode: <code>000001</code>.</p>
@@ -169,50 +168,6 @@ UUO(YieldH) | SVC(7): Yield()
 <p>When an SVC is made, the Kernel fetches the  requested item from the buffer (if any) and put it in <code>Reg[R0]</code> before returning to the originating process.</p>
 </li>
 </ul>
-<h2 id="putting-processes-to-sleep">Putting Processes to Sleep</h2>
-<p>\includepic{0.6}{sleep}</p>
-<p>The “sleep” status in the proctable in kernel memory (shown in blue in Figure 2 above) is useful to allow a particular program A to “sleep” when it is waiting for a certain input from user, and hence allow the kernel to resume the operation of other programs instead until the required user input  for program A arrives.</p>
-<p>~\</p>
-<p><strong><strong>Consider the scenario where program A requests for user input, i.e: keyboard strokes</strong></strong>:</p>
-<ol>
-<li>
-<p><strong><strong>A bad approach:</strong></strong> wait and loop in kernel when buffer is still empty. This is bad because you <strong><strong>cannot interrupt a kernel</strong></strong>. If buffer never gets filled then the computer “hangs”.</p>
-</li>
-<li>
-<p><strong><strong>A better approach:</strong></strong> if buffer is empty, returns to the user mode (the app) again and ask the user to request raw_input() again. However it is still a waste of time go to back and forth between app and kernel mode only to wait for the user to press the key.</p>
-</li>
-<li>
-<p><strong><strong>A good approach</strong></strong>: OS performs scheduling by executing another program B first, and then returning to this particular program A with the \textit{hope} that by then, the user has already pressed the key and this program A can continue.</p>
-</li>
-<li>
-<p><strong><strong>The best approach</strong></strong>: If buffer is empty, the kernel exits program A and execute another program B, and \textit{will not return to A UNTIL there’s a key pressed by the user}. <strong><strong>This is possible if one adds the sleep status in the proctable</strong></strong>:</p>
-</li>
-</ol>
-<p>\begin{itemize}</p>
-<ol>
-<li>
-<p>The kernel decides that the process has to sleep if the keyboard buffer is empty using the command : <strong><strong>sleep(x)</strong></strong></p>
-</li>
-<li>
-<p><strong><strong>x</strong></strong> is an integer and it is the  program wake-up <strong><strong>trigger</strong></strong></p>
-</li>
-<li>
-<p>Sleep(x) transforms the status of the corresponding process into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span></p>
-</li>
-<li>
-<p>Status of 0 means that the program is <strong><strong>active</strong></strong></p>
-</li>
-<li>
-<p>The Kernel scheduler only rotate the execution among active programs, i.e: those with status of 0</p>
-</li>
-<li>
-<p>When the buffer is finally filled, the IRQ code for I/O contains <strong><strong>wakeup(<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span>)</strong></strong>, which will change the statuses of the processes with the same status <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span> back into 0</p>
-</li>
-<li>
-<p>This changes the processes that were “sleeping” into active mode, and will be executed by the scheduler</p>
-</li>
-</ol>
-<p>\end{itemize}</p>
 <h2 id="real-time-io-handling">Real-Time I/O Handling</h2>
  <img src="https://www.dropbox.com/s/npup101nnubwohm/rth.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>When I/O interrupt requests are made by devices, they may not be immediately serviced by the Kernel. The figure above illustrates a general timeline from when a particular <strong>interrupt request</strong> is first made to the moment it is serviced.</p>
