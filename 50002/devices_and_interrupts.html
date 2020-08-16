@@ -466,8 +466,8 @@ UUO(YieldH) | SVC(7): Yield()
 <h2 id="summary">Summary</h2>
 <p>In this chapter, we have learned that there are two parts of <em>device interface</em>:</p>
 <ol>
-<li>Device side: via asynchronous interrupt requests.</li>
-<li>Application (Process) side: via supervisor calls.</li>
+<li><strong>Device side:</strong> via asynchronous interrupt requests.</li>
+<li><strong>Application (process) side:</strong> via supervisor calls.</li>
 </ol>
 <p>The OS Kernel acts as an intermediary between processes and shared hardware.</p>
 <p>It has to carefully schedule real-time interrupt requests such that each can be serviced without violating the deadlines. We learned a couple of policies: weak non-preemptive and strong pre-emptive measure. Real-time constraints are however complex to solve, and each policies have its own pros and cons. It is also not a trivial job to determine the best priority ordering for each device or handler.</p>
