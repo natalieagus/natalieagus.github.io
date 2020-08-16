@@ -25,6 +25,12 @@
 
 [Cache Design Issues](https://natalieagus.github.io/50002/cache_issues.html)
 
+[Virtual Memory](https://natalieagus.github.io/50002/virtual_memory.html)
+
+[Virtual Machine](https://natalieagus.github.io/50002/virtual_machine.html)
+
+[Asynchronous Handling of I/O Devices](https://natalieagus.github.io/50002/devices_and_interrupts.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
