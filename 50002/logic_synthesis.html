@@ -22,6 +22,7 @@
 <li><a href="#straightforward-logic-synthesis">Straightforward Logic Synthesis</a></li>
 <li><a href="#demorgans-theorem">DeMorgan’s Theorem</a></li>
 <li><a href="#boolean-algebra">Boolean Algebra</a></li>
+<li><a href="#logic-synthesization-with-cmos">Logic Synthesization with CMOS</a></li>
 <li><a href="#special-combinational-logic-devices">Special Combinational Logic Devices</a></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
@@ -200,6 +201,61 @@ Y &amp;= \overline{C} \text{ }\overline{B} A + \overline{C} B A + CB\overline{A}
 </blockquote>
 </li>
 </ol>
+<h2 id="logic-synthesization-with-cmos">Logic Synthesization with CMOS</h2>
+<p>We can create a combinational logic device easily given the <em>minimized</em> boolean expression, using any of the universal gates:</p>
+<ul>
+<li>NANDs only</li>
+<li>NORs only</li>
+<li>AND, INV, and OR</li>
+</ul>
+<p>Each gate can be created using transistors: PFETs and NFETs arranged in a complementary way. The schematic of each is as follows:<br>
+<img src="https://www.dropbox.com/s/tnleg2coz9kjpul/andorinv.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<blockquote>
+<p>The OR and AND gates are simply the NOR and NAND gates with inverter at the output.</p>
+</blockquote>
+<p>We can also create the device straight using CMOS recipe given the minimised boolean expression (instead of using the universal gates). For example, given this minimised equation that we did earlier:<br>
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi><mo>=</mo><mover accent="true"><mi>C</mi><mo stretchy="true">‾</mo></mover><mi>A</mi><mo>+</mo><mi>C</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">Y= \overline{C} A + CB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.22222em;">Y</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.9666600000000001em; vertical-align: -0.08333em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8833300000000001em;"><span class="" style="top: -3em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span></span></span><span class="" style="top: -3.80333em;"><span class="pstrut" style="height: 3em;"></span><span class="overline-line" style="border-bottom-width: 0.04em;"></span></span></span></span></span></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span></span></span></span></span></span><br>
+It can be made this way:<br>
+<img src="https://www.dropbox.com/s/rqc1v5b9uioneef/dev.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>This requires <strong>20 MOSFETs</strong> to build.</p>
+<p>Or the primitive way:</p>
+<ul>
+<li><strong>Step 1:</strong> Construct a <strong>pull-down circuitry</strong>:
+<ul>
+<li>for each ‘+’ (OR) we build a parallel NFET circuit</li>
+<li>for each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⋅</mo></mrow><annotation encoding="application/x-tex">\cdot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.44445em; vertical-align: 0em;"></span><span class="mord">⋅</span></span></span></span></span> (AND) we build a series NFET circuit</li>
+</ul>
+</li>
+</ul>
+<p>Therefore we have two sets of two NFETs in series:<br>
+<img src="https://www.dropbox.com/s/vsfyv7iefuv19cx/DEVMOS1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<ul>
+<li>
+<p><strong>Step 2:</strong> Add inverter at the output.</p>
+<ul>
+<li>In <strong>Step 1</strong> we created a pull-down circuitry that is <em>activated</em> when each of the terms in the boolean expression produces an overall ‘1’.
+<blockquote>
+<p>E.g: when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo separator="true">,</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B, C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8777699999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span></span></span></span></span> are both 1, the pull-down is activated as current can flow from <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.22222em;">Y</span></span></span></span></span> to the GND. The effective output at <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.22222em;">Y</span></span></span></span></span> will be then 0 when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo separator="true">,</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B,C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8777699999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span></span></span></span></span> are both 1.</p>
+</blockquote>
+</li>
+<li>Since what we want is the <em>opposite</em>, we need to put an inverter at the output.
+<blockquote>
+<p>that is   <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Y=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.22222em;">Y</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> when <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo separator="true">,</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">B,C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8777699999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span></span></span></span></span> are both 1, we need to put an inverter at the output, as shown:<br>
+<img src="https://www.dropbox.com/s/x2ktjw4gqxx979r/devmos2.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Step 3:</strong> Construct the complementary pull-up circuitry and assemble.</p>
+<blockquote>
+<p>Refer to the CMOS recipe in the previous chapter.</p>
+</blockquote>
+</li>
+</ul>
+<img src="https://www.dropbox.com/s/ft9xplwm26ksgks/devmos3.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>This requires <strong>14 MOSFETs</strong> to build, lesser than the previous design. It is definitely easier (for us) to create a combinational logic device using a bunch of universal gates, but it comes at the cost of money and size.</p>
+<p>Note that the CMOS recipes that we learn in this course also <strong>does not guarantee</strong> that you can build a device with <strong>minimised number of transistors,</strong> given its functional specification. It is an <em>art</em> to create the most efficient circuit in terms of money, size, and usage.</p>
 <h2 id="special-combinational-logic-devices">Special Combinational Logic Devices</h2>
 <h3 id="the-multiplexer">The Multiplexer</h3>
 <p>The Multiplexer (shorted as “mux”) is a special combinational logic device that is very commonly used in practice. It is implemented using basic logic gates (INV, AND, and OR, or NANDs). The mux is expensive to manufacture, but <em>universal</em>, meaning that it can <strong>implement any boolean function because essentially it “hardcodes” the truth table</strong>.</p>
