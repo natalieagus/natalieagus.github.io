@@ -198,7 +198,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <details> 
 <summary markdown="span">Show Answer</summary>
 
->The bits of information that has been given is 3.
+>3 bits of information have been given.
 </details> 
 <br/> 
 {::options parse_block_html="false" /}
@@ -667,11 +667,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzND
-g4NzM2NiwtMjcwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0
-MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNj
-EwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3
-ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNz
-c3NzQxNTA0LDExOTk4NzU0NjQsLTc1MTU4NzA3NiwtMjA3NTAx
-MjEzMl19
+eyJoaXN0b3J5IjpbLTI5MTY5NDMyNCw4NTQwNDgxMjAsLTE2Nz
+A1ODEwMCwtMzM0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3
+MiwxNTM4MDM1ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMT
+gyNDU0NDQ4Nyw2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAz
+NTM3LDI4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NT
+A3MzMyNzEsLTE3Nzc3NDE1MDQsMTE5OTg3NTQ2NCwtNzUxNTg3
+MDc2XX0=
 -->
