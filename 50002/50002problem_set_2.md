@@ -529,7 +529,7 @@ The Xilinx 4000 series field-programmable gate array (FPGA) can be programmed to
 The heart of the FPGA architecture is a *configurable logic block (CLB)* which has a c**ombinational logic subsection** with the following circuit diagram:
 
 
-<img src="https://www.dropbox.com/s/kyx7a79owajbxde/Q5.png?raw=1"  width="50%" height = "50%">
+<img src="https://www.dropbox.com/s/kyx7a79owajbxde/Q5.png?raw=1"  width="100%" height = "100%">
 
 
 There are **two 4-input function generators** and **one 3-input function generator**, each capable of implementing an **arbitrary** Boolean function of its inputs.
@@ -606,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NTExNjA0MiwtMTk4MzAzMTM4MiwtMT
-Y2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5OTk3MTksNDc1MTYy
-MTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5NiwyOTQ4NTE4NSwtMT
-I0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5NjcxLDE1NDAx
-MjYwNzksMTEyOTEyMjEwNywtOTc0NzYzNDE4LDE0MTAwOTI4MD
-EsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0xODM5NTY1MzQyLDE4
-MDQ1MDA1MDRdfQ==
+eyJoaXN0b3J5IjpbLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMT
+k4MzAzMTM4MiwtMTY2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5
+OTk3MTksNDc1MTYyMTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5Ni
+wyOTQ4NTE4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2
+MzI5NjcxLDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOTc0NzYzND
+E4LDE0MTAwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0x
+ODM5NTY1MzQyXX0=
 -->
