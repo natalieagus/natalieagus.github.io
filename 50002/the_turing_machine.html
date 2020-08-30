@@ -17,7 +17,8 @@
 <ul>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#basics-of-turing-machine">Basics of Turing Machine</a></li>
-<li><a href="#implementing-an-incrementer-as-a-turing-machine">Implementing an Incrementer as a Turing Machine</a></li>
+<li><a href="#example-1-implementing-an-increment-machine">Example 1: Implementing an Increment Machine</a></li>
+<li><a href="#example-2-implementing-a-coin-counter-machine">Example 2: Implementing a Coin Counter Machine</a></li>
 <li><a href="#turing-machine-as-a-function">Turing Machine as a Function</a></li>
 <li><a href="#summary-the-computer-science-revolution">Summary: The Computer Science Revolution</a></li>
 <li><a href="#programmability">Programmability</a></li>
@@ -35,7 +36,11 @@ Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="turing-machine">Turing Machine</h1>
 <h2 id="overview">Overview</h2>
-<p>The Turing Machine is a mathematical model of computation that defines an abstract <strong>machine</strong>: one that is able to implement any functionalities that FSM can implement, and it doesn’t have the limitation that FSM has.</p>
+<p>A Finite State Machine does not keep track of the number of states it <em>visited</em>, it is only aware of the current state <em>it is in</em>. Therefore it is unable to solve problems like detecting palindrome or checking balanced parenthesis. There is no way to tell whether you have visited a state for the first time, or for the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">n^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span> time.</p>
+<blockquote>
+<p>A Finite Automata (FSM), cannot <strong>count</strong>.</p>
+</blockquote>
+<p>The Turing Machine is a mathematical model of computation that defines an abstract <strong>machine</strong>: one that is able to implement any functionalities that FSM can implement, and it doesn’t face this limitation that FSM has.</p>
 <h2 id="basics-of-turing-machine">Basics of Turing Machine</h2>
 <p>A Turing Machine is often represented as an “arrow” and a series of input written on a “tape”, as drawn in the figure below:</p>
 <img src="https://www.dropbox.com/s/n41r5z8o2p5dpea/tmeg.png?raw=1" alt="“F1”" width="100%" height="100%">
@@ -81,12 +86,13 @@ Singapore University of Technology and Design<br>
 <p>Depending on what we write onto the tape, we will end up with a different sequences on the tape when we reach step (3).</p>
 </li>
 </ol>
-<h2 id="implementing-an-incrementer-as-a-turing-machine">Implementing an Incrementer as a Turing Machine</h2>
-<p>Consider a simple machine whose job is to add <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> to any <em>arbitrary</em> input and present that as the output. We cannot use an FSM to do this because we do not know how big the input will be, and we cannot possibly implement all possible input as a state (that will be infinitely many).</p>
+<h2 id="example-1-implementing-an-increment-machine">Example 1: Implementing an Increment Machine</h2>
+<p>Consider a machine whose job is to add <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> to any <em>arbitrary</em> length input and present that as the output. An FSM can do this as well if the number of bits of input is <strong>finite</strong>, but it will run into a problem if the input bit is <em>too</em> <em>large</em>. An example of a 3-bit counter FSM design is:</p>
+<img src="https://www.dropbox.com/s/j6p4riuu67t8l6l/fsm_cntr.png?raw=1" alt="“F1”" width="60%" height="60%">
 <blockquote>
-<p>The key feature for a Turing Machine is this <em>infinite</em> tape (hence its capability of processing arbitrary input. If the tape is finite, then it can be shown that Turing machines can be implemented using FSM.</p>
+<p>The key feature for a Turing Machine is this <em>infinite</em> tape (hence its capability of processing arbitrary input).</p>
 </blockquote>
-<p>A Turing Machine with the following specification can easily solve the problem:</p>
+<p>A Turing Machine with the following specification can easily solve the problem and is capable to accept any <strong>arbitrarily</strong> long input with <strong>lesser number of states</strong>:</p>
 <img src="https://www.dropbox.com/s/4royeq528xbqu70/addone.png?raw=1" alt="“F1”" width="75%" height="75%">
 <p>Now assume that you can run the machine, as follows:</p>
 <ol>
@@ -95,6 +101,38 @@ Singapore University of Technology and Design<br>
 </ol>
 <p>We can continue the same logic on and on until we meet a HALT state. The final output is written on the tape, and we should have this state we finish running the Turing Machine with this functionality:<br>
 <img src="https://www.dropbox.com/s/kp1f0j8wn7wyojp/finaladd.png?raw=1" alt="“F1”" width="75%" height="75%"></p>
+<h2 id="example-2-implementing-a-coin-counter-machine">Example 2: Implementing a Coin Counter Machine</h2>
+<p>Suppose now we want to implement a machine that can receive a series of 10c coins, and <em>then</em> a series of 20c coins (for simplicity, we can’t key in 10c coins anymore once the first 20c coin is given). We can then press an END button in the end once we are done and the machine will:</p>
+<ul>
+<li><code>ACCEPT (1)</code> of the value of 10c coins inserted is equivalent to the value of 20C coins inserted, or</li>
+<li><code>REJECT (0)</code> otherwise.</li>
+</ul>
+<p>A sample input will be:</p>
+<ul>
+<li><code>10 10 10 20 20 20 20 END</code> (<code>REJECT</code>)</li>
+<li><code>10 10 10 10 20 20 END</code> (<code>ACCEPT</code>)</li>
+</ul>
+<p>For simplicity, an input as such <code>10 20 10 20 END</code> will not be given (although we can also create a Turing machine to solve the same task with this input type, but the logic becomes more complicated).</p>
+<p>We cannot implement an FSM to solve this problem because there’s no way an FSM can <em>keep track</em> how many 10s are keyed in so far (or 20s), and we can’t possibly create a state for each possible scenario,</p>
+<img src="https://www.dropbox.com/s/f3nqor85tmotr35/fsm_fail.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p>However, a Turing machine with the following specification can solve the problem:<br>
+<img src="https://www.dropbox.com/s/hp1b5g7zves9j16/tmcounter.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Given an input as follows, and starting state at <code>S0</code> (at <code>t=0</code>):<br>
+<img src="https://www.dropbox.com/s/d87trx48ssoefnl/tm1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>The state of the machine is as follows at <code>t=2</code>:<br>
+<img src="https://www.dropbox.com/s/zse8nwcf94c5u6o/tm2.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>It will try to find the first 20, and has this outcome and state at <code>t=5</code>:<br>
+<img src="https://www.dropbox.com/s/httistkevl5a6i8/tm3.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>It will then try to find the leftmost unprocessed ‘10’:<br>
+<img src="https://www.dropbox.com/s/5tzhbeplzr8k39v/tm4.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>The whole process is repeated until there’s no more 10. The Machine now will try to find <code>END</code>:<br>
+<img src="https://www.dropbox.com/s/w96o00c9cx15oro/tm5.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Once found, it halts and wrote the final value (ACCEPT):<br>
+<img src="https://www.dropbox.com/s/4t9kyrtvlsfjh7m/tm6.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>As practice, you can try the machine logic using  an input that results in a REJECT.</p>
+<blockquote>
+<p>Can you solve the problem with lesser states? Why or why not?</p>
+</blockquote>
 <h2 id="turing-machine-as-a-function">Turing Machine as a Function</h2>
 <p>Given a Turing Machine with a particular specification <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">K</span></span></span></span></span> (symbolised as <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">T_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.13889em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>), and a tape with particular input sequence <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span> (lets shorten it by calling it simply Tape <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span>), we can define  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>K</mi></msub><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">T_K[x]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.13889em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathdefault">x</span><span class="mclose">]</span></span></span></span></span> as running <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>T</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">T_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right: 0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.13889em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> on tape <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">x</span></span></span></span></span>,</p>
 <ul>
