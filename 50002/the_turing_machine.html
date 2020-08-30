@@ -93,14 +93,14 @@ Singapore University of Technology and Design<br>
 <p>The key feature for a Turing Machine is this <em>infinite</em> tape (hence its capability of processing arbitrary input).</p>
 </blockquote>
 <p>A Turing Machine with the following specification can easily solve the problem and is capable to accept any <strong>arbitrarily</strong> long input with <strong>lesser number of states</strong>:</p>
-<img src="https://www.dropbox.com/s/4royeq528xbqu70/addone.png?raw=1" alt="“F1”" width="75%" height="75%">
+<img src="https://www.dropbox.com/s/4royeq528xbqu70/addone.png?raw=1" alt="“F1”" width="45%" height="45%">
 <p>The Turing Machine runs as follows:</p>
 <ol>
 <li>At <code>t=0</code>: The initial state of the machine is 00, and the machine is currently reading <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">∗</span></span></span></span></span> as an input. According to the first row of the table, it should write back a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">∗</span></span></span></span></span>, and then move the tape to the left.</li>
 <li>At <code>t=1</code>: The state of the machine is still 00, currently it reads a  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> as input. The matching state-input row in the table is the second row, where it tells us to write back the value read that is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>, and then move the tape to the left.</li>
 </ol>
 <p>We can continue the same logic on and on until we meet a HALT state. The final output is written on the tape, and we should have this state we finish running the Turing Machine with this functionality:<br>
-<img src="https://www.dropbox.com/s/kp1f0j8wn7wyojp/finaladd.png?raw=1" alt="“F1”" width="75%" height="75%"></p>
+<img src="https://www.dropbox.com/s/kp1f0j8wn7wyojp/finaladd.png?raw=1" alt="“F1”" width="45%" height="45%"></p>
 <h2 id="example-2-implementing-a-coin-counter-machine">Example 2: Implementing a Coin Counter Machine</h2>
 <p>Suppose now we want to implement a machine that can receive a series of 10c coins, and <em>then</em> a series of 20c coins (for simplicity, we can’t key in 10c coins anymore once the first 20c coin is given). We can then press an END button in the end once we are done and the machine will:</p>
 <ul>
@@ -116,7 +116,7 @@ Singapore University of Technology and Design<br>
 <p>We cannot implement an FSM to solve this problem because there’s no way an FSM can <em>keep track</em> how many 10s are keyed in so far (or 20s), and we can’t possibly create a state for each possible scenario,</p>
 <img src="https://www.dropbox.com/s/f3nqor85tmotr35/fsm_fail.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>However, a Turing machine with the following specification can solve the problem:<br>
-<img src="https://www.dropbox.com/s/hp1b5g7zves9j16/tmcounter.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://www.dropbox.com/s/hp1b5g7zves9j16/tmcounter.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
 <p>Given an input as follows, and starting state at <code>S0</code> (at <code>t=0</code>):<br>
 <img src="https://www.dropbox.com/s/d87trx48ssoefnl/tm1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>The state of the machine is as follows at <code>t=2</code>:<br>
