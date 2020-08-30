@@ -93,7 +93,7 @@ Singapore University of Technology and Design<br>
 <p>The key feature for a Turing Machine is this <em>infinite</em> tape (hence its capability of processing arbitrary input).</p>
 </blockquote>
 <p>A Turing Machine with the following specification can easily solve the problem and is capable to accept any <strong>arbitrarily</strong> long input with <strong>lesser number of states</strong>:</p>
-<img src="https://www.dropbox.com/s/r6i8t6lzeks0ijz/Tmincr.png?raw=1" alt="“F1”" width="65%" height="65%">
+<img src="https://www.dropbox.com/s/r6i8t6lzeks0ijz/Tmincr.png?raw=1" alt="“F1”" width="75%" height="75%">
 <p>With this sample input, the Turing Machine runs as follows:<br>
 <img src="https://www.dropbox.com/s/34dxvi3tdwz1shu/tmi1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <ol>
@@ -130,19 +130,19 @@ Singapore University of Technology and Design<br>
 <img src="https://www.dropbox.com/s/f3nqor85tmotr35/fsm_fail.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>However, a Turing machine with the following specification can solve the problem:<br>
 <img src="https://www.dropbox.com/s/hp1b5g7zves9j16/tmcounter.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
-<p>Given an input as follows, and starting state at <code>S0</code> (at <code>t=0</code>):<br>
+<p>Given an input as follows and starting state at <code>S0</code> (at <code>t=0</code>):<br>
 <img src="https://www.dropbox.com/s/d87trx48ssoefnl/tm1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>The state of the machine is as follows at <code>t=2</code>:<br>
 <img src="https://www.dropbox.com/s/zse8nwcf94c5u6o/tm2.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
-<p>It will try to find the first 20, and has this outcome and state at <code>t=5</code>:<br>
+<p>It will try to find the first ‘20’, and has this outcome and state at <code>t=5</code> once the first ‘20’ is found:<br>
 <img src="https://www.dropbox.com/s/httistkevl5a6i8/tm3.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>It will then try to find the leftmost unprocessed ‘10’:<br>
 <img src="https://www.dropbox.com/s/5tzhbeplzr8k39v/tm4.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>The whole process is repeated until there’s no more 10. The Machine now will try to find <code>END</code>:<br>
 <img src="https://www.dropbox.com/s/w96o00c9cx15oro/tm5.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
-<p>Once found, it halts and wrote the final value (ACCEPT):<br>
+<p>Once found, it halts and wrote the final value (<code>ACCEPT</code>):<br>
 <img src="https://www.dropbox.com/s/4t9kyrtvlsfjh7m/tm6.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
-<p>As practice, you can try the machine logic using  an input that results in a REJECT.</p>
+<p>As practice, you can try the running the machine using another set of input that will result in a <code>REJECT</code>.</p>
 <blockquote>
 <p>Can you solve the problem with lesser states? Why or why not?</p>
 </blockquote>
