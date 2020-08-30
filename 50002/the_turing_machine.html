@@ -93,14 +93,27 @@ Singapore University of Technology and Design<br>
 <p>The key feature for a Turing Machine is this <em>infinite</em> tape (hence its capability of processing arbitrary input).</p>
 </blockquote>
 <p>A Turing Machine with the following specification can easily solve the problem and is capable to accept any <strong>arbitrarily</strong> long input with <strong>lesser number of states</strong>:</p>
-<img src="https://www.dropbox.com/s/4royeq528xbqu70/addone.png?raw=1" alt="“F1”" width="45%" height="45%">
-<p>The Turing Machine runs as follows:</p>
+<img src="https://www.dropbox.com/s/r6i8t6lzeks0ijz/Tmincr.png?raw=1" alt="“F1”" width="65%" height="65%">
+<p>With this sample input, the Turing Machine runs as follows:<br>
+<img src="https://www.dropbox.com/s/34dxvi3tdwz1shu/tmi1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <ol>
-<li>At <code>t=0</code>: The initial state of the machine is 00, and the machine is currently reading <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">∗</span></span></span></span></span> as an input. According to the first row of the table, it should write back a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">∗</span></span></span></span></span>, and then move the tape to the left.</li>
-<li>At <code>t=1</code>: The state of the machine is still 00, currently it reads a  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> as input. The matching state-input row in the table is the second row, where it tells us to write back the value read that is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>, and then move the tape to the left.</li>
+<li>
+<p>At <code>t=0</code>: The initial state of the machine is <code>S0</code>, and the machine is currently reading <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">∗</span></span></span></span></span> as an input (beginning of string). According to the first row of the table, it should write back a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">∗</span></span></span></span></span>, and then move the tape to the left.  In fact, the machine keeps moving the tape to the left until the end of the string (+) is found:<br>
+<img src="https://www.dropbox.com/s/dnnziq8lk0uukj9/tmi2.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+</li>
+<li>
+<p>The machine then starts adding 1, and moving the tape to the right, keeping track of the <em>carry over</em> value:<br>
+<img src="https://www.dropbox.com/s/gr4kh2zof2ubwxx/tmi3.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+</li>
+<li>
+<p>This continues until it reads back the beginning of the string (*):<br>
+<img src="https://www.dropbox.com/s/oqqxqejul2zcoef/tmi4.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+</li>
+<li>
+<p>The final output is written on the tape, and we should have this output in the end when the machine halts:<br>
+<img src="https://www.dropbox.com/s/m58690zk66gzj9q/tmiend.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+</li>
 </ol>
-<p>We can continue the same logic on and on until we meet a HALT state. The final output is written on the tape, and we should have this state we finish running the Turing Machine with this functionality:<br>
-<img src="https://www.dropbox.com/s/kp1f0j8wn7wyojp/finaladd.png?raw=1" alt="“F1”" width="45%" height="45%"></p>
 <h2 id="example-2-implementing-a-coin-counter-machine">Example 2: Implementing a Coin Counter Machine</h2>
 <p>Suppose now we want to implement a machine that can receive a series of 10c coins, and <em>then</em> a series of 20c coins (for simplicity, we can’t key in 10c coins anymore once the first 20c coin is given). We can then press an END button in the end once we are done and the machine will:</p>
 <ul>
