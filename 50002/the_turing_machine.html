@@ -22,6 +22,7 @@
 <li><a href="#turing-machine-as-a-function">Turing Machine as a Function</a></li>
 <li><a href="#summary-the-computer-science-revolution">Summary: The Computer Science Revolution</a></li>
 <li><a href="#programmability">Programmability</a></li>
+<li><a href="#appendix-sample-manifestation-of-a-turing-machine">Appendix: Sample Manifestation of a Turing Machine</a></li>
 </ul>
 </li>
 </ul>
@@ -93,7 +94,7 @@ Singapore University of Technology and Design<br>
 <p>The key feature for a Turing Machine is this <em>infinite</em> tape (hence its capability of processing arbitrary input).</p>
 </blockquote>
 <p>A Turing Machine with the following specification can easily solve the problem and is capable to accept any <strong>arbitrarily</strong> long input with <strong>lesser number of states</strong>:</p>
-<img src="https://www.dropbox.com/s/r6i8t6lzeks0ijz/Tmincr.png?raw=1" alt="“F1”" width="75%" height="75%">
+<img src="https://www.dropbox.com/s/gdqw8l2wtp27e4i/tmincr.png?raw=1" alt="“F1”" width="75%" height="75%">
 <p>With this sample input, the Turing Machine runs as follows:<br>
 <img src="https://www.dropbox.com/s/34dxvi3tdwz1shu/tmi1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <ol>
@@ -325,6 +326,19 @@ f_M(M) = &amp;\text{loops forever} \text{ if } (f_{H'}(M)== 1) \\
 <p>Our (general purpose) computer is a (close enough) physical manifestation of a Universal Turing Machine (albeit with “finite” tape).</p>
 </blockquote>
 <p>In the next chapter, we will learn further on how our general purpose computer is programmable by designing a proper instruction set for it.</p>
+<h2 id="appendix-sample-manifestation-of-a-turing-machine">Appendix: Sample Manifestation of a Turing Machine</h2>
+<p>This section tells us one of the ways to realise the incrementer Turing Machine sample above as an actual machine using  hardware components that we have learned in the earlier weeks.</p>
+<p>First, we need to encode the logic of the machine in terms of binary values. We can use 2 bits to represent the state: <code>S0</code>, <code>S1</code>, and <code>HALT</code> and 2 bits to represent the input/output characters: <code>0</code>, <code>1</code>, <code>*</code> and <code>+</code> each.<br>
+<img src="https://www.dropbox.com/s/uowbhzkfjyu3ysx/encodedTM.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>We also must create a kind of <em>addressable input tape (<strong>memory unit</strong> that stores the data)</em>. Imagine that we can address each bit in the input tape as such, where <code>ADDRS</code> is an <code>n-bit</code> arbitrary starting address:<br>
+<img src="https://www.dropbox.com/s/vhfx5fxt48syi2t/addressableInput.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Since we read and write two bits of input / output at a time, we can “move the tape” by advancing or reducing the value of <code>ADDRS</code> by 2 at each clock cycle.</p>
+<blockquote>
+<p>Note: it is impossible to have “infinitely large” memory unit, so in practice we simply have a large enough memory unit such that it appears infinite for the particular usage.</p>
+</blockquote>
+<p>We can then construct some kind of <em>machine control system</em> (the unit represented as the <em>arrow</em> in the TM diagram). This similar to how we build an FSM using combinational logic devices to <strong>compute</strong> the TM’s 2-bit output data, next <code>address</code>, and the next state, given current <code>address</code>, current state,  and 2-bit input data based on the functional specification stated in the truth table above.</p>
+<img src="https://www.dropbox.com/s/b6r0km06s6zc91o/TMREALISE.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The diagram above shows a rough schematic on how we can realise the abstract concept of a Turing Machine with a specification that does <em>increment</em> by building a (<em>non-programmable</em>) physical machine that can only do this <strong>one task</strong>.</p>
 
     </div>
   </div>
