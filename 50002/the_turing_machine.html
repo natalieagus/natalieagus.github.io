@@ -332,7 +332,7 @@ f_M(M) = &amp;\text{loops forever} \text{ if } (f_{H'}(M)== 1) \\
 <img src="https://www.dropbox.com/s/uowbhzkfjyu3ysx/encodedTM.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>We also must create a kind of <em>addressable input tape (<strong>memory unit</strong> that stores the data)</em>. Imagine that we can address each bit in the input tape as such, where <code>ADDRS</code> is an <code>n-bit</code> arbitrary starting address:<br>
 <img src="https://www.dropbox.com/s/vhfx5fxt48syi2t/addressableInput.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
-<p>Since we read and write two bits of input / output at a time, we can “move the tape” by advancing or reducing the value of <code>ADDRS</code> by 2 at each clock cycle.</p>
+<p>Since we want to read and write <strong>two</strong> bits of input and output at a time (i.e: <em>at each clock cycle</em>), we can “move the tape” by advancing or reducing the value of <code>Current Address</code> <em>(that we supply to the addressable memory unit)</em> by 2 at each clock cycle.</p>
 <blockquote>
 <p>Note: it is impossible to have “infinitely large” memory unit, so in practice we simply have a large enough memory unit such that it appears infinite for the particular usage.</p>
 </blockquote>
