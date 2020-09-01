@@ -223,10 +223,15 @@ Z &amp; S_i &amp; S_{i+1} &amp; A_{SEL} &amp; A_{LE} &amp; B_{SEL} &amp; B_{LE}\
 instruction is considered <strong>atomic</strong> and is presumed to <strong>complete</strong> <em>before</em> the next instruction is executed.</li>
 </ul>
 <h3 id="beta-machine-model"><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> Machine Model</h3>
-<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> is a <strong>general-purpose</strong> 32-bit architecture. All registers are 32 bits wide. There are 33 registers in total:</p>
+<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> is a <strong>general-purpose</strong> 32-bit architecture. All registers are 32 bits wide. There are 33 registers in total (in the entire CPU):</p>
 <ul>
-<li>The PC register: when loaded with an <em>address</em>, it can point to any location in the <em>byte-addressed</em> memory.</li>
-<li>The REGFILE registers (internal storage in CPU): 32 registers in total (<strong>and each register is 32 bits wide</strong>), <em>addressable</em> with 5 bits to identify <code>R0</code> to <code>R31</code> respectively.
+<li>The PC register: contain the <em>address</em> of the <strong>instruction</strong> that’s supposed to be <strong>executed</strong> by the CPU.
+<ul>
+<li>When loaded with an <em>address</em>, it can point to any location in the <em>byte-addressed</em> memory.</li>
+<li>The memory unit returns the instruction (32-bit data) stored at this <em>address</em> for the CPU to decode and execute.</li>
+</ul>
+</li>
+<li>The REGFILE registers (internal storage in CPU): contains 32 registers in total (<strong>and each register is 32 bits wide</strong>), <em>addressable</em> with 5 bits to identify <code>R0</code> to <code>R31</code> respectively.
 <ul>
 <li>All registers except <code>R31</code> can be read or written with new values.</li>
 <li>For <code>R31</code>: when read, it is always 0; when written, the new value is discarded.</li>
@@ -377,9 +382,14 @@ x : LONG(3)
 <p>So how do we write the code to do factorial in a way that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU can execute?</p>
 </blockquote>
 <p>Suppose we have the simple factorial program written in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span></span></span></span></span>:</p>
-<pre><code>int n, ans;
-r1 = 1;
-r2 = n;
+<blockquote>
+<p>Unlike in Python, in C we cannot write standalone instructions without declaring a function. We will learn function linkage procedure in Week 9. For now to simplify, assume that instructions below are part of some pre-defined function in some .c script.</p>
+</blockquote>
+<pre><code>int n = 9; // or 10, or 11, any constant 
+int ans;
+
+int r1 = 1;
+int r2 = n;
 while (r2 != 0){
 	r1 = r1 * r2;
 	r2 = r1 - 1;
@@ -402,8 +412,8 @@ done:
 ST(R1, ans, R31)					| ans = R1
 HALT()
 
-n:		LONG(9)
-ans:	LONG(0)
+n: LONG(9)
+ans: LONG(0)
 </code></pre>
 <p>Of course then the final step is to convert this into machine language and load it to the Memory Unit, and allow the PC of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> machine to execute the first line of instruction (ADDC) .</p>
 <blockquote>
