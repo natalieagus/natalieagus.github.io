@@ -158,16 +158,13 @@ Z &amp; S_i &amp; S_{i+1} &amp; A_{SEL} &amp; A_{LE} &amp; B_{SEL} &amp; B_{LE}\
 <p>We illustrate the memory unit to have four segments per row. <em>This is only for illustration purposes,</em> so that we can read them on paper more easily. In practice, it doesn’t matter how you physically arrange the segments.</p>
 </li>
 <li>
-<p>Each segment can contain exactly 8 bits of data (1 byte) – this is chosendone <strong>by convention</strong>.</p>
+<p>Each segment can contain exactly 8 bits of data (1 byte) – this is done <strong>by convention</strong>.</p>
 </li>
 <li>
 <p>Each segment of 8 bits (1 byte) is addressable. Therefore we say that by <strong>convention</strong>, data in the memory unit is <strong>byte addressable.</strong></p>
 </li>
 <li>
-<p>Within each <em>row</em>, we always illustrate lower addresses</p>
-</li>
-<li>
-<p>In each <em>row</em> (series of 4 segments), Lower addresses are written on the right, and higher addresses on the left (hence address 0 is given for the most upper right segment and so on).</p>
+<p>In each <em>row</em> (series of 4 segments), lower addresses are written on the right, and higher addresses on the left (hence address 0 is given for the most upper right segment and so on).</p>
 </li>
 <li>
 <p>Each <em>row</em> contains <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mo>×</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">4\times8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">4</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">8</span></span></span></span></span> bits in total <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">=32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span><span class="mord">2</span></span></span></span></span> bits.</p>
@@ -194,7 +191,7 @@ Z &amp; S_i &amp; S_{i+1} &amp; A_{SEL} &amp; A_{LE} &amp; B_{SEL} &amp; B_{LE}\
 <li><strong>Each subsequent word has their addresses increased by 4</strong>.</li>
 </ul>
 <blockquote>
-<p>The definition of a <em>word</em> actually may depend on the ISA. The computer model that we learn for this course is a 32-bit architecture, <strong>therefore we define 1 “word” to be 32 bits.</strong></p>
+<p>The definition of a <em>word</em> actually may depend on the ISA. The computer model that we learn for this course is a 32-bit architecture, <strong>therefore we define 1 <code>WORD</code> to be 32 bits.</strong></p>
 </blockquote>
 </li>
 </ul>
