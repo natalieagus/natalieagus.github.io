@@ -47,19 +47,15 @@ Singapore University of Technology and Design<br>
 <li><strong>Some upgrade:</strong> You can buy bigger LEDs or 7 segments, and buy <strong>transistors</strong> (simple, cheap BJT ones) to be used as <strong>amplifiers</strong> using external power source if the voltage from the Au is not strong enough.</li>
 <li><strong>More upgrade:</strong> You can buy LED strips (e.g: WS2812B), and <strong>read the specifications</strong>: typically the type of serial data and clock cycles required to set the lights.</li>
 <li><strong>Even more upgrade:</strong> You can buy LED matrix. There are TWO types: a simple up to 8x8 dot matrix,<br>
-<img src="https://www.dropbox.com/s/9fq8jdfe4n5h0zp/dot.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
-or a bigger matrix that receives serial data,<br>
-<img src="https://www.dropbox.com/s/8nfp3inp8yi1t4v/bigmatrix.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
-For the small matrix, you can use easy registers / dff to manage the data. For the big matrix, <strong>you need to use some kind of RAM module</strong> (you can use simple RAM default component in Alchitry) to store your data for the matrix to display at all times.</li>
-</ul>
-<blockquote>
-<p><mark> <strong>NEVER use dff</strong> for massive storage of data to be read by the big matrix! Your FPGA is going to lag uncontrollably or not have enough logic unit!  </mark></p>
-</blockquote>
-<ul>
-<li><strong>Advanced upgrade:</strong> To use VGA + screen output. This is not recommended unless you have had prior experience. If you’re new to this, then it will waste a lot of your time, and it is very risky with little value-add to your project because the focus of this project is to design a programmable data path, and not to produce a fancy output per se.</li>
+<img src="https://www.dropbox.com/s/9fq8jdfe4n5h0zp/dot.png?raw=1" alt="“F1”" width="60%" height="60%"></li>
 </ul>
 </li>
 </ol>
+<p>Or, a <strong>bigger</strong> matrix that receives serial data,<br>
+<img src="https://www.dropbox.com/s/8nfp3inp8yi1t4v/bigmatrix.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
+For the small matrix, you can use easy registers / dff to manage the data. For the big matrix, <strong>you need to use some kind of RAM module</strong> (you can use simple RAM default component in Alchitry) to store your data for the matrix to display at all times.<br>
+&gt; <mark> <strong>NEVER use dff</strong> for massive storage of data to be read by the big matrix! Your FPGA is going to lag uncontrollably or not have enough logic unit!  </mark><br>
+* <strong>Advanced upgrade:</strong> To use VGA + screen output. This is not recommended unless you have had prior experience. If you’re new to this, then it will waste a lot of your time, and it is very risky with little value-add to your project because the focus of this project is to design a programmable data path, and not to produce a fancy output per se.</p>
 <p>As an example, let’s assume we were to implement this game.</p>
 <blockquote>
 <p><strong>The Counter Game</strong></p>
