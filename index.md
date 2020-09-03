@@ -31,6 +31,9 @@
 
 [Asynchronous Handling of I/O Devices](https://natalieagus.github.io/50002/devices_and_interrupts.html)
 
+#### 1D Electronic Game Design
+[Designing a Custom Programmable Datapath](https://natalieagus.github.io/50002/1D_programmable_machine.html)
+
 #### 50.002 Problem Sets
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
