@@ -252,7 +252,7 @@ case(game_controlunit.asel){
 <p>The same logic applies for any state.</p>
 <p>Coding an FSM in Lucid is very easy. You only need to import the <code>fsm</code> module and declare the states in the beginning. Then, in the <code>always</code> block things are repetitive: specify what output signals to be produced, and given input signals, specify the next state to go to. The code for the control unit can be found in <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_CU.luc">here</a>.</p>
 <h2 id="the-complete-datapath">The Complete Datapath</h2>
-<p>The complete datapath for the sample Counter game should look like this. In fact, this <strong>basic structure</strong> can be adapted to any game.</p>
+<p>The complete datapath for the sample Counter game should look like this. In fact, this <strong>basic structure</strong> can be adapted to implement any simple game.</p>
 <img src="https://www.dropbox.com/s/tyjxwe2ygu51rnr/datapath.png?raw=1" alt="“F1”" width="90%" height="90%">
 <p>The complete code that describes the datapath along with the connection to the control logic can be found <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_miniBeta.luc">here</a>.</p>
 <p>The black boxes signifies connection to <strong>external input/output devices.</strong> You need to take into account how to:</p>
