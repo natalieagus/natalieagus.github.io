@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1D_programmable_machine</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#designing-a-programmable-datapath">Designing a Programmable Datapath</a>
+<ul>
+<li><a href="#the-game">The Game</a></li>
+<li><a href="#planning-the-datapath">Planning the Datapath</a></li>
+<li><a href="#designing-the-regfile">Designing the REGFILE</a></li>
+<li><a href="#designing-the-alu-and-support-datapath">Designing the ALU and Support Datapath</a></li>
+<li><a href="#designing-the-control-logic">Designing the Control Logic</a></li>
+<li><a href="#the-complete-datapath">The Complete Datapath</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="designing-a-programmable-datapath">Designing a Programmable Datapath</h1>
+<p>For your 1D project, you are required to build an electronic game prototype that utilizes a 16-bit ALU. You can do this by first designing a programmable datapath and the control logic (FSM) for your game, and finally implementing it in on your FPGA.</p>
+<p>This document shows an example on how you can create a programmable data path a simple game idea.</p>
+<h2 id="the-game">The Game</h2>
+<p>When you brainstorm for a game, try to keep a few things in mind:</p>
+<ol>
+<li><strong>Ideation:</strong> A good game doesn’t have to be complicated. It can be a very simple math-based game, or strategy game. You can find inspiration using simple arcade games in the 1990s.</li>
+<li><strong>Think about the external I/O devices that you want to manage:</strong>
+<ul>
+<li>A recommended one will be simply a bunch of buttons for input (you can get nice, arcade game type buttons online) and small coloured LEDs, or 7 segments as output.</li>
+<li><strong>Some upgrade:</strong> You can buy bigger LEDs or 7 segments, and buy <strong>transistors</strong> (simple, cheap BJT ones) to be used as <strong>amplifiers</strong> using external power source if the voltage from the Au is not strong enough.</li>
+<li><strong>More upgrade:</strong> You can buy LED strips (e.g: WS2812B), and <strong>read the specifications</strong>: typically the type of serial data and clock cycles required to set the lights.</li>
+<li><strong>Even more upgrade:</strong> You can buy LED matrix. There are TWO types: a simple up to 8x8 dot matrix,<br>
+<img src="https://www.dropbox.com/s/9fq8jdfe4n5h0zp/dot.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
+or a bigger matrix that receives serial data,<br>
+<img src="https://www.dropbox.com/s/8nfp3inp8yi1t4v/bigmatrix.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
+For the small matrix, you can use easy registers / dff to manage the data. For the big matrix, <strong>you need to use some kind of RAM module</strong> (you can use simple RAM default component in Alchitry) to store your data for the matrix to display at all times.</li>
+</ul>
+<blockquote>
+<p><mark> <strong>NEVER use dff</strong> for massive storage of data to be read by the big matrix! Your FPGA is going to lag uncontrollably or not have enough logic unit!  </mark></p>
+</blockquote>
+<ul>
+<li><strong>Advanced upgrade:</strong> To use VGA + screen output. This is not recommended unless you have had prior experience. If you’re new to this, then it will waste a lot of your time, and it is very risky with little value-add to your project because the focus of this project is to design a programmable data path, and not to produce a fancy output per se.</li>
+</ul>
+</li>
+</ol>
+<p>As an example, let’s assume we were to implement this game.</p>
+<blockquote>
+<p><strong>The Counter Game</strong></p>
+<p><strong>Players:</strong> Imagine two players, A and B, competing with one another<br>
+<strong>Background:</strong> They can view a display that shows a number, initially set to 0. The number is increased at a <strong>random</strong>, <strong>varying rate.</strong><br>
+<strong>Procedure:</strong> Any player can choose to <em>collect</em> the number, therefore <strong>resetting</strong> the number to zero and obtain a score equivalent to the current number when the player choose to <em>collect</em> it.  Each player however, can only choose to collect the number <strong>three times at maximum.</strong> The game runs for 30 seconds, and ends once the timer runs out, or that both players have used up their 3 collection chances.<br>
+<strong>Winning Condition:</strong> The player with the <em>most score</em> at the end of 30 seconds wins the game. If both players end up with the same score, then the game ends in a <em>draw</em>.</p>
+</blockquote>
+<p>Therefore the external <strong>inputs</strong> required for this game are simply TWO buttons, one for each player.</p>
+<p>The external <strong>outputs</strong> required for this game:</p>
+<ol>
+<li>A 4-digit <strong>7-segment display</strong> to show the current <em>collectible</em> number</li>
+<li>A 2-digit <strong>7-segment display</strong> to show how much of the 30-seconds time remains, <em>OR</em> simply <strong>5 LEDs placed in a row</strong> to display the number of seconds <strong>remaining in binary form.</strong></li>
+<li>Two 4-digit 7-segment displays to display the current score of <strong>each player,</strong> <em>OR</em> simply again a few LEDs placed in a row to display each player’s score in binary.</li>
+</ol>
+<p><em>Note: As stated above, if you were to use a large 7-segment display then purchase some BJT transistors to amplify the power to be high enough e.g: 6V/10V to run the displays.</em></p>
+<h2 id="planning-the-datapath">Planning the Datapath</h2>
+<p>It is recommended that you follow a generic simplified Von-Neumann structure:</p>
+<ol>
+<li>You have a <strong>REGFILE</strong> system, where it stores a bunch of registers inside that’s addressable. It’s up to you to define how many combinational read ports and how many sequential write ports.</li>
+<li><strong>Combinational Logic Unit:</strong> <strong>You must utilize a 16-bit ALU, so you have no choice on this.</strong> <mark>Therefore this makes your datapath to be a 16-bit architecture by default. </mark></li>
+<li>You have a <strong>Control Unit</strong>, which is simply an FSM that gives out different control signals at various time step.</li>
+</ol>
+<p>It is imperative that ALL sequential parts that requires CLK is fed with the <strong>SAME default Alchitry CLK at 100MHz.</strong> You can create other submodules to be plugged into your datapath to act as frequency divider (slowing down the clock cycle) but <mark> DO NOT MESS with the CLK for the REGFILE and FSM <strong>unless you are a very experienced FPGA developer.</strong>  </mark></p>
+<h2 id="designing-the-regfile">Designing the REGFILE</h2>
+<p>The first step in designing a datapath is to think about <strong>how many internal storage</strong> you will need. For this simple game, we need the following values to be stored:</p>
+<ol>
+<li>Score of P1</li>
+<li>Score of P2</li>
+<li>Number of times P1 has clicked its button</li>
+<li>Number of times P2 has clicked its button</li>
+<li>Current collectible number (<strong>counter</strong>)</li>
+<li>Game time left</li>
+</ol>
+<p>We also need some registers to act as temporary storage value. Therefore the simplest step is to design a REGFILE unit that contains 16 16-bit registers (4-bit addressable). We can set some register addresses to be fixed:</p>
+<ul>
+<li><strong>0x0</strong> : P1 Score Reg</li>
+<li><strong>0x1</strong> : P2 Score Reg</li>
+<li><strong>0x2</strong> : P1 Button Count Reg</li>
+<li><strong>0x3</strong> : P2 Button Count Reg</li>
+<li><strong>0x7</strong> : Current Counter Reg</li>
+<li><strong>0x8</strong> : Timer Reg</li>
+<li><strong>0x9</strong> to <strong>0xF</strong> : Temp Regs</li>
+</ul>
+<p>One possible REGFILE schematic for your custom game datapath is as such:<br>
+<img src="https://www.dropbox.com/s/u0tl14d2lcda584/regfile.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<blockquote>
+<p>It is very important to plan the schematic first BEFORE actually coding it on your FPGA. This speeds up your development time and save you from the pain of debugging.</p>
+</blockquote>
+<p>In general, a REGFILE system MUST have combinational read ports and sequential write ports. It is up to you to decide how many ports for each. This affect the amount of input and output terminals you need to make to your regfile.</p>
+<p><strong>For each read port:</strong></p>
+<ul>
+<li>You need to specify a read address <code>Rx</code>. Number of bits of register address depend on how many dffs are there in the REGFILE.</li>
+<li>Specify a data out port: <code>Rx_data</code>. Number of bits depend on the number of bits each dff can store.</li>
+</ul>
+<p><strong>For each write port:</strong></p>
+<ul>
+<li>You need to specify a write address <code>Rx</code>. Again, number of bits of register address depend on how many dffs are there in the REGFILE.</li>
+<li>A write enable: <code>WE_Rx</code> signal, to enable or disable write to this register <code>Rx</code></li>
+<li>Specify a data write in port: <code>Rx_writedata</code>. Number of bits depend on the number of bits each dff can store.</li>
+</ul>
+<blockquote>
+<p>For this example, we follow the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>: to have 2 read ports and 1 write ports. Three addresses should be received by the REGFILE: <code>Ra</code> and <code>Rb</code> for read addresses and <code>Rc</code> for write addresses.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Input:</strong></p>
+<ul>
+<li><code>CLK</code> (obviously!)</li>
+<li>1 <strong><code>WE</code></strong> signal</li>
+<li>1 <strong><code>Write Address</code></strong> port  (4-bits)</li>
+<li>1 <strong><code>Write Data</code></strong> port (16-bits)</li>
+<li>2 <strong><code>Read Addresses</code></strong>  port (4-bits each)</li>
+</ul>
+</li>
+<li>
+<p><strong>Output</strong>:</p>
+<ul>
+<li>2 data out ports: <strong><code>Ra_data</code></strong> and <strong><code>Rb_data</code></strong> (16 bits each)</li>
+<li><strong>DIRECT</strong> connection to external output device as a design choice, for <em><strong>convenience</strong></em> (16 bits each):
+<ul>
+<li>Value of <code>Reg[0x0]</code> to display P1 Score at all times</li>
+<li>Value of <code>Reg[0x1]</code> to display P2 Score at all times</li>
+<li>Value of <code>Reg[0x8]</code> to display game time left at all times</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: depending on your design, you may not we need to show the counter value, but it will  cause you to keep track of two counters: the one displayed to the players, and this internal counter. <em>These two counter values must be equal at all times.</em> If you have problems synchronising between the two, then just have ONE dff to track the current counter value that’s read by the output device as well similar to how P1 score and P2 score are also displayed.</p>
+</blockquote>
+</li>
+</ul>
+<p>Coding a REGFILE on an FPGA is not an issue after you have solidly <strong>define</strong> the addressing system, and input/output ports of the module. This REGFILE should be implemented as a single file, e.g: <code>regfile.luc</code>. See <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_miniRegfiles.luc">this github file</a> for its sample implementation.</p>
+<h2 id="designing-the-alu-and-support-datapath">Designing the ALU and Support Datapath</h2>
+<p>We can easily adapt the design of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> when we want to connect the ALU with the REGFILE. It is an art to design a good, programmable datapath.</p>
+<p>A super simple support datapath should have some kind of <code>ASEL</code> mux, <code>BSEL</code> mux, and <code>WDSEL</code> mux:</p>
+<ul>
+<li><code>ASEL</code>: to decide what’s fed into the <code>A</code> port of the ALU</li>
+<li><code>BSEL</code>: to decide what’s fed into the <code>B</code> port of the ALU</li>
+<li><code>WDSEL</code>: to decide what’s fed into the <code>DATA IN</code> port of the REGFILE (what’s written into <code>Reg[Rc]</code> if any).</li>
+</ul>
+<p>The figure below illustrates that:<br>
+<img src="https://www.dropbox.com/s/p9puma2xbs23an8/alusupport.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Obviously the control signals required are (coloured in the figure above):</p>
+<ul>
+<li><code>ASEL</code> selector</li>
+<li><code>BSEL</code> selector</li>
+<li><code>WDSEL</code> selector</li>
+<li><code>ALUFN</code> to define ALU operation</li>
+<li><code>Ra, Rb, Rc</code> register addresses</li>
+<li><code>WE</code> for write enable in REGFILE</li>
+</ul>
+<p><strong>You can decide a few things depending on your game:</strong></p>
+<ul>
+<li>How many inputs to the <code>ASEL/BSEL/WDSEL</code> mux? This affects how many bits the control signals should be.</li>
+<li>The value of inputs to each mux can either be from <strong>other registers</strong>, <strong>other combinational logic units</strong>, or a <strong>constant</strong> that’s <strong>relevant</strong> for your game. For this game, we need a few constants:
+<ul>
+<li>The value “30” to reset the timer: <code>0x1E</code> at the ASEL mux</li>
+<li>The value “3” to compare against current player’s button press: <code>0x3</code> at the BSEL mux</li>
+<li>“1” and “0” as standard constants to perform comparison in both muxes</li>
+<li>At WDSEL mux, we can hardcode some fixed signal. <code>0xFFFF</code> signifies the “winning signal”, <code>0x0000</code> signifies the “losing signal”, and <code>0x000F</code> signifies the “draw signal”. We can easily load this to the score registers when the game ends to indicate who wins the game.</li>
+</ul>
+</li>
+</ul>
+<p>After you’re finished with your <code>alu.luc</code> and <code>regfile.luc</code> modules, you simply need to assemble them together in a new file e.g: <code>datapath.luc</code> that defines the connections for each instance. For example, the asel connection:</p>
+<pre><code>
+//asel mux
+case(game_controlunit.asel){
+	b00 : inputAlu_a = players.out_a;
+	b01 : inputAlu_a = 1;
+	b10 : inputAlu_a = 0;
+	b11 : inputAlu_a = 30;
+	default : 
+		inputAlu_a = 0;
+}
+</code></pre>
+<h2 id="designing-the-control-logic">Designing the Control Logic</h2>
+<p>The control logic unit is technically an FSM, unless you have designed an <strong>instruction set</strong> for your game, complete with its OPCODE and such like the actual <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
+<p>However we can easily dictate the control signals at each time step by having <em>four generic states:</em></p>
+<ul>
+<li><code>START</code> state: prepare necessary values when game begins.</li>
+<li><code>IDLE</code> state: this is where your machine will be spending most of their time at. In this state, it <strong>waits</strong> for any input and direct the system to an appropriate handling state.</li>
+<li><code>GAMEOVER</code> state: displays the endgame score and wait for reset button.</li>
+<li><code>HANDLER</code> states: a series of states used to handle specific <strong>events</strong>, that are entered/invoked from the <code>IDLE</code> state. There are four major events, color coded in the FSM diagram below:
+<ul>
+<li><code>BUTTON PRESS</code> event (black)</li>
+<li><code>INCREASE COUNTER</code>	event (red)</li>
+<li><code>DECREASE TIMER</code>	event (blue)</li>
+<li><code>COMPUTE WINNER</code> event (purple)</li>
+</ul>
+</li>
+</ul>
+<img src="https://www.dropbox.com/s/gf992dyc1xu235b/FSM.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p><code>BUTTON PRESS</code> <strong>event</strong> is invoked when the control unit <strong>receives button press signal</strong> from either player:</p>
+<ul>
+<li>When any player press a button, we want to check if the player’s current button press is lesser than 3. If yes, increment the button count, and increment the player’s score based on the current collectible number in the counter, and then reset the counter.</li>
+<li>If the player has pressed the button 3 times before, then no score update / counter reset is done.</li>
+</ul>
+<p>After either cases above is done, we have to check if both players have pressed their buttons for 3x as well (game is supposed to end if all players have used up their button presses regardless of time left). If yes, proceed to <code>COMPUTE WINNER</code> <strong>event</strong>. Otherwise, go back to <code>IDLE</code> state.</p>
+<p><strong>The other events to account for:</strong></p>
+<ul>
+<li><strong>Counter increment handling</strong> (<code>INCREASE COUNTER</code>):  the control unit should receive some “random/varying” increment signal input from another unit. Whenever this variable increment machine produces a <code>1</code>, then we need to handle this event by increasing the counter reg, and going back to the <code>IDLE</code> state.</li>
+<li><strong>Timer decrement handling</strong> (<code>DECREASE TIMER</code>): the control unit should also receive some signal from a slow timer unit (that produces <code>1</code> every second instead) and decrement the timer register accordingly. A check on whether the timer register has reached zero has to be performed at the beginning of this event, and if so, proceed to <code>COMPUTE WINNER</code> event instead of decreasing the timer further.</li>
+</ul>
+<p><mark> Hence you can see that each <strong>state</strong> is like a <strong>single</strong> instruction, and an event is like  a function, comprised of many states. Within each state, you need to decide the value of the appropriate <strong>all control signals</strong>. </mark></p>
+<p>Lets understand this with example. <strong>Look at <strong><code>CHECK BUTTON COUNT P1&lt;3</code> state</strong></strong>. It is <em>triggered</em> (from <code>IDLE</code>) if <code>P1 Button</code> is pressed, and output the following control signals:</p>
+<ul>
+<li><code>alufn = CMPLT</code></li>
+<li><code>asel = b00</code></li>
+<li><code>bsel = b11</code></li>
+<li><code>we = b1</code></li>
+<li><code>ra = 0x2</code></li>
+<li><code>rb = --</code></li>
+<li><code>rc = 0xF</code></li>
+<li><code>wdsel = b00</code></li>
+<li><code>7-seg = b00</code> (Note: the first bit is a command for the external 7-seg representing the counter on whether they should +1. The second bit is to reset the counter).</li>
+</ul>
+<p>This means that in this state, we are comparing (<code>CMPLT</code>) the content of <code>Reg[0x2]</code> (<em>P1 Button Count Reg</em>), with the constant <code>3</code> that can be routed into the <code>B</code> port of the ALU when <code>bsel = b11</code>. The output of the ALU is stored at the temp register <code>Reg[0xF]</code> since <code>rc=0xF</code> and <code>we=1</code>. We do not use the output from the <code>Rb_data</code> port of the regfile and therefore it doesn’t matter what value <code>rb</code> (read address of <code>Rb_data</code>) is.</p>
+<p>In the next cycle, we will arrive at the state <code>BRANCH P1 BUTTON</code> which will look at the content of <code>Reg[0xF]</code> and decide whether to return to <code>IDLE</code> or update P2’s score.</p>
+<p>The same logic applies for any state.</p>
+<p>Coding an FSM in Lucid is very easy. You only need to import the <code>fsm</code> module and declare the states in the beginning. Then, in the <code>always</code> block things are repetitive: specify what output signals to be produced, and given input signals, specify the next state to go to. The code for the control unit can be found in <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_CU.luc">here</a>.</p>
+<h2 id="the-complete-datapath">The Complete Datapath</h2>
+<p>The complete datapath for the sample Counter game should look like this. In fact, this <strong>basic structure</strong> can be adapted to any game.</p>
+<img src="https://www.dropbox.com/s/tyjxwe2ygu51rnr/datapath.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>The complete code that describes the datapath along with the connection to the control logic can be found <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_miniBeta.luc">here</a>.</p>
+<p>The black boxes signifies connection to <strong>external input/output devices.</strong> You need to take into account how to:</p>
+<ol>
+<li>Debounce a button press, and only producing a value <code>1</code> ONCE per button press <strong>using an edge detector.</strong></li>
+<li>Create a small combinational logic module to produce a value of <code>1</code>  ONCE every second (denoted as <code>SLOW TIMER</code>). You can use a basic <code>counter</code> module set with <code>DIV</code>:
+<ul>
+<li><code>counter slow_timer(#SIZE(1),#DIV(26));</code></li>
+<li>And use  an <strong>edge detector</strong></li>
+</ul>
+</li>
+<li>Create a combinational logic module that randomly produce a value of <code>1</code> (denoted as <code>VARIABLE INCREMENTER</code>). You can see the code <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/variable_counter.luc">here</a>.</li>
+</ol>
+<p>Notice the bootstrapped REGFILE output : all 16-bits <code>Rb_data</code> straight to the FSM. This is like the <code>Z</code> unit in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>, used for <strong>branching</strong> after a comparison check in the previous state.  You can also use this to branch and <em>perform next check</em> in <strong>1 cycle</strong>. The relevant state illustration and its sample lucid code is:<br>
+<img src="https://www.dropbox.com/s/fqoe3g06azjd7ch/bcheck.png?raw=1" alt="“F1”" width="40%" height="40%"></p>
+<pre><code>game_fsm.BRANCHCHECK_P1P2BUTTONCOUNT:
+
+	regfile_read_address_b = b1111; //temp reg
+	if(regfile_datain[0]){
+		alufn = b110011; //CMPEQ
+		regfile_read_address_a = b0010; //P1 button reg
+		bsel = b11; //constant 3
+		we_regfile = 1;
+		regfile_write_address = b1111; //temp reg
+		game_fsm.d = game_fsm.BRANCH_P1BUTTONCOUNT;
+	}
+	else{
+		game_fsm.d = game_fsm.IDLE;
+	}
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>It will help tremendously if you started by designing the blueprint of your game machine before you start coding. <strong>For Checkoff 2, you are required to present to us the:</strong></p>
+<ol>
+<li>Game Idea</li>
+<li>Datapath</li>
+<li>State Transition Diagram</li>
+</ol>
+<p>Prepare your <em>complete</em> datapath diagram and state transition diagram (handwritten is fine) as shown in the example above. <strong>You are highly recommended to keep your standard comparable, or better (by designing a proper instruction set, a RAM, and PC unit) than the example presented above.</strong></p>
+
+    </div>
+  </div>
+</body>
+
+</html>
