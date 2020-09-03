@@ -105,7 +105,7 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 <li><strong>0x9</strong> to <strong>0xF</strong> : Temp Regs</li>
 </ul>
 <p>One possible REGFILE schematic for your custom game datapath is as such:<br>
-<img src="https://www.dropbox.com/s/u0tl14d2lcda584/regfile.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<img src="https://www.dropbox.com/s/u0tl14d2lcda584/regfile.png?raw=1" alt="“F1”" width="90%" height="90%"></p>
 <blockquote>
 <p>It is very important to plan the schematic first BEFORE actually coding it on your FPGA. This speeds up your development time and save you from the pain of debugging.</p>
 </blockquote>
@@ -162,7 +162,7 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 <li><code>WDSEL</code>: to decide what’s fed into the <code>DATA IN</code> port of the REGFILE (what’s written into <code>Reg[Rc]</code> if any).</li>
 </ul>
 <p>The figure below illustrates that:<br>
-<img src="https://www.dropbox.com/s/p9puma2xbs23an8/alusupport.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://www.dropbox.com/s/p9puma2xbs23an8/alusupport.png?raw=1" alt="“F1”" width="90%" height="90%"></p>
 <p>Obviously the control signals required are (coloured in the figure above):</p>
 <ul>
 <li><code>ASEL</code> selector</li>
@@ -212,7 +212,7 @@ case(game_controlunit.asel){
 </ul>
 </li>
 </ul>
-<img src="https://www.dropbox.com/s/gf992dyc1xu235b/FSM.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://www.dropbox.com/s/gf992dyc1xu235b/FSM.png?raw=1" alt="“F1”" width="100%" height="100%">
 <p><code>BUTTON PRESS</code> <strong>event</strong> is invoked when the control unit <strong>receives button press signal</strong> from either player:</p>
 <ul>
 <li>When any player press a button, we want to check if the player’s current button press is lesser than 3. If yes, increment the button count, and increment the player’s score based on the current collectible number in the counter, and then reset the counter.</li>
@@ -243,7 +243,7 @@ case(game_controlunit.asel){
 <p>Coding an FSM in Lucid is very easy. You only need to import the <code>fsm</code> module and declare the states in the beginning. Then, in the <code>always</code> block things are repetitive: specify what output signals to be produced, and given input signals, specify the next state to go to. The code for the control unit can be found in <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_CU.luc">here</a>.</p>
 <h2 id="the-complete-datapath">The Complete Datapath</h2>
 <p>The complete datapath for the sample Counter game should look like this. In fact, this <strong>basic structure</strong> can be adapted to any game.</p>
-<img src="https://www.dropbox.com/s/tyjxwe2ygu51rnr/datapath.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://www.dropbox.com/s/tyjxwe2ygu51rnr/datapath.png?raw=1" alt="“F1”" width="90%" height="90%">
 <p>The complete code that describes the datapath along with the connection to the control logic can be found <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_miniBeta.luc">here</a>.</p>
 <p>The black boxes signifies connection to <strong>external input/output devices.</strong> You need to take into account how to:</p>
 <ol>
