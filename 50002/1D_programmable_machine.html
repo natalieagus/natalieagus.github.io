@@ -79,11 +79,11 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 <ol>
 <li>A 4-digit <strong>7-segment display</strong> to show the current <em>collectible</em> number</li>
 <li>A 2-digit <strong>7-segment display</strong> to show how much of the 30-seconds time remains, <em>OR</em> simply <strong>5 LEDs placed in a row</strong> to display the number of seconds <strong>remaining in binary form.</strong></li>
-<li>Two 4-digit 7-segment displays to display the current score of <strong>each player,</strong> <em>OR</em> simply again a few LEDs placed in a row to display each player’s score in binary.</li>
+<li>Two 4-digit <strong>7-segment displays</strong> to display the current score of <strong>each player,</strong> <em>OR</em> simply again a few LEDs placed in a row to display each player’s score in binary.</li>
 </ol>
 <p><em>Note: As stated above, if you were to use a large 7-segment display then purchase some BJT transistors to amplify the power to be high enough e.g: 6V/10V to run the displays.</em></p>
 <h2 id="planning-the-datapath">Planning the Datapath</h2>
-<p>It is recommended that you follow a generic simplified Von-Neumann structure:</p>
+<p>It is recommended that you follow a generic simplified <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>-like structure (without the PC and RAM unless you want to):</p>
 <ol>
 <li>You have a <strong>REGFILE</strong> system, where it stores a bunch of registers inside that’s addressable. It’s up to you to define how many combinational read ports and how many sequential write ports.</li>
 <li><strong>Combinational Logic Unit:</strong> <strong>You must utilize a 16-bit ALU, so you have no choice on this.</strong> <mark>Therefore this makes your datapath to be a 16-bit architecture by default. </mark></li>
