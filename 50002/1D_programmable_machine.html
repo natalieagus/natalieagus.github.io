@@ -38,16 +38,16 @@ Singapore University of Technology and Design<br>
 <p>For your 1D project, you are required to build an electronic game prototype that utilizes a <strong>16-bit ALU</strong>. You can do this by first designing a programmable datapath and the control logic (FSM) for your game, and finally implementing it in on your FPGA.</p>
 <p>This document shows an example on how you can create a programmable data path for a simple game idea.</p>
 <h2 id="the-game-idea">The Game Idea</h2>
-<p>When you brainstorm for a game, try to keep a few things in mind:</p>
+<p>When you brainstorm for a game, try to keep two very <strong>important</strong> things in mind:</p>
 <ol>
 <li><strong>Ideation:</strong> A good game doesn’t have to be complicated. It can be a very simple math-based game, or strategy game. You can find inspiration using simple arcade games in the 1990s.</li>
-<li><strong>Think about the external I/O devices that you want to manage:</strong>
+<li><strong>Think about the external I/O devices that you have to manage:</strong>
 <ul>
 <li>
-<p>A recommended one will be simply a bunch of buttons for input (you can get nice, arcade game type buttons online) and small coloured LEDs, or 7 segments as output.</p>
+<p>A recommended one will be simply a bunch of buttons for <strong>input</strong> (you can get nice, arcade game type buttons online) and small coloured LEDs, or 7 segments as output.</p>
 </li>
 <li>
-<p><strong>Some upgrade:</strong> You can buy bigger LEDs or 7 segments, and buy <strong>transistors</strong> (simple, cheap BJT ones) to be used as <strong>amplifiers</strong> using external power source if the voltage from the Au is not strong enough.</p>
+<p><strong>Some upgrade:</strong> You can buy bigger buttons, LEDs or 7 segments, and buy <strong>transistors</strong> (simple, cheap BJT ones) to be used as <strong>amplifiers</strong> using external power source if the voltage from the Au is not strong enough.</p>
 </li>
 <li>
 <p><strong>More upgrade:</strong> You can buy LED strips (e.g: WS2812B), and <strong>read the specifications</strong>: typically the type of serial data and clock cycles required to set the lights.</p>
@@ -64,18 +64,16 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 <p><mark> <strong>NEVER use dff</strong> for massive storage of data to be read by the big matrix! Your FPGA is going to lag uncontrollably or not have enough logic unit!  </mark></p>
 </blockquote>
 <ul>
-<li><strong>Advanced upgrade:</strong> To use VGA + screen output. <strong>This is not recommended unless you have had prior experience.</strong> If you’re new to this, then it will waste a lot of your time, and it is very risky with little value-add to your project because the focus of this project is to design a programmable data path, and not to produce a fancy output per se. <em><strong>Note that we also will not entertain any request to teach how to use the VGA output. We will prioritise other more important requests instead. If you choose to go down this path, you are on your own.</strong></em></li>
+<li><strong>Advanced upgrade:</strong> To use VGA + screen output and USB gamepads. <strong>This is not recommended unless you have had prior experience.</strong> If you’re new to this, then it will waste a lot of your time, and it is very risky with little value-add to your project because the focus of this project is to design a programmable data path, and not to produce a fancy output per se. <em><strong>Note that we also will not entertain any request to teach how to use the VGA output or read USB input. We will prioritise other more important requests instead. If you choose to go down this path, you are on your own.</strong></em></li>
 </ul>
 </li>
 </ol>
-<p>As an example, let’s assume we were to implement this game.</p>
-<blockquote>
-<p><strong>The Counter Game</strong></p>
-<p><strong>Players:</strong> Imagine two players, A and B, competing with one another<br>
-<strong>Background:</strong> They can view a display that shows a number, initially set to 0. The number is increased at a <strong>random</strong>, <strong>varying rate.</strong><br>
-<strong>Procedure:</strong> Any player can choose to <em>collect</em> the number, therefore <strong>resetting</strong> the number to zero and obtain a score equivalent to the current number when the player choose to <em>collect</em> it.  Each player however, can only choose to collect the number <strong>three times at maximum.</strong> The game runs for 30 seconds, and ends once the timer runs out, or that both players have used up their 3 collection chances.<br>
-<strong>Winning Condition:</strong> The player with the <em>most score</em> at the end of 30 seconds wins the game. If both players end up with the same score, then the game ends in a <em>draw</em>.</p>
-</blockquote>
+<h3 id="the-counter-game"><strong>The Counter Game</strong></h3>
+<p>As an example, let’s assume we were to implement this game called <strong>The Counter Game</strong>. The basic specs are as follows:</p>
+<p><strong>Players:</strong> Imagine two players, A and B, competing with one another</p>
+<p><strong>Background:</strong> They can view a display that shows a number, initially set to 0. The number is increased at a <strong>random</strong>, <strong>varying rate.</strong></p>
+<p><strong>Procedure:</strong> Any player can choose to <em>collect</em> the number, therefore <strong>resetting</strong> the number to zero and obtain a score equivalent to the current number when the player choose to <em>collect</em> it.  Each player however, can only choose to collect the number <strong>three times at maximum.</strong> The game runs for 30 seconds, and ends once the timer runs out, or that both players have used up their 3 collection chances.</p>
+<p><strong>Winning Condition:</strong> The player with the <em>most score</em> at the end of 30 seconds wins the game. If both players end up with the same score, then the game ends in a <em>draw</em>.</p>
 <p>Therefore the external <strong>inputs</strong> required for this game are simply TWO buttons, one for each player.</p>
 <p>The external <strong>outputs</strong> required for this game:</p>
 <ol>
