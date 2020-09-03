@@ -208,7 +208,7 @@ case(game_controlunit.asel){
 </code></pre>
 <h2 id="designing-the-control-logic">Designing the Control Logic</h2>
 <p>The control logic unit is technically an FSM, unless you have designed an <strong>instruction set</strong> for your game, complete with its OPCODE and such like the actual <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
-<p>However we can easily dictate the control signals at each time step by having <em>four generic states:</em></p>
+<p>The number of states depends on how complicated your game is. However you can begin your planning easily by starting with <em>four generic state groups:</em></p>
 <ul>
 <li><code>START</code> state: prepare necessary values when game begins.</li>
 <li><code>IDLE</code> state: this is where your machine will be spending most of their time at. In this state, it <strong>waits</strong> for any input and direct the system to an appropriate handling state.</li>
