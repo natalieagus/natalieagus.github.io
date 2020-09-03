@@ -91,7 +91,11 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 </ol>
 <p>It is imperative that ALL sequential parts that requires CLK is fed with the <strong>SAME default Alchitry CLK at 100MHz.</strong> You can create other submodules to be plugged into your datapath to act as frequency divider (slowing down the clock cycle) but <mark> DO NOT MESS with the CLK for the REGFILE and FSM <strong>unless you are a very experienced FPGA developer.</strong>  </mark></p>
 <h2 id="designing-the-regfile">Designing the REGFILE</h2>
-<p>The first step in designing a datapath is to think about <strong>how many internal storage</strong> you will need. For this simple game, we need the following values to be stored:</p>
+<p>The first step in designing a datapath is to think about <strong>how much storage</strong> you will need, and how many bits of data your machine can support at each cycle?</p>
+<blockquote>
+<p>Since we are using a 16-bit ALU, it automatically makes your custom game machine a 16-bit architecture. So we shall choose to use 16-bit registers.</p>
+</blockquote>
+<p>For this simple game, we need the following values to be stored:</p>
 <ol>
 <li>Score of P1</li>
 <li>Score of P2</li>
@@ -100,7 +104,7 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 <li>Current collectible number (<strong>counter</strong>)</li>
 <li>Seconds (time) left for the game</li>
 </ol>
-<p>We also need some registers to act as temporary storage value. Therefore the simplest step is to design a REGFILE unit that contains 16 16-bit registers (4-bit addressable). We can set some register addresses to be fixed:</p>
+<p>We also need some registers to act as temporary storage value. Therefore the simplest step is to design a REGFILE unit that contains <em>16</em> <strong>16-bit registers</strong> (4-bit addressable). We can set some register addresses to be fixed:</p>
 <ul>
 <li><strong>0x0</strong> : P1 Score Reg</li>
 <li><strong>0x1</strong> : P2 Score Reg</li>
