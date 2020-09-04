@@ -168,7 +168,7 @@ io_led[2][0] = fulladder.cout;
 <img src="https://www.dropbox.com/s/v4baxwf8e33utm0/alc_io.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>Therefore can use the dips (switch up for <code>1</code> and down for <code>0</code>) to supply various combinations of input <code>x,y,cin</code> and observe the output at the two rightmost LED in <code>IO_LED[2]</code>.</p>
 <p>Now build your code (it may take awhile, 2-3 minutes depending on your computer stats), and flash it to the Alchitry Au:<br>
-<img src="https://www.dropbox.com/s/2ct0o9mqrxjyri5/build.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<img src="https://www.dropbox.com/s/6vwvgyan4y60l4d/buildfile.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
 <p><strong>After it is successfully loaded:</strong></p>
 <ul>
 <li>Try using the dip switch (three rightmost of <code>io_dip[0]</code>) to supply different values of input to the <code>fulladder</code> (all 8 combinations).</li>
@@ -194,7 +194,7 @@ io_led[2][0] = fulladder.cout;
 io_led[2][0] = fulladder.cout;
 </code></pre>
 <p>During <strong>synthesis</strong>, the setting of <code>0</code> to <code>io_led[2][1]</code> and <code>io_led[2][0]</code> is <em>simply ignored</em>, meaning that it wasn’t realised as a sub-circuit on the hardware. Its treated as if the assignment of these LEDs to <code>0</code> <em>never happened</em>.</p>
-<p>Remember that:</p>
+<p><mark> All in all, please do not forget that:</mark></p>
 <ul>
 <li>Anything that you write in an <em><strong>always</strong></em> block describes the behaviour (functionality) of a machine you are trying to create.</li>
 <li>When you click <strong>build</strong> (the hammer symbol), Xilinx Vivado and various other tools will figure out this behaviour and <strong>then create a circuit that matches this behaviour.</strong></li>
