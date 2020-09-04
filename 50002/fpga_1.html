@@ -16,7 +16,7 @@
 <li><a href="#getting-started-with-fpga-part-1">Getting Started with FPGA: Part 1</a>
 <ul>
 <li><a href="#creating-combinational-logic-modules">Creating Combinational Logic Modules</a></li>
-<li><a href="#testing-your-combinational-logic-unit-connect-it-to-io-in-alu_top.luc">Testing Your Combinational Logic Unit: Connect it to I/O in alu_top.luc</a></li>
+<li><a href="#connect-unit-to-io-for-testing">Connect Unit to I/O for Testing</a></li>
 <li><a href="#building-more-combinational-logic-devices">Building More Combinational Logic Devices</a></li>
 <li><a href="#building-rom">Building ROM</a></li>
 <li><a href="#building-multiplexer">Building Multiplexer</a></li>
@@ -137,8 +137,8 @@ always {
 }
 </code></pre>
 <p>The values on the right of the <code>=</code> sign is the value that you will <strong>assign</strong> to the connection name on its left.</p>
-<h2 id="testing-your-combinational-logic-unit-connect-it-to-io-in-alu_top.luc">Testing Your Combinational Logic Unit: Connect it to I/O in alu_top.luc</h2>
-<p>Now let’s declare the module in <code>alu_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>alu_top.luc</code>:</p>
+<h2 id="connect-unit-to-io-for-testing">Connect Unit to I/O for Testing</h2>
+<p>Now let’s <strong>declare and connect</strong> the Full Adder module in <code>alu_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>alu_top.luc</code>:</p>
 <pre><code>sig rst; // reset signal
 full_adder fulladder;
 </code></pre>
@@ -251,13 +251,13 @@ eightbitadder.cin = io_dip[2][0];
 io_led[1] = eightbitadder.s;
 io_led[1][0] = eightbitadder.cout;
 </code></pre>
+<p>The simple circuit that’s described by this code is:<br>
+<img src="https://www.dropbox.com/s/3i5ax6btfrmdcqy/8bfa.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
 <p>Build the program and flash to the Alchitry Au:</p>
 <ul>
 <li>We can use the rightmost and the middle 8 <code>io_dip</code> to set the <code>8-bit</code> <code>x</code> and <code>y</code> values, and <code>io_dip[2][0]</code> to set <code>cin</code>.</li>
 <li>Observe that the output is <em><strong>correct</strong></em>, e.g: the middle 8 <code>io_led</code> for <code>s</code> and <code>io_led[1][0]</code> for <code>cout</code> represents the correct summation value.</li>
 </ul>
-<p>The simple circuit that’s described by this code is:<br>
-<img src="https://www.dropbox.com/s/3i5ax6btfrmdcqy/8bfa.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
 <h2 id="building-rom">Building ROM</h2>
 <p>Remember how we can also implement the full adder as ROM instead? Here’s how it looks like and the truth table:<br>
 <img src="https://www.dropbox.com/s/mpgdm1d5isbc62r/romadd.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
