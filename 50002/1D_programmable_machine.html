@@ -267,7 +267,7 @@ case(game_controlunit.asel){
 <li>Create a combinational logic module that randomly produce a value of <code>1</code> (denoted as <code>VARIABLE INCREMENTER</code>). You can see the code <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/variable_counter.luc">here</a>.</li>
 </ol>
 <p>Notice the bootstrapped REGFILE output : all 16-bits <code>Rb_data</code> straight to the FSM. This is like the <code>Z</code> unit in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>, used for <strong>branching</strong> after a comparison check in the previous state.  You can also use this to branch and <em>perform next check</em> in <strong>1 cycle</strong>. The relevant state illustration and its sample lucid code is:<br>
-<img src="https://www.dropbox.com/s/fqoe3g06azjd7ch/bcheck.png?raw=1" alt="“F1”" width="40%" height="40%"></p>
+<img src="https://www.dropbox.com/s/wh5rs5dakly3jtv/bcheck.png?raw=1" alt="“F1”" width="40%" height="40%"></p>
 <pre><code>game_fsm.BRANCHCHECK_P1P2BUTTONCOUNT:
 
 	regfile_read_address_b = b1111; //temp reg
@@ -283,6 +283,8 @@ case(game_controlunit.asel){
 		game_fsm.d = game_fsm.IDLE;
 	}
 </code></pre>
+<p>Therefore actually the <strong>same game</strong> can be implemented with lesser states if we merge all the <em>branch</em> + <em>next check/computation</em> states into a single state. As an example, we chose to display almost all branching state except the <code>BRANCH CHECK BUTTON COUNT P=3</code> state above as purely a branching state without performing further computation – similar to how its done in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
+<p><mark> <strong>Tips</strong>: If you are a beginner, then perhaps it is easier to debug if you simplify your states (even though you end up with more states) </mark>.</p>
 <h2 id="summary">Summary</h2>
 <p>It will help tremendously if you started by designing the blueprint of your game machine before you start coding. <strong>For Checkoff 2, you are required to present to us the:</strong></p>
 <ol>
