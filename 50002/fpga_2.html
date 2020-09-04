@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fpga_2</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#getting-started-with-fpga-part-2">Getting Started with FPGA: Part 2</a>
+<ul>
+<li><a href="#sequential-logic-module">Sequential Logic Module</a></li>
+<li><a href="#testing-your-sequential-logic-module">Testing Your Sequential Logic Module</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="getting-started-with-fpga-part-2">Getting Started with FPGA: Part 2</h1>
+<p>In this document, we will introduce you to sequential logic modules, that is modules that utilises <code>dff</code> (D flip-flops). You are recommended to read this only after you are finished with Week 3 materials, namely about <strong>synchronous logic</strong> and the FSM.</p>
+<p>The Alchitry Au board comes with <strong>100MHz</strong> on-board clock. When used properly, connections defined in the <code>always</code> block of sequential logic modules is set by default to <strong>receive new set of values</strong> at <em>every</em> <strong>positive clock edge</strong>. It is imperative for dynamic discipline to be satisfied within a clock period. Designs that fail to pass timing but are used anyway will result in unpredictable output.</p>
+<h2 id="sequential-logic-module">Sequential Logic Module</h2>
+<img src="https://www.dropbox.com/s/7ynz6v0w3u95zud/counter.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>Above is a sample schematic of a simple sequential logic module. Assuming the D Flip-Flop <code>R1</code> is triggered at each positive clock edge, then:</p>
+<ul>
+<li>
+<p>The combinational logic unit applies some function <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.10764em;">f</span></span></span></span></span> to its input <code>QR1</code>.</p>
+</li>
+<li>
+<p>At the first cycle, the value loaded to <code>R1</code> is <code>INIT</code>, and hence at the signal at <code>CL out</code> = <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo></mrow><annotation encoding="application/x-tex">f(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span></span></span></span></span><code>INIT</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p>At the second cycle, we apply <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.10764em;">f</span></span></span></span></span> again, resulting in <code>CL out</code> = <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">(</mo></mrow><annotation encoding="application/x-tex">f(f(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathdefault" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right: 0.10764em;">f</span><span class="mopen">(</span></span></span></span></span><code>INIT</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span>, and so on.</p>
+</li>
+<li>
+<p>We need to ensure that dynamic discipline is obeyed, meaning that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">t1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span><span class="mord">1</span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">t2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span><span class="mord">2</span></span></span></span></span> timing constraints are satisfied.</p>
+<ul>
+<li>Typically this isn’t much of an issue, unless you perform intensive computations in the combinational logic unit such that its <code>tpd</code> gets too large and violates the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">t2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span><span class="mord">2</span></span></span></span></span> constraint.</li>
+<li><em>Alchitry Lab will warn you if timing contraints are violated,</em> which means you need to break down the combinational logic unit into smaller parts and adding more DFFs in between.</li>
+</ul>
+</li>
+</ul>
+<p>To make things simple, let’s use the <strong>8-bit ripple-carry adder</strong> unit that we made in <em>Part 1</em>, to increment the value of <code>INIT</code> by the constant <code>2</code> at each clock cycle:</p>
+<img src="https://www.dropbox.com/s/50qvdip2wuq1njg/seqadder.png?raw=1" alt="“F1”" width="60%" height="60%">
+<ul>
+<li>The output <code>cout</code> is grounded because we don’t need it.</li>
+<li>The system has 8-bit <code>CL out</code> as output. There’s no external input to the system.</li>
+<li>When <code>RESET</code> button is pressed, then the system will start adding <code>2</code> to <code>INIT</code> value at each clock cycle.</li>
+</ul>
+<h3 id="declaring-and-using-d-flip-flop">Declaring and Using D Flip-Flop</h3>
+<p>We already have the 8-bit ripple-carry adder module ready, but not the D Flip-Flop. Fortunately, Lucid has a built in D Flip-Flop + the small reset mux built into it that you can use by <strong>declaring</strong> each unit with the keyword <code>dff</code> <strong>before the always block.</strong></p>
+<p>Create a new module and name it <code>seq_plus_two.luc</code>. This time round, we accept input <code>clk</code> and <code>rst</code> signal as per the default <code>.luc</code> script. These two signals are fed by the hardware, where <code>clk</code> is typically the onboard clock, and <code>rst</code> signal is <code>1</code> when the <code>reset</code> button on Alchitry Au is pressed.</p>
+<p>To use a <code>dff</code> properly, you need to:</p>
+<ol>
+<li>Define how many bits a <code>dff</code> can hold,</li>
+<li>The <code>clk</code> signal,</li>
+<li>The <code>rst</code> signal (optional), and</li>
+<li>The <code>INIT</code> value (optional) .</li>
+</ol>
+<p><mark> <strong>All</strong> must be done <strong>before the always block</strong> to take effect</mark>.</p>
+<p>The syntax to define the so-called <em>arguments</em> to <code>dff</code> during declarations are very simple – use the bracket <code>()</code> separated by commas:</p>
+<pre><code>module seq_plus_two (
+	input clk,  // clock
+	input rst,  // reset
+	output out[8]
+  ) 
+  {
+  dff register_1[8](#INIT(0), .clk(clk), .rst(rst));
+  }
+</code></pre>
+<p><em>Note: <code>.clk(clk)</code> means to connect the <code>clk</code> signal of the <code>dff</code> with the <code>clk</code> signal of <code>seq_plus_two</code> (supplied as input from the on-board clock hardware).</em> There one other way to declare the <code>clk</code> and the <code>rst</code> signal before the always block – a <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1"><strong>nested</strong></a> way. It works the same, just probably is easier to type when you have many modules to declare that receives the same <code>clk</code> and <code>rst</code> signal.</p>
+<p>The <code>dff</code> has two important terminals, <code>.d</code> for input and <code>.q</code> for output. We simply have to connect them with the adder. Let’s declare the adder as well and connect them:</p>
+<pre><code>{
+  dff register_1[8](#INIT(0), .clk(clk), .rst(rst));
+  eight_bit_adder plus_two;
+ 
+  always {
+	plus_two.y = 8h02;
+	plus_two.x = register_1.q;
+	plus_two.cin = b0;
+	register_1.d = plus_two.s;
+	out = plus_two.s;
+  }
+</code></pre>
+<h2 id="testing-your-sequential-logic-module">Testing Your Sequential Logic Module</h2>
+<p>If you declare the <code>seq_plus_two</code> module in <code>alu_top</code>:</p>
+<pre><code>seq_plus_two seqplustwo(.clk(clk), .rst(rst));
+</code></pre>
+<p>and connect its output to the LED,</p>
+<pre><code>io_led[0] = seqplustwo.out;
+</code></pre>
+<p><strong>You won’t see any concrete thing on <code>io_led[0]</code>. It will just flicker really fast and you can’t see. anything that resembles some 8-bit binary values that are incremented by 2.</strong></p>
+<p>Why? Its not because that <code>seq_plus_two.luc</code> is buggy, but its because the <code>clk</code> is too fast, running at 100MHz (100 million cycles per second). The <code>+2</code> addition is done so fast that your eyes cannot see any discrete values shown on <code>io_led[0]</code>.</p>
+<p>We cannot change the on-board clock speed, but we can  <strong>slow down</strong>   the <code>clk</code> signal fed to <code>seqplustwo</code>. We can utilize this in-built <strong>component</strong> called <strong>counter</strong>. Right-click on <code>Components</code> on the left and add the counter component.</p>
+<img src="https://www.dropbox.com/s/mcv80rkkcglrozm/countercomp.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>You should see a new script called <code>counter.luc</code> added under <code>Components</code> afterwards. This unit is a synchronous logic unit that receives the following input parameters:</p>
+<ul>
+<li><code>#SIZE(n)</code> : defining how many bits is its output</li>
+<li><code>clk</code> signal that synchronizes this unit</li>
+<li><code>rst</code> signal</li>
+<li><code>#DIV(i)</code> value (optional): number of bits used as the <em>divisor</em>.</li>
+</ul>
+<p>The output of the counter is <code>n</code> bits as defined by the <code>SIZE</code> parameter. Without any <code>DIV</code>, then the counter will produce an output that’s incremented by 1 at every <code>clk</code> cycle.</p>
+<p>If <code>i</code> is set to be nonzero, then the counter will produce an <code>n</code> bit output that is incremented by 1 at a <strong>slower</strong> clock rate – <code>clk</code> is slowed down by <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.824664em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.824664em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span></span> times. <strong>Therefore, we can use a 1-bit counter as a <a href="https://reference.digilentinc.com/learn/programmable-logic/tutorials/use-flip-flops-to-build-a-clock-divider/start">frequency divider</a> – i.e: produce a clock signal with slower rate.</strong></p>
+<blockquote>
+<p>You don’t have to read the details if you are running low on time. Just know that you can use a <code>counter</code> component with <code>#DIV</code> set to produce a clock signal with slower rate.</p>
+</blockquote>
+<p>Therefore we can declare our <code>counter</code> as follows:</p>
+<pre><code>counter slowclock(#SIZE(1),#DIV(26), .clk(clk), .rst(rst));
+</code></pre>
+<p>And use its output as a <strong>slower clock</strong> for <code>seqplustwo</code> module:</p>
+<pre><code>seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
+</code></pre>
+<p>Don’t forget to connect <code>seqplustwo</code>'s output to <code>io_led</code> in the <code>always</code> block.</p>
+<pre><code>io_led[0] = seqplustwo.out;
+</code></pre>
+<p>Now you should be able to see that the LED resembles bits of data that’s incremented by 2 periodically.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
