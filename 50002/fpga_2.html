@@ -30,7 +30,8 @@ Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="getting-started-with-fpga-part-2">Getting Started with FPGA: Part 2</h1>
-<p>In this document, we will introduce you to sequential logic modules, that is modules that utilises <code>dff</code> (D flip-flops). You are recommended to read this only after you are finished with Week 3 materials, namely about <strong>synchronous logic</strong> and the FSM.</p>
+<p>This document introduces the steps on how we can create <strong>basic</strong> <strong>sequential logic modules</strong>, that is any module that utilises <code>dff</code> (D flip-flops).</p>
+<p><em>You are recommended to read this document only after you have understood  Week 3 materials, namely the <strong>synchronous logic</strong> and <strong>FSM</strong>.</em></p>
 <p>The Alchitry Au board comes with <strong>100MHz</strong> on-board clock. When used properly, connections defined in the <code>always</code> block of sequential logic modules is set by default to <strong>receive new set of values</strong> at <em>every</em> <strong>positive clock edge</strong>. It is imperative for dynamic discipline to be satisfied within a clock period. Designs that fail to pass timing but are used anyway will result in unpredictable output.</p>
 <h2 id="sequential-logic-module">Sequential Logic Module</h2>
 <img src="https://www.dropbox.com/s/7ynz6v0w3u95zud/counter.png?raw=1" alt="“F1”" width="60%" height="60%">
@@ -104,8 +105,8 @@ Singapore University of Technology and Design<br>
 </code></pre>
 <p><strong>You won’t see any concrete thing on <code>io_led[0]</code>. It will just flicker really fast and you can’t see. anything that resembles some 8-bit binary values that are incremented by 2.</strong></p>
 <p>Why? Its not because that <code>seq_plus_two.luc</code> is buggy, but its because the <code>clk</code> is too fast, running at 100MHz (100 million cycles per second). The <code>+2</code> addition is done so fast that your eyes cannot see any discrete values shown on <code>io_led[0]</code>.</p>
-<p>We cannot change the on-board clock speed, but we can  <strong>slow down</strong>   the <code>clk</code> signal fed to <code>seqplustwo</code>. We can utilize this in-built <strong>component</strong> called <strong>counter</strong>. Right-click on <code>Components</code> on the left and add the counter component.</p>
-<img src="https://www.dropbox.com/s/mcv80rkkcglrozm/countercomp.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>We cannot change the on-board clock speed, but we can  <strong>slow down</strong>   the <code>clk</code> signal fed to <code>seqplustwo</code>. However, we can utilize this in-built <strong>component</strong> called <strong>counter</strong>. Right-click on <code>Components</code> on the left and add the counter component.</p>
+<img src="https://www.dropbox.com/s/mcv80rkkcglrozm/countercomp.png?raw=1" alt="“F1”" width="40%" height="40%">
 <p>You should see a new script called <code>counter.luc</code> added under <code>Components</code> afterwards. This unit is a synchronous logic unit that receives the following input parameters:</p>
 <ul>
 <li><code>#SIZE(n)</code> : defining how many bits is its output</li>
