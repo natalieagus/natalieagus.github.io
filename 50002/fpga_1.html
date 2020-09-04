@@ -317,12 +317,11 @@ io_led[1][0] = eightbitadder.cout;
   }
 }
 </code></pre>
-<p>Pretty sure you’d know by now how to use this in <code>alu_top.luc</code> and test.</p>
+<p>Pretty sure you’d know by now how to declare this in <code>alu_top.luc</code> and test its funcionality.</p>
 <h2 id="summary">Summary</h2>
 <p>By implementing this adder on the FPGA, we have learned:</p>
 <ul>
-<li>How to define a <strong>combinational logic module</strong>: specify its input/output.</li>
-<li>Implement the logic in the <code>always</code> block.</li>
+<li>How to implement a <strong>combinational logic module</strong> in the <code>always</code> block via boolean expression, ROM, and specify its input/output terminals clearly.</li>
 <li>How to assemble a bigger combinational module using smaller combinational modules.</li>
 <li>How to test them and assemble them in <code>au_top.luc</code>.</li>
 </ul>
