@@ -113,11 +113,11 @@ But a few important ones that you probably can’t live without are: <strong>cou
 <h3 id="define-input-and-output-terminals">Define Input and Output terminals</h3>
 <p><strong>Create a new source file</strong> and name it <code>full_adder.luc</code>. <strong>You will see that all lucid files should begin with terminals definition.</strong> In a full adder, we have 3 1-bit inputs: <code>x, y, cin</code> and 2 1-bit outputs: <code>s, cout</code> . Therefore we shall modify the header as such:</p>
 <pre><code>module full_adder (
-			input x,
-			input y,
-			input cin,
-			output s,
-			output cout
+	input x,
+	input y,
+	input cin,
+	output s,
+	output cout
 )
 </code></pre>
 <p><em>Since FA is a combinational logic device, then we don’t have to use the CLK.</em></p>
