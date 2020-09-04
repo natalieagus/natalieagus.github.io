@@ -15,7 +15,7 @@
 <ul>
 <li><a href="#getting-started-with-fpga-part-1">Getting Started with FPGA: Part 1</a>
 <ul>
-<li><a href="#creating-combinational-logic-units">Creating Combinational Logic Units</a></li>
+<li><a href="#creating-combinational-logic-modules">Creating Combinational Logic Modules</a></li>
 <li><a href="#testing-your-combinational-logic-unit-connect-it-to-io-in-alu_top.luc">Testing Your Combinational Logic Unit: Connect it to I/O in alu_top.luc</a></li>
 <li><a href="#building-more-combinational-logic-devices">Building More Combinational Logic Devices</a></li>
 <li><a href="#building-rom">Building ROM</a></li>
@@ -35,30 +35,37 @@ Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="getting-started-with-fpga-part-1">Getting Started with FPGA: Part 1</h1>
 <p>This document is written to guide you with hardware coding in<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf"> <strong>Lucid</strong></a>, a more human friendly version of Verilog – the popular but relatively <em>difficult</em> hardware descriptive language.  Ultimately, we want to compile our code into a binary file to be loaded to our FPGA: the Alchitry Au, so that the FPGA can emulate the behavior of the machine that we describe via the code.</p>
-<p>Some fun facts about Alchitry Au:</p>
+<p><strong>Some fun facts about Alchitry Au:</strong></p>
 <ul>
 <li>It features <strong>Xilinx Artix 7</strong> FPGA, containing 33280 logic cells (the more cells, the better. Our code can “program” these cells, so if our FPGA has more cells it means that we can implement more complex functionalities)</li>
 <li>On-board clock speed: <strong>100 MHz.</strong></li>
 <li><strong>102</strong> IO pins (you’ll never run out of any!)</li>
 </ul>
 <p>More information about the board can be found <a href="https://alchitry.com/products/alchitry-au-fpga-development-board">here</a> but for now the above suffices.</p>
-<p>It is also recommended that you read this guide at the beginning of week 3, after you have finished <strong>logic synthesis</strong>, otherwise you might feel a little lost.</p>
-<p>Before you begin, please do:</p>
+<p>It is also recommended that you read this guide at the end of week 2, after you have finished <strong>logic synthesis</strong>, otherwise you might feel a little lost.</p>
+<p><strong>Before you begin, please do:</strong></p>
 <ol>
-<li>Prepare <strong>at least 50GB</strong> of free space. It goes without saying that you can use cloud storage (Dropbox, GDrive, iCloud Drive, AWS Cloud) or get an external drive.</li>
-<li>Install <a href="https://www.xilinx.com/support/download.html">Xilinx Vivado</a> : scroll down until you see the <strong>Self-extracting Web-Installer</strong>  (Windows or Linux only). Sorry Mac users, you will have to <strong>Bootcamp</strong> Windows 10 / Ubuntu.
+<li>
+<p>Prepare <strong>at least 50GB</strong> of free space. It goes without saying that you can use cloud storage (Dropbox, GDrive, iCloud Drive, AWS Cloud) or get an external drive.</p>
+</li>
+<li>
+<p>Install <a href="https://www.xilinx.com/support/download.html">Xilinx Vivado</a> : scroll down until you see the <strong>Self-extracting Web-Installer</strong>  (Windows or Linux only). Sorry Mac users, you will have to <strong>Bootcamp</strong> Windows 10 / Ubuntu.</p>
 <ul>
 <li>Sign-up for a <strong>free</strong> Xilinx account</li>
 <li>Then, when you obtain the installer, install the <strong>Vivado HL WebPACK Edition</strong> (this is the free edition)</li>
 <li>To avoid installing too many things, select just <strong>Vivado</strong> and <strong>Artix7</strong>:<br>
-<img src="https://www.dropbox.com/s/vqcvos3ram702u9/vivado1.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
-<img src="	https://www.dropbox.com/s/9ixj1lxu6vvi2so/vivado2.png?raw=1" alt="“F1”" width="60%" height="60%"></li>
+<img src="https://www.dropbox.com/s/vqcvos3ram702u9/vivado1.png?raw=1" alt="“F1”" width="40%" height="40%"><br>
+<img src="	https://www.dropbox.com/s/9ixj1lxu6vvi2so/vivado2.png?raw=1" alt="“F1”" width="40%" height="40%"></li>
 </ul>
 </li>
-<li>Install <a href="https://www.java.com/en/download/manual.jsp">Java JRE</a> and <a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java JDK</a>, although it is likely that you already have these installed due to your other subject.</li>
-<li>Then, download the <a href="https://alchitry.com/pages/alchitry-labs">Alchitry Lab IDE</a>. This is the IDE where you can write your program in Lucid and flash it to the FPGA via USB connection.</li>
+<li>
+<p>Install <a href="https://www.java.com/en/download/manual.jsp">Java JRE</a> and <a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java JDK</a>, although it is likely that you already have these installed due to your other subject.</p>
+</li>
+<li>
+<p>Then, download the <a href="https://alchitry.com/pages/alchitry-labs">Alchitry Lab IDE</a>. This is the IDE where you can write your program in Lucid and flash it to the FPGA via USB connection.</p>
+</li>
 </ol>
-<h2 id="creating-combinational-logic-units">Creating Combinational Logic Units</h2>
+<h2 id="creating-combinational-logic-modules">Creating Combinational Logic Modules</h2>
 <p>The purpose of using an FPGA is so that we can have an actual hardware device that realises (actually implements) certain functions or <strong>logic</strong> that we have designed.</p>
 <p>Let’s take an example of a Full Adder unit that we did in Lab 2:</p>
 <ul>
@@ -67,7 +74,7 @@ Singapore University of Technology and Design<br>
 <li>If you were to design a state-of-the-art full adder unit, you will want to mass-produce your design (if it works exceptionally well).</li>
 </ul>
 <p>Alternatively, we can use an FPGA to prove our concept. You can load your program (describing how your Full Adder works) onto an FPGA, and now the FPGA can be an actual working Full Adder unit.</p>
-<p><strong>How can we write this program in Lucid?</strong></p>
+<p><strong>How can we write this module/unit in Lucid?</strong></p>
 <p>Firstly, create a project in Alchitry Lab,<br>
 <img src="https://www.dropbox.com/s/yn3r5mnet0cbega/1a.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>Give it some name, ensure that it is Au and Lucid. Also, use the IO Element Base template. It sets the IO Unit for you:<br>
@@ -79,14 +86,26 @@ Singapore University of Technology and Design<br>
 </blockquote>
 <p>If you haven’t read any tutorials about Lucid and Alchitry yet, here’s some quick information:</p>
 <ul>
-<li>Under <code>Source</code>, thats where you will write <strong>all</strong> your script. <code>alu.luc</code> is like the <code>main</code> script, so do not delete that.</li>
-<li><code>alu.luc</code> is the only script that can interface with <strong>external input and output</strong>, like LED, switches and buttons.</li>
-<li>Each <code>.luc</code> script should describe a <strong>component</strong> (combinational / sequential).</li>
-<li>Typically in <code>alu.luc</code> we <strong>combine</strong> all components together with input/output, forming a whole complete device.</li>
-<li>Under <code>Components</code> is where you can <strong>add</strong> standard components (like standard library modules). Right click on it and click <code>Add Components</code>, and you’ll be faced with a phletora of modules which you may or may not use depending on your application:<br>
+<li>
+<p>Under <code>Source</code>, thats where you will write <strong>all</strong> your script. <code>alu.luc</code> is like the <code>main</code> script, so do not delete that.</p>
+</li>
+<li>
+<p><code>alu.luc</code> is the only script that can interface with <strong>external input and output</strong>, like LED, switches and buttons.</p>
+</li>
+<li>
+<p>Each <code>.luc</code> script should describe a <strong>component</strong> (combinational / sequential).</p>
+</li>
+<li>
+<p>Typically in <code>alu.luc</code> we <strong>combine</strong> all components together with input/output, forming a whole complete device.</p>
+</li>
+<li>
+<p>Under <code>Components</code> is where you can <strong>add</strong> standard components (like standard library modules). Right click on it and click <code>Add Components</code>, and you’ll be faced with a phletora of modules which you may or may not use depending on your application:<br>
 <img src="https://www.dropbox.com/s/guc9ll03qiivdrx/1d.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
-But a few important ones that you probably can’t live without are: <strong>counter, edge detector, button conditioner.</strong> We will meet them soon.</li>
-<li>Under <code>Constraints</code> is where you can define your input and output terminals. We will come back to this later.</li>
+But a few important ones that you probably can’t live without are: <strong>counter, edge detector, button conditioner.</strong> We will meet them soon.</p>
+</li>
+<li>
+<p>Under <code>Constraints</code> is where you can define your input and output terminals. We will come back to this later.</p>
+</li>
 </ul>
 <p>So now back to creating a <strong>Full Adder.</strong> By now you should know that this schematic implements a full adder:</p>
 <img src="https://www.dropbox.com/s/n1aqlz9dry92efk/FA.png?raw=1" alt="“F1”" width="60%" height="60%">
@@ -103,7 +122,7 @@ But a few important ones that you probably can’t live without are: <strong>cou
 </code></pre>
 <p><em>Since FA is a combinational logic device, then we don’t have to use the CLK.</em></p>
 <p>And then in the body, we have the <code>always</code> block, which as the name suggests it <strong>signifies a connection</strong>, something that is <strong>always</strong> connected.</p>
-<p>Remember that in this code we are <em>describing how a hardware schematic should be.</em></p>
+<p><mark> Remember that in this block we are <em>describing how a hardware device should behave, that is: literally describing its schematic in terms of code for Alchitry / Vivado to <strong>interpret</strong> and create an appropriate hardware description for the <strong>Au</strong> board to run.</em> </mark></p>
 <p>Above the <code>always</code> block we can define other modules to be used, clock or reset signals, or simply intermediary connections using the keyword <code>sig</code>.</p>
 <p>The following code describes the schematic of an FA. The syntax is self-explanatory. Refer to Page 2 of the documentation (<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420">Lucid Quick Reference</a>) for a summary of syntaxes.</p>
 <pre><code>{
