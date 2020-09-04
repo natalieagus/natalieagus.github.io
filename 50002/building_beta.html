@@ -175,6 +175,9 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <p>The register transfer language for this instruction is:<br>
 <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
 <code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]</code> <code>(OP)</code>   <code>Reg[Rb]</code></p>
+<ul>
+<li>The corresponding assembly instruction format runnable in BSIM is <code>OP(Ra, Rb, Rc)</code></li>
+</ul>
 <blockquote>
 <p><strong>Important:</strong> Read the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> documentation and fully study the functionalities of each instruction.</p>
 </blockquote>
@@ -228,9 +231,29 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <blockquote>
 <p>Again, don’t forget to read <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> documentation to understand each functionalities.</p>
 </blockquote>
+<ul>
+<li>The corresponding assembly instruction format runnable in BSIM  is <code>OPC(Ra, c, Rc)</code></li>
+</ul>
 <p>The figure below shows the datapath for all <code>OPC</code> instructions:</p>
 <img src="https://www.dropbox.com/s/dfhi9j45vnuw7n0/opc.png?raw=1" alt="“F1”" width="80%" height="80%">
 <p>The control signals for <code>OPC</code> instructions are almost identical to <code>OP</code> operations, except that we need to have  <code>BSEL = 1</code>.</p>
+<h3 id="sample-code">Sample Code</h3>
+<p>Try it yourself by running this code step by step on BSIM and observe the datapath to familiarize yourself with how OP and OPC datapath works.</p>
+<ul>
+<li>At each timestep, be aware of the value of PC and all Registers.</li>
+<li>Familiarise yourself with how to translate from the assembly language to the 32-bit machine language</li>
+</ul>
+<pre><code>.include beta.uasm
+
+ADDC(R31, 5, R0)
+SUBC(R31, 3, R1)
+MUL(R0, R1, R2)
+CMPEQ(R1, R1, R4) 
+CMPLT(R0, R1, R4)
+SHL(R1, R1, R5)
+SRAC(R5, 4, R5)
+SHRC(R1, 4, R6)
+</code></pre>
 <h2 id="memory-access-datapath">Memory Access Datapath</h2>
 <p>There are three instructions that involve access to the Memory Unit: <code>LD</code>, <code>LDR</code> and <code>ST</code>. All of them are Type 2 instructions.</p>
 <h3 id="ld-datapath"><code>LD</code> Datapath</h3>
@@ -246,6 +269,9 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 </li>
 <li>
 <p>The <strong>effective address</strong> (<code>EA</code>) of the data is computed using the content of <code>Ra</code>  (32-bit) added with <code>c</code> (sign extended to be 32-bit).</p>
+</li>
+<li>
+<p>The corresponding assembly instruction format runnable in BSIM is <code>LD(Ra, c, Rc)</code></p>
 </li>
 </ul>
 <p>The figure below shows the datapath for  <code>LD</code>:</p>
@@ -290,6 +316,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Mem[EA]</code></p>
 <ul>
 <li>The <code>LDR</code> instruction computes <code>EA</code> <strong>relative</strong> to the current address pointed by <code>PC</code>.</li>
+<li>The corresponding assembly instruction format runnable in BSIM is <code>LDR(label, Rc)</code>, where <code>c</code> is <strong>auto</strong> computed as <code>(address_of_label - address_of_current_ins)/4-1</code></li>
 </ul>
 <p>The figure below shows the datapath for <code>LDR</code>:</p>
 <img src="https://www.dropbox.com/s/479io11h24i9yl3/ldr.png?raw=1" alt="“F1”" width="80%" height="80%">
@@ -335,7 +362,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <img src="https://www.dropbox.com/s/is3q37kvo167325/st_ins.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>The register transfer language for this instruction is:<br>
 <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC+4</code><br>
-<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]+SEXT(C)</code><br>
+<code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]+SEXT(c)</code><br>
 <code>Mem[EA]</code>  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span>   <code>Reg[Rc]</code></p>
 <ul>
 <li>
@@ -343,6 +370,9 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 </li>
 <li>
 <p>Similar to how <code>EA</code> is computed for <code>LD</code>, the <strong>effective address</strong> (<code>EA</code>) of where the data is supposed to be stored is computed using the content of <code>Ra</code>  (32-bit) added with <code>c</code> (sign extended to be 32-bit).</p>
+</li>
+<li>
+<p>The corresponding assembly instruction format runnable in BSIM is <code>ST(Rc, c, Ra)</code>, notice the swapped <code>Rc</code> and <code>Ra</code> position.</p>
 </li>
 </ul>
 <p>The figure below shows the datapath for  <code>ST</code>:</p>
@@ -377,6 +407,32 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <p><code>WASEL = --</code></p>
 </li>
 </ul>
+<h3 id="sample-code-1">Sample Code</h3>
+<p><strong>Try it yourself</strong> by running this code step by step on BSIM and observe the datapath to familiarize yourself with how OP and OPC datapath works.</p>
+<ul>
+<li>At each timestep, be aware of the value of PC and all Registers.</li>
+<li>Be aware on the value stored at certain memory locations</li>
+<li>Familiarise yourself with how to translate from the assembly language to the 32-bit machine language using <em>labels</em> and <em>literals</em></li>
+</ul>
+<pre><code>.include beta.uasm
+
+LD(R31, x, R0)
+LD(R31, x + 4, R1)
+LD(R31, x + 8, R2)
+LD(R31, x + 12, R3)
+LDR(x, R4)
+LDR(x+8, R5)
+MUL(R0, R3, R0)
+ADD(R1, R1, R1)
+ADDC(R31, 12, R6)
+ST(R0, x)
+ST(R1, x, R6)
+
+x : LONG(15) | this is an array
+	LONG(7)
+	LONG(9)
+	LONG(-1)
+</code></pre>
 <h2 id="control-transfer-datapath">Control Transfer Datapath</h2>
 <p>There are three instructions that involves <strong>transfer-of-control</strong> (i.e: <em>branching</em>, or <em>jumping</em>), that is to change the value of <code>PC</code> so that we can execute instruction from other <code>EA</code> in the Memory Unit instead of going to the next line. These instructions are <code>BEQ</code>, <code>BNE</code>, and <code>JMP</code>.</p>
 <p>We will not use the ALU at all when transferring control.</p>
@@ -397,6 +453,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <li>If the contents of  <code>Ra</code> are zero, the <code>PC</code> is loaded with the target address <code>EA</code>;</li>
 <li>Otherwise, execution continues with the next sequential instruction.</li>
 <li><mark> The checking of the content of <code>Ra</code> is not done through ALU, but rather through the 32-bit NOR gate that produces <code>Z</code> (1-bit) </mark>, The value of <code>Z</code> is fed to the CONTROL UNIT to determine whether PCSEL should be <code>001</code> or <code>000</code> depending on the value of <code>Z</code>.</li>
+<li>The corresponding assembly instruction format runnable in BSIM is <code>BEQ(Ra, label, Rc)</code>* where <code>c</code> is <strong>auto</strong> computed as <code>(address_of_label - address_of_current_ins)/4-1</code></li>
 </ul>
 <p>The figure below shows the datapath for the <code>BEQ</code>:<br>
 <img src="https://www.dropbox.com/s/xgapxsuqjnjl4rv/beq.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
@@ -434,7 +491,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 </li>
 </ul>
 <h3 id="bne-datapath"><code>BNE</code> datapath</h3>
-<p><code>BNE</code> is similar to  <code>BEQ</code>, but branches <code>PC</code> in the opposite way, i.e: when <code>Ra != 0</code>.</p>
+<p><code>BNE</code> is similar to  <code>BEQ</code>, but branches <code>PC</code> in the opposite way, i.e: when <code>Ra != 0</code>. It also utilizes the output <code>Z</code>.</p>
 <p>The general format of the <code>BNE</code> instruction is:</p>
 <img src="https://www.dropbox.com/s/wrqpdsusx3g7lkd/bne_ins.png?raw=1" alt="“F1”" width="80%" height="80%">
 <p>The register transfer language for this instruction is:<br>
@@ -442,6 +499,9 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC</code><br>
 <code>EA</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>PC + 4*SEXT(C)</code><br>
 <code>if (Reg[Ra] != 0)</code> then <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>EA</code></p>
+<ul>
+<li>The corresponding assembly instruction format runnable in BSIM is <code>BNE(Ra, label, Rc)</code>* where <code>c</code> is <strong>auto</strong> computed as <code>(address_of_label - address_of_current_ins)/4-1</code></li>
+</ul>
 <p>The figure below shows the datapath for the <code>BNE</code>:<br>
 <img src="https://www.dropbox.com/s/sp2ee8dny2n2qzs/bne.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
 <p>The control signals therefore must be set to:</p>
@@ -489,6 +549,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <ul>
 <li>The <strong>address</strong> of the instruction following the <code>JMP</code> instruction is written to <code>Rc</code>, then  <code>PC</code> is loaded with the contents of  <code>Ra</code>.</li>
 <li>The low two bits of <code>Ra</code> are <strong>masked</strong> to ensure that the target address is aligned on a 4-byte boundary.</li>
+<li>The corresponding assembly instruction format runnable in BSIM is <code>JMP(Ra, Rc)</code>.</li>
 </ul>
 <p>The figure below shows the datapath for the <code>JMP</code>:<br>
 <img src="https://www.dropbox.com/s/94bul2ifo7a3afj/jmp_inst.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
@@ -525,6 +586,24 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 <p><code>WASEL = 0</code></p>
 </li>
 </ul>
+<h3 id="sample-code-2">Sample Code</h3>
+<p><strong>Try it yourself</strong> by running this code step by step on BSIM and observe the datapath to familiarize yourself with how OP and OPC datapath works.</p>
+<ul>
+<li>At each timestep, be aware of the value of PC and all Registers.</li>
+<li>Know where is the address of each instruction when loaded to memory</li>
+<li>Note how to translate from <code>label</code> to <code>literal</code>  when crafting the 32-bit machine language for <code>BEQ/BNE</code> instructions.</li>
+</ul>
+<pre><code>.include beta.uasm
+
+ADDC(R31, 3, R0)
+
+begin_check: CMPEQ(R31, R0, R1)
+BNE(R1, is_zero, R10)
+SUBC(R0, 1, R0)
+BEQ(R31, begin_check, R10)
+
+is_zero: JMP(R31)
+</code></pre>
 <h2 id="exception-handling">Exception Handling</h2>
 <p><strong>Exceptions</strong> as the name suggests, is an event generated by the CPU when an <em>error</em> occurs.</p>
 <p><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> exceptions come in three flavors: traps, faults, and interrupts.</p>
