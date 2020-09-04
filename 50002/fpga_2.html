@@ -64,15 +64,14 @@ Singapore University of Technology and Design<br>
 <p>We already have the 8-bit ripple-carry adder module ready, but not the D Flip-Flop. Fortunately, Lucid has a built in D Flip-Flop + the small reset mux built into it that you can use by <strong>declaring</strong> each unit with the keyword <code>dff</code> <strong>before the always block.</strong></p>
 <p>Create a new module and name it <code>seq_plus_two.luc</code>. This time round, we accept input <code>clk</code> and <code>rst</code> signal as per the default <code>.luc</code> script. These two signals are fed by the hardware, where <code>clk</code> is typically the onboard clock, and <code>rst</code> signal is <code>1</code> when the <code>reset</code> button on Alchitry Au (not Alchitry Io!) is pressed.</p>
 <img src="https://www.dropbox.com/s/c8bx99dmnu1zsku/au.png?raw=1" alt="“F1”" width="40%" height="40%">
-<p>To use a <code>dff</code> properly, you need to:</p>
+<p>To use a <code>dff</code> properly, you need to define:</p>
 <ol>
-<li>Define how many bits a <code>dff</code> can hold,</li>
 <li>The <code>clk</code> signal,</li>
 <li>The <code>rst</code> signal (optional), and</li>
 <li>The <code>INIT</code> value (optional) .</li>
 </ol>
 <p><mark> <strong>All</strong> must be done <strong>before the always block</strong> to take effect</mark>.</p>
-<p>The syntax to define the so-called <em>arguments</em> to <code>dff</code> during declarations are very simple – use the bracket <code>()</code> separated by commas:</p>
+<p>The syntax to define the so-called <em>arguments</em> to <code>dff</code> during declarations are very simple – use the bracket <code>()</code> separated by commas. An 8-bit <code>dff</code> is basically 8 copies of 1-bit <code>dff</code> (declared as an array with the square <code>[]</code> brackets):</p>
 <pre><code>module seq_plus_two (
 	input clk,  // clock
 	input rst,  // reset
