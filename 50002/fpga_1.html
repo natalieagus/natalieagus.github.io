@@ -309,7 +309,7 @@ io_led[1][0] = eightbitadder.cout;
             w = a;
         b1:
             w[7:4] = a[3:0];
-            w[3:0] = 4b0;
+            w[3:0] = 4b0; // this means 4 bits of 0, equivalent to b0000
         default:
             w = a;
         }
