@@ -34,7 +34,7 @@
 #### 1D Electronic Game Design
 [Getting Started With FPGA Part 1: Combinational Logic](https://natalieagus.github.io/50002/fpga_1.html)
 
-[Getting Started With FPGA Part 2: Basic Sequential Logic](https://natalieagus.github.io/50002/fpga_2.html)
+[Getting Started With FPGA Part 2: Sequential Logic and FSM](https://natalieagus.github.io/50002/fpga_2.html)
 
 [Designing a Custom Programmable Datapath](https://natalieagus.github.io/50002/1D_programmable_machine.html)
 
