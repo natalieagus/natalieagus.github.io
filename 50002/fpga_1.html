@@ -17,6 +17,10 @@
 <ul>
 <li><a href="#creating-combinational-logic-units">Creating Combinational Logic Units</a></li>
 <li><a href="#testing-your-combinational-logic-unit-connect-it-to-io-in-alu_top.luc">Testing Your Combinational Logic Unit: Connect it to I/O in alu_top.luc</a></li>
+<li><a href="#building-more-combinational-logic-devices">Building More Combinational Logic Devices</a></li>
+<li><a href="#building-rom">Building ROM</a></li>
+<li><a href="#building-multiplexer">Building Multiplexer</a></li>
+<li><a href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -33,9 +37,9 @@ Singapore University of Technology and Design<br>
 <p>This document is written to guide you with hardware coding in<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf"> <strong>Lucid</strong></a>, a more human friendly version of Verilog – the popular but relatively <em>difficult</em> hardware descriptive language.  Ultimately, we want to compile our code into a binary file to be loaded to our FPGA: the Alchitry Au, so that the FPGA can emulate the behavior of the machine that we describe via the code.</p>
 <p>Some fun facts about Alchitry Au:</p>
 <ul>
-<li>It features Xilinx Artix 7 FPGA, containing 33280 logic cells (the more cells, the better. Our code can “program” these cells, so if our FPGA has more cells it means that we can implement more complex functionalities)</li>
-<li>On-board clock speed: 100 MHz.</li>
-<li>102 IO pins (you’ll never run out of any!)</li>
+<li>It features <strong>Xilinx Artix 7</strong> FPGA, containing 33280 logic cells (the more cells, the better. Our code can “program” these cells, so if our FPGA has more cells it means that we can implement more complex functionalities)</li>
+<li>On-board clock speed: <strong>100 MHz.</strong></li>
+<li><strong>102</strong> IO pins (you’ll never run out of any!)</li>
 </ul>
 <p>More information about the board can be found <a href="https://alchitry.com/products/alchitry-au-fpga-development-board">here</a> but for now the above suffices.</p>
 <p>It is also recommended that you read this guide at the beginning of week 3, after you have finished <strong>logic synthesis</strong>, otherwise you might feel a little lost.</p>
@@ -130,6 +134,7 @@ fulladder.cin = io_dip[0][2];
 io_led[2][1] = fulladder.s;
 io_led[2][0] = fulladder.cout;
 </code></pre>
+<p><em>Note:</em> It is highly recommended that you <strong>do not implement</strong> any further combinational logic modules in <code>alu_top.luc</code>. Your code has to be as <mark> <strong>modular</strong> </mark> as possible for the sake of easy debugging and development. <strong>As a good practice, the module <code>au_top.luc</code> should be only used to simply connect big module(s) to the input/output terminal.</strong></p>
 <p>Here’s a visual representation of the schematic. In other words, <code>alu_top.luc</code> is the script that <strong>interfaces</strong> your custom modules with the <strong>board’s input and output unit:</strong></p>
 <img src="https://www.dropbox.com/s/ljwrcth2eu3fdw8/FAau.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p><em>Its not as complicated as it looks, we simply want to use:</em></p>
@@ -145,6 +150,12 @@ io_led[2][0] = fulladder.cout;
 <p>Therefore can use the dips (switch up for <code>1</code> and down for <code>0</code>) to supply various combinations of input <code>x,y,cin</code> and observe the output at the two rightmost LED in <code>IO_LED[2]</code>.</p>
 <p>Now build your code (it may take awhile, 2-3 minutes depending on your computer stats), and flash it to the Alchitry Au:<br>
 <img src="https://www.dropbox.com/s/2ct0o9mqrxjyri5/build.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<p><strong>After it is successfully loaded:</strong></p>
+<ul>
+<li>Try using the dip switch (three rightmost of <code>io_dip[0]</code>) to supply different values of input to the <code>fulladder</code> (all 8 combinations).</li>
+<li>Observe the output at <code>io_led[2][1]</code> and <code>io_led[2][0]</code>.</li>
+<li><em>Convince yourself that the output conforms to the full adder’s fuctional specifications.</em></li>
+</ul>
 <p>Alchitry Io is basically our <strong>input-output device</strong>. We use the LEDs to debug like a monitor, and buttons to supply input. ye<em>s, it is very very primitive, and <strong>it is very difficult</strong>  to <strong>debug</strong> so always test each small module before integrating it!</em></p>
 <p>The template <strong>Io Base</strong> already prepare these terminal namings for you, and define it under <code>Constraints</code> file. Open io.acf and you will see the following:<br>
 <img src="https://www.dropbox.com/s/bjtd5hrfo3ejvwj/constraintfile.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
@@ -170,6 +181,154 @@ io_led[2][0] = fulladder.cout;
 <li>When you click <strong>build</strong> (the hammer symbol), Xilinx Vivado and various other tools will figure out this behaviour and <strong>then create a circuit that matches this behaviour.</strong></li>
 <li><em>This is unlike our usual Python code that is run line by line by the processor.</em></li>
 </ul>
+<h2 id="building-more-combinational-logic-devices">Building More Combinational Logic Devices</h2>
+<p>Once you have tested that your full adder works correctly, it is time to create a full-blown 8-bit ripple-carry full adder, using 8 of these units. The routine is pretty much the same. Create a file called <code>8_bit_full_adder.luc</code>, and define its input/output terminals:</p>
+<pre><code>module eight_bit_adder (
+	input x[8],
+	input y[8],
+	input cin,
+	output s[8],
+	output cout
+)
+</code></pre>
+<p>Then, declare eight full adder units:</p>
+<pre><code>{
+full_adder fulladder[8];
+}
+</code></pre>
+<p>In the always block, define the connections:</p>
+<pre><code>{
+full_adder fulladder[8];
+always {
+	fulladder.x = x;
+	fulladder.y = y;
+	fulladder.cin[0] = cin;
+	fulladder.cin[7:1] = fulladder.cout[6:0];
+	s = fulladder.s;
+	cout = fulladder.cout[7];
+	}
+}
+</code></pre>
+<p>You can use the array representations to assign values in a <strong>compact</strong> way, for example:</p>
+<pre><code>fulladder.cin[7:1] = fulladder.cout[6:0];
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code>fulladder.cin[7] = fulladder.cout[6];
+fulladder.cin[6] = fulladder.cout[5];
+fulladder.cin[5] = fulladder.cout[4];
+fulladder.cin[4] = fulladder.cout[3];
+fulladder.cin[3] = fulladder.cout[2];
+fulladder.cin[2] = fulladder.cout[1];
+fulladder.cin[1] = fulladder.cout[0];
+</code></pre>
+<h3 id="test-with-actual-inputoutput">Test with actual input/output</h3>
+<p>In <code>alu_top.luc</code>, declare the 8-bit ripple carry full adder above the <code>always</code> block:</p>
+<pre><code>eight_bit_adder eightbitadder;
+</code></pre>
+<p>and connect the terminals into these IO components at the end of the <code>always</code> block:</p>
+<pre><code>eightbitadder.x = io_dip[0];
+eightbitadder.y = io_dip[1];
+eightbitadder.cin = io_dip[2][0];
+io_led[1] = eightbitadder.s;
+io_led[1][0] = eightbitadder.cout;
+</code></pre>
+<p>Build the program and flash to the Alchitry Au:</p>
+<ul>
+<li>We can use the rightmost and the middle 8 <code>io_dip</code> to set the <code>8-bit</code> <code>x</code> and <code>y</code> values, and <code>io_dip[2][0]</code> to set <code>cin</code>.</li>
+<li>Observe that the output is <em><strong>correct</strong></em>, e.g: the middle 8 <code>io_led</code> for <code>s</code> and <code>io_led[1][0]</code> for <code>cout</code> represents the correct summation value.</li>
+</ul>
+<p>The simple circuit that’s described by this code is:<br>
+<img src="https://www.dropbox.com/s/3i5ax6btfrmdcqy/8bfa.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<h2 id="building-rom">Building ROM</h2>
+<p>Remember how we can also implement the full adder as ROM instead? Here’s how it looks like and the truth table:<br>
+<img src="https://www.dropbox.com/s/mpgdm1d5isbc62r/romadd.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>You can say that implementing anything as ROM means that we “hardcode” the answer, instead of synthesizing it using basic logic components like the gates: AND, XOR, OR, etc. The benefit of implementing the output as ROM is to minimise the hassle in synthesizing the logic out, but at the cost of <em>space</em> and <em>money</em>.</p>
+<p>We can implement a ROM in the FPGA very easily. The following module shows an example of implementing a Full Adder as ROM:</p>
+<pre><code>module full_adder_ROM (
+	// 3 bit input,
+	// address[2] is x, 
+	// address[1] is y, 
+	// address[0] is cin
+	input address[3], 
+
+	// 2 bit output,
+	// value[0] is cout, 
+	// value[1] is s
+	output value[2] 
+  ) 
+{
+  const FULL_ADDER = {b11, b01, b01, b10, b01, b10, b10, b00};
+  
+  always {
+	value = FULL_ADDER[address];
+  }
+}
+</code></pre>
+<p><strong>Notice the indexing.</strong> <code>FULL_ADDER[000]</code> represents the rightmost element that is <code>b00</code>, and so on.</p>
+<p><strong>Example</strong>: if <code>address = 100</code>, it means <code>x=1, y=0, cin=0</code>. This corresponds to the fifth entry (from the right) of the <code>FULL_ADDER</code> constant, <em>a.k.a: our ROM.</em> The value of <code>FULL_ADDER[100]</code> is <code>10</code>, which means that <code>s=1, cout=0</code> as per the full adder’s truth table.</p>
+<h2 id="building-multiplexer">Building Multiplexer</h2>
+<p>A multiplexer can be easily implemented using the keyword <code>case</code> in Lucid. Consider a new combinational logic module that does left shifting with the following schematic (<code>a</code>, <code>b</code> are inputs, and <code>s</code> is output):<br>
+<img src="https://www.dropbox.com/s/ub55j7rdohnl0o6/shifter8.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<blockquote>
+<p>The module above can shift the 8-bit <code>a</code> input by <code>n</code> bits to the left where <code>n=0,...,7</code>, and pad the shifted digits with zeroes. In Lab 3, you implement the 16-bit version of this module.</p>
+</blockquote>
+<p>The three multiplexers can be easily implemented as follows. First, declare the input and output terminals:</p>
+<pre><code>module eight_bit_shiftleft (
+	input a[8],
+	input b[3],
+	output s[8]
+  ) 
+</code></pre>
+<p>And then declare the two 8-bit intermediary signals <code>w</code> and <code>x</code>. In the <code>always</code> block, we implement the three multiplexers using three <code>case</code>, depending on each bit of input <code>b</code>:</p>
+<pre><code>{
+  sig w[8];
+  sig x[8];
+  always {
+ 
+	case(b[2]){
+        b0:
+            w = a;
+        b1:
+            w[7:4] = a[3:0];
+            w[3:0] = 4b0;
+        default:
+            w = a;
+        }
+	
+	case(b[1]){
+        b0:
+            x = w;
+        b1:
+            x[7:2] = w[5:0];
+            x[1:0] = 2b0;
+        default:
+            x = w;
+        }
+	
+	case(b[0]){
+        b0:
+            s = x;
+        b1:
+            s[7:1] = x[6:0];
+            s[0] = b0;
+        default:
+            s = x;
+        }
+  }
+}
+</code></pre>
+<p>Pretty sure you’d know by now how to use this in <code>alu_top.luc</code> and test.</p>
+<h2 id="summary">Summary</h2>
+<p>By implementing this adder on the FPGA, we have learned:</p>
+<ul>
+<li>How to define a <strong>combinational logic module</strong>: specify its input/output.</li>
+<li>Implement the logic in the <code>always</code> block.</li>
+<li>How to assemble a bigger combinational module using smaller combinational modules.</li>
+<li>How to test them and assemble them in <code>au_top.luc</code>.</li>
+</ul>
+<blockquote>
+<p>Now of course if you have read the documentation, you can simply implement an addition using a <code>+</code> in Lucid without having to resort to basic boolean logic because the interpreter will implement the addition for you. Either way, the hardware circuitry is still the same.</p>
+</blockquote>
 <p>You are highly encouraged to read <a href="https://alchitry.com/blogs/tutorials/your-first-fpga-project">this tutorial</a> to enhance your understanding afterwards.</p>
 
     </div>
