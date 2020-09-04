@@ -62,7 +62,8 @@ Singapore University of Technology and Design<br>
 </ul>
 <h3 id="declaring-and-using-d-flip-flop">Declaring and Using D Flip-Flop</h3>
 <p>We already have the 8-bit ripple-carry adder module ready, but not the D Flip-Flop. Fortunately, Lucid has a built in D Flip-Flop + the small reset mux built into it that you can use by <strong>declaring</strong> each unit with the keyword <code>dff</code> <strong>before the always block.</strong></p>
-<p>Create a new module and name it <code>seq_plus_two.luc</code>. This time round, we accept input <code>clk</code> and <code>rst</code> signal as per the default <code>.luc</code> script. These two signals are fed by the hardware, where <code>clk</code> is typically the onboard clock, and <code>rst</code> signal is <code>1</code> when the <code>reset</code> button on Alchitry Au is pressed.</p>
+<p>Create a new module and name it <code>seq_plus_two.luc</code>. This time round, we accept input <code>clk</code> and <code>rst</code> signal as per the default <code>.luc</code> script. These two signals are fed by the hardware, where <code>clk</code> is typically the onboard clock, and <code>rst</code> signal is <code>1</code> when the <code>reset</code> button on Alchitry Au (not Alchitry Io!) is pressed.</p>
+<img src="https://www.dropbox.com/s/c8bx99dmnu1zsku/au.png?raw=1" alt="“F1”" width="40%" height="40%">
 <p>To use a <code>dff</code> properly, you need to:</p>
 <ol>
 <li>Define how many bits a <code>dff</code> can hold,</li>
@@ -127,7 +128,8 @@ Singapore University of Technology and Design<br>
 <p>Don’t forget to connect <code>seqplustwo</code>'s output to <code>io_led</code> in the <code>always</code> block.</p>
 <pre><code>io_led[0] = seqplustwo.out;
 </code></pre>
-<p>Now you should be able to see that the LED resembles bits of data that’s incremented by 2 periodically.</p>
+<p>Now you should be able to see that the LED resembles bits of data that’s incremented by 2 periodically. When you click the reset button, it will restart the addition back from <code>0</code> again.</p>
+<p>To enhance your understanding in creating synchronous / sequential logic modules, <strong>it is important for you</strong> to read <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a> tutorial written by the original author.</p>
 
     </div>
   </div>
