@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fpga_1</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#getting-started-with-fpga-part-1">Getting Started with FPGA: Part 1</a>
+<ul>
+<li><a href="#creating-combinational-logic-units">Creating Combinational Logic Units</a></li>
+<li><a href="#testing-your-combinational-logic-unit-connect-it-to-io-in-alu_top.luc">Testing Your Combinational Logic Unit: Connect it to I/O in alu_top.luc</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="getting-started-with-fpga-part-1">Getting Started with FPGA: Part 1</h1>
+<p>This document is written to guide you with hardware coding in<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf"> <strong>Lucid</strong></a>, a more human friendly version of Verilog – the popular but relatively <em>difficult</em> hardware descriptive language.  Ultimately, we want to compile our code into a binary file to be loaded to our FPGA: the Alchitry Au, so that the FPGA can emulate the behavior of the machine that we describe via the code.</p>
+<p>Some fun facts about Alchitry Au:</p>
+<ul>
+<li>It features Xilinx Artix 7 FPGA, containing 33280 logic cells (the more cells, the better. Our code can “program” these cells, so if our FPGA has more cells it means that we can implement more complex functionalities)</li>
+<li>On-board clock speed: 100 MHz.</li>
+<li>102 IO pins (you’ll never run out of any!)</li>
+</ul>
+<p>More information about the board can be found <a href="https://alchitry.com/products/alchitry-au-fpga-development-board">here</a> but for now the above suffices.</p>
+<p>It is also recommended that you read this guide at the beginning of week 3, after you have finished <strong>logic synthesis</strong>, otherwise you might feel a little lost.</p>
+<p>Before you begin, please do:</p>
+<ol>
+<li>Prepare <strong>at least 50GB</strong> of free space. It goes without saying that you can use cloud storage (Dropbox, GDrive, iCloud Drive, AWS Cloud) or get an external drive.</li>
+<li>Install <a href="https://www.xilinx.com/support/download.html">Xilinx Vivado</a> : scroll down until you see the <strong>Self-extracting Web-Installer</strong>  (Windows or Linux only). Sorry Mac users, you will have to <strong>Bootcamp</strong> Windows 10 / Ubuntu.
+<ul>
+<li>Sign-up for a <strong>free</strong> Xilinx account</li>
+<li>Then, when you obtain the installer, install the <strong>Vivado HL WebPACK Edition</strong> (this is the free edition)</li>
+<li>To avoid installing too many things, select just <strong>Vivado</strong> and <strong>Artix7</strong>:<br>
+<img src="https://www.dropbox.com/s/vqcvos3ram702u9/vivado1.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
+<img src="	https://www.dropbox.com/s/9ixj1lxu6vvi2so/vivado2.png?raw=1" alt="“F1”" width="60%" height="60%"></li>
+</ul>
+</li>
+<li>Install <a href="https://www.java.com/en/download/manual.jsp">Java JRE</a> and <a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java JDK</a>, although it is likely that you already have these installed due to your other subject.</li>
+<li>Then, download the <a href="https://alchitry.com/pages/alchitry-labs">Alchitry Lab IDE</a>. This is the IDE where you can write your program in Lucid and flash it to the FPGA via USB connection.</li>
+</ol>
+<h2 id="creating-combinational-logic-units">Creating Combinational Logic Units</h2>
+<p>The purpose of using an FPGA is so that we can have an actual hardware device that realises (actually implements) certain functions or <strong>logic</strong> that we have designed.</p>
+<p>Let’s take an example of a Full Adder unit that we did in Lab 2:</p>
+<ul>
+<li>After drawing its schematic at first, we can then <em>test</em> or <em>simulate</em> its functionalities using jsim or some other tools.</li>
+<li>Then you need to actually solder a bunch of things (transistors, etc) to prove your concept. <em>This is quite a hassle.</em></li>
+<li>If you were to design a state-of-the-art full adder unit, you will want to mass-produce your design (if it works exceptionally well).</li>
+</ul>
+<p>Alternatively, we can use an FPGA to prove our concept. You can load your program (describing how your Full Adder works) onto an FPGA, and now the FPGA can be an actual working Full Adder unit.</p>
+<p><strong>How can we write this program in Lucid?</strong></p>
+<p>Firstly, create a project in Alchitry Lab,<br>
+<img src="https://www.dropbox.com/s/yn3r5mnet0cbega/1a.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Give it some name, ensure that it is Au and Lucid. Also, use the IO Element Base template. It sets the IO Unit for you:<br>
+<img src="https://www.dropbox.com/s/rng6k9awy6a95qp/1b.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Now you should see that you have a project with several files:<br>
+<img src="https://www.dropbox.com/s/qpvoetamz6vz9xw/1c.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<blockquote>
+<p>You need to do your own self-study part to fill in the gaps and understand how the code works better by reading the <a href="https://alchitry.com/pages/lucid-fpga-tutorials">tutorials</a> provided by the original developer. The course handout also provides you some useful self-study materials. This document is only made to <em>complement</em> and <em>speed up</em> your self-study process, but it doesn’t mean that you can forget about reading anything else.</p>
+</blockquote>
+<p>If you haven’t read any tutorials about Lucid and Alchitry yet, here’s some quick information:</p>
+<ul>
+<li>Under <code>Source</code>, thats where you will write <strong>all</strong> your script. <code>alu.luc</code> is like the <code>main</code> script, so do not delete that.</li>
+<li><code>alu.luc</code> is the only script that can interface with <strong>external input and output</strong>, like LED, switches and buttons.</li>
+<li>Each <code>.luc</code> script should describe a <strong>component</strong> (combinational / sequential).</li>
+<li>Typically in <code>alu.luc</code> we <strong>combine</strong> all components together with input/output, forming a whole complete device.</li>
+<li>Under <code>Components</code> is where you can <strong>add</strong> standard components (like standard library modules). Right click on it and click <code>Add Components</code>, and you’ll be faced with a phletora of modules which you may or may not use depending on your application:<br>
+<img src="https://www.dropbox.com/s/guc9ll03qiivdrx/1d.png?raw=1" alt="“F1”" width="60%" height="60%"><br>
+But a few important ones that you probably can’t live without are: <strong>counter, edge detector, button conditioner.</strong> We will meet them soon.</li>
+<li>Under <code>Constraints</code> is where you can define your input and output terminals. We will come back to this later.</li>
+</ul>
+<p>So now back to creating a <strong>Full Adder.</strong> By now you should know that this schematic implements a full adder:</p>
+<img src="https://www.dropbox.com/s/n1aqlz9dry92efk/FA.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>We can describe this schematic in Lucid, by first defining the input and output.</p>
+<h3 id="define-input-and-output-terminals">Define Input and Output terminals</h3>
+<p><strong>Create a new source file</strong> and name it <code>full_adder.luc</code>. <strong>You will see that all lucid files should begin with terminals definition.</strong> In a full adder, we have 3 1-bit inputs: <code>x, y, cin</code> and 2 1-bit outputs: <code>s, cout</code> . Therefore we shall modify the header as such:</p>
+<pre><code>module full_adder (
+			input x,
+			input y,
+			input cin,
+			output s,
+			output cout
+)
+</code></pre>
+<p><em>Since FA is a combinational logic device, then we don’t have to use the CLK.</em></p>
+<p>And then in the body, we have the <code>always</code> block, which as the name suggests it <strong>signifies a connection</strong>, something that is <strong>always</strong> connected.</p>
+<p>Remember that in this code we are <em>describing how a hardware schematic should be.</em></p>
+<p>Above the <code>always</code> block we can define other modules to be used, clock or reset signals, or simply intermediary connections using the keyword <code>sig</code>.</p>
+<p>The following code describes the schematic of an FA. The syntax is self-explanatory. Refer to Page 2 of the documentation (<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420">Lucid Quick Reference</a>) for a summary of syntaxes.</p>
+<pre><code>{
+sig i, j, k; // connector
+always {
+	s = x ^ y ^ cin;
+	i = x &amp; y;
+	j = x &amp; cin;
+	k = y &amp; cin;
+	cout = i | j | k;
+	}
+}
+</code></pre>
+<p>The values on the right of the <code>=</code> sign is the value that you will <strong>assign</strong> to the connection name on its left.</p>
+<h2 id="testing-your-combinational-logic-unit-connect-it-to-io-in-alu_top.luc">Testing Your Combinational Logic Unit: Connect it to I/O in alu_top.luc</h2>
+<p>Now let’s declare the module in <code>alu_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>alu_top.luc</code>:</p>
+<pre><code>sig rst; // reset signal
+full_adder fulladder;
+</code></pre>
+<p>Then, connect the input and output terminal of the <code>fulladder</code> with some preset IO terminals in the <code>always</code> block, below the <code>io_sel = 4hf</code> line (keep the rest intact):</p>
+<pre><code>... 
+io_sel = 4hf; // select no digits
+
+fulladder.x = io_dip[0][0];
+fulladder.y = io_dip[0][1];
+fulladder.cin = io_dip[0][2];
+
+io_led[2][1] = fulladder.s;
+io_led[2][0] = fulladder.cout;
+</code></pre>
+<p>Here’s a visual representation of the schematic. In other words, <code>alu_top.luc</code> is the script that <strong>interfaces</strong> your custom modules with the <strong>board’s input and output unit:</strong></p>
+<img src="https://www.dropbox.com/s/ljwrcth2eu3fdw8/FAau.png?raw=1" alt="“F1”" width="70%" height="70%">
+<p><em>Its not as complicated as it looks, we simply want to use:</em></p>
+<ul>
+<li><code>io_dip[0][0]</code> as <code>x</code></li>
+<li><code>io_dip[0][1]</code> as <code>y</code></li>
+<li><code>io_dip[0][2]</code> as <code>cin</code></li>
+<li><code>io_led[2][1]</code> as <code>s</code></li>
+<li><code>io_led[2][0]</code> as <code>cout</code></li>
+</ul>
+<p>Where are these stuffs on Alchitry Io? See below:<br>
+<img src="https://www.dropbox.com/s/v4baxwf8e33utm0/alc_io.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Therefore can use the dips (switch up for <code>1</code> and down for <code>0</code>) to supply various combinations of input <code>x,y,cin</code> and observe the output at the two rightmost LED in <code>IO_LED[2]</code>.</p>
+<p>Now build your code (it may take awhile, 2-3 minutes depending on your computer stats), and flash it to the Alchitry Au:<br>
+<img src="https://www.dropbox.com/s/2ct0o9mqrxjyri5/build.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<p>Alchitry Io is basically our <strong>input-output device</strong>. We use the LEDs to debug like a monitor, and buttons to supply input. ye<em>s, it is very very primitive, and <strong>it is very difficult</strong>  to <strong>debug</strong> so always test each small module before integrating it!</em></p>
+<p>The template <strong>Io Base</strong> already prepare these terminal namings for you, and define it under <code>Constraints</code> file. Open io.acf and you will see the following:<br>
+<img src="https://www.dropbox.com/s/bjtd5hrfo3ejvwj/constraintfile.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>The <code>.acf</code> file defines input and output pins from the original schematic of <code>Alchitry Au</code> to its symbols to be used when we code, e.g: <code>io_led</code>, <code>io_dip</code>, etc. The ones with the keyword <code>pulldown</code> signifies <strong>input</strong> pins, while the rest are digital output.</p>
+<blockquote>
+<p>An input pin with <code>pulldown</code> resistor will by default give a value of <code>0</code> if there’s no input being supplied to prevent a <em>floating/undefined</em> input volrage.** It is useful to read abit about <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">pull-down and pull-up resistors</a> if you were to implement a unit from scratch like the our Mini-Hardware Project.</p>
+</blockquote>
+<p>This document will not teach you how to define more inputs for use on the <code>Br</code> board yet, or use the 7-segments to display numbers. If you’re interested to learn more, read the tutorial from the original author about <a href="https://alchitry.com/blogs/tutorials/io-element"><code>Io Element</code></a>.</p>
+<p>Notice how you have this part that sets the <code>io_led</code> to off:</p>
+<blockquote>
+<p>Its written using the <strong>array builder</strong>, basically we set 3 sets of 8-bit values represented in hex <code>h</code> as 0. See <a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420">Lucid Reference</a> guide.</p>
+</blockquote>
+<pre><code>io_led = 3x{{8h00}};  // turn LEDs off
+</code></pre>
+<p>But later on we seem to overwrite two of the LED’s value to reflect <code>s</code> and <code>cout</code>:</p>
+<pre><code>io_led[2][1] = fulladder.s;
+io_led[2][0] = fulladder.cout;
+</code></pre>
+<p>During <strong>synthesis</strong>, the setting of <code>0</code> to <code>io_led[2][1]</code> and <code>io_led[2][0]</code> is <em>simply ignored</em>, meaning that it wasn’t realised as a sub-circuit on the hardware. Its treated as if the assignment of these LEDs to <code>0</code> <em>never happened</em>.</p>
+<p>Remember that:</p>
+<ul>
+<li>Anything that you write in an <em><strong>always</strong></em> block describes the behaviour (functionality) of a machine you are trying to create.</li>
+<li>When you click <strong>build</strong> (the hammer symbol), Xilinx Vivado and various other tools will figure out this behaviour and <strong>then create a circuit that matches this behaviour.</strong></li>
+<li><em>This is unlike our usual Python code that is run line by line by the processor.</em></li>
+</ul>
+<p>You are highly encouraged to read <a href="https://alchitry.com/blogs/tutorials/your-first-fpga-project">this tutorial</a> to enhance your understanding afterwards.</p>
+
+    </div>
+  </div>
+</body>
+
+</html>
