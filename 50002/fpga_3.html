@@ -16,7 +16,6 @@
 <li><a href="#getting-started-with-fpga-part-3">Getting Started with FPGA: Part 3</a>
 <ul>
 <li><a href="#resetting-modules-with-custom-clock">Resetting Modules with Custom Clock</a></li>
-<li><a href="#button-conditioner">Button Conditioner</a></li>
 </ul>
 </li>
 </ul>
@@ -62,12 +61,13 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 </code></pre>
 <p>Now if you <strong>hold</strong> <code>io_button[0]</code> <strong>long enough</strong> then the output is reset back to start at <code>2</code> onwards.</p>
 <p><mark> <strong>Bottomline is:</strong> if you do not supply the original 100MHz FPGA clock into your synchronous logic modules, then you have to take care some things yourself, like the <em>reset</em> function. </mark></p>
-<h2 id="button-conditioner">Button Conditioner</h2>
+<h3 id="reset-conditioner">Reset Conditioner</h3>
 <p>Consider the following time-plot of <code>reset</code>, <code>slowclock</code> and actual FPGA <code>clk</code>:</p>
 <img src="https://www.dropbox.com/s/u8hh5xcjpej97yl/timesync.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>It is entirely possible for the slowclock to entirely miss the reset button if it doesn’t happen at the shaded region edge (depending on how slow the clock is), or if it happens to <em>change</em> at the shaded region then we might run into <em>metastability</em> problem.</p>
-<p>The <strong>reset conditioner</strong> unit in <code>alu_top.luc</code> synchronises the reset signal with the actual FPGA clock. All units, including the slowclock.</p>
-<p>You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
+<p>We can entirely avoid the metastability problem using the component: <code>reset_conditioner</code>.</p>
+<p>The <code>reset_conditioner</code> in <code>alu_top.luc</code> <strong>synchronises</strong> the reset signal with the actual FPGA clock so that all synchronous units in the FPGA will come out of reset at once (there won’t be a case where some <code>dff</code> stay reset one cycle longer than the other. This is disastrous).  You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
+<p>?? our manual reset… ???</p>
 
     </div>
   </div>
