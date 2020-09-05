@@ -13,7 +13,12 @@
     <div class="stackedit__toc">
       
 <ul>
-<li><a href="#getting-started-with-fpga-part-3">Getting Started with FPGA: Part 3</a></li>
+<li><a href="#getting-started-with-fpga-part-3">Getting Started with FPGA: Part 3</a>
+<ul>
+<li><a href="#resetting-modules-with-custom-clock">Resetting Modules with Custom Clock</a></li>
+<li><a href="#button-conditioner">Button Conditioner</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -25,7 +30,44 @@ Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="getting-started-with-fpga-part-3">Getting Started with FPGA: Part 3</h1>
-<p>This is the final document in the series. It mainly shows how to handle I/O units, namely <strong>button presses</strong>, <strong>switches</strong>, and <strong>display</strong> of output to LEDs.  We will utilize all the parts we have learned before: combinational logic modules, sequential modules (with <code>dff</code> and <code>fsm</code>), usage of <code>counter</code> to slow the clock, and ROM. Finally, we will try to write our own constraints <code>.acf</code> file to connect our board to external LED outputs (or button/switch inputs).</p>
+<p>This is the final document in the series. It mainly shows how to handle I/O units, namely <strong>reset</strong>, <strong>input button presses</strong>, <strong>switches</strong>, and <strong>display</strong> of output to LEDs.  We will utilize all the parts we have learned before: combinational logic modules, sequential modules (with <code>dff</code> and <code>fsm</code>), usage of <code>counter</code> to slow the clock, and ROM. Finally, we will try to write our own constraints <code>.acf</code> file to connect our board to external LED outputs (or button/switch inputs).</p>
+<p><em>Note</em>: We won’t be discussing how to use the 7 segment here.</p>
+<blockquote>
+<p>There’s lots of <a href="https://alchitry.com/blogs/tutorials/io-element">online tutorial</a> on how to operate a 7-segment. <strong>The Io Element Base template</strong> itself also already contain a sample on how to use the 7-segment, so please study it.</p>
+</blockquote>
+<blockquote>
+<p>If you do buy an external 7-segment, please take note of the required <strong>supply voltage</strong>. Also pay attention whether you’re buying a <a href="https://www.electronics-tutorials.ws/blog/7-segment-display-tutorial.html">cathode or anode</a> 7-segment.</p>
+<p>The Au board can only supply up to 5V, so if it needs more than that then you need to use an <strong>external power supply</strong>. . Grab some BJT (NPN for Cathode type or PNP for Anode type typically, but either works) transistors to amplify the input signal from the Au Board. You can read some easy online tutorials on how to <a href="https://www.electronics-tutorials.ws/transistor/tran_4.html">use transistors as a switch</a>.</p>
+</blockquote>
+<h2 id="resetting-modules-with-custom-clock">Resetting Modules with Custom Clock</h2>
+<p>In part 2, we declared an instance of <code>seq_plus_two.luc</code> module using a “slowclock” so that we can actually <strong>see</strong> the output changes with our eyes:</p>
+<pre><code>counter slowclock(#SIZE(1),#DIV(26), .clk(clk), .rst(rst));
+seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
+</code></pre>
+<p>Notice that you will be unable to <strong>reset</strong> the unit, e.g: restart the sequences into <code>2,4,6,...</code> again even when the <code>reset</code> button is pressed.</p>
+<p>The quick reason on why reset doesn’t work anymore is because <mark> the <code>dff</code> inside <code>seq_plus_two.luc</code> module <em><strong>is no longer</strong> synchronised</em> with the actual FPGA clock, while the reset signal <strong>and</strong> all other modules (like the <code>slowclock</code>) are <em>synchronised</em> with the FPGA clock </mark>.  Therefore the <code>slowclock</code>  <strong>produces</strong> a bunch of <strong>zeroes</strong> when <code>reset</code> button is pressed, and this <em>stops</em> <code>seq_plus_two.luc</code> from advancing – <strong>its like <em>time is frozen</em> for <code>seq_plus_two.luc</code> when <code>reset</code> button is pressed.</strong></p>
+<p>Now you may think that we can easily add this line in  the always block of <code>seq_plus_two.luc</code> to manually reset the unit:</p>
+<pre><code>if (rst == b1){
+	register_1.d = b0;
+}
+</code></pre>
+<p>But again this won’t work precisely because <code>slowclock</code> is <strong>frozen</strong> (produces <code>0</code>) when <code>rst == 1</code> (<code>reset</code> button is pressed), so nothing gets loaded to <code>register_1</code>.</p>
+<p>The fix to this is actually fairly simple: don’t use the <code>reset</code> button to reset <code>seq_plus_two</code>. Simply use another button to be fed into the reset:</p>
+<pre><code>seq_plus_two seqplustwo(.clk(slowclock.value), .rst(io_button[0]));
+</code></pre>
+<p>And keep this line in  the always block of <code>seq_plus_two.luc</code> to manually reset the unit:</p>
+<pre><code>if (rst == b1){
+	register_1.d = b0;
+}
+</code></pre>
+<p>Now if you <strong>hold</strong> <code>io_button[0]</code> <strong>long enough</strong> then the output is reset back to start at <code>2</code> onwards.</p>
+<p><mark> <strong>Bottomline is:</strong> if you do not supply the original 100MHz FPGA clock into your synchronous logic modules, then you have to take care some things yourself, like the <em>reset</em> function. </mark></p>
+<h2 id="button-conditioner">Button Conditioner</h2>
+<p>Consider the following time-plot of <code>reset</code>, <code>slowclock</code> and actual FPGA <code>clk</code>:</p>
+<img src="https://www.dropbox.com/s/u8hh5xcjpej97yl/timesync.png?raw=1" alt="“F1”" width="60%" height="60%">
+<p>It is entirely possible for the slowclock to entirely miss the reset button if it doesn’t happen at the shaded region edge (depending on how slow the clock is), or if it happens to <em>change</em> at the shaded region then we might run into <em>metastability</em> problem.</p>
+<p>The <strong>reset conditioner</strong> unit in <code>alu_top.luc</code> synchronises the reset signal with the actual FPGA clock. All units, including the slowclock.</p>
+<p>You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
 
     </div>
   </div>
