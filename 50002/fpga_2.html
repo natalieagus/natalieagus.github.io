@@ -57,12 +57,13 @@ Singapore University of Technology and Design<br>
 </ul>
 </li>
 </ul>
-<p>To make things simple, let’s use the <strong>8-bit ripple-carry adder</strong> unit that we made in <em>Part 1</em>, to increment the value of <code>INIT</code> by the constant <code>2</code> at each clock cycle:</p>
+<p>To make things simple, let’s use the <strong>8-bit ripple-carry adder</strong> unit that we made in <em>Part 1</em>, to <strong>increment the value of <code>INIT</code> by the constant <code>2</code> at each clock cycle</strong>:</p>
 <img src="https://www.dropbox.com/s/50qvdip2wuq1njg/seqadder.png?raw=1" alt="“F1”" width="60%" height="60%">
 <ul>
 <li>The output <code>cout</code> is grounded because we don’t need it.</li>
 <li>The system has 8-bit <code>CL out</code> as output. There’s no external input to the system.</li>
-<li>When <code>RESET</code> button is pressed, then the system will start adding <code>2</code> to <code>INIT</code> value at each clock cycle.</li>
+<li>When the system starts, it will  add <code>2</code> to <code>INIT</code> value at each clock cycle.</li>
+<li>If we connect each bit of  <code>CLout</code> to an LED, then  the output sequence we should observe (changing at each CLK cycle) is: 0, 2, 4, 6, … (in binary, of course).</li>
 </ul>
 <h2 id="declaring-and-using-d-flip-flop">Declaring and Using D Flip-Flop</h2>
 <p>We already have the 8-bit ripple-carry adder module ready, but not the D Flip-Flop. Fortunately, Lucid has a built in D Flip-Flop + the small reset mux built into it that you can use by <strong>declaring</strong> each unit with the keyword <code>dff</code> <strong>before the always block.</strong></p>
@@ -99,6 +100,7 @@ Singapore University of Technology and Design<br>
 	out = plus_two.s;
   }
 </code></pre>
+<p>You can download <code>seq_plus_two.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_two.luc">here</a>.</p>
 <h2 id="testing-your-sequential-logic-module">Testing Your Sequential Logic Module</h2>
 <p>If you declare the <code>seq_plus_two</code> module in <code>alu_top</code>:</p>
 <pre><code>seq_plus_two seqplustwo(.clk(clk), .rst(rst));
@@ -131,7 +133,7 @@ Singapore University of Technology and Design<br>
 <p>Don’t forget to connect <code>seqplustwo</code>'s output to <code>io_led</code> in the <code>always</code> block.</p>
 <pre><code>io_led[0] = seqplustwo.out;
 </code></pre>
-<p>Now you should be able to see that the LED resembles bits of data that’s incremented by 2 periodically. When you click the reset button, it will restart the addition back from <code>0</code> again.</p>
+<p>Now you should be able to see that the LEDs are lighted up and they resembles bits of data that’s incremented by 2 periodically. <em><strong>BUT</strong>, when you click the reset button, it will <strong>not</strong> restart the addition back from <code>0</code> again! Can you guess why? Don’t worry about it for now. We will tackle this problem in Part 3  of the tutorial.</em></p>
 <p>To enhance your understanding in creating synchronous / sequential logic modules, <strong>it is important for you</strong> to read <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a> tutorial written by the original author.</p>
 <h2 id="creating-a-finite-state-machine">Creating a Finite State Machine</h2>
 <p>Now suppse we want to vary the <code>y</code> input signal to the 8-bit adder in <code>seq_plus_two</code>  into the following values in turn every clock cycle (on repeat):</p>
@@ -239,6 +241,7 @@ else{
 <li>Plus some other magic, we don’t really know how the proprietary software does it exactly other than it will utilize some of the 33280 logic cells of the Alchitry Au. So although we have more than enough cells on the Au to emulate reasonable school projects, we can’t really say that it can emulate <em>any</em> hardware (of any size).</li>
 </ul>
 <p><strong>To test:</strong> As usual, declare <code>seq_plus_vary</code> instance in <code>au_top.luc</code> with the <strong>slower clock</strong>, and connect its output to some LED on the Io Shield.</p>
+<p>You can download <code>seq_plus_vary.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_vary.luc">here</a>.</p>
 <h2 id="summary">Summary</h2>
 <p>In this document, we are given a glimpse on how to create a synchronous / sequential logic circuit. Please also read <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this tutorial</a> to enhance your understanding. We were also introduced into two new types: <code>dff</code> and <code>fsm</code>. You are recommended to read more about FSM <a href="https://alchitry.com/blogs/tutorials/roms-and-fsms-alchitry">here</a>.</p>
 <p>It is important to always remind yourself that the <code>always</code> block contains the <strong>hardware description</strong> of your device. It is <strong>NOT</strong> a piece of code that is sequentially executed by a processor like our usual Python and C code (there’s no processor here!). They’re <em>interpreted</em> by Xilinx and Alchitry tools sequentially, but not evaluated sequentially. <strong>You should always remind yourself that everything in an always block as being evaluated continuously.</strong></p>
