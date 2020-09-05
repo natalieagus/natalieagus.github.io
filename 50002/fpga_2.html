@@ -63,7 +63,7 @@ Singapore University of Technology and Design<br>
 <li>The output <code>cout</code> is grounded because we don’t need it.</li>
 <li>The system has 8-bit <code>CL out</code> as output. There’s no external input to the system.</li>
 <li>When the system starts, it will  add <code>2</code> to <code>INIT</code> value at each clock cycle.</li>
-<li>If we connect each bit of  <code>CLout</code> to an LED, then  the output sequence we should observe (changing at each CLK cycle) is: 0, 2, 4, 6, … (in binary, of course).</li>
+<li>If we connect each bit of  <code>CLout</code> to an LED, then  the output sequence we should observe (changing at each CLK cycle) is: <code>2, 4, 6, 8, ...</code> (in binary, of course).</li>
 </ul>
 <h2 id="declaring-and-using-d-flip-flop">Declaring and Using D Flip-Flop</h2>
 <p>We already have the 8-bit ripple-carry adder module ready, but not the D Flip-Flop. Fortunately, Lucid has a built in D Flip-Flop + the small reset mux built into it that you can use by <strong>declaring</strong> each unit with the keyword <code>dff</code> <strong>before the always block.</strong></p>
