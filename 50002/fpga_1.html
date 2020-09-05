@@ -138,6 +138,7 @@ always {
 }
 </code></pre>
 <p>The values on the right of the <code>=</code> sign is the value that you will <strong>assign</strong> to the connection name on its left.</p>
+<p>You can download completed <code>full_adder.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder.luc">here</a>.</p>
 <h2 id="connect-unit-to-io-for-testing">Connect Unit to I/O for Testing</h2>
 <p>Now let’s <strong>declare and connect</strong> the Full Adder module in <code>alu_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>alu_top.luc</code>:</p>
 <pre><code>sig rst; // reset signal
@@ -241,6 +242,7 @@ fulladder.cin[3] = fulladder.cout[2];
 fulladder.cin[2] = fulladder.cout[1];
 fulladder.cin[1] = fulladder.cout[0];
 </code></pre>
+<p>You can download <code>eight_bit_adder.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_adder.luc">here</a>.</p>
 <h3 id="test-with-actual-inputoutput">Test with actual input/output</h3>
 <p>In <code>alu_top.luc</code>, declare the 8-bit ripple carry full adder above the <code>always</code> block:</p>
 <pre><code>eight_bit_adder eightbitadder;
@@ -286,6 +288,7 @@ io_led[2][0] = eightbitadder.cout;
 </code></pre>
 <p><strong>Notice the indexing.</strong> <code>FULL_ADDER[000]</code> represents the rightmost element that is <code>b00</code>, and so on.</p>
 <p><strong>Example</strong>: if <code>address = 100</code>, it means <code>x=1, y=0, cin=0</code>. This corresponds to the fifth entry (from the right) of the <code>FULL_ADDER</code> constant, <em>a.k.a: our ROM.</em> The value of <code>FULL_ADDER[100]</code> is <code>10</code>, which means that <code>s=1, cout=0</code> as per the full adder’s truth table.</p>
+<p>You can download <code>full_adder_ROM.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder_ROM.luc">here</a>.</p>
 <h2 id="building-multiplexer">Building Multiplexer</h2>
 <p>A multiplexer can be easily implemented using the keyword <code>case</code> in Lucid. Consider a new combinational logic module that does left shifting with the following schematic (<code>a</code>, <code>b</code> are inputs, and <code>s</code> is output):<br>
 <img src="https://www.dropbox.com/s/ub55j7rdohnl0o6/shifter8.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
@@ -338,6 +341,7 @@ io_led[2][0] = eightbitadder.cout;
 }
 </code></pre>
 <p>Pretty sure you’d know by now how to declare this in <code>alu_top.luc</code> and test its funcionality.</p>
+<p>You can download <code>eight_bit_shiftleft.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_shiftleft.luc">here</a>.</p>
 <h2 id="summary">Summary</h2>
 <p>By implementing this adder on the FPGA, we have learned:</p>
 <ul>
