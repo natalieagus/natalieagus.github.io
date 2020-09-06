@@ -415,11 +415,14 @@ pin customout[2] C2;
 <p>How <a href="https://alchitry.com/blogs/tutorials/io-element">7-Segment works</a> (you can learn using the onboard 7-segment on Alchitry Io first before buying external units). <strong>7-Segment component</strong> is useful to display numbers, e.g: display score, time left, etc.</p>
 </li>
 <li>
-<p>How LED Strips work (e.g: WS2812B, or SK6812 LEDs). You can refer to online tutorials like <a href="https://vivonomicon.com/2018/12/24/learning-how-to-fpga-with-neopixel-leds/">this</a> one.</p>
+<p>How LED Strips work (e.g: WS2812B, or SK6812 LEDs). You can refer to online tutorials like <a href="https://vivonomicon.com/2018/12/24/learning-how-to-fpga-with-neopixel-leds/">this</a> one. We have some sample LED writers that’s Au compatible <a href="https://github.com/natalieagus/SampleAlchitryProjects/tree/master/LEDStripTest">here</a> to get you started.</p>
 </li>
 <li>
 <p>How you can utilize another powerful <strong>storage device:</strong> the default <a href="https://alchitry.com/blogs/tutorials/hello-your_name_here">RAM component</a> (there’s single-port and dual-port RAM).</p>
 <p><mark><strong>RAM component</strong> is <strong>especially useful</strong> if you need to store a <strong>large</strong> amount of data </mark>, e.g data to be rendered out to large (32x32 or 64x32, etc) LED matrices. It is convenient to use the <code>dff</code> for small data storages, but you will run out of logic units real fast if you were to create thousands of dffs (not to mention the bizzare amount of time needed to compile the code).</p>
+</li>
+<li>
+<p>How RGB LED Matrix works. Some <a href="https://learn.adafruit.com/fpga-rgb-matrix/overview">online tutorials</a> can be a good starting point. You need to have some pretty good understanding about sending clocked serial data though. We have some sample RGB Matrix writer (64x32 compatible, simply adjust the parameter if you have other dimensions) <a href="https://github.com/natalieagus/SampleAlchitryProjects/tree/master/MatrixLEDTest">here</a>.  You can use it with some simple RAM modules (2 units of 64x16 cells, each cell containing 3 bits, each unit to drive one-half of the matrix).</p>
 </li>
 </ol>
 <p>Once you’re comfortable with some basic FPGA coding, you can begin designing the datapath for your game and implement the modules required. You may refer to <a href="https://natalieagus.github.io/50002/1D_programmable_machine.html">this tutorial</a> for clues on how to begin if needed.</p>
