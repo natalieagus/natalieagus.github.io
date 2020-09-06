@@ -82,7 +82,7 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 <p><mark> Bottomline is, external inputs are <strong>unreliable</strong>, and can be disastrous if its used to trigger important events like a <code>reset</code> </mark>.</p>
 <h3 id="reset-conditioner">Reset Conditioner</h3>
 <p>Normally, we can entirely avoid the <em>metastability</em> and <em>desynchronisation</em> problem using the built-in component: <code>reset_conditioner</code>.</p>
-<p>The <code>reset_conditioner</code> in <code>alu_top.luc</code> <strong>synchronises</strong> the reset signal <strong>with the actual FPGA clock</strong> so that all synchronous units in the FPGA will come out of reset at once, so that there won’t be a case where some <code>dff</code> stay reset one cycle longer than the other.  You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
+<p>The <code>reset_conditioner</code> in <code>au_top.luc</code> <strong>synchronises</strong> the reset signal <strong>with the actual FPGA clock</strong> so that all synchronous units in the FPGA will come out of reset at once, so that there won’t be a case where some <code>dff</code> stay reset one cycle longer than the other.  You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
 <p>For our <code>seq_plus_two.luc</code> unit, we used a custom clock and a <em>separate</em> manual reset from the rest of the units implemented in the FPGA.  While for this case alone it <em>seems</em> fine, it is a bad idea because if you have a more complicated system <strong>it can be</strong> <strong>disastrous</strong>:</p>
 <ul>
 <li>If you manually reset each and every one of them without any kind of conditioner unit, then there’s no way to ensure that all units come out of the reset at the same time.</li>
@@ -132,7 +132,7 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 <li>In the first line, we pass the output of the slowClock to the edge detector so that it will produce a value of <code>1</code> once (within 1 clk cycle of the FPGA clock) at every rising edge.</li>
 <li>Then we only update <code>register_1</code> to store the current output of the adder when <code>slowClockEdge.out == b1</code>.</li>
 </ul>
-<p>We now can supply the hardware clock <code>clk</code> and <code>rst</code> signal when declaring it at <code>alu_top.luc</code>, and no longer supply a custom clock into it:</p>
+<p>We now can supply the hardware clock <code>clk</code> and <code>rst</code> signal when declaring it at <code>au_top.luc</code>, and no longer supply a custom clock into it:</p>
 <pre><code>seq_plus_twoSlow seqplustwo(.clk(clk), .rst(rst));
 </code></pre>
 <p>You can find the final implementation <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_twoSlow.luc">here</a></p>
@@ -182,7 +182,7 @@ slowClockEdge.in = slowClock.value[SLOWCLOCK_SIZE-1];
 	
   }
 </code></pre>
-<p>Similarly, we now can supply the hardware clock <code>clk</code> and <code>rst</code> signal when declaring it at <code>alu_top.luc</code>, and no longer supply a custom clock into it:</p>
+<p>Similarly, we now can supply the hardware clock <code>clk</code> and <code>rst</code> signal when declaring it at <code>au_top.luc</code>, and no longer supply a custom clock into it:</p>
 <pre><code>seq_plus_varySlow seqplusvary(.clk(clk), .rst(rst));
 </code></pre>
 <p>You can find the complete script <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_varySlow.luc">here</a>.</p>
@@ -217,6 +217,151 @@ some_system.trigger_input = buttondetector.out;
 </code></pre>
 <p>Then in the <code>always</code> block of that <code>some_system</code>, you can simply check if <code>trigger_input == 1b</code> and describe what should happen accordingly.</p>
 <h2 id="storing-button-press-sequences">Storing Button Press Sequences</h2>
+<p>In this section, we learn how to utilize all that we have learned before:</p>
+<ul>
+<li>Creating combinational modules</li>
+<li>Creating sequential modules</li>
+<li>Using button conditioners and edge detectors</li>
+<li>Using FSM and dff</li>
+</ul>
+<p>…to implement this feature:</p>
+<ul>
+<li>Given a series of button presses,</li>
+<li>We store it and compare it against a fixed sequence</li>
+<li>Display whether the presses matches the fixed sequence</li>
+</ul>
+<p>Create a new source file and name it <code>sequence_checker.luc</code> with the following input and output terminals:</p>
+<pre><code>module sequence_checker (
+	input buttons[4],
+	input clk, // clock
+	input rst, // reset
+	output out_result[3],
+	output out_buttonseq[4]
+)
+</code></pre>
+<ul>
+<li><code>buttons[4]</code>: is a 4-bit button press indicator. Each digit <code>i</code> that is <code>1</code>(high) represents that button <code>i</code> is pressed, hence in total there’s 4 different possible buttons that can be pressed.</li>
+<li><code>out_result</code>:  3-bit indicator that shows whether the button presses matches the sequence. It will be <code>111</code> if you’re correct, and <code>100</code> if you’re wrong. Actually 1-bit is sufficient to indicate whether the result is <em>right</em> or <em>wrong</em> but for clarity we use 3-bits instead.</li>
+<li><code>out_buttonseq</code> : just to debug. We will explain that later.</li>
+</ul>
+<h3 id="planning">Planning</h3>
+<p>Assume that this module’s job is to receive <strong>two</strong> button presses, and each press can be from either of the four button: <code>io_button[0]</code>,  <code>io_button[1]</code>, <code>io_button[2]</code>,   <code>io_button[3]</code> (we can easily expand the idea to store and check more sequences of button presses, but lets start with two).</p>
+<p>We need to design a way to store these presses. Since each press can be one of the four buttons, we need 2-bits to indicate (<em>index</em>) each button press, e.g:</p>
+<ul>
+<li><code>b00</code> for when <code>io_button[0]</code> is pressed</li>
+<li><code>b01</code> for when <code>io_button[1]</code> is pressed</li>
+<li><code>b10</code> for when <code>io_button[2]</code> is pressed</li>
+<li><code>b11</code> for when <code>io_button[3]</code> is pressed</li>
+</ul>
+<p>And then we need a memory unit to <strong>store</strong> the button index for each press. Since we have two presses, we can have a 4-bit dff to store the first press in the last 2-bits, and to store the second press in the next 2-bits.</p>
+<blockquote>
+<p>For example, if <code>io_button[2]</code> is pressed first and  <code>io_button[3]</code> is pressed next, the content of this dff should be <code>b1110</code>.</p>
+</blockquote>
+<p>Then, we also need an <code>fsm</code> so that we can switch between some states like  waiting for button press, storing button presses, and checking the sequence after two presses are entered.</p>
+<p>Finally, we need a <code>constant</code> to match the sequence button presses against.</p>
+<h3 id="declaring-the-modules">Declaring the modules</h3>
+<p>Based on our planning above, we can declare these modules:</p>
+<pre><code>dff sequence[4](#INIT(0), .clk(clk), .rst(rst));
+dff result[3](#INIT(0),.clk(clk), .rst(rst));
+
+const MATCH = {b10, b11}; // press button 4, then 3
+
+fsm brain(.clk(clk), .rst(rst)) = {
+	WAITFIRSTPRESS,
+	WAITSECONDPRESS,
+	CHECKPRESS
+};
+</code></pre>
+<p>The implementation is simple, during state <code>WAITFIRSTPRESS</code> and <code>WAITSECONDPRESS</code> we either wait for button-press and stay in the state, or if there’s any button press, we store it to <code>sequence</code> registers and advance to the next state:</p>
+<pre><code>always{     
+    case (brain.q)
+    {
+      brain.WAITFIRSTPRESS:
+        if (buttons[3] | buttons[2] | buttons[1] | buttons[0]){ //if any button is pressed
+            if (buttons[3]){
+              //fourth button pressed 
+              sequence.d[1:0] = b11;
+            }
+          else if (buttons[2]){
+              //third button pressed 
+              sequence.d[1:0] = b10;
+            }
+          else if (buttons[1]){
+              //second button pressed 
+              sequence.d[1:0] = b01;
+            }
+          else if (buttons[0]){
+              //first button pressed 
+              sequence.d[1:0] = b00;
+            }           
+            brain.d = brain.WAITSECONDPRESS;
+            // reset result 
+            result.d = b000;
+        }
+        else{
+            brain.d = brain.WAITFIRSTPRESS; //if no press, loop 
+        }
+      
+    
+      brain.WAITSECONDPRESS:       
+          if (buttons[3] | buttons[2] | buttons[1] | buttons[0]){ //if any button is pressed
+            if (buttons[3]){
+              //fourth button pressed 
+              sequence.d[3:2] = b11;
+            }
+          else if (buttons[2]){
+              //third button pressed 
+              sequence.d[3:2] = b10;
+            }
+          else if (buttons[1]){
+              //second button pressed 
+              sequence.d[3:2] = b01;
+            }
+          else if (buttons[0]){
+              //first button pressed 
+              sequence.d[3:2] = b00;
+            }        
+            brain.d = brain.CHECKPRESS;
+           }
+          else{
+            brain.d = brain.WAITSECONDPRESS; //if no press, loop 
+          }
+   
+      brain.CHECKPRESS:
+        if (sequence.q[1:0] == MATCH[0] &amp;&amp; sequence.q[3:2] == MATCH[1]){
+            result.d = b111; //RIGHT
+        }
+        else{
+            result.d = b100; //WRONG
+        }
+        brain.d = brain.CHECKPRESS;
+    }
+    
+    out_result = result.q;
+    out_buttonseq = sequence.q;
+
+}
+}
+</code></pre>
+<blockquote>
+<p>Yes, there’s a lot of boilerplate “code” in there, but readable. There’s better ways to make the code more compact but it doesn’t really matter in terms of performance because its not like they’re “evaluated” line by line anyway. What’s more important is, if you’re a beginner, to plan your schematic properly before you start coding.</p>
+</blockquote>
+<p>You can find the complete code <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/sequence_checker.luc">here</a>.</p>
+<h3 id="test-it">Test it</h3>
+<p>In <code>au_top.luc</code>, let’s declare the necessary modules:</p>
+<pre><code>sequence_checker sc(.clk(clk), .rst(rst));
+button_conditioner buttoncond[4](.clk(clk));
+edge_detector buttondetector[4](#RISE(1), #FALL(0),.clk(clk)); //detect on rising edge only
+</code></pre>
+<p>and in the <code>always</code> block of <code>au_top.luc</code>, connect the input and output:</p>
+<pre><code>io_led[0][3:0] = io_button[3:0];
+buttoncond.in = io_button[3:0];
+buttondetector.in = buttoncond.out;
+
+sc.buttons = buttondetector.out;
+io_led[2] = sc.out_buttonseq; //debug
+io_led[1][3:0] = sc.out_result; //result
+</code></pre>
 
     </div>
   </div>
