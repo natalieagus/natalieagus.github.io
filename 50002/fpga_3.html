@@ -16,6 +16,8 @@
 <li><a href="#getting-started-with-fpga-part-3">Getting Started with FPGA: Part 3</a>
 <ul>
 <li><a href="#resetting-modules-with-custom-clock">Resetting Modules with Custom Clock</a></li>
+<li><a href="#slowing-modules-with-fpga-clock">Slowing Modules with FPGA Clock</a></li>
+<li><a href="#conditioning-button-presses">Conditioning Button Presses</a></li>
 </ul>
 </li>
 </ul>
@@ -29,7 +31,7 @@ Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="getting-started-with-fpga-part-3">Getting Started with FPGA: Part 3</h1>
-<p>This is the final document in the series. It mainly shows how to handle I/O units, namely <strong>reset</strong>, <strong>input button presses</strong>, <strong>switches</strong>, and <strong>display</strong> of output to LEDs.  We will utilize all the parts we have learned before: combinational logic modules, sequential modules (with <code>dff</code> and <code>fsm</code>), usage of <code>counter</code> to slow the clock, and ROM. Finally, we will try to write our own constraints <code>.acf</code> file to connect our board to external LED outputs (or button/switch inputs).</p>
+<p>This is the final document in the series. It mainly shows how to handle I/O units, namely <strong>reset</strong>, <strong>input button presses</strong>, and <strong>routing output to external LEDs</strong>.  We will utilize all the parts we have learned before: combinational logic modules, sequential modules (with <code>dff</code> and <code>fsm</code>), usage of <code>counter</code> to slow the clock, and ROM. Finally, we will try to write our own constraints <code>.acf</code> file to connect our board to external LED outputs (or button/switch inputs).</p>
 <p><em>Note</em>: We won’t be discussing how to use the 7 segment here.</p>
 <blockquote>
 <p>There’s lots of <a href="https://alchitry.com/blogs/tutorials/io-element">online tutorial</a> on how to operate a 7-segment. <strong>The Io Element Base template</strong> itself also already contain a sample on how to use the 7-segment, so please study it.</p>
@@ -39,11 +41,21 @@ Singapore University of Technology and Design<br>
 <p>The Au board can only supply up to 5V, so if it needs more than that then you need to use an <strong>external power supply</strong>. . Grab some BJT (NPN for Cathode type or PNP for Anode type typically, but either works) transistors to amplify the input signal from the Au Board. You can read some easy online tutorials on how to <a href="https://www.electronics-tutorials.ws/transistor/tran_4.html">use transistors as a switch</a>.</p>
 </blockquote>
 <h2 id="resetting-modules-with-custom-clock">Resetting Modules with Custom Clock</h2>
+<p>In this section we will discuss <strong>issues of reset</strong> if you supply a custom clock to your synchronous logic units:</p>
+<ol>
+<li>The standard <code>reset</code> button will not work anymore to reset this unit with custom clock, so you have to perform a <strong>manual reset.</strong></li>
+<li>There’s <strong>no easy way</strong> to synchronize the reset of this unit with custom clock and the reset of other units with FPGA clock. Depending on your design, it might be <em>problematic</em> if some units come out of reset earlier / later than others.</li>
+</ol>
+<p><mark> By definition, a system reset must reset ALL components synchronously </mark>.</p>
+<h3 id="manual-reset-with-another-button">Manual Reset with Another Button</h3>
 <p>In part 2, we declared an instance of <code>seq_plus_two.luc</code> module using a “slowclock” so that we can actually <strong>see</strong> the output changes with our eyes:</p>
 <pre><code>counter slowclock(#SIZE(1),#DIV(26), .clk(clk), .rst(rst));
 seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 </code></pre>
 <p>Notice that you will be unable to <strong>reset</strong> the unit, e.g: restart the sequences into <code>2,4,6,...</code> again even when the <code>reset</code> button is pressed.</p>
+<blockquote>
+<p>We also do the same for <code>seq_plus_vary.luc</code>, so it can’t be reset either at this point.</p>
+</blockquote>
 <p>The quick reason on why reset doesn’t work anymore is because <mark> the <code>dff</code> inside <code>seq_plus_two.luc</code> module <em><strong>is no longer</strong> synchronised</em> with the actual FPGA clock, while the reset signal <strong>and</strong> all other modules (like the <code>slowclock</code>) are <em>synchronised</em> with the FPGA clock </mark>.  Therefore the <code>slowclock</code>  <strong>produces</strong> a bunch of <strong>zeroes</strong> when <code>reset</code> button is pressed, and this <em>stops</em> <code>seq_plus_two.luc</code> from advancing – <strong>its like <em>time is frozen</em> for <code>seq_plus_two.luc</code> when <code>reset</code> button is pressed.</strong></p>
 <p>Now you may think that we can easily add this line in  the always block of <code>seq_plus_two.luc</code> to manually reset the unit:</p>
 <pre><code>if (rst == b1){
@@ -60,14 +72,119 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 }
 </code></pre>
 <p>Now if you <strong>hold</strong> <code>io_button[0]</code> <strong>long enough</strong> then the output is reset back to start at <code>2</code> onwards.</p>
-<p><mark> <strong>Bottomline is:</strong> if you do not supply the original 100MHz FPGA clock into your synchronous logic modules, then you have to take care some things yourself, like the <em>reset</em> function. </mark></p>
-<h3 id="reset-conditioner">Reset Conditioner</h3>
+<h3 id="manual-reset-issue">Manual Reset Issue</h3>
 <p>Consider the following time-plot of <code>reset</code>, <code>slowclock</code> and actual FPGA <code>clk</code>:</p>
 <img src="https://www.dropbox.com/s/u8hh5xcjpej97yl/timesync.png?raw=1" alt="“F1”" width="60%" height="60%">
-<p>It is entirely possible for the slowclock to entirely miss the reset button if it doesn’t happen at the shaded region edge (depending on how slow the clock is), or if it happens to <em>change</em> at the shaded region then we might run into <em>metastability</em> problem.</p>
-<p>We can entirely avoid the metastability problem using the component: <code>reset_conditioner</code>.</p>
-<p>The <code>reset_conditioner</code> in <code>alu_top.luc</code> <strong>synchronises</strong> the reset signal with the actual FPGA clock so that all synchronous units in the FPGA will come out of reset at once (there won’t be a case where some <code>dff</code> stay reset one cycle longer than the other. This is disastrous).  You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
-<p>?? our manual reset… ???</p>
+<p>It is <strong>entirely possible</strong> for the slowclock (rising edge) to entirely <strong>miss</strong> the “reset” button (in our example, we used <code>io_button[0]</code> as manual reset) press <em>if the press isn’t covering the shaded region</em> (depending on how slow the clock is).</p>
+<p>Plus, if it happens to <em>change</em> at the shaded region then we might run into <em>metastability</em> problem.  Even worse, since we don’t know how button input from external source will change in relation to the rising edge of the clock (be it system or custom), it is possible that some flip flops are reset and some others aren’t. This is disastrous!</p>
+<p><mark> Bottomline is, external inputs are <strong>unreliable</strong>, and can be disastrous if its used to trigger important events like a <code>reset</code> </mark>.</p>
+<h3 id="reset-conditioner">Reset Conditioner</h3>
+<p>Normally, we can entirely avoid the <em>metastability</em> and <em>desynchronisation</em> problem using the built-in component: <code>reset_conditioner</code>.</p>
+<p>The <code>reset_conditioner</code> in <code>alu_top.luc</code> <strong>synchronises</strong> the reset signal <strong>with the actual FPGA clock</strong> so that all synchronous units in the FPGA will come out of reset at once, so that there won’t be a case where some <code>dff</code> stay reset one cycle longer than the other.  You can read more about <strong>reset_conditioner</strong>  at the end of <a href="https://alchitry.com/blogs/tutorials/synchronous-logic-1">this</a>  tutorial and <a href="https://learn.sparkfun.com/tutorials/external-io-and-metastability/all">this</a> tutorial as well.</p>
+<p>For our <code>seq_plus_two.luc</code> unit, we used a custom clock and a <em>separate</em> manual reset from the rest of the units implemented in the FPGA.  While for this case alone it <em>seems</em> fine, it is a bad idea because if you have a more complicated system <strong>it can be</strong> <strong>disastrous</strong>:</p>
+<ul>
+<li>If you manually reset each and every one of them without any kind of conditioner unit, then there’s no way to ensure that all units come out of the reset at the same time.</li>
+<li>The only way to ensure that its all “reset” at the same time would be to <strong>switch off and on</strong> the device again, which is rather <em>unprofessional</em>.</li>
+</ul>
+<p><strong>So how do we tackle this?</strong></p>
+<blockquote>
+<p><em>How can we slow-down the output of the unit (so that we can observe the output with the naked eye) without having to use a different clock?</em></p>
+</blockquote>
+<p><mark> <strong>Bottomline is:</strong> if you need to <code>reset</code> your module for any purpose, <strong>it is a bad idea  to use another clock other than the original FPGA clock</strong> – unless of course you’re very experienced in this field. </mark></p>
+<h2 id="slowing-modules-with-fpga-clock">Slowing Modules with FPGA Clock</h2>
+<p>A <em>better</em> way to sort of “slow down” the output of a module is to put certain logic condition in the <code>always</code> block instead and still supplying the original hardware <code>clk</code> and <code>rst</code> signal to it. Components that should be used to slow within sequential modules <em>without messing</em> with the <code>clk</code> are the <strong>counter</strong> and <strong>edge_detector</strong>.</p>
+<h3 id="slowing-the-output-rate-and-enabling-system-reset-for-seq_plus_two.luc">Slowing the output rate and enabling system reset for <code>seq_plus_two.luc</code></h3>
+<p>Since what we want is to perform <code>+2</code> only around <strong>once</strong> per second (so that we can see the output in effect), we need the same slow counter device be used within <code>seq_plus_two</code> instead:</p>
+<pre><code>counter slowClock(#DIV(26), .clk(clk), .rst(rst));
+</code></pre>
+<p>We need another module called the <strong>edge detector</strong> because we just want to have that trigger to +2 <em>once</em> every 1 second.</p>
+<blockquote>
+<p>In 1 second, 100 million cycles of the FPGA clock have passed. We only one ONE out of the 100 million cycles to trigger the +2.</p>
+</blockquote>
+<p>The time diagram below illustrates how an edge detector work:<br>
+<img src="https://www.dropbox.com/s/f6jzjq0smatdb5r/edge.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<p>Add the edge-detector component (under Miscellaneous), and declare it in <code>seq_plus_two.luc</code>:</p>
+<pre><code>edge_detector slowClockEdge(.clk(clk));
+</code></pre>
+<p>Modify the <code>always</code> block to be as such:</p>
+<pre><code>{
+	dff register_1[8](#INIT(0), .clk(clk), .rst(rst));
+	eight_bit_adder plus_two;
+	counter slowClock(#DIV(26), .clk(clk), .rst(rst));
+	edge_detector slowClockEdge(#RISE(1), #FALL(0), .clk(clk));
+
+  always {
+    slowClockEdge.in = slowClock.value;
+  	plus_two.y = 8h02;
+  	plus_two.x = register_1.q;
+  	plus_two.cin = b0;
+    
+	 
+    if (slowClockEdge.out == b1){ //only add when MSB of slowCLock == 1
+     register_1.d = plus_two.s;
+    }
+	  out = plus_two.s;
+  }
+</code></pre>
+<ul>
+<li>In the first line, we pass the output of the slowClock to the edge detector so that it will produce a value of <code>1</code> once (within 1 clk cycle of the FPGA clock) at every rising edge.</li>
+<li>Then we only update <code>register_1</code> to store the current output of the adder when <code>slowClockEdge.out == b1</code>.</li>
+</ul>
+<p>We now can supply the hardware clock <code>clk</code> and <code>rst</code> signal when declaring it at <code>alu_top.luc</code>, and no longer supply a custom clock into it:</p>
+<pre><code>seq_plus_twoSlow seqplustwo(.clk(clk), .rst(rst));
+</code></pre>
+<p>You can find the final implementation <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_twoSlow.luc">here</a></p>
+<h3 id="slowing-the-output-rate-and-enabling-system-reset-for-seq_plus_vary.luc">Slowing the output rate and enabling system reset for <code>seq_plus_vary.luc</code></h3>
+<p>Similarly for this unit, we can use the slowcounter and edge detector to trigger the state change only when the output of the edge detector is <code>1</code>.</p>
+<p>Another way to use the counter is to create an <code>N</code> bit counter, and feed in the MSB as the input of the edge detector:</p>
+<blockquote>
+<p>Notice that the  LSB of the output of an <code>N</code> bit counter fed with system clock will be incremented by 1 as fast as the system clock cycle. The second LSB will be incremented half as fast as the LSB. The third LSB will be incremented half as fast as the second LSB, and so on. We can utilise this observation to create a slow-clock by utilizing the higher bits of the counter.</p>
+</blockquote>
+<pre><code>const SLOWCLOCK_SIZE = 27;
+counter slowClock(#SIZE(SLOWCLOCK_SIZE), .clk(clk), .rst(rst));
+edge_detector slowClockEdge(#RISE(1), #FALL(0), .clk(clk));
+
+....// inside always block
+slowClockEdge.in = slowClock.value[SLOWCLOCK_SIZE-1];
+</code></pre>
+<p>The updated <code>always</code> block of <code>seq_plus_vary.luc</code> is as follows, where we perform state transition or loading of output of adder to <code>register_1</code> only when the edge detector’s output produces a <code>1</code>:</p>
+<pre><code>  always {
+	adder.y = 8h00;
+	adder.x = register_1.q;
+	adder.cin = b0;
+
+  slowClockEdge.in = slowClock.value[SLOWCLOCK_SIZE-1];
+  
+	case (y_controller.q){
+  	y_controller.S0:
+      	adder.y = 8h02;
+       if (slowClockEdge.out == b1){ //only trigger change when slowClockEdge gives a 1
+      	    y_controller.d = y_controller.S1;
+        }
+  	y_controller.S1:
+      	adder.y = 8h07;
+       if (slowClockEdge.out == b1){
+      	y_controller.d = y_controller.S2;
+        }
+  	y_controller.S2:
+      	adder.y = 8h0C;
+       if (slowClockEdge.out == b1){
+      	y_controller.d = y_controller.S0;
+      	}
+    }
+
+    if (slowClockEdge.out == b1){
+	          register_1.d = adder.s;
+        }
+    	out = adder.s;
+	
+  }
+</code></pre>
+<p>Similarly, we now can supply the hardware clock <code>clk</code> and <code>rst</code> signal when declaring it at <code>alu_top.luc</code>, and no longer supply a custom clock into it:</p>
+<pre><code>seq_plus_varySlow seqplusvary(.clk(clk), .rst(rst));
+</code></pre>
+<p>You can find the complete script <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_varySlow.luc">here</a>.</p>
+<h2 id="conditioning-button-presses">Conditioning Button Presses</h2>
 
     </div>
   </div>
