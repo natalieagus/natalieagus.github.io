@@ -19,6 +19,7 @@
 <li><a href="#slowing-modules-with-fpga-clock">Slowing Modules with FPGA Clock</a></li>
 <li><a href="#conditioning-button-presses">Conditioning Button Presses</a></li>
 <li><a href="#using-button-presses-as-triggers">Using Button Presses as Triggers</a></li>
+<li><a href="#storing-button-press-sequences">Storing Button Press Sequences</a></li>
 </ul>
 </li>
 </ul>
@@ -111,7 +112,7 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 <pre><code>{
 	dff register_1[8](#INIT(0), .clk(clk), .rst(rst));
 	eight_bit_adder plus_two;
-	counter slowClock(#DIV(26), .clk(clk), .rst(rst));
+	counter slowClock(#SIZE(1), #DIV(26), .clk(clk), .rst(rst));
 	edge_detector slowClockEdge(#RISE(1), #FALL(0), .clk(clk));
 
   always {
@@ -205,15 +206,17 @@ buttoncond.in = io_button[3:0];
 <p>…then you’d be loading the value of <code>1</code> for many many clock cycles to the same register. This is alright if your use case is case <strong>(2)</strong> above, that is if you use it as an input to some combinational logic unit,</p>
 <pre><code>some_combi_logic.input = buttoncond.out
 </code></pre>
-<p>…but it <strong>will not work</strong> if you intend to use the button press as a <em>trigger</em> that’s supposed to happen <strong>ONCE per PRESS.</strong></p>
+<p>…but <mark> using <code>buttoncond.out</code> plainly <strong>will not work</strong> if you intend to use the button press as a <em>trigger</em> that’s supposed to happen <strong>ONCE per PRESS.</strong>   </mark></p>
 <p>In order to trigger the system once per press, you need to use the edge detector (don’t forget to specify <code>#RISE</code> or <code>#FALL</code> or both):</p>
 <pre><code>edge_detector buttondetector[4](#RISE(1), #FALL(0),.clk(clk)); //detect on rising edge only
 </code></pre>
 <p>and then use it as such:</p>
 <pre><code>buttoncond.in = io_button[3:0];
 buttondetector.in = buttoncond.out;
-register_1.d = buttondetector.out;
+some_system.trigger_input = buttondetector.out;
 </code></pre>
+<p>Then in the <code>always</code> block of that <code>some_system</code>, you can simply check if <code>trigger_input == 1b</code> and describe what should happen accordingly.</p>
+<h2 id="storing-button-press-sequences">Storing Button Press Sequences</h2>
 
     </div>
   </div>
