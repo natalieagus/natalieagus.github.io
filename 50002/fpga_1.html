@@ -140,7 +140,7 @@ always {
 <p>The values on the right of the <code>=</code> sign is the value that you will <strong>assign</strong> to the connection name on its left.</p>
 <p>You can download completed <code>full_adder.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder.luc">here</a>.</p>
 <h2 id="connect-unit-to-io-for-testing">Connect Unit to I/O for Testing</h2>
-<p>Now let’s <strong>declare and connect</strong> the Full Adder module in <code>alu_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>alu_top.luc</code>:</p>
+<p>Now let’s <strong>declare and connect</strong> the Full Adder module in <code>au_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>au_top.luc</code>:</p>
 <pre><code>sig rst; // reset signal
 full_adder fulladder;
 </code></pre>
@@ -155,8 +155,8 @@ fulladder.cin = io_dip[0][2];
 io_led[2][1] = fulladder.s;
 io_led[2][0] = fulladder.cout;
 </code></pre>
-<p><em>Note:</em> It is highly recommended that you <strong>do not implement</strong> any further combinational logic modules in <code>alu_top.luc</code>. Your code has to be as <mark> <strong>modular</strong> </mark> as possible for the sake of easy debugging and development. <strong>As a good practice, the module <code>au_top.luc</code> should be only used to simply connect big module(s) to the input/output terminal.</strong></p>
-<p>Here’s a visual representation of the schematic. In other words, <code>alu_top.luc</code> is the script that <strong>interfaces</strong> your custom modules with the <strong>board’s input and output unit:</strong></p>
+<p><em>Note:</em> It is highly recommended that you <strong>do not implement</strong> any further combinational logic modules in <code>au_top.luc</code>. Your code has to be as <mark> <strong>modular</strong> </mark> as possible for the sake of easy debugging and development. <strong>As a good practice, the module <code>au_top.luc</code> should be only used to simply connect big module(s) to the input/output terminal.</strong></p>
+<p>Here’s a visual representation of the schematic. In other words, <code>au_top.luc</code> is the script that <strong>interfaces</strong> your custom modules with the <strong>board’s input and output unit:</strong></p>
 <img src="https://www.dropbox.com/s/ljwrcth2eu3fdw8/FAau.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p><em>Its not as complicated as it looks, we simply want to use:</em></p>
 <ul>
@@ -244,7 +244,7 @@ fulladder.cin[1] = fulladder.cout[0];
 </code></pre>
 <p>You can download <code>eight_bit_adder.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_adder.luc">here</a>.</p>
 <h3 id="test-with-actual-inputoutput">Test with actual input/output</h3>
-<p>In <code>alu_top.luc</code>, declare the 8-bit ripple carry full adder above the <code>always</code> block:</p>
+<p>In <code>au_top.luc</code>, declare the 8-bit ripple carry full adder above the <code>always</code> block:</p>
 <pre><code>eight_bit_adder eightbitadder;
 </code></pre>
 <p>and connect the terminals into these IO components at the end of the <code>always</code> block:</p>
@@ -340,7 +340,7 @@ io_led[2][0] = eightbitadder.cout;
   }
 }
 </code></pre>
-<p>Pretty sure you’d know by now how to declare this in <code>alu_top.luc</code> and test its funcionality.</p>
+<p>Pretty sure you’d know by now how to declare this in <code>au_top.luc</code> and test its funcionality.</p>
 <p>You can download <code>eight_bit_shiftleft.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_shiftleft.luc">here</a>.</p>
 <h2 id="summary">Summary</h2>
 <p>By implementing this adder on the FPGA, we have learned:</p>
