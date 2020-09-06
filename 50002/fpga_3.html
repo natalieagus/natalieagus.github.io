@@ -21,6 +21,7 @@
 <li><a href="#using-button-presses-as-triggers">Using Button Presses as Triggers</a></li>
 <li><a href="#storing-button-press-sequences">Storing Button Press Sequences</a></li>
 <li><a href="#using-external-output">Using External Output</a></li>
+<li><a href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -366,7 +367,11 @@ io_led[1][2:0] = sc.out_result; //result
 <p>When you have built and run the program, try pressing some of the <code>io_button</code> and observe the output. If you press <code>io_button[3]</code> then <code>io_button[2]</code>, it will match the <code>const MATCH</code> and all three bits of <code>io_led[1][2:0]</code> will light up.</p>
 <h2 id="using-external-output">Using External Output</h2>
 <p>Finally, we will try to show the result <code>sc.out_result</code> on an external LED instead. You need to use the <code>Br</code> board for this (the middle board in the stack). Take a look at the <a href="https://drive.google.com/file/d/1T3Vth8YpqDq1iOcPEW6TWjwVH0-h-59C/view?usp=sharing">Br board schematic</a>. You can route your signals to any pin that supports IO and define them in the <strong>constraints file.</strong></p>
-<p>Create a new <strong>constraint</strong> file (at the constraint folder) and name it <code>custom</code>. Copy over the contents of the other two acf files: <code>io.acf</code> and <code>au.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>.</p>
+<p>Create a new <strong>constraint</strong> file (at the constraint folder) and name it <code>custom</code>.</p>
+<p><mark> <strong>Important:</strong> You need to just have <strong>one</strong> constraint file. If you need the default I/O terminals on Alchitry Io, then copy over the contents of the other two acf files, <code>io.acf</code> and <code>au.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>. </mark></p>
+<blockquote>
+<p>It is always a good habit to remove all unused input / output ports from the constraint files.</p>
+</blockquote>
 <p><mark> You can define an <strong>output</strong> pin in the following format,</mark></p>
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt;
 </code></pre>
@@ -379,6 +384,9 @@ pin customout[2] C2;
 <p>… and then declare them in <code>au_top.luc</code>: <code>output customout[3]</code>. In the <code>always</code> block of <code>au_top.luc</code>, connect them to the output of the <code>sequence_checker</code>:</p>
 <pre><code>customout = sc.out_result; //result to external led
 </code></pre>
+<blockquote>
+<p>Note: if you do not delete the original two <code>.acf</code> files and simply added <code>custom.acf</code> with these three pin descriptions, then you won’t be able to compile successfully.</p>
+</blockquote>
 <p>Then connect the 3 LEDs on a breadboard with some resistors. If you don’t know how breadboard, resistors, or LED works, you can start with some <a href="https://computers.tutsplus.com/tutorials/how-to-use-a-breadboard-and-build-a-led-circuit--mac-54746">basic</a> circuitry tutorials. TLDR:</p>
 <ul>
 <li>Connect the short leg of the LED to ground</li>
@@ -398,6 +406,12 @@ pin customout[2] C2;
 <blockquote>
 <p>The <code>pulldown</code> and <code>pullup</code> internal resistors are made to ensure that there won’t be “<em>floating</em>” or “<em>invalid</em>” input values that’s fed to your system when there’s nothing that’s fed to it (i.e: switched off). Read <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">this</a> if you’d like to know more about pull-up and pull-down resistors.</p>
 </blockquote>
+<h2 id="summary">Summary</h2>
+<p>This document builds up on some of the things we learned before in Part 1 and 2, and it mainly focuses on how to use external I/O devices and reset the whole system properly.</p>
+<p>You are recommended to read further on how <a href="https://alchitry.com/blogs/tutorials/io-element">7-Segment works</a> (you can learn using the onboard 7-segment on Alchitry Io first before buying external units), and how you can utilize another powerful <strong>storage device:</strong> the default <a href="https://alchitry.com/blogs/tutorials/hello-your_name_here">RAM component</a> (there’s single-port and dual-port RAM).</p>
+<p>The RAM component is <strong>especially useful</strong> if you need to store a <strong>large</strong> amount of data, e.g data to be rendered out to large (32x32 or 64x32, etc) LED matrices. It is convenient to use the <code>dff</code> for small data storages, but you will run out of logic units real fast if you were to create thousands of dffs (not to mention the bizzare amount of time needed to compile the code).</p>
+<p>You may find the complete project used in all three parts of this introduction to FPGA <a href="https://github.com/natalieagus/SampleAlchitryProjects">here</a>.</p>
+<p>Once you’re comfortable with some basic FPGA coding, you can begin designing the datapath for your game and implement the modules required. You may refer to <a href="https://natalieagus.github.io/50002/1D_programmable_machine.html">this tutorial</a> for clues on how to begin if needed.</p>
 
     </div>
   </div>
