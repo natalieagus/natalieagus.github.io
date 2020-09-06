@@ -18,6 +18,7 @@
 <li><a href="#resetting-modules-with-custom-clock">Resetting Modules with Custom Clock</a></li>
 <li><a href="#slowing-modules-with-fpga-clock">Slowing Modules with FPGA Clock</a></li>
 <li><a href="#conditioning-button-presses">Conditioning Button Presses</a></li>
+<li><a href="#using-button-presses-as-triggers">Using Button Presses as Triggers</a></li>
 </ul>
 </li>
 </ul>
@@ -185,6 +186,34 @@ slowClockEdge.in = slowClock.value[SLOWCLOCK_SIZE-1];
 </code></pre>
 <p>You can find the complete script <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/seq_plus_varySlow.luc">here</a>.</p>
 <h2 id="conditioning-button-presses">Conditioning Button Presses</h2>
+<p>Just like the reset button, input from external button presses are also <em>unreliable</em>. If you’re trying to “capture” the input of a button press using a <code>dff</code>, then you need to ensure that it doesn’t cause metastability using a built-in module called the <strong><code>button_conditioner</code></strong> (you can find it under <em>Miscellaneous</em> category):</p>
+<pre><code>button_conditioner buttoncond[4](.clk(clk));
+
+...//inside always block
+buttoncond.in = io_button[3:0];
+</code></pre>
+<p>You can then use <code>buttoncond.out</code> as an input to some module that requires button presses as its input.</p>
+<h2 id="using-button-presses-as-triggers">Using Button Presses as Triggers</h2>
+<p>There’s two usages for button inputs in general:</p>
+<ol>
+<li>You just a user to <em>trigger</em> something <strong>once</strong> by pressing it.</li>
+<li>You need a user to press and <strong>hold</strong> continuously.</li>
+</ol>
+<p>Regardless, you need to know that since the system clock is running so fast at 100MHz, a button press will result in a value of <code>1</code> being produced as <code>buttoncond.out</code> <strong>for at least thousands of clock cycles</strong>. In other words, if you were to load this as an input to some register,</p>
+<pre><code>register_1.d = buttoncond.out
+</code></pre>
+<p>…then you’d be loading the value of <code>1</code> for many many clock cycles to the same register. This is alright if your use case is case <strong>(2)</strong> above, that is if you use it as an input to some combinational logic unit,</p>
+<pre><code>some_combi_logic.input = buttoncond.out
+</code></pre>
+<p>…but it <strong>will not work</strong> if you intend to use the button press as a <em>trigger</em> that’s supposed to happen <strong>ONCE per PRESS.</strong></p>
+<p>In order to trigger the system once per press, you need to use the edge detector (don’t forget to specify <code>#RISE</code> or <code>#FALL</code> or both):</p>
+<pre><code>edge_detector buttondetector[4](#RISE(1), #FALL(0),.clk(clk)); //detect on rising edge only
+</code></pre>
+<p>and then use it as such:</p>
+<pre><code>buttoncond.in = io_button[3:0];
+buttondetector.in = buttoncond.out;
+register_1.d = buttondetector.out;
+</code></pre>
 
     </div>
   </div>
