@@ -394,7 +394,10 @@ pin customout[2] C2;
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt; pullup
 </code></pre>
 
-<p>Input pins with default <code>pulldown</code> circuitry will produce a <code>0</code> if there’s no external value fed into it, otherwise input pins with defailt <code>pullup</code> will produce a <code>1</code>. The <code>pulldown</code> and <code>pullup</code> internal resistors are made to ensure that there won’t be “<em>floating</em>” or “<em>invalid</em>” input values that’s fed to your system when there’s nothing that’s fed to it (i.e: switched off).</p>
+<p> Input pins with default <code>pulldown</code> resistor will produce a <code>0</code> and input pins with default <code>pullup</code> will produce a <code>1</code>  if there’s no external value fed into it. </p>
+<blockquote>
+<p>The <code>pulldown</code> and <code>pullup</code> internal resistors are made to ensure that there won’t be “<em>floating</em>” or “<em>invalid</em>” input values that’s fed to your system when there’s nothing that’s fed to it (i.e: switched off). Read <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">this</a> if you’d like to know more about pull-up and pull-down resistors.</p>
+</blockquote>
 
     </div>
   </div>
