@@ -20,6 +20,7 @@
 <li><a href="#conditioning-button-presses">Conditioning Button Presses</a></li>
 <li><a href="#using-button-presses-as-triggers">Using Button Presses as Triggers</a></li>
 <li><a href="#storing-button-press-sequences">Storing Button Press Sequences</a></li>
+<li><a href="#using-external-output">Using External Output</a></li>
 </ul>
 </li>
 </ul>
@@ -353,15 +354,47 @@ fsm brain(.clk(clk), .rst(rst)) = {
 button_conditioner buttoncond[4](.clk(clk));
 edge_detector buttondetector[4](#RISE(1), #FALL(0),.clk(clk)); //detect on rising edge only
 </code></pre>
-<p>and in the <code>always</code> block of <code>au_top.luc</code>, connect the input and output:</p>
+<p>…and in the <code>always</code> block of <code>au_top.luc</code>, we connect the input and output terminals of the <code>sequence_checker</code>:</p>
 <pre><code>io_led[0][3:0] = io_button[3:0];
 buttoncond.in = io_button[3:0];
 buttondetector.in = buttoncond.out;
 
 sc.buttons = buttondetector.out;
 io_led[2] = sc.out_buttonseq; //debug
-io_led[1][3:0] = sc.out_result; //result
+io_led[1][2:0] = sc.out_result; //result
 </code></pre>
+<p>When you have built and run the program, try pressing some of the <code>io_button</code> and observe the output. If you press <code>io_button[3]</code> then <code>io_button[2]</code>, it will match the <code>const MATCH</code> and all three bits of <code>io_led[1][2:0]</code> will light up.</p>
+<h2 id="using-external-output">Using External Output</h2>
+<p>Finally, we will try to show the result <code>sc.out_result</code> on an external LED instead. You need to use the <code>Br</code> board for this (the middle board in the stack). Take a look at the <a href="https://drive.google.com/file/d/1T3Vth8YpqDq1iOcPEW6TWjwVH0-h-59C/view?usp=sharing">Br board schematic</a>. You can route your signals to any pin that supports IO and define them in the <strong>constraints file.</strong></p>
+<p>Create a new <strong>constraint</strong> file (at the constraint folder) and name it <code>custom</code>. Copy over the contents of the other two acf files: <code>io.acf</code> and <code>au.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>.</p>
+<p><mark> You can define an <strong>output</strong> pin in the following format,</mark></p>
+<pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt;
+</code></pre>
+
+<p>For example, if you’d like to use the Br pins <code>C49, C48, C2</code> as an <strong>output</strong> port to display the 3-bit <code>results</code>, you can define them as such in <code>custom.acf</code>:</p>
+<pre><code>pin customout[0] C49;
+pin customout[1] C48;
+pin customout[2] C2;
+</code></pre>
+<p>… and then declare them in <code>au_top.luc</code>: <code>output customout[3]</code>. In the <code>always</code> block of <code>au_top.luc</code>, connect them to the output of the <code>sequence_checker</code>:</p>
+<pre><code>customout = sc.out_result; //result to external led
+</code></pre>
+<p>Then connect the 3 LEDs on a breadboard with some resistors. If you don’t know how breadboard, resistors, or LED works, you can start with some <a href="https://computers.tutsplus.com/tutorials/how-to-use-a-breadboard-and-build-a-led-circuit--mac-54746">basic</a> circuitry tutorials. TLDR:</p>
+<ul>
+<li>Connect the short leg of the LED to ground</li>
+<li>Connect the long leg of the LED to the output pin (<code>C49, C48,</code> and <code>C2</code> for each LED)</li>
+<li>Connect the resistor anywhere within the circuit.</li>
+</ul>
+<p>All three LEDs should light up if you key in the right sequence:<br>
+<img src="https://www.dropbox.com/s/d4il3wbpcvtshx9/outputvalues.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<p><mark> Likewise, you can define an <strong>input</strong> pin in the following format,</mark></p>
+<pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt; pulldown
+</code></pre>
+<p>or:</p>
+<pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt; pullup
+</code></pre>
+
+<p>Input pins with default <code>pulldown</code> circuitry will produce a <code>0</code> if there’s no external value fed into it, otherwise input pins with defailt <code>pullup</code> will produce a <code>1</code>. The <code>pulldown</code> and <code>pullup</code> internal resistors are made to ensure that there won’t be “<em>floating</em>” or “<em>invalid</em>” input values that’s fed to your system when there’s nothing that’s fed to it (i.e: switched off).</p>
 
     </div>
   </div>
