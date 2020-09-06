@@ -22,6 +22,7 @@
 <li><a href="#storing-button-press-sequences">Storing Button Press Sequences</a></li>
 <li><a href="#using-external-output">Using External Output</a></li>
 <li><a href="#summary">Summary</a></li>
+<li><a href="#final-note">Final note</a></li>
 </ul>
 </li>
 </ul>
@@ -407,11 +408,41 @@ pin customout[2] C2;
 <p>The <code>pulldown</code> and <code>pullup</code> internal resistors are made to ensure that there won’t be “<em>floating</em>” or “<em>invalid</em>” input values that’s fed to your system when there’s nothing that’s fed to it (i.e: switched off). Read <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">this</a> if you’d like to know more about pull-up and pull-down resistors.</p>
 </blockquote>
 <h2 id="summary">Summary</h2>
-<p>This document builds up on some of the things we learned before in Part 1 and 2, and it mainly focuses on how to use external I/O devices and reset the whole system properly.</p>
-<p>You are recommended to read further on how <a href="https://alchitry.com/blogs/tutorials/io-element">7-Segment works</a> (you can learn using the onboard 7-segment on Alchitry Io first before buying external units), and how you can utilize another powerful <strong>storage device:</strong> the default <a href="https://alchitry.com/blogs/tutorials/hello-your_name_here">RAM component</a> (there’s single-port and dual-port RAM).</p>
-<p>The RAM component is <strong>especially useful</strong> if you need to store a <strong>large</strong> amount of data, e.g data to be rendered out to large (32x32 or 64x32, etc) LED matrices. It is convenient to use the <code>dff</code> for small data storages, but you will run out of logic units real fast if you were to create thousands of dffs (not to mention the bizzare amount of time needed to compile the code).</p>
-<p>You may find the complete project used in all three parts of this introduction to FPGA <a href="https://github.com/natalieagus/SampleAlchitryProjects">here</a>.</p>
+<p>This document builds up on some of the things we learned before in Part 1 and 2, and it mainly focuses on how to use external I/O devices and reset the whole system properly. You may find the complete project used in all three parts of this introduction to FPGA <a href="https://github.com/natalieagus/SampleAlchitryProjects">here</a>.</p>
+<p>You are recommended to read further on (if they’re applicable to your project of course) :</p>
+<ol>
+<li>
+<p>How <a href="https://alchitry.com/blogs/tutorials/io-element">7-Segment works</a> (you can learn using the onboard 7-segment on Alchitry Io first before buying external units). <strong>7-Segment component</strong> is useful to display numbers, e.g: display score, time left, etc.</p>
+</li>
+<li>
+<p>How LED Strips work (e.g: WS2812B, or SK6812 LEDs). You can refer to online tutorials like <a href="https://vivonomicon.com/2018/12/24/learning-how-to-fpga-with-neopixel-leds/">this</a> one.</p>
+</li>
+<li>
+<p>How you can utilize another powerful <strong>storage device:</strong> the default <a href="https://alchitry.com/blogs/tutorials/hello-your_name_here">RAM component</a> (there’s single-port and dual-port RAM).</p>
+<p><mark><strong>RAM component</strong> is <strong>especially useful</strong> if you need to store a <strong>large</strong> amount of data </mark>, e.g data to be rendered out to large (32x32 or 64x32, etc) LED matrices. It is convenient to use the <code>dff</code> for small data storages, but you will run out of logic units real fast if you were to create thousands of dffs (not to mention the bizzare amount of time needed to compile the code).</p>
+</li>
+</ol>
 <p>Once you’re comfortable with some basic FPGA coding, you can begin designing the datapath for your game and implement the modules required. You may refer to <a href="https://natalieagus.github.io/50002/1D_programmable_machine.html">this tutorial</a> for clues on how to begin if needed.</p>
+<h2 id="final-note">Final note</h2>
+<p>To save you some pain and time, it always good to <mark><strong>test</strong> your <strong>hardware</strong> AND <strong>connections</strong> first <em><strong>BEFORE</strong></em> testing them together with your implementation </mark>:</p>
+<ol>
+<li>
+<p>Test whether every single segment of your 7-segment device is <strong>working</strong>. Use really simple stuffs like jumper wires, voltage source and ground. No code needed.</p>
+</li>
+<li>
+<p><strong>If you use LED strips, test whether each LED</strong> <strong>works</strong>. Write some simpler tester code to light up all the LEDs, light them up to with alternating colors, light them up with different colors, etc.</p>
+</li>
+<li>
+<p>Do the <strong>same</strong> as point (2) above for <strong>LED matrices</strong>, or even basic <strong>single LED lights</strong>, whichever LEDs you use for your project.</p>
+</li>
+<li>
+<p>Check if the <strong>buttons</strong> or any input device you bought is working by capturing its presses and showing it out on an LED on Alchitry Io. Also, ensure that the button press is <strong>crisp</strong> and not wonky.</p>
+</li>
+<li>
+<p>If you’re using the <strong>breadboard</strong>, make sure the breadboard itself works fine. If you’re soldering on the PCB, always test your connection first using some voltage source, ground, and jumper wires.</p>
+</li>
+</ol>
+<p><mark> <strong>ONLY</strong> and <strong>ABSOLUTELY ONLY</strong> when you are 100% sure that the hardware is working fine, you may use them to test your modules. </mark></p>
 
     </div>
   </div>
