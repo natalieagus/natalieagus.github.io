@@ -15,7 +15,7 @@
 
 [Designing an Instruction Set](https://natalieagus.github.io/50002/instruction_set.html)
 
-[Building the $\beta$ CPU](https://natalieagus.github.io/50002/building_beta.html)
+[Building the Beta CPU](https://natalieagus.github.io/50002/building_beta.html)
 
 [Assemblers and Compilers](https://natalieagus.github.io/50002/assemblers_and_compilers.html)
 
