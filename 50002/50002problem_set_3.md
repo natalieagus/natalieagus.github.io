@@ -35,7 +35,7 @@ Consider the following diagram of a simple sequential circuit:
   
 The components labeled CL1 and CL2 are combinational; R1 and R2 are edge triggered flip flops. Timing parameters for each component are as noted. Answer both questions below:
 
-1. Write the timing specifications (tS, tH, tCD, tPD, tCLK) for the system as a whole using the timing specifications for the internal components that are given in the figure.
+1. Suggest the values for each timing specifications (tS, tH, tCD, tPD, tCLK -- clock period) for the system **as a whole** using the timing specifications of each of the internal components that are given in the figure. 
 
 	{::options parse_block_html="true" /}
 	<details>
@@ -187,6 +187,6 @@ We are given the following specification about the multiplexer's valid operating
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDM3OTM1OTQsLTE5Mjg0NDA4MjYsLT
-YxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbMjA0MDM2MTA1NCwtMTkyODQ0MDgyNiwtNj
+EwNDczMDE4XX0=
 -->
