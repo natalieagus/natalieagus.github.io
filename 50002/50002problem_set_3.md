@@ -52,7 +52,17 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
+	
+2. Suppose you had available a faster version of CL2 having a propagation delay of 3 and a contamination delay of zero. Could you substitute the faster CL2 for the one shown in the diagram **Explain.**
 
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+	
+	No we can't. The contamination delay for R1 is 1, while the contamination delay for CL2 is 0. After CLK change, R2 input holds for 1s, but $t_H$ required is 2s.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTE4NDA5MjgsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbLTQwMzM4MjkzMSwtNjEwNDczMDE4XX0=
 -->
