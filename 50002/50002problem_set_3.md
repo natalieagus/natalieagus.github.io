@@ -99,7 +99,11 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The combinational logic unit 1 (CL1) is responsible for the hold times of R4 and R1. Since R1's tHold is larger than R4, we should consider that to compute min tcd for CL1. The thold of R1 can be satisfied using the tcd of CL1 plus the $\min tcd$ of either R1, R2, or R3. Hence, minimum acceptable tcd of CL1 is thold R1 - tcd R2 = 3 - 1 = 2ns.
+	The combinational logic unit 1 (CL1) is responsible for the hold times of R4 and R1. Since R1's $t_{hold}$ is larger than R4, we should consider that to compute min $t_{cd}$ for CL1.  
+
+	$t_{hold}$ of R1 can be satisfied using the $t_{cd}$ of CL1 plus the $\min t_{cd}$ of either R1, R2, or R3. 
+
+	Hence, minimum acceptable $t_{cd}$ of CL1 is $t_{hold}$ R1 - $t_{cd}$ R2 = 3 - 1 = 2ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -111,12 +115,12 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4. The longest path is formed by the tpd of R1 + tpd CL1 + tSetup R4 = 1 + 2 + 2 = 5ns.
+	The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4. The longest path is formed by the $t_{pd}$ of R1 + $t_{pd}$ CL1 + $t_{Setup}$ R4 = 1 + 2 + 2 = 5ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
 
-1.  Write down the minimum hold time (tH) for the IN signal to the system.
+1.  Write down the minimum hold time ($t_{hold}$) for the IN signal to the system.
 
 
 	{::options parse_block_html="true" /}
@@ -247,6 +251,6 @@ Answer the following questions:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDIzNDY5ODcsLTk3MTMyOTk5NywtMT
-kyODQ0MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTY4NDA4NzEyNSwtOTcxMzI5OTk3LC0xOT
+I4NDQwODI2LC02MTA0NzMwMThdfQ==
 -->
