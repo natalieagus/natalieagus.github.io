@@ -32,7 +32,7 @@
 [Asynchronous Handling of I/O Devices](https://natalieagus.github.io/50002/devices_and_interrupts.html)
 
 #### 50.002 Lecture Videos
-[Lecture Videos Playlist for All Topics, updated weekly](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
+[Lecture Videos Playlist for All Topics, more will be uploaded weekly](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
 
 [Post Lecture Summary Videos Playlist for All Topics](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
 
@@ -47,7 +47,7 @@
 
 [Designing a Custom Programmable Datapath](https://natalieagus.github.io/50002/1D_programmable_machine.html)
 
-#### 50.002 Problem Sets [updated weekly]
+#### 50.002 Problem Sets [more will be uploaded weekly]
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
 [Problem Set Week 2](https://natalieagus.github.io/50002/PS2/)
