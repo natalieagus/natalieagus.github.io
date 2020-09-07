@@ -147,8 +147,42 @@ Consider the following D-latch device and its VTC plot:
 <img src="https://www.dropbox.com/s/ojcjpgj8g7da5oj/Q9.png?raw=1" width="70%" height="70%">
   
 
-We are given the following specification about the multiplexer's valid operating voltage ranges: $V_{IL} = 1V, V_{OL} = 0.5V, V_{IH} = 3V, V{OH} = 3.5V$. The noise margin is $0.5V$ and we can assume that the device obeys the ****static discipline****.
+We are given the following specification about the multiplexer's valid operating voltage ranges: $V_{IL} = 1V, V_{OL} = 0.5V, V_{IH} = 3V, V{OH} = 3.5V$. The noise margin is $0.5V$ and we can assume that the device obeys the **static discipline**.
+
+1.  Which voltage value approximately, has the highest probability for the device to be in the metastable state?
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	We plot the line Vout == Vin and find the intersection with the VTC curve to be approximately at 2.35V. This is the Vin value that has the highest probability for the device to stay in metastable state.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+1.  Compare $V_{IN} = 0.9V$ vs $V_{IN} = 3V$. Which input voltage will most likely  cause the device stay in the metastable state?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	Both input voltage values are **valid** inputs. Therefore the device will **always produce valid output voltages** since it obeys the static discipline. We can say that both values are equally unlikely to stay in the metastable state.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+1.  Compare $V_{IN} = 2.1V$ vs $V_{IN} = 2.5V$. Which input voltage will most likely  cause the device stay in the metastable state?
+
+
+{::options parse_block_html="true" /}
+
+<details>
+
+<summary markdown="span">Show Answer</summary>
+
+Both input voltage values are \textit{invalid} inputs. From the graph, we can deduce that $V_{IN} = 2.1V$ results in $V_{OUT} = 1V$, while $V_{IN} = 2.5V$  results in $V_{OUT} = 3.3V$. Taking $2.35V$ as the most likely voltage value for the device to stay in the metastable state, 3.3V is nearer to 2.35V as opposed to 1V. Hence, we can deduce that  $V_{IN} = 2.5V$ is more likely to cause the device to stay in the metastable state.
+
+\fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2ODYxMzYwNSwtMTkyODQ0MDgyNiwtNj
-EwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbNDMzMzAzMzk1LC0xOTI4NDQwODI2LC02MT
+A0NzMwMThdfQ==
 -->
