@@ -185,10 +185,84 @@ We are given the following specification about the multiplexer's valid operating
 	<br/>
 	{::options parse_block_html="false" /}
 
-### Timing Computations with State Machine 
+### Determining Suitable Clock Period (Intermediate)
+
+The following circuit diagram implements a sequential circuit with two state bits, `S0` and `S1`:
+
+<img src="https://www.dropbox.com/s/6tivnh73831oza5/Q2.png?raw=1" width="70%" height="70%">
+
+Answer the following questions:
+
+1.  What is the smallest clock period for which the circuit still operates correctly?
+
+\ifanswers
+
+\beginsol
+
+There are two contraints to check:
+
+\begin{align}
+
+t_{PD.REG} + t_{PD.INV} + t_{PD.INV} + t_{S.REG} & \leq t_{CLK}\\
+
+t_{PD.REG} + t_{PD.NOR2} + t_{S.REG} &\leq t_{CLK}
+
+\end{align}
+
+The first constraint requires $t_{CLK} \geq$ 9ns.
+
+  
+
+\fi
+
+1.  A sharp-eyed student suggests optimizing the circuit by removing the pair
+
+of inverters and connecting the Q output of the left register directly to the
+
+D input of the right register. If the clock period could be adjusted appropriately, would the optimized circuit operate correctly? If yes,
+
+explain the adjustment to the clock period that would be needed
+
+  
+
+\ifanswers
+
+\beginsol
+
+No, the circuit won't operate correctly since $t_{CD.REG} < t_{HOLD.REG}$, i.e., the output of the left
+
+register doesn't meet the required hold time when connected directly to the input of the right
+
+register.
+
+\fi
+
+1.  When the RESET signal is set to "1" for several cycles, what values are S0
+
+and S1 set to?
+
+\ifanswers
+
+\beginsol
+
+S0 = 0, S1 = 0.
+
+\fi
+
+1.  Assuming the RESET signal has been set to "0" and will stay that way,
+
+what is the state following S0=1 and S1=1?
+
+\ifanswers
+
+\beginsol
+
+S0 = 1, S1 = 0.
+
+\fi
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDA4NzUyNTMsLTE5Mjg0NDA4MjYsLT
+eyJoaXN0b3J5IjpbLTE0NDIzMjA4MDIsLTE5Mjg0NDA4MjYsLT
 YxMDQ3MzAxOF19
 -->
