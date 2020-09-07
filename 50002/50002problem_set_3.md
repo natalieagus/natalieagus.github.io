@@ -123,7 +123,7 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The input must satisfy the thold of both R2 and R3, which is 3ns.
+	The input must satisfy the $t_{hold}$ of both R2 and R3, which is 3ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -135,7 +135,7 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The propagation time of the circuit is counted from R4 onwards since it is the last register in the circuit, hence it tpd R4 + tpd CL2 = 3.1ns.
+	The propagation time of the circuit is counted from R4 onwards since it is the last register in the circuit, hence it $t_{pd}$ R4 + $t_{pd}$ CL2 = 3.1ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -147,7 +147,7 @@ Consider the following D-latch device and its VTC plot:
 <img src="https://www.dropbox.com/s/ojcjpgj8g7da5oj/Q9.png?raw=1" width="70%" height="70%">
   
 
-We are given the following specification about the multiplexer's valid operating voltage ranges: $V_{IL} = 1V, V_{OL} = 0.5V, V_{IH} = 3V, V{OH} = 3.5V$. The noise margin is $0.5V$ and we can assume that the device obeys the **static discipline**.
+We are given the following specification about the multiplexer's valid operating voltage ranges: $V_{IL} = 1V, V_{OL} = 0.5V, V_{IH} = 3V, V_{OH} = 3.5V$. The noise margin is $0.5V$ and we can assume that the device obeys the **static discipline**.
 
 1.  Which voltage value approximately, has the highest probability for the device to be in the metastable state?
 
@@ -247,6 +247,6 @@ Answer the following questions:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNj
-EwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTEwNDIzNDY5ODcsLTk3MTMyOTk5NywtMT
+kyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
