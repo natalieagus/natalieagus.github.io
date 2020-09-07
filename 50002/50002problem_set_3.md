@@ -195,66 +195,58 @@ Answer the following questions:
 
 1.  What is the smallest clock period for which the circuit still operates correctly?
 
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	There are two contraints to check:
 
-There are two contraints to check:
+	$$\begin{aligned}
+	t_{PD.REG} + t_{PD.INV} + t_{PD.INV} + t_{S.REG} & \leq t_{CLK}\\
+	t_{PD.REG} + t_{PD.NOR2} + t_{S.REG} &\leq t_{CLK}
+	\end{aligned}$$
 
-$$\begin{aligned}
-t_{PD.REG} + t_{PD.INV} + t_{PD.INV} + t_{S.REG} & \leq t_{CLK}\\
-t_{PD.REG} + t_{PD.NOR2} + t_{S.REG} &\leq t_{CLK}
-\end{aligned}$$
-
-We need to find the largest value of $t_{CLK}$ that satisfies both constraints. This comes from the first constraint that requires $t_{CLK} \geq$ 9ns.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	We need to find the largest value of $t_{CLK}$ that satisfies both constraints. This comes from the first constraint that requires $t_{CLK} \geq$ 9ns.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 1.  A sharp-eyed student suggests optimizing the circuit by removing the pair of inverters and connecting the Q output of the left register directly to the D input of the right register. If the clock period could be adjusted appropriately, would the optimized circuit operate correctly? If yes, explain the adjustment to the clock period will be needed. 
 
-  
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-\ifanswers
+	No, the circuit won't operate correctly since $t_{CD.REG} < t_{HOLD.REG}$, i.e., the output of the left register doesn't meet the required hold time when connected directly to the input of the right register.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
-\beginsol
+1.  When the RESET signal is set to "1" for several cycles, what values are `S0` and `S1` set to?
 
-No, the circuit won't operate correctly since $t_{CD.REG} < t_{HOLD.REG}$, i.e., the output of the left
 
-register doesn't meet the required hold time when connected directly to the input of the right
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-register.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	`S0 = 0, S1 = 0`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
-1.  When the RESET signal is set to "1" for several cycles, what values are S0
+1.  Assuming the RESET signal has been set to "0" and will stay that way, what is the state following S0=1 and S1=1?
 
-and S1 set to?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-S0 = 0, S1 = 0.
-
-\fi
-
-1.  Assuming the RESET signal has been set to "0" and will stay that way,
-
-what is the state following S0=1 and S1=1?
-
-\ifanswers
-
-\beginsol
-
-S0 = 1, S1 = 0.
-
-\fi
+	`S0 = 1, S1 = 0`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODMyMDkyODA5LC0xOTI4NDQwODI2LC02MT
-A0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNj
+EwNDczMDE4XX0=
 -->
