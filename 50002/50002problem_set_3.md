@@ -185,8 +185,10 @@ We are given the following specification about the multiplexer's valid operating
 	<br/>
 	{::options parse_block_html="false" /}
 
+### Timing Computations with State Machine 
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MDM2MTA1NCwtMTkyODQ0MDgyNiwtNj
-EwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTE2MDA4NzUyNTMsLTE5Mjg0NDA4MjYsLT
+YxMDQ3MzAxOF19
 -->
