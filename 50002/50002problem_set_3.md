@@ -72,19 +72,19 @@ Consider the following unusual D-latch configuration:
 Now we feed it the following input signal and CLK signal. **Which of the following signal plots represent the output of this device made out of 3 D-latches?** Assume that the jagged edges means unknown value and that the contents of each latch in the beginning is unknown.
 <img src="https://www.dropbox.com/s/7a8ww9nvk0lzlfq/Q7b.png?raw=1" width="70%" height="70%">
 
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-	**SIGNAL 2** is the output of the device since there's two *unknown* outputs (it takes two half-clock cycles for the input to be propagated to the output). 
+**SIGNAL 2** is the output of the device since there's two *unknown* outputs (it takes two half-clock cycles for the input to be propagated to the output). 
 
-	Signal 5, although it has "invalid" values for two clock cycles isn't the answer because since it is an odd-numbered DFFs, it only ****changes output**** at ****falling**** edge, as opposed to rising edge in a normal Register with two DFFs.
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
+Signal 5, although it has "invalid" values for two clock cycles isn't the answer because since it is an odd-numbered DFFs, it only ****changes output**** at ****falling**** edge, as opposed to rising edge in a normal Register with two DFFs.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 
 ### Another Timing Computations (Basic)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjU1MTQwMzgsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbLTEzOTEzNTE4MzAsLTYxMDQ3MzAxOF19
 -->
