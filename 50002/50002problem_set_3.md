@@ -140,7 +140,15 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<br/>
 	{::options parse_block_html="false" /}
 
+
+### Metastable State Analysis (Basic)
+
+Consider the following D-latch device and its VTC plot:
+<img src="https://www.dropbox.com/s/ojcjpgj8g7da5oj/Q9.png?raw=1" width="70%" height="70%">
+  
+
+We are given the following specification about the multiplexer's valid operating voltage ranges: $V_{IL} = 1V, V_{OL} = 0.5V, V_{IH} = 3V, V{OH} = 3.5V$. The noise margin is $0.5V$ and we can assume that the device obeys the ****static discipline****.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2Mzc5MjQ0NSwtMTkyODQ0MDgyNiwtNj
+eyJoaXN0b3J5IjpbLTM2ODYxMzYwNSwtMTkyODQ0MDgyNiwtNj
 EwNDczMDE4XX0=
 -->
