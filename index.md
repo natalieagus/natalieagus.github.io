@@ -47,7 +47,7 @@
 
 [Designing a Custom Programmable Datapath](https://natalieagus.github.io/50002/1D_programmable_machine.html)
 
-#### 50.002 Problem Sets
+#### 50.002 Problem Sets [updated weekly]
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
 [Problem Set Week 2](https://natalieagus.github.io/50002/PS2/)
