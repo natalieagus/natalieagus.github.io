@@ -25,7 +25,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 
 # Sequential Logic and Synchronization
 
-You can refer to the notes <a href="https://natalieagus.github.io/50002/sequential_logic" target="_blank">here</a> if you need to revise. 
+You can refer to the notes <a href="https://natalieagus.github.io/50002/sequential_logic.html" target="_blank">here</a> if you need to revise. 
 
 ### Warm-up Timing Computations (Basic)
   
@@ -251,9 +251,12 @@ Answer the following questions:
 
 
 
-# 
+# State Machine
 
+You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise. 
+
+### 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNDI0MzkwOSwtMTk1NzM3NTk0NCwtOT
-cxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLT
+k3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
