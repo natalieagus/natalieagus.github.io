@@ -31,7 +31,7 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/sequenti
   
 
 Consider the following diagram of a simple sequential circuit:
-<img src="https://www.dropbox.com/s/hsjn3h2yy149dxx/Q10.png?raw=1" width="70%" height="70%">
+<img src="https://www.dropbox.com/s/63cip82ur4u3y64/Q1.png?raw=1" width="70%" height="70%">
   
 The components labeled CL1 and CL2 are combinational; R1 and R2 are edge triggered flip flops. Timing parameters for each component are as noted. Answer both questions below:
 
@@ -54,5 +54,5 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 	{::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNTQyNDQ0MSwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTEzMTE4NDA5MjgsLTYxMDQ3MzAxOF19
 -->
