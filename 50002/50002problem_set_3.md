@@ -34,15 +34,14 @@ Consider the following diagram of a simple sequential circuit:
 
 <img src="https://www.dropbox.com/s/63cip82ur4u3y64/Q1.png?raw=1"  alt=“F1”  width="80%" height = "80%">
   
-
 The components labeled CL1 and CL2 are combinational; R1 and R2 are edge triggered flip flops. Timing parameters for each component are as noted. Answer both questions below:
 
 1. Write the timing specifications (tS, tH, tCD, tPD, tCLK) for the system as a whole using the timing specifications for the internal components that are given in the figure.
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-$t_H$ and $t_S$ is for IN, $t_{CD}$ and $t_{PD}$ is for CLK. Below are the proposed values:
+	$t_H$ and $t_S$ is for IN, $t_{CD}$ and $t_{PD}$ is for CLK. Below are the proposed values:
 	$$
 	\begin{aligned}
 	t_S &= t_{S.R1} + t_{PD.CL1} = 3 + 3 = 6\\
@@ -51,10 +50,10 @@ $t_H$ and $t_S$ is for IN, $t_{CD}$ and $t_{PD}$ is for CLK. Below are the propo
 	t_{PD} &= t_{PD.R2} = 8\\
 	t_{CLK} &\geq t_{PD.R1} + t_{PD.CL2} + t_{S.R2} = 2 + 5 + 4 = 11
 	\end{aligned}$$
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjczOTk3NTYsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbMTU0MDU3ODg1NCwtNjEwNDczMDE4XX0=
 -->
