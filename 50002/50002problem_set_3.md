@@ -40,7 +40,7 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 1. Write the timing specifications (tS, tH, tCD, tPD, tCLK) for the system as a whole using the timing specifications for the internal components that are given in the figure.
 {::options parse_block_html="true" /}<br/> <details> <br/> <summary markdown="span">Show Answer</summary><br/>
 
-	$t_H$ and $t_S$ is for IN, $t_{CD}$ and $t_{PD}$ is for CLK. Below are the proposed values:
+$t_H$ and $t_S$ is for IN, $t_{CD}$ and $t_{PD}$ is for CLK. Below are the proposed values:
 	$$
 	\begin{aligned}
 	t_S &= t_{S.R1} + t_{PD.CL1} = 3 + 3 = 6\\
@@ -52,5 +52,5 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 	</details>  <br/>  {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDU0MzMzODcsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbLTMwNDM4MjUzMSwtNjEwNDczMDE4XX0=
 -->
