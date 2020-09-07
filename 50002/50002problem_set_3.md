@@ -27,7 +27,18 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 
 You can refer to the notes <a href="https://natalieagus.github.io/50002/sequential_logic" target="_blank">here</a> if you need to revise. 
 
-### 
+### Warm-up Timing Computations (Basic)
+  
+
+Consider the following diagram of a simple sequential circuit:
+
+<img src="https://www.dropbox.com/s/63cip82ur4u3y64/Q1.png?raw=1"  alt=“F1”  width="80%" height = "80%">
+  
+
+The components labeled CL1 and CL2 are combinational; R1 and R2 are edge triggered
+
+flip flops. Timing parameters for each component are as noted. Answer both questions below:
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5NTY1ODgzOCwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTEwODIzMzM3OSwtNjEwNDczMDE4XX0=
 -->
