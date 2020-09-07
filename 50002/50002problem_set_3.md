@@ -35,7 +35,7 @@ Consider the following diagram of a simple sequential circuit:
   
 The components labeled CL1 and CL2 are combinational; R1 and R2 are edge triggered flip flops. Timing parameters for each component are as noted. Answer both questions below:
 
-1. Suggest the values for each timing specifications (tS, tH, tCD, tPD, tCLK -- clock period) for the system **as a whole** using the timing specifications of each of the internal components that are given in the figure. 
+1. Suggest the values for each timing specifications ($t_S$, $t_H$, $t_{CD}$, $t_{PD}$, $t_{CLK}$ -- clock period) for the system **as a whole** using the timing specifications of each of the internal components that are given in the figure. 
 
 	{::options parse_block_html="true" /}
 	<details>
@@ -92,18 +92,18 @@ Consider the following circuit, and notice the **feedback loop**:
 
 Setup time, hold time, propagation delay, and contamination delay (all in nanoseconds) of each component is as written above. Lets now analyse its timing constraints:
 
-1.  What is the minimum contamination delay (tcd) of Combinational Logic 1 such that the sequential circuit may still function properly?
+1.  What is the minimum contamination delay ($t_{CD}$) of Combinational Logic 1 such that the sequential circuit may still function properly?
 
 
 	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The combinational logic unit 1 (CL1) is responsible for the hold times of R4 and R1. Since R1's $t_{hold}$ is larger than R4, we should consider that to compute min $t_{cd}$ for CL1.  
+	The combinational logic unit 1 (CL1) is responsible for the hold times of R4 and R1. Since R1's $t_{H}$ is larger than R4, we should consider that to compute min $t_{CD}$ for CL1.  
 
-	$t_{hold}$ of R1 can be satisfied using the $t_{cd}$ of CL1 plus the $\min t_{cd}$ of either R1, R2, or R3. 
+	$t_{H}$ of R1 can be satisfied using the $t_{CD}$ of CL1 plus the $\min t_{CD}$ of either R1, R2, or R3. 
 
-	Hence, minimum acceptable $t_{cd}$ of CL1 is $t_{hold}$ R1 - $t_{cd}$ R2 = 3 - 1 = 2ns.
+	Hence, minimum acceptable $t_{CD}$ of CL1 is $t_{H}$ R1 - $t_{CD}$ R2 = 3 - 1 = 2ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -115,19 +115,19 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4. The longest path is formed by the $t_{pd}$ of R1 + $t_{pd}$ CL1 + $t_{Setup}$ R4 = 1 + 2 + 2 = 5ns.
+	The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4. The longest path is formed by the $t_{PD}$ of R1 + $t_{PD}$ CL1 + $t_{S}$ R4 = 1 + 2 + 2 = 5ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
 
-1.  Write down the minimum hold time ($t_{hold}$) for the IN signal to the system.
+1.  Write down the minimum hold time ($t_{H}$) for the IN signal to the system.
 
 
 	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The input must satisfy the $t_{hold}$ of both R2 and R3, which is 3ns.
+	The input must satisfy the $t_{H}$ of both R2 and R3, which is 3ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -139,7 +139,7 @@ Setup time, hold time, propagation delay, and contamination delay (all in nanose
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The propagation time of the circuit is counted from R4 onwards since it is the last register in the circuit, hence it $t_{pd}$ R4 + $t_{pd}$ CL2 = 3.1ns.
+	The propagation time of the circuit is counted from R4 onwards since it is the last register in the circuit, hence it $t_{PD}$ R4 + $t_{PD}$ CL2 = 3.1ns.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -251,6 +251,6 @@ Answer the following questions:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4NDA4NzEyNSwtOTcxMzI5OTk3LC0xOT
-I4NDQwODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMT
+kyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
