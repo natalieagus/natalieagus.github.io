@@ -31,6 +31,13 @@
 
 [Asynchronous Handling of I/O Devices](https://natalieagus.github.io/50002/devices_and_interrupts.html)
 
+#### 50.002 Lecture Videos
+[Lecture Videos Playlist for All Topics, updated weekly](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
+
+[Post Lecture Summary Videos Playlist for All Topics](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
+
+
+
 #### 1D Electronic Game Design
 [Getting Started With FPGA Part 1: Combinational Logic](https://natalieagus.github.io/50002/fpga_1.html)
 
