@@ -172,17 +172,21 @@ We are given the following specification about the multiplexer's valid operating
 
 1.  Compare $V_{IN} = 2.1V$ vs $V_{IN} = 2.5V$. Which input voltage will most likely  cause the device stay in the metastable state?
 
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-{::options parse_block_html="true" /}
+	Both input voltage values are *invalid* inputs. 
 
-<details>
+	From the graph, we can deduce that $V_{IN} = 2.1V$ results in $V_{OUT} = 1V$, while $V_{IN} = 2.5V$  results in $V_{OUT} = 3.3V$. 
 
-<summary markdown="span">Show Answer</summary>
+	Taking $2.35V$ as the most likely voltage value for the device to stay in the metastable state, $3.3V$ is nearer to $2.35V$ as opposed to $1V$. Hence, we can deduce that  $V_{IN} = 2.5V$ is more likely to cause the device to stay in the metastable state.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
-Both input voltage values are \textit{invalid} inputs. From the graph, we can deduce that $V_{IN} = 2.1V$ results in $V_{OUT} = 1V$, while $V_{IN} = 2.5V$  results in $V_{OUT} = 3.3V$. Taking $2.35V$ as the most likely voltage value for the device to stay in the metastable state, 3.3V is nearer to 2.35V as opposed to 1V. Hence, we can deduce that  $V_{IN} = 2.5V$ is more likely to cause the device to stay in the metastable state.
 
-\fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMzMzAzMzk1LC0xOTI4NDQwODI2LC02MT
-A0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTEzMDM3OTM1OTQsLTE5Mjg0NDA4MjYsLT
+YxMDQ3MzAxOF19
 -->
