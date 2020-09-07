@@ -34,14 +34,15 @@ Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="getting-started-with-fpga-part-1">Getting Started with FPGA: Part 1</h1>
-<p>This document is written to guide you with hardware coding in<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf"> <strong>Lucid</strong></a>, a more human friendly version of Verilog – the popular but relatively <em>difficult</em> hardware descriptive language.  Ultimately, we want to compile our code into a binary file to be loaded to our FPGA: the Alchitry Au, so that the FPGA can emulate the behavior of the machine that we describe via the code.</p>
+<p>This document is written to guide you with hardware coding in<br>
+<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf" target="_blank">Lucid</a>, a more human friendly version of Verilog – the popular but relatively <em>difficult</em> hardware descriptive language.  Ultimately, we want to compile our code into a binary file to be loaded to our FPGA: the Alchitry Au, so that the FPGA can emulate the behavior of the machine that we describe via the code.</p>
 <p><strong>Some fun facts about Alchitry Au:</strong></p>
 <ul>
 <li>It features <strong>Xilinx Artix 7</strong> FPGA, containing 33280 logic cells (the more cells, the better. Our code can “program” these cells, so if our FPGA has more cells it means that we can implement more complex functionalities)</li>
 <li>On-board clock speed: <strong>100 MHz.</strong></li>
 <li><strong>102</strong> IO pins (you’ll never run out of any!)</li>
 </ul>
-<p>More information about the board can be found <a href="https://alchitry.com/products/alchitry-au-fpga-development-board">here</a> but for now the above suffices.</p>
+<p>More information about the board can be found <a href="https://alchitry.com/products/alchitry-au-fpga-development-board" target="_blank">here</a> but for now the above suffices.</p>
 <p><em>It is also recommended that you read this guide at the end of week 2, after you have finished <strong>logic synthesis</strong>, otherwise you might feel a little lost.</em></p>
 <p><strong>Before you begin, please do:</strong></p>
 <ol>
@@ -49,7 +50,7 @@ Singapore University of Technology and Design<br>
 <p>Prepare <strong>at least 50GB</strong> of free space. It goes without saying that you can use cloud storage (Dropbox, GDrive, iCloud Drive, AWS Cloud) or get an external drive.</p>
 </li>
 <li>
-<p>Install <a href="https://www.xilinx.com/support/download.html">Xilinx Vivado</a> : scroll down until you see the <strong>Self-extracting Web-Installer</strong>  (Windows or Linux only). Sorry Mac users, you will have to <strong>Bootcamp</strong> Windows 10 / Ubuntu.</p>
+<p>Install <a href="https://www.xilinx.com/support/download.html" target="_blank">Xilinx Vivado</a> : scroll down until you see the <strong>Self-extracting Web-Installer</strong>  (Windows or Linux only). Sorry Mac users, you will have to <strong>Bootcamp</strong> Windows 10 / Ubuntu.</p>
 <ul>
 <li>Sign-up for a <strong>free</strong> Xilinx account</li>
 <li>Then, when you obtain the installer, install the <strong>Vivado HL WebPACK Edition</strong> (this is the free edition)</li>
@@ -59,10 +60,10 @@ Singapore University of Technology and Design<br>
 </ul>
 </li>
 <li>
-<p>Install <a href="https://www.java.com/en/download/manual.jsp">Java JRE</a> and <a href="https://www.oracle.com/java/technologies/javase-downloads.html">Java JDK</a>, although it is likely that you already have these installed due to your other subject.</p>
+<p>Install <a href="https://www.java.com/en/download/manual.jsp" target="_blank">Java JRE</a> and  <a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">Java JDK</a>, although it is likely that you already have these installed due to your other subject.</p>
 </li>
 <li>
-<p>Then, download the <a href="https://alchitry.com/pages/alchitry-labs">Alchitry Lab IDE</a>. This is the IDE where you can write your program in Lucid and flash it to the FPGA via USB connection.</p>
+<p>Then, download the  <a href="https://alchitry.com/pages/alchitry-labs" target="_blank">Alchitry Lab IDE</a>. This is the IDE where you can write your program in Lucid and flash it to the FPGA via USB connection.</p>
 </li>
 </ol>
 <p>By the end of this document, you should be able to create <strong>simple combinational logic</strong> modules and test them on Alchitry Au.</p>
@@ -83,7 +84,7 @@ Singapore University of Technology and Design<br>
 <p>Now you should see that you have a project with several files:<br>
 <img src="https://www.dropbox.com/s/qpvoetamz6vz9xw/1c.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <blockquote>
-<p>You need to do your own self-study part to fill in the gaps and understand how the code works better by reading the <a href="https://alchitry.com/pages/lucid-fpga-tutorials">tutorials</a> provided by the original developer. The course handout also provides you some useful self-study materials. This document is only made to <em>complement</em> and <em>speed up</em> your self-study process, but it doesn’t mean that you can forget about reading anything else.</p>
+<p>You need to do your own self-study part to fill in the gaps and understand how the code works better by reading the <a href="https://alchitry.com/pages/lucid-fpga-tutorials" target="_blank">tutorials</a> provided by the original developer. The course handout also provides you some useful self-study materials. This document is only made to <em>complement</em> and <em>speed up</em> your self-study process, but it doesn’t mean that you can forget about reading anything else.</p>
 </blockquote>
 <p>If you haven’t read any tutorials about Lucid and Alchitry yet, here’s some quick information:</p>
 <ul>
@@ -125,7 +126,7 @@ But a few important ones that you probably can’t live without are: <strong>cou
 <p>And then in the body, we have the <code>always</code> block, which as the name suggests it <strong>signifies a connection</strong>, something that is <strong>always</strong> connected.</p>
 <p><mark> Remember that in this block we are <em>describing how a hardware device should behave, that is: literally describing its schematic in terms of code for Alchitry / Vivado to <strong>interpret</strong> and create an appropriate hardware description for the <strong>Au</strong> board to run.</em> </mark></p>
 <p>Above the <code>always</code> block we can define other modules to be used, clock or reset signals, or simply intermediary connections using the keyword <code>sig</code>.</p>
-<p>The following code describes the schematic of an FA. The syntax is self-explanatory. Refer to Page 2 of the documentation (<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420">Lucid Quick Reference</a>) for a summary of syntaxes.</p>
+<p>The following code describes the schematic of an FA. The syntax is self-explanatory. Refer to Page 2 of the documentation (<a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420" target="_blank">Lucid Quick Reference Guide</a>) for a summary of syntaxes.</p>
 <pre><code>{
 sig i, j, k; // connector
 always {
@@ -138,7 +139,7 @@ always {
 }
 </code></pre>
 <p>The values on the right of the <code>=</code> sign is the value that you will <strong>assign</strong> to the connection name on its left.</p>
-<p>You can download completed <code>full_adder.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder.luc">here</a>.</p>
+<p>You can download completed <code>full_adder.luc</code>  <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder.luc" target="_blank">here</a>.</p>
 <h2 id="connect-unit-to-io-for-testing">Connect Unit to I/O for Testing</h2>
 <p>Now let’s <strong>declare and connect</strong> the Full Adder module in <code>au_top.luc</code> so that we can supply an actual input and output to the unit. Add the following line below <code>sig rst</code> in <code>au_top.luc</code>:</p>
 <pre><code>sig rst; // reset signal
@@ -182,12 +183,12 @@ io_led[2][0] = fulladder.cout;
 <img src="https://www.dropbox.com/s/bjtd5hrfo3ejvwj/constraintfile.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>The <code>.acf</code> file defines input and output pins from the original schematic of <code>Alchitry Au</code> to its symbols to be used when we code, e.g: <code>io_led</code>, <code>io_dip</code>, etc. The ones with the keyword <code>pulldown</code> signifies <strong>input</strong> pins, while the rest are digital output.</p>
 <blockquote>
-<p>An input pin with <code>pulldown</code> resistor will by default give a value of <code>0</code> if there’s no input being supplied to prevent a <em>floating/undefined</em> input volrage.** It is useful to read abit about <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html">pull-down and pull-up resistors</a> if you were to implement a unit from scratch like the our Mini-Hardware Project.</p>
+<p>An input pin with <code>pulldown</code> resistor will by default give a value of <code>0</code> if there’s no input being supplied to prevent a <em>floating/undefined</em> input volrage.** It is useful to read abit about <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html" target="_blank">pull-down and pull-up resistors</a>  if you were to implement a unit from scratch like the our Mini-Hardware Project.</p>
 </blockquote>
-<p>This document will not teach you how to define more inputs for use on the <code>Br</code> board yet, or use the 7-segments to display numbers. If you’re interested to learn more, read the tutorial from the original author about <a href="https://alchitry.com/blogs/tutorials/io-element"><code>Io Element</code></a>.</p>
+<p>This document will not teach you how to define more inputs for use on the <code>Br</code> board yet, or use the 7-segments to display numbers. If you’re interested to learn more, read the tutorial from the original author about <a href="https://alchitry.com/blogs/tutorials/io-element" target="_blank">Io Element</a></p>
 <p>Notice how you have this part that sets the <code>io_led</code> to off:</p>
 <blockquote>
-<p>Its written using the <strong>array builder</strong>, basically we set 3 sets of 8-bit values represented in hex <code>h</code> as 0. See <a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420">Lucid Reference</a> guide.</p>
+<p>Its written using the <strong>array builder</strong>, basically we set 3 sets of 8-bit values represented in hex <code>h</code> as 0. See <a href="https://cdn.shopify.com/s/files/1/2702/8766/files/Lucid_Reference.pdf?5280018026990691420" target="_blank">Lucid Quick Reference Guide</a> guide.</p>
 </blockquote>
 <pre><code>io_led = 3x{{8h00}};  // turn LEDs off
 </code></pre>
@@ -242,7 +243,7 @@ fulladder.cin[3] = fulladder.cout[2];
 fulladder.cin[2] = fulladder.cout[1];
 fulladder.cin[1] = fulladder.cout[0];
 </code></pre>
-<p>You can download <code>eight_bit_adder.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_adder.luc">here</a>.</p>
+<p>You can download <code>eight_bit_adder.luc</code>  <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_adder.luc" target="_blank">here</a></p>
 <h3 id="test-with-actual-inputoutput">Test with actual input/output</h3>
 <p>In <code>au_top.luc</code>, declare the 8-bit ripple carry full adder above the <code>always</code> block:</p>
 <pre><code>eight_bit_adder eightbitadder;
@@ -288,7 +289,7 @@ io_led[2][0] = eightbitadder.cout;
 </code></pre>
 <p><strong>Notice the indexing.</strong> <code>FULL_ADDER[000]</code> represents the rightmost element that is <code>b00</code>, and so on.</p>
 <p><strong>Example</strong>: if <code>address = 100</code>, it means <code>x=1, y=0, cin=0</code>. This corresponds to the fifth entry (from the right) of the <code>FULL_ADDER</code> constant, <em>a.k.a: our ROM.</em> The value of <code>FULL_ADDER[100]</code> is <code>10</code>, which means that <code>s=1, cout=0</code> as per the full adder’s truth table.</p>
-<p>You can download <code>full_adder_ROM.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder_ROM.luc">here</a>.</p>
+<p>You can download <code>full_adder_ROM.luc</code>  <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder_ROM.luc" target="_blank">here</a>.</p>
 <h2 id="building-multiplexer">Building Multiplexer</h2>
 <p>A multiplexer can be easily implemented using the keyword <code>case</code> in Lucid. Consider a new combinational logic module that does left shifting with the following schematic (<code>a</code>, <code>b</code> are inputs, and <code>s</code> is output):<br>
 <img src="https://www.dropbox.com/s/ub55j7rdohnl0o6/shifter8.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
@@ -341,7 +342,7 @@ io_led[2][0] = eightbitadder.cout;
 }
 </code></pre>
 <p>Pretty sure you’d know by now how to declare this in <code>au_top.luc</code> and test its funcionality.</p>
-<p>You can download <code>eight_bit_shiftleft.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_shiftleft.luc">here</a>.</p>
+<p>You can download <code>eight_bit_shiftleft.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/eight_bit_shiftleft.luc" target="_blank">here</a>.</p>
 <h2 id="summary">Summary</h2>
 <p>By implementing this adder on the FPGA, we have learned:</p>
 <ul>
@@ -352,7 +353,7 @@ io_led[2][0] = eightbitadder.cout;
 <blockquote>
 <p>Now of course if you have read the documentation, you can simply implement an addition using a <code>+</code> in Lucid without having to resort to basic boolean logic because the interpreter will implement the addition for you. Either way, the hardware circuitry is still the same.</p>
 </blockquote>
-<p>You are highly encouraged to read <a href="https://alchitry.com/blogs/tutorials/your-first-fpga-project">this tutorial</a> to enhance your understanding afterwards.</p>
+<p>You are highly encouraged to read <a href="https://alchitry.com/blogs/tutorials/your-first-fpga-project" target="_blank">this tutorial</a>  to enhance your understanding afterwards.</p>
 
     </div>
   </div>
