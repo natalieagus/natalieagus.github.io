@@ -64,6 +64,13 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
+
+### Timing Plot Analysis (Basic)
+Consider the following unusual D-latch configuration:
+<img src="https://www.dropbox.com/s/vxvoeomb1zyc7h0/Q7.png?raw=1" width="70%" height="70%">
+ 
+Now we feed it the following input signal and CLK signal. Which of the following signal plots represent the output of this device made out of 3 D-latches? Assume that the jagged edges means unknown value and that the contents of each latch in the beginning is unknown.
+<img src="https://www.dropbox.com/s/7a8ww9nvk0lzlfq/Q7b.png?raw=1" width="70%" height="70%">
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5OTMzMzQ0MCwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTc0MjkwOTM5MCwtNjEwNDczMDE4XX0=
 -->
