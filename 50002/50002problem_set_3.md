@@ -36,6 +36,7 @@ Consider the following diagram of a simple sequential circuit:
 The components labeled CL1 and CL2 are combinational; R1 and R2 are edge triggered flip flops. Timing parameters for each component are as noted. Answer both questions below:
 
 1. Write the timing specifications (tS, tH, tCD, tPD, tCLK) for the system as a whole using the timing specifications for the internal components that are given in the figure.
+
 	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
@@ -53,7 +54,7 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 	<br/>
 	{::options parse_block_html="false" /}
 	
-2. Suppose you had available a faster version of CL2 having a propagation delay of 3 and a contamination delay of zero. Could you substitute the faster CL2 for the one shown in the diagram **Explain.**
+3. Suppose you had available a faster version of CL2 having a propagation delay of 3 and a contamination delay of zero. Could you substitute the faster CL2 for the one shown in the diagram **Explain.**
 
 	{::options parse_block_html="true" /}
 	<details>
@@ -64,5 +65,5 @@ The components labeled CL1 and CL2 are combinational; R1 and R2 are edge trigger
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMzM4MjkzMSwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTI5OTMzMzQ0MCwtNjEwNDczMDE4XX0=
 -->
