@@ -49,8 +49,11 @@ Singapore University of Technology and Design<br>
 <p>Binary to Decimal conversion is really simple, but takes time to get used to.</p>
 </blockquote>
 <h2 id="hex-and-octal-number-system">Hex and Octal Number System</h2>
-<p>What if encoding in binary is too long on paper? We can use other number systems: encode in <strong>octal</strong> (base 8) or <strong>hex</strong> (base 16) to shorten its representation, so that it’s more “human friendly” to write.</p>
-<p>See the table below to find out the conversion between binary, octal, hex, and decimal.</p>
+<p>What if encoding in binary is too long on paper or text editor? We can use other number systems: encode in <strong>octal</strong> (base 8) or <strong>hex</strong> (base 16) to shorten its representation, so that it’s more “human friendly” to write.</p>
+<p>See the table below to find out the direct conversion between binary, octal, hex, and decimal.</p>
+<blockquote>
+<p>After some practice, it should be easy to naturally guess the decimal value of any 4-bit number without computing them from scratch.</p>
+</blockquote>
 <img src="https://www.dropbox.com/s/ariqv8mky94edtm/table.png?raw=1" width="200" height="400">
 <p><em>Note:</em></p>
 <ul>
@@ -64,14 +67,14 @@ Singapore University of Technology and Design<br>
 <li>Binary : 101 101 101 111</li>
 <li>Octal : <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>555</mn><msub><mn>7</mn><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">5557_8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.79444em; vertical-align: -0.15em;"></span><span class="mord">5</span><span class="mord">5</span><span class="mord">5</span><span class="mord"><span class="mord">7</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>:
 <ul>
-<li>To obtain this, group the binary digits into groups of 3 bits and convert them to its corresponding octal representation.</li>
+<li>To obtain this, group the binary digits into groups of 3 bits <strong>from right to left</strong> and convert them to its corresponding octal representation.</li>
 <li><code>101 101 101 111</code> : <code>5557</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">_8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.45110799999999995em; vertical-align: -0.15em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span></li>
 </ul>
 </li>
 <li>Decimal : 2927</li>
 <li>Hex: <code>0xB6F</code>
 <ul>
-<li>To obtain this, group the binary into groups of 4 bits and convert each group to its corresponding hex representation.</li>
+<li>To obtain this, group the binary into groups of 4 bits <strong>from right to left</strong> as well, and convert each group to its corresponding hex representation.</li>
 <li><code>1011 0110 1111</code> : <code>0xB6F</code></li>
 </ul>
 </li>
@@ -83,7 +86,7 @@ Singapore University of Technology and Design<br>
 <li>Decimal : 501</li>
 <li>Hex:
 <ul>
-<li><strong>Pad</strong> the higher bits of the binary so that the <em>total number of bits</em> is the closest <strong>divisible</strong> by 4. in this case, we expand from 9 bits to 12 bits.</li>
+<li><strong>Pad</strong> the higher bits of the binary so that the <em>total number of bits</em> is the closest <strong>divisible</strong> by 4. In this case, we expand from 9 bits to 12 bits by adding three <code>0</code>s at the higher bits. <strong>Notice that this does not change the numerical value of the binary string.</strong></li>
 <li><code>111 110 101</code> is equivalent to <code>0001 1111 0101,</code> hence <code>0x1F5</code></li>
 </ul>
 </li>
