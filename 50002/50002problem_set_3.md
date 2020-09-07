@@ -85,6 +85,55 @@ Signal 5, although it has "invalid" values for two clock cycles isn't the answer
 
 
 ### Another Timing Computations (Basic)
+
+Consider the following circuit, and notice the **feedback loop**:
+
+<img src="https://www.dropbox.com/s/jhq2pg9rs70rlrj/Q8.png?raw=1" width="70%" height="70%">
+
+Setup time, hold time, propagation delay, and contamination delay (all in nanoseconds) of each component is as written above. Lets now analyse its timing constraints:
+
+1.  What is the minimum contamination delay (tcd) of Combinational Logic 1 such that the sequential circuit may still function properly?
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+The combinational logic unit 1 (CL1) is responsible for the hold times of R4 and R1. Since R1's tHold is larger than R4, we should consider that to compute min tcd for CL1. The thold of R1 can be satisfied using the tcd of CL1 plus the $\min tcd$ of either R1, R2, or R3. Hence, minimum acceptable tcd of CL1 is thold R1 - tcd R2 = 3 - 1 = 2ns.
+
+\fi
+
+1.  Write down the minimum CLK period for the sequential circuit to function properly.
+
+\ifanswers
+
+\beginsol
+
+The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4. The longest path is formed by the tpd of R1 + tpd CL1 + tSetup R4 = 1 + 2 + 2 = 5ns.
+
+\fi
+
+1.  Write down the minimum hold time (tH) for the IN signal to the system.
+
+\ifanswers
+
+\beginsol
+
+The input must satisfy the thold of both R2 and R3, which is 3ns.
+
+\fi
+
+1.  Write down the minimum propagation time of the sequential logic circuit.
+
+\ifanswers
+
+\beginsol
+
+The propagation time of the circuit is counted from R4 onwards since it is the last register in the circuit, hence it tpd R4 + tpd CL2 = 3.1ns.
+
+\fi
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbLTEyOTU1Njc2MDEsLTE5Mjg0NDA4MjYsLT
+YxMDQ3MzAxOF19
 -->
