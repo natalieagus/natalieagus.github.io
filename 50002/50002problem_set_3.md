@@ -195,33 +195,24 @@ Answer the following questions:
 
 1.  What is the smallest clock period for which the circuit still operates correctly?
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 There are two contraints to check:
 
-\begin{align}
-
+$$\begin{aligned}
 t_{PD.REG} + t_{PD.INV} + t_{PD.INV} + t_{S.REG} & \leq t_{CLK}\\
-
 t_{PD.REG} + t_{PD.NOR2} + t_{S.REG} &\leq t_{CLK}
+\end{aligned}$$
 
-\end{align}
+We need to find the largest value of $t_{CLK}$ that satisfies both constraints. This comes from the first constraint that requires $t_{CLK} \geq$ 9ns.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-The first constraint requires $t_{CLK} \geq$ 9ns.
-
-  
-
-\fi
-
-1.  A sharp-eyed student suggests optimizing the circuit by removing the pair
-
-of inverters and connecting the Q output of the left register directly to the
-
-D input of the right register. If the clock period could be adjusted appropriately, would the optimized circuit operate correctly? If yes,
-
-explain the adjustment to the clock period that would be needed
+1.  A sharp-eyed student suggests optimizing the circuit by removing the pair of inverters and connecting the Q output of the left register directly to the D input of the right register. If the clock period could be adjusted appropriately, would the optimized circuit operate correctly? If yes, explain the adjustment to the clock period will be needed. 
 
   
 
@@ -234,8 +225,9 @@ No, the circuit won't operate correctly since $t_{CD.REG} < t_{HOLD.REG}$, i.e.,
 register doesn't meet the required hold time when connected directly to the input of the right
 
 register.
-
-\fi
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 1.  When the RESET signal is set to "1" for several cycles, what values are S0
 
@@ -263,6 +255,6 @@ S0 = 1, S1 = 0.
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDIzMjA4MDIsLTE5Mjg0NDA4MjYsLT
-YxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbODMyMDkyODA5LC0xOTI4NDQwODI2LC02MT
+A0NzMwMThdfQ==
 -->
