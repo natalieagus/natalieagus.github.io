@@ -4,11 +4,8 @@ title: "Problem Set Week 3"
 permalink: /50002/PS3/
 ---
 50.002 Computational Structures 
-
 Information Systems Technology and Design 
-
 Singapore University of Technology and Design 
-
 **Natalie Agus (Fall 2020)**
 
 
@@ -86,5 +83,5 @@ Signal 5, although it has "invalid" values for two clock cycles isn't the answer
 
 ### Another Timing Computations (Basic)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTEzNTE4MzAsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbNTc1NDE2NDgwLC02MTA0NzMwMThdfQ==
 -->
