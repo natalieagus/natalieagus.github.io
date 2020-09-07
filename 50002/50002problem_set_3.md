@@ -23,9 +23,11 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 {::options parse_block_html="false" /}
 
 
-## Sequential Logic
+# Sequential Logic and Synchronization
 
+You can refer to the notes <a href="https://natalieagus.github.io/50002/sequential_logic" target="_blank">here</a> if you need to revise. 
 
+### 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNDY3MDg3MSwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTM5NTY1ODgzOCwtNjEwNDczMDE4XX0=
 -->
