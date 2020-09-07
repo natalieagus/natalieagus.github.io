@@ -78,7 +78,7 @@ Now we feed it the following input signal and CLK signal. **Which of the followi
 
 **SIGNAL 2** is the output of the device since there's two *unknown* outputs (it takes two half-clock cycles for the input to be propagated to the output). 
 
-Signal 5, although it has "invalid" values for two clock cycles isn't the answer because since it is an odd-numbered DFFs, it only **changes output** at **falling** edge, as opposed to rising edge in a normal Register with two DFFs.
+Signal 5, although it has "invalid" values for two clock cycles isn't the answer because since it is an odd-numbered DFFs, it will  **change output** at the **falling** edge, as opposed to rising edge in a normal DFF with two latches.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -86,5 +86,5 @@ Signal 5, although it has "invalid" values for two clock cycles isn't the answer
 
 ### Another Timing Computations (Basic)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1MTA2NzMwLC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF19
 -->
