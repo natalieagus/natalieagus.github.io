@@ -32,7 +32,7 @@
 [Asynchronous Handling of I/O Devices](https://natalieagus.github.io/50002/devices_and_interrupts.html)
 
 #### 50.002 Lecture Videos
-[Lecture Videos Playlist for All Topics, more will be uploaded weekly](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
+[Lecture Videos Playlist for All Topics, more will be uploaded weekly](https://www.youtube.com/playlist?list=PLklpDKpv-EBj1agIq4vB1iB6ahMT8_2A_)
 
 [Post Lecture Summary Videos Playlist for All Topics](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
 
