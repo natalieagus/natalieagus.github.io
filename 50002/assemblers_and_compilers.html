@@ -83,7 +83,13 @@ Singapore University of Technology and Design<br>
 </blockquote>
 </li>
 </ul>
-<h3 id="uasm-source-language">UASM Source Language</h3>
+<h3 id="uasm">UASM</h3>
+<p>In order to write a code thats runnable in BSIM conveniently, we need:</p>
+<ul>
+<li>A <strong>symbolic language</strong> (UASM) for representing strings of bits</li>
+<li>A Program for translating UASM source code into binary.</li>
+</ul>
+<img src="https://www.dropbox.com/s/5krjxvccdmeesge/uasmstuff.png?raw=1" width="70%" height="70%">
 <p>A UASM source file contains, in symbolic text, <strong>values of successive bytes to be loaded into memory.</strong> We can define various things in UASM source file:</p>
 <ul>
 <li><strong>Basic values</strong>: <strong>Decimals</strong>, <strong>binary</strong> (with <code>0b</code> prefix), and <strong>hexadecimal</strong> (with <code>0x</code> prefix) – all will be loaded (from low to high address) as 1 byte each, separated by spaces.</li>
