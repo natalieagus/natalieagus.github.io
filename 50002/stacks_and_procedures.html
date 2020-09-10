@@ -270,7 +270,7 @@ POP(R1)
 <blockquote>
 <p>The remnants of data that was pushed to the stack actually stays in memory, but its rendered <em>irrelevant</em> because it can be overwritten again by other instructions (hence space is seen as <em>freed</em>). In fact, there’s no such thing as <strong>erasing</strong> contents in the memory unit unless we explicitly write a bunch of zeroes to make it disappear. We simply always <em>overwrite</em> them.</p>
 </blockquote>
-<img src="https://www.dropbox.com/s/ebxnwakspg3tbra/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://www.dropbox.com/s/u5r91wv4dbfmxv4/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p><mark> <strong>Resetting the stack</strong> </mark><br>
 Finally, we reset a stack by simply changing the value <code>SP</code>. For example, we can return the state of <code>SP</code> to <code>0</code> as it was before <strong>Step 1</strong>.</p>
 <pre><code>DEALLOCATE(67)
