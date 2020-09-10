@@ -228,6 +228,9 @@ Assuming the initial content of <code>SP</code> is <code>0</code>, then in order
 
 ALLOCATE(67)
 </code></pre>
+<blockquote>
+<p><code>0x10C</code> is 268 in decimal. Since macro <code>ALLOCATE</code> will multiply the input by <code>4</code> before storing it at SP, we need to put <code>268/4=67</code> as the input t <code>ALLOCATE</code>.</p>
+</blockquote>
 <p>This is done to tell the CPU that the stack starts at address <code>0x010C</code> onwards, so that whatever content stored in the earlier addresses will not be overwritten by the stack.</p>
 <blockquote>
 <p>Otherwise, the stack will start at address 0. Typically what is stored address <code>0</code> is the <strong>first executable instruction</strong> (i.e: the beginning of our program). We usually don’t want to overwrite any instructions.</p>
@@ -264,7 +267,10 @@ POP(R2)
 POP(R1)
 </code></pre>
 <p>The state of the stack and the registers is therefore as shown. Notice how <code>POP</code> instructions can be used to <em>restore</em> the registers state to before as in <strong>Step 1</strong>.</p>
-<img src="https://www.dropbox.com/s/j47t1dnw70hbz6v/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
+<blockquote>
+<p>The remnants of data that was pushed to the stack actually stays in memory, but its rendered <em>irrelevant</em> because it can be overwritten again by other instructions (hence space is seen as <em>freed</em>). In fact, there’s no such thing as <strong>erasing</strong> contents in the memory unit unless we explicitly write a bunch of zeroes to make it disappear. We simply always <em>overwrite</em> them.</p>
+</blockquote>
+<img src="https://www.dropbox.com/s/ebxnwakspg3tbra/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p><mark> <strong>Resetting the stack</strong> </mark><br>
 Finally, we reset a stack by simply changing the value <code>SP</code>. For example, we can return the state of <code>SP</code> to <code>0</code> as it was before <strong>Step 1</strong>.</p>
 <pre><code>DEALLOCATE(67)
