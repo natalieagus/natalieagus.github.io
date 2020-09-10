@@ -59,19 +59,19 @@ int result_2 = fact(9);
 <pre><code>.include beta.uasm
 || we call fact(4) first
 LD(R31, n_1, R1)	| load 4 to R1
-LD(R31, r_1, R2) 
+ADDC(R31, 1, R2)    | instantiate r
 
 check_while_fact_4: CMPLT(R31, R1, R0)	| compute whether n_1 &gt; 0
 BNE(R0, while_true_fact_4, R31)	| if R0 != 0, go to while_true_fact_4
-ST(R2, n_1, R31)	| store to n_1
+ST(R2, result_1, R31)	| store to result_1
 
 || then we call fact(9)
 LD(R31, n_2, R1) 	| load 9 to R1, rewriting its old value
-LD(R31, r_2, R2) 
+ADDC(R31, 1, R2)    | reset r
 
 check_while_fact_9: CMPLT(R31, R1, R0)	| compute whether n_1 &gt; 0
 BNE(R0, while_true_fact_9, R31)	| if R0 != 0, go to while_true_fact_9
-ST(R2, n_2, R31)	| store to n_2
+ST(R2, result_2, R31)	| store to result_2
 
 HALT() | stop
 
@@ -86,8 +86,8 @@ BEQ(R31, check_while_fact_4, R31)	| always go back to check_while_fact_4
 
 n_1 : LONG(4)
 n_2 : LONG(9)
-r_1 : LONG(1)
-r_2 : LONG(1)
+result_1 : LONG(1)
+result_2 : LONG(1)
 </code></pre>
 <p><strong>There’s obviously a few issues here:</strong></p>
 <ol>
