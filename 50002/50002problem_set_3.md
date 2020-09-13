@@ -420,41 +420,63 @@ Answer the following questions:
 	{::options parse_block_html="false" /}
 
 3. What is the decimal value of `Z1`?
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-Since `X[2:0]` produces an increasing sequence from decimal value of `1,2,3,4,...` etc, we can easily guess that the the decimal value of `Z1` should be `0`, such that when there's a `RESET`, the output of the register `R1` is zero.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	Since `X[2:0]` produces an increasing sequence from decimal value of `1,2,3,4,...` etc, we can easily guess that the the decimal value of `Z1` should be `0`, such that when there's a `RESET`, the output of the register `R1` is zero.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 4. What is the decimal value of `Z2`?
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-`Z2`'s decimal value is `1`. The same reason applies: since the sequence `X[2:0]` produced by `A1` is increasing by 1, the input to `A1` should be 1 such that at *every* cycle, theres an addition of 1 to be produced at `X`.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	`Z2`'s decimal value is `1`. The same reason applies: since the sequence `X[2:0]` produced by `A1` is increasing by 1, the input to `A1` should be 1 such that at *every* cycle, theres an addition of 1 to be produced at `X`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 5. What is the $t_{PD}$ of `A2` in nanosecond?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The  $t_{PD}$  of `A000R` is 3ns, hence the  $t_{PD}$  of `A2` is `9ns` since it is made out of three `A000R` modules connected in series.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+6. What is the minimum clock period in nanosecond?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The *longest* path that the clock period has to satisfy is `R1 -> A1 -> A2 -> Z1 -> R2`. Hence we need to consider the $t_{PD}$ of all devices in its path (except `R2`) plus $t_S$ of `R2`: `5+9+9+2+2 = 27ns`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+7. What is the minimum $t_{CD}$ of `A1` in nanosecond?
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-The  $t_{PD}$  of `A000R` is 3ns, hence the  $t_{PD}$  of `A2` is `9ns` since it is made out of three `A000R` modules connected in series.
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
-6. 
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMjU5NjQyNSwzNzYwNzg2NjAsLTE2Nj
-czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
-MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTEyMjE1NDc0MzUsMzc2MDc4NjYwLC0xNj
+Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
+NDA4MjYsLTYxMDQ3MzAxOF19
 -->
