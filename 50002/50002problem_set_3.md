@@ -297,13 +297,13 @@ Construct a "divisible-by-3" FSM that accepts a binary number entered one bit at
 <details>
 <summary markdown="span">Show Answer</summary>
 
-If the value of the number entered so far is N, then after the digit b is entered, the value of the new number N' is 2N + b. Using this fact:
+If the value of the number entered so far is N, then if digit b is entered next, the value of the new number N' is 2N + b. Using this fact:
 
-1.  if N is 0 mod 3 then for some p, N = 3p + 0. After the digit b is entered, N' = 6p + b. So N' is b mod 3.
+1.  If N is 0 mod 3 then for some p, N = 3p + 0. After the digit b is entered, N' = 6p + b. So N' is b mod 3.
 
-1.  if N is 1 mod 3 then for some p, N = 3p + 1. After the digit b is entered, N' = 6p + 2 + b. So N' is b+2 mod 3.
+1.  If N is 1 mod 3 then for some p, N = 3p + 1. After the digit b is entered, N' = 6p + 2 + b. So N' is b+2 mod 3.
 
-1.  if N is 2 mod 3 then for some p, N = 3p + 2. After the digit b is entered, N' = 6p + 4 + b. So N' is b+1 mod 3.
+1.  If N is 2 mod 3 then for some p, N = 3p + 2. After the digit b is entered, N' = 6p + 4 + b. So N' is b+1 mod 3.
 
 This leads to the following transition diagram where the states are labeled with the value of N mod 3.
 </details>
@@ -640,7 +640,8 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NzM2MTAzOCwxMDcyNDU2MzUxLDM3Nj
-A3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5
-OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbMjExNTY5NDk2NSwxMDY3MzYxMDM4LDEwNz
+I0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1
+OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF
+19
 -->
