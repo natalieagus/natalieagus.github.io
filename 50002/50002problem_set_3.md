@@ -262,7 +262,7 @@ Consider the schematic of a machine as follows, which function is to: *detect a 
 <img src="https://www.dropbox.com/s/nx1s0kw3iu0cvqz/Q6.png?raw=1" width="70%" height="70%">
 
 Let's analyse the circuit by answering the questions below:
-1. If the circuit has an initial state of `AB=00`, and the input at `t=0` is `x=0`, what will the immediate next state be?
+1. If the circuit has an **initial** state of `AB=00`, and the input at `t=0` is `x=0`, what will the immediate next state be?
 	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
@@ -272,7 +272,7 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
-2. If the circuit has an initial state of `AB=00`, and the input at `t=0` is `x=1`, what will the immediate next state be?	{::options parse_block_html="true" /}
+2. If the circuit has an **initial** state of `AB=00`, and the input at `t=0` is `x=1`, what will the immediate next state be?	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
@@ -313,7 +313,7 @@ Let's analyse the circuit by answering the questions below:
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	All combinations: `AB=00`, or `01`, or `10`, or `11`. You can prove it easily 
+	All combinations: `AB=00`, or `01`, or `10`, or `11`. You can prove it easily by brute force: checking if `AB = 00` next if its previously set to some value `AB = ij` given existing value `x`.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -330,7 +330,7 @@ Let's analyse the circuit by answering the questions below:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1ODkwNTcwNCwtMTY2NzMyMDc2MSwtMT
-k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
-NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTE5MTAxNTY4NzMsLTE2NjczMjA3NjEsLT
+E5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEw
+NDczMDE4XX0=
 -->
