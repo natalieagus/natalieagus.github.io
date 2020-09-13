@@ -502,7 +502,18 @@ Answer the following questions:
 
 Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and `X` becomes `001`. From then on, `RESET` remains 0:
 
-1.
+1. What is the decimal value of `O[2:0]` at time `t = 0`?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	`X` is `001`  and `Y` is `000`  at `t=0`. Using the truth table of `A000R` and the schematic of `A1`, we can deduce that `O[2:0]` at `t=0` is `1`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+
 
 
 
@@ -513,7 +524,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxNDkzMzc2MCwzNzYwNzg2NjAsLTE2Nj
-czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
-MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTE2MjU4MzM4MDYsMzc2MDc4NjYwLC0xNj
+Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
+NDA4MjYsLTYxMDQ3MzAxOF19
 -->
