@@ -281,6 +281,7 @@ Also, **what is the combination of the lock**?
 <summary markdown="span">Show Answer</summary>
 
 This state machine is a **Moore machine**. The completed state transition diagram and truth table is as follows:
+
 <img src="https://www.dropbox.com/s/nstfdu7qea4dozo/Q2%202.png?raw=1" width="70%" height="70%">
 
 The combination for the lock is `100`.
@@ -293,63 +294,63 @@ The combination for the lock is `100`.
 Construct a "divisible-by-3" FSM that accepts a binary number entered one bit at a time, most significant bit first, and indicates with a *light* if the number entered so far is divisible by 3. Answer the following questions:
 
 1.  Draw a state transition diagram for your FSM indicating the initial state and for which states the light should be turned on. *Hint: the FSM has 3 states.*
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-If the value of the number entered so far is N, then if digit b is entered next, the value of the new number N' is 2N + b. Using this fact:
+	If the value of the number entered so far is N, then if digit b is entered next, the value of the new number N' is 2N + b. Using this fact:
 
-1.  If N is 0 mod 3 then for some p, N = 3p + 0. After the digit b is entered, N' = 6p + b. So N' is b mod 3.
+	1.  If N is 0 mod 3 then for some p, N = 3p + 0. After the digit b is entered, N' = 6p + b. So N' is b mod 3.
 
-1.  If N is 1 mod 3 then for some p, N = 3p + 1. After the digit b is entered, N' = 6p + 2 + b. So N' is b+2 mod 3.
+	1.  If N is 1 mod 3 then for some p, N = 3p + 1. After the digit b is entered, N' = 6p + 2 + b. So N' is b+2 mod 3.
 
-1.  If N is 2 mod 3 then for some p, N = 3p + 2. After the digit b is entered, N' = 6p + 4 + b. So N' is b+1 mod 3.
+	1.  If N is 2 mod 3 then for some p, N = 3p + 2. After the digit b is entered, N' = 6p + 4 + b. So N' is b+1 mod 3.
 
-This leads to the following transition diagram where each state corresponds to each of the possible values of N mod 3.
+	This leads to the following transition diagram where each state corresponds to each of the possible values of N mod 3.
 
-<img src="https://www.dropbox.com/s/kp3njg0hbw6kwwb/FSMqn.png?raw=1" width="70%" height="70%">
+	<img src="https://www.dropbox.com/s/kp3njg0hbw6kwwb/FSMqn.png?raw=1" width="70%" height="70%">
 
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 2. Construct a truth table for the FSM logic. Inputs include the state bits and the next bit of the number; outputs include the next state bits and the control for the light.
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-$$
-\begin{matrix}
-S_1 & S_0 & b & S_1' & S_0' & \text{light} \\
-\hline 
- 0 & 0 & 0 & 0 & 0 & 1 \\
- 0 & 0 & 1 & 0 & 1 & 1 \\
- 0 & 1 & 0 & 1 & 0 & 0 \\
- 0 & 1 & 1 & 0 & 0 & 0 \\
- 1 & 0 & 0 & 0 & 1 & 0 \\
- 1 & 0 & 1 & 1 & 0 & 0 \\
-\hline
-\end{matrix}
-$$
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	$$
+	\begin{matrix}
+	S_1 & S_0 & b & S_1' & S_0' & \text{light} \\
+	\hline 
+	 0 & 0 & 0 & 0 & 0 & 1 \\
+	 0 & 0 & 1 & 0 & 1 & 1 \\
+	 0 & 1 & 0 & 1 & 0 & 0 \\
+	 0 & 1 & 1 & 0 & 0 & 0 \\
+	 1 & 0 & 0 & 0 & 1 & 0 \\
+	 1 & 0 & 1 & 1 & 0 & 0 \\
+	\hline
+	\end{matrix}
+	$$
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 3. Write down the boolean equation for the FSM.
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-$$
-\begin{aligned}
-\text{light } &= \overline{S_1} * \overline{S_0}\\
-S_1' &= \overline{S_1} * S_0 * \overline{b} + S_1 * \overline{S_0} * b \\\\
-S_0' &= \overline{S_1} * \overline{S_0} * b + S_1 * \overline{S_0} * \overline{b}
-\end{aligned}
-$$
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	$$
+	\begin{aligned}
+	\text{light } &= \overline{S_1} * \overline{S_0}\\
+	S_1' &= \overline{S_1} * S_0 * \overline{b} + S_1 * \overline{S_0} * b \\\\
+	S_0' &= \overline{S_1} * \overline{S_0} * b + S_1 * \overline{S_0} * \overline{b}
+	\end{aligned}
+	$$
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 ### Hardware Implementation of a state machine (Intermediate)
 
@@ -643,7 +644,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNTQ0Njc5NCwyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbLTc5MTUzMTQxNiwyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
