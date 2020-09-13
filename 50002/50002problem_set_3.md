@@ -263,9 +263,18 @@ Consider the schematic of a machine as follows, which function is to: *detect a 
 
 Let's analyse the circuit by answering the questions below:
 1. If the circuit has an initial state of `AB=00`, and the input at `t=0` is `x=0`, what will the immediate next state be?
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+The immediate next state is: `AB = 00`
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 2. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxNDk2MDY2NywtMTY2NzMyMDc2MSwtMT
-k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
-NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTE0NjYxNTkzODYsLTE2NjczMjA3NjEsLT
+E5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEw
+NDczMDE4XX0=
 -->
