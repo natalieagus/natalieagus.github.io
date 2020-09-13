@@ -267,9 +267,16 @@ Some of the specifications refer to "bounded time" which means there is a *speci
 	{::options parse_block_html="false" /}
 	
 2. A circuit that in bounded time indicates which of two game show contestants pressed their button first.
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
+	This is a restatement of the "bounded time arbiter problem", known to be unsolvable in theory. In practice we can build a circuit to solve this problem where the probability of failure is related to $t_{PD}$. For "large" $t_{PD}$ (eg, 10's of nanoseconds in today's technologies) the probability of failure can be made very small (eg, 1 failure in billions of years).
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
-
+3. A circuit that determines if button A was pressed ***before*** a specified deadline. Assume the circuit has an accurate internal signal that transitions from 0 to 1 when the deadline is reached. The output should be 1 if the button was pressed on or before the deadline, 0 if pressed after the deadline. The output should be valid and stable within a specified $t_{PD}$ of the A input transition.
 
 
 
@@ -666,7 +673,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NzAyMjI1NywyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbLTM0ODMwMDc0MiwyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
