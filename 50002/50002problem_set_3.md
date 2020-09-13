@@ -570,6 +570,7 @@ It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $t_{PD}
 <img src="https://www.dropbox.com/s/55rj88ehoozyo6y/Q5.png?raw=1" width="40%" height="40%">
 
 The truth table for `A000R` is as follows: 
+
 $$
 \begin{matrix}
     A & B & C & D & E \\
@@ -742,7 +743,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTMxNzg3MTIsLTYzODU1ODU2LC04Nj
+eyJoaXN0b3J5IjpbLTIwMTg3NTUzMDYsLTYzODU1ODU2LC04Nj
 I0ODg4NDIsMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNjczNjEw
 MzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3NjEsLT
 E5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEw
