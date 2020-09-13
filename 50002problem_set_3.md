@@ -237,6 +237,37 @@ Show Answer
 </ol>
 <h1 id="state-machine">State Machine</h1>
 <p>You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise.</p>
+<h3 id="an-incomplete-state-machine-basic">An Incomplete State Machine (Basic)</h3>
+<p>The ACME Company has recently received an order from a Mr. Wiley E. Coyote for their all-digital Perfectly Perplexing Padlock:</p>
+<ul>
+<li>The P3 has <strong>two</strong> buttons (“0” and “1”) that when pressed cause the FSM controlling the lock to advance to a new state.</li>
+<li>In addition to advancing the FSM, each button press is encoded on the B signal (B=0 for button “0”, B=1 for button “1”).</li>
+<li>The padlock <strong>unlocks</strong> when the FSM sets the UNLOCK output signal to 1, which it does whenever the last N button presses correspond to the unique N-digit combination.</li>
+</ul>
+<p>Unfortunately the design notes for the P3 are <em>incomplete</em>. Using the specification above and clues gleaned from the partially completed diagrams below f<strong>ill in the information that is missing from the state transition diagram</strong> with its <strong>accompanying truth table</strong>.</p>
+<img src="https://www.dropbox.com/s/1ww80s7vpxznf1k/Q1%202.png?raw=1" width="70%" height="70%">
+<p>When done,</p>
+<ul>
+<li>
+<p>Each state in the transition diagram should be assigned a 2-bit state name S1S0 (note that in this design the state name is not derived from the combination that opens the lock),</p>
+</li>
+<li>
+<p>The arcs leaving each state should be mutually exclusive and collectively exhaustive,</p>
+</li>
+<li>
+<p>The value for UNLOCK should be specified for each state, and o the truth table should be completed.</p>
+</li>
+</ul>
+<p>Also, <strong>what is the combination of the lock</strong>?</p>
+<p>{::options parse_block_html=“true” /}</p>
+
+Show Answer
+<p>This state machine is a <strong>Moore machine</strong>. The completed state transition diagram and truth table is as follows:<br>
+<img src="https://www.dropbox.com/s/nstfdu7qea4dozo/Q2%202.png?raw=1" width="70%" height="70%"></p>
+<p>The combination for the lock is <code>100</code>.</p>
+
+<br>
+{::options parse_block_html="false" /}
 <h3 id="hardware-implementation-of-a-state-machine-intermediate">Hardware Implementation of a state machine (Intermediate)</h3>
 <p>Consider the schematic of a machine as follows, which function is to: <em>detect a sequence of three or more consecutive 1’s, and output: 1 after three or more consecutive 1’s, or 0 otherwise.</em></p>
 <img src="https://www.dropbox.com/s/nx1s0kw3iu0cvqz/Q6.png?raw=1" width="70%" height="70%">
