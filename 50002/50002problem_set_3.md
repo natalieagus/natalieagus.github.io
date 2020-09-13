@@ -317,9 +317,20 @@ Yes, a `XOR` gate will meet the specification.
 {::options parse_block_html="false" /}
 
 7. A circuit that has two parts: 
-(a).  subcircuit that indicates which of two game show contestants pressed their button first, and 
-(b). a subcircuit that in bounded time lights a "TIE" light if the:
-	* Subcircuit hasn't produced an answer after 1 second. The "TIE" light should stay lit even if (a) makes a decision at some later point.
+(a).  A subcircuit that indicates which of two game show contestants pressed their button first, and 
+(b). A subcircuit that in bounded time lights a "TIE" light if the (a) subcircuit hasn't produced an answer after 1 second. The "TIE" light should stay lit even if (a) makes a decision at some later point.
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	Both subcircuits will suffer metastability problems. (a) is asking for an arbiter (see part 2 above) and (b) has the same difficulties as outlined for part 3 above.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+8. 
+
+
 
 # State Machine
 
@@ -714,7 +725,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NjcxNzMwMCwyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbLTU5MTMzNjI3MCwyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
