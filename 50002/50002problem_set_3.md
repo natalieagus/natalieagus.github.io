@@ -335,12 +335,15 @@ Let's analyse the circuit by answering the questions below:
 
 From the frequency, we can compute the *period* of the clock to be `10ns`. 
 
-For the **worst** case delay, we need to consider the scenario that input `x` is propagated up to input of the register and it just missed the `clk` rise. It takes 4 ns to propagate through the AND and OR gates, and another 10 ns to wait for another CLK rise. Finally, it takes 2 ns to propagate through the register to produce A or B. Hence the worst case delay is $4+10+2 = 16$ns.
+For the **worst** case delay, we need to consider the scenario that input `x` is propagated up to input of the register and *it just missed the `clk` rise*. It takes `4ns` to propagate through the `AND` and `OR` gates, and another `10ns` to wait for another `clk` rise. Finally, it takes `2ns` to propagate through the register to produce `A` or `B`. Hence the **worst case delay** is `4+10+2 = 16ns`.
 </details>
 <br/>
 {::options parse_block_html="false" /}
+
+
+9. The **propagation** delays for all the combinational logic gates and the flip-flops are `2ns`. Each `dff` have $t_H$ and $t_S$ of `1ns` each.  If the clock frequency is not given, what is the **maximum clock frequency** (smallest  that we can have for this device?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxMTg1NDU5NywtMTY2NzMyMDc2MSwtMT
+eyJoaXN0b3J5IjpbMTA0MjE0NDM3MSwtMTY2NzMyMDc2MSwtMT
 k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
 NzMwMThdfQ==
 -->
