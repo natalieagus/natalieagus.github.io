@@ -491,15 +491,18 @@ Answer the following questions:
 	{::options parse_block_html="false" /}
 
 10. When X's output is sequences of value `[1, 2, 3, ...]`, what is the value of `RESET`?
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-`RESET` has to be `0` to enable the *addition* of the previous value of X to form the new value of X in the next CLK cycle.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	`RESET` has to be `0` to enable the *addition* of the previous value of X to take effect, and form a new value of X in the next clock cycle.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
+Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and `X` becomes `001`. From then on, `RESET` remains 0:
+
+1.
 
 
 
@@ -510,7 +513,7 @@ Answer the following questions:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0NTQ2MTI5NiwzNzYwNzg2NjAsLTE2Nj
+eyJoaXN0b3J5IjpbLTMxNDkzMzc2MCwzNzYwNzg2NjAsLTE2Nj
 czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
 MDgyNiwtNjEwNDczMDE4XX0=
 -->
