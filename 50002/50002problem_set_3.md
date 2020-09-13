@@ -307,14 +307,14 @@ Some of the specifications refer to "bounded time" which means there is a *speci
 	{::options parse_block_html="false" /}
 
 6. A circuit that in bounded time indicates that exactly one of the contestants has pressed their button. You can assume there are only two contestants.
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-Yes, a `XOR` gate will meet the specification.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	Yes, a `XOR` gate will meet the specification.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 7. A circuit that has two parts: 
 (a).  A subcircuit that indicates which of two game show contestants pressed their button first, and 
@@ -336,14 +336,14 @@ Yes, a `XOR` gate will meet the specification.
 	4.  11 if both contestants are pressing their buttons
 
 	The output should be **valid and stable** within a specified $t_{PD}$ of the most recent input transition.
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-The low-order bit of the encoding is the signal from A, the high-order bit is the signal from B. Nothing to go metastable here.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	The low-order bit of the encoding is the signal from A, the high-order bit is the signal from B. Nothing to go metastable here.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 
@@ -743,9 +743,9 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTg3NTUzMDYsLTYzODU1ODU2LC04Nj
-I0ODg4NDIsMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNjczNjEw
-MzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3NjEsLT
-E5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEw
-NDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTI4MjU3NDEzNCwtMjAxODc1NTMwNiwtNj
+M4NTU4NTYsLTg2MjQ4ODg0MiwxMzYzOTg4MjE0LDIxMTU2OTQ5
+NjUsMTA2NzM2MTAzOCwxMDcyNDU2MzUxLDM3NjA3ODY2MCwtMT
+Y2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4
+NDQwODI2LC02MTA0NzMwMThdfQ==
 -->
