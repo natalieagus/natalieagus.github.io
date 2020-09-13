@@ -296,15 +296,13 @@ Show Answer
 <li>
 <p>A circuit that in bounded time indicates that exactly one of the contestants has pressed their button. You can assume there are only two contestants.<br>
 {::options parse_block_html=“true” /}</p>
-</li>
-</ol>
-
-Show Answer
+ 
+ Show Answer
 <p>Yes, a <code>XOR</code> gate will meet the specification.</p>
-
-<br>
-{::options parse_block_html="false" /}
-<ol start="7">
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
 <li>
 <p>A circuit that has two parts:<br>
 (a).  A subcircuit that indicates which of two game show contestants pressed their button first, and<br>
@@ -327,14 +325,14 @@ Show Answer
 </ol>
 <p>The output should be <strong>valid and stable</strong> within a specified <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the most recent input transition.<br>
 {::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The low-order bit of the encoding is the signal from A, the high-order bit is the signal from B. Nothing to go metastable here.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
 </li>
 </ol>
-
-Show Answer
-<p>The low-order bit of the encoding is the signal from A, the high-order bit is the signal from B. Nothing to go metastable here.</p>
-
-<br>
-{::options parse_block_html="false" /}
 <h1 id="state-machine">State Machine</h1>
 <p>You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise.</p>
 <h3 id="an-incomplete-state-machine-basic">An Incomplete State Machine (Basic)</h3>
