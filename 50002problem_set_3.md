@@ -376,7 +376,7 @@ Show Answer
 <p>Answer the following questions:</p>
 <ol>
 <li>
-<p>How many bits should the constant <code>Z1</code> has?<br>
+<p>How many bits should the constant <code>Z1</code> have?<br>
 {::options parse_block_html=“true” /}</p>
  
  Show Answer
@@ -385,7 +385,129 @@ Show Answer
  <br>
  {::options parse_block_html="false" /}
 </li>
-<li></li>
+<li>
+<p>How many bits should the constant <code>Z2</code> have?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p><strong>1 bit</strong>. The number of bits of each input to a combinational logic device such as A1 <em>does not depend on anything else or other inputs.</em></p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the decimal value of <code>Z1</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>Since <code>X[2:0]</code> produces an increasing sequence from decimal value of <code>1,2,3,4,...</code> etc, we can easily guess that the the decimal value of <code>Z1</code> should be <code>0</code>, such that when there’s a <code>RESET</code>, the output of the register <code>R1</code> is zero.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the decimal value of <code>Z2</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p><code>Z2</code>'s decimal value is <code>1</code>. The same reason applies: since the sequence <code>X[2:0]</code> produced by <code>A1</code> is increasing by 1, the input to <code>A1</code> should be 1 such that at <em>every</em> cycle, theres an addition of 1 to be produced at <code>X</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A2</code> in nanosecond?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>  of <code>A000R</code> is 3ns, hence the  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>  of <code>A2</code> is <code>9ns</code> since it is made out of three <code>A000R</code> modules connected in series.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the minimum clock period in nanosecond?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The <em>longest</em> path that the clock period has to satisfy is <code>R1 -&gt; A1 -&gt; A2 -&gt; Z1 -&gt; R2</code>. Hence we need to consider the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of all devices in its path (except <code>R2</code>) plus <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">t_S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>R2</code>: <code>5+9+9+2+2 = 27ns</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the minimum <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A1</code> in nanosecond?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A1</code> has to be large enough so as to satisfy  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">t_H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>R1</code>. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">t_H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>R1</code> is <code>2ns</code>, and  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the mux is <code>1ns</code>. Therefore min <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A1</code> is <code>2-1 = 1ns</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is value of <code>A2</code>'s <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> in nanosecond?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A2</code> is basically the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of a single <code>A000R</code> (<code>1ns</code>) since that is the <em>shortest</em> path from any input to any output in <code>A2</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>When <code>RESET</code> is <code>1</code> for several cycles, what will be the value of <code>X[2:0]</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>When <code>RESET</code> is <code>1</code>, the output of <code>R1</code> will be <code>000</code>. Hence the value of <code>X[2:0]</code> will be <code>001</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>When X’s output is sequences of value <code>[1, 2, 3, ...]</code>, what is the value of <code>RESET</code>?<br>
+{::options parse_block_html=“true” /}</p>
+
+Show Answer
+<p><code>RESET</code> has to be <code>0</code> to enable the <em>addition</em> of the previous value of X to take effect, and form a new value of X in the next clock cycle.</p>
+
+<br>
+{::options parse_block_html="false" /}
+</li>
+</ol>
+<p>Now, suppose that at time <code>t=0</code>, <code>RESET</code> signal is changed from <code>1</code> to <code>0</code>, and <code>X</code> becomes <code>001</code>. From then on, <code>RESET</code> remains 0:</p>
+<ol>
+<li>
+<p>What is the decimal value of <code>O[2:0]</code> at time <code>t = 0</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p><code>X</code> is <code>001</code>  and <code>Y</code> is <code>000</code>  at <code>t=0</code>. Using the truth table of <code>A000R</code> and the schematic of <code>A1</code>, we can deduce that <code>O[2:0]</code> at <code>t=0</code> is <code>1</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the decimal value of <code>O[2:0]</code> at time <code>t = 1</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>X is <code>010</code> and Y is <code>001</code> at <code>t=1</code>. Using the truth table of <code>A000R</code> and the schematic of <code>A1</code>, we can deduce that <code>O[2:0]</code> at <code>t=1</code> is <code>3</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the decimal value of <code>O[2:0]</code> at time <code>t=3</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>X is <code>011</code> and Y is <code>011</code> at <code>t=1</code>. Using the truth table of <code>A000R</code> and the schematic of <code>A1</code>, we can deduce that <code>O[2:0]</code> at <code>t=2</code> is <code>2</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
 </ol>
 
     </div>
