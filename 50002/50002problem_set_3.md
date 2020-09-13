@@ -419,7 +419,7 @@ Answer the following questions:
 	<br/>
 	{::options parse_block_html="false" /}
 
-3. What is the decimal value of Z1?
+3. What is the decimal value of `Z1`?
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
@@ -429,20 +429,32 @@ Since `X[2:0]` produces an increasing sequence from decimal value of `1,2,3,4,..
 <br/>
 {::options parse_block_html="false" /}
 
-3. What is the decimal value of Z1?
+4. What is the decimal value of `Z2`?
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Since `X[2:0]` produces an increasing sequence from decimal value of `1,2,3,4,...` etc, we can easily guess that the the decimal value of `Z1` should be `0`, such that when there's a `RESET`, the output of the register `R1` is zero.
+`Z2`'s decimal value is `1`. The same reason applies: since the sequence `X[2:0]` produced by `A1` is increasing by 1, the input to `A1` should be 1 such that at *every* cycle, theres an addition of 1 to be produced at `X`.
 </details>
 <br/>
 {::options parse_block_html="false" /}
+
+5. What is the $t_{PD}$ of `A2` in nanosecond?
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+The  $t_{PD}$  of `A000R` is 3ns, hence the  $t_{PD}$  of `A2` is `9ns` since it is made out of three `A000R` modules connected in series.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+6. 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5NzI1MTc1MiwzNzYwNzg2NjAsLTE2Nj
+eyJoaXN0b3J5IjpbLTYxMjU5NjQyNSwzNzYwNzg2NjAsLTE2Nj
 czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
 MDgyNiwtNjEwNDczMDE4XX0=
 -->
