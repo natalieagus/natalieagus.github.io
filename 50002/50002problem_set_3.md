@@ -295,6 +295,23 @@ Construct a "divisible-by-3" FSM that accepts a binary number entered one bit at
 1.  Draw a state transition diagram for your FSM indicating the initial state and for which states the light should be turned on. *Hint: the FSM has 3 states.*
 
 
+2. Construct a truth table for the FSM logic. Inputs include the state bits and the next bit of the number; outputs include the next state bits and the control for the light.
+
+$$
+\begin{matrix}
+S_1 & S_0 & b & S_1' & S_0' & \text{light} \\
+\hline 
+ 0 & 0 & 0 & 0 & 0 & 1 \\
+ 0 & 0 & 1 & 0 & 1 & 1 \\
+ 0 & 1 & 0 & 1 & 0 & 0 \\
+ 0 & 1 & 1 & 0 & 0 & 0 \\
+ 1 & 0 & 0 & 0 & 1 & 0 \\
+ 1 & 0 & 1 & 1 & 0 & 0 \\
+\hline
+\end{matrix}
+$$
+
+3. Write down the boolean equation for the FSM.
 
 ### Hardware Implementation of a state machine (Intermediate)
 
@@ -588,7 +605,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NDc0Mjg2NywxMDcyNDU2MzUxLDM3Nj
-A3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5
-OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTEzMzIwMTkxNjgsMTA3MjQ1NjM1MSwzNz
+YwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMy
+OTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
