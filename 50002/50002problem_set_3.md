@@ -328,17 +328,17 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
-8. The propagation delays for all the combinational logic gates and the flip-flops are `2ns`. The clock frequency is `100MHz`. **What is the worst case delay** in nanosecond for the next states at `A` and `B` to appear (i.e. for `A` and `B` to be valid) after the input `x` is changed to be a valid input. *Assume that the initial states `AB` are given.*
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+8. The propagation delays for all the combinational logic gates and the flip-flops are `2ns`. The clock frequency is `100MHz`. **What is the worst case delay** in nanosecond for the next states at `A` and `B` to appear (i.e. for `A` and `B` to be valid) after the input `x` is changed to be a valid input. *Assume that the initial states `AB` are given and fixed.*
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-From the frequency, we can compute the *period* of the clock to be `10ns`. 
+	From the frequency, we can compute the *period* of the clock to be `10ns`. 
 
-For the **worst** case delay, we need to consider the scenario that input `x` is propagated up to input of the register and *it just missed the `clk` rise*. It takes `4ns` to propagate through the `AND` and `OR` gates, and another `10ns` to wait for another `clk` rise. Finally, it takes `2ns` to propagate through the register to produce `A` or `B`. Hence the **worst case delay** is `4+10+2 = 16ns`.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	For the **worst** case delay, we need to consider the scenario that input `x` is propagated up to input of the register and *it just missed the `clk` rise*. It takes `4ns` to propagate through the `AND` and `OR` gates, and another `10ns` to wait for another `clk` rise. Finally, it takes `2ns` to propagate through the register to produce `A` or `B`. Hence the **worst case delay** is `4+10+2 = 16ns`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 9. The **propagation** delays for all the combinational logic gates and the flip-flops are `2ns`. Each `dff` have $t_H$ and $t_S$ of `1ns` each.  If the clock frequency is not given, what is the **maximum clock frequency** *(smallest `clk` period)* that we can have for this device?
@@ -350,8 +350,17 @@ For the **worst** case delay, we need to consider the scenario that input `x` is
 	</details>
 	<br/>
 	{::options parse_block_html="false" /} 
+
+10. What are the output sequences from `t=1` to `t=16` of the circuit when fed the following input (fed from *left* to *right*): `1101 1111 1110 0010` from `t=0` to `t=15` respectively? Assume that the initial states are `AB=00`.
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NzQ1ODgwNSwtMTY2NzMyMDc2MSwtMT
-k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
-NzMwMThdfQ==
+eyJoaXN0b3J5IjpbNTQ4NTQyNTI5LC0xNjY3MzIwNzYxLC0xOT
+U3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3
+MzAxOF19
 -->
