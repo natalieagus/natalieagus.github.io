@@ -399,7 +399,7 @@ The timing specifications for other devices in the state machine is:
 Both `A1` and `A2` are **combinational** logic that contains `A000R` only. Unfortunately, the design for `A1` is *missing*. We only know that `A1` uses only `A000R` to compute the output and the next state function **and that A1 has the same $t_{PD}$ as A2**. The other information that we have is that the output of `A1`, `X[2:0]` is a sequence of decimal, `[1, 2, 3, ... ]` in the *binary* form, i.e. `[001, 010, 011, ...]`.
 
 Answer the following questions:
-1. How many bits should the constant `Z1` has?
+1. How many bits should the constant `Z1` have?
 	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
@@ -409,11 +409,40 @@ Answer the following questions:
 	<br/>
 	{::options parse_block_html="false" /}
 
-2. 
+2. How many bits should the constant `Z2` have?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**1 bit**. The number of bits of each input to a combinational logic device such as A1 *does not depend on anything else or other inputs.*
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+3. What is the decimal value of Z1?
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+Since `X[2:0]` produces an increasing sequence from decimal value of `1,2,3,4,...` etc, we can easily guess that the the decimal value of `Z1` should be `0`, such that when there's a `RESET`, the output of the register `R1` is zero.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+3. What is the decimal value of Z1?
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+Since `X[2:0]` produces an increasing sequence from decimal value of `1,2,3,4,...` etc, we can easily guess that the the decimal value of `Z1` should be `0`, such that when there's a `RESET`, the output of the register `R1` is zero.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTEzNzUzNDMsMzc2MDc4NjYwLC0xNj
-Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
-NDA4MjYsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbMTg5NzI1MTc1MiwzNzYwNzg2NjAsLTE2Nj
+czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
+MDgyNiwtNjEwNDczMDE4XX0=
 -->
