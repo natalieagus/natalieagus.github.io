@@ -328,9 +328,19 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
-8. The propagation delays for all the combinational logic gates and the flip-flops are 2 ns. The clock frequency is 100 MHz. **What is the worst case delay** in nanosecond for the next states at A and B to appear (i.e. for A and B to be valid) after the input x is changed to be a valid input. ****Assume that the initial states of both dff are given****.
+8. The propagation delays for all the combinational logic gates and the flip-flops are `2ns`. The clock frequency is `100MHz`. **What is the worst case delay** in nanosecond for the next states at `A` and `B` to appear (i.e. for `A` and `B` to be valid) after the input `x` is changed to be a valid input. *Assume that the initial states `AB` are given.*
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+From the frequency, we can compute the *period* of the clock to be `10ns`. 
+
+For the **worst** case delay, we need to consider the scenario that input `x` is propagated up to input of the register and it just missed the `clk` rise. It takes 4 ns to propagate through the AND and OR gates, and another 10 ns to wait for another CLK rise. Finally, it takes 2 ns to propagate through the register to produce A or B. Hence the worst case delay is $4+10+2 = 16$ns.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5Mjg5MDMyMSwtMTY2NzMyMDc2MSwtMT
+eyJoaXN0b3J5IjpbMjAxMTg1NDU5NywtMTY2NzMyMDc2MSwtMT
 k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
 NzMwMThdfQ==
 -->
