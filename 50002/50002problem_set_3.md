@@ -259,9 +259,13 @@ You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_s
 
 Consider the schematic of a machine as follows, which function is to: *detect a sequence of three or more consecutive 1’s, and output: 1 after three or more consecutive 1’s, or 0 otherwise.*
 
+<img src="https://www.dropbox.com/s/nx1s0kw3iu0cvqz/Q6.png?raw=1" width="70%" height="70%">
 
+Let's analyse the circuit by answering the questions below:
+1. If the circuit has an initial state of `AB=00`, and the input at `t=0` is `x=0`, what will the immediate next state be?
+2. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NTA2NDM2MywtMTY2NzMyMDc2MSwtMT
+eyJoaXN0b3J5IjpbMTYxNDk2MDY2NywtMTY2NzMyMDc2MSwtMT
 k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
 NzMwMThdfQ==
 -->
