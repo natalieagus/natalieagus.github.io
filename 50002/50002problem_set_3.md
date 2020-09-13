@@ -293,9 +293,27 @@ The combination for the lock is `100`.
 Construct a "divisible-by-3" FSM that accepts a binary number entered one bit at a time, most significant bit first, and indicates with a *light* if the number entered so far is divisible by 3. Answer the following questions:
 
 1.  Draw a state transition diagram for your FSM indicating the initial state and for which states the light should be turned on. *Hint: the FSM has 3 states.*
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
+If the value of the number entered so far is N, then after the digit b is entered, the value of the new number N' is 2N + b. Using this fact:
+
+1.  if N is 0 mod 3 then for some p, N = 3p + 0. After the digit b is entered, N' = 6p + b. So N' is b mod 3.
+
+1.  if N is 1 mod 3 then for some p, N = 3p + 1. After the digit b is entered, N' = 6p + 2 + b. So N' is b+2 mod 3.
+
+1.  if N is 2 mod 3 then for some p, N = 3p + 2. After the digit b is entered, N' = 6p + 4 + b. So N' is b+1 mod 3.
+
+This leads to the following transition diagram where the states are labeled with the value of N mod 3.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 2. Construct a truth table for the FSM logic. Inputs include the state bits and the next bit of the number; outputs include the next state bits and the control for the light.
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 $$
 \begin{matrix}
@@ -310,8 +328,14 @@ S_1 & S_0 & b & S_1' & S_0' & \text{light} \\
 \hline
 \end{matrix}
 $$
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 3. Write down the boolean equation for the FSM.
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
 $$
 \begin{aligned}
@@ -320,6 +344,9 @@ S_1' &= \overline{S_1} * S_0 * \overline{b} + S_1 * \overline{S_0} * b \\\\
 S_0' &= \overline{S_1} * \overline{S_0} * b + S_1 * \overline{S_0} * \overline{b}
 \end{aligned}
 $$
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 ### Hardware Implementation of a state machine (Intermediate)
 
@@ -613,7 +640,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1MzQ4ODA0OCwxMDcyNDU2MzUxLDM3Nj
+eyJoaXN0b3J5IjpbMTA2NzM2MTAzOCwxMDcyNDU2MzUxLDM3Nj
 A3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5
 OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
 -->
