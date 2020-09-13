@@ -328,7 +328,16 @@ Yes, a `XOR` gate will meet the specification.
 	<br/>
 	{::options parse_block_html="false" /}
 
-8. 
+8. A circuit that converts button presses from two contestants into the following two-bit output encoding. The circuit has two inputs, A and B, one for each contestant. A contestant's input will transition from 0 to 1 when he/she presses his/her button. The final output should be:
+
+	1.  00 if neither contestant is pressing their button
+	2.  01 if contestant A is pressing her button
+	3.  10 if contestant B is pressing her button
+	4.  11 if both contestants are pressing their buttons
+
+	The output should be **valid and stable** within a specified $t_{PD}$ of the most recent input transition.
+
+
 
 
 
@@ -725,7 +734,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5MTMzNjI3MCwyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbMTAzNTg5NjI0OSwyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
