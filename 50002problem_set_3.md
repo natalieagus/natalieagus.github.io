@@ -242,17 +242,103 @@ Show Answer
 <img src="https://www.dropbox.com/s/nx1s0kw3iu0cvqz/Q6.png?raw=1" width="70%" height="70%">
 <p>Let’s analyse the circuit by answering the questions below:</p>
 <ol>
-<li>If the circuit has an initial state of <code>AB=00</code>, and the input at <code>t=0</code> is <code>x=0</code>, what will the immediate next state be?<br>
-{::options parse_block_html=“true” /}</li>
-</ol>
+<li>
+<p>If the circuit has an <strong>initial</strong> state of <code>AB=00</code>, and the input at <code>t=0</code> is <code>x=0</code>, what will the immediate next state be?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The immediate next state is: <code>AB = 00</code>. You can easily trace this output from the circuit above.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>If the circuit has an <strong>initial</strong> state of <code>AB=00</code>, and the input at <code>t=0</code> is <code>x=1</code>, what will the immediate next state be?	{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The immediate next state is: <code>AB = 01</code></p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>If the circuit has a <strong>current</strong> state <code>AB=01</code>, and the current input is  <code>x=1</code>, what will the immediate next state be?	{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The immediate next state is: <code>AB = 10</code></p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>If the circuit has a <strong>current</strong> state <code>AB=11</code>, and the current input is  <code>x=1</code>, what will the immediate next state be?	{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The immediate next state is: <code>AB = 11</code></p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>If the circuit has a <strong>current</strong> state <code>AB=11</code>, and the current input is  <code>x=0</code>, what will the immediate next state be?	{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The immediate next state is: <code>AB = 00</code></p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What are the state(s) that can go to state <code>AB=00</code> as its <em><strong>next</strong></em> state?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>All combinations: <code>AB=00</code>, or <code>01</code>, or <code>10</code>, or <code>11</code>. You can prove it easily by brute force: checking if <code>AB = 00</code> next if its previously set to some value <code>AB = ij</code> given existing value <code>x</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>What is the value of output <code>y</code> when the current state is <code>AB = 11</code> and the current input is <code>x = 0</code>?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>Tracing it out, we have <code>y=1</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>The propagation delays for all the combinational logic gates and the flip-flops are <code>2ns</code>. The clock frequency is <code>100MHz</code>. <strong>What is the worst case delay</strong> in nanosecond for the next states at <code>A</code> and <code>B</code> to appear (i.e. for <code>A</code> and <code>B</code> to be valid) after the input <code>x</code> is changed to be a valid input. <em>Assume that the initial states <code>AB</code> are given and fixed.</em><br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>From the frequency, we can compute the <em>period</em> of the clock to be <code>10ns</code>.</p>
+<p>For the <strong>worst</strong> case delay, we need to consider the scenario that input <code>x</code> is propagated up to input of the register and <em>it just missed the <code>clk</code> rise</em>. It takes <code>4ns</code> to propagate through the <code>AND</code> and <code>OR</code> gates, and another <code>10ns</code> to wait for another <code>clk</code> rise. Finally, it takes <code>2ns</code> to propagate through the register to produce <code>A</code> or <code>B</code>. Hence the <strong>worst case delay</strong> is <code>4+10+2 = 16ns</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>The <strong>propagation</strong> delays for all the combinational logic gates and the flip-flops are <code>2ns</code>. Each <code>dff</code> have <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">t_H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">t_S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>1ns</code> each.  If the clock frequency is not given, what is the <strong>maximum clock frequency</strong> <em>(smallest <code>clk</code> period)</em> that we can have for this device?<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>The clock period has to satisfy the <em>feedback</em> path (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">t_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> timing constraint), that is made up with <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the <code>dff</code>,  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the <code>AND</code> gate,  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the <code>OR</code> gate, plus <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">t_S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the register. This adds up to <code>2+2+2+ 1 = 9ns</code>. Hence the maximum frequency is <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>9</mn><mo>∗</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>9</mn></mrow></msup><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{(9*10^{-9})}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.365108em; vertical-align: -0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.845108em;"><span class="" style="top: -2.655em;"><span class="pstrut" style="height: 3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">9</span><span class="mbin mtight">∗</span><span class="mord mtight">1</span><span class="mord mtight"><span class="mord mtight">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.7463142857142857em;"><span class="" style="top: -2.786em; margin-right: 0.07142857142857144em;"><span class="pstrut" style="height: 2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span><span class="" style="top: -3.23em;"><span class="pstrut" style="height: 3em;"></span><span class="frac-line" style="border-bottom-width: 0.04em;"></span></span><span class="" style="top: -3.394em;"><span class="pstrut" style="height: 3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.52em;"><span class=""></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span> <code>= 111111111.11Hz = 111.11MHz</code>.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /} 
+</li>
+<li>
+<p>What are the output sequences from <code>t=1</code> to <code>t=16</code> of the circuit when fed the following input (fed from <em>left</em> to <em>right</em>): <code>1101 1111 1110 0010</code> from <code>t=0</code> to <code>t=15</code> respectively? Assume that the initial states are <code>AB=00</code>.<br>
+{::options parse_block_html=“true” /}</p>
 
 Show Answer
-<p>The immediate next state is: <code>AB = 00</code></p>
+<p>Given that the initial state is <code>AB=00</code>, that makes <code>B' = 1</code> at <code>t=0</code>.  This is doable the tedious way by simply tracing the output <code>y</code> sixteen times from <code>t=1</code> to <code>t=16</code>. We can also deduce from the <em>functionality</em> of the device, that is to <strong>detect</strong> three consecutive <code>1</code>'s and output <code>0</code> afterwards. The output sequence is therefore <code>0000 0010 0000 0000</code> from <code>t=1</code> to <code>t=16</code> repectively.</p>
 
 <br>
 {::options parse_block_html="false" /}
-<ol start="2">
-<li></li>
+</li>
 </ol>
 
     </div>
