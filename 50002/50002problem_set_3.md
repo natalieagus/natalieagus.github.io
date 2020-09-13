@@ -267,7 +267,7 @@ Let's analyse the circuit by answering the questions below:
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The immediate next state is: `AB = 00`
+	The immediate next state is: `AB = 00`. You can easily trace this output from the circuit above. 
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -328,9 +328,9 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
-
+8. The propagation delays for all the combinational logic gates and the flip-flops are 2 ns. The clock frequency is 100 MHz. **What is the worst case delay** in nanosecond for the next states at A and B to appear (i.e. for A and B to be valid) after the input x is changed to be a valid input. ****Assume that the initial states of both dff are given****.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTAxNTY4NzMsLTE2NjczMjA3NjEsLT
-E5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEw
-NDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTU5Mjg5MDMyMSwtMTY2NzMyMDc2MSwtMT
+k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
+NzMwMThdfQ==
 -->
