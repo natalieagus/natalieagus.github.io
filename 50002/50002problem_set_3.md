@@ -193,7 +193,7 @@ We are given the following specification about the multiplexer's valid operating
 
 The following circuit diagram implements a sequential circuit with two state bits, `S0` and `S1`:
 
-<img src="https://www.dropbox.com/s/6tivnh73831oza5/Q2.png?raw=1" width="70%" height="70%">
+<img src="https://www.dropbox.com/s/etums208i4we063/fig1.png?raw=1" width="70%" height="70%">
 
 Answer the following questions:
 
@@ -740,8 +740,8 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MjQ4ODg0MiwxMzYzOTg4MjE0LDIxMT
-U2OTQ5NjUsMTA2NzM2MTAzOCwxMDcyNDU2MzUxLDM3NjA3ODY2
-MCwtMTY2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC
-0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTYzODU1ODU2LC04NjI0ODg4NDIsMTM2Mz
+k4ODIxNCwyMTE1Njk0OTY1LDEwNjczNjEwMzgsMTA3MjQ1NjM1
+MSwzNzYwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLT
+k3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
