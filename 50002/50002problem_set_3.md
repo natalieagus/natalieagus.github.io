@@ -336,8 +336,14 @@ Yes, a `XOR` gate will meet the specification.
 	4.  11 if both contestants are pressing their buttons
 
 	The output should be **valid and stable** within a specified $t_{PD}$ of the most recent input transition.
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-
+The low-order bit of the encoding is the signal from A, the high-order bit is the signal from B. Nothing to go metastable here.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 
 
@@ -734,7 +740,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzNTg5NjI0OSwyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
