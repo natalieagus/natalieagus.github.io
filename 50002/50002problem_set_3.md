@@ -471,22 +471,35 @@ Answer the following questions:
 	{::options parse_block_html="false" /}
 
 8. What is value of `A2`'s $t_{CD}$ in nanosecond?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The $t_{CD}$ of `A2` is basically the $t_{CD}$ of a single `A000R` (`1ns`) since that is the *shortest* path from any input to any output in `A2`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+9. When `RESET` is `1` for several cycles, what will be the value of `X[2:0]`?
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-
+When `RESET` is `1`, the output of `R1` will be `3b000`. Hence the value of X[2:0] is b001.
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
 
 
+ 
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA1MzA2NTYzLDM3NjA3ODY2MCwtMTY2Nz
-MyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQw
-ODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTEwMjQwNzA3MjQsMzc2MDc4NjYwLC0xNj
+Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
+NDA4MjYsLTYxMDQ3MzAxOF19
 -->
