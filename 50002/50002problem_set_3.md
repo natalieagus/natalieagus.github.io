@@ -88,7 +88,7 @@ Signal 5, although it has "invalid" values for two clock cycles isn't the answer
 
 Consider the following circuit, and notice the **feedback loop**:
 
-<img src="https://www.dropbox.com/s/jhq2pg9rs70rlrj/Q8.png?raw=1" width="70%" height="70%">
+<img src="https://www.dropbox.com/s/jhq2pg9rs70rlrj/Q8.png?raw=1" width="80%" height="80%">
 
 Setup time, hold time, propagation delay, and contamination delay (all in nanoseconds) of each component is as written above. Lets now analyse its timing constraints:
 
@@ -740,8 +740,8 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNj
-czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
-NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
-wtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTE1Nzg0MTQ4OTAsMTM2Mzk4ODIxNCwyMT
+E1Njk0OTY1LDEwNjczNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2
+NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5Ny
+wtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
