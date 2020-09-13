@@ -308,18 +308,29 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
-6. What are the state(s) that can go to state AB=00 as its next state?
+6. What are the state(s) that can go to state `AB=00` as its ***next*** state?
 {::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The immediate next state is: `AB = 11`
+	All combinations: `AB=00`, or `01`, or `10`, or `11`. You can prove it easily 
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
 
+7. What is the value of output `y` when the current state is `AB = 11` and the current input is `x = 0`?
+{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	Tracing it out, we have `y=1`. 
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzMTIzMjMwLC0xNjY3MzIwNzYxLC0xOT
-U3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3
-MzAxOF19
+eyJoaXN0b3J5IjpbLTU1ODkwNTcwNCwtMTY2NzMyMDc2MSwtMT
+k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
+NzMwMThdfQ==
 -->
