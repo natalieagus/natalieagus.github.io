@@ -313,6 +313,14 @@ $$
 
 3. Write down the boolean equation for the FSM.
 
+$$
+\begin{aligned}
+\text{light } &= \overline{S_1} * \overline{S_0}\\
+S_1' &= \overline{S_1} * S_0 * \overline{b} + S_1 * \overline{S_0} * b \\\\
+S_0' &= \overline{S_1} * \overline{S_0} * b + S_1 * \overline{S_0} * \overline{b}
+\end{aligned}
+$$
+
 ### Hardware Implementation of a state machine (Intermediate)
 
 Consider the schematic of a machine as follows, which function is to: *detect a sequence of three or more consecutive 1’s, and output: 1 after three or more consecutive 1’s, or 0 otherwise.*
@@ -605,7 +613,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzIwMTkxNjgsMTA3MjQ1NjM1MSwzNz
-YwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMy
-OTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbMTU1MzQ4ODA0OCwxMDcyNDU2MzUxLDM3Nj
+A3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5
+OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
 -->
