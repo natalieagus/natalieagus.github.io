@@ -45,6 +45,8 @@
 
 [Getting Started With FPGA Part 3: Reset and I/O](https://natalieagus.github.io/50002/fpga_3.html)
 
+[Getting Good With FPGA: Building the Beta](https://natalieagus.github.io/50002/fpga_4.html)
+
 [Designing a Custom Programmable Datapath](https://natalieagus.github.io/50002/1D_programmable_machine.html)
 
 #### 50.002 Problem Sets [more will be uploaded weekly]
