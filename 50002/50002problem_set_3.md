@@ -465,11 +465,11 @@ Take a look at the following State Machine circuitry:
 <img src="https://www.dropbox.com/s/d8o2nhv1ugouf2g/Q3.png?raw=1" width="70%" height="70%">
 
 The device `A2` has the following schematic:
-<img src="https://www.dropbox.com/s/9e2jzfrwtjto34p/Q4.png?raw=1" width="70%" height="70%">
+<img src="https://www.dropbox.com/s/9e2jzfrwtjto34p/Q4.png?raw=1" width="40%" height="40%">
 
 
 It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $t_{PD}$ = `3ns` with the following schematic
-<img src="https://www.dropbox.com/s/55rj88ehoozyo6y/Q5.png?raw=1" width="70%" height="70%">
+<img src="https://www.dropbox.com/s/55rj88ehoozyo6y/Q5.png?raw=1" width="40%" height="40%">
 
 The truth table for `A000R` is as follows: 
 $$
@@ -644,7 +644,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MTUzMTQxNiwyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbMTA5MTkyNzE0NCwyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
