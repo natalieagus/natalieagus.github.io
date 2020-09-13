@@ -361,9 +361,23 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
+### State-Machine Timing Computation (Intermediate)
 
+Take a look at the following State Machine circuitry:
+
+<img src="https://www.dropbox.com/s/d8o2nhv1ugouf2g/Q3.png?raw=1" width="70%" height="70%">
+
+  
+
+The device A2 has the following schematic:
+<img src="https://www.dropbox.com/s/9e2jzfrwtjto34p/Q4.png?raw=1" width="70%" height="70%">
+
+
+It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $tpd = 3ns**** with the followings chematic
+
+\includepic{0.4}{Q5}{}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOT
-U3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3
-MzAxOF19
+eyJoaXN0b3J5IjpbNDc4MTAwODg1LDM3NjA3ODY2MCwtMTY2Nz
+MyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQw
+ODI2LC02MTA0NzMwMThdfQ==
 -->
