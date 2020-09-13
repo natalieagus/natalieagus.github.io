@@ -249,6 +249,28 @@ Answer the following questions:
 	<br/>
 	{::options parse_block_html="false" /}
 
+### Synchronizability (Basic)
+Which of the following cannot be made to function with perfect reliability, assuming reliable components and connections? **Explain your reasoning.** 
+
+Some of the specifications refer to "bounded time" which means there is a *specified time interval*, measured from the most recent input transition, after which the output is stable and valid.
+
+1. A circuit that in unbounded time indicates which of two game show contestants pressed their button first.
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	It is possible to build this *unbounded*-time arbiter. It may take an arbitrary period, after which it will produce:
+	* A decision and
+	* A signal that indicates that its made a decision.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+	
+2. A circuit that in bounded time indicates which of two game show contestants pressed their button first.
+
+
+
+
 
 
 # State Machine
@@ -644,7 +666,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MTkyNzE0NCwyMTE1Njk0OTY1LDEwNj
+eyJoaXN0b3J5IjpbMTU2NzAyMjI1NywyMTE1Njk0OTY1LDEwNj
 czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
 NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
 wtNjEwNDczMDE4XX0=
