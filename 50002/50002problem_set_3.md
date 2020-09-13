@@ -378,21 +378,27 @@ It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $t_{PD}
 
 The truth table for `A000R` is as follows: 
 $$
-\begin{table}{c|c|c|c|c}
-    A & B & C & D & E \\\\ 
+\begin{matrix}
+    A & B & C & D & E \\
     \hline 
-    0 & 0 & 0 & 0 & 0 \\\\
-    0 & 0 & 1 & 1 & 0 \\\\
-    0 & 1 & 0 & 1 & 0 \\\\
-    0 & 1 & 1 & 0 & 1 \\\\
-    1 & 0 & 0 & 1 & 0 \\\\
-    1 & 0 & 1 & 0 & 1 \\\\
-    1 & 1 & 0 & 0 & 1 \\\\
-    1 & 1 & 1 & 1 & 1 \\\\
-\end{table}
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 0 \\
+    0 & 1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 1 & 0 & 1 \\
+    1 & 1 & 0 & 0 & 1 \\
+    1 & 1 & 1 & 1 & 1 \\
+    \hline
+\end{matrix}
 $$
+
+The timing specifications for other devices in the state machine is:
+*  The Mux has the following time specification: $t_{CD}$ = `1ns`, and $t_{PD}$ = `2ns`.
+
+* The Registers has the following time specification: $t_{CD}$ = `2ns`, $t_{PD}$ = `5ns`, $t_S$ = 2ns, th = 2ns.****
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODUzMzg2MDYsMzc2MDc4NjYwLC0xNj
+eyJoaXN0b3J5IjpbLTE1MDk4NzYxMzEsMzc2MDc4NjYwLC0xNj
 Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
 NDA4MjYsLTYxMDQ3MzAxOF19
 -->
