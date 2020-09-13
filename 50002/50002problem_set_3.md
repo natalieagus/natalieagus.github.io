@@ -255,8 +255,13 @@ Answer the following questions:
 
 You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise. 
 
-### 
+### Hardware Implementation of a state machine (Intermediate)
+
+Consider the schematic of a machine as follows, which function is to: *detect a sequence of three or more consecutive 1’s, and output: 1 after three or more consecutive 1’s, or 0 otherwise.*
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLT
-k3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTU5NTA2NDM2MywtMTY2NzMyMDc2MSwtMT
+k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
+NzMwMThdfQ==
 -->
