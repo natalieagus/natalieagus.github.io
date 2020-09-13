@@ -356,12 +356,14 @@ Let's analyse the circuit by answering the questions below:
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	Given that the initial state is `AB=00`, that makes `B' = 1` at `t=0`.  This is doable the tedious way by simply tracing the output `y` sixteen times from `t=1` to `t=16`. We can also deduce from the *functionality* of the device, that is to **detect** three consecutive `1`'s and output `0` afterwards. The output sequence is 0000 0010 0000 0000 from `t=1` to t=16`.
+	Given that the initial state is `AB=00`, that makes `B' = 1` at `t=0`.  This is doable the tedious way by simply tracing the output `y` sixteen times from `t=1` to `t=16`. We can also deduce from the *functionality* of the device, that is to **detect** three consecutive `1`'s and output `0` afterwards. The output sequence is therefore `0000 0010 0000 0000` from `t=1` to `t=16` repectively.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4OTA2NzYwMiwtMTY2NzMyMDc2MSwtMT
-k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
-NzMwMThdfQ==
+eyJoaXN0b3J5IjpbMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOT
+U3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3
+MzAxOF19
 -->
