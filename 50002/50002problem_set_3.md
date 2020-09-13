@@ -461,6 +461,16 @@ Answer the following questions:
 
 
 7. What is the minimum $t_{CD}$ of `A1` in nanosecond?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	$t_{CD}$ of `A1` has to be large enough so as to satisfy  $t_H$ of `R1`. $t_H$ of `R1` is `2ns`, and  $t_{CD}$ of the mux is `1ns`. Therefore min $t_{CD}$ of `A1` is `2-1 = 1ns`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+8. What is value of `A2`'s $t_{CD}$ in nanosecond?
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
@@ -476,7 +486,7 @@ Answer the following questions:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjE1NDc0MzUsMzc2MDc4NjYwLC0xNj
-Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
-NDA4MjYsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbNTA1MzA2NTYzLDM3NjA3ODY2MCwtMTY2Nz
+MyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQw
+ODI2LC02MTA0NzMwMThdfQ==
 -->
