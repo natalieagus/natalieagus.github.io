@@ -13,7 +13,7 @@
     <div class="stackedit__toc">
       
 <ul>
-<li><a href="#getting-good-with-fpga-beta-cpu">Getting Good with FPGA: Beta CPU</a>
+<li><a href="#getting-good-with-fpga-building-the-beta-cpu">Getting Good with FPGA: Building the Beta CPU</a>
 <ul>
 <li><a href="#creating-a-memory-unit">Creating a Memory Unit</a></li>
 <li><a href="#the-alu">The ALU</a></li>
@@ -34,7 +34,7 @@
 Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
-<h1 id="getting-good-with-fpga-beta-cpu">Getting Good with FPGA: Beta CPU</h1>
+<h1 id="getting-good-with-fpga-building-the-beta-cpu">Getting Good with FPGA: Building the Beta CPU</h1>
 <p>This document is created for the sake of enhancing our understanding in how basic CPU works by actually implementing it onto an FPGA. We will create our 32-bit <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU and use simple dual-port RAM to simulate some of the instructions that we have learned in class and <strong>test</strong> if they’re working properly.</p>
 <p>You are recommended to read this document only after you’ve understood <strong>completely</strong> up until the chapter on <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> datapath and are comfortable enough with HDL programming:</p>
 <ul>
