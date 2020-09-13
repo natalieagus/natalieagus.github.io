@@ -36,8 +36,6 @@
 
 [Post Lecture Summary Videos Playlist for All Topics](https://www.youtube.com/playlist?list=PLklpDKpv-EBhCVUAZDDRWEGZzR_It-FSo)
 
-
-
 #### 1D Electronic Game Design
 [Getting Started With FPGA Part 1: Combinational Logic](https://natalieagus.github.io/50002/fpga_1.html)
 
@@ -53,3 +51,5 @@
 [Problem Set Week 1](https://natalieagus.github.io/50002/PS1/)
 
 [Problem Set Week 2](https://natalieagus.github.io/50002/PS2/)
+
+[Problem Set Week 3](https://natalieagus.github.io/50002/PS3/)
