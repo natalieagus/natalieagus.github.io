@@ -342,16 +342,16 @@ For the **worst** case delay, we need to consider the scenario that input `x` is
 
 
 9. The **propagation** delays for all the combinational logic gates and the flip-flops are `2ns`. Each `dff` have $t_H$ and $t_S$ of `1ns` each.  If the clock frequency is not given, what is the **maximum clock frequency** *(smallest `clk` period)* that we can have for this device?
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-The clock period has to satisfy the *feedback* path ($t_2$ timing constraint), that is made up with $t_{PD}$ of the `dff`, the $t_{PD}$ of the `AND` gate, the $t_{PD}$ of the `OR` gate, plus $t_S$ of the register. This adds up to $2+2+2+ 1 = 9$ns. Hence the maximum frequency is $1/(9*10^{-9}) = 111111111.11 Hz = 111.11 Mhz$.
-</details>
-<br/>
-{::options parse_block_html="false" /} 
+	The clock period has to satisfy the *feedback* path ($t_2$ timing constraint), that is made up with $t_{PD}$ of the `dff`,  $t_{PD}$ of the `AND` gate,  $t_{PD}$ of the `OR` gate, plus $t_S$ of the register. This adds up to `2+2+2+ 1 = 9ns`. Hence the maximum frequency is $\frac{1}{(9*10^{-9})}$ `= 111111111.11Hz = 111.11MHz`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /} 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDU4ODkxOTYsLTE2NjczMjA3NjEsLT
-E5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEw
-NDczMDE4XX0=
+eyJoaXN0b3J5IjpbMjA0NzQ1ODgwNSwtMTY2NzMyMDc2MSwtMT
+k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
+NzMwMThdfQ==
 -->
