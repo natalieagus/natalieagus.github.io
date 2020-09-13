@@ -276,10 +276,27 @@ Some of the specifications refer to "bounded time" which means there is a *speci
 	<br/>
 	{::options parse_block_html="false" /}
 
-3. A circuit that determines if button A was pressed ***before*** a specified deadline. Assume the circuit has an accurate internal signal that transitions from 0 to 1 when the deadline is reached. The output should be 1 if the button was pressed on or before the deadline, 0 if pressed after the deadline. The output should be valid and stable within a specified $t_{PD}$ of the A input transition.
+3. A circuit that determines if button A was pressed ***before*** a specified deadline. Assume the circuit has an accurate internal signal that transitions from 0 to 1 when the deadline is reached. The output should be 1 if the button was pressed on or before the deadline, 0 if pressed after the deadline. The output should be valid and stable within a specified $t_{PD}$.
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
+	This is another restatement of the "bounded time arbiter problem", known to be unsolvable in theory. Of course, given sufficiently long time bounds, we can engineer practical approximate solutions (see the answer to the previous question).
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
+4. A circuit that in bounded time indicates which of two game show contestants pressed their button first if the presses were more than 0.1 second apart, otherwise the circuit lights up a "TIE" light.
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
+Not possible, same reasoning as the previous question. This circuit will suffer metastability problems because the decision as to whether the presses were 0.1 seconds apart is subject to metastability problems. 
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+5. 
 # State Machine
 
 You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise. 
@@ -673,8 +690,8 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0ODMwMDc0MiwyMTE1Njk0OTY1LDEwNj
-czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
-NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
-wtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTIwNjgyNjM5MDgsMjExNTY5NDk2NSwxMD
+Y3MzYxMDM4LDEwNzI0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIw
+NzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4Mj
+YsLTYxMDQ3MzAxOF19
 -->
