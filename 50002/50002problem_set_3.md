@@ -305,7 +305,10 @@ If the value of the number entered so far is N, then if digit b is entered next,
 
 1.  If N is 2 mod 3 then for some p, N = 3p + 2. After the digit b is entered, N' = 6p + 4 + b. So N' is b+1 mod 3.
 
-This leads to the following transition diagram where the states are labeled with the value of N mod 3.
+This leads to the following transition diagram where each state corresponds to each of the possible values of N mod 3.
+
+<img src="https://www.dropbox.com/s/kp3njg0hbw6kwwb/FSMqn.png?raw=1" width="70%" height="70%">
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -640,8 +643,8 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNTY5NDk2NSwxMDY3MzYxMDM4LDEwNz
-I0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1
-OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF
-19
+eyJoaXN0b3J5IjpbMTEyNTQ0Njc5NCwyMTE1Njk0OTY1LDEwNj
+czNjEwMzgsMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3
+NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNi
+wtNjEwNDczMDE4XX0=
 -->
