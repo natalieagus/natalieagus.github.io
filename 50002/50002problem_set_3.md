@@ -481,14 +481,25 @@ Answer the following questions:
 	{::options parse_block_html="false" /}
 
 9. When `RESET` is `1` for several cycles, what will be the value of `X[2:0]`?
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	When `RESET` is `1`, the output of `R1` will be `000`. Hence the value of `X[2:0]` will be `001`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+10. When X's output is sequences of value `[1, 2, 3, ...]`, what is the value of `RESET`?
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-When `RESET` is `1`, the output of `R1` will be `3b000`. Hence the value of X[2:0] is b001.
+`RESET` has to be `0` to enable the *addition* of the previous value of X to form the new value of X in the next CLK cycle.
 </details>
 <br/>
 {::options parse_block_html="false" /}
+
 
 
 
@@ -499,7 +510,7 @@ When `RESET` is `1`, the output of `R1` will be `3b000`. Hence the value of X[2:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjQwNzA3MjQsMzc2MDc4NjYwLC0xNj
-Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
-NDA4MjYsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbMTg0NTQ2MTI5NiwzNzYwNzg2NjAsLTE2Nj
+czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
+MDgyNiwtNjEwNDczMDE4XX0=
 -->
