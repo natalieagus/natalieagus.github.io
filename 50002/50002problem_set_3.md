@@ -512,7 +512,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 	<br/>
 	{::options parse_block_html="false" /}
 
-2. What is the decimal value of `O[2:0]` at time `t = 1?
+2. What is the decimal value of `O[2:0]` at time `t = 1`?
 	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
@@ -523,14 +523,14 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 	{::options parse_block_html="false" /}
 
 3. What is the decimal value of `O[2:0]` at time `t=3`?
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	X is `011` and Y is `011` at `t=1`. Using the truth table of `A000R` and the schematic of `A1`, we can deduce that `O[2:0]` at `t=2` is `2`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 
@@ -547,7 +547,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1Njg4MjYyOCwzNzYwNzg2NjAsLTE2Nj
+eyJoaXN0b3J5IjpbMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2Nj
 czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
 MDgyNiwtNjEwNDczMDE4XX0=
 -->
