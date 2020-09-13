@@ -281,16 +281,45 @@ Let's analyse the circuit by answering the questions below:
 	<br/>
 	{::options parse_block_html="false" /}
 
-3. If the circuit has an initial state of `AB=00`, and the input at `t=0` is `x=1`, what will the immediate next state be?	{::options parse_block_html="true" /}
+3. If the circuit has a **current** state `AB=01`, and the current input is  `x=1`, what will the immediate next state be?	{::options parse_block_html="true" /}
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	The immediate next state is: `AB = 01`
+	The immediate next state is: `AB = 10`
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
+
+4. If the circuit has a **current** state `AB=11`, and the current input is  `x=1`, what will the immediate next state be?	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The immediate next state is: `AB = 11`
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+5. If the circuit has a **current** state `AB=11`, and the current input is  `x=0`, what will the immediate next state be?	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The immediate next state is: `AB = 00`
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+6. What are the state(s) that can go to state AB=00 as its next state?
+{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The immediate next state is: `AB = 11`
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNTEyMjgzNywtMTY2NzMyMDc2MSwtMT
-k1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0
-NzMwMThdfQ==
+eyJoaXN0b3J5IjpbMTYzMTIzMjMwLC0xNjY3MzIwNzYxLC0xOT
+U3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3
+MzAxOF19
 -->
