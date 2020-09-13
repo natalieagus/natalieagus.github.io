@@ -367,13 +367,11 @@ Take a look at the following State Machine circuitry:
 
 <img src="https://www.dropbox.com/s/d8o2nhv1ugouf2g/Q3.png?raw=1" width="70%" height="70%">
 
-  
-
-The device A2 has the following schematic:
+The device `A2` has the following schematic:
 <img src="https://www.dropbox.com/s/9e2jzfrwtjto34p/Q4.png?raw=1" width="70%" height="70%">
 
 
-It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $t_{PD}$ = `3ns` with the followings chematic
+It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $t_{PD}$ = `3ns` with the following schematic
 <img src="https://www.dropbox.com/s/55rj88ehoozyo6y/Q5.png?raw=1" width="70%" height="70%">
 
 The truth table for `A000R` is as follows: 
@@ -396,9 +394,14 @@ $$
 The timing specifications for other devices in the state machine is:
 *  The Mux has the following time specification: $t_{CD}$ = `1ns`, and $t_{PD}$ = `2ns`.
 
-* The Registers has the following time specification: $t_{CD}$ = `2ns`, $t_{PD}$ = `5ns`, $t_S$ = 2ns, th = 2ns.****
+* The Registers has the following time specification: $t_{CD}$ = `2ns`, $t_{PD}$ = `5ns`, $t_S$ = `2ns`, $t_H$ = `2ns`.
+
+Both `A1` and `A2` are **combinational** logic that contains `A000R` only. Unfortunately, the design for `A1` is *missing*. We only know that `A1` uses only `A000R` to compute the output and the next state function **and that A1 has the same $t_{PD}$ as A2**. The other information that we have is that the output of `A1`, `X[2:0]` is a sequence of decimal, `[1, 2, 3, ... ]` in the *binary* form, i.e. `[001, 010, 011, ...]`.
+
+Answer the following questions:
+1. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDk4NzYxMzEsMzc2MDc4NjYwLC0xNj
+eyJoaXN0b3J5IjpbLTE0Mjc0ODU3OTcsMzc2MDc4NjYwLC0xNj
 Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
 NDA4MjYsLTYxMDQ3MzAxOF19
 -->
