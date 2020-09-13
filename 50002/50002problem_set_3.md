@@ -262,17 +262,20 @@ The ACME Company has recently received an order from a Mr. Wiley E. Coyote for t
 * The padlock **unlocks** when the FSM sets the UNLOCK output signal to 1, which it does whenever the last N button presses correspond to the unique N-digit combination.
 
   
-Unfortunately the design notes for the P3 are incomplete. Using the specification above and clues gleaned from the partially completed diagrams below fill in the information that is missing from the state transition diagram with its accompanying truth table. When done,
+Unfortunately the design notes for the P3 are *incomplete*. Using the specification above and clues gleaned from the partially completed diagrams below f**ill in the information that is missing from the state transition diagram** with its **accompanying truth table**. 
 
-  
+<img src="https://www.dropbox.com/s/1ww80s7vpxznf1k/Q1%202.png?raw=1" width="70%" height="70%">
 
-  
+When done,
+*  Each state in the transition diagram should be assigned a 2-bit state name S1S0 (note that in this design the state name is not derived from the combination that opens the lock),
 
-*  each state in the transition diagram should be assigned a 2-bit state name S1S0 (note that in this design the state name is not derived from the combination that opens the lock),
+*  The arcs leaving each state should be mutually exclusive and collectively exhaustive,
 
-*  the arcs leaving each state should be mutually exclusive and collectively exhaustive,
+*  The value for UNLOCK should be specified for each state, and o the truth table should be completed.
 
-*  the value for UNLOCK should be specified for each state, and o the truth table should be completed.
+Also, **what is the combination of the lock**? 
+
+
 
 ### Hardware Implementation of a state machine (Intermediate)
 
@@ -566,7 +569,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NTM1NDcwLDEwNzI0NTYzNTEsMzc2MD
-c4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5
-OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF19
+eyJoaXN0b3J5IjpbLTEzMjQ1MDM0MTEsMTA3MjQ1NjM1MSwzNz
+YwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMy
+OTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
