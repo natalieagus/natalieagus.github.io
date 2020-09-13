@@ -255,6 +255,25 @@ Answer the following questions:
 
 You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise. 
 
+### An Incomplete State Machine (Basic)
+The ACME Company has recently received an order from a Mr. Wiley E. Coyote for their all-digital Perfectly Perplexing Padlock:
+* The P3 has **two** buttons ("0" and "1") that when pressed cause the FSM controlling the lock to advance to a new state. 
+* In addition to advancing the FSM, each button press is encoded on the B signal (B=0 for button "0", B=1 for button "1"). 
+* The padlock **unlocks** when the FSM sets the UNLOCK output signal to 1, which it does whenever the last N button presses correspond to the unique N-digit combination.
+
+  
+Unfortunately the design notes for the P3 are incomplete. Using the specification above and clues gleaned from the partially completed diagrams below fill in the information that is missing from the state transition diagram with its accompanying truth table. When done,
+
+  
+
+  
+
+*  each state in the transition diagram should be assigned a 2-bit state name S1S0 (note that in this design the state name is not derived from the combination that opens the lock),
+
+*  the arcs leaving each state should be mutually exclusive and collectively exhaustive,
+
+*  the value for UNLOCK should be specified for each state, and o the truth table should be completed.
+
 ### Hardware Implementation of a state machine (Intermediate)
 
 Consider the schematic of a machine as follows, which function is to: *detect a sequence of three or more consecutive 1’s, and output: 1 after three or more consecutive 1’s, or 0 otherwise.*
@@ -547,7 +566,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2Nj
-czMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0
-MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTU5NTM1NDcwLDEwNzI0NTYzNTEsMzc2MD
+c4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5
+OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF19
 -->
