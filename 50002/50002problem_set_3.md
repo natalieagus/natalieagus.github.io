@@ -276,6 +276,25 @@ When done,
 Also, **what is the combination of the lock**? 
 
 
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+This state machine is a **Moore machine**. The completed state transition diagram and truth table is as follows:
+<img src="https://www.dropbox.com/s/nstfdu7qea4dozo/Q2%202.png?raw=1" width="70%" height="70%">
+
+The combination for the lock is `100`.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+### Constructing an FSM (Basic)
+
+Construct a "divisible-by-3" FSM that accepts a binary number entered one bit at a time, most significant bit first, and indicates with a *light* if the number entered so far is divisible by 3. Answer the following questions:
+
+1.  Draw a state transition diagram for your FSM indicating the initial state and for which states the light should be turned on. *Hint: the FSM has 3 states.*
+
+
 
 ### Hardware Implementation of a state machine (Intermediate)
 
@@ -569,7 +588,7 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjQ1MDM0MTEsMTA3MjQ1NjM1MSwzNz
-YwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMy
-OTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTI3NDc0Mjg2NywxMDcyNDU2MzUxLDM3Nj
+A3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5
+OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMThdfQ==
 -->
