@@ -235,6 +235,106 @@ Show Answer
 {::options parse_block_html="false" /}
 </li>
 </ol>
+<h3 id="synchronizability-basic">Synchronizability (Basic)</h3>
+<p>Which of the following cannot be made to function with perfect reliability, assuming reliable components and connections? <strong>Explain your reasoning.</strong></p>
+<p>Some of the specifications refer to “bounded time” which means there is a <em>specified time interval</em>, measured from the most recent input transition, after which the output is stable and valid.</p>
+<ol>
+<li>
+<p>A circuit that in unbounded time indicates which of two game show contestants pressed their button first.<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>It is possible to build this <em>unbounded</em>-time arbiter. It may take an arbitrary period, after which it will produce:</p>
+<ul>
+<li>A decision and</li>
+<li>A signal that indicates that its made a decision.</li>
+</ul>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>A circuit that in bounded time indicates which of two game show contestants pressed their button first.<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>This is a restatement of the “bounded time arbiter problem”, known to be unsolvable in theory. In practice we can build a circuit to solve this problem where the probability of failure is related to <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>. For “large” <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> (eg, 10’s of nanoseconds in today’s technologies) the probability of failure can be made very small (eg, 1 failure in billions of years).</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>A circuit that determines if button A was pressed <em><strong>before</strong></em> a specified deadline. Assume the circuit has an accurate internal signal that transitions from 0 to 1 when the deadline is reached. The output should be 1 if the button was pressed on or before the deadline, 0 if pressed after the deadline. The output should be valid and stable within a specified <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>.<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>This is another restatement of the “bounded time arbiter problem”, known to be unsolvable in theory. Of course, given sufficiently long time bounds, we can engineer practical approximate solutions (see the answer to the previous question).</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>A circuit that in bounded time indicates which of two game show contestants pressed their button first if the presses were more than 0.1 second apart, otherwise the circuit lights up a “TIE” light.<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>Not possible, same reasoning as the previous question. This circuit will suffer metastability problems because the decision as to whether the presses were 0.1 seconds apart is subject to metastability problems.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>A circuit that in bounded time indicates that at least one button has been pressed by some contestant.<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>Yes, an <code>OR</code> gate will do the job.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>A circuit that in bounded time indicates that exactly one of the contestants has pressed their button. You can assume there are only two contestants.<br>
+{::options parse_block_html=“true” /}</p>
+</li>
+</ol>
+
+Show Answer
+<p>Yes, a <code>XOR</code> gate will meet the specification.</p>
+
+<br>
+{::options parse_block_html="false" /}
+<ol start="7">
+<li>
+<p>A circuit that has two parts:<br>
+(a).  A subcircuit that indicates which of two game show contestants pressed their button first, and<br>
+(b). A subcircuit that in bounded time lights a “TIE” light if the (a) subcircuit hasn’t produced an answer after 1 second. The “TIE” light should stay lit even if (a) makes a decision at some later point.<br>
+{::options parse_block_html=“true” /}</p>
+ 
+ Show Answer
+<p>Both subcircuits will suffer metastability problems. (a) is asking for an arbiter (see part 2 above) and (b) has the same difficulties as outlined for part 3 above.</p>
+ 
+ <br>
+ {::options parse_block_html="false" /}
+</li>
+<li>
+<p>A circuit that converts button presses from two contestants into the following two-bit output encoding. The circuit has two inputs, A and B, one for each contestant. A contestant’s input will transition from 0 to 1 when he/she presses his/her button. The final output should be:</p>
+<ol>
+<li>00 if neither contestant is pressing their button</li>
+<li>01 if contestant A is pressing her button</li>
+<li>10 if contestant B is pressing her button</li>
+<li>11 if both contestants are pressing their buttons</li>
+</ol>
+<p>The output should be <strong>valid and stable</strong> within a specified <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of the most recent input transition.<br>
+{::options parse_block_html=“true” /}</p>
+</li>
+</ol>
+
+Show Answer
+<p>The low-order bit of the encoding is the signal from A, the high-order bit is the signal from B. Nothing to go metastable here.</p>
+
+<br>
+{::options parse_block_html="false" /}
 <h1 id="state-machine">State Machine</h1>
 <p>You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise.</p>
 <h3 id="an-incomplete-state-machine-basic">An Incomplete State Machine (Basic)</h3>
