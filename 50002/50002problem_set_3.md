@@ -373,11 +373,26 @@ The device A2 has the following schematic:
 <img src="https://www.dropbox.com/s/9e2jzfrwtjto34p/Q4.png?raw=1" width="70%" height="70%">
 
 
-It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $tpd = 3ns**** with the followings chematic
+It is made out of this device we call `A000R` with $t_{CD}$ = `1ns`, and $t_{PD}$ = `3ns` with the followings chematic
+<img src="https://www.dropbox.com/s/55rj88ehoozyo6y/Q5.png?raw=1" width="70%" height="70%">
 
-\includepic{0.4}{Q5}{}
+The truth table for `A000R` is as follows: 
+$$
+\begin{table}{c|c|c|c|c}
+    A & B & C & D & E \\\\ 
+    \hline 
+    0 & 0 & 0 & 0 & 0 \\\\
+    0 & 0 & 1 & 1 & 0 \\\\
+    0 & 1 & 0 & 1 & 0 \\\\
+    0 & 1 & 1 & 0 & 1 \\\\
+    1 & 0 & 0 & 1 & 0 \\\\
+    1 & 0 & 1 & 0 & 1 \\\\
+    1 & 1 & 0 & 0 & 1 \\\\
+    1 & 1 & 1 & 1 & 1 \\\\
+\end{table}
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDc4MTAwODg1LDM3NjA3ODY2MCwtMTY2Nz
-MyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQw
-ODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbLTE3ODUzMzg2MDYsMzc2MDc4NjYwLC0xNj
+Y3MzIwNzYxLC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0
+NDA4MjYsLTYxMDQ3MzAxOF19
 -->
