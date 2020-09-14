@@ -297,7 +297,7 @@ Almost all computers use a 2's complement representation for integers since the 
 <br/> 
 {::options parse_block_html="false" /}
 
-**(c)** What are the **decimal values** for the most positive and the most negative number?
+**(c)** What are the **decimal values** for the most positive and the most negative number that can be represented by this signed 32-bit machine?
 
 {::options parse_block_html="true" /} 
 <details> 
@@ -666,11 +666,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2ODU5OTg4NiwtMjIwMzM1MzA2LC0yOT
-E2OTQzMjQsODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2
-NiwtMjcwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMT
-A3MTM1MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5
-MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODksMz
-AyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQx
-NTA0XX0=
+eyJoaXN0b3J5IjpbLTEyMTA1NDAyNDIsLTI2ODU5OTg4NiwtMj
+IwMzM1MzA2LC0yOTE2OTQzMjQsODU0MDQ4MTIwLC0xNjcwNTgx
+MDAsLTMzNDg4NzM2NiwtMjcwOTM0NzQ4LDIwMjQwNzIwNzIsMT
+UzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1
+NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNy
+wyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMz
+MjcxXX0=
 -->
