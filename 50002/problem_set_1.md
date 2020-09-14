@@ -628,7 +628,7 @@ When answering the questions below, assume that all voltages are constrained to 
 
 >We have a valid **high** output, but that doesnt mean that we have a valid **low** input. **Static discipline** states that *given a valid input, the device is always able to give a valid output,* but it does not mean that the reverse is true, i.e: invalid **input does NOT have to give out invalid output.**
 >
->However we know for sure that *input cannot be higher than* $V_{IH}$ because static discipline requires the output to be lower than $V_{OH}$ if this is the case for an inverter. Hence, the only thing we can infer is that $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
+>However we know for sure that *input cannot be higher than* $V_{IH}$ because static discipline requires the output to be lower than $V_{OL}$ if this is the case for an inverter. Hence, the only thing we can infer is that $V_{IN} < V_{IH}$ (means input voltage is either a valid low or an invalid value).
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -666,11 +666,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMDMzNTMwNiwtMjkxNjk0MzI0LDg1ND
-A0ODEyMCwtMTY3MDU4MTAwLC0zMzQ4ODczNjYsLTI3MDkzNDc0
-OCwyMDI0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLT
-EyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2
-NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMT
-IzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1
-NDY0XX0=
+eyJoaXN0b3J5IjpbLTI2ODU5OTg4NiwtMjIwMzM1MzA2LC0yOT
+E2OTQzMjQsODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2
+NiwtMjcwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMT
+A3MTM1MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5
+MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODksMz
+AyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQx
+NTA0XX0=
 -->
