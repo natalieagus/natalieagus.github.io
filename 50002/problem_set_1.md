@@ -447,7 +447,7 @@ Consider an 8-bit number systems. **Do the following base conversion**, and indi
 > 2. `-127`
 > 3. `0x9D`
 > 4. `0b10111111`
-> 5. `0306`
+> 5. `306`
 
 </details>
 <br/>
@@ -666,11 +666,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxODg2MTgwLC0yOTE2OTQzMjQsODU0MD
-Q4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2NiwtMjcwOTM0NzQ4
-LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMT
-IwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2
-OSwtMjA0OTIwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMj
-M2NDEwNzYsNjUwNzMzMjcxLC0xNzc3NzQxNTA0LDExOTk4NzU0
-NjRdfQ==
+eyJoaXN0b3J5IjpbLTIyMDMzNTMwNiwtMjkxNjk0MzI0LDg1ND
+A0ODEyMCwtMTY3MDU4MTAwLC0zMzQ4ODczNjYsLTI3MDkzNDc0
+OCwyMDI0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLT
+EyMDU0NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2
+NjksLTIwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMT
+IzNjQxMDc2LDY1MDczMzI3MSwtMTc3Nzc0MTUwNCwxMTk5ODc1
+NDY0XX0=
 -->
