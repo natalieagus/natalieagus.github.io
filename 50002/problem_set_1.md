@@ -211,7 +211,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <details> 
 <summary markdown="span">Show Answer</summary>
 
->Originally, we have 8 unknown bits, that is $M=2^8$ choices. After given Y, we are down to $N=8$ choices, each having 1 bitt different for X. Therefore, we have been given,
+>Originally, we have 8 unknown bits, that is $M=2^8$ choices. After given Y, we are down to $N=8$ choices, each having 1 bit that's different for X. Therefore, we have been given,
 
 >$$\begin{aligned} I = \log_2 \left(\frac{1}{N/M}\right) = \log_2 \left(\frac{1}{8/2^8}\right) = 5 \text{ bits of information}. \end{aligned}$$
 </details> 
@@ -654,11 +654,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NjkyMzc3NiwtMjY4NTk5ODg2LC0yMj
-AzMzUzMDYsLTI5MTY5NDMyNCw4NTQwNDgxMjAsLTE2NzA1ODEw
-MCwtMzM0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3MiwxNT
-M4MDM1ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0
-NDQ4Nyw2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LD
-I4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMy
-NzFdfQ==
+eyJoaXN0b3J5IjpbLTcwMjQ3NDI1LDE0NjY5MjM3NzYsLTI2OD
+U5OTg4NiwtMjIwMzM1MzA2LC0yOTE2OTQzMjQsODU0MDQ4MTIw
+LC0xNjcwNTgxMDAsLTMzNDg4NzM2NiwtMjcwOTM0NzQ4LDIwMj
+QwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2
+NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMj
+A0OTIwMzUzNywyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEw
+NzZdfQ==
 -->
