@@ -102,6 +102,9 @@ Singapore University of Technology and Design<br>
 <h2 id="s-complement">2’s Complement</h2>
 <p>2’s Complement is the way most computers or electronic machines choose to represent <em>signed</em> integers. Given a string of bits, we can compute its negative representation using 2’s Complement.</p>
 <p>Firstly, most computers chooses to use the <strong>most significant bit (MSB)</strong> as the indicator of whether a particular integer is positive or negative.</p>
+<blockquote>
+<p>You can’t tell whether a device supports signed or unsigned bits by staring at its output bits. This information need to be given to you beforehand, i.e: given when you bought the machine, or given to you in problem sets or quiz.</p>
+</blockquote>
 <p>For example:</p>
 <ul>
 <li><code>00101</code> is a positive number: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>+</mo><msup><mn>2</mn><mn>0</mn></msup><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2^2 + 2^0 = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.897438em; vertical-align: -0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.8141079999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">5</span></span></span></span></span></li>
@@ -186,6 +189,54 @@ I_{8\rightarrow 3}(X) = \log_2 \left( \frac{8}{3} \right) = 1.42 \text{ bits of 
 <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><mi>X</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">-2^{X-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.924661em; vertical-align: -0.08333em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07847em;">X</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></span> to <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mi>X</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{X-1}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.924661em; vertical-align: -0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07847em;">X</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span></p>
 </li>
 </ol>
+<p>The prior knowledge of whether a device support signed or unsigned bits must be <strong>given</strong> to you.</p>
+<p><mark>Finally, you might be wondering why are we <em>counting the number of bits</em> required to encode some amount of information, and why do we bother with encoding information in terms of bits at all</mark>. As said in the introduction, the <strong>goal</strong> of this course is to learn how to build a general-purpose digital device (computers).</p>
+<ul>
+<li>
+<p>We begin the first half of our learning journey by trying to <strong>create</strong> a digital device (not for general purpose yet) that’s for a <strong>specific purpose,</strong> for example:</p>
+<ul>
+<li>a <em>simple</em> device that can perform 1-bit addition  <em>(Mini Hardware Project)</em>,</li>
+<li>a <em>simple</em> device that can perform basic logic computation: addition, substraction, bitshift, boolean operation <em>(SW Lab 3: ALU)</em>,</li>
+<li>a <em>simple</em> electronic game device that can take input from players, compute it, and determine the winner <em>(1D Project)</em></li>
+</ul>
+</li>
+<li>
+<p>Regardless of the <em>specific</em> purpose, we need a way to implement the <strong>logic</strong> (“<em>addition</em>” logic for example) for this machine. If we were to explain the workings of an <strong>adder</strong> to you, it will be pretty easy because we use the English language to <em>communicate</em> all the necessary information for you to understand how it works.</p>
+<ul>
+<li>Explaining this <strong>logic</strong> to a machine isn’t quite as easy because <em>they don’t understand English</em> – they only can comprehend “low” and “high” voltages. <strong>Therefore we have to <em>move</em> the domain of which we convey information in terms of binary digits (bits),</strong> and get used to encoding <strong>logic</strong> (information) in this domain.</li>
+</ul>
+</li>
+<li>
+<p>Once we are <strong>comfortable</strong>  with conveying logic (information) in terms of bits, then we have to start finding <strong>components</strong> that can manipulate voltages, and this component is called a <strong>transistor</strong> – which you will learn pretty soon.</p>
+<blockquote>
+<p>The problem sets are created so that you’re comfortable with bit manipulation and <em>communicating</em> (with your future machine) in that domain.</p>
+</blockquote>
+<p>Note that transistor is <em>not the first item</em> created to manipulate voltages: triode vacuum tubes and electro-mechanical relays were used in pre-1950s. Before electricity was discovered, people used <strong>mechanical</strong> gears and <strong>punch cards</strong> to encode  digital data.</p>
+<blockquote>
+<p>Digital data is the <em>discrete</em>, discontinuous <em>representation</em> of <strong>information</strong> or works.</p>
+</blockquote>
+</li>
+<li>
+<p>If you Googled triode vacuum tubes, and electro-mechanical relays – or even the <strong>early transistors</strong>, you’d realise that they have quite a <strong>large</strong> size and it is definitely <strong>not cheap.</strong> You can find some information <a href="https://spectrum.ieee.org/tech-talk/semiconductors/devices/how-much-did-early-transistors-cost">here</a> for context, but on average in the past it costs about $8. They cost about <strong>a billion times</strong> more than they are now, <em>so your computers that have billions of transistors would cost about a few billions to purchase.</em></p>
+<blockquote>
+<p>It might be <strong>unimaginable</strong> how big and expensive computers were at first because we are so used to having computers – consisted of billions of <strong>cheap</strong> and <em>extremely small</em> transistors (5-7nm), pretty much unlimited storage unit (we can always buy external drive, cloud storage, extend our RAM or simply buy computers with terabytes of disk size). But in the past – life wasn’t quite as easy.</p>
+</blockquote>
+</li>
+<li>
+<p>With this in mind, it made sense that if someone were to make a digital device <strong>from scratch</strong>, he or she has to be <em>mindful</em> with the <strong>size and cost of the device</strong>, and therefore has to be mindful with <em>counting (and probably minimising)</em> how many <strong>bits</strong> are needed to contain all information and <em>logic</em> necessary for the intended device to work.</p>
+</li>
+<li>
+<p>But having a digital device that can do <strong>only that</strong> <strong>specific</strong> job: just <em>addition</em>, just that <em>game</em> logic, or just playing a VCD (VCD player) is <strong>not enough</strong>. We do not want to:</p>
+<ul>
+<li>Have so many devices to carry.</li>
+<li>Spend so much money to buy 1 device for each task</li>
+<li>It will be ridiculous now to imagine if we need 1 separate, physical device for everything: 1 device to browse, 1 device for <em>each</em> video game, 1 device for chatting with a <em>particular</em> person, 1 device for computing addition, 1 device for computing division… <em>you get the idea.</em></li>
+</ul>
+</li>
+<li>
+<p>Therefore towards the middle of the term, we will learn how to create a <strong>better</strong> digital device: a <strong>programmable</strong> one.   We will consider all things necessary to create a programmable device that can tend to <strong>general purpose</strong>  – meaning that a <em>device</em> that can emulate the behavior of many other devices (given a <strong>description</strong> of that other device: <em>software</em>)  so we simply just need this <strong>ONE</strong> device to perform many tasks and computations. <strong>This device is none other than our computers.</strong></p>
+</li>
+</ul>
 
     </div>
   </div>
