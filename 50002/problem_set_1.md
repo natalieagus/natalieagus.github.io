@@ -411,18 +411,6 @@ A group of five friends are playing a game that requires them to generate random
 {::options parse_block_html="false" /}
 
   
-
-**(e).**  The second person in the team proceeded to make his 10 throws and found that the number he got is 31. Given that there are five people in the team, how many bits of information are revealed when it is known that the first person's random number is 53 and the second person's random number is 31? Recall that the goal is for everybody in the team to each have a random number before proceeding with the game. Give your answer in 3 decimal places.
-
-  
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
->From part **(a)**, we know that we need $\log_2(51)$ bits of information to encode the possible random number of a person. We are given the random numbers of two people, hence we are given $2*\log_2(51)=11.345$ bits of information.
-</details>
-<br/>
-{::options parse_block_html="false" /}
   
   
 
@@ -666,11 +654,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTA1NDAyNDIsLTI2ODU5OTg4NiwtMj
-IwMzM1MzA2LC0yOTE2OTQzMjQsODU0MDQ4MTIwLC0xNjcwNTgx
-MDAsLTMzNDg4NzM2NiwtMjcwOTM0NzQ4LDIwMjQwNzIwNzIsMT
-UzODAzNTg0MiwtMTA3MTM1MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1
-NDQ0ODcsNjEwNDc5MzQ5LDcwMjUxMDY2OSwtMjA0OTIwMzUzNy
-wyODYzODc3ODksMzAyNDE2ODUyLDIxMjM2NDEwNzYsNjUwNzMz
-MjcxXX0=
+eyJoaXN0b3J5IjpbMTQ2NjkyMzc3NiwtMjY4NTk5ODg2LC0yMj
+AzMzUzMDYsLTI5MTY5NDMyNCw4NTQwNDgxMjAsLTE2NzA1ODEw
+MCwtMzM0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3MiwxNT
+M4MDM1ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0
+NDQ4Nyw2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LD
+I4NjM4Nzc4OSwzMDI0MTY4NTIsMjEyMzY0MTA3Niw2NTA3MzMy
+NzFdfQ==
 -->
