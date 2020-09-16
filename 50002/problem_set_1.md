@@ -211,7 +211,7 @@ Now someone in your class won "the first to join ISTD" prize. Answer the followi
 <details> 
 <summary markdown="span">Show Answer</summary>
 
->Originally, we have 8 unknown bits, that is $M=2^8$ choices. We can obtain X by flipping any one bit in Y. Since there are 8 bits, there are 8 possibilities for X by flipping each bit in Y. Therefore after given Y, we are down to $N=8$ choices, each having 1 bit that's different for X. Therefore, we have been given,
+>Originally, we have 8 unknown bits, that is $M=2^8$ choices. We can obtain X by flipping any one bit in Y. Since there are 8 bits, there are 8 possibilities for X by flipping each bit in Y. Therefore after given Y, we are down to $N=8$ choices, each having 1 bit that's different for X. We can say that we have been given,
 
 >$$\begin{aligned} I = \log_2 \left(\frac{1}{N/M}\right) = \log_2 \left(\frac{1}{8/2^8}\right) = 5 \text{ bits of information}. \end{aligned}$$
 </details> 
@@ -654,7 +654,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NjIwNDc1NSwxNDY2OTIzNzc2LC0yNj
+eyJoaXN0b3J5IjpbMTE2NTk4OTQ2OSwxNDY2OTIzNzc2LC0yNj
 g1OTk4ODYsLTIyMDMzNTMwNiwtMjkxNjk0MzI0LDg1NDA0ODEy
 MCwtMTY3MDU4MTAwLC0zMzQ4ODczNjYsLTI3MDkzNDc0OCwyMD
 I0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0
