@@ -153,30 +153,44 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	{::options parse_block_html="false" /}
 
 3. Notta has noticed the following C code fragment appears frequently in the benchmarks:
+	
+	```
+	int *_p; /_* Pointer to integer array *_/_
+	_int i,j; /_* integer variables *_/_
 
-```
-int *_p; /_* Pointer to integer array *_/_
-_int i,j; /_* integer variables *_/_
+	_..._
 
-_..._
+	_j = p[i]; /_* access ith element of array */
+	```
 
-_j = p[i]; /_* access ith element of array */
-```
+	The pointer variable `p` contains the *address* of a **dynamically allocated** array of integers. The value of `p[i]` is stored at the address `Mem[p +4i]` where `p` and `i` are locations containing the values of the corresponding C variables. On a conventional Beta this code fragment is translated to the following instruction sequence:
 
-The pointer variable `p` contains the *address* of a **dynamically allocated** array of integers. The value of `p[i]` is stored at the address `Mem[p +4i]` where `p` and `i` are locations containing the values of the corresponding C variables. On a conventional Beta this code fragment is translated to the following instruction sequence:
+	```
+	LD(...,R1)     /* R1 contains p, the array base address */
+	LD(...,R2)     /* R2 contains I, the array index */    ...
+	SHLC(R2,2,R0)  /* compute byte-addressed offset = 4*i */
+	ADD(R1,R0,R0)  /* address of indexed element */
+	LD(R0,0,R3)    /* fetch p[i] into R3 */
+	```
 
-```
-LD(...,R1) /* R1 contains p, the array base address *_/_
+	Notta proposes the addition of an LDX instruction that shortens the last three instructions to:
 
-_LD(...,R2) /_* R2 contains I, the array index *_/  ..._
+	```
+	SHLC(R2,2,R0)  /* compute byte-addressed offset = 4*i */
+	LDX(R0,R1,R3)  /* fetch p[i] into R3 */
+	```
+	
+	Give a ***register-transfer language description*** for the LDX instruction. 
 
-_SHLC(R2,2,R0)  /_* compute byte-addressed offset = 4*i *_/_
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-_ADD(R1,R0,R0)  /_* address of indexed element *_/_
 
-_LD(R0,0,R3)  /_* fetch p[i] into R3 */
-```
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTE1OTI1MzksLTExMjA0Mzk3ODVdfQ
-==
+eyJoaXN0b3J5IjpbMTQ2NTgyOTY0MSwtMTEyMDQzOTc4NV19
 -->
