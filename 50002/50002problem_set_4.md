@@ -112,31 +112,19 @@ First we find out the time taken to execute those instructions:
 
 1.  $x$: $\frac{3.6M}{40M / 2}$ = $0.18$ seconds
 
-1.  $y$: 1.9M / (100M / 10) = 0.19 seconds
+1.  $y$: $\frac{1.9M} {100M / 10}$ = $0.19$ seconds
 
-1. $z$: 4.2M / (60M / 3) = 0.21 seconds
+1. $z$: $\frac{4.2M}{60M / 3}$ = $0.21$ seconds
 
-  
-
-x is the fastest machine, hence we choose x.
-
+From the result above, $x$ is the fastest machine. Hence we choose $x$.
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
-  
 
-  
-
-\fi
-
-### $\beta$ Assembly Language
-
-  
+### $\beta$ Assembly Language (Basic)
 
 What does the following piece of Beta assembly do? Hand assemble the beta language into machine language.
-
-  
 
 \begin{verbatim}
 
@@ -230,6 +218,6 @@ What is the byte stored in address0, 1, 2 and 3, respectively? What are the hexa
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI3MzIzMTE5LC0yMTM5MzA0MzYxLC0yMT
-M4MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbLTE2ODA0NDQyMzYsLTIxMzkzMDQzNjEsLT
+IxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
