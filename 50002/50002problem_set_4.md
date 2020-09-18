@@ -103,58 +103,27 @@ Discouraged by your answer to the last question, Ben has turned his attention to
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Unfortunately, the Universal FSM will have some fixed number (N) of states built into its design. So it won't have enough states to emulate machines with more than N states. Ben's idea isn't
+Unfortunately, the Universal FSM will have some fixed number (N) of states built into its design. So it won't have enough states to emulate machines with more than N states. Ben's idea isn't workable, and there's no such thing as "Universal FSM" as he proposed.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+  
 
-workable.
+### CPU Trivia (Basic)
+
+1. How much memory can a 32-bit von Neumann machine have? *Explain your answer.*
+
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+$2^{32}$ **bytes** because each address is also 32 bits long in a 32-bit von Neu.
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
 
-
-
-
-\fi
-
-  
-  
-  
-
-### CPU
-
-  
-  
-  
-
-1. What are the four most important components of the von Neumann machine?
-
-Draw their correlations.
-
-\ifanswers
-
-\beginsol
-
-CPU, Memory, Device, and Bus. The connection is that the CPU, Memory, and Device are interconnected by the bus.
-
-\fi
-
-1. What are the four most important components of a CPU?
-
-\ifanswers
-
-\beginsol
-
-This is the $\beta$ architecture: PC, Registers, Control Unit, and ALU
-
-\fi
-
-1. How much memory can a 32-bit von Neumann machine have? Why?
-
-\ifanswers
-
-\beginsol
-
-$2^{32}$ because each address is 32 bits long (A word).
 
 \fi
 
@@ -168,5 +137,5 @@ No. The registers must be encoded in instructions, i.e: 5 bits for 32 registers.
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODA4NDA0NzAsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTEwOTMzODEwOTUsNTEwOTg0MDVdfQ==
 -->
