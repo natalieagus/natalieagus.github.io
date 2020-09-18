@@ -469,7 +469,7 @@ Which of the following signed numbers is **equivalent** to the number -32 for ei
 <details>
 <summary markdown="span">Show Answer</summary>
 
-> (b), (d), (f)
+> (2), (4), (6)
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -658,11 +658,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMyNjQ2NDgxLC01NDI1Njg0NDMsMTE2NT
-k4OTQ2OSwxNDY2OTIzNzc2LC0yNjg1OTk4ODYsLTIyMDMzNTMw
-NiwtMjkxNjk0MzI0LDg1NDA0ODEyMCwtMTY3MDU4MTAwLC0zMz
-Q4ODczNjYsLTI3MDkzNDc0OCwyMDI0MDcyMDcyLDE1MzgwMzU4
-NDIsLTEwNzEzNTM0NjgsLTEyMDU0NjUxOCwxODI0NTQ0NDg3LD
-YxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3
-Nzg5XX0=
+eyJoaXN0b3J5IjpbLTQzMTIxMTIzMSwtNTQyNTY4NDQzLDExNj
+U5ODk0NjksMTQ2NjkyMzc3NiwtMjY4NTk5ODg2LC0yMjAzMzUz
+MDYsLTI5MTY5NDMyNCw4NTQwNDgxMjAsLTE2NzA1ODEwMCwtMz
+M0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3MiwxNTM4MDM1
+ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Ny
+w2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4
+Nzc4OV19
 -->
