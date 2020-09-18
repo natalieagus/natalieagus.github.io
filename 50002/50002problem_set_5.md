@@ -173,14 +173,14 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	LD(R0,0,R3)    /* fetch p[i] into R3 */
 	```
 
-	Notta proposes the addition of an LDX instruction that shortens the last three instructions to:
+	Notta proposes the addition of an `LDX` instruction that shortens the last three instructions to:
 
 	```
 	SHLC(R2,2,R0)  /* compute byte-addressed offset = 4*i */
 	LDX(R0,R1,R3)  /* fetch p[i] into R3 */
 	```
 	
-	Give a ***register-transfer language description*** for the LDX instruction. 
+	Give a ***register-transfer language description*** for the `LDX` instruction. 
 
 	{::options parse_block_html="true" /}
 	<details>
@@ -198,19 +198,25 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 4. Using a table like the one above specify the control signals for the LDX opcode.
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-$$\begin{matrix}
-`PSSEL` & `RA2SEL` & `ASEL` & `BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
-\hline
-0 & 0 & 0 & 0 & 2 & ADD & 0 & 1 & 0 \end{matrix}$$
+	$$\begin{matrix}
+	PCSEL & RA2SEL & ASEL & BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
+	\hline
+	0 & 0 & 0 & 0 & 2 & ADD & 0 & 1 & 0 \end{matrix}$$
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
+5. It occurs to Notta that adding an `STX` instruction would probably be useful too. Using this new instruction, `p[i] = j` might compile into the following instruction sequence:
 
-</details>
-<br/>
-{::options parse_block_html="false" /}
+```
+SHLC(R2,2,R0)  /* compute byte-addressed offset = 4*i */
+STX(R3,R0,R1)  /* R3 contains j, R1 contains p */
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2Nzc5NzQ0LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbNjI2MDM3MjEzLC0xMTIwNDM5Nzg1XX0=
 -->
