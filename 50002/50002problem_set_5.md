@@ -44,7 +44,16 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 	<br/>
 	{::options parse_block_html="false" /}
 
-3. The **minimum clock period** of the unpipelined Beta implementation is determined by the *propagation* delays of the data path elements and the amount of time it takes for the control signals to become valid. Which of the following select signals should become valid first in order to ensure the smallest possible clock period: PCSEL, RA2SEL, ASEL, BSEL, WDSEL, WASEL?
+3. The **minimum clock period** of the unpipelined Beta implementation is determined by the *propagation* *delays* of the datapath elements and the amount of time it takes for the **control signals to become valid**. **Which** of the following select signals should become valid first in order to ensure the smallest possible clock period: `PCSEL, RA2SEL, ASEL, BSEL, WDSEL, WASEL`?
+	
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	To ensure the **smallest** possible clock period `RA2SEL` should become valid first. The `RA2SEL` mux must produce a **stable register address** before the register file can do its thing. All other control signals affect logic that operates **after** the required register values have been accessed, so they don't have to be valid until *later* in the cycle.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 ### $\beta$ Assembly Language (Basic)
@@ -266,5 +275,5 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MTM0NDg4LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbMTUwNjE1NjI4MSwtMTEyMDQzOTc4NV19
 -->
