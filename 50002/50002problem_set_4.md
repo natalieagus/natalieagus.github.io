@@ -11,7 +11,7 @@ Singapore University of Technology and Design
 
 **Natalie Agus (Fall 2020)**
 
-This page contains all practice questions that constitutes the topics learned in <ins>Week 4</ins>:  **Turing Machine** and **Programmability**. 
+This page contains all practice questions that constitutes the topics learned in <ins>Week 4</ins>:  **Turing Machine** and **Designing an Instruction Set**. 
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
@@ -100,7 +100,6 @@ We can enumerate $2^{(s+o)2^{s+i}}$ FSM, and hence the answer to this question i
 
 ### Memory Addressing (Basic)
 
-  
 You are given that the 32-bit *word* at memory address `0` has a binary form of
 ```
 0000 0100 0000 0011 0000 0010 0000 0001
@@ -118,7 +117,7 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMT
-kyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1
-XX0=
+eyJoaXN0b3J5IjpbLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMz
+gxNTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUw
+NTQsNTEwOTg0MDVdfQ==
 -->
