@@ -79,46 +79,28 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 	{::options parse_block_html="false" /}
 
 
-
-
-  
-
-  
-
-### Non $\beta$ Architecture
+### Non $\beta$ Architecture Benchmarking
 
 
 A local junk yard offers older CPUs with non-Beta architecture that require **several clocks** to execute each instruction. Here are the specifications:
 $$\begin{matrix}
-Model & Clock Rate &  Avg. clocks per Instruction\\
+\text{Model} & \text{Clock Rate} &  \text{Avg. clocks per Instruction}\\
 \hline
 x & 40 Mhz & 2.0\\
 y & 100 Mhz & 10.0\\
 z & 60 Mhz & 3.0\\
-\end{tabular}$$
+\end{matrix}$$
 
+You are going to choose the machine which will execute your benchmark program the fastest, so you compiled and ran the benchmark on the three machines and counted the total instructions executed:
 
+1.  $x$: `3,600,000` instructions executed
+
+1.  $y$: `1,900,000` instructions executed
+
+1. $z$: `4,200,000` instructions executed
   
 
-You are going to choose the machine which will execute your benchmark
-
-program the fastest, so you compiled and ran the benchmark on the three
-
-machines and counted the total instructions executed:
-
-  
-
-  
-
-1.  x: 3,600,000 instructions executed
-
-1.  y: 1,900,000 instructions executed
-
-1.  z: 4,200,000 instructions executed
-
-  
-
-Based on the above data which machine would you choose?
+Based on the above data, **which machine would you choose?**
 
 \ifanswers
 
@@ -242,6 +224,6 @@ What is the byte stored in address0, 1, 2 and 3, respectively? What are the hexa
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTYyMjk1MDExLC0yMTM4MDI1MDU0LDUxMD
-k4NDA1XX0=
+eyJoaXN0b3J5IjpbLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
+EwOTg0MDVdfQ==
 -->
