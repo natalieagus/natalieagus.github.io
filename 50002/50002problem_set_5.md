@@ -182,15 +182,35 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	
 	Give a ***register-transfer language description*** for the LDX instruction. 
 
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	```
+	LDX( Ra, Rb, Rc )
+	EA <- Reg[Ra] + Reg[Rb]
+	Reg[Rc] <- Mem[EA]
+	PC <- PC + 4
+	```
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+4. Using a table like the one above specify the control signals for the LDX opcode.
+
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
+
+$$\begin{matrix}
+`PSSEL` & `RA2SEL` & `ASEL` & `BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
+\hline
+0 & 0 & 0 & 0 & 2 & ADD & 0 & 1 & 0 \end{matrix}$$
 
 
 </details>
 <br/>
 {::options parse_block_html="false" /}
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NTgyOTY0MSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbLTU2Nzc5NzQ0LC0xMTIwNDM5Nzg1XX0=
 -->
