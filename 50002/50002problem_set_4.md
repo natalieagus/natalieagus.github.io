@@ -20,64 +20,6 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 {::options parse_block_html="false" /}
 
 
-
-### FSM Possibility (Basic)
-
-  
-
-We saw that certain functions, such as parentheses checking, cannot be performed by any finite state machine. **Which of the following can be performed by an FSM?** 
-
-Assume, in each case, that the device is to take a series of `0`s and `1`s that represent the digits of a binary number entered *left-to-right*. 
-
-1. The device is to have a **single** output, which is 1 only under this specific condition: *when the last 277 digits entered have been alternate `1`s and `0`s.*
-	
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	**Yes**. It is a bit tedious for 277 digits, but you should be able to sketch FSM for 3 or 4 digits.
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
-
-1. The device is to have a **single** output, which is 1 only under this specific condition: *when more 0s than 1s have been entered*.
-
-
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	**No**. Requires unbounded counting.
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
-1. The device is to have a **single** output, which is 1 only under this specific condition: *when the number entered thus far is **divisible** by 3.*
-
-
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	**Yes**, can be done by a 3-state machine.
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
-
-1. The device is to have a **single** output, which is 1 only under this specific condition: *when an odd number of 1s and and even number of 0s have been entered.*
-
-
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	**Yes**, can be done with a 4-state machine. 
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
   
 
 ### Ben's Turing Machine (Basic)
@@ -138,5 +80,5 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTQxNzA3MDgsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
