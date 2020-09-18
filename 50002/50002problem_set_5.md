@@ -123,8 +123,17 @@ From the result above, $x$ is the fastest machine. Hence we choose $x$.
   
 
 
-### Cl
+### Clumsy Lab Assistant (Basic)
+Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode field from the following table describing the control logic of an unpipelined Beta processor.
+
+<img src="https://www.dropbox.com/s/hr0j3m2pmgbhvot/Q1.png?raw=1" width="70%" height="70%">
+
+  
+
+1.  Help Notta out by identifying which Beta instruction is implemented by each row of the table.
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NDE4MzgzNywtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbMzk5NjgwOTE3LC0xMTIwNDM5Nzg1XX0=
 -->
