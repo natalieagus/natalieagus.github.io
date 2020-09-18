@@ -21,7 +21,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 
 
 
-### FSM Possibility
+### FSM Possibility (Basic)
 
   
 
@@ -80,17 +80,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
   
 
-### Turing Machine
+### Ben's Turing Machine (Basic)
 
   
-  
-  
-
-1. Ben Bitdiddle's proposed Ph.D. thesis involves writing a program to
-
-compute a function f(x) on a Cray supercomputer. Ben's advisor points out
-
-that f cannot be computed on any Turing machine. Should Ben care? Why?
+Ben Bitdiddle's proposed Ph.D. thesis involves writing a program to compute a function $f(x)$ on a Cray supercomputer. Ben's advisor points out that $f$ cannot be computed on any Turing machine. Should Ben care? Why?
 
   
 
@@ -187,5 +180,5 @@ No. The registers must be encoded in instructions, i.e: 5 bits for 32 registers.
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTE3MzcwNDgyNTcsNTEwOTg0MDVdfQ==
 -->
