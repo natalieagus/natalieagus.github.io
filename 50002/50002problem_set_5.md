@@ -33,7 +33,19 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 	<br/>
 	{::options parse_block_html="false" /}
 
-2. In an unpipelined Beta implementation, when executing a BR(foo,LP) instruction to call procedure foo, what should WDSEL should be set to?
+2. In an unpipelined Beta implementation, when executing a `BR(foo,LP)` instruction to call procedure `foo`, what should `WDSEL` should be set to?
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	`BR(foo,LP)` is a *macro* for `BEQ(R31,foo,LP)`. All `BNE/BEQ` instructions save the address of the following instruction in the specified destination register (`LP` in the example instruction). So `WDSEL` should be set `0`, selecting the output of the `PC+4` logic as the data to be **written into the register file.**
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+3. The **minimum clock period** of the unpipelined Beta implementation is determined by the *propagation* delays of the data path elements and the amount of time it takes for the control signals to become valid. Which of the following select signals should become valid first in order to ensure the smallest possible clock period: PCSEL, RA2SEL, ASEL, BSEL, WDSEL, WASEL?
+
 
 ### $\beta$ Assembly Language (Basic)
 
@@ -254,5 +266,5 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNzA3NTMsLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbLTY1MTM0NDg4LC0xMTIwNDM5Nzg1XX0=
 -->
