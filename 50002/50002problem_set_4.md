@@ -87,12 +87,15 @@ We encode the state of a Turing machine into 2 bits, the value that is read (inp
 <details>
 <summary markdown="span">Show Answer</summary>
 
-$2^{80}$
+From the explanation above, we have:
+* $s$ = 2
+* $i$ = 2
+* $o$ = 3
+
+We can enumerate $2^{(s+o)2^{s+i}}$ FSM, and hence the answer to this question is $2^{80}$
 </details>
 <br/>
 {::options parse_block_html="false" /}
-
-
 
 
 ### Memory Addressing (Basic)
@@ -115,6 +118,7 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOT
-MwNDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
+eyJoaXN0b3J5IjpbMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMT
+kyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1
+XX0=
 -->
