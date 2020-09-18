@@ -321,6 +321,7 @@ Almost all computers use a 2's complement representation for integers since the 
 <summary markdown="span">Show Answer</summary>
 
 >1. `0x 0000 0025`
+>
 >2. We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement. Note: transform the hex to binary first and flip the bits, then transform back to hex: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
 >3. `0x DEAD BEEF`
 </details>  
@@ -342,6 +343,7 @@ Almost all computers use a 2's complement representation for integers since the 
 <summary markdown="span">Show Answer</summary>
 
 >1. `001101 + 001010 = 010111`
+>
 >2. 18 is `010010`. -18 is `101110`. Hence, `001111 + 101110 = 111101`
 >3. `011011 + 111010 = 010101`
 </details>
@@ -432,6 +434,7 @@ Consider an 8-bit number systems. **Do the following base conversion**, and indi
 <summary markdown="span">Show Answer</summary>
 
 > 1. `0b01001100`
+> 
 > 2. `-127`
 > 3. `0x9D`
 > 4. `0b10111111`
@@ -541,6 +544,7 @@ When answering the questions below, assume that all voltages are constrained to 
 <summary markdown="span">Show Answer</summary>
 
 >1. No. From the plot, it can be seen that $V_{OUT}$ can never reach below 0.5V. If $V_{OL}$ is chosen to be 0V, then the device doesn't satisfy the static discipline anymore.
+>
 >2. 0.5V. That is the lowest amount of $V_{OUT}$ that the device can produce.
 >3.  We can choose $V_{OL} = 0.5V$ from the graph, since the device is capable of producing such low voltage. With NM of 0.5V, that means that $V_{IL} = V_{OL} + 0.5V = 1V$. From the graph, we can also choose $V_{OH} = 4V$, as the part with the highest gain in the middle of the graph can most probably be the forbidden zone. Therefore, $V_{IH} = V_{OH} - 0.5V.= 3.5V$.
 >4. This device is an inverter, since a high input produces a low output and vice versa.
@@ -581,9 +585,9 @@ When answering the questions below, assume that all voltages are constrained to 
 <summary markdown="span">Show Answer</summary>
 
 >(B) and (C) cannot be used as inverter (combinational device) as its gain is $\leq1$. 
-
+>
 >For (A), choose NM = 0.5V, then $V_{OL} = 1V$, $V_{IL} = 1.5V$, $V_{IH} = 5V$, and $V_{OH} = 5.5V$. 
-
+>
 >For (D), choose NM = 0.5V, then $V_{OL} = 0.5V$, $V_{IL} = 1V$, $V_{IH} = 5$, and $V_{OH}= 5.5V$.
 </details>
 <br/>
@@ -654,7 +658,7 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDIzMjM5NSwxMTY1OTg5NDY5LDE0Nj
+eyJoaXN0b3J5IjpbLTU0MjU2ODQ0MywxMTY1OTg5NDY5LDE0Nj
 Y5MjM3NzYsLTI2ODU5OTg4NiwtMjIwMzM1MzA2LC0yOTE2OTQz
 MjQsODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2NiwtMj
 cwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1
