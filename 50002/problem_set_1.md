@@ -321,9 +321,9 @@ Almost all computers use a 2's complement representation for integers since the 
 <summary markdown="span">Show Answer</summary>
 
 >1. `0x 0000 0025`
->2. We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement\footnote{Note: transform the hex to binary first and flip the bits, then transform back to hex}: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
+>2. We begin by converting $32768$ (positive) number to Hex: `0x 0000 8000`. Then we take the 1's complement. Note: transform the hex to binary first and flip the bits, then transform back to hex: `0x FFFF 7FFF`, and finally +1 : `0x FFFF 8000`.
 >3. `0x DEAD BEEF`
-</details> 
+</details>  
 <br/> 
 {::options parse_block_html="false" /}
 
@@ -654,11 +654,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NTk4OTQ2OSwxNDY2OTIzNzc2LC0yNj
-g1OTk4ODYsLTIyMDMzNTMwNiwtMjkxNjk0MzI0LDg1NDA0ODEy
-MCwtMTY3MDU4MTAwLC0zMzQ4ODczNjYsLTI3MDkzNDc0OCwyMD
-I0MDcyMDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0
-NjUxOCwxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLT
-IwNDkyMDM1MzcsMjg2Mzg3Nzg5LDMwMjQxNjg1MiwyMTIzNjQx
-MDc2XX0=
+eyJoaXN0b3J5IjpbLTExNDIzMjM5NSwxMTY1OTg5NDY5LDE0Nj
+Y5MjM3NzYsLTI2ODU5OTg4NiwtMjIwMzM1MzA2LC0yOTE2OTQz
+MjQsODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2NiwtMj
+cwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1
+MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LD
+cwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODksMzAyNDE2
+ODUyXX0=
 -->
