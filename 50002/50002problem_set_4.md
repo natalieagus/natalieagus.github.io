@@ -83,48 +83,36 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 ### Ben's Turing Machine (Basic)
 
   
-Ben Bitdiddle's proposed Ph.D. thesis involves writing a program to compute a function $f(x)$ on a Cray supercomputer. Ben's advisor points out that $f$ cannot be computed on any Turing machine. Should Ben care? Why?
+Ben Bitdiddle's proposed Ph.D. thesis involves writing a program to compute a function $f(x)$ on a Cray supercomputer. Ben's advisor points out that $f$ cannot be computed on any Turing machine. **Should Ben care? Why?**
 
-  
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\ifanswers
-
-\beginsol
-
-If the function can't be computed on any Turing machine, then it can't be computed on any
-
-physically realizable machine that we know of. So Ben is out of luck... a Cray supercomputer
-
-isn't "super" in that sense.
-
-\fi
-
+Church's thesis says that if the function can't be computed on any Turing machine, then it can't be computed on any physically realizable machine that we know of. So Ben is out of luck... a Cray *supercomputer* isn't "super" in that sense.
+</details>
+<br/>
+{::options parse_block_html="false" /}
   
   
 
-1. Discouraged by your answer to the last question, Ben has turned his
+Discouraged by your answer to the last question, Ben has turned his attention to an alternative thesis topic. **He now proposes to invent the universal FSM,** which will be to FSMs what a universal Turing machine is to Turing machines. Ben's idea is to build an FSM that can fed a sequence of inputs describing any other FSM and the inputs to that FSM. The universal FSM would then *emulate* the behavior of the described FSM on the specified inputs. **Is Ben's idea workable Why or why not?**
 
-attention to an alternative thesis topic. He now proposes to invent the
 
-universal FSM, which will be to FSMs what a universal Turing machine is
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-to Turing machines. Ben's idea is to build an FSM that can fed a sequence
-
-of inputs describing any other FSM and the inputs to that FSM. The
-
-universal FSM would then emulate the behavior of the described FSM on
-
-the specified inputs. Is Ben's idea workable? Why or why not?
-
-\ifanswers
-
-\beginsol
-
-Unfortunately, the Universal FSM will have some fixed number (N) of states built into its design.
-
-So it won't have enough states to emulate machines with more than N states. Ben's idea isn't
+Unfortunately, the Universal FSM will have some fixed number (N) of states built into its design. So it won't have enough states to emulate machines with more than N states. Ben's idea isn't
 
 workable.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+
+
+
 
 \fi
 
@@ -180,5 +168,5 @@ No. The registers must be encoded in instructions, i.e: 5 bits for 32 registers.
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzcwNDgyNTcsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTEyODA4NDA0NzAsNTEwOTg0MDVdfQ==
 -->
