@@ -212,11 +212,33 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 5. It occurs to Notta that adding an `STX` instruction would probably be useful too. Using this new instruction, `p[i] = j` might compile into the following instruction sequence:
 
-```
-SHLC(R2,2,R0)  /* compute byte-addressed offset = 4*i */
-STX(R3,R0,R1)  /* R3 contains j, R1 contains p */
-```
+	```
+	SHLC(R2,2,R0)  /* compute byte-addressed offset = 4*i */
+	STX(R3,R0,R1)  /* R3 contains j, R1 contains p */
+	```
+
+	Briefly describe what (hardware) **modifications** to the Beta datapath would be necessary to be able to execute `STX` in a **single cycle.**
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The register transfer language description of  `STX` would be:
+	```
+	STX(Rc, Rb, Ra)
+	EA <- Reg[Ra] + Reg[Rb]
+	Mem[EA] <- Reg[Rc]
+	PC <- PC + 4
+	```
+
+	It's evident that we need to perform **3 register reads,** but the Beta's register file has only **2 read ports.** Thus we need to add a **third read port** to the register file.
+
+	Incidentally, adding a third read port would eliminate the need for the `RA2SEL` mux because we *no longer need to choose between `Rb` and `Rc`*, since each register field has its own read port.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI2MDM3MjEzLC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbLTY1MDAwNDUxOSwtMTEyMDQzOTc4NV19
 -->
