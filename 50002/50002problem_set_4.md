@@ -79,48 +79,21 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 	{::options parse_block_html="false" /}
 
 
-### Non $\beta$ Architecture Benchmarking
 
-
-A local junk yard offers older CPUs with non-Beta architecture that require **several clocks** to execute each instruction. Here are the specifications:
-$$\begin{matrix}
-\text{Model} & \text{Clock Rate} &  \text{Avg. clocks per Instruction}\\
-\hline
-x & 40 Mhz & 2.0\\
-y & 100 Mhz & 10.0\\
-z & 60 Mhz & 3.0\\
-\end{matrix}$$
-
-You are going to choose the machine which will execute your benchmark program the fastest, so you compiled and ran the benchmark on the three machines and counted the total instructions executed:
-
-1.  $x$: `3,600,000` instructions executed
-
-1.  $y$: `1,900,000` instructions executed
-
-1. $z$: `4,200,000` instructions executed
-  
-
-Based on the above data, **which machine would you choose?**
-
+### FSM in TM (Intermediate)
+We encode the state of a Turing machine into 2 bits, the value that is read (input) from and written (output) onto the infinite tape into 2 bits, and the output move on the tape (left or right) into 1 bit. How many different finite state machines are there to control such a Turing machine? 
 
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-
-First we find out the time taken to execute those instructions:
-
-1.  $x$: $\frac{3.6M}{40M / 2}$ = $0.18$ seconds
-
-1.  $y$: $\frac{1.9M} {100M / 10}$ = $0.19$ seconds
-
-1. $z$: $\frac{4.2M}{60M / 3}$ = $0.21$ seconds
-
-From the result above, $x$ is the fastest machine. Hence we choose $x$.
+$2^{80}$
 </details>
 <br/>
 {::options parse_block_html="false" /}
-  
+
+
+
 
 ### Memory Addressing (Basic)
 
@@ -142,6 +115,6 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMT
-M4MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOT
+MwNDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
 -->
