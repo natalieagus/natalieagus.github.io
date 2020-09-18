@@ -102,25 +102,31 @@ You are going to choose the machine which will execute your benchmark program th
 
 Based on the above data, **which machine would you choose?**
 
-\ifanswers
 
-\beginsol
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
 
 First we find out the time taken to execute those instructions:
 
-  
+1.  $x$: $\frac{3.6M}{40M / 2}$ = $0.18$ seconds
 
-  
+1.  $y$: 1.9M / (100M / 10) = 0.19 seconds
 
-1.  x: 3.6M / (40M / 2) = 0.18 seconds
-
-1.  y: 1.9M / (100M / 10) = 0.19 seconds
-
-1.  z : 4.2M / (60M / 3) = 0.21 seconds
+1. $z$: 4.2M / (60M / 3) = 0.21 seconds
 
   
 
 x is the fastest machine, hence we choose x.
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+  
+
+  
 
 \fi
 
@@ -224,6 +230,6 @@ What is the byte stored in address0, 1, 2 and 3, respectively? What are the hexa
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
-EwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbNTI3MzIzMTE5LC0yMTM5MzA0MzYxLC0yMT
+M4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
