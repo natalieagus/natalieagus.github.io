@@ -143,14 +143,40 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 2. Notta notices that `WASEL` is always zero in this table. Explain briefly under what circumstances `WASEL` would be non-zero.
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-`WASEL` is 1 if an *interrupt*, an *illegal* opcode is trapped, or a *fault* occurs. When `WASEL` is `1`, it selects `XP` as the write address for the register file; `Reg[XP]` is where we store the current `PC+4` whenever there is an interrupt, a fault, or an illegal opcode.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	`WASEL` is 1 if an *interrupt*, an *illegal* opcode is trapped, or a *fault* occurs. When `WASEL` is `1`, it selects `XP` as the write address for the register file; `Reg[XP]` is where we store the current `PC+4` whenever there is an interrupt, a fault, or an illegal opcode.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+3. Notta has noticed the following C code fragment appears frequently in the benchmarks:
+
+```
+int *_p; /_* Pointer to integer array *_/_
+_int i,j; /_* integer variables *_/_
+
+_..._
+
+_j = p[i]; /_* access ith element of array */
+```
+
+The pointer variable `p` contains the *address* of a **dynamically allocated** array of integers. The value of `p[i]` is stored at the address `Mem[p +4i]` where `p` and `i` are locations containing the values of the corresponding C variables. On a conventional Beta this code fragment is translated to the following instruction sequence:
+
+```
+LD(...,R1) /* R1 contains p, the array base address *_/_
+
+_LD(...,R2) /_* R2 contains I, the array index *_/  ..._
+
+_SHLC(R2,2,R0)  /_* compute byte-addressed offset = 4*i *_/_
+
+_ADD(R1,R0,R0)  /_* address of indexed element *_/_
+
+_LD(R0,0,R3)  /_* fetch p[i] into R3 */
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA5NDczMTY1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbLTE1MTE1OTI1MzksLTExMjA0Mzk3ODVdfQ
+==
 -->
