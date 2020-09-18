@@ -196,7 +196,7 @@ The result of R0 is the content of memory address I multiplied by 4.
 
   
 
-### Addressing (Basic)
+### Memory Loading (Basic)
 
   
 You are given that the word at memory address `0` has a binary form of
@@ -204,16 +204,18 @@ You are given that the word at memory address `0` has a binary form of
 0000 0100 0000 0011 0000 0010 0000 0001
 ```
 
-What is the byte stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
+What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
 
-\ifanswers
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-\beginsol
+1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: 0x04 03 02 01.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
-1, 2, 3, and 4.  The hex form is the word: 0x04 03 02 01.
-
-\fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjYxNTg5OTksLTIxMzkzMDQzNjEsLT
-IxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTg4NDExNDcsLTIxMzkzMDQzNjEsLTIxMz
+gwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
