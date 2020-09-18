@@ -132,8 +132,25 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 1.  Help Notta out by identifying which Beta instruction is implemented by each row of the table.
 
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
+	From first row to the last: `SUBC, BEQ, LDR, CMPEQ, ST`.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
+2. Notta notices that `WASEL` is always zero in this table. Explain briefly under what circumstances `WASEL` would be non-zero.
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+`WASEL` is 1 if an *interrupt*, an *illegal* opcode is trapped, or a *fault* occurs. When `WASEL` is `1`, it selects `XP` as the write address for the register file; `Reg[XP]` is where we store the current `PC+4` whenever there is an interrupt, a fault, or an illegal opcode.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk5NjgwOTE3LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbNjA5NDczMTY1LC0xMTIwNDM5Nzg1XX0=
 -->
