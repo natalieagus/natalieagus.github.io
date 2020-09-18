@@ -21,6 +21,20 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 
 # Beta Datapath
 
+### $\beta$ Trivia (Basic)
+1.  In an unpipelined Beta implementation, when is the signal `RA2SEL` set to `1`?
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	The `RA2SE`  signal is set to `1` when executing a `ST` instruction. When `RA2SEL` is `1` the 5-bit `Rc` field of the instruction is sent to the `RA2` port of the register file, causing `Reg[Rc]` to be sent to the **write data port of main memory.**
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+2. In an unpipelined Beta implementation, when executing a BR(foo,LP) instruction to call procedure foo, what should WDSEL should be set to?
+
 ### $\beta$ Assembly Language (Basic)
 
   
@@ -240,5 +254,5 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MDAwNDUxOSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbLTgxNzA3NTMsLTExMjA0Mzk3ODVdfQ==
 -->
