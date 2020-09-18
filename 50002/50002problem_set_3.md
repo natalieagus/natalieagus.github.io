@@ -731,6 +731,63 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 
+### FSM Possibility (Basic)
+
+
+We saw that certain functions, such as parentheses checking, cannot be performed by any finite state machine. **Which of the following can be performed by an FSM?** 
+
+Assume, in each case, that the device is to take a series of `0`s and `1`s that represent the digits of a binary number entered *left-to-right*. 
+
+1. The device is to have a **single** output, which is 1 only under this specific condition: *when the last 277 digits entered have been alternate `1`s and `0`s.*
+	
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**Yes**. It is a bit tedious for 277 digits, but you should be able to sketch FSM for 3 or 4 digits.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+1. The device is to have a **single** output, which is 1 only under this specific condition: *when more 0s than 1s have been entered*.
+
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**No**. Requires unbounded counting.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+1. The device is to have a **single** output, which is 1 only under this specific condition: *when the number entered thus far is **divisible** by 3.*
+
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**Yes**, can be done by a 3-state machine.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+1. The device is to have a **single** output, which is 1 only under this specific condition: *when an odd number of 1s and and even number of 0s have been entered.*
+
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**Yes**, can be done with a 4-state machine. 
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
 
 
 
@@ -743,9 +800,9 @@ Now, suppose that at time `t=0`, `RESET` signal is changed from `1` to `0`, and 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MjU3NDEzNCwtMjAxODc1NTMwNiwtNj
-M4NTU4NTYsLTg2MjQ4ODg0MiwxMzYzOTg4MjE0LDIxMTU2OTQ5
-NjUsMTA2NzM2MTAzOCwxMDcyNDU2MzUxLDM3NjA3ODY2MCwtMT
-Y2NzMyMDc2MSwtMTk1NzM3NTk0NCwtOTcxMzI5OTk3LC0xOTI4
-NDQwODI2LC02MTA0NzMwMThdfQ==
+eyJoaXN0b3J5IjpbOTUwNzEzNTM0LDEyODI1NzQxMzQsLTIwMT
+g3NTUzMDYsLTYzODU1ODU2LC04NjI0ODg4NDIsMTM2Mzk4ODIx
+NCwyMTE1Njk0OTY1LDEwNjczNjEwMzgsMTA3MjQ1NjM1MSwzNz
+YwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMy
+OTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
 -->
