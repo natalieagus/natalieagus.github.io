@@ -113,29 +113,30 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 
 1. How much memory can a 32-bit von Neumann machine have? *Explain your answer.*
 
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
-$2^{32}$ **bytes** because each address is also 32 bits long in a 32-bit von Neu.
-</details>
-<br/>
-{::options parse_block_html="false" /}
-
+	$2^{32}$ **bytes** because each address is also 32 bits long in a 32-bit von Neumann machine.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
-\fi
+2. Can a CPU have as many registers as possible, in theory?
 
-1. Can a CPU have as many registers as possible, in theory?
 
-\ifanswers
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-\beginsol
+	**No**. *Addresses* for each register involved in the instruction must be encoded *within the instruction*, i.e: 5 bits for 32 registers. An instruction is 32 bits long for $\beta$ architecture, so having too many registers will make encoding infeasible.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
-No. The registers must be encoded in instructions, i.e: 5 bits for 32 registers. An instruction is 32 bits long for $\beta$ architecture, so having too many registers will make encoding infeasible.
 
-\fi
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTMzODEwOTUsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTEwOTQxNzA3MDgsNTEwOTg0MDVdfQ==
 -->
