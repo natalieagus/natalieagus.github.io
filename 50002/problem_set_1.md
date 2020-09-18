@@ -420,7 +420,7 @@ A group of five friends are playing a game that requires them to generate random
 ---
   
 
-Consider an 8-bit number systems. **Do the following base conversion**, and indicate with a `0b` prefix for binary systems and `0x` prefix for hexadecimal systems. Octal and decimal systems do not have prefixes.
+Consider an 8-bit **signed** number systems. **Do the following base conversion**, and indicate with a `0b` prefix for binary systems and `0x` prefix for hexadecimal systems. Octal and decimal systems do not have prefixes.
 
 1. 76 (decimal) to binary
 2. 0b10000001 (binary) to decimal
@@ -658,11 +658,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MjU2ODQ0MywxMTY1OTg5NDY5LDE0Nj
-Y5MjM3NzYsLTI2ODU5OTg4NiwtMjIwMzM1MzA2LC0yOTE2OTQz
-MjQsODU0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2NiwtMj
-cwOTM0NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1
-MzQ2OCwtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LD
-cwMjUxMDY2OSwtMjA0OTIwMzUzNywyODYzODc3ODksMzAyNDE2
-ODUyXX0=
+eyJoaXN0b3J5IjpbNjMyNjQ2NDgxLC01NDI1Njg0NDMsMTE2NT
+k4OTQ2OSwxNDY2OTIzNzc2LC0yNjg1OTk4ODYsLTIyMDMzNTMw
+NiwtMjkxNjk0MzI0LDg1NDA0ODEyMCwtMTY3MDU4MTAwLC0zMz
+Q4ODczNjYsLTI3MDkzNDc0OCwyMDI0MDcyMDcyLDE1MzgwMzU4
+NDIsLTEwNzEzNTM0NjgsLTEyMDU0NjUxOCwxODI0NTQ0NDg3LD
+YxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDkyMDM1MzcsMjg2Mzg3
+Nzg5XX0=
 -->
