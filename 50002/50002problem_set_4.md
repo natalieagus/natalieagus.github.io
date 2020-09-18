@@ -196,19 +196,15 @@ The result of R0 is the content of memory address I multiplied by 4.
 
   
 
-### Addressing
+### Addressing (Basic)
 
   
+You are given that the word at memory address `0` has a binary form of
+```
+0000 0100 0000 0011 0000 0010 0000 0001
+```
 
-  
-
-You are given that the word at memory address 0 has a binary form of
-
-0000 0100 0000 0011 0000 0010 0000 0001\\
-
-~\\
-
-What is the byte stored in address0, 1, 2 and 3, respectively? What are the hexadecimal forms of the bytes?
+What is the byte stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
 
 \ifanswers
 
@@ -218,6 +214,6 @@ What is the byte stored in address0, 1, 2 and 3, respectively? What are the hexa
 
 \fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODA0NDQyMzYsLTIxMzkzMDQzNjEsLT
+eyJoaXN0b3J5IjpbLTEzMjYxNTg5OTksLTIxMzkzMDQzNjEsLT
 IxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
