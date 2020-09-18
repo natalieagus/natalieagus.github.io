@@ -120,86 +120,12 @@ From the result above, $x$ is the fastest machine. Hence we choose $x$.
 </details>
 <br/>
 {::options parse_block_html="false" /}
-
-
-### $\beta$ Assembly Language (Basic)
-
-What does the following piece of Beta assembly do? Hand assemble the beta language into machine language.
-
-\begin{verbatim}
-
-I = 0x5678
-
-B = 0x1234
-
-LD(I,R0) -- (1)
-
-SHLC(R0,2,R0) --  (2)
-
-LD(R0,B,R1) -- (3)
-
-MULC(R1,17,R1) -- (4)
-
-ST(R1,B,R0)  -- (5)
-
-\end{verbatim}
-
-What is the result stored in R0?
-
-\ifanswers
-
-\beginsol
-
-The machine language is:
-
-\begin{verbatim}
-
-I = 0x5678
-
-B = 0x1234
-
-LD(R31,I,R0) 011000 00000 11111 0101 0110 0111 1000 = 0x601F5678
-
-SHLC(R0,2,R0) 111100 00000 00000 0000 0000 0000 0010 = 0xF0000002
-
-LD(R0,B,R1) 011000 00001 00000 0001 0010 0011 0100 = 0x60201234
-
-MULC(R1,17,R1) 110010 00001 00001 0000 0000 0001 0001 = 0xC8210011
-
-ST(R1,B,R0) 011001 00001 00000 0001 0010 0011 0100 = 0x64201234
-
-\end{verbatim}
-
-Explanation:
-
   
 
-  
-
-1.  Line 1: move the content of memory address I to register R0
-
-1.  Line 2 : the content of R0 is multiplied by 4 and stored back at register R0
-
-1.  Line 3 : move the content of memory address  (B + content of register R0) to register R1
-
-1.  Line 4 : The content of register R1 is multiplied by 17 and stored back at register R1
-
-1.  Line 5 : Move the content of register R1 to memory address (B + content of register R0)
+### Memory Addressing (Basic)
 
   
-
-The result of R0 is the content of memory address I multiplied by 4.
-
-\fi
-
-  
-
-  
-
-### Memory Loading (Basic)
-
-  
-You are given that the word at memory address `0` has a binary form of
+You are given that the 32-bit *word* at memory address `0` has a binary form of
 ```
 0000 0100 0000 0011 0000 0010 0000 0001
 ```
@@ -216,6 +142,6 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 {::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4NDExNDcsLTIxMzkzMDQzNjEsLTIxMz
-gwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMT
+M4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
