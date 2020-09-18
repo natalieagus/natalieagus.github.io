@@ -1,6 +1,27 @@
+---
+layout: default
+title: "Problem Set Week 5"
+permalink: /50002/PS5/
+---
+50.002 Computational Structures 
 
+Information Systems Technology and Design 
 
-### $\beta$ Assembly Language
+Singapore University of Technology and Design 
+
+**Natalie Agus (Fall 2020)**
+
+This page contains all practice questions that constitutes the topics learned in <ins>Week 5</ins>:  **Beta Datapath**.
+
+Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
+
+{::options parse_block_html="true" /}
+{% include toc.html %}
+{::options parse_block_html="false" /}
+
+# Beta Datapath
+
+### $\beta$ Assembly Language (Basic)
 
   
 
@@ -58,7 +79,7 @@ The result of `R0` is the content of memory address I: `Mem[I]` multiplied by 4.
 <br/>
 {::options parse_block_html="false" /}
 
-### Non $\beta$ Architecture Benchmarking
+### Non $\beta$ Architecture Benchmarking (Basic)
 
 
 A local junk yard offers older CPUs with non-Beta architecture that require **several clocks** to execute each instruction. Here are the specifications:
@@ -101,6 +122,9 @@ From the result above, $x$ is the fastest machine. Hence we choose $x$.
 {::options parse_block_html="false" /}
   
 
+
+### Cl
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbLTI0NDE4MzgzNywtMTEyMDQzOTc4NV19
 -->
