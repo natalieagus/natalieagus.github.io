@@ -11,7 +11,7 @@ Singapore University of Technology and Design
 
 **Natalie Agus (Fall 2020)**
 
-This page contains all practice questions that constitutes the topics learned in <ins>Week 4</ins>: **Programmability** and **Turing Machine**. 
+This page contains all practice questions that constitutes the topics learned in <ins>Week 4</ins>:  **Turing Machine** and **Programmability**. 
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
@@ -20,7 +20,8 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 {::options parse_block_html="false" /}
 
 
-  
+
+# Turing Machine
 
 ### Ben's Turing Machine (Basic)
 
@@ -79,6 +80,168 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 
 
 
+
+  
+
+  
+
+### Non $\beta$ Architecture
+
+
+A local junk yard offers older CPUs with non-Beta architecture that require **several clocks** to execute each instruction. Here are the specifications:
+$$\begin{matrix}
+Model & Clock Rate &  Avg. clocks per Instruction\\
+\hline
+x & 40 Mhz & 2.0\\
+y & 100 Mhz & 10.0\\
+z & 60 Mhz & 3.0\\
+\end{tabular}$$
+
+
+  
+
+You are going to choose the machine which will execute your benchmark
+
+program the fastest, so you compiled and ran the benchmark on the three
+
+machines and counted the total instructions executed:
+
+  
+
+  
+
+1.  x: 3,600,000 instructions executed
+
+1.  y: 1,900,000 instructions executed
+
+1.  z: 4,200,000 instructions executed
+
+  
+
+Based on the above data which machine would you choose?
+
+\ifanswers
+
+\beginsol
+
+First we find out the time taken to execute those instructions:
+
+  
+
+  
+
+1.  x: 3.6M / (40M / 2) = 0.18 seconds
+
+1.  y: 1.9M / (100M / 10) = 0.19 seconds
+
+1.  z : 4.2M / (60M / 3) = 0.21 seconds
+
+  
+
+x is the fastest machine, hence we choose x.
+
+\fi
+
+### $\beta$ Assembly Language
+
+  
+
+What does the following piece of Beta assembly do? Hand assemble the beta language into machine language.
+
+  
+
+\begin{verbatim}
+
+I = 0x5678
+
+B = 0x1234
+
+LD(I,R0) -- (1)
+
+SHLC(R0,2,R0) --  (2)
+
+LD(R0,B,R1) -- (3)
+
+MULC(R1,17,R1) -- (4)
+
+ST(R1,B,R0)  -- (5)
+
+\end{verbatim}
+
+What is the result stored in R0?
+
+\ifanswers
+
+\beginsol
+
+The machine language is:
+
+\begin{verbatim}
+
+I = 0x5678
+
+B = 0x1234
+
+LD(R31,I,R0) 011000 00000 11111 0101 0110 0111 1000 = 0x601F5678
+
+SHLC(R0,2,R0) 111100 00000 00000 0000 0000 0000 0010 = 0xF0000002
+
+LD(R0,B,R1) 011000 00001 00000 0001 0010 0011 0100 = 0x60201234
+
+MULC(R1,17,R1) 110010 00001 00001 0000 0000 0001 0001 = 0xC8210011
+
+ST(R1,B,R0) 011001 00001 00000 0001 0010 0011 0100 = 0x64201234
+
+\end{verbatim}
+
+Explanation:
+
+  
+
+  
+
+1.  Line 1: move the content of memory address I to register R0
+
+1.  Line 2 : the content of R0 is multiplied by 4 and stored back at register R0
+
+1.  Line 3 : move the content of memory address  (B + content of register R0) to register R1
+
+1.  Line 4 : The content of register R1 is multiplied by 17 and stored back at register R1
+
+1.  Line 5 : Move the content of register R1 to memory address (B + content of register R0)
+
+  
+
+The result of R0 is the content of memory address I multiplied by 4.
+
+\fi
+
+  
+
+  
+
+### Addressing
+
+  
+
+  
+
+You are given that the word at memory address 0 has a binary form of
+
+0000 0100 0000 0011 0000 0010 0000 0001\\
+
+~\\
+
+What is the byte stored in address0, 1, 2 and 3, respectively? What are the hexadecimal forms of the bytes?
+
+\ifanswers
+
+\beginsol
+
+1, 2, 3, and 4.  The hex form is the word: 0x04 03 02 01.
+
+\fi
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbOTYyMjk1MDExLC0yMTM4MDI1MDU0LDUxMD
+k4NDA1XX0=
 -->
