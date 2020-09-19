@@ -293,6 +293,8 @@ Your friend came up with several short test programs. You want to select one of 
     
 3.  Programs that can only detect the `RA2SEL` signal faulty but not `ASEL` multiplexer faulty (or vice versa) is **not acceptable**. 
 
+*You can assume that the initial content of all registers are `0`.* 
+
 **Program 1**:
 ```
 .=0x000  
@@ -358,12 +360,12 @@ For **Program 1**:
 * We will end up storing 8 instead of 12 to `Mem[constant + 8]` if `RA2SEL` signal remains `0` due to the faulty `CU`. 
 
 For **Program 4**:
-* 
+* The content of `R21` is stored to `Mem[Constant+8]` instead of the content of `R0`. Therefore, `Mem[Constant+8]`  is `0` instead of 
 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMj
-A0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbLTE3MzgzNTIzODUsNzI4Mjg0MjU4LDIwNj
+c4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
