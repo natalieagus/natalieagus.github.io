@@ -378,8 +378,15 @@ For each of the statements below, indicate whether they're True or False and pro
 
 * **Statement 3:** We can never perform `LD` and `ST`  to any two independent addresses in a *single cycle* (even if the memory unit supports it) by just modifying the **control unit** of the Beta. In other words, we need to modify the datapath of the Beta in order to do this. 
 
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
+**Statement 1** is **False**. 
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MjU0MDkwOSw3MjgyODQyNTgsMjA2Nz
-g5MzcyNSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbMTQxODQ3MTU4OSwxMjQyNTQwOTA5LDcyOD
+I4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
 -->
