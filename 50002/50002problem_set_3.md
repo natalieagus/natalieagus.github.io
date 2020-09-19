@@ -352,11 +352,13 @@ Some of the specifications refer to "bounded time" which means there is a *speci
 You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise. 
 
 ### Classifying FSM (Basic)
-The diagram below illustrates the FSM diagram of a machine that does edge detection. The circle that is bolded signifies the starting state. Diagram A and Diagram B both have the *same logic*, that is to detect the presence of an edge.
+The diagram below illustrates the FSM diagram of a machine that has the same purpose. The circle that is bolded signifies the starting state. 
 
 State whether the following is *true or false* and explain your answer:
 * **Statement 1:** *"Diagram A illustrates a Mealy machine."*
 * **Statement 2:** *"Diagram B can be further minimized."*
+
+What is the *purpose* of these FSMs?
 
 <img src="https://www.dropbox.com/s/ssyur5zn29v5rsq/fsmmeally.png?raw=1" width="70%" height="70%">
 
@@ -364,7 +366,9 @@ State whether the following is *true or false* and explain your answer:
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Statement 1 is fa
+**Statement 1** is *false* because the machine in Diagram A has its output that depends only on its state. **Statement 2** is *true*, we can minimise it into just two states because `S1` and `S2` are **equivalent**. 
+
+The purpose of bo
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -820,10 +824,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYzNDk2NTM0LDk1MDcxMzUzNCwxMjgyNT
-c0MTM0LC0yMDE4NzU1MzA2LC02Mzg1NTg1NiwtODYyNDg4ODQy
-LDEzNjM5ODgyMTQsMjExNTY5NDk2NSwxMDY3MzYxMDM4LDEwNz
-I0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1
-OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF
-19
+eyJoaXN0b3J5IjpbLTE1MjczNDAwNjksOTUwNzEzNTM0LDEyOD
+I1NzQxMzQsLTIwMTg3NTUzMDYsLTYzODU1ODU2LC04NjI0ODg4
+NDIsMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNjczNjEwMzgsMT
+A3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTcz
+NzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMD
+E4XX0=
 -->
