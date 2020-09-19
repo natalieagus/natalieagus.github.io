@@ -192,7 +192,7 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 {::options parse_block_html="false" /}
 
 
-## Designing an Instruction Set
+# Designing an Instruction Set
 
 ### CPU Trivia (Basic)
 
@@ -284,9 +284,10 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Njk5ODEwNDIsMzY4MjIxNjU5LC0xNT
-M2Mjg0MjIzLC0xMDk0NTA5NzIzLC01NTIxMDcyMDAsLTE1NzA1
-ODU2MjIsMTcyNjUyOTIxMywxMjk1OTYwOTIxLC03MTEzNzk0Mj
-ksMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0LC0yMTM5
-MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbOTk5NjE2MjUxLC0xNzY5OTgxMDQyLDM2OD
+IyMTY1OSwtMTUzNjI4NDIyMywtMTA5NDUwOTcyMywtNTUyMTA3
+MjAwLC0xNTcwNTg1NjIyLDE3MjY1MjkyMTMsMTI5NTk2MDkyMS
+wtNzExMzc5NDI5LDEyNDk2NjQ2NjEsNDMzODE1MTEwLDczMzE5
+MjA2NCwtMjEzOTMwNDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV
+19
 -->
