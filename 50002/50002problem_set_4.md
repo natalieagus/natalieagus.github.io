@@ -121,15 +121,25 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 
 You are given a Turing machine (TM) with three states `(S0, S1, S2)` and a `HALT` state and the following state transition diagram and state table. The TM operates by reading and then moving either left (“L”) or right (“R”) on an infinite tape. 
 
-The tape is used to encode a binary number with three symbols, “0”, “1” and “_”, where “_” is used to signal the **beginning** and **end** of the number. For instance, the binary number “1011” is represented on the tape as “_,1,0,1,1,_” (*most significant bit on the left*).
+The tape is used to encode a binary number with three symbols, “0”, “1” and “_”, where “_” is used to signal the **beginning** and **end** of the number. For instance, the binary number “1011” is represented on the tape as `_,1,0,1,1,_` (*most significant bit on the left*).
 
 <img src="https://www.dropbox.com/s/4s0rvpzhm6twih9/tmqns.png?raw=1" width="70%" height="70%">
 
 
-If the tape is in the initial configuration “_,1,0,1,1,_” and the Turing machine starts in state S0, reading at the tape position of the “0”, then what is the state transition sequence that the machine is going to execute (including the start state S0)?
+If the tape is in the initial configuration `_,1,0,1,1,_` and the Turing machine starts in **state `S0`**, reading at the tape position of the “0”, then what is the state transition sequence that the machine is going to execute (including the start state S0)?
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+Answering this is none other than executing the Turing Machine with the  given tape
+`S0, S0, S0, S0, S1, S1, S1, S2, S2, S2, S2, S2, HALT`
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjczMDE5ODQwLC03MTEzNzk0MjksMTI0OT
-Y2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYx
-LC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbLTc4NTk5MTgzMywtNzExMzc5NDI5LDEyND
+k2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOTMwNDM2
+MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
 -->
