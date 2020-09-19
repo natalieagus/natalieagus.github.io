@@ -274,19 +274,19 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	0000 0011 0010 1100 0101 1100 1100 0001
 	0000 0000 0000 0000 0000 1100 1100 0001
 	```
+	
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
-There are 20 bytes in the data above.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	There are 20 bytes in the data above. We need at least $\lceil\log_2(20)\rceil$ bits for addressing. 
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMzNTMyMzg5LDM2ODIyMTY1OSwtMTUzNj
-I4NDIyMywtMTA5NDUwOTcyMywtNTUyMTA3MjAwLC0xNTcwNTg1
-NjIyLDE3MjY1MjkyMTMsMTI5NTk2MDkyMSwtNzExMzc5NDI5LD
-EyNDk2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOTMw
-NDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
+eyJoaXN0b3J5IjpbNDU4NjI1ODIsMzY4MjIxNjU5LC0xNTM2Mj
+g0MjIzLC0xMDk0NTA5NzIzLC01NTIxMDcyMDAsLTE1NzA1ODU2
+MjIsMTcyNjUyOTIxMywxMjk1OTYwOTIxLC03MTEzNzk0MjksMT
+I0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0
+MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
