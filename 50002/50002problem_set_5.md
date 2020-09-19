@@ -344,6 +344,18 @@ HALT()
 constant: LONG(8)
 LONG(4)
 ```
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+There's only one instruction: `ST` that requires `RA2SEL` mux 
+**Program 1** and **Program 4** fulfills the criteria. 
+
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg0NTk5MjM3LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbLTExMzIzMTY0MjQsLTExMjA0Mzk3ODVdfQ
+==
 -->
