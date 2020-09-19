@@ -118,6 +118,7 @@ The result of `R0` is the content of memory address I: `Mem[I]` multiplied by 4.
 
 
 A local junk yard offers older CPUs with non-Beta architecture that require **several clocks** to execute each instruction. Here are the specifications:
+
 $$\begin{matrix}
 \text{Model} & \text{Clock Rate} &  \text{Avg. clocks per Instruction}\\
 \hline
@@ -526,8 +527,7 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDY4OTQ5MDIsMTIzMzUzNDIzNiwtND
-UwNzk2OTEwLDEyNjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQw
-OTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX
-0=
+eyJoaXN0b3J5IjpbNTczNjY0ODYwLDEyMzM1MzQyMzYsLTQ1MD
+c5NjkxMCwxMjYzMzYzMjU0LC00NjQ3MzM3NjMsMTI0MjU0MDkw
+OSw3MjgyODQyNTgsMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
 -->
