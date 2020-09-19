@@ -253,12 +253,14 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 <details>
 <summary markdown="span">Show Answer</summary>
 
-**Specification 1** and **Specification 3** produces the same output tape as shown above, given the initial tape content and the Turing Machine's start state (and location). We can run
+**Specification 1** and **Specification 3** produces the same output tape as shown above, given the initial tape content and the Turing Machine's start state (and location). We can run the machine five times with each specifications to obtain the answer, but the faster way is to observe them based on the functionality:
+* To detect an edge, there's no need to "re-read" previous input. Therefore **Specification 5** is definitely wrong (we only need to move the tape in one direction). 
+* We only output `1` once on the occurence of an edge, so the specification shall not output too many `1`s. Specification 2 and 4 then are 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MjMwOTE0NCwxNzI2NTI5MjEzLDEyOT
+eyJoaXN0b3J5IjpbLTE2MDYwMTM0OSwxNzI2NTI5MjEzLDEyOT
 U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
 MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
 EwOTg0MDVdfQ==
