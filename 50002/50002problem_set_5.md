@@ -274,6 +274,10 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	{::options parse_block_html="false" /}
 
 
+### New Beta Instruction (Intermediate)
+Write the register transfer language below corresponds to the instruction with the following control signal:
+
+
 ### Faulty Detection in Beta (Intermediate)
 
 You suspected that your Beta CPU is faulty, in particular, these two components:
@@ -392,6 +396,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyOD
-I4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbLTc5MDU0NDY3NCwtNDY0NzMzNzYzLDEyND
+I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
+ODVdfQ==
 -->
