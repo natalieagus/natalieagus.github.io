@@ -516,7 +516,7 @@ x : LONG(3)
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces the control unit to produce non-zero `PCSEL`. For example, **Program 4** results in `illop` when the Beta attempts to execute `LONG(12)` because it isn't an instruction. Therefore `PCSEL=3` if the control un
+Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces the control unit to produce non-zero `PCSEL`. For example, **Program 4** results in `illop` when the Beta attempts to execute `LONG(12)` because it isn't an instruction. Therefore `PCSEL=3` if the control unit works properly and that the content of `PC` will be `ILLOP` (wherever the address of illegal operation handler is) instead of address `0xC`. 
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -525,7 +525,7 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDY4OTE1ODksMTIzMzUzNDIzNiwtND
+eyJoaXN0b3J5IjpbLTE3NTUyNTExODYsMTIzMzUzNDIzNiwtND
 UwNzk2OTEwLDEyNjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQw
 OTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX
 0=
