@@ -78,6 +78,8 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 	<br/>
 	{::options parse_block_html="false" /}
 
+3. In Theory, which 
+
 
 
 ### FSM in TM (Intermediate)
@@ -157,7 +159,7 @@ The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5NTk2MDkyMSwtNzExMzc5NDI5LDEyND
-k2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOTMwNDM2
-MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
+eyJoaXN0b3J5IjpbMjYwODM2ODk5LDEyOTU5NjA5MjEsLTcxMT
+M3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQs
+LTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
