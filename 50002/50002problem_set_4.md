@@ -190,11 +190,17 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 
 * **Specification 1**: 
 $$\begin{matrix}
-\text{State} & \text{Input} 6
-\end{matrix}**
+S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
+S_0 & 0 & S_0 & 0 & L\\
+S_0 & 1 & S_1 & 1 & L\\
+S_1 & 0 & S_0 & 0 & L\\
+S_1 & 1 & S_2 & 0 & L\\
+S_2 & 0 & S_0 & 0 & L\\
+S_2 & 1 & S_2 & 0 & L\\
+\end{matrix}$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MDM3NjI3MSwxNzI2NTI5MjEzLDEyOT
-U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
-MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
-EwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTE0NzI1MzM5MDIsMTcyNjUyOTIxMywxMj
+k1OTYwOTIxLC03MTEzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUx
+MTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LD
+UxMDk4NDA1XX0=
 -->
