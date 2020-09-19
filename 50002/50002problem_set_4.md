@@ -248,27 +248,33 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 
 ### Memory Addressing (Basic)
 
-You are given that the 32-bit *word* at memory address `0` has a binary form of
+1. You are given that the 32-bit *word* at memory address `0` has a binary form of
+	```
+	0000 0100 0000 0011 0000 0010 0000 0001
+	```
+
+	What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: 0x04 03 02 01.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+2. Given that the content of the memory unit is as follows for the first five 32-bit words:
+
 ```
 0000 0100 0000 0011 0000 0010 0000 0001
+1111 1111 0000 0000 1111 1111 
 ```
-
-What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
-
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
-1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: 0x04 03 02 01.
-</details>
-<br/>
-{::options parse_block_html="false" /}
-
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzYyODQyMjMsLTEwOTQ1MDk3MjMsLT
-U1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2NTI5MjEzLDEyOTU5
-NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMC
-w3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEw
-OTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTE1OTc2MDU3NjIsLTE1MzYyODQyMjMsLT
+EwOTQ1MDk3MjMsLTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2
+NTI5MjEzLDEyOTU5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0Nj
+YxLDQzMzgxNTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIx
+MzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
