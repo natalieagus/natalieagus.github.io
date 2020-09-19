@@ -101,15 +101,15 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 </blockquote>
 <h2 id="types-of-mosfets">Types of MOSFETs</h2>
 <p>If we connect these MOSFETs connected in a specific way, we can <strong><strong>create</strong></strong> a combinational logic device that represents our desired <em>truth table</em> or <em>functional logic specification</em> But before we learn how to create such devices, we need to learn two basic types of MOSFETs first.</p>
-<p>There are two types of FETs: the <strong><strong>NFET</strong></strong> and the <strong><strong>PFET</strong></strong>.</p>
+<p>There are two types of FETs: the <strong>NFET</strong> and the <strong>PFET</strong>.</p>
 <ol>
-<li><strong><strong>The NFET</strong></strong> : the majority of the charge carrier for the <strong><strong>bulk</strong></strong> are <em>holes</em> (p-type semiconductor). The majority of the charge carrier for the <strong><strong>source and drain</strong></strong> are electrons (n-type semiconductor). Typically, the bulk is connected to GND to keep the PN junction <em><em>reverse biased</em></em>.</li>
+<li><strong>The NFET</strong> : the majority of the charge carrier for the <strong>bulk</strong> are <em>holes</em> (p-type semiconductor). The majority of the charge carrier for the <strong>source and drain</strong> are electrons (n-type semiconductor). Typically, the bulk is connected to GND to keep the PN junction <em><em>reverse biased</em></em>.</li>
 </ol>
 <blockquote>
 <p>Please watch the pre-preading video or refer to the later section if you are unclear about what is a PN junction, p-type, or n-type semiconductors.</p>
 </blockquote>
 <ol start="2">
-<li><strong><strong>The PFET</strong></strong> : the majority of the charge carrier for the <strong><strong>bulk</strong></strong> are electrons (n-type semiconductor). The majority of the charge carrier for the <strong><strong>source and drain</strong></strong> are holes (p-type semiconductor). Typically, the bulk is connected to VDD to keep the PN junction <em><em>reverse biased</em></em></li>
+<li><strong>The PFET</strong> : the majority of the charge carrier for the <strong>bulk</strong> are electrons (n-type semiconductor). The majority of the charge carrier for the <strong>source and drain</strong> are holes (p-type semiconductor). Typically, the bulk is connected to VDD to keep the PN junction <em><em>reverse biased</em></em></li>
 </ol>
 <p>Some terms we need to set straight before we proceed:</p>
 <ol>
@@ -230,7 +230,7 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 <blockquote>
 <p>Note: Current (I) <strong>cannot flow out back to the Gate</strong> because there’s a capacitor there (infinite resistance). The function of the gate capacitor is to create electric field enough to pull either electrons up to the gate in NFETS or holes up to gate in PFETs to create a conductive n-type (electrons) or p-type(holes) channel.</p>
 </blockquote>
-<h3 id="reverse-bias">Reverse Bias</h3>
+<h3 id="reverse-bias-pn-junction">Reverse Bias PN Junction</h3>
 <p>The bulk of the PFET is connected to the VDD while the bulk of the NFET is connected to the GND. We do this to keep the PN junction in each FET to stay in the <em>reverse biased</em> state by default, until they’re switched <strong>on</strong>.  A simple explanation on why we need to keep them in reverse biased state by default is so that it encourages the presence of the depletion region hence preventing major <em>current leaks</em> across the junction when the FET is <strong>off</strong>. You may watch <a href="https://youtu.be/cJxBlO5NMGs?t=295">this</a> video that we made if you’d like to know more about reverse biasness (and other stuffs like the PN junction diode, and P/N type semiconductors), but these details are out of our syllabus.</p>
 <h2 id="complementary-mos-circuitry">Complementary MOS circuitry</h2>
 <h3 id="the-pull-up-and-pull-down-circuit-in-cmos">The Pull-up and Pull-down Circuit in CMOS</h3>
