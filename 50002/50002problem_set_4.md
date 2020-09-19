@@ -265,21 +265,28 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	{::options parse_block_html="false" /}
 
 
-2. Given that the content of the memory unit is as follows for the first five 32-bit words:
+2. How many bits of addresses are required at minimum to address the following chunk of data, assuming that they are **byte** addressable? 
 
-```
-0000 0100 0000 0011 0000 0010 0000 0001
-1111 1111 0000 0000 1111 1111 0000 0000
-1010 1010 0011 1100 0101 0011 0011 0000 
-0000 0011 0010 1100 0101 1100 1100 0001
-0000 0000 0000 0000 0000 1100 1100 0001
-```
+	```
+	0000 0100 0000 0011 0000 0010 0000 0001
+	1111 1111 0000 0000 1111 1111 0000 0000
+	1010 1010 0011 1100 0101 0011 0011 0000 
+	0000 0011 0010 1100 0101 1100 1100 0001
+	0000 0000 0000 0000 0000 1100 1100 0001
+	```
 
-and that the content of the Program Counter
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+There are 20 bytes in the data above.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY4MjIxNjU5LC0xNTM2Mjg0MjIzLC0xMD
-k0NTA5NzIzLC01NTIxMDcyMDAsLTE1NzA1ODU2MjIsMTcyNjUy
-OTIxMywxMjk1OTYwOTIxLC03MTEzNzk0MjksMTI0OTY2NDY2MS
-w0MzM4MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMTM4
-MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbNDMzNTMyMzg5LDM2ODIyMTY1OSwtMTUzNj
+I4NDIyMywtMTA5NDUwOTcyMywtNTUyMTA3MjAwLC0xNTcwNTg1
+NjIyLDE3MjY1MjkyMTMsMTI5NTk2MDkyMSwtNzExMzc5NDI5LD
+EyNDk2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOTMw
+NDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
 -->
