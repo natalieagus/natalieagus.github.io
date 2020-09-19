@@ -126,20 +126,27 @@ The tape is used to encode a binary number with three symbols, “0”, “1” 
 <img src="https://www.dropbox.com/s/4s0rvpzhm6twih9/tmqns.png?raw=1" width="70%" height="70%">
 
 
-If the tape is in the initial configuration `_,1,0,1,1,_` and the Turing machine starts in **state `S0`**, reading at the tape position of the “0”, then what is the state transition sequence that the machine is going to execute (including the start state S0)?
+If the tape is in the initial configuration `_,1,0,1,1,_`:
+* and the Turing machine starts in **state `S0`**, 
+* reading at the tape position of the `0`, 
+
+...what is the state transition sequence that the machine is going to execute (including the start state S0) until it meets a `HALT`?
 
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Answering this is none other than executing the Turing Machine with the  given tape
+Answering this is none other than executing the Turing Machine with the  given tape `_,1,0,1,1,_` and initial state **`S0`**, with the machine reading the tape at the `0`.
+
+The sequences of the states until `HALT` is met is:
 `S0, S0, S0, S0, S1, S1, S1, S2, S2, S2, S2, S2, HALT`
 </details>
 <br/>
 {::options parse_block_html="false" /}
 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NTk5MTgzMywtNzExMzc5NDI5LDEyND
+eyJoaXN0b3J5IjpbMTIyMzQ5ODczMywtNzExMzc5NDI5LDEyND
 k2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOTMwNDM2
 MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
 -->
