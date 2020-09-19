@@ -351,6 +351,13 @@ Some of the specifications refer to "bounded time" which means there is a *speci
 
 You can refer to the notes <a href="https://natalieagus.github.io/50002/finite_state_machine.html" target="_blank">here</a> if you need to revise. 
 
+### Simplifying FSM (Basic)
+The diagram below illustrates the FSM diagram of a machine that does edge detection. The circle that is bolded signifies the starting state. Diagram A and Diagram B both have the *same logic*, that is to detect the presence of an edge.
+
+State whether the following is *true or false:*
+> "Diagram A illustrates a Mealy machine."
+
+
 ### An Incomplete State Machine (Basic)
 The ACME Company has recently received an order from a Mr. Wiley E. Coyote for their all-digital Perfectly Perplexing Padlock:
 * The P3 has **two** buttons ("0" and "1") that when pressed cause the FSM controlling the lock to advance to a new state. 
@@ -794,6 +801,7 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 
+
  
 
 
@@ -801,10 +809,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNTkzMzc0NCw5NTA3MTM1MzQsMTI4Mj
-U3NDEzNCwtMjAxODc1NTMwNiwtNjM4NTU4NTYsLTg2MjQ4ODg0
-MiwxMzYzOTg4MjE0LDIxMTU2OTQ5NjUsMTA2NzM2MTAzOCwxMD
-cyNDU2MzUxLDM3NjA3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3
-NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMT
-hdfQ==
+eyJoaXN0b3J5IjpbMTYxNzMxNDAwLDk1MDcxMzUzNCwxMjgyNT
+c0MTM0LC0yMDE4NzU1MzA2LC02Mzg1NTg1NiwtODYyNDg4ODQy
+LDEzNjM5ODgyMTQsMjExNTY5NDk2NSwxMDY3MzYxMDM4LDEwNz
+I0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1
+OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF
+19
 -->
