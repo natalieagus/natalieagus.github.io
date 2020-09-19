@@ -52,58 +52,6 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 {::options parse_block_html="false" /}
   
 
-### CPU Trivia (Basic)
-
-1. How much memory can a 32-bit von Neumann machine have? *Explain your answer.*
-
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	$2^{32}$ **bytes** because each address is also 32 bits long in a 32-bit von Neumann machine.
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
-
-2. Can a CPU have as many registers as possible, in theory?
-
-
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	**No**. *Addresses* for each register involved in the instruction must be encoded *within the instruction*, i.e: 5 bits for 32 registers. An instruction is 32 bits long for $\beta$ architecture, so having too many registers will make encoding infeasible.
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
-3. In Theory, which machine is least powerful but sufficient to compute each of the following functions? Choose for the four following possible choices ranked by its level of "powerfullness":  
-	* Turing Machine (most powerful)
-	* FSM
-	* Combinational Logic (least powerful)
-	* Uncomputable	
-	
-	The functions in question are:
-	* **Function 1:** A processor that executes Beta instruction set
-	
-	* **Function 2:** A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
-	* **Function 3:** A device that takes a sequence of binary digits, one each milisecond clock period, and output `1` if the sequence so far contains more `1`s than `0`s. 
-	* **Function 4:** A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)
-
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
-
-	**Function 1:** FSM
-	**Function 2:** FSM
-	**Function 3:** Turing Machine
-	**Function 4:** Combinational Logic
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
-
-
 
 ### FSM in TM (Intermediate)
 We encode the state of a Turing machine into 2 bits, the value that is read (input) from and written (output) onto the infinite tape into 2 bits, and the output move on the tape (left or right) into 1 bit. How many different finite state machines are there to control such a Turing machine? 
@@ -123,23 +71,6 @@ We can enumerate $2^{(s+o)2^{s+i}}$ FSM, and hence the answer to this question i
 {::options parse_block_html="false" /}
 
 
-### Memory Addressing (Basic)
-
-You are given that the 32-bit *word* at memory address `0` has a binary form of
-```
-0000 0100 0000 0011 0000 0010 0000 0001
-```
-
-What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
-
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
-1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: 0x04 03 02 01.
-</details>
-<br/>
-{::options parse_block_html="false" /}
 
 
 ### Running a Turing Machine (Basic)
@@ -259,9 +190,81 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 </details>
 <br/>
 {::options parse_block_html="false" /}
+
+
+
+### CPU Trivia (Basic)
+
+1. How much memory can a 32-bit von Neumann machine have? *Explain your answer.*
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	$2^{32}$ **bytes** because each address is also 32 bits long in a 32-bit von Neumann machine.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+2. Can a CPU have as many registers as possible, in theory?
+
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**No**. *Addresses* for each register involved in the instruction must be encoded *within the instruction*, i.e: 5 bits for 32 registers. An instruction is 32 bits long for $\beta$ architecture, so having too many registers will make encoding infeasible.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+3. In Theory, which machine is least powerful but sufficient to compute each of the following functions? Choose for the four following possible choices ranked by its level of "powerfullness":  
+	* Turing Machine (most powerful)
+	* FSM
+	* Combinational Logic (least powerful)
+	* Uncomputable	
+	
+	The functions in question are:
+	* **Function 1:** A processor that executes Beta instruction set
+	
+	* **Function 2:** A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
+	* **Function 3:** A device that takes a sequence of binary digits, one each milisecond clock period, and output `1` if the sequence so far contains more `1`s than `0`s. 
+	* **Function 4:** A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)
+
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	**Function 1:** FSM
+	**Function 2:** FSM
+	**Function 3:** Turing Machine
+	**Function 4:** Combinational Logic
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+
+### Memory Addressing (Basic)
+
+You are given that the 32-bit *word* at memory address `0` has a binary form of
+```
+0000 0100 0000 0011 0000 0010 0000 0001
+```
+
+What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectively? What are the hexadecimal forms of the bytes?
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: 0x04 03 02 01.
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzA1ODU2MjIsMTcyNjUyOTIxMywxMj
-k1OTYwOTIxLC03MTEzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUx
-MTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LD
-UxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbLTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNz
+I2NTI5MjEzLDEyOTU5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0
+NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLT
+IxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
