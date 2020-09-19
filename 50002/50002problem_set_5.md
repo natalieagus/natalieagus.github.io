@@ -384,11 +384,11 @@ For each of the statements below, indicate whether they're True or False and pro
 
 **Statement 1** is **False**. We can have `ADDC(R0, -65536, R0)` but we cant have `SUBC(R0, 65536, R0)` as the most positive number that a signed 16-bit can represent is `65535`. 
 
-**Statement 2** is **False**. `Ra` contains 32-bit of data, so we can set `PC` to be pointing to any address in the memory with `JMP(Ra)`. However, `BEQ` allows you to jump only up to `PC+4+4*LI
+**Statement 2** is **False**. `Ra` contains 32-bit of data, so we can set `PC` to be pointing to *any* address in the memory (4GB of address space) with `JMP(Ra)`. However, `BEQ` allows you to move the `PC` to `PC+4+4*literal`, where `literal` 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU4Mzg5MzM3LDEyNDI1NDA5MDksNzI4Mj
-g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbMjAzMzM5MjU1NCwxMjQyNTQwOTA5LDcyOD
+I4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
 -->
