@@ -79,10 +79,14 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 	{::options parse_block_html="false" /}
 
 3. In Theory, which machine is least powerful but sufficient to compute each of the following functions? Choose for the four following possible choices ranked by its level of "powerfullness":  
-	* Turing Machine 
+	* Turing Machine (most powerful)
 	* FSM
-	* Combinational Logic
-	* Un
+	* Combinational Logic (least powerful)
+	* Uncomputable
+
+	1. A processor that executes Beta instruction set
+	2. A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
+	3. A device that takes a sequence of binary digits, one each milisecond clock period, and output 1 if the sequence so far contains 
 
 
 
@@ -163,7 +167,7 @@ The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNzM2MzUzMiwxMjk1OTYwOTIxLC03MT
-EzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0
-LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbLTE5NzgzNTA1NzYsMTI5NTk2MDkyMSwtNz
+ExMzc5NDI5LDEyNDk2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2
+NCwtMjEzOTMwNDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
 -->
