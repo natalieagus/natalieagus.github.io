@@ -793,6 +793,7 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 
+
  
 
 
@@ -800,9 +801,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTUwNzEzNTM0LDEyODI1NzQxMzQsLTIwMT
-g3NTUzMDYsLTYzODU1ODU2LC04NjI0ODg4NDIsMTM2Mzk4ODIx
-NCwyMTE1Njk0OTY1LDEwNjczNjEwMzgsMTA3MjQ1NjM1MSwzNz
-YwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTczNzU5NDQsLTk3MTMy
-OTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMDE4XX0=
+eyJoaXN0b3J5IjpbLTUzNTkzMzc0NCw5NTA3MTM1MzQsMTI4Mj
+U3NDEzNCwtMjAxODc1NTMwNiwtNjM4NTU4NTYsLTg2MjQ4ODg0
+MiwxMzYzOTg4MjE0LDIxMTU2OTQ5NjUsMTA2NzM2MTAzOCwxMD
+cyNDU2MzUxLDM3NjA3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3
+NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMT
+hdfQ==
 -->
