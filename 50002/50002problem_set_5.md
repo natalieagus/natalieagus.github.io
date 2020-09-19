@@ -382,11 +382,11 @@ For each of the statements below, indicate whether they're True or False and pro
 <details>
 <summary markdown="span">Show Answer</summary>
 
-**Statement 1** is **False**. 
+**Statement 1** is **False**. We can have `ADDC
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NzMwMjEyOSwxMjQyNTQwOTA5LDcyOD
-I4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbMTE5MzMyNDczLDEyNDI1NDA5MDksNzI4Mj
+g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
