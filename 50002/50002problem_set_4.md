@@ -263,9 +263,12 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 </details>
 <br/>
 {::options parse_block_html="false" /}
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTQ1MDk3MjMsLTU1MjEwNzIwMCwtMT
-U3MDU4NTYyMiwxNzI2NTI5MjEzLDEyOTU5NjA5MjEsLTcxMTM3
-OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQsLT
-IxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTE1MzYyODQyMjMsLTEwOTQ1MDk3MjMsLT
+U1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2NTI5MjEzLDEyOTU5
+NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMC
+w3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEw
+OTg0MDVdfQ==
 -->
