@@ -290,6 +290,38 @@ Reg[Rc] <-- (PC+4)+4*SXT(C)
 <br/>
 {::options parse_block_html="false" /}
 
+### Another New Beta Instruction (Basic)
+Given the following C-code:
+
+```
+if (a != 0){ b = 3;
+
+}  
+(other code....)
+```
+
+where `a`, `b` are variables that have been initialised in the earlier part of the code (not shown). If we were to implement the following C-code using the Beta instruction set, we must do this in at least **two** cycles:
+
+```
+BEQ(Ra, label_continue, R31)  
+ADDC(R31, 3, Rb)  
+label_continue: (other code)
+```
+
+where `Ra`, `Rb` are assumed to be registers **containing** values `a` and `b`.
+
+The ALU in this particular  Beta however, implements *five* new functions on top of the standard functions: “B”, “NOTA”, “NOTB”, “TRUE”, “FALSE”. 
+
+Due to this, your classmate suggested that we can actually do this in one cycle using this new instruction called `MCNZ` (move constant if not zero) instead:
+
+```
+MCNZ(Ra, literal, Rc) : 
+		if(Reg[Ra] != 0)
+			Reg[Rc] <-- literal 
+		PC <-- PC + 4
+```
+
+
 ### Faulty Detection in Beta (Intermediate)
 
 You suspected that your Beta CPU is faulty, in particular, these two components:
@@ -408,7 +440,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTEzNjQ4OCwtNDY0NzMzNzYzLDEyND
-I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
-ODVdfQ==
+eyJoaXN0b3J5IjpbLTIxNDE3MzM4NzcsLTQ2NDczMzc2MywxMj
+QyNTQwOTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5
+Nzg1XX0=
 -->
