@@ -222,10 +222,10 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	<summary markdown="span">Show Answer</summary>
 
 	```
-	LDX( Ra, Rb, Rc )
-	EA <- Reg[Ra] + Reg[Rb]
-	Reg[Rc] <- Mem[EA]
-	PC <- PC + 4
+	LDX( Ra, Rb, Rc ):
+		EA <- Reg[Ra] + Reg[Rb]
+		Reg[Rc] <- Mem[EA]
+		PC <- PC + 4
 	```
 	</details>
 	<br/>
@@ -526,8 +526,8 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNDg5ODAwNCwxMjMzNTM0MjM2LC00NT
-A3OTY5MTAsMTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5
-MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ
-==
+eyJoaXN0b3J5IjpbLTE4NDY4OTQ5MDIsMTIzMzUzNDIzNiwtND
+UwNzk2OTEwLDEyNjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQw
+OTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX
+0=
 -->
