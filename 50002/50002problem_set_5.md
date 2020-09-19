@@ -442,19 +442,19 @@ For each of the statements below, indicate whether they're True or False and pro
 
 * **Statement 3:** We can never perform `LD` and `ST`  to any two independent addresses in a *single cycle* (even if the memory unit supports it) by just modifying the **control unit** of the Beta. In other words, we need to modify the datapath of the Beta in order to do this. 
 
-	{::options parse_block_html="true" /}
-	<details>
-	<summary markdown="span">Show Answer</summary>
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
 
-	**Statement 1** is **False**. We can have `ADDC(R0, -65536, R0)` but we cant have `SUBC(R0, 65536, R0)` as the most positive number that a signed 16-bit can represent is `65535`. 
+**Statement 1** is **False**. We can have `ADDC(R0, -65536, R0)` but we cant have `SUBC(R0, 65536, R0)` as the most positive number that a signed 16-bit can represent is `65535`. 
 
-	**Statement 2** is **False**. `Ra` contains 32-bit of data, so we can set `PC` to be pointing to *any* address in the memory (4GB of address space) with `JMP(Ra)`. However, `BEQ` only covers `65536*4` *(above `PC+4`*) + `65535*4` (*below and inclusive of `PC+4`*) bytes of address space.
+**Statement 2** is **False**. `Ra` contains 32-bit of data, so we can set `PC` to be pointing to *any* address in the memory (4GB of address space) with `JMP(Ra)`. However, `BEQ` only covers `65536*4` *(above `PC+4`*) + `65535*4` (*below and inclusive of `PC+4`*) bytes of address space.
 
-	**Statement 3** is **True**. The output of the `ALU` supplies a **single** address for both load and store to the memory unit. 
+**Statement 3** is **True**. The output of the `ALU` supplies a **single** address for both load and store to the memory unit. 
 
-	</details>
-	<br/>
-	{::options parse_block_html="false" /}
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 ### PCSEL Fault Detection (Intermediate)
 
@@ -525,8 +525,8 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTUyNTExODYsMTIzMzUzNDIzNiwtND
-UwNzk2OTEwLDEyNjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQw
-OTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX
-0=
+eyJoaXN0b3J5IjpbLTcxODg0NjU1NCwxMjMzNTM0MjM2LC00NT
+A3OTY5MTAsMTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5
+MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ
+==
 -->
