@@ -383,7 +383,11 @@ Assume that the machine starts at `S0`. While referring to the FSM diagram up ab
 <details>
 <summary markdown="span">Show Answer</summary>
 
-`[S
+We can obtain the answers  easily by running the FSM step by step. At each labeled instance, the machine is at the following states:
+* `[A]`: `S0`,
+* `[B]`: `S2`,
+* `[C]`: `S1`,
+* `[D]`: `S0`.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -839,10 +843,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzY4NTU2MjUsOTUwNzEzNTM0LDEyOD
-I1NzQxMzQsLTIwMTg3NTUzMDYsLTYzODU1ODU2LC04NjI0ODg4
-NDIsMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNjczNjEwMzgsMT
-A3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTcz
-NzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMD
-E4XX0=
+eyJoaXN0b3J5IjpbNjYzMjA1Mzk5LDk1MDcxMzUzNCwxMjgyNT
+c0MTM0LC0yMDE4NzU1MzA2LC02Mzg1NTg1NiwtODYyNDg4ODQy
+LDEzNjM5ODgyMTQsMjExNTY5NDk2NSwxMDY3MzYxMDM4LDEwNz
+I0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1
+OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF
+19
 -->
