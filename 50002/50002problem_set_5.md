@@ -294,7 +294,38 @@ Your friend came up with several short test programs. You want to select one of 
 3.  Programs that can only detect the `RA2SEL` signal faulty but not `ASEL` multiplexer faulty (or vice versa) is **not acceptable**. 
 
 **Program 1**:
+```
+.=0x000  
+LDR(constant, R0) 
+LDR(constant + 4, R1) 
+ADD(R0, R1, R2)  
+ST(R2, constant + 8, R31) 
+HALT()  
+
+constant: LONG(8)
+LONG(4)
+```
+
+**Program 2**:
+```
+.=0X000  
+CMOVE(5, R1) 
+LDR(constant, R2) 
+ST(R2, answer, R31) 
+MULC(R1, R2, R3) 
+HALT()  
+
+constant: LONG(0) 
+.=0xFFFC  
+answer: LONG(0)
+```
+
+**Program 3**:
+```
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExODI2NTM3MywtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbLTEyNDAzMjI0OTIsLTExMjA0Mzk3ODVdfQ
+==
 -->
