@@ -368,8 +368,12 @@ For **Program 4**:
 <br/>
 {::options parse_block_html="false" /}
 
+### Beta Instruction Replacements (Intermediate)
 
+For each of the statements below, indicate whether they're True or False and provide your reasoning. 
+
+* Statement 1:  In the Beta, every `ADDC` instruction can always be replaced by a `SUBC` instruction that puts precisely the same value in the destination register. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3NTczNjI3MSw3MjgyODQyNTgsMjA2Nz
-g5MzcyNSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbNjkwNTQyOTQ5LDcyODI4NDI1OCwyMDY3OD
+kzNzI1LC0xMTIwNDM5Nzg1XX0=
 -->
