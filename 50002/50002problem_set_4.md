@@ -78,7 +78,11 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 	<br/>
 	{::options parse_block_html="false" /}
 
-3. In Theory, which 
+3. In Theory, which machine is least powerful but sufficient to compute each of the following functions? Choose for the four following possible choices ranked by its level of "powerfullness":  
+	* Turing Machine 
+	* FSM
+	* Combinational Logic
+	* Un
 
 
 
@@ -159,7 +163,7 @@ The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYwODM2ODk5LDEyOTU5NjA5MjEsLTcxMT
-M3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQs
-LTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbMTUyNzM2MzUzMiwxMjk1OTYwOTIxLC03MT
+EzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0
+LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
