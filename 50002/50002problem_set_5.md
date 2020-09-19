@@ -276,7 +276,19 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 ### New Beta Instruction (Intermediate)
 Write the register transfer language below corresponds to the instruction with the following control signal:
+<img src="https://www.dropbox.com/s/ysf5rtc0d9mwsil/ctrlnew.png?raw=1" width="20%" height="20%">
 
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+```
+PC <-- PC + 4
+Reg[Rc] <-- (PC+4)+4*SXT(C) 
+```
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 ### Faulty Detection in Beta (Intermediate)
 
@@ -396,7 +408,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MDU0NDY3NCwtNDY0NzMzNzYzLDEyND
+eyJoaXN0b3J5IjpbLTE0OTEzNjQ4OCwtNDY0NzMzNzYzLDEyND
 I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
 ODVdfQ==
 -->
