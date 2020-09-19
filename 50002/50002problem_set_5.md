@@ -473,12 +473,45 @@ ADDC(R0, 1, R0)
 
 **Program 2**: (executed for three CLK cycles)
 ```
-.= 0  
-BEQ(R0, .+4, R31)  
-ADDC(R0, 1, R0)  
+.=0  
+CMPEQ(R0, R0, R0)  
+BNE(R0, .-4, R31)  
+ADDC(R0, 1, R0)
 ```
+
+**Program 3**: (executed for four CLK cycles)
+```
+.=0  
+LD(R0, 0, R0)  
+MULC(R0, 1, R0)  
+BNE(R0, .+4, R31)  
+CMPEQ(R0, R31, R2)
+```
+
+**Program 4**: (executed for two CLK cycles)
+```
+.=0
+ST(R0, x, R31) 
+x: LONG(12)
+```
+
+**Program 5**: (executed for two CLK cycles)
+```
+.=0  
+JMP(R1)  
+ADDC(R0, 1, R1)
+```
+
+**Program 6**: (executed for two CLK cycles)
+```
+.=0  
+LDR(R31, .+8, R0)  
+ADDC(R0, 1, R1)  
+x : LONG(3)
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2NTAwMTYyOSwtNDY0NzMzNzYzLDEyND
+eyJoaXN0b3J5IjpbMTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyND
 I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
 ODVdfQ==
 -->
