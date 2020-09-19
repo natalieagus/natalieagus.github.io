@@ -182,15 +182,18 @@ The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `
 
 ### Edge Detector Machine (Intermediate)
 
-The figure below shows a particular tape state *before* and *after* a Turing Machine is executed for 12 steps (12 cycles). Indicate **which of the following Turing Machine specification** [A], [B], [C], [D], [E] shown below is/are able to produce the "after" tape state *in exactly 12 cycles.*
+The figure below shows a particular tape state *before* and *after* a Turing Machine that does *edge detection* is executed for 12 steps (12 clock cycles). 
 
-*Note:* To make it more intuitive, the "movement" shown in the specification table below signifies the **movement of the machine** and *not the tape.*
+Indicate **which of the following Turing Machine specification** [A], [B], [C], [D], [E] shown below is/are able to produce the "after" tape state *in exactly 12 cycles.
 
-<img src="https://www.dropbox.com/s/63cip82ur4u3y64/Q1.png?raw=1" width="70%" height="70%">
+<img src="https://www.dropbox.com/s/isangqp3fexcao5/edgeDetectorTM.png?raw=1" width="70%" height="70%">
 
-
+* **Specification 1**: 
+$$\begin{matrix}
+\text{State} & \text{Input} 6
+\end{matrix}**
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5NTY2NTk3NiwxNzI2NTI5MjEzLDEyOT
+eyJoaXN0b3J5IjpbMTM5MDM3NjI3MSwxNzI2NTI5MjEzLDEyOT
 U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
 MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
 EwOTg0MDVdfQ==
