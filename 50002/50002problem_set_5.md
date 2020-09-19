@@ -454,8 +454,17 @@ For each of the statements below, indicate whether they're True or False and pro
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
+
+### PCSEL Fault Detection (Intermediate)
+
+This time round, consider a Beta machine with a faulty **control unit**, where its `PCSEL` signal is always `0`, meaning that the input to the `PC` register is always  
+`PC+4` *regardless* of the instruction.
+
+As always, we can  detect this particular fault by running a simple test program written in Beta assembly language. State which of the following programs can detect this particular fault, meaning that if it was to be run on a faulty Beta machine, we will get different results (contents) on the registers in the regfiles, PC, or Memory Unit.
+
+Assume that ALL register values were ZERO at the beginning of each program execution.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NDYzOTYzMSwtNDY0NzMzNzYzLDEyND
-I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
-ODVdfQ==
+eyJoaXN0b3J5IjpbLTE0ODc1MjQyOTksLTQ2NDczMzc2MywxMj
+QyNTQwOTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5
+Nzg1XX0=
 -->
