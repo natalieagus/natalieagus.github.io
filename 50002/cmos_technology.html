@@ -230,6 +230,8 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 <blockquote>
 <p>Note: Current (I) <strong>cannot flow out back to the Gate</strong> because there’s a capacitor there (infinite resistance). The function of the gate capacitor is to create electric field enough to pull either electrons up to the gate in NFETS or holes up to gate in PFETs to create a conductive n-type (electrons) or p-type(holes) channel.</p>
 </blockquote>
+<h3 id="reverse-bias">Reverse Bias</h3>
+<p>The bulk of the PFET is connected to the VDD while the bulk of the NFET is connected to the GND. We do this to keep the PN junction in each FET to stay in the <em>reverse biased</em> state by default, until they’re switched <strong>on</strong>.  A simple explanation on why we need to keep them in reverse biased state by default is so that it encourages the presence of the depletion region hence preventing major <em>current leaks</em> across the junction when the FET is <strong>off</strong>. You may watch <a href="https://youtu.be/cJxBlO5NMGs?t=295">this</a> video that we made if you’d like to know more about reverse biasness (and other stuffs like the PN junction diode, and P/N type semiconductors), but these details are out of our syllabus.</p>
 <h2 id="complementary-mos-circuitry">Complementary MOS circuitry</h2>
 <h3 id="the-pull-up-and-pull-down-circuit-in-cmos">The Pull-up and Pull-down Circuit in CMOS</h3>
 <p>To form a fully functional combinational logic device, these PFETs and NFETs  can be connected together to form a CMOS schematic (Complementary Metal-Oxide Semiconductor).</p>
