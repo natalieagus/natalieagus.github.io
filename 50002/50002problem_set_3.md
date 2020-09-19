@@ -373,8 +373,20 @@ The purpose of both machines is to detect the presence of an edge and output a `
 <br/>
 {::options parse_block_html="false" /}
 
-Your friend plot the timing diagram of the machine in Diagram A and obtain the following:
+Your friend plot the timing diagram of the machine in Diagram A and obtain the following output:
+
 <img src="https://www.dropbox.com/s/cws3uke3gekty4k/plotfsm.png?raw=1" width="70%" height="70%">
+
+Assume that the machine starts at `S0`. While referring to the FSM diagram up above, write the current state that occurs at instances `[A], [B], [C],` and `[D]` respectively. 
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+`[S
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 ### An Incomplete State Machine (Basic)
 The ACME Company has recently received an order from a Mr. Wiley E. Coyote for their all-digital Perfectly Perplexing Padlock:
@@ -827,10 +839,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMzQ1MzE4MCw5NTA3MTM1MzQsMTI4Mj
-U3NDEzNCwtMjAxODc1NTMwNiwtNjM4NTU4NTYsLTg2MjQ4ODg0
-MiwxMzYzOTg4MjE0LDIxMTU2OTQ5NjUsMTA2NzM2MTAzOCwxMD
-cyNDU2MzUxLDM3NjA3ODY2MCwtMTY2NzMyMDc2MSwtMTk1NzM3
-NTk0NCwtOTcxMzI5OTk3LC0xOTI4NDQwODI2LC02MTA0NzMwMT
-hdfQ==
+eyJoaXN0b3J5IjpbLTE4NzY4NTU2MjUsOTUwNzEzNTM0LDEyOD
+I1NzQxMzQsLTIwMTg3NTUzMDYsLTYzODU1ODU2LC04NjI0ODg4
+NDIsMTM2Mzk4ODIxNCwyMTE1Njk0OTY1LDEwNjczNjEwMzgsMT
+A3MjQ1NjM1MSwzNzYwNzg2NjAsLTE2NjczMjA3NjEsLTE5NTcz
+NzU5NDQsLTk3MTMyOTk5NywtMTkyODQ0MDgyNiwtNjEwNDczMD
+E4XX0=
 -->
