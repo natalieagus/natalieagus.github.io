@@ -372,7 +372,7 @@ For **Program 4**:
 
 For each of the statements below, indicate whether they're True or False and provide your reasoning. 
 
-* **Statement 1:**  In the Beta, every `ADDC` instruction can **always** be replaced by a `SUBC` instruction that puts precisely the same value in the destination register. 
+* **Statement 1:**  In the Beta, every `ADDC` instruction can **always** be replaced by a `SUBC` instruction that puts precisely the **same** value in the destination register. For example, `ADDC(R0,1,R0)` is equal to `SUBC(R0,-1,R0)` (think about all constants).  
 
 * **Statement 2:** In a Beta program, you can use `BEQ(R31, label, R31)` as a substitute for `JMP(Ra)` where `Ra` stores the address of `label`, no matter where `label` is. 
 
@@ -380,6 +380,6 @@ For each of the statements below, indicate whether they're True or False and pro
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY0MTYyMDIzLDcyODI4NDI1OCwyMDY3OD
-kzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbMTI0MjU0MDkwOSw3MjgyODQyNTgsMjA2Nz
+g5MzcyNSwtMTEyMDQzOTc4NV19
 -->
