@@ -192,6 +192,7 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 {::options parse_block_html="false" /}
 
 
+## Designing an Instruction Set
 
 ### CPU Trivia (Basic)
 
@@ -263,8 +264,8 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNz
-I2NTI5MjEzLDEyOTU5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0
-NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLT
-IxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTEwOTQ1MDk3MjMsLTU1MjEwNzIwMCwtMT
+U3MDU4NTYyMiwxNzI2NTI5MjEzLDEyOTU5NjA5MjEsLTcxMTM3
+OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQsLT
+IxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
