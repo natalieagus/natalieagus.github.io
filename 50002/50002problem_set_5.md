@@ -355,12 +355,15 @@ There's only one instruction: `ST` that requires `RA2SEL` to be `1`. Therefore o
 
 For **Program 1**:
 * The content store at `R2` will be 4 instead of 12 if the `ASEL` mux is faulty. 
+* We will end up storing 8 instead of 12 to `Mem[constant + 8]` if `RA2SEL` signal remains `0` due to the faulty `CU`. 
+
+For **Program 4**:
 * 
 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA1OTM5NjQ2LDIwNjc4OTM3MjUsLTExMj
+eyJoaXN0b3J5IjpbNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMj
 A0Mzk3ODVdfQ==
 -->
