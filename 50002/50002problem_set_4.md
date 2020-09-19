@@ -123,9 +123,13 @@ You are given a Turing machine (TM) with three states `(S0, S1, S2)` and a `HALT
 
 The tape is used to encode a binary number with three symbols, “0”, “1” and “_”, where “_” is used to signal the **beginning** and **end** of the number. For instance, the binary number “1011” is represented on the tape as “_,1,0,1,1,_” (*most significant bit on the left*).
 
+<img src="https://www.dropbox.com/s/4s0rvpzhm6twih9/tmqns.png?raw=1" width="70%" height="70%">
+
+
+If the tape is in the initial configuration “_,1,0,1,1,_” and the Turing machine starts in state S0, reading at the tape position of the “0”, then what is the state transition sequence that the machine is going to execute (including the start state S0)?
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQxNTM1MTAwLC03MTEzNzk0MjksMTI0OT
+eyJoaXN0b3J5IjpbMjczMDE5ODQwLC03MTEzNzk0MjksMTI0OT
 Y2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYx
 LC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
