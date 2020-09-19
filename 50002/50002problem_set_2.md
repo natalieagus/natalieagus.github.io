@@ -337,7 +337,7 @@ What is the the **sum-of-products** for the following ROM (Read Only Memory)?
 ###  Implementing Half-Adder using ROM (Basic)
 
   
-<img src="https://www.dropbox.com/s/m643xvogmyh405r/farom.png?raw=1"  width="50%" height = "50%">
+<img src="https://www.dropbox.com/s/m643xvogmyh405r/farom.png?raw=1"  width="60%" height = "60%">
 
 
 Take a look at the figure above. **Which** of the above ROM represents the functionality of a **half adder**?
@@ -380,7 +380,7 @@ The following diagram shows a schematic for the pulldown circuitry for a particu
 	>$$\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$$ 
 *Note: We don't need to add inverter in the inputs. Convince yourself that this is true by tracing some input combinations to the output terminal.*
 <img src="
-https://www.dropbox.com/s/tgtmm6vg9u367eo/A1.png?raw=1"  width="50%" height = "50%">
+https://www.dropbox.com/s/6romn7t1g594ddz/pfetup.png?raw=1"  width="50%" height = "50%">
 >
 >2. From the pulldown diagram, it seems like the output is 0 if D is 1, or A and C is 1, or B and C is 1. Therefore, the output for the gate is the **inverse** of the expression of the pulldown circuitry, which is the output of the pullup circuitry above: $\overline{(A+B) C + D} = (\overline{A} \text{ }\overline{B} + \overline{C}) \overline{D}$.
 >
@@ -606,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMT
-k4MzAzMTM4MiwtMTY2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5
-OTk3MTksNDc1MTYyMTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5Ni
-wyOTQ4NTE4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2
-MzI5NjcxLDE1NDAxMjYwNzksMTEyOTEyMjEwNywtOTc0NzYzND
-E4LDE0MTAwOTI4MDEsLTE4MjUwMzM3NjQsODQyNTQzNjMwLC0x
-ODM5NTY1MzQyXX0=
+eyJoaXN0b3J5IjpbMTE2MzIxODcyOSwtMTcxMDgwMzg1OCwtNj
+U1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0LDE2MTg1
+ODM5NDAsLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4NzQ3MTQxMD
+IsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0zOTIw
+MzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwxMTI5MTIyMT
+A3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwtMTgyNTAzMzc2NCw4
+NDI1NDM2MzBdfQ==
 -->
