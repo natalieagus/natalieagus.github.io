@@ -294,8 +294,8 @@ Reg[Rc] <-- (PC+4)+4*SXT(C)
 Given the following C-code:
 
 ```
-if (a != 0){ b = 3;
-
+if (a != 0){ 
+	b = 3;
 }  
 (other code....)
 ```
@@ -312,14 +312,28 @@ where `Ra`, `Rb` are assumed to be registers **containing** values `a` and `b`.
 
 The ALU in this particular  Beta however, implements *five* new functions on top of the standard functions: “B”, “NOTA”, “NOTB”, “TRUE”, “FALSE”. 
 
-Due to this, your classmate suggested that we can actually do this in one cycle using this new instruction called `MCNZ` (move constant if not zero) instead:
+Due to this, your classmate suggested that we can actually do this in one cycle by modifying the Control Unit to accept  this **new instruction** called `MCNZ` (move constant if not zero) instead:
 
 ```
 MCNZ(Ra, literal, Rc) : 
-		if(Reg[Ra] != 0)
-			Reg[Rc] <-- literal 
-		PC <-- PC + 4
+	if(Reg[Ra] != 0)
+		Reg[Rc] <-- literal 
+	PC <-- PC + 4
 ```
+
+What values should the Control Unit give for this instruction `MCNZ`?
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+$$\begin{matrix}
+	PCSEL & RA2SEL & ASEL & BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
+	\hline
+	0 & 0 & 0 & 0 & 2 & ADD & 0 & 1 & 0 \end{matrix}$$
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 
 ### Faulty Detection in Beta (Intermediate)
@@ -440,7 +454,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDE3MzM4NzcsLTQ2NDczMzc2MywxMj
+eyJoaXN0b3J5IjpbLTIwNDk3MzMxNzcsLTQ2NDczMzc2MywxMj
 QyNTQwOTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5
 Nzg1XX0=
 -->
