@@ -331,7 +331,7 @@ $$\begin{matrix}
 	PCSEL & RA2SEL & ASEL & BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
 	\hline
 	0 & - & - & 1 & 1 & "B" & 0 & Z?0:1 & 0 \end{matrix}$$
-	Note: 
+Note: `Z?0:1` -- means `0` if `Z==1`, and `1` otherwise.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -455,7 +455,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzI0OTA0MzksLTQ2NDczMzc2MywxMj
-QyNTQwOTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5
-Nzg1XX0=
+eyJoaXN0b3J5IjpbMTcxODIwMjM2NSwtNDY0NzMzNzYzLDEyND
+I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
+ODVdfQ==
 -->
