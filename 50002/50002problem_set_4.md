@@ -189,18 +189,55 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 <img src="https://www.dropbox.com/s/isangqp3fexcao5/edgeDetectorTM.png?raw=1" width="70%" height="70%">
 
 * **Specification 1**: 
-$$\begin{matrix}
-S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
-S_0 & 0 & S_0 & 0 & L\\
-S_0 & 1 & S_1 & 1 & L\\
-S_1 & 0 & S_0 & 0 & L\\
-S_1 & 1 & S_2 & 0 & L\\
-S_2 & 0 & S_0 & 0 & L\\
-S_2 & 1 & S_2 & 0 & L\\
-\end{matrix}$$
+	$$\begin{matrix}
+	S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
+	\hline
+	S_0 & 0 & S_0 & 0 & L\\
+	S_0 & 1 & S_1 & 1 & L\\
+	S_1 & 0 & S_0 & 0 & L\\
+	S_1 & 1 & S_2 & 0 & L\\
+	S_2 & 0 & S_0 & 0 & L\\
+	S_2 & 1 & S_2 & 0 & L\\
+	\hline
+	\end{matrix}$$
+
+* **Specification 2**: 
+	$$\begin{matrix}
+	S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
+	\hline
+	S_0 & 0 & S_0 & 0 & L\\
+	S_0 & 1 & S_1 & 1 & L\\
+	S_1 & 0 & S_0 & 0 & L\\
+	S_1 & 1 & S_1 & 1 & L\\
+	\hline
+	\end{matrix}$$
+
+* **Specification 3**: 
+	$$\begin{matrix}
+	S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
+	\hline
+	S_0 & 0 & S_0 & 0 & L\\
+	S_0 & 1 & S_1 & 1 & L\\
+	S_1 & 0 & S_0 & 0 & L\\
+	S_1 & 1 & S_1 & 0 & L\\
+	\hline
+	\end{matrix}$$
+
+* **Specification 4**: 
+	$$\begin{matrix}
+	S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
+	\hline
+	S_0 & 0 & S_0 & 0 & L\\
+	S_0 & 1 & S_1 & 1 & L\\
+	S_1 & 0 & S_0 & 0 & L\\
+	S_1 & 1 & S_2 & 0 & L\\
+	S_2 & 0 & S_0 & 0 & L\\
+	S_2 & 1 & S_2 & 0 & L\\
+	\hline
+	\end{matrix}$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzI1MzM5MDIsMTcyNjUyOTIxMywxMj
-k1OTYwOTIxLC03MTEzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUx
-MTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LD
-UxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbLTc5OTg3MzIwNywxNzI2NTI5MjEzLDEyOT
+U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
+MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
+EwOTg0MDVdfQ==
 -->
