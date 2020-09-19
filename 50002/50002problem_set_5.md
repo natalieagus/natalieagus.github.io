@@ -382,11 +382,13 @@ For each of the statements below, indicate whether they're True or False and pro
 <details>
 <summary markdown="span">Show Answer</summary>
 
-**Statement 1** is **False**. We can have `ADDC
+**Statement 1** is **False**. We can have `ADDC(R0, -65536, R0)` but we cant have `SUBC(R0, 65536, R0)` as the most positive number that a signed 16-bit can represent is `65535`. 
+
+**Statement 2** is **False**. `Ra`, while `BEQ` allows you to jump only up to 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MzMyNDczLDEyNDI1NDA5MDksNzI4Mj
-g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbLTk5Nzg4NTAxOSwxMjQyNTQwOTA5LDcyOD
+I4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
 -->
