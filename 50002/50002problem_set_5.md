@@ -322,10 +322,28 @@ answer: LONG(0)
 
 **Program 3**:
 ```
-
+.=0x000  
+constant: LONG(8)
+LONG(4)
+LDR(constant, R0) 
+ADD(R0, R0, R0) 
+ST(R0, .+8, R31) 
+HALT()
 ```
 
+**Program 4**:
+```
+.=0x000  
+CMOVE(5, R0)  
+ST(R0, constant + 8, R31) 
+LDR(constant, R1)  
+ADD(R1, R1, R2)  
+HALT()  
+
+.=0xABCC  
+constant: LONG(8)
+LONG(4)
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDAzMjI0OTIsLTExMjA0Mzk3ODVdfQ
-==
+eyJoaXN0b3J5IjpbMzg0NTk5MjM3LC0xMTIwNDM5Nzg1XX0=
 -->
