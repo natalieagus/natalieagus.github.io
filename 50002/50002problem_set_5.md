@@ -331,6 +331,7 @@ $$\begin{matrix}
 	PCSEL & RA2SEL & ASEL & BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
 	\hline
 	0 & - & - & 1 & 1 & "B" & 0 & Z?0:1 & 0 \end{matrix}$$
+	
 Note: `Z?0:1` -- means `0` if `Z==1`, and `1` otherwise.
 </details>
 <br/>
@@ -511,12 +512,21 @@ x : LONG(3)
 ```
 
 
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+Program 2, 4, and 5 can successfully **detect** this faulty. All of them results in `P
+</details>
+<br/>
+{::options parse_block_html="false" /}
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEyNj
-MzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4NDI1
-OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbLTU5MDk2ODczMSwxMjMzNTM0MjM2LC00NT
+A3OTY5MTAsMTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5
+MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ
+==
 -->
