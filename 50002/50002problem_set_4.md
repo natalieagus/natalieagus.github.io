@@ -230,13 +230,35 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	S_0 & 0 & S_0 & 0 & L\\
 	S_0 & 1 & S_1 & 1 & L\\
 	S_1 & 0 & S_0 & 0 & L\\
-	S_1 & 1 & S_2 & 0 & L\\
+	S_1 & 1 & S_2 & 1 & L\\
 	S_2 & 0 & S_0 & 0 & L\\
-	S_2 & 1 & S_2 & 0 & L\\
+	S_2 & 1 & S_2 & 1 & L\\
 	\hline
 	\end{matrix}$$
+
+* **Specification 5**: 
+	$$\begin{matrix}
+	S_i & \text{Input} & S_{i+1} & \text{Output} & \text{Move Tape}\\
+	\hline
+	S_0 & 0 & S_0 & 0 & L\\
+	S_0 & 1 & S_1 & 1 & R\\
+	S_1 & 0 & S_0 & 0 & L\\
+	S_1 & 1 & S_2 & 0 & R\\
+	S_2 & 0 & S_0 & 0 & L\\
+	S_2 & 1 & S_2 & 0 & R\\
+	\hline
+	\end{matrix}$$
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+**Specification 1** and **Specification 3** produces the same output tape as shown above, given the initial tape content and the Turing Machine's start state (and location). We can run
+</details>
+<br/>
+{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5OTg3MzIwNywxNzI2NTI5MjEzLDEyOT
+eyJoaXN0b3J5IjpbMTA0MjMwOTE0NCwxNzI2NTI5MjEzLDEyOT
 U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
 MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
 EwOTg0MDVdfQ==
