@@ -144,9 +144,20 @@ The sequences of the states until `HALT` is met is:
 <br/>
 {::options parse_block_html="false" /}
 
+What is the **final configuration** of the tape after the TM has halted and **what does the TM do**?
+
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `1` to the input number.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyMzQ5ODczMywtNzExMzc5NDI5LDEyND
+eyJoaXN0b3J5IjpbMTI5NTk2MDkyMSwtNzExMzc5NDI5LDEyND
 k2NjQ2NjEsNDMzODE1MTEwLDczMzE5MjA2NCwtMjEzOTMwNDM2
 MSwtMjEzODAyNTA1NCw1MTA5ODQwNV19
 -->
