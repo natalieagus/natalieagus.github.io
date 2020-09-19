@@ -351,7 +351,7 @@ LONG(4)
 <details>
 <summary markdown="span">Show Answer</summary>
 
-There's only one instruction: `ST` that requires `RA2SEL` to be `1`. Therefore our program must have this instruction to test against a working Beta CPU. We also must ensure that we utilize instructions that results in `ASEL=0` and that the output of the `ASEL` mux should be nonzero in a working Beta CPU.
+There's only one instruction: `ST` that requires `RA2SEL` to be `1`. Therefore our program must have this instruction to test against a working Beta CPU. We also must ensure that we utilize instructions that results in `ASEL=0` and that the output of the `ASEL` mux should be nonzero in a working Beta CPU. We also need to ensure that the programs need to *utilize* these instructions in a way that results in a different **state** when run on a working Beta CPU.  
 
 **Program 1** and **Program 4** fulfills the criteria, and the other two don't. 
 
@@ -360,12 +360,15 @@ For **Program 1**:
 * We will end up storing 8 instead of 12 to `Mem[constant + 8]` if `RA2SEL` signal remains `0` due to the faulty `CU`. 
 
 For **Program 4**:
-* The content of `R21` is stored to `Mem[Constant+8]` instead of the content of `R0`. Therefore, `Mem[Constant+8]`  is `0` instead of 
+* The content of `R21` is stored to `Mem[Constant+8]` instead of the content of `R0`. Therefore, `Mem[Constant+8]`  is `0` instead of `5`. 
+* The content of `R2` is 5 instead of 10. 
+
+**Program 2** and **Program 3** 
 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzgzNTIzODUsNzI4Mjg0MjU4LDIwNj
+eyJoaXN0b3J5IjpbLTE0Mzc4NzU0NDQsNzI4Mjg0MjU4LDIwNj
 c4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
