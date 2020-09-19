@@ -116,8 +116,16 @@ What is the value of the *byte* stored in address `0, 1, 2` and `3`, respectivel
 <br/>
 {::options parse_block_html="false" /}
 
+
+### Running a Turing Machine (Basic)
+
+You are given a Turing machine (TM) with three states `(S0, S1, S2)` and a `HALT` state and the following state transition diagram and state table. The TM operates by reading and then moving either left (“L”) or right (“R”) on an infinite tape. 
+
+The tape is used to encode a binary number with three symbols, “0”, “1” and “_”, where “_” is used to signal the **beginning** and **end** of the number. For instance, the binary number “1011” is represented on the tape as “_,1,0,1,1,_” (*most significant bit on the left*).
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMz
-gxNTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUw
-NTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbNjQxNTM1MTAwLC03MTEzNzk0MjksMTI0OT
+Y2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYx
+LC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
