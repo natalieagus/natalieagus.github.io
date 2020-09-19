@@ -284,15 +284,15 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	There are 20 bytes in the data above. We need at least $\lceil\log_2(20)\rceil$=**5 bits for addressing.** 
+	There are 20 bytes in the data above. We need at least $\lceil\log_2(20)\rceil$= **5 bits for addressing.** 
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzNzY1NTkxOSw5OTk2MTYyNTEsLTE3Nj
-k5ODEwNDIsMzY4MjIxNjU5LC0xNTM2Mjg0MjIzLC0xMDk0NTA5
-NzIzLC01NTIxMDcyMDAsLTE1NzA1ODU2MjIsMTcyNjUyOTIxMy
-wxMjk1OTYwOTIxLC03MTEzNzk0MjksMTI0OTY2NDY2MSw0MzM4
-MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MD
-U0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbNTIxODIyMjc5LDk5OTYxNjI1MSwtMTc2OT
+k4MTA0MiwzNjgyMjE2NTksLTE1MzYyODQyMjMsLTEwOTQ1MDk3
+MjMsLTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2NTI5MjEzLD
+EyOTU5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgx
+NTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNT
+QsNTEwOTg0MDVdfQ==
 -->
