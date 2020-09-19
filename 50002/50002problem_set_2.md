@@ -487,7 +487,7 @@ Answer the following questions based on the truth table:
 >
 >3. If we use A and B as the ***select*** inputs for the MUX, then the four data inputs of the MUX should be tied to one of "0" (ground), "1" (VDD), "C" or "NOT C". 
 >For this function the following is the correct schematic. Note that by changing the connections on the data inputs we could implement any function of A, B and C.
-><img src=""  width="50%" height = "50%">
+><img src="https://www.dropbox.com/s/0yykalujmctihu4/mux_stuff.png?raw=1"  width="50%" height = "50%">
 >
 >4. We can just write *sum of produc*t for rows that results the '0's in the table above, and then reduce the expression into: $\overline{F} = B \overline{C} + \overline{A} \text{ } \overline{B} C$
 </details>
@@ -549,7 +549,7 @@ The following is **a list of the possible configurations.**
 
 
 For each configuration indicate **how**:
-- Each the **control signals** (MA, MB, MC, MD, and ME) should be programmed**? 
+- Each the **control signals** (MA, MB, MC, MD, and ME) should be programmed? 
 - Which of the **input lines** (C1-C4, F1-F4, and G1-G4) are used?
 - And what **output lines** (X, Y, or Z) the result(s) appear on?
 
@@ -606,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxMzExMjAxNCwxMTYzMjE4NzI5LC0xNz
-EwODAzODU4LC02NTUxMTYwNDIsLTE5ODMwMzEzODIsLTE2NjU2
-NzY0NzQsMTYxODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NTE2MjE4Ni
-wtMTg3NDcxNDEwMiwzNTMwMzIzOTYsMjk0ODUxODUsLTEyNDY0
-Njg5MjcsLTM5MjAzNTkzMywtMTY4NjMyOTY3MSwxNTQwMTI2MD
-c5LDExMjkxMjIxMDcsLTk3NDc2MzQxOCwxNDEwMDkyODAxLC0x
-ODI1MDMzNzY0XX0=
+eyJoaXN0b3J5IjpbLTE5ODgwODMyMDEsMTE2MzIxODcyOSwtMT
+cxMDgwMzg1OCwtNjU1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1
+Njc2NDc0LDE2MTg1ODM5NDAsLTU2Njk5OTcxOSw0NzUxNjIxOD
+YsLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2
+NDY4OTI3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNj
+A3OSwxMTI5MTIyMTA3LC05NzQ3NjM0MTgsMTQxMDA5MjgwMSwt
+MTgyNTAzMzc2NF19
 -->
