@@ -284,7 +284,7 @@ You suspected that your Beta CPU is faulty, in particular, these two components:
 * The part of the `CU` that gives out `RA2SEL` signal might be faulty: 
 	* `RA2SEL` is always **stuck at `0`** (it cannot be `1` regardless of the instruction)
 
-Your friend came up with several short test programs. You Which of the following program(s) can detect **both faults?**
+Your friend came up with several short test programs. You want to select one of these programs to run in the faulty Beta, but you don't want to waste your time loading and running multiple programs and would like to select one that can **detect both faults**. Which of the following program(s) can detect **both faults?**
 
 *Meaning that :*
 1.  The values in the `PC` / Registers in Regfile / Memory Unit will be *different* from a working Beta CPU if these programs were to be executed in this faulty Beta. 
@@ -292,6 +292,9 @@ Your friend came up with several short test programs. You Which of the following
 2.  You can be 100% sure the discrepancy is caused by **both** `RA2SEL` signal or `ASEL` mux faulty.
     
 3.  Programs that can only detect the `RA2SEL` signal faulty but not `ASEL` multiplexer faulty (or vice versa) is **not acceptable**. 
+
+**Program 1**:
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5MjgwNzksLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbMTExODI2NTM3MywtMTEyMDQzOTc4NV19
 -->
