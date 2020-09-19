@@ -276,6 +276,7 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 ### New Beta Instruction (Intermediate)
 Write the register transfer language below corresponds to the instruction with the following control signal:
+
 <img src="https://www.dropbox.com/s/ysf5rtc0d9mwsil/ctrlnew.png?raw=1" width="20%" height="20%">
 
 {::options parse_block_html="true" /}
@@ -525,7 +526,7 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxODg0NjU1NCwxMjMzNTM0MjM2LC00NT
+eyJoaXN0b3J5IjpbMTEwNDg5ODAwNCwxMjMzNTM0MjM2LC00NT
 A3OTY5MTAsMTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5
 MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ
 ==
