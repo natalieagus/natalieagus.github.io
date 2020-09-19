@@ -399,7 +399,7 @@ The ACME Company has recently received an order from a Mr. Wiley E. Coyote for t
 * The padlock **unlocks** when the FSM sets the UNLOCK output signal to 1, which it does whenever the last N button presses correspond to the unique N-digit combination.
 
   
-Unfortunately the design notes for the P3 are *incomplete*. Using the specification above and clues gleaned from the partially completed diagrams below f**ill in the information that is missing from the state transition diagram** with its **accompanying truth table**. 
+Unfortunately the design notes for the P3 are *incomplete*. Using the specification above and clues gleaned from the partially completed diagrams below **fill in the information that is missing from the state transition diagram** with its **accompanying truth table**. 
 
 <img src="https://www.dropbox.com/s/1ww80s7vpxznf1k/Q1%202.png?raw=1" width="70%" height="70%">
 
@@ -843,10 +843,10 @@ Assume, in each case, that the device is to take a series of `0`s and `1`s that 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYzMjA1Mzk5LDk1MDcxMzUzNCwxMjgyNT
-c0MTM0LC0yMDE4NzU1MzA2LC02Mzg1NTg1NiwtODYyNDg4ODQy
-LDEzNjM5ODgyMTQsMjExNTY5NDk2NSwxMDY3MzYxMDM4LDEwNz
-I0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYxLC0xOTU3Mzc1
-OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLTYxMDQ3MzAxOF
-19
+eyJoaXN0b3J5IjpbMjE2MDgyMTUsNjYzMjA1Mzk5LDk1MDcxMz
+UzNCwxMjgyNTc0MTM0LC0yMDE4NzU1MzA2LC02Mzg1NTg1Niwt
+ODYyNDg4ODQyLDEzNjM5ODgyMTQsMjExNTY5NDk2NSwxMDY3Mz
+YxMDM4LDEwNzI0NTYzNTEsMzc2MDc4NjYwLC0xNjY3MzIwNzYx
+LC0xOTU3Mzc1OTQ0LC05NzEzMjk5OTcsLTE5Mjg0NDA4MjYsLT
+YxMDQ3MzAxOF19
 -->
