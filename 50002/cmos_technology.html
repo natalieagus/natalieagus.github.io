@@ -213,7 +213,7 @@ Electron flows from lower potential (-) to higher potential (+)</p>
 <h3 id="depletion-region">Depletion Region</h3>
 <p>When p-type and n-type semiconductors are placed together, the free electrons from n-type will <strong>flow over (diffuse)</strong> to the p-type and fill its holes (impurities). Filling up a hole results in a negatively charged ion at the p-type semiconductor, as illustrated as the <em>gray<br>
 circles</em> in Figure above. Equally, these free electrons leaving the n-type leaves behind a <strong>positively charged ion</strong> at the n-type semiconductor. This is illustrated as the yellow circles.</p>
-<p>Eventually, a space-charge builds up forming an <strong>electric field</strong> as denoted in the left drawings (the yellow circles and the grey circles form electric field), <em>preventing</em> more free electrons from the n-type side to the p-type side, thereby forming an insulating layer called <strong><em><em>depletion region</em></em>.</strong></p>
+<p>Eventually, a space-charge builds up forming an <strong>electric field</strong> as denoted in the left drawings (the yellow circles and the grey circles form electric field), <em>preventing</em> more free electrons from the n-type side to the p-type side, thereby forming an insulating layer called <strong><em>depletion region</em></strong>.</p>
 <h3 id="p-channel-or-n-channel-formation">P-channel or N-channel Formation</h3>
 <p>For NFETs, when there’s presence of high (positive) voltage at the gate, it repels the extra holes at the p-type bulk. Basically, a positive voltage applied to the gate attracts electrons (which are minority in the p-type substrate) to the interface between the gate dielectric and the two n-types semiconductors (drain and source).</p>
 <p>These electrons form a conducting <strong>n-type channel</strong> between the source and the drain, called the <strong><em>inversion layer</em></strong>. When there’s <em>potential difference</em> between the drain and the source, the current will flow from source to drain through this inversion layer.</p>
@@ -253,7 +253,7 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 </ol>
 <h2 id="the-cmos-complements-recipe">The CMOS Complements Recipe</h2>
 <p>Imagine if pull-up and pull-down circuit (as an overall) are both “ON”. This means that there exists a direct open connection to GND from the VDD (the source of the pull-up to the source of the pull-down) resulting in <strong>short-circuit</strong>.</p>
-<p>Hence, <strong><strong>it is very important for a CMOS circuit to contain complementary pull-ups and pull-downs</strong></strong>. This means that only one component – either pull-up or pull-down – is ON.</p>
+<p>Hence, <strong>it is very important for a CMOS circuit to contain <mark>complementary</mark> pull-ups and pull-downs</strong>. This means that only one component – either pull-up or pull-down – is <strong>ON</strong>.</p>
 <p>The main building blocks of the CMOS complements is summarized as below:</p>
 <blockquote>
 <p><mark> A combinational logic circuit can be made by connecting two NFETs in <strong>series</strong> as a pull-down circuit, and two PFETs in <strong>parallel</strong> as a pull-up circuit</mark>.</p>
@@ -261,31 +261,31 @@ circles</em> in Figure above. Equally, these free electrons leaving the n-type l
 <img src="https://www.dropbox.com/s/y9o0f8qba2ura21/cmoscomp.png?raw=1" alt="“F1”" width="100%" height="100%">
 <p>For example, the following is a CMOS circuitry for a NAND gate:</p>
 <img src="https://www.dropbox.com/s/pfkmo27rmgiklbo/nand.png?raw=1" alt="“F1”" width="50%" height="50%">
-<p>There are two inputs to this circuit, called A and B. A low or high voltage representing bit ‘0’ or bit ‘1’ respectively can be supplied to both input terminals. From the diagram, A is connected to the PFET on the <strong><strong>left</strong></strong> and the NFET on the <strong><strong>top</strong></strong>. B is connected to the PFET on the <strong><strong>right</strong></strong> and the NFET on the <strong><strong>bottom</strong></strong>.</p>
-<p>Now we consider several cases. In Case 1, we consider what the output will be when A=1 and B=1. In Case 2, we consider what the output will be when A=0 and B=1. There are actually four cases, as shown on the truth table in the figure, but we will only discuss two here as we can easily extend the logic for the remaining cases.</p>
+<p>There are two inputs to this circuit, called A and B. A low or high voltage representing bit ‘0’ or bit ‘1’ respectively can be supplied to both input terminals. From the diagram, A is connected to the PFET on the <strong>left</strong> and the NFET on the <strong>top</strong>. B is connected to the PFET on the <strong>right</strong> and the NFET on the <strong>bottom</strong>.</p>
+<p>Now we consider several cases. In Case 1, we consider what the output will be when <code>A=1</code> and <code>B=1</code>. In Case 2, we consider what the output will be when <code>A=0</code> and <code>B=1</code>. There are actually four cases, as shown on the truth table in the figure, but we will only discuss two here as we can easily extend the logic for the remaining cases.</p>
 <p><strong>Case 1:</strong></p>
 <ul>
-<li>Lets see what happens when A = 1 and B = 1 (both at high voltages that represent bit 1)</li>
-<li>When A = 1, the PFET on the <strong><strong>left</strong></strong> is “OFF”, the NFET on the <strong><strong>top</strong></strong> is “ON”</li>
-<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the <strong><strong>bottom</strong></strong> is “ON”</li>
-<li>Current from VDD <strong><strong>cannot</strong></strong> flow to the output through any of the left and the right PFET</li>
-<li>Current at the output <strong><strong>is drained down to the GND</strong></strong> through either NFET on the top or NFET on the bottom.</li>
-<li>Hence the output of the device is 0 when A = 1 and B = 1</li>
+<li>Lets see what happens when <code>A=1</code> and <code>B=1</code> (both at high voltages that represent bit 1)</li>
+<li>When <code>A=1</code>, the PFET on the <strong>left</strong> is “OFF”, the NFET on the <strong>top</strong> is “ON”</li>
+<li>When <code>B=1</code>, the PFET on the <strong>right</strong> is “OFF” and the NFET on the <strong>bottom</strong> is “ON”</li>
+<li>Current from VDD <strong>cannot</strong> flow to the output through any of the left and the right PFET</li>
+<li>Current at the output <strong>is drained down to the GND</strong> through either NFET on the top or NFET on the bottom.</li>
+<li>Hence the output of the device is <code>0</code> when <code>A=1</code> and <code>B=1</code></li>
 </ul>
 <p><strong>Case 2:</strong></p>
 <ul>
-<li>Another case, when A = 0, and B = 1 (A at low voltage that represent bit 0, and B at high voltage that represent bit 1)</li>
-<li>When A = 0, the PFET on the <strong><strong>left</strong></strong> is “ON”, the NFET on the <strong><strong>top</strong></strong> is “OFF”</li>
-<li>When B = 1, the PFET on the <strong><strong>right</strong></strong> is “OFF” and the NFET on the bottom is “ON”.</li>
-<li>This means there’s <em>no connection</em> between the output and the ground. However, current from VDD can still flow from the PFET on the <strong><strong>left</strong></strong> to the output.</li>
-<li>Hence the output of the device is 1 when A = 0 and B = 1</li>
+<li>Another case, when <code>A=0</code>, and <code>B=1</code> (A at low voltage that represent bit <code>0</code>, and B at high voltage that represent bit <code>1</code>)</li>
+<li>When <code>A=0</code>, the PFET on the <strong>left</strong> is “ON”, the NFET on the <strong>top</strong> is “OFF”</li>
+<li>When <code>B=1</code>, the PFET on the <strong>right</strong> is “OFF” and the NFET on the bottom is “ON”.</li>
+<li>This means there’s <em>no connection</em> between the output and the ground. However, current from VDD can still flow from the PFET on the <strong>left</strong> to the output.</li>
+<li>Hence the output of the device is <code>1</code> when <code>A=0</code> and <code>B=1</code></li>
 </ul>
 <p>Notice how there’s parallel PFET in the pull-up, and series NFET in the pull-down.</p>
 <blockquote>
-<p>This is exactly the recipe for <strong><strong>CMOS complement</strong></strong>, ensuring that there will be no combination of input that will cause both pull-up and pull-down circuits to be ON.</p>
+<p>This is exactly the <strong>recipe</strong> for <strong>CMOS complement</strong>, ensuring that there will be no combination of input that will cause both pull-up and pull-down circuits to be <strong>ON</strong>.</p>
 </blockquote>
 <blockquote>
-<p>As practice, you can try to trace what happens when A=0, B=0, and when A=1,  B=0 and construct a truth table for this simple circuit.</p>
+<p>As practice, you can try to trace what happens when <code>A=0, B=0</code>, and when <code>A=1, B=0</code> and construct a truth table for this simple circuit.</p>
 </blockquote>
 <h2 id="logic-gates">Logic Gates</h2>
 <p>Notice how the circuitry in the previous section is called <strong><strong>NAND</strong></strong>. The name comes from this particular <strong><strong>functional specification</strong></strong> (truth table) of the combinational logic circuit.</p>
