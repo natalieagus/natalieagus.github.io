@@ -95,7 +95,7 @@ Its output is a pure function of the present input only <em>(there’s no memory
 <h2 id="voltage-specifications-and-noise-margin">Voltage Specifications and Noise Margin</h2>
 <p>Consider two digital devices connected in series as shown in the figure below. These devices are called a <strong>buffer</strong>, meaning that they pass the same bit over (if it receives a low voltage, it will produce a low voltage and vice versa). If we were to <em>naively decide</em> that any voltage below <code>0.5V</code> as digital bit <code>0</code>, and any voltage above <code>2.5V</code> as digital bit <code>1</code>, then our device <strong>may violate the static discipline.</strong></p>
 <blockquote>
-<p><em>How is this so?</em></p>
+<p><em>Why is this so?</em></p>
 </blockquote>
 <img src="https://www.dropbox.com/s/9lejkhiqx50ga8y/p4.png?raw=1" alt="“F1”" width="50%" height="50%">
 <p>For example, suppose we supply <code>0.5V</code> and Device 1 is able to produce also <code>0.5V</code>, which means digital bit <code>0</code>. However, the problem is that a wire, that connects two or more combinational devices together is susceptible to noise. The voltage value that is received at Device 2 may be <em>slightly higher</em> than <code>0.5V</code>, for example: <code>0.55V</code> instead, and therefore according to our specification, it is <em><em>no longer a valid bit ‘0’</em></em></p>
