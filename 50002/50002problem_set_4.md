@@ -230,7 +230,9 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	* **Function 1:** A processor that executes Beta instruction set
 	
 	* **Function 2:** A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
+	
 	* **Function 3:** A device that takes a sequence of binary digits, one each milisecond clock period, and output `1` if the sequence so far contains more `1`s than `0`s. 
+	
 	* **Function 4:** A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)
 
 	{::options parse_block_html="true" /}
@@ -238,8 +240,11 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<summary markdown="span">Show Answer</summary>
 
 	**Function 1:** FSM
+	
 	**Function 2:** FSM
+	
 	**Function 3:** Turing Machine
+	
 	**Function 4:** Combinational Logic
 	</details>
 	<br/>
@@ -284,10 +289,10 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk5NjE2MjUxLC0xNzY5OTgxMDQyLDM2OD
-IyMTY1OSwtMTUzNjI4NDIyMywtMTA5NDUwOTcyMywtNTUyMTA3
-MjAwLC0xNTcwNTg1NjIyLDE3MjY1MjkyMTMsMTI5NTk2MDkyMS
-wtNzExMzc5NDI5LDEyNDk2NjQ2NjEsNDMzODE1MTEwLDczMzE5
-MjA2NCwtMjEzOTMwNDM2MSwtMjEzODAyNTA1NCw1MTA5ODQwNV
-19
+eyJoaXN0b3J5IjpbNDY2OTgxLDk5OTYxNjI1MSwtMTc2OTk4MT
+A0MiwzNjgyMjE2NTksLTE1MzYyODQyMjMsLTEwOTQ1MDk3MjMs
+LTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2NTI5MjEzLDEyOT
+U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
+MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
+EwOTg0MDVdfQ==
 -->
