@@ -330,7 +330,8 @@ What values should the Control Unit give for this instruction `MCNZ`?
 $$\begin{matrix}
 	PCSEL & RA2SEL & ASEL & BSEL& WDSEL & ALUFN & WR & WERF & WASEL \\
 	\hline
-	0 & 0 & 0 & 0 & 2 & ADD & 0 & 1 & 0 \end{matrix}$$
+	0 & - & - & 1 & 1 & "B" & 0 & Z?0:1 & 0 \end{matrix}$$
+	Note: 
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -454,7 +455,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDk3MzMxNzcsLTQ2NDczMzc2MywxMj
+eyJoaXN0b3J5IjpbLTE5MzI0OTA0MzksLTQ2NDczMzc2MywxMj
 QyNTQwOTA5LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5
 Nzg1XX0=
 -->
