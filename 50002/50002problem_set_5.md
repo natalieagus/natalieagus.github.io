@@ -372,12 +372,14 @@ For **Program 4**:
 
 For each of the statements below, indicate whether they're True or False and provide your reasoning. 
 
-* **Statement 1:**  In the Beta, every `ADDC` instruction can always be replaced by a `SUBC` instruction that puts precisely the same value in the destination register. 
+* **Statement 1:**  In the Beta, every `ADDC` instruction can **always** be replaced by a `SUBC` instruction that puts precisely the same value in the destination register. 
 
 * **Statement 2:** In a Beta program, you can use `BEQ(R31, label, R31)` as a substitute for `JMP(Ra)` where `Ra` stores the address of `label`, no matter where `label` is. 
 
-* **Statement 3:** We can never perform `LD` and `ST` in a *single cycle* 
+* **Statement 3:** We can never perform `LD` and `ST`  to any two independent addresses in a *single cycle* (even if the memory unit supports it) by just modifying the **control unit** of the Beta. In other words, we need to modify the datapath of the Beta in order to do this. 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyOTA4MzcwNiw3MjgyODQyNTgsMjA2Nz
-g5MzcyNSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbNTY0MTYyMDIzLDcyODI4NDI1OCwyMDY3OD
+kzNzI1LC0xMTIwNDM5Nzg1XX0=
 -->
