@@ -310,9 +310,9 @@ label_continue: (other code)
 
 where `Ra`, `Rb` are assumed to be registers **containing** values `a` and `b`.
 
-The ALU in this particular  Beta however, implements *five* new functions on top of the standard functions: “B”, “NOTA”, “NOTB”, “TRUE”, “FALSE”. 
+The `ALU` in this particular  Beta however, implements *five* new functions on top of the standard functions: `“B”, “NOTA”, “NOTB”, “TRUE”, “FALSE”`. 
 
-Due to this, your classmate suggested that we can actually do this in one cycle by modifying the Control Unit to accept  this **new instruction** called `MCNZ` (move constant if not zero) instead:
+Due to this, your classmate suggested that we can actually do this in **one** cycle by modifying the `Control Unit` to accept  this **new instruction** called `MCNZ` (move constant if not zero) instead:
 
 ```
 MCNZ(Ra, literal, Rc) : 
@@ -455,7 +455,7 @@ For each of the statements below, indicate whether they're True or False and pro
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxODIwMjM2NSwtNDY0NzMzNzYzLDEyND
+eyJoaXN0b3J5IjpbLTk3NDYzOTYzMSwtNDY0NzMzNzYzLDEyND
 I1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3
 ODVdfQ==
 -->
