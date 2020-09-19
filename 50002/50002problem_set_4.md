@@ -85,23 +85,23 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 	* Uncomputable	
 	
 	The functions in question are:
-	1. A processor that executes Beta instruction set
+	* **Function 1:** A processor that executes Beta instruction set
 	
-	2. A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
-	3. A device that takes a sequence of binary digits, one each milisecond clock period, and output `1` if the sequence so far contains more `1`s than `0`s. 
-	4. A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)
+	* **Function 2:** A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
+	* **Function 3:** A device that takes a sequence of binary digits, one each milisecond clock period, and output `1` if the sequence so far contains more `1`s than `0`s. 
+	* **Function 4:** A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-**Function 1:** FSM
-**Function 2:** FSM
-Function 3: Turing Machine
-Function 4: Combinational Logic
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	**Function 1:** FSM
+	**Function 2:** FSM
+	**Function 3:** Turing Machine
+	**Function 4:** Combinational Logic
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 
@@ -182,7 +182,7 @@ The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxOTUxNzUzLDEyOTU5NjA5MjEsLTcxMT
-M3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTExMCw3MzMxOTIwNjQs
-LTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbMTcyNjUyOTIxMywxMjk1OTYwOTIxLC03MT
+EzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0
+LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
 -->
