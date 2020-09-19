@@ -180,9 +180,12 @@ The final tape configuration is: `_,1,1,0,0,_`  It is obvious that the TM adds `
 <br/>
 {::options parse_block_html="false" /}
 
+### Edge Detector Machine (Intermediate)
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNjUyOTIxMywxMjk1OTYwOTIxLC03MT
-EzNzk0MjksMTI0OTY2NDY2MSw0MzM4MTUxMTAsNzMzMTkyMDY0
-LC0yMTM5MzA0MzYxLC0yMTM4MDI1MDU0LDUxMDk4NDA1XX0=
+eyJoaXN0b3J5IjpbMTU3NzcxNDIxMiwxNzI2NTI5MjEzLDEyOT
+U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
+MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
+EwOTg0MDVdfQ==
 -->
