@@ -264,7 +264,7 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<details>
 	<summary markdown="span">Show Answer</summary>
 
-	1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: 0x04 03 02 01.
+	1, 2, 3, and 4 are stored at address `0, 1, 2, 3` respectively.  The hex form is the word: `0x04 03 02 01`.
 	</details>
 	<br/>
 	{::options parse_block_html="false" /}
@@ -289,10 +289,10 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDY2OTgxLDk5OTYxNjI1MSwtMTc2OTk4MT
-A0MiwzNjgyMjE2NTksLTE1MzYyODQyMjMsLTEwOTQ1MDk3MjMs
-LTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2NTI5MjEzLDEyOT
-U5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgxNTEx
-MCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNTQsNT
-EwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTIzNzY1NTkxOSw5OTk2MTYyNTEsLTE3Nj
+k5ODEwNDIsMzY4MjIxNjU5LC0xNTM2Mjg0MjIzLC0xMDk0NTA5
+NzIzLC01NTIxMDcyMDAsLTE1NzA1ODU2MjIsMTcyNjUyOTIxMy
+wxMjk1OTYwOTIxLC03MTEzNzk0MjksMTI0OTY2NDY2MSw0MzM4
+MTUxMTAsNzMzMTkyMDY0LC0yMTM5MzA0MzYxLC0yMTM4MDI1MD
+U0LDUxMDk4NDA1XX0=
 -->
