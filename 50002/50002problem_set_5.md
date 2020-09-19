@@ -274,6 +274,27 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	{::options parse_block_html="false" /}
 
 
+### Faulty Detection in Beta (Intermediate)
+
+You suspected that your Beta CPU is faulty, in particular, these two components:
+* The `ASEL` **mux** might be faulty: 
+	* if `ASEL = 0`, the output is always 0. 
+	* There's no problem if `ASEL = 1`.  
+	
+* The part of the `CU` that gives out `RA2SEL` signal might be faulty: 
+	* `RA2SEL` is always **stuck at `0`** (it cannot be `1` regardless of the instruction)
+
+You came across several short test programs. Which of the following program(s) can detect BOTH faulty?
+
+Meaning that :
+
+1.  The values in the PC / Registers in Regfile / RAM content will be different from a working Beta CPU if these programs were to be executed in this faulty Beta AND
+    
+2.  You can be 100% sure the discrepancy is caused by BOTH RA2SEL or ASEL
+    
+    faulty
+    
+3.  Programs that can only detect the RA2SEL faulty but not ASEL faulty (or vice versa) is not acceptable
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwNjE1NjI4MSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbLTk2MzM5OTg2NCwtMTEyMDQzOTc4NV19
 -->
