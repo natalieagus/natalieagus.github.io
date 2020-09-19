@@ -351,12 +351,16 @@ LONG(4)
 
 There's only one instruction: `ST` that requires `RA2SEL` to be `1`. Therefore our program must have this instruction to test against a working Beta CPU. We also must ensure that we utilize instructions that results in `ASEL=0` and that the output of the `ASEL` mux should be nonzero in a working Beta CPU.
 
-**Program 1** and **Program 4** fulfills the criteria:
-*  
+**Program 1** and **Program 4** fulfills the criteria, and the other two don't. 
+
+For **Program 1**:
+* The content store at `R2` will be 4 instead of 12 if the `ASEL` mux is faulty. 
+* 
 
 </details>
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbNzA1OTM5NjQ2LDIwNjc4OTM3MjUsLTExMj
+A0Mzk3ODVdfQ==
 -->
