@@ -40,34 +40,43 @@ Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="the-cmos-technology">The CMOS Technology</h1>
 <h2 id="overview">Overview</h2>
-<p>Recall that the ideal behaviors/characteristics of a combinational logic device are:</p>
+<p>Recall that the ideal behaviors and characteristics of a <strong>combinational logic device</strong> are:</p>
 <ol>
-<li>The device should be able to tolerate some amount of errors due to its Noise Margins. The Noise Margin exists if its VTC gain <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">&gt;1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> and that it has a nonlinear gain.</li>
-<li>If we have <strong><strong>high gain</strong></strong>, that means we can have <strong><strong>more noise margin</strong></strong>.
+<li>
+<p>The device should be able to tolerate some amount of errors due to its <em>Noise Margins.</em> The Noise Margin exists if its VTC gain <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">&gt;1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>.</p>
+</li>
+<li>
+<p>If we have <strong>high gain</strong>, that means we can have <strong>more noise margin</strong>.</p>
 <blockquote>
 <p>Take some time to convince yourself that this is true.</p>
 </blockquote>
 </li>
-<li>The device should be cheap, and small sized.
+<li>
+<p>The device should be cheap, and small sized.</p>
 <blockquote>
 <p>We do not want to have bulky devices, do we?</p>
 </blockquote>
 </li>
-<li>The device should have <strong><strong>zero power dissipation</strong></strong> when input voltages aren’t changing.</li>
-<li>Otherwise when voltage is changing from, ‘0’ to ‘1’ or ‘1’ to ‘0’, then power within the device has to dissipate easily.
+<li>
+<p>The device should have <strong>zero power dissipation</strong> when input voltages aren’t changing. That’s why the device must have a nonlinear gain.</p>
+</li>
+<li>
+<p>Otherwise when voltage is changing from, <code>0</code> to <code>1</code> or <code>1</code> to <code>0</code>, then power within the device has to dissipate easily.</p>
 <blockquote>
 <p>Meaning that the change is swift is and quick</p>
 </blockquote>
 </li>
-<li>The device has to be <strong>functional</strong>, meaning that it conforms to the assigned <strong><strong>truth table</strong></strong> at all times.
+<li>
+<p>The device has to be <strong>functional</strong>, meaning that it conforms to the assigned <strong>truth table</strong> (<strong>logic</strong>) at all times.</p>
 <blockquote>
 <p>We do not want unpredictable behavior with our devices.</p>
 </blockquote>
 </li>
 </ol>
+<p>In this chapter, we are learning a particular component called the <strong>MOSFET</strong> that can be used as a building block for our combinational logic device. It has all the characteristics mentioned above.</p>
 <h2 id="the-mosfet">The MOSFET</h2>
 <p><em>Metal-oxide semiconductor field effect transistors</em> (MOSFET, or shortened as FETs) is the main material that is used to make our combinational device. The basic schematic of a transistor is shown in the figure below.</p>
-<p><mark> MOSFETS are four terminal voltage-controlled switches. </mark></p>
+<p><mark> MOSFETS are <strong>four</strong> terminal voltage-controlled <strong>switches</strong>. </mark></p>
 <p>Current flows between the diffusion terminals (source and drain) if the voltage on the gate terminal is large enough to create a conducting channel (in pink) and the mosfet is on. Otherwise, the conducting channel does not form and the mosfet is off: the diffusion terminals are not connected.</p>
 <img src="https://www.dropbox.com/s/b2pg0h1amacjc5j/mosfet.png?raw=1" alt="“F1”" width="100%" height="100%">
 <p>Notable parts of  MOSFET and its function:</p>
