@@ -566,7 +566,8 @@ Give your instruction sequence for each of the six indicated faults and briefly 
 <summary markdown="span">Show Answer</summary>
 
 *Note: there's many alternate answers. They aren't unique.* 
-**Fault A:** 
+
+**Fault A:**  Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`
 ```
 . = 0
 BEQ(R0,.+4,R31) | 0x0
@@ -579,7 +580,7 @@ Execute for 2 cycles (i.e., execute two instructions):
 
 Note that the label `.+4` means “memory location of current instruction + 4”, which is `0+4` here.
 
-**Fault B:**
+**Fault B:**`RA2SEL` multiplexer control signal is `0` instead of as per intended current instruction `OPCODE`.
 ```
 . = 0
 ADDC(R1,1,R1)
@@ -632,17 +633,18 @@ BEQ(R0,.+4,R1)
 SUBC(R1,3,R0)
 ```
 Execute for 2 cycles:
-* If fault F is not present, the `BEQ` instruction loads `4` into R1 and the SUBC loads 1 into R0.
-* If fault F is present, the BEQ instruction loads 4 (= PC + 4) into R1 and the SUBC loads 8 (= PC+4) into R0.
+* If fault F is not present, the `BEQ` instruction loads `4` into `R1` and the `SUBC` loads `1` into `R0`.
+* If fault F is present, the `BEQ` instruction loads `4` (which is the current `PC + 4`) into `R1` and the `SUBC` loads 8 (which is the current `PC+4`) into `R0`.
 
-Shorter alternative:
-
+*Shorter alternative:*
+```
 . = 0
-
 ADDC(R0,1,R0)
+```
 
-Execute for 1 cycle. If fault F is not present, the ADDC instruction will write 1 into R0, otherwise, 4 (= PC+4) will be written into R0.
-
+Execute for 1 cycle:
+* If fault F is not present, the `ADDC` instruction will write `1` into `R0`,
+* Otherwise, `4` (which is the current `PC+4`) will be written into `R0`.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -658,7 +660,7 @@ Execute for 1 cycle. If fault F is not present, the ADDC instruction will write 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NTM3ODE2Myw3NjcxOTkxODcsOTQ5Nz
+eyJoaXN0b3J5IjpbMTYxNTgzMDE3NCw3NjcxOTkxODcsOTQ5Nz
 YzNjEwLDU5MDA5MDY4LDEyMzM1MzQyMzYsLTQ1MDc5NjkxMCwx
 MjYzMzYzMjU0LC00NjQ3MzM3NjMsMTI0MjU0MDkwOSw3MjgyOD
 QyNTgsMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
