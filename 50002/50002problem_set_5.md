@@ -589,7 +589,21 @@ LD(R0,0,R0)
 
 Execute for 3 cycles:
 * If fault B is not present, the `ST` instruction writes the value `1` into location `0`, which is then `LD`-ed (loaded) into `R0`. 
-* If fault B is present, the `ST` instruction writes the contents of `R0` instead (ie, the value `0`), so now the `LD` instruction puts 0 into R0. 
+* If fault B is present, the `ST` instruction writes the contents of `R0` instead (ie, the value `0`), so now the `LD` instruction puts `0` into `R0`. 
+
+**Fault C:**
+```
+. = 0
+BEQ(R0,.+8,R31)
+ADDC(R0,0,R0)
+ADDC(R0,1,R0)
+```
+Execute for 2 cycles:
+* If fault C is not present, `R0` is incremented to `1` since the branch to memory location `8` is taken. 
+* If fault C is present, the `BEQ` instruction never branches, executing the instruction at location `4`, which leaves the contents of `R0` unchanged (i.e., it's still `0`).
+
+**Fault D:**
+```
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -605,8 +619,8 @@ Execute for 3 cycles:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNTUyMzMxNSw3NjcxOTkxODcsOTQ5Nz
-YzNjEwLDU5MDA5MDY4LDEyMzM1MzQyMzYsLTQ1MDc5NjkxMCwx
-MjYzMzYzMjU0LC00NjQ3MzM3NjMsMTI0MjU0MDkwOSw3MjgyOD
-QyNTgsMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
+eyJoaXN0b3J5IjpbMzY5MjkwNTYxLDc2NzE5OTE4Nyw5NDk3Nj
+M2MTAsNTkwMDkwNjgsMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEy
+NjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4ND
+I1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
 -->
