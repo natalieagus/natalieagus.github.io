@@ -451,7 +451,7 @@ Consider an 8-bit **signed** number systems. **Do the following base conversion*
 ---
   
 
-Which of the following signed numbers is **equivalent** to the number -32 for either an 8-bit or 16-bit system?
+Which of the following signed numbers is **equivalent** to the number -32 for either an 8-bit or 16-bit system? *Note: the answer must be either 8-bit or 16-bit long.* 
 
 
 1. `0b1010 0000`
@@ -658,11 +658,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMTIxMTIzMSwtNTQyNTY4NDQzLDExNj
-U5ODk0NjksMTQ2NjkyMzc3NiwtMjY4NTk5ODg2LC0yMjAzMzUz
-MDYsLTI5MTY5NDMyNCw4NTQwNDgxMjAsLTE2NzA1ODEwMCwtMz
-M0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3MiwxNTM4MDM1
-ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Ny
-w2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5MjAzNTM3LDI4NjM4
-Nzc4OV19
+eyJoaXN0b3J5IjpbLTE0NTM4MTczNzUsLTQzMTIxMTIzMSwtNT
+QyNTY4NDQzLDExNjU5ODk0NjksMTQ2NjkyMzc3NiwtMjY4NTk5
+ODg2LC0yMjAzMzUzMDYsLTI5MTY5NDMyNCw4NTQwNDgxMjAsLT
+E2NzA1ODEwMCwtMzM0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3
+MjA3MiwxNTM4MDM1ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MT
+gsMTgyNDU0NDQ4Nyw2MTA0NzkzNDksNzAyNTEwNjY5LC0yMDQ5
+MjAzNTM3XX0=
 -->
