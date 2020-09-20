@@ -555,10 +555,14 @@ Your job is to **write some test programs** to help determine if a machine is fa
 *You can assume that all registers are reliably set to 0 before each sequence is executed.*
 
 Give your instruction sequence for each of the six indicated faults and briefly **explain** how each sequence detects the fault and produces something besides `1` in `R0` when the fault is present:
-* Fault A: Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`
-* Fault B: `RA2SEL` multiplexer control signal is `0` instead of as per intended current instruction `OPCODE`.
-* Fault C: `Z` input to control logic is always `0` instead of the correct value depending on `RD1`.
-* Fault D:   `BSEL mux control signal stuck at 0.
+* **Fault A:** Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`
+* **Fault B: `**RA2SEL` multiplexer control signal is `0` instead of as per intended current instruction `OPCODE`.
+* **Fault C:** `Z` input to control logic is always `0` instead of the correct value depending on `RD1`.
+* **Fault D:**   `BSEL` multiplexer control signal `0`  instead of as per intended current instruction `OPCODE`.
+* **Fault E:** `WR` memory control signal is `0`  instead of as per intended current instruction `OPCODE`.
+* **Fault F:** Input 0 of `WDSEL` mux has a value of `0` instead of `PC+4`
+
+
 
 
 
@@ -568,8 +572,8 @@ Give your instruction sequence for each of the six indicated faults and briefly 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NjI3MzMxNSw5NDk3NjM2MTAsNTkwMD
-kwNjgsMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEyNjMzNjMyNTQs
-LTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4NDI1OCwyMDY3OD
-kzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbNzY3MTk5MTg3LDk0OTc2MzYxMCw1OTAwOT
+A2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAsMTI2MzM2MzI1NCwt
+NDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OT
+M3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
