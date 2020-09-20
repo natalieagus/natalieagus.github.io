@@ -542,22 +542,30 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 ### Quality Control (Intermediate)
-One Beta manufacturer is having quality-control problems with their design. In particular, they've had reliability issues with various device connections that are circled in the attached diagram.
+One Beta manufacturer is having quality-control problems with their design. In particular, they've had reliability issues with various device connections that are circled in the diagram below.
 
-Your job is to **write some test programs** to help determine if a machine is fault-free. Assume that when a device connection is "faulty," the indicated **bus or signal** is always **producing** "0" instead of the *expected value*. For each of the circled connections, **write an instruction sequence** that when executed for a **specified number of cycles** will leave the following result in `R0`: 
+<img src="https://www.dropbox.com/s/i71imaa2toxsnk7/betafault.png?raw=1" width="70%" height="70%">
+
+Your job is to **write some test programs** to help determine if a machine is fault-free. ==Assume that when a device connection is "faulty," the indicated **bus or signal** is always **producing** "0" instead of the *expected value*.==
+
+**For each** of the circled connections, **write an instruction sequence** that when executed for a **specified number of cycles** will leave the following result in `R0`: 
 *  `1` in `R0` if the connection was working.
 * Other values in `R0` if the connection was faulty. 
 
 *You can assume that all registers are reliably set to 0 before each sequence is executed.*
 
-Give your instruction sequence for each of the six indicated faults and briefly **explain** how each sequence detects the fault and produces something besides `1` in `R0` when the fault is present.
+Give your instruction sequence for each of the six indicated faults and briefly **explain** how each sequence detects the fault and produces something besides `1` in `R0` when the fault is present:
+* Fault A: Input 1 of PCSEL 
+
+
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwNzI1NzA5MCw5NDk3NjM2MTAsNTkwMD
+eyJoaXN0b3J5IjpbMjA5ODYwNDMxMiw5NDk3NjM2MTAsNTkwMD
 kwNjgsMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEyNjMzNjMyNTQs
 LTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4NDI1OCwyMDY3OD
 kzNzI1LC0xMTIwNDM5Nzg1XX0=
