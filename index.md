@@ -53,3 +53,7 @@
 [Problem Set Week 2](https://natalieagus.github.io/50002/PS2/)
 
 [Problem Set Week 3](https://natalieagus.github.io/50002/PS3/)
+
+[Problem Set Week 4](https://natalieagus.github.io/50002/PS4/)
+
+[Problem Set Week 5](https://natalieagus.github.io/50002/PS5/)
