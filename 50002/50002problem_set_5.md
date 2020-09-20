@@ -565,7 +565,21 @@ Give your instruction sequence for each of the six indicated faults and briefly 
 <details>
 <summary markdown="span">Show Answer</summary>
 
+*Note: there's many alternate answers. They aren't unique.* 
+**Fault A:** 
+```
+. = 0
+BEQ(R0,.+4,R31) | 0x0
+ADDC(R0,1,R0) | 0x4
+```
 
+Execute for 2 cycles (i.e., execute two instructions):
+* If fault A is not present, `R0` contains `1` after the second cycle, since the second instruction is fetched from location `0x4`. 
+* If fault A is present, the second instruction is fetched from location `0` (instead of `4`, since the input `1` to the `PCSEL` mux is `0`), so the value of `R0` stays `0`.
+
+Note that the label “.+4” means “memory location of current instruction + 4”, which is “0+4” here.
+
+Also note that there is no unique solution on how to implement these tests, you may think of other alternatives.
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -581,7 +595,7 @@ Give your instruction sequence for each of the six indicated faults and briefly 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTg5NTg5NTIsNzY3MTk5MTg3LDk0OT
+eyJoaXN0b3J5IjpbLTE4OTA5NTgzOTYsNzY3MTk5MTg3LDk0OT
 c2MzYxMCw1OTAwOTA2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAs
 MTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mj
 g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
