@@ -292,21 +292,21 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	<br/>
 	{::options parse_block_html="false" /}
 
-2.   Explain why the following instruction cannot be added to our Beta instruction set without further hardware modifications on the datapath:
-```
-PUSH(Rc, 4, Ra):
-	Mem[Reg[Ra]] <-- Reg[Rc]
-	Reg[Ra] <-- Reg[Ra] + 4
-```
+2. Explain why the following instruction cannot be added to our Beta instruction set without further hardware modifications on the datapath:
+	```
+	PUSH(Rc, 4, Ra):
+		Mem[Reg[Ra]] <-- Reg[Rc]
+		Reg[Ra] <-- Reg[Ra] + 4
+	```
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
 
-To implement this `PUSH`, somehow the `ALU` would have to produce *two* 32-bit values instead of the original one 32-bit output. The new two 32-bit values are: `Reg[Ra]` to be used as the memory address and `Reg[Ra]+4` to be written into the register file.
-</details>
-<br/>
-{::options parse_block_html="false" /}
+	To implement this `PUSH`, somehow the `ALU` would have to produce *two* 32-bit values instead of the original one 32-bit output. The new two 32-bit values are: `Reg[Ra]` to be used as the memory address and `Reg[Ra]+4` to be written into the register file.
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
 
 
 ### Another New Beta Instruction (Basic)
@@ -544,7 +544,7 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMzgyMzI3NSw5NDk3NjM2MTAsNTkwMD
+eyJoaXN0b3J5IjpbLTI2NjY3NDMxNSw5NDk3NjM2MTAsNTkwMD
 kwNjgsMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEyNjMzNjMyNTQs
 LTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4NDI1OCwyMDY3OD
 kzNzI1LC0xMTIwNDM5Nzg1XX0=
