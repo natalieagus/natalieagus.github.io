@@ -541,11 +541,18 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 {::options parse_block_html="false" /}
 
 
+### Quality Control (Intermediate)
+One Beta manufacturer is having quality-control problems with their design. In particular, they've had reliability issues with various device connections that are circled in the attached diagram.
+
+Your job is to **write some test programs** to help determine if a machine is fault-free. Assume that when a device connection is "faulty," the indicated **bus or signal** is always **producing** "0" instead of the *expected value*. For each of the circled connections, write an instruction sequence that when executed for a specified number of cycles would indicate whether the connection was okay by leaving a `1` in `R0` and leaves some other value in `R0` if the connection was faulty. You can assume that all registers are reliably set to 0 before each sequence is executed.
+
+Give your instruction sequence for each of the six indicated faults and briefly explain how each sequence detects the fault and produces something besides "1" in R0 when the fault is present.
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NjY3NDMxNSw5NDk3NjM2MTAsNTkwMD
-kwNjgsMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEyNjMzNjMyNTQs
-LTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4NDI1OCwyMDY3OD
-kzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbODgwNDk0NTc2LDk0OTc2MzYxMCw1OTAwOT
+A2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAsMTI2MzM2MzI1NCwt
+NDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OT
+M3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
