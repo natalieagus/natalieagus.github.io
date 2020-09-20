@@ -15,6 +15,8 @@ This page contains all practice questions that constitutes the topics learned in
 
 Each topic's questions are grouped into **three** categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further. 
 
+*Note that the amount of practice problems in this week's set is smaller than usual because the topics learned this week is mainly to set-up the knowledge required for the following week. Please head to PS5 for more practice problem.* 
+
 {::options parse_block_html="true" /}
 {% include toc.html %}
 {::options parse_block_html="false" /}
@@ -289,10 +291,10 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIxODIyMjc5LDk5OTYxNjI1MSwtMTc2OT
-k4MTA0MiwzNjgyMjE2NTksLTE1MzYyODQyMjMsLTEwOTQ1MDk3
-MjMsLTU1MjEwNzIwMCwtMTU3MDU4NTYyMiwxNzI2NTI5MjEzLD
-EyOTU5NjA5MjEsLTcxMTM3OTQyOSwxMjQ5NjY0NjYxLDQzMzgx
-NTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMjUwNT
-QsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTE5Nzc1ODA4NzIsOTk5NjE2MjUxLC0xNz
+Y5OTgxMDQyLDM2ODIyMTY1OSwtMTUzNjI4NDIyMywtMTA5NDUw
+OTcyMywtNTUyMTA3MjAwLC0xNTcwNTg1NjIyLDE3MjY1MjkyMT
+MsMTI5NTk2MDkyMSwtNzExMzc5NDI5LDEyNDk2NjQ2NjEsNDMz
+ODE1MTEwLDczMzE5MjA2NCwtMjEzOTMwNDM2MSwtMjEzODAyNT
+A1NCw1MTA5ODQwNV19
 -->
