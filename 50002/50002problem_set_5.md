@@ -294,7 +294,9 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 
 2.   Explain why the following instruction cannot be added to our Beta instruction set without further hardware modifications on the datapath:
 ```
-
+PUSH(Rc, 4, Ra):
+	Mem[Reg[Ra]] <-- Reg[Rc]
+	Reg[Ra] <-- Reg[Ra] + 4
 ```
 
 ### Another New Beta Instruction (Basic)
@@ -532,8 +534,8 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ5NzYzNjEwLDU5MDA5MDY4LDEyMzM1Mz
-QyMzYsLTQ1MDc5NjkxMCwxMjYzMzYzMjU0LC00NjQ3MzM3NjMs
-MTI0MjU0MDkwOSw3MjgyODQyNTgsMjA2Nzg5MzcyNSwtMTEyMD
-QzOTc4NV19
+eyJoaXN0b3J5IjpbLTEyOTIyMDY3LDk0OTc2MzYxMCw1OTAwOT
+A2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAsMTI2MzM2MzI1NCwt
+NDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OT
+M3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
