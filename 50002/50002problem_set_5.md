@@ -577,9 +577,19 @@ Execute for 2 cycles (i.e., execute two instructions):
 * If fault A is not present, `R0` contains `1` after the second cycle, since the second instruction is fetched from location `0x4`. 
 * If fault A is present, the second instruction is fetched from location `0` (instead of `4`, since the input `1` to the `PCSEL` mux is `0`), so the value of `R0` stays `0`.
 
-Note that the label “.+4” means “memory location of current instruction + 4”, which is “0+4” here.
+Note that the label `.+4` means “memory location of current instruction + 4”, which is `0+4` here.
 
-Also note that there is no unique solution on how to implement these tests, you may think of other alternatives.
+**Fault B:**
+```
+. = 0
+ADDC(R1,1,R1)
+ST(R1,0,R0)
+LD(R0,0,R0)
+```
+
+Execute for 3 cycles:
+* If fault B is not present, the `ST` instruction writes the value `1` into location `0`, which is then `LD`-ed (loaded) into `R0`. 
+* If fault B is present, the `ST` instruction writes the contents of `R0` instead (ie, the value `0`), so now the `LD` instruction puts 0 into R0. 
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -595,8 +605,8 @@ Also note that there is no unique solution on how to implement these tests, you 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTA5NTgzOTYsNzY3MTk5MTg3LDk0OT
-c2MzYxMCw1OTAwOTA2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAs
-MTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mj
-g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbMTIxNTUyMzMxNSw3NjcxOTkxODcsOTQ5Nz
+YzNjEwLDU5MDA5MDY4LDEyMzM1MzQyMzYsLTQ1MDc5NjkxMCwx
+MjYzMzYzMjU0LC00NjQ3MzM3NjMsMTI0MjU0MDkwOSw3MjgyOD
+QyNTgsMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
 -->
