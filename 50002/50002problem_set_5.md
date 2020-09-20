@@ -275,22 +275,27 @@ Notta Kalew, a somewhat fumble-fingered lab assistant, has deleted the opcode fi
 	{::options parse_block_html="false" /}
 
 
-### New Beta Instruction (Intermediate)
-Write the register transfer language below corresponds to the instruction with the following control signal:
+### New Beta Instruction (Basic)
+1. Write the register transfer language below corresponds to the instruction with the following control signal:
    
-<img src="https://www.dropbox.com/s/ysf5rtc0d9mwsil/ctrlnew.png?raw=1" width="20%" height="20%">
+	<img src="https://www.dropbox.com/s/ysf5rtc0d9mwsil/ctrlnew.png?raw=1" width="20%" height="20%">
 
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
+	{::options parse_block_html="true" /}
+	<details>
+	<summary markdown="span">Show Answer</summary>
+
+	```
+	PC <-- PC + 4
+	Reg[Rc] <-- (PC+4)+4*SXT(C) 
+	```
+	</details>
+	<br/>
+	{::options parse_block_html="false" /}
+
+2.   Explain why the following instruction cannot be added to our Beta instruction set without further hardware modifications on the datapath:
+```
 
 ```
-PC <-- PC + 4
-Reg[Rc] <-- (PC+4)+4*SXT(C) 
-```
-</details>
-<br/>
-{::options parse_block_html="false" /}
 
 ### Another New Beta Instruction (Basic)
 Given the following C-code:
@@ -527,7 +532,8 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkwMDkwNjgsMTIzMzUzNDIzNiwtNDUwNz
-k2OTEwLDEyNjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQwOTA5
-LDcyODI4NDI1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbOTQ5NzYzNjEwLDU5MDA5MDY4LDEyMzM1Mz
+QyMzYsLTQ1MDc5NjkxMCwxMjYzMzYzMjU0LC00NjQ3MzM3NjMs
+MTI0MjU0MDkwOSw3MjgyODQyNTgsMjA2Nzg5MzcyNSwtMTEyMD
+QzOTc4NV19
 -->
