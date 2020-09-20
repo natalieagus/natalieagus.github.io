@@ -299,6 +299,18 @@ PUSH(Rc, 4, Ra):
 	Reg[Ra] <-- Reg[Ra] + 4
 ```
 
+{::options parse_block_html="true" /}
+<details>
+<summary markdown="span">Show Answer</summary>
+
+  
+
+To implement this `PUSH`, somehow the `ALU` would have to produce *two* 32-bit values instead of the original one 32-bit output. The new two 32-bit values are: `Reg[Ra]` to be used as the memory address and `Reg[Ra]+4` to be written into the register file.
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
+
 ### Another New Beta Instruction (Basic)
 Given the following C-code:
 
@@ -534,7 +546,7 @@ Program 2, 4, and 5 can successfully **detect** this faulty. All of them forces 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTIyMDY3LDk0OTc2MzYxMCw1OTAwOT
+eyJoaXN0b3J5IjpbNjk0MjM2MjgxLDk0OTc2MzYxMCw1OTAwOT
 A2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAsMTI2MzM2MzI1NCwt
 NDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mjg0MjU4LDIwNjc4OT
 M3MjUsLTExMjA0Mzk3ODVdfQ==
