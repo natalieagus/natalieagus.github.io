@@ -614,17 +614,35 @@ Execute for 1 cycle:
 **Fault E:**
 ```
 . = 0
-
 ADDC(R1,1,R1)
-
 ST(R1,X,R31)
-
 LD(R31,X,R0)
-
 . = 0x100
-
 X: LONG(0)
-``
+```
+
+Execute for 3 cycles:
+* If fault E is not present, the `ST` instruction writes the value `1` into `X`, which is then `LD`-ed (loaded) into `R0`. 
+* If fault E is present, the `ST` instruction has no effect, so now the `LD` instruction loads the original value of location `X` into `R0`.
+
+**Fault F:**
+```
+. = 0
+BEQ(R0,.+4,R1)
+SUBC(R1,3,R0)
+```
+Execute for 2 cycles:
+* If fault F is not present, the `BEQ` instruction loads `4` into R1 and the SUBC loads 1 into R0.
+* If fault F is present, the BEQ instruction loads 4 (= PC + 4) into R1 and the SUBC loads 8 (= PC+4) into R0.
+
+Shorter alternative:
+
+. = 0
+
+ADDC(R0,1,R0)
+
+Execute for 1 cycle. If fault F is not present, the ADDC instruction will write 1 into R0, otherwise, 4 (= PC+4) will be written into R0.
+
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -640,8 +658,8 @@ X: LONG(0)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTA4NDk3NjksNzY3MTk5MTg3LDk0OT
-c2MzYxMCw1OTAwOTA2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAs
-MTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mj
-g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
+eyJoaXN0b3J5IjpbMTQ5NTM3ODE2Myw3NjcxOTkxODcsOTQ5Nz
+YzNjEwLDU5MDA5MDY4LDEyMzM1MzQyMzYsLTQ1MDc5NjkxMCwx
+MjYzMzYzMjU0LC00NjQ3MzM3NjMsMTI0MjU0MDkwOSw3MjgyOD
+QyNTgsMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
 -->
