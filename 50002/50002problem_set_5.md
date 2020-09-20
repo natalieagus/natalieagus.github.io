@@ -555,19 +555,19 @@ Your job is to **write some test programs** to help determine if a machine is fa
 *You can assume that all registers are reliably set to 0 before each sequence is executed.*
 
 Give your instruction sequence for each of the six indicated faults and briefly **explain** how each sequence detects the fault and produces something besides `1` in `R0` when the fault is present:
-* **Fault A:** Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`
+* **Fault A:** Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`.
 * **Fault B:** `RA2SEL` multiplexer control signal is `0` instead of as per intended current instruction `OPCODE`.
 * **Fault C:** `Z` input to control logic is always `0` instead of the correct value depending on `RD1`.
 * **Fault D:**   `BSEL` multiplexer control signal `0`  instead of as per intended current instruction `OPCODE`.
 * **Fault E:** `WR` memory control signal is `0`  instead of as per intended current instruction `OPCODE`.
-* **Fault F:** Input 0 of `WDSEL` mux has a value of `0` instead of `PC+4`
+* **Fault F:** Input 0 of `WDSEL` mux has a value of `0` instead of `PC+4`.
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
 *Note: there's many alternate answers. They aren't unique.* 
 
-**Fault A:**  Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`
+**Fault A:**  Input 1 of `PCSEL` mux has a value of `0` instead of `PC+4+4*SEXT(C)`.
 ```
 . = 0
 BEQ(R0,.+4,R31) | 0x0
@@ -580,7 +580,7 @@ Execute for 2 cycles (i.e., execute two instructions):
 
 Note that the label `.+4` means “memory location of current instruction + 4”, which is `0+4` here.
 
-**Fault B:**`RA2SEL` multiplexer control signal is `0` instead of as per intended current instruction `OPCODE`.
+**Fault B:** `RA2SEL` multiplexer control signal is `0` instead of as per intended current instruction `OPCODE`.
 ```
 . = 0
 ADDC(R1,1,R1)
@@ -592,7 +592,7 @@ Execute for 3 cycles:
 * If fault B is not present, the `ST` instruction writes the value `1` into location `0`, which is then `LD`-ed (loaded) into `R0`. 
 * If fault B is present, the `ST` instruction writes the contents of `R0` instead (ie, the value `0`), so now the `LD` instruction puts `0` into `R0`. 
 
-**Fault C:**
+**Fault C:** `Z` input to control logic is always `0` instead of the correct value depending on `RD1`.
 ```
 . = 0
 BEQ(R0,.+8,R31)
@@ -603,7 +603,7 @@ Execute for 2 cycles:
 * If fault C is not present, `R0` is incremented to `1` since the branch to memory location `8` is taken. 
 * If fault C is present, the `BEQ` instruction never branches, executing the instruction at location `4`, which leaves the contents of `R0` unchanged (i.e., it's still `0`).
 
-**Fault D:**
+**Fault D:** `BSEL` multiplexer control signal `0`  instead of as per intended current instruction `OPCODE`.
 ```
 . = 0
 ADDC(R0,1,R0)
@@ -612,7 +612,7 @@ Execute for 1 cycle:
 * If fault D is not present, `R0` is increment to `1`. 
 * If fault D is present, the high-order 5-bits of the literal field (i.e., where `Rb` is encoded) is used as a register address, and the contents of that register is added to `R0`. Since the literal is `1`, the second register is `R0` (containing `0`), so the value written into `R0` is `0`.
 
-**Fault E:**
+**Fault E:** `WR` memory control signal is `0`  instead of as per intended current instruction `OPCODE`.
 ```
 . = 0
 ADDC(R1,1,R1)
@@ -626,7 +626,7 @@ Execute for 3 cycles:
 * If fault E is not present, the `ST` instruction writes the value `1` into `X`, which is then `LD`-ed (loaded) into `R0`. 
 * If fault E is present, the `ST` instruction has no effect, so now the `LD` instruction loads the original value of location `X` into `R0`.
 
-**Fault F:**
+**Fault F:** Input 0 of `WDSEL` mux has a value of `0` instead of `PC+4`.
 ```
 . = 0
 BEQ(R0,.+4,R1)
@@ -660,7 +660,7 @@ Execute for 1 cycle:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxNTgzMDE3NCw3NjcxOTkxODcsOTQ5Nz
+eyJoaXN0b3J5IjpbMTE0ODI5OTA3MSw3NjcxOTkxODcsOTQ5Nz
 YzNjEwLDU5MDA5MDY4LDEyMzM1MzQyMzYsLTQ1MDc5NjkxMCwx
 MjYzMzYzMjU0LC00NjQ3MzM3NjMsMTI0MjU0MDkwOSw3MjgyOD
 QyNTgsMjA2Nzg5MzcyNSwtMTEyMDQzOTc4NV19
