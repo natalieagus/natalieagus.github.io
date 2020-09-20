@@ -604,6 +604,27 @@ Execute for 2 cycles:
 
 **Fault D:**
 ```
+. = 0
+ADDC(R0,1,R0)
+```
+Execute for 1 cycle:
+* If fault D is not present, `R0` is increment to `1`. 
+* If fault D is present, the high-order 5-bits of the literal field (i.e., where `Rb` is encoded) is used as a register address, and the contents of that register is added to `R0`. Since the literal is `1`, the second register is `R0` (containing `0`), so the value written into `R0` is `0`.
+
+**Fault E:**
+```
+. = 0
+
+ADDC(R1,1,R1)
+
+ST(R1,X,R31)
+
+LD(R31,X,R0)
+
+. = 0x100
+
+X: LONG(0)
+``
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -619,8 +640,8 @@ Execute for 2 cycles:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5MjkwNTYxLDc2NzE5OTE4Nyw5NDk3Nj
-M2MTAsNTkwMDkwNjgsMTIzMzUzNDIzNiwtNDUwNzk2OTEwLDEy
-NjMzNjMyNTQsLTQ2NDczMzc2MywxMjQyNTQwOTA5LDcyODI4ND
-I1OCwyMDY3ODkzNzI1LC0xMTIwNDM5Nzg1XX0=
+eyJoaXN0b3J5IjpbLTE4NTA4NDk3NjksNzY3MTk5MTg3LDk0OT
+c2MzYxMCw1OTAwOTA2OCwxMjMzNTM0MjM2LC00NTA3OTY5MTAs
+MTI2MzM2MzI1NCwtNDY0NzMzNzYzLDEyNDI1NDA5MDksNzI4Mj
+g0MjU4LDIwNjc4OTM3MjUsLTExMjA0Mzk3ODVdfQ==
 -->
