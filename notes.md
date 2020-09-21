@@ -1,12 +1,13 @@
----
-layout: default
-title: "notes"
-permalink: /notes/
----
 
 # A collapsible section with markdown
 
 
+<div cursor="pointer" class="collapsible">Open Section 1</div>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<div class="
 ### Basics of Information Theory
 
   
@@ -80,8 +81,8 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjM2NTI0ODUsLTk4NzE2MDcwMCwxNT
-gwMzUyNTgwLC0xNTY1NDQ3NCwtMTU2NTQ0NzQsLTEwNzMwMzM1
-OTYsLTE1MDcyNDY2MjMsMjQyMzQ0NDQsLTE2MzgwODY1MzFdfQ
-==
+eyJoaXN0b3J5IjpbMTcyNTI1MzgxOSwtMTAyMzY1MjQ4NSwtOT
+g3MTYwNzAwLDE1ODAzNTI1ODAsLTE1NjU0NDc0LC0xNTY1NDQ3
+NCwtMTA3MzAzMzU5NiwtMTUwNzI0NjYyMywyNDIzNDQ0NCwtMT
+YzODA4NjUzMV19
 -->
