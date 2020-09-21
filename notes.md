@@ -15,7 +15,7 @@
 </br>
 <div class="orangebox"> testtesttest1</div>
 </br>
-<div class="pinkbox"> testtesttest1</div>
+<div class="redbox"> testtesttest1</div>
 </br>
 <div class="bluebox"> orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </div>
 ### Basics of Information Theory
@@ -91,8 +91,8 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ1NTYxODAsLTEwMjM2NTI0ODUsLTk4Nz
-E2MDcwMCwxNTgwMzUyNTgwLC0xNTY1NDQ3NCwtMTU2NTQ0NzQs
-LTEwNzMwMzM1OTYsLTE1MDcyNDY2MjMsMjQyMzQ0NDQsLTE2Mz
-gwODY1MzFdfQ==
+eyJoaXN0b3J5IjpbLTIwNjEwNTI1NjksLTEwMjM2NTI0ODUsLT
+k4NzE2MDcwMCwxNTgwMzUyNTgwLC0xNTY1NDQ3NCwtMTU2NTQ0
+NzQsLTEwNzMwMzM1OTYsLTE1MDcyNDY2MjMsMjQyMzQ0NDQsLT
+E2MzgwODY1MzFdfQ==
 -->
