@@ -4,7 +4,7 @@ title: "Problem Set Week 1"
 permalink: /50002/PS1/
 ---
 
-50.002 Computational Structures 
+50.002 Computation Structures 
 
 Information Systems Technology and Design 
 
@@ -658,11 +658,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4MzUyNDM0NiwtNDMxMjExMjMxLC01ND
-I1Njg0NDMsMTE2NTk4OTQ2OSwxNDY2OTIzNzc2LC0yNjg1OTk4
-ODYsLTIyMDMzNTMwNiwtMjkxNjk0MzI0LDg1NDA0ODEyMCwtMT
-Y3MDU4MTAwLC0zMzQ4ODczNjYsLTI3MDkzNDc0OCwyMDI0MDcy
-MDcyLDE1MzgwMzU4NDIsLTEwNzEzNTM0NjgsLTEyMDU0NjUxOC
-wxODI0NTQ0NDg3LDYxMDQ3OTM0OSw3MDI1MTA2NjksLTIwNDky
-MDM1MzddfQ==
+eyJoaXN0b3J5IjpbMTMxMjgzOTM3NSwxNjgzNTI0MzQ2LC00Mz
+EyMTEyMzEsLTU0MjU2ODQ0MywxMTY1OTg5NDY5LDE0NjY5MjM3
+NzYsLTI2ODU5OTg4NiwtMjIwMzM1MzA2LC0yOTE2OTQzMjQsOD
+U0MDQ4MTIwLC0xNjcwNTgxMDAsLTMzNDg4NzM2NiwtMjcwOTM0
+NzQ4LDIwMjQwNzIwNzIsMTUzODAzNTg0MiwtMTA3MTM1MzQ2OC
+wtMTIwNTQ2NTE4LDE4MjQ1NDQ0ODcsNjEwNDc5MzQ5LDcwMjUx
+MDY2OV19
 -->
