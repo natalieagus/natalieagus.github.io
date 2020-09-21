@@ -53,21 +53,21 @@ Unfortunately, the Universal FSM will have some fixed number (N) of states built
 <br/>
 {::options parse_block_html="false" /}
   
- n Termeiatee encoe the sate of  Turing achine to  bits the aue that s ea inut  nd wite put the ifinite tap into  is, and the ut ve th tae e o righ ino 1 it o an ret inie tate ain ar tee o conrol ch  ring ahne 
+
+
+### FSM in TM (Intermediate)
+We encode the state of a Turing machine into 2 bits, the value that is read (input) from and written (output) onto the infinite tape into 2 bits, and the output move on the tape (left or right) into 1 bit. How many different finite state machines are there to control such a Turing machine? 
 
 {::options parse_block_html="true" /}
 <details>
 <summary markdown="span">Show Answer</summary>
 
-Fntion :* 
-*i 2* 
+From the explanation above, we have:
+* $s$ = 2
+* $i$ = 2
+* $o$ = 3
 
-cn uri Manenctn oition i, and output 
-
-{::options parse_block_html="true" /}
-<details>
-<summary markdown="span">Show Answer</summary>
-
+We can enumerate $2^{(s+o)2^{s+i}}$ FSM, and hence the answer to this question is $2^{80}$
 </details>
 <br/>
 {::options parse_block_html="false" /}
@@ -223,10 +223,7 @@ Indicate **which of the following Turing Machine specification** [A], [B], [C], 
 	{::options parse_block_html="false" /}
 
 3. In Theory, which machine is least powerful but sufficient to compute each of the following functions? Choose for the four following possible choices ranked by its level of "powerfullness":  
-	*
-
-### FSM in TM (Intermediate)
-We encode the state of a Turing Mmachine (most powerful)
+	* Turing Machine (most powerful)
 	* FSM
 	* Combinational Logic (least powerful)
 	* Uncomputable	
@@ -234,11 +231,11 @@ We encode the state of a Turing Mmachine (most powerful)
 	The functions in question are:
 	* **Function 1:** A processor that executes Beta instruction set
 	
-	* **Function 2:** A device which takes as input the digits of a binary integer from left to rightinto 2 bits, the value that is read (input) from and written (output) onto the infinite tape into 2 bits, and the output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
+	* **Function 2:** A device which takes as input the digits of a binary integer from left to right, and output 1 if the number entered so far is divisible by 6, and 0 otherwise. 
 	
 	* **Function 3:** A device that takes a sequence of binary digits, one each milisecond clock period, and output `1` if the sequence so far contains more `1`s than `0`s. 
 	
-	* **Function 4:** A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)move on the tape (left or right) into 1 bit. How many different finite state machines are there to control such a Turing machine? 
+	* **Function 4:** A device that takes as input an integer `n` between 0 and 20, and outputs the closing price of Apple Stock on the `n`$^{th}$ trading day of year 2019 (to the nearest whole dollar)
 
 	{::options parse_block_html="true" /}
 	<details>
@@ -251,22 +248,14 @@ We encode the state of a Turing Mmachine (most powerful)
 	**Function 3:** Turing Machine
 	
 	**Function 4:** Combinational Logic
-	From the explanation above, we have:
-* $s$ = 2
-* $i$ = 2
-* $o$ = 3
-
-We can enumerate $2^{(s+o)2^{s+i}}$ FSM, and hence the answer to this question is $2^{80}$
-</details>
+	</details>
 	<br/>
 	{::options parse_block_html="false" /}
 
 
-
 ### Memory Addressing (Basic)
 
-1.   
-You are given that the 32-bit *word* at memory address `0` has a binary form of
+1. You are given that the 32-bit *word* at memory address `0` has a binary form of
 	```
 	0000 0100 0000 0011 0000 0010 0000 0001
 	```
@@ -302,10 +291,10 @@ You are given that the 32-bit *word* at memory address `0` has a binary form of
 	<br/>
 	{::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzIwOTY4MTUsLTE5Nzc1ODA4NzIsOT
-k5NjE2MjUxLC0xNzY5OTgxMDQyLDM2ODIyMTY1OSwtMTUzNjI4
-NDIyMywtMTA5NDUwOTcyMywtNTUyMTA3MjAwLC0xNTcwNTg1Nj
-IyLDE3MjY1MjkyMTMsMTI5NTk2MDkyMSwtNzExMzc5NDI5LDQz
-MzgxNTExMCw3MzMxOTIwNjQsLTIxMzkzMDQzNjEsLTIxMzgwMj
-UwNTQsNTEwOTg0MDVdfQ==
+eyJoaXN0b3J5IjpbLTE5Nzc1ODA4NzIsLTE5MzIwOTY4MTUsLT
+E5Nzc1ODA4NzIsOTk5NjE2MjUxLC0xNzY5OTgxMDQyLDM2ODIy
+MTY1OSwtMTUzNjI4NDIyMywtMTA5NDUwOTcyMywtNTUyMTA3Mj
+AwLC0xNTcwNTg1NjIyLDE3MjY1MjkyMTMsMTI5NTk2MDkyMSwt
+NzExMzc5NDI5LDQzMzgxNTExMCw3MzMxOTIwNjQsLTIxMzkzMD
+QzNjEsLTIxMzgwMjUwNTQsNTEwOTg0MDVdfQ==
 -->
