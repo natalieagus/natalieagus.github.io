@@ -1,4 +1,4 @@
-remote-theme: daattali/beautiful-jekyll
+theme: jekyll-theme-slate
 
 relative_links:
   enabled: true
