@@ -7,7 +7,13 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
 
-<div class="
+<div class="redborder"> testtesttest1</div>
+
+<div class="blueborder"> testtesttest1</div>
+
+<div class="bluebox"> testtesttest1</div>
+
+<div class="orangebox"> testtesttest1</div>
 ### Basics of Information Theory
 
   
@@ -81,8 +87,8 @@ $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNTI1MzgxOSwtMTAyMzY1MjQ4NSwtOT
-g3MTYwNzAwLDE1ODAzNTI1ODAsLTE1NjU0NDc0LC0xNTY1NDQ3
-NCwtMTA3MzAzMzU5NiwtMTUwNzI0NjYyMywyNDIzNDQ0NCwtMT
-YzODA4NjUzMV19
+eyJoaXN0b3J5IjpbLTE0MDg2NzI0MjYsLTEwMjM2NTI0ODUsLT
+k4NzE2MDcwMCwxNTgwMzUyNTgwLC0xNTY1NDQ3NCwtMTU2NTQ0
+NzQsLTEwNzMwMzM1OTYsLTE1MDcyNDY2MjMsMjQyMzQ0NDQsLT
+E2MzgwODY1MzFdfQ==
 -->
