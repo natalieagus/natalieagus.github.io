@@ -54,6 +54,6 @@
 
 [Problem Set Week 3](https://natalieagus.github.io/50002/PSet3.html)
 
-[Problem Set Week 4](https://natalieagus.github.io/50002/PS4/)
+[Problem Set Week 4](https://natalieagus.github.io/50002/PSet4.html)
 
 [Problem Set Week 5](https://natalieagus.github.io/50002/PS5/)
