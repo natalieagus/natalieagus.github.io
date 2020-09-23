@@ -485,7 +485,12 @@ Answer the following questions based on the truth table:
 >
 >2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products:
 ><img src="https://www.dropbox.com/s/39en3zjm86f3h6l/sumofpdt.png?raw=1"  width="50%" height = "50%">
-><br>To turn AND and ORs into just NANDs, we can create double inv>
+><br>To turn AND and ORs into just NANDs, we can turn the AND into NAND and add an inverter:
+><img src="https://www.dropbox.com/s/o52diqfidgb7dul/sumofpdt1.png?raw=1"  width="50%" height = "50%">
+><br>
+>Then apply DeMorgan law:
+><img src="https://www.dropbox.com/s/yzjpvf2xbn3car5/sumofpdt2.png?raw=1"  width="50%" height = "50%">
+>
 >3. If we use A and B as the ***select*** inputs for the MUX, then the four data inputs of the MUX should be tied to one of "0" (ground), "1" (VDD), "C" or "NOT C". 
 >For this function the following is the correct schematic. Note that by changing the connections on the data inputs we could implement any function of A, B and C.
 ><img src="https://www.dropbox.com/s/0yykalujmctihu4/mux_stuff.png?raw=1"  width="50%" height = "50%">
@@ -607,11 +612,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mzc3MDMwNzgsMTc5MjY5MTcxMCw4Nz
-YwMzUxMDgsLTY1NjI3Mzc3NiwtNjM0NTY0NzE2LDExNTg4ODEw
-NDQsLTE5ODgwODMyMDEsMTE2MzIxODcyOSwtMTcxMDgwMzg1OC
-wtNjU1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0LDE2
-MTg1ODM5NDAsLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4NzQ3MT
-QxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0z
-OTIwMzU5MzNdfQ==
+eyJoaXN0b3J5IjpbMTM1MzM0Mjg4MiwxNzkyNjkxNzEwLDg3Nj
+AzNTEwOCwtNjU2MjczNzc2LC02MzQ1NjQ3MTYsMTE1ODg4MTA0
+NCwtMTk4ODA4MzIwMSwxMTYzMjE4NzI5LC0xNzEwODAzODU4LC
+02NTUxMTYwNDIsLTE5ODMwMzEzODIsLTE2NjU2NzY0NzQsMTYx
+ODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NTE2MjE4NiwtMTg3NDcxND
+EwMiwzNTMwMzIzOTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5
+MjAzNTkzM119
 -->
