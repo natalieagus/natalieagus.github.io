@@ -483,8 +483,9 @@ Answer the following questions based on the truth table:
 
 >1. $\overline{A}\text{ }\overline{B}\text{ }\overline{C} + \overline{A}BC + A \overline{B}\text{ }\overline{C} + A \overline{B}C + ABC$.
 >
->2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products.
->
+>2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products:
+><img src="https://www.dropbox.com/s/39en3zjm86f3h6l/sumofpdt.png?raw=1"  width="50%" height = "50%">
+><br>To turn AND and ORs into just NANDs, we can create double inv>
 >3. If we use A and B as the ***select*** inputs for the MUX, then the four data inputs of the MUX should be tied to one of "0" (ground), "1" (VDD), "C" or "NOT C". 
 >For this function the following is the correct schematic. Note that by changing the connections on the data inputs we could implement any function of A, B and C.
 ><img src="https://www.dropbox.com/s/0yykalujmctihu4/mux_stuff.png?raw=1"  width="50%" height = "50%">
@@ -606,11 +607,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5MjY5MTcxMCw4NzYwMzUxMDgsLTY1Nj
-I3Mzc3NiwtNjM0NTY0NzE2LDExNTg4ODEwNDQsLTE5ODgwODMy
-MDEsMTE2MzIxODcyOSwtMTcxMDgwMzg1OCwtNjU1MTE2MDQyLC
-0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0LDE2MTg1ODM5NDAsLTU2
-Njk5OTcxOSw0NzUxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMz
-k2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMsLTE2
-ODYzMjk2NzFdfQ==
+eyJoaXN0b3J5IjpbLTE0Mzc3MDMwNzgsMTc5MjY5MTcxMCw4Nz
+YwMzUxMDgsLTY1NjI3Mzc3NiwtNjM0NTY0NzE2LDExNTg4ODEw
+NDQsLTE5ODgwODMyMDEsMTE2MzIxODcyOSwtMTcxMDgwMzg1OC
+wtNjU1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0LDE2
+MTg1ODM5NDAsLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4NzQ3MT
+QxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0z
+OTIwMzU5MzNdfQ==
 -->
