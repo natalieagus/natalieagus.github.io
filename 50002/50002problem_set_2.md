@@ -404,8 +404,8 @@ $$\begin{aligned} Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \b
 <details>
 <summary markdown="span">Show Answer</summary>
 
->The final simplified form is $Y = AB + CD + \bar{B}C$. The steps are as follows:
-	>$$\begin{aligned}
+> The final simplified form is $Y = AB + CD + \bar{B}C$. The steps are as follows:
+	$$\begin{aligned}
 Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 & + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\\
 &= AB\bar{C} + \bar{A}CD + ACD + \bar{B}CD + ABC\bar{D}\\
@@ -606,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzNDU2NDcxNiwxMTU4ODgxMDQ0LC0xOT
-g4MDgzMjAxLDExNjMyMTg3MjksLTE3MTA4MDM4NTgsLTY1NTEx
-NjA0MiwtMTk4MzAzMTM4MiwtMTY2NTY3NjQ3NCwxNjE4NTgzOT
-QwLC01NjY5OTk3MTksNDc1MTYyMTg2LC0xODc0NzE0MTAyLDM1
-MzAzMjM5NiwyOTQ4NTE4NSwtMTI0NjQ2ODkyNywtMzkyMDM1OT
-MzLC0xNjg2MzI5NjcxLDE1NDAxMjYwNzksMTEyOTEyMjEwNywt
-OTc0NzYzNDE4XX0=
+eyJoaXN0b3J5IjpbLTY1NjI3Mzc3NiwtNjM0NTY0NzE2LDExNT
+g4ODEwNDQsLTE5ODgwODMyMDEsMTE2MzIxODcyOSwtMTcxMDgw
+Mzg1OCwtNjU1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1Njc2ND
+c0LDE2MTg1ODM5NDAsLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4
+NzQ3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OT
+I3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwx
+MTI5MTIyMTA3XX0=
 -->
