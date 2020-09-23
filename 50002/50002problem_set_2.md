@@ -472,7 +472,7 @@ Answer the following questions based on the truth table:
 
 1. Write a sum-of-products expression for F.
 
-3. Write a minimal sum-of-products expression for F. Show a combinational circuit that implements F using only INV and NAND gates.
+3. Write a minimal sum-of-products expression for F. Show a combinational circuit that implements F using AND INV and NAND gates. 
 4. Implement F using one 4-input MUX and inverter.
 1. Write a minimal sum-of-products expression for NOT(F).
 
@@ -606,7 +606,7 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNjE5NjMyNCw4NzYwMzUxMDgsLTY1Nj
+eyJoaXN0b3J5IjpbMTE5MjYyMDM3NSw4NzYwMzUxMDgsLTY1Nj
 I3Mzc3NiwtNjM0NTY0NzE2LDExNTg4ODEwNDQsLTE5ODgwODMy
 MDEsMTE2MzIxODcyOSwtMTcxMDgwMzg1OCwtNjU1MTE2MDQyLC
 0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0LDE2MTg1ODM5NDAsLTU2
