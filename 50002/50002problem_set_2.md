@@ -408,8 +408,8 @@ $$\begin{aligned} Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \b
 	$$\begin{aligned}
 Y &= AB \bar{C} \bar{D} + AB \bar{C}D + \bar{A} \bar{B}CD + \bar{A}BCD + ABCD \\
 & + A\bar{B}CD + \bar{A}\bar{B}C \bar{D} + ABC \bar{D} + A\bar{B}C \bar{D}\\
-&= AB\bar{C} + \bar{A}CD + ACD + \bar{B}CD + ABC\bar{D}\\
-&= CD + AB\bar{C} + \bar{B}CD + ABC\bar{D}\\
+&= AB\bar{C} + \bar{A}CD + ACD + \bar{B}C\bar{D} + ABC\bar{D}\\
+&= CD + AB\bar{C} + \bar{B}C\bar{D} + ABC\bar{D}\\
 &= C(D + \bar{B} \bar{D}) + AB(\bar{C} + C\bar{D} )\\
 &= C(D + \bar{B} ) + AB(\bar{C} + \bar{D} )\\
 &=CD + C\bar{B} + AB(\overline{CD} )\\
@@ -606,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NjI3Mzc3NiwtNjM0NTY0NzE2LDExNT
-g4ODEwNDQsLTE5ODgwODMyMDEsMTE2MzIxODcyOSwtMTcxMDgw
-Mzg1OCwtNjU1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1Njc2ND
-c0LDE2MTg1ODM5NDAsLTU2Njk5OTcxOSw0NzUxNjIxODYsLTE4
-NzQ3MTQxMDIsMzUzMDMyMzk2LDI5NDg1MTg1LC0xMjQ2NDY4OT
-I3LC0zOTIwMzU5MzMsLTE2ODYzMjk2NzEsMTU0MDEyNjA3OSwx
-MTI5MTIyMTA3XX0=
+eyJoaXN0b3J5IjpbODc2MDM1MTA4LC02NTYyNzM3NzYsLTYzND
+U2NDcxNiwxMTU4ODgxMDQ0LC0xOTg4MDgzMjAxLDExNjMyMTg3
+MjksLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMTk4MzAzMTM4Mi
+wtMTY2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5OTk3MTksNDc1
+MTYyMTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5NiwyOTQ4NTE4NS
+wtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5NjcxLDE1
+NDAxMjYwNzldfQ==
 -->
