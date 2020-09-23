@@ -483,7 +483,7 @@ Answer the following questions based on the truth table:
 
 >1. $\overline{A}\text{ }\overline{B}\text{ }\overline{C} + \overline{A}BC + A \overline{B}\text{ }\overline{C} + A \overline{B}C + ABC$.
 >
->2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products:
+>2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding an input to a  big OR gate for every '+', INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products:
 ><img src="https://www.dropbox.com/s/39en3zjm86f3h6l/sumofpdt.png?raw=1"  width="50%" height = "50%">
 ><br>To turn AND and ORs into just NANDs, we can do this in two steps. First, turn the AND into NAND and add an inverter:
 ><img src="https://www.dropbox.com/s/o52diqfidgb7dul/sumofpdt1.png?raw=1"  width="50%" height = "50%">
@@ -612,11 +612,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4NjI3NzM2NSwxNzkyNjkxNzEwLDg3Nj
-AzNTEwOCwtNjU2MjczNzc2LC02MzQ1NjQ3MTYsMTE1ODg4MTA0
-NCwtMTk4ODA4MzIwMSwxMTYzMjE4NzI5LC0xNzEwODAzODU4LC
-02NTUxMTYwNDIsLTE5ODMwMzEzODIsLTE2NjU2NzY0NzQsMTYx
-ODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NTE2MjE4NiwtMTg3NDcxND
-EwMiwzNTMwMzIzOTYsMjk0ODUxODUsLTEyNDY0Njg5MjcsLTM5
-MjAzNTkzM119
+eyJoaXN0b3J5IjpbLTE1Mjc4NzkzMTQsLTQ4NjI3NzM2NSwxNz
+kyNjkxNzEwLDg3NjAzNTEwOCwtNjU2MjczNzc2LC02MzQ1NjQ3
+MTYsMTE1ODg4MTA0NCwtMTk4ODA4MzIwMSwxMTYzMjE4NzI5LC
+0xNzEwODAzODU4LC02NTUxMTYwNDIsLTE5ODMwMzEzODIsLTE2
+NjU2NzY0NzQsMTYxODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NTE2Mj
+E4NiwtMTg3NDcxNDEwMiwzNTMwMzIzOTYsMjk0ODUxODUsLTEy
+NDY0Njg5MjddfQ==
 -->
