@@ -250,16 +250,15 @@ It can be made this way:<br>
 <p>This requires <strong>20 MOSFETs</strong> to build.</p>
 <p>Or the primitive way:</p>
 <ul>
-<li><strong>Step 1:</strong> Construct a <strong>pull-down circuitry</strong>:
+<li>
+<p><strong>Step 1:</strong> Construct a <strong>pull-down circuitry</strong>:</p>
 <ul>
 <li>for each ‘+’ (OR) we build a parallel NFET circuit</li>
 <li>for each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⋅</mo></mrow><annotation encoding="application/x-tex">\cdot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.44445em; vertical-align: 0em;"></span><span class="mord">⋅</span></span></span></span></span> (AND) we build a series NFET circuit</li>
 </ul>
-</li>
-</ul>
 <p>Therefore we have two sets of two NFETs in series:<br>
 <img src="https://www.dropbox.com/s/vsfyv7iefuv19cx/DEVMOS1.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong> Add inverter at the output.</p>
 <ul>
@@ -277,13 +276,13 @@ It can be made this way:<br>
 </ul>
 </li>
 <li>
-<p><strong>Step 3:</strong> Construct the complementary pull-up circuitry and assemble.</p>
+<p><strong>Step 3:</strong> Construct the <strong>complementary</strong> pull-up circuitry and assemble.</p>
 <blockquote>
 <p>Refer to the CMOS recipe in the previous chapter.</p>
 </blockquote>
+  <img src="https://www.dropbox.com/s/ft9xplwm26ksgks/devmos3.png?raw=1" alt="“F1”" width="60%" height="60%">
 </li>
 </ul>
-<img src="https://www.dropbox.com/s/ft9xplwm26ksgks/devmos3.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>This requires <strong>14 MOSFETs</strong> to build, lesser than the previous design. It is definitely easier (for us) to create a combinational logic device using a bunch of universal gates, but it comes at the cost of money and size.</p>
 <p>Note that the CMOS recipes that we learn in this course also <strong>does not guarantee</strong> that you can build a device with <strong>minimised number of transistors,</strong> given its functional specification. It is an <em>art</em> to create the most efficient circuit in terms of money, size, and usage.</p>
 <h2 id="special-combinational-logic-devices">Special Combinational Logic Devices</h2>
