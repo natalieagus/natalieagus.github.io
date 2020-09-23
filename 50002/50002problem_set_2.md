@@ -485,7 +485,7 @@ Answer the following questions based on the truth table:
 >
 >2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding OR gate for every +, INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products:
 ><img src="https://www.dropbox.com/s/39en3zjm86f3h6l/sumofpdt.png?raw=1"  width="50%" height = "50%">
-><br>To turn AND and ORs into just NANDs, we can turn the AND into NAND and add an inverter:
+><br>To turn AND and ORs into just NANDs, we can do this in two steps. First, turn the AND into NAND and add an inverter:
 ><img src="https://www.dropbox.com/s/o52diqfidgb7dul/sumofpdt1.png?raw=1"  width="50%" height = "50%">
 ><br>
 >Then apply DeMorgan law:
@@ -612,7 +612,7 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1MzM0Mjg4MiwxNzkyNjkxNzEwLDg3Nj
+eyJoaXN0b3J5IjpbLTQ4NjI3NzM2NSwxNzkyNjkxNzEwLDg3Nj
 AzNTEwOCwtNjU2MjczNzc2LC02MzQ1NjQ3MTYsMTE1ODg4MTA0
 NCwtMTk4ODA4MzIwMSwxMTYzMjE4NzI5LC0xNzEwODAzODU4LC
 02NTUxMTYwNDIsLTE5ODMwMzEzODIsLTE2NjU2NzY0NzQsMTYx
