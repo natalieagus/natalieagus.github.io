@@ -233,7 +233,7 @@ Consider the following circuit that implements the 2-input function $H(A,B)$:
 1. Write down the **truth table** for $H$.
 
 3. Give a **sum-of-products expression** that corresponds to your truth table.
-4. Using the information below, **what are the $t_{cd}$ and $t_{pd}$ of the circuit?**
+4. Using the information below, what are the $t_{cd}$ and $t_{pd}$ of the circuit?
 	- $t_{cd}$ and $t_{pd}$ of NR2:  5, 30
 	- $t_{cd}$ and $t_{pd}$ of ND2: 5, 30
 	- $t_{cd}$ and $t_{pd}$ of AN2:  6, 50
@@ -606,11 +606,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc2MDM1MTA4LC02NTYyNzM3NzYsLTYzND
-U2NDcxNiwxMTU4ODgxMDQ0LC0xOTg4MDgzMjAxLDExNjMyMTg3
-MjksLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMTk4MzAzMTM4Mi
-wtMTY2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5OTk3MTksNDc1
-MTYyMTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5NiwyOTQ4NTE4NS
-wtMTI0NjQ2ODkyNywtMzkyMDM1OTMzLC0xNjg2MzI5NjcxLDE1
-NDAxMjYwNzldfQ==
+eyJoaXN0b3J5IjpbMTIxNjE5NjMyNCw4NzYwMzUxMDgsLTY1Nj
+I3Mzc3NiwtNjM0NTY0NzE2LDExNTg4ODEwNDQsLTE5ODgwODMy
+MDEsMTE2MzIxODcyOSwtMTcxMDgwMzg1OCwtNjU1MTE2MDQyLC
+0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0LDE2MTg1ODM5NDAsLTU2
+Njk5OTcxOSw0NzUxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMz
+k2LDI5NDg1MTg1LC0xMjQ2NDY4OTI3LC0zOTIwMzU5MzMsLTE2
+ODYzMjk2NzFdfQ==
 -->
