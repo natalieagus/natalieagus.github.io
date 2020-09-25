@@ -82,8 +82,12 @@ Use only NAND gates to redraw the circuit below. Use as few NAND gates as possib
 <details>
 <summary markdown="span">Show Answer</summary>
 
+> If you directly convert with just NAND gates then you'll get: 
 > <img src="https://www.dropbox.com/s/ekfful2ybo9n5je/Q8.png?raw=1"  width="50%" height = "50%">
 </details>
+
+> You can minimise them first by minimising the boolean expression:
+> $$AC + \bar{A}C + B\bar{C}$$
 <br/>
 {::options parse_block_html="false" /}
 
@@ -612,11 +616,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Mjc4NzkzMTQsLTQ4NjI3NzM2NSwxNz
-kyNjkxNzEwLDg3NjAzNTEwOCwtNjU2MjczNzc2LC02MzQ1NjQ3
-MTYsMTE1ODg4MTA0NCwtMTk4ODA4MzIwMSwxMTYzMjE4NzI5LC
-0xNzEwODAzODU4LC02NTUxMTYwNDIsLTE5ODMwMzEzODIsLTE2
-NjU2NzY0NzQsMTYxODU4Mzk0MCwtNTY2OTk5NzE5LDQ3NTE2Mj
-E4NiwtMTg3NDcxNDEwMiwzNTMwMzIzOTYsMjk0ODUxODUsLTEy
-NDY0Njg5MjddfQ==
+eyJoaXN0b3J5IjpbNTA0OTAwOTQ2LC0xNTI3ODc5MzE0LC00OD
+YyNzczNjUsMTc5MjY5MTcxMCw4NzYwMzUxMDgsLTY1NjI3Mzc3
+NiwtNjM0NTY0NzE2LDExNTg4ODEwNDQsLTE5ODgwODMyMDEsMT
+E2MzIxODcyOSwtMTcxMDgwMzg1OCwtNjU1MTE2MDQyLC0xOTgz
+MDMxMzgyLC0xNjY1Njc2NDc0LDE2MTg1ODM5NDAsLTU2Njk5OT
+cxOSw0NzUxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5
+NDg1MTg1XX0=
 -->
