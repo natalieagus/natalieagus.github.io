@@ -87,7 +87,7 @@ Use only NAND gates to redraw the circuit below. Use as few NAND gates as possib
 </details>
 
 > You can minimise them first by minimising the boolean expression:
-> $$AC + \bar{A}C + B\bar{C}$$
+> $$AC + \bar{A}C + B\bar{C} = C+B\bar{C} = C + B = \overline{\overline{C}\bar{B}} $$
 <br/>
 {::options parse_block_html="false" /}
 
@@ -616,11 +616,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA0OTAwOTQ2LC0xNTI3ODc5MzE0LC00OD
-YyNzczNjUsMTc5MjY5MTcxMCw4NzYwMzUxMDgsLTY1NjI3Mzc3
-NiwtNjM0NTY0NzE2LDExNTg4ODEwNDQsLTE5ODgwODMyMDEsMT
-E2MzIxODcyOSwtMTcxMDgwMzg1OCwtNjU1MTE2MDQyLC0xOTgz
-MDMxMzgyLC0xNjY1Njc2NDc0LDE2MTg1ODM5NDAsLTU2Njk5OT
-cxOSw0NzUxNjIxODYsLTE4NzQ3MTQxMDIsMzUzMDMyMzk2LDI5
-NDg1MTg1XX0=
+eyJoaXN0b3J5IjpbMTg4ODc4MjIzOSwtMTUyNzg3OTMxNCwtND
+g2Mjc3MzY1LDE3OTI2OTE3MTAsODc2MDM1MTA4LC02NTYyNzM3
+NzYsLTYzNDU2NDcxNiwxMTU4ODgxMDQ0LC0xOTg4MDgzMjAxLD
+ExNjMyMTg3MjksLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMTk4
+MzAzMTM4MiwtMTY2NTY3NjQ3NCwxNjE4NTgzOTQwLC01NjY5OT
+k3MTksNDc1MTYyMTg2LC0xODc0NzE0MTAyLDM1MzAzMjM5Niwy
+OTQ4NTE4NV19
 -->
