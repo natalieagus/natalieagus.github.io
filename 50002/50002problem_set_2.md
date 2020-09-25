@@ -82,16 +82,17 @@ Use only NAND gates to redraw the circuit below. Use as few NAND gates as possib
 <details>
 <summary markdown="span">Show Answer</summary>
 
-> If you directly convert with just NAND gates then you'll get: 
-> <img src="https://www.dropbox.com/s/ekfful2ybo9n5je/Q8.png?raw=1"  width="50%" height = "50%">
-</details> 
-You can minimise them first by minimising the boolean expression: 
-$$AC + \bar{A}C + B\bar{C} = C+B\bar{C} = C + B = \overline{\bar{C}\bar{B}}$$
-Then we can easily draw this:
-<img src="https://www.dropbox.com/s/43ecrhtx84m2kpa/Q8new.png?raw=1" width="50%" height="50%">
+> If you directly convert with just NAND gates then you'll get:  <img
+> src="https://www.dropbox.com/s/ekfful2ybo9n5je/Q8.png?raw=1" 
+> width="50%" height = "50%"> You can minimise them first by minimising
+> the boolean expression:  $$AC + \bar{A}C + B\bar{C} = C+B\bar{C} = C +
+> B = \overline{\bar{C}\bar{B}}$$ Then we can easily draw this:  <img
+> src="https://www.dropbox.com/s/43ecrhtx84m2kpa/Q8new.png?raw=1"
+> width="70%" height="70%">
+
+</details>
 <br/>
 {::options parse_block_html="false" /}
-
 
 
 
@@ -617,7 +618,7 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MzQxMzA1NSwyMDMzNjA2NzQxLDEyMz
+eyJoaXN0b3J5IjpbMTgxNzQ5NDY4NSwyMDMzNjA2NzQxLDEyMz
 Y5MDIzODQsLTE1Mjc4NzkzMTQsLTQ4NjI3NzM2NSwxNzkyNjkx
 NzEwLDg3NjAzNTEwOCwtNjU2MjczNzc2LC02MzQ1NjQ3MTYsMT
 E1ODg4MTA0NCwtMTk4ODA4MzIwMSwxMTYzMjE4NzI5LC0xNzEw
