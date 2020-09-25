@@ -87,7 +87,7 @@ Use only NAND gates to redraw the circuit below. Use as few NAND gates as possib
 </details>
 
 > You can minimise them first by minimising the boolean expression:
-> $$AC + \bar{A}C + B\bar{C} = C+B\bar{C} = C + B = \overline{\overline{C}\bar{B}} $$
+> $$AC + \bar{A}C + B\bar{C} = C+B\bar{C} = C + B = \overline{\bar{C}\bar{B}} $$
 <br/>
 {::options parse_block_html="false" /}
 
@@ -616,7 +616,7 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4ODc4MjIzOSwtMTUyNzg3OTMxNCwtND
+eyJoaXN0b3J5IjpbMTIzNjkwMjM4NCwtMTUyNzg3OTMxNCwtND
 g2Mjc3MzY1LDE3OTI2OTE3MTAsODc2MDM1MTA4LC02NTYyNzM3
 NzYsLTYzNDU2NDcxNiwxMTU4ODgxMDQ0LC0xOTg4MDgzMjAxLD
 ExNjMyMTg3MjksLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMTk4
