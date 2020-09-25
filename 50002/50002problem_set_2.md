@@ -122,7 +122,7 @@ Answer the following questions:
 
 >1. The $t_{pd}$ is 1.8 and the $t_{cd}$  is 0.3 for a single FA. 
 >
->2. For the 8-bit ripple-carry adder, we do not have an input  $C_0$ as it is grounded However the $t_{cd}$​  is *still* 0.3 as the specification of contamination delay is **not** usage specific. Its  $t_{pd}$  is at least 8 times bigger than a single FA $\rightarrow$  $t_{pd}$= 14.4. To be exact, if  $A_i$ XOR $B_i$ is *parallel*, meaning that $A_i$, $B_i$ are given and valid at the same time for $i=0,1,...7$,  then the $t_{pd}$ is $1.8 + 7\times1.3 = 10.9$. 
+>2. For the 8-bit ripple-carry adder, we do not have an input  $C_0$ as it is grounded However the $t_{cd}$​  is *still* 0.3 as the specification of contamination delay is **not** usage specific. Its  $t_{pd}$  is at least 8 times bigger than a single FA $\rightarrow$  $t_{pd}$= 14.4. To be exact, if  $A_i$ XOR $B_i$ is *parallel*, meaning that $A_i$, $B_i$ are given and valid at the same time for all adder units $i=0,1,...7$,  then the $t_{pd}$ is $1.8 + 7\times1.3 = 10.9$. 
 > 
 > However if the question is asking for the  $t_{cd}$  of  **this**  particular device with no  $C_0$ input terminal at all then the answer is  **0.6ns**  since there's no  $C_0$. 
 </details>
@@ -619,11 +619,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg0ODAzMDMzLC0xMTE2MjU4MzkzLC0xMD
-A3NTYzMTgzLDIwMzM2MDY3NDEsMTIzNjkwMjM4NCwtMTUyNzg3
-OTMxNCwtNDg2Mjc3MzY1LDE3OTI2OTE3MTAsODc2MDM1MTA4LC
-02NTYyNzM3NzYsLTYzNDU2NDcxNiwxMTU4ODgxMDQ0LC0xOTg4
-MDgzMjAxLDExNjMyMTg3MjksLTE3MTA4MDM4NTgsLTY1NTExNj
-A0MiwtMTk4MzAzMTM4MiwtMTY2NTY3NjQ3NCwxNjE4NTgzOTQw
-LC01NjY5OTk3MTldfQ==
+eyJoaXN0b3J5IjpbLTYwMzk5NDUzMyw2ODQ4MDMwMzMsLTExMT
+YyNTgzOTMsLTEwMDc1NjMxODMsMjAzMzYwNjc0MSwxMjM2OTAy
+Mzg0LC0xNTI3ODc5MzE0LC00ODYyNzczNjUsMTc5MjY5MTcxMC
+w4NzYwMzUxMDgsLTY1NjI3Mzc3NiwtNjM0NTY0NzE2LDExNTg4
+ODEwNDQsLTE5ODgwODMyMDEsMTE2MzIxODcyOSwtMTcxMDgwMz
+g1OCwtNjU1MTE2MDQyLC0xOTgzMDMxMzgyLC0xNjY1Njc2NDc0
+LDE2MTg1ODM5NDBdfQ==
 -->
