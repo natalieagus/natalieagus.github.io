@@ -556,8 +556,11 @@ The following is **a list of the possible configurations.**
 **(a)**. An arbitrary function F of **up to four unrelated input variables**, plus another arbitrary function G of **up to four unrelated input variables,** plus a third arbitrary function H of **up to three unrelated input variables.**
 
 **(b)**. **An arbitrary single function of five variables.**
+
 **(c)**.  **An arbitrary function of four variables** together *with some functions of six variables.* Characterize the functions of six variables that can be implemented.  
+
 **(d)**. **Some functions of up to nine variables.** Characterize the functions of up to nine variables that can be implemented.
+
 **(e)**. **Can every function of six inputs be implemented?** If so, explain how. If not, give a 6-input function and explain why it can't be implemented in the CLB.
 
 
@@ -619,7 +622,7 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NTQyMDg2MywtNjAzOTk0NTMzLDY4ND
+eyJoaXN0b3J5IjpbMTg0MjE2MjIyMSwtNjAzOTk0NTMzLDY4ND
 gwMzAzMywtMTExNjI1ODM5MywtMTAwNzU2MzE4MywyMDMzNjA2
 NzQxLDEyMzY5MDIzODQsLTE1Mjc4NzkzMTQsLTQ4NjI3NzM2NS
 wxNzkyNjkxNzEwLDg3NjAzNTEwOCwtNjU2MjczNzc2LC02MzQ1
