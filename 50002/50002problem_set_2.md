@@ -491,8 +491,8 @@ Answer the following questions based on the truth table:
 >1. $\overline{A}\text{ }\overline{B}\text{ }\overline{C} + \overline{A}BC + A \overline{B}\text{ }\overline{C} + A \overline{B}C + ABC$.
 >
 >2. **The minimal sum of products is :** $\overline{B}A + \overline{B} \text{ } \overline{C} + BC$. You can draw a combinational circuit of this by adding an input to a  big OR gate for every '+', INV (where necessary for negated input) with AND gate for every *pair* of input in the minimal sum of products:
->><img src="https://www.dropbox.com/s/39en3zjm86f3h6l/sumofpdt.png?raw=1"  width="50%" height = "50%">
-	><br>To turn AND and ORs into just NANDs, we can do this in two steps. First, turn the AND into NAND and add an inverter:<br>
+><img src="https://www.dropbox.com/s/39en3zjm86f3h6l/sumofpdt.png?raw=1"  width="50%" height = "50%">
+><br>To turn AND and ORs into just NANDs, we can do this in two steps. First, turn the AND into NAND and add an inverter:<br>
 ><img src="https://www.dropbox.com/s/o52diqfidgb7dul/sumofpdt1.png?raw=1"  width="50%" height = "50%">
 ><br>
 >Then apply DeMorgan law:<br>
@@ -619,11 +619,11 @@ MC = X (value doesn't matter)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc1NTM3NTUxLC02MDM5OTQ1MzMsNjg0OD
-AzMDMzLC0xMTE2MjU4MzkzLC0xMDA3NTYzMTgzLDIwMzM2MDY3
-NDEsMTIzNjkwMjM4NCwtMTUyNzg3OTMxNCwtNDg2Mjc3MzY1LD
-E3OTI2OTE3MTAsODc2MDM1MTA4LC02NTYyNzM3NzYsLTYzNDU2
-NDcxNiwxMTU4ODgxMDQ0LC0xOTg4MDgzMjAxLDExNjMyMTg3Mj
-ksLTE3MTA4MDM4NTgsLTY1NTExNjA0MiwtMTk4MzAzMTM4Miwt
-MTY2NTY3NjQ3NF19
+eyJoaXN0b3J5IjpbMTQ2NTQyMDg2MywtNjAzOTk0NTMzLDY4ND
+gwMzAzMywtMTExNjI1ODM5MywtMTAwNzU2MzE4MywyMDMzNjA2
+NzQxLDEyMzY5MDIzODQsLTE1Mjc4NzkzMTQsLTQ4NjI3NzM2NS
+wxNzkyNjkxNzEwLDg3NjAzNTEwOCwtNjU2MjczNzc2LC02MzQ1
+NjQ3MTYsMTE1ODg4MTA0NCwtMTk4ODA4MzIwMSwxMTYzMjE4Nz
+I5LC0xNzEwODAzODU4LC02NTUxMTYwNDIsLTE5ODMwMzEzODIs
+LTE2NjU2NzY0NzRdfQ==
 -->
