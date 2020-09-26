@@ -21,7 +21,7 @@ Each topic's questions are grouped into **three** categories: basic, intermediat
 {% include toc.html %}
 {::options parse_block_html="false" /}
 
-# Basics of Information Theory
+# Basics of Information 
 You can refer to the notes <a href="https://natalieagus.github.io/50002/basics_of_information.html" target="_blank">here</a> if you need to revise. 
 
 ### Warm Up (Basic)
@@ -658,11 +658,11 @@ Which of the following specification(s) **does not obey** the static discipline?
 <br/>
 {::options parse_block_html="false" /}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNzc4MDMzNywxMzEyODM5Mzc1LDE2OD
-M1MjQzNDYsLTQzMTIxMTIzMSwtNTQyNTY4NDQzLDExNjU5ODk0
-NjksMTQ2NjkyMzc3NiwtMjY4NTk5ODg2LC0yMjAzMzUzMDYsLT
-I5MTY5NDMyNCw4NTQwNDgxMjAsLTE2NzA1ODEwMCwtMzM0ODg3
-MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3MiwxNTM4MDM1ODQyLC
-0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMTgyNDU0NDQ4Nyw2MTA0
-NzkzNDldfQ==
+eyJoaXN0b3J5IjpbLTIxMTkwNzkyNDQsLTUwNzc4MDMzNywxMz
+EyODM5Mzc1LDE2ODM1MjQzNDYsLTQzMTIxMTIzMSwtNTQyNTY4
+NDQzLDExNjU5ODk0NjksMTQ2NjkyMzc3NiwtMjY4NTk5ODg2LC
+0yMjAzMzUzMDYsLTI5MTY5NDMyNCw4NTQwNDgxMjAsLTE2NzA1
+ODEwMCwtMzM0ODg3MzY2LC0yNzA5MzQ3NDgsMjAyNDA3MjA3Mi
+wxNTM4MDM1ODQyLC0xMDcxMzUzNDY4LC0xMjA1NDY1MTgsMTgy
+NDU0NDQ4N119
 -->
