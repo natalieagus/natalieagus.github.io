@@ -81,7 +81,8 @@ Singapore University of Technology and Design<br>
 </blockquote>
 <p>The figure below illustrates an example of 4-bit input and corresponding 4-bit output. Each of the device drawn as a rectangle (with the “&gt;” symbol at its lower left corner) is called a <strong>Flip-Flop</strong> (see later section).  They are made up of D-latches.</p>
 <img src="https://www.dropbox.com/s/ruxrkxm1r6kog88/s1.png?raw=1" alt="Fig3" width="60%" height="60%">
-<p>Possible problems with using this simple D-latch without any contract / rules. <mark> <strong>Note</strong>: From this point onwards, ‘1’ simply means valid high voltage, and ‘0’ means valid low voltage </mark>.</p>
+<p><mark> <strong>Note</strong>: From this point onwards, ‘1’ simply means valid high voltage, and ‘0’ means valid low voltage </mark>.</p>
+<p>There are <strong>two</strong> problems that arises from using this simple D-latch in our electronic devices without any contract / rules:</p>
 <ol>
 <li>
 <p><strong>Storage of invalid information:</strong> If G changes from <code>1</code> to <code>0</code> at the <em><strong>exact</strong></em> moment when D just turned <strong>invalid</strong> from previously being valid, then we might end up storing that  <strong>invalid value of D</strong> when the latch enters memory mode.</p>
