@@ -89,7 +89,7 @@ Singapore University of Technology and Design<br>
 <li>
 <p><strong>Invalid/unstable output due to transition in input:</strong> If the <em>existing</em> stable input value in D is flipped, e.g: is changed from ‘1’ to ‘0’ or vice versa,  the value at D will be invalid (<em>momentarily</em>) during this <em>transition</em>. The voltage value at D can also be invalid (unstable, unreliable) due to any disturbance.</p>
 <p>This will affect the output at Q if G is 1, because it will pass <strong>all</strong> input from D to the output wire Q, regardless of whether it is a valid or stable input or not (during transition or any disturbance).</p>
-<p>In practice, this is <em>not acceptable</em> because we do not want our devices to have invalid output (be unstable) at any point in time, <em>even when D is transitioning</em>. Therefore, we create another device using D-latches, and they are called <strong>D Flip-Flop</strong> or more informally a <em>Register</em>.</p>
+<p>In practice, this is <em>not acceptable</em> because we do not want our devices (e.g: computers) to have invalid output (be unstable, or hang, or freeze) at any point in time, <em>even when D is transitioning</em>. Therefore, we create another device using D-latches, and they are called <strong>D Flip-Flop</strong> or more informally a <em>Register</em>.</p>
 </li>
 </ol>
 <p>We address these problems in the next two sections.</p>
