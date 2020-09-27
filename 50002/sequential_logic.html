@@ -22,7 +22,7 @@
 <li><a href="#t_pd-and-t_cd-of-sequential-logic-vs-combinational-logic-devices">tpdt_{pd}tpd​ and tcdt_{cd}tcd​ of Sequential Logic vs Combinational Logic Devices</a></li>
 <li><a href="#flip-flop-timing-constraint">Flip-Flop Timing Constraint</a></li>
 <li><a href="#sequential-logic-device-timing-constraint">Sequential Logic Device Timing Constraint</a></li>
-<li><a href="#synchronization">Synchronization</a></li>
+<li><a href="#synchronization-with-input">Synchronization with Input</a></li>
 <li><a href="#the-metastable-state">The Metastable State</a></li>
 <li><a href="#summary">Summary</a></li>
 </ul>
@@ -140,7 +140,7 @@ Singapore University of Technology and Design<br>
 </li>
 </ul>
 <p><strong>How does a Flip-Flop prevents the presence of invalid/unstable output during transition/disturbance of input at D?</strong></p>
-<ol>
+<ul>
 <li>
 <p>The observer/user gets output only from the output wire of the <strong>slave</strong> latch’s Q port, and the observer/user supplies input only to the <strong>master</strong> latch’s D port.</p>
 </li>
@@ -161,7 +161,7 @@ Singapore University of Technology and Design<br>
 <li>
 <p>Unlike a single D-latch alone, this Flip-Flop configuration <strong>prevents</strong> a <em>direct</em> reflection of the input of the system (supplied by the user) to the output of the system.</p>
 </li>
-</ol>
+</ul>
 <p>The explanation above is illustrated in terms of <strong>waveforms</strong> below. Take some time to study the waveforms and convince yourselves that they make sense. Note that “Q” here means the overall output of the Flip-Flop, which is signal produced by the Q port of the slave latch.</p>
 <img src="https://www.dropbox.com/s/lsovnj1u8s9d95i/ffwaveform.png?raw=1" width="70%" height="70%">
 <p>Notice two further behaviors in the Flip-Flop:</p>
@@ -264,7 +264,7 @@ Singapore University of Technology and Design<br>
 </ul>
 <p>We can call the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub><mi>C</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">t_{PD} CL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault">L</span></span></span></span></span> (propagation delay of the CL) as the time taken to do <strong>actual work</strong> or <strong>logic computation</strong>.</p>
 <p>The propagation or contamination delays of a Flip-Flop is not considered a logic computation, because unlike combinational logic devices (that can be made to implement functionalities such as addition, subtraction, boolean expressions, etc), a Flip-Flop <strong>does not implement</strong> any other special functionalities except to function as a memory device.</p>
-<h2 id="synchronization">Synchronization</h2>
+<h2 id="synchronization-with-input">Synchronization with Input</h2>
 <p>In any sequential logic circuit, we use a <strong>single synchronous clock</strong>, meaning that we use one same clock to any Flip-Flop in the device.</p>
 <p>However in practice, it is <strong>not possible</strong> for any arbitrary input to always be synchronised with the clock, i.e: to obey the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">t_S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">t_H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> requirements at all times. Recall that dynamic discipline is crucial for any sequential logic circuit to work properly. We are now going to discuss what happens if <strong>dynamic discipline is violated</strong>.</p>
 <img src="https://www.dropbox.com/s/ucujrzj5imp4xxy/metas.png?raw=1" alt="Figure10" width="60%" height="60%">
