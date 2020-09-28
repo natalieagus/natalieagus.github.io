@@ -68,10 +68,10 @@ Singapore University of Technology and Design<br>
 <p>Q is fed back as Q’, the first input port of the latch.</p>
 </li>
 <li>
-<p>If G is 1, then the input signal on wire D will be passed to output wire Q, <em>independent of the signal on wire Q’.</em> Lets call this the <strong>write mode</strong>.</p>
+<p>If G is 1, then the input signal on wire D will be “passed” to / reflected at output wire Q, <em>independent of the signal on wire Q’.</em> Lets call this the <strong>write mode</strong>. </p><div class="redborder">The word “pass” is used to easily explain the behavior of the mux, that when G=1, then value at Q always reflects the value at D. However recall from from Week 1 lecture (CMOS) that the signal at Q is actually due to the VDD or GND and D is simply the input at the gate that activates or deactivates the pull-up or pull-down components of the latch.</div><p></p>
 </li>
 <li>
-<p>If G is 0, then output signal on wire Q follows the signal on wire Q’, <em>independent of input wire D</em>. Lets call this the <strong>read memory mode</strong>.</p>
+<p>If G is 0, then output signal on wire Q reflects the signal on wire Q’, <em>independent of input wire D</em>. Lets call this the <strong>read memory mode</strong>.</p>
 </li>
 </ul>
 <p>How we intend to use the device:</p>
