@@ -13,7 +13,7 @@
     <div class="stackedit__toc">
       
 <ul>
-<li><a href="#sequential-logic-and-sychronization">Sequential Logic and Sychronization</a>
+<li><a href="#sequential-logic-and-synchronization">Sequential Logic and Synchronization</a>
 <ul>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#storage-device-d-latch">Storage Device: D-Latch</a></li>
@@ -37,7 +37,7 @@
 Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
-<h1 id="sequential-logic-and-sychronization">Sequential Logic and Sychronization</h1>
+<h1 id="sequential-logic-and-synchronization">Sequential Logic and Synchronization</h1>
 <h2 id="overview">Overview</h2>
 <p>So far we have learned the basics of <strong>combinational logic device</strong>, which is in essence a device that is capable to adhere to a given functional specification (truth table). One apparent feature of a combinational logic device is that its output always depends on the <strong>current</strong> input.  However, external input is <em>unreliable</em>, and there’s no guarantee that the input will be available for at least <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.9011879999999999em; vertical-align: -0.286108em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.3361079999999999em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.286108em;"><span class=""></span></span></span></span></span></span></span></span></span></span>–until the combinational device produces meaningful results. We need to find a way to <strong>synchronize</strong> the external input signal such that there’s enough time for the entire circuit to finish its computation properly.</p>
 <p>We also need to create another type of device, called the sequential logic device, whereby its output depends not only on the current input, but a <em>series of past inputs</em> as well.  If a sequential logic device has a finite number of states, it also known as the finite state machine (FSM). The FSM can be seen as an abstract mathematical model of a <strong>sequential</strong> logic function. More about FSM can be learned in the next chapter.</p>
@@ -154,7 +154,7 @@ Singapore University of Technology and Design<br>
 </li>
 <li>
 <p>When CLK signal is 1, the G port of <strong>master</strong> latch will receive a <code>0</code> due to the inverter and the G wire of <strong>slave</strong> latch will receive a 1.</p>
-<p>This means that the <strong>master</strong> latch is in “memory mode”, i.e: master’s output depends on its own memory  Q’ and is not affected by any value on input port D. Meanwhile, the <strong>slave</strong> latch is on “write mode”, i.e: it lets signal from the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⋆</mo></mrow><annotation encoding="application/x-tex">\star</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">⋆</span></span></span></span></span> wire to be passed through its slave output port D.</p>
+<p>This means that the <strong>master</strong> latch is in “memory mode”, i.e: master’s output depends on its own memory  Q’ and is not affected by any value on input port D. Meanwhile, the <strong>slave</strong> latch is on “write mode”, i.e: it lets signal from the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⋆</mo></mrow><annotation encoding="application/x-tex">\star</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.46528em; vertical-align: 0em;"></span><span class="mord">⋆</span></span></span></span></span> wire to be passed through its slave input port D.</p>
 </li>
 <li>
 <p>Hence, <strong>only ONE of the two D-Latches is on “write mode” at a time</strong> or equivalently, <strong>only one D-latch is on “memory-mode” at a time.</strong></p>
