@@ -112,7 +112,7 @@ The combinational logic unit 1 (CL1) is responsible for the hold times of R4 and
 <p>Write down the minimum CLK period for the sequential circuit to function properly.</p>
 <div class="collapsible">Show Answer</div>  <div class="content">
 <p>
-The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4. There are <strong>six</strong> paths to be considered in total where $t_2$ constraint must be obeyed in <strong>all</strong> of them: R1-CL1-R1, R1-CL1-R4, R2-CL1-R1, R2-CL1-R4, R3-CL1-R1, and R3-CL1-R4. The longest path is formed by the $t_{PD}$ of R1 + $t_{PD}$ CL1 + $t_{S}$ R4 = 1 + 2 + 2 = 5ns.
+The clock period must be big enough for signals to propagate from the upstream registers on the left to any downstream registers R1 or R4.<br><br>There are <strong>six</strong> paths to be considered in total where $t_2$ constraint must be obeyed in <strong>all</strong> of them: R1-CL1-R1, R1-CL1-R4, R2-CL1-R1, R2-CL1-R4, R3-CL1-R1, and R3-CL1-R4.<br><br>The longest path is formed by the $t_{PD}$ of R1 + $t_{PD}$ CL1 + $t_{S}$ R4 = 1 + 2 + 2 = 5ns.
 </p>
 </div>
 </li>
