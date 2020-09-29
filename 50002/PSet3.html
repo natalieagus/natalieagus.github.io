@@ -558,7 +558,46 @@ Given that the initial state is <code>AB=00</code>, that makes <code>B = 1</code
 <p>What is the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>P</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{PD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.13889em;">P</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A2</code> in nanosecond?</p>
  <div class="collapsible">Show Answer</div>  <div class="content">
  <p>
- The  $t_{PD}$  of <code>A000R</code> is 3ns, hence the  $t_{PD}$  of <code>A2</code> is <code>9ns</code></p></div></li></ol><p>Now, suppose that at time <code>t=0</code>, <code>RESET</code> signal is changed from <code>1</code> to <code>0</code>, and <code>X</code> becomes <code>001</code>. From then on, <code>RESET</code> remains 0:</p>
+ The  $t_{PD}$  of <code>A000R</code> is 3ns, hence the  $t_{PD}$  of <code>A2</code> is <code>9ns</code> since it is made out of three <code>A000R</code> modules connected in series.
+ </p></div>
+</li>
+<li>
+<p>What is the minimum clock period in nanosecond?</p>
+ <div class="collapsible">Show Answer</div>  <div class="content">
+ <p>
+ 	The <i>longest</i> path that the clock period has to satisfy is <code>R1 -&gt; A1 -&gt; A2 -&gt; Z1 -&gt; R2</code>. Hence we need to consider the $t_{PD}$ of all devices in its path (except <code>R2</code>) plus $t_S$ of <code>R2: 5+9+9+2+2 = 27ns</code>.
+ </p></div>
+</li>
+<li>
+<p>What is the minimum <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> of <code>A1</code> in nanosecond?</p>
+ <div class="collapsible">Show Answer</div>  <div class="content">
+ <p>
+ $t_{CD}$ of <code>A1</code> has to be large enough so as to satisfy  $t_H$ of `R1`. $t_H$ of <code>R1</code> is <code>2ns</code>, and  $t_{CD}$ of the mux is <code>1ns</code>. Therefore min $t_{CD}$ of <code>A1</code> is <code>2-1 = 1ns</code>.
+ </p></div>
+</li>
+<li>
+<p>What is value of <code>A2</code>'s <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{CD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.76508em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.32833099999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right: 0.07153em;">C</span><span class="mord mathdefault mtight" style="margin-right: 0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> in nanosecond?</p>
+ <div class="collapsible">Show Answer</div>  <div class="content">
+ <p>
+ The $t_{CD}$ of <code>A2</code> is basically the $t_{CD}$ of a single <code>A000R (1ns)</code> since that is the <i>shortest</i> path from any input to any output in <code>A2</code>.
+ </p></div>
+</li>
+<li>
+<p>When <code>RESET</code> is <code>1</code> for several cycles, what will be the value of <code>X[2:0]</code>?</p>
+ <div class="collapsible">Show Answer</div>  <div class="content">
+ <p>
+ When <code>RESET</code> is <code>1</code>, the output of <code>R1</code> will be <code>000</code>. Hence the value of <code>X[2:0]</code> will be <code>001</code>..
+ </p></div>
+</li>
+<li>
+<p>When X’s output is sequences of value <code>[1, 2, 3, ...]</code>, what is the value of <code>RESET</code>?</p>
+<div class="collapsible">Show Answer</div>  <div class="content">
+<p>
+<code>RESET</code> has to be <code>0</code> to enable the <i>addition</i> of the previous value of X to take effect, and form a new value of X in the next clock cycle.
+</p></div>
+</li>
+</ol>
+<p>Now, suppose that at time <code>t=0</code>, <code>RESET</code> signal is changed from <code>1</code> to <code>0</code>, and <code>X</code> becomes <code>001</code>. From then on, <code>RESET</code> remains 0:</p>
 <ol>
 <li>
 <p>What is the decimal value of <code>O[2:0]</code> at time <code>t = 0</code>?</p>
