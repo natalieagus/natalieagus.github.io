@@ -309,7 +309,10 @@ Y &amp;= \overline{C} \text{ }\overline{B} A + \overline{C} B A + CB\overline{A}
 <li>1-bit output.</li>
 </ul>
 <p>It’s function basically “<em>allows</em>” one of the input signals to be reflected at  <code>OUT</code> when selected.</p>
-<p>For example in the case of 2-input mux below, when S=0, it will produce the signal  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault">A</span></span></span></span></span> as its output:</p>
+<p>For example in the case of 2-input mux below, when S=0, it will reflect whatever value the signal  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault">A</span></span></span></span></span> carries (<code>1</code> or <code>0</code>) as its output:</p>
+<blockquote>
+<p>Take some time to make sense of the truth table. That is if S=0, OUT = A. Else, if S=1, OUT = B.</p>
+</blockquote>
 <img src="https://www.dropbox.com/s/nbatvm3m7xvq279/muxtt.png?raw=1" alt="Figure3" width="50%" height="50%">
 <p>You can build a 2-input multiplexer using basic gates:<br>
 <img src="https://www.dropbox.com/s/kl35pytim23xlm4/muxin.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
