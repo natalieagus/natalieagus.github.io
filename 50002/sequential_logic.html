@@ -55,6 +55,9 @@ Singapore University of Technology and Design<br>
 <h2 id="storage-device-d-latch">Storage Device: D-Latch</h2>
 <p>A D Flip-Flop (memory device) is made using another device called a D-latch.  A D-latch can be created using a multiplexer with a <strong>feedback</strong> <strong>loop</strong>,</p>
 <img src="https://www.dropbox.com/s/612f6bsfepegsbb/Q2.png?raw=1" alt="Fig2" width="30%" height="30%">
+<blockquote>
+<p>Note: this is <strong>not</strong> the only way to make a D-latch. A simple Google search will present you with some other alternatives.  We just use a multiplexer here to explain the idea easily.</p>
+</blockquote>
 <p>How it works:</p>
 <ul>
 <li>
@@ -68,7 +71,7 @@ Singapore University of Technology and Design<br>
 <p>Q is fed back as Q’, the first input port of the latch.</p>
 </li>
 <li>
-<p>If G is 1, then the input signal on wire D will be “passed” to / reflected at output wire Q, <em>independent of the signal on wire Q’.</em> Lets call this the <strong>write mode</strong>. </p><div class="redborder">The word “pass” is used to easily explain the behavior of the mux, that when G=1, then value at Q always reflects the value at D. However recall from from Week 1 lecture (CMOS) that the signal at Q is actually due to the VDD or GND and D is simply the input at the gate that activates or deactivates the pull-up or pull-down components of the latch.</div><p></p>
+<p>If G is 1, then the input signal on wire D will be “passed” to / reflected at output wire Q, <em>independent of the signal on wire Q’.</em> Lets call this the <strong>write mode</strong>. </p><div class="redborder">The word “pass” through is used from this point onwards in this chapter to easily explain the behavior of the mux, that when G=1, then value at Q always reflects the value at D. However recall from from Week 1 lecture (CMOS) that the signal at Q is actually due to the VDD or GND and D is simply the input at the gate that activates or deactivates the pull-up or pull-down components of the latch.</div><p></p>
 </li>
 <li>
 <p>If G is 0, then output signal on wire Q reflects the signal on wire Q’, <em>independent of input wire D</em>. Lets call this the <strong>read memory mode</strong>.</p>
