@@ -54,7 +54,7 @@ Singapore University of Technology and Design<br>
 <p>Other notable components of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.10903em;">M</span></span></span></span></span>:</p>
 <ul>
 <li>A decrement unit symbolised as <code>-1</code></li>
-<li>Computation of  <code>z = (input == 0) : 1 : 0</code></li>
+<li>Computation of  <code>z = (input == 0) ? 1 : 0</code></li>
 <li>A multiplier unit symbolised as <code>*</code></li>
 </ul>
 <p>In other words, we <strong>can control the processing of inputs at each time-step</strong> (clock cycle) with a (plugged in) Control FSM unit.</p>
@@ -260,7 +260,7 @@ instruction is considered <strong>atomic</strong> and is presumed to <strong>com
 <li><strong>Instructions with literals</strong> (Type 2) include all other operations and instruction literals is represented in two’s complement.</li>
 </ul>
 <p>The figure below shows the two types of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instruction encoding:</p>
- <img src="https://www.dropbox.com/s/6sij3diwmtxs7q3/S4.png?raw=1" alt="“F1”" width="80%" height="80%">
+ <img src="https://www.dropbox.com/s/6sij3diwmtxs7q3/S4.png?raw=1" alt="“F1”" width="100%" height="100%">
 <p>The 32-bit instruction <code>I</code> is segmented to various sections:</p>
 <ol>
 <li>The <code>OPCODE =I[31:26]</code> is 6 bits long. The <code>OPCODE</code> signifies different types of operation. They are summarised in the table below:</li>
