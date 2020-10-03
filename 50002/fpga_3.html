@@ -385,11 +385,9 @@ This can be fixed if we specify <strong>all</strong> pins on Alchitry Br, but th
 <code>filename.xdc</code> (name it anything you want as long as the extension is <code>.xdc</code>. </li>
 <li>Add it under Constraints, </li>
 <li>Paste the content of <code>alchitry.xdc</code> to it, and </li>
-<li>Add two more line to ignore the warning: <pre><code>set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
-set_property SEVERITY {Warning} [get_drc_checks UCIO-1]</code></pre></li></ul></div> 
-<blockquote>
-<p>It is always a good habit to remove all unused input / output ports from the constraint files.</p>
-</blockquote>
+<li>Add three more lines to ignore the warning and allow unconstrained bistream: <pre><code>set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
+set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
+set_property BITSTREAM.General.UnconstrainedPins {Allow} [current_design]</code></pre></li></ul></div> 
 <p><mark> You can define an <strong>output</strong> pin in the following format,</mark></p>
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt;
 </code></pre>
