@@ -368,9 +368,9 @@ io_led[1][2:0] = sc.out_result; //result
 <p>When you have built and run the program, try pressing some of the <code>io_button</code> and observe the output. If you press <code>io_button[3]</code> then <code>io_button[2]</code>, it will match the <code>const MATCH</code> and all three bits of <code>io_led[1][2:0]</code> will light up.</p>
 <h2 id="using-external-output">Using External Output</h2>
 <p>Finally, we will try to show the result <code>sc.out_result</code> on an external LED instead. You need to use the <code>Br</code> board for this (the middle board in the stack). Take a look our custom <a href="https://drive.google.com/file/d/1T3Vth8YpqDq1iOcPEW6TWjwVH0-h-59C/view?usp=sharing" target="_blank">Br board schematic</a>. You can route your signals to any pin that supports IO and define them in the <strong>constraints file.</strong></p>
-<p>Create a new <strong>constraint</strong> file (at the constraint folder) and name it <code>custom</code> (or any othr nameyou want, as long as the extension is <code>.acf</code>) . <strong>Do not build first</strong>.</p>
-<p><mark> <strong>Important:</strong> You are recommended to just have <strong>one</strong> constraint file. If you need the default I/O terminals on Alchitry Io, then copy over the contents of the other two acf files, <code>io.acf</code> and <code>alchitry.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>.</mark></p>
-<div class="redborder"> Paste the contents of other constraints <code>.acf</code> file to this new <code>custom.acf</code> one and delete all others. At this point if you build, chances are you will be met some error as such:
+<p>Create a new <strong>constraint</strong> file (at the constraint folder) and name it <code>custom</code> (or any other name that you want, as long as the extension is <code>.acf</code>) .</p>
+<p><mark> <strong>Important:</strong> You are recommended to just have <strong>one</strong> constraint file. If you need the default I/O terminals on Alchitry Io, then copy over the contents of the other two acf files, <code>io.acf</code> and <code>alchitry.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>. Paste the contents of other constraints <code>.acf</code> file to this new <code>custom.acf</code> one and delete all others. </mark></p>
+<div class="redborder"> At this point if you build, chances are you will be met some error as such:
 <pre><code>ERROR: [DRC NSTD-1] 
 Unspecified I/O Standard: N out of 57 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value.
 This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, ...
@@ -381,13 +381,12 @@ This design will fail to generate a bitstream unless all logical ports have a us
 </code></pre>
 This can be fixed if we specify <strong>all</strong> pins on Alchitry Br (recommended), but that will be quite troublesome. You can however choose to ignore them:
 <ul>
-<li> Create a new file called 
-<code>filename.xdc</code> (name it anything you want as long as the extension is <code>.xdc</code>. </li>
-<li>Add it under Constraints, </li>
+<li> Create a new file under "Constraints" (right click &gt;&gt; New File) with name 
+<code>filename.xdc</code> (name it anything you want as long as the extension is <code>.xdc</code>). It should fall under "User Constraint" option. </li>
 <li>Paste the content of <code>alchitry.xdc</code> to it, and </li>
 <li>Add three more lines to ignore the warning and allow unconstrained bistream: <pre><code>set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
 set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
-set_property BITSTREAM.General.UnconstrainedPins {Allow} [current_design]</code></pre></li></ul></div> 
+set_property BITSTREAM.General.UnconstrainedPins {Allow} [current_design]</code></pre></li></ul></div>
 <p><mark> You can define an <strong>output</strong> pin in <code>custom.acf</code> in the following format,</mark></p>
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt;
 </code></pre>
