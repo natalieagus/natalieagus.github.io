@@ -388,7 +388,7 @@ This can be fixed if we specify <strong>all</strong> pins on Alchitry Br (recomm
 <li>Add three more lines to ignore the warning and allow unconstrained bistream: <pre><code>set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
 set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
 set_property BITSTREAM.General.UnconstrainedPins {Allow} [current_design]</code></pre></li></ul></div> 
-<p><mark> You can define an <strong>output</strong> pin in the following format,</mark></p>
+<p><mark> You can define an <strong>output</strong> pin in <code>custom.acf</code> in the following format,</mark></p>
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt;
 </code></pre>
 
