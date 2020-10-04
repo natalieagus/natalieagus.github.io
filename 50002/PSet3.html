@@ -475,7 +475,7 @@ The combination for the lock is <code>100</code>.
  <p>
  From the frequency, we can compute the <i>period</i> of the clock to be <code>10ns</code>. 
  <br><br>
- For the <strong>worst</strong> case delay, we need to consider the scenario that input <code>x</code> is propagated up to input of the register and <i>it just missed the <code>clk</code> rise</i>. It takes <code>4ns</code> to propagate through the <code>AND</code> and <code>OR</code> gates, and another <code>10ns</code> to wait for another <code>clk</code> rise. Finally, it takes <code>10ns</code> to propagate through the register to produce <code>A</code> or <code>B</code>. Hence the **worst case delay** is <code>4+10+2 = 16ns</code>.
+ For the <strong>worst</strong> case delay, we need to consider the scenario that input <code>x</code> is propagated up to input of the register and <i>it just missed the <code>clk</code> rise</i>. It takes <code>4ns</code> to propagate through the <code>AND</code> and <code>OR</code> gates, and another <code>10ns</code> to wait for another <code>clk</code> rise. Finally, it takes <code>2ns</code> to propagate through the register to produce <code>A</code> or <code>B</code>. Hence the <strong>worst case delay</strong> is <code>4+10+2 = 16ns</code>.
  </p></div>
 </li>
 <li>
@@ -489,7 +489,7 @@ The combination for the lock is <code>100</code>.
 <p>What are the output sequences from <code>t=1</code> to <code>t=16</code> of the circuit when fed the following input (fed from <em>left</em> to <em>right</em>): <code>1101 1111 1110 0010</code> from <code>t=0</code> to <code>t=15</code> respectively? Assume that the initial states are <code>AB=00</code>.</p>
 <div class="collapsible">Show Answer</div>  <div class="content">
 <p>
-Given that the initial state is <code>AB=00</code>, that makes <code>B = 1</code> at <code>t=0</code>.  This is doable the tedious way by simply tracing the output <code>y</code> sixteen times from <code>t=1</code> to <code>t=16</code>. We can also deduce from the functionality of the device, that is to <strong>detect</strong> three consecutive <code>1</code>'s and output <code>0</code> afterwards. The output sequence is therefore <code>0000 0010 0000 0000</code> from <code>t=1</code> to <code>t=16</code>. repectively.
+Given that the initial state is <code>AB=00</code>, that makes <code>B = 1</code> at <code>t=0</code>.  This is doable the tedious way by simply tracing the output <code>y</code> sixteen times from <code>t=1</code> to <code>t=16</code>. We can also deduce from the functionality of the device, that is to <strong>detect</strong> three consecutive <code>1</code>'s and output <code>0</code> afterwards. The output sequence is therefore <code>0000 0011 1111 0000</code> from <code>t=1</code> to <code>t=16</code>. repectively.
 </p></div>
 </li>
 </ol>
