@@ -393,6 +393,7 @@ set_property BITSTREAM.General.UnconstrainedPins {Allow} [current_design]</code>
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt;
 </code></pre>
 
+<div> Warning: Ensure that your custom pins do not use any other pins that's already been used on your IO Shield, or other custom pins. Each declaration must be <strong> unique </strong>.</div>
 <p>For example, if you’d like to use the Br pins <code>C49, C48, C2</code> as an <strong>output</strong> port to display the 3-bit <code>results</code>, you can define them as such in <code>custom.acf</code>:</p>
 <pre><code>pin customout[0] C49;
 pin customout[1] C48;
