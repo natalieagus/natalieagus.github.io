@@ -127,7 +127,7 @@ https://www.dropbox.com/s/2txzo6r3aeynguy/CU_2.png?raw=1" alt="“F1”" width="
 </ul>
 <h4 id="detailed-anatomy-of-the-regfile">Detailed Anatomy of the REGFILE</h4>
 <p>To understand how the <code>WE</code> signal works more clearly, we need to dive deeper into the inner circuitry of the REGFILE. The figure below shows a more detailed anatomy of the REGFILE unit.</p>
-<div class="orangebox"><code>Register 31</code>'s <strong>content</strong> is always <code>0x00000000</code>, regardless of what values are written to it. Therefore it is not a regular register like the other 30 registers in the REGFILE. It is simply giving out <code>0x00000000</code> as output when <code>RA1</code> or <code>RA2</code> is <code>11111</code>, which is illustrated as the 0 on the rightmost part of each read muxes.</div>.
+<div class="orangebox"><code>Register 31</code>'s <strong>content</strong> is always <code>0x00000000</code>, regardless of what values are written to it. Therefore it is not a regular register like the other 30 registers in the REGFILE. It is simply giving out <code>0x00000000</code> as output when <code>RA1</code> or <code>RA2</code> is <code>11111</code>, which is illustrated as the 0 on the rightmost part of each read muxes.</div>
 <img src="https://www.dropbox.com/s/yi9exbpy2vhgz14/regfile_inside.png?raw=1" alt="“F1”" width="80%" height="80%">
 <p>The <code>WE</code> signal is fed into a 1-to-32 demultiplexer unit. The <code>WA</code> signal is the selector of this demux. As a result, only 1 out of the 32 outputs of the demux will follow exactly the value of <code>WE</code>.</p>
 <p>The outputs of the demux is used as a selector (<code>EN</code> port) to each of the <em>2-to-1</em> 32-bit multiplexer connected to each 32-bit register.</p>
