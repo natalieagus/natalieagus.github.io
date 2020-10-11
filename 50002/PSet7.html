@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS7</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#problem-set-7">Problem Set 7</a>
+<ul>
+<li><a href="#ram-hardware-basic">RAM Hardware (Basic)</a></li>
+<li><a href="#cache-exercise-basic">Cache Exercise (Basic)</a></li>
+<li><a href="#cache-performance-basic">Cache Performance (Basic)</a></li>
+<li><a href="#miswiring-the-beta-intermediate">Miswiring The Beta (Intermediate)</a></li>
+<li><a href="#cache-competition-basic">Cache Competition (Basic)</a></li>
+<li><a href="#dm-cache-arithmetic-basic">DM Cache Arithmetic (Basic)</a></li>
+<li><a href="#way-set-associative-cache-arithmetic-intermediate">3-Way Set Associative Cache Arithmetic (Intermediate)</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="problem-set-7">Problem Set 7</h1>
+<p>This page contains all practice questions that constitutes the topics learned in <ins>Week 10</ins>:  <strong>Memory Hierarchy</strong>, <strong>Cache Issues</strong>.</p>
+<p>Each topic’s questions are grouped into <strong>three</strong> categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further.</p>
+<h2 id="ram-hardware-basic">RAM Hardware (Basic)</h2>
+<p>Take a look at the following memory cells. The rightmost bit line corresponds to the LSB, and the leftmost bit line corresponds to the MSB.<br>
+<img src="https://www.dropbox.com/s/472uv0zpzuuwtyf/ramtech.png?raw=1" width="70%" height="70%"></p>
+<ol>
+<li>Are these cells made up of SRAM or DRAM? <div class="collapsible">Show Answer</div><div class="content"><p>
+ SRAM.
+ </p></div>
+</li>
+<li>According to the diagram above, how many bits are there per word line? <div class="collapsible">Show Answer</div><div class="content"><p>
+ 4
+ </p></div>
+</li>
+<li>What is the output when word line 1 is activated? <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>0010</code>
+ </p></div>
+</li>
+<li>What is the output when word line 2 is activated? <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>1100</code>
+ </p></div>
+</li>
+</ol>
+<h2 id="cache-exercise-basic">Cache Exercise (Basic)</h2>
+<p>The following is a sequence of address references given as <strong>word</strong> addresses (given from left to right):</p>
+<pre><code>2,3,11,16,21,13,64,48,19,11,3,22,4,27,6,11
+</code></pre>
+<ol>
+<li>
+<p>Show the hits and misses and final cache contents for a fully associative cache with <strong>one-word blocks</strong> and a <strong>total size</strong> of 16 words. Assume <strong>LRU</strong> replacement.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ The key to answering this question is to be mindful which address reference is the <i>least recently used</i>. We need to update the LRU index after every address reference.<br><br>
+ The following is the state of the cache after each address reference call:<br>
+ 2: miss, cache now holds: 2 <br>
+ 3: miss, cache now holds: 3, 2<br>
+ 11: miss, cache now holds: 11, 3, 2<br>
+ 16: miss, cache now holds: 16, 11, 3, 2<br>
+ 21: miss, cache now holds: 21, 16, 11, 3, 2<br>
+ 13: miss, cache now holds: 13, 21, 16, 11, 3, 2<br>
+ 64: miss, cache now holds: 64, 13, 21, 16, 11, 3, 2<br>
+ 48: miss, cache now holds: 48, 64, 13, 21, 16, 11, 3, 2<br>
+ 19: miss, cache now holds: 19, 48, 64, 13, 21, 16, 11, 3, 2<br>
+ 11: hit, cache now holds: 11, 19, 48, 64, 13, 21, 16, 3, 2<br>
+ 3: hit, cache now holds: 3, 11, 19, 48, 64, 13, 21, 16, 2<br>
+ 22: miss, cache now holds: 22, 3, 11, 19, 48, 64, 13, 21, 16, 2<br>
+ 4: miss, cache now holds: 4, 22, 3, 11, 19, 48, 64, 13, 21, 16, 2<br>
+ 27: miss, cache now holds: 27, 4, 22, 3, 11, 19, 48, 64, 13, 21, 16, 2<br>
+ 6: miss, cache now holds: 6, 27, 4, 22, 3, 11, 19, 48, 64, 13, 21, 16, 2<br>
+ 11: hit, cache now holds: 11, 6, 27, 4, 22, 3, 19, 48, 64, 13, 21, 16, 2 <br>
+ </p></div>
+</li>
+<li>
+<p>Show the hits and misses and final cache contents for a fully associative cache with <strong>four-word blocks</strong> and a <strong>total size</strong> of 16 words. Assume <strong>LRU</strong> replacement.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ With a N-word block of data for each cache entry, note that the N words in a cache entry will have <strong>consecutive memory addresses</strong> starting with a word address that’s a <i>multiple</i> of N.<br><br>
+ The following is the state of the cache after each address reference call:<br>
+ 2: miss, cache now holds: 0-3 <br>
+ 3: hit, cache now holds: 0-3 <br>
+ 11: miss, cache now holds: 8-11, 0-3<br>
+ 16: miss, cache now holds: 16-19, 8-11, 0-3<br>
+ 21: miss, cache now holds: 20-23, 16-19, 8-11, 0-3<br>
+ 13: miss, cache now holds: 12-15, 20-23, 16-19, 8-11<br>
+ 64: miss, cache now holds: 64-67, 12-15, 20-23, 16-19<br>
+ 48: miss, cache now holds: 48-51, 64-67, 12-15, 20-23<br>
+ 19: miss, cache now holds: 16-19, 48-51, 64-67, 12-15<br>
+ 11: miss, cache now holds: 8-11, 16-19, 48-51, 64-67<br>
+ 3: miss, cache now holds: 0-3, 8-11, 16-19, 48-51<br>
+ 22: miss, cache now holds: 20-23, 0-3, 8-11, 16-19<br>
+ 4: miss, cache now holds: 4-7, 20-23, 0-3, 8-11<br>
+ 27: miss, cache now holds: 24-27, 4-7, 20-23, 0-3<br>
+ 6: hit, cache now holds: 4-7, 24-27, 20-23, 0-3<br>
+ 11: miss, cache now holds: 8-11, 4-7, 24-27, 20-23<br>
+ </p></div>
+</li>
+</ol>
+<h2 id="cache-performance-basic">Cache Performance (Basic)</h2>
+<ol>
+<li>
+<p>If a cache access requires <strong>one</strong> clock cycle and handling cache misses stalls the processor for an additional <strong>five</strong> cycles, which of the following cache hit rates comes <strong>closest</strong> to achieving an <strong>average</strong> memory access of 2 cycles?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 2 cycle average access = (1 cycle for cache) + (1 - hit rate)(5 cycles stall). This means hit rate = 80%.
+ </p></div>
+</li>
+<li>
+<p>Why is <strong>LRU</strong> an effective cache replacement strategy?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Due to <strong>locality of reference</strong>. Locality implies that the probability of accessing a location decreases as the time since the last access increases. By choosing to replace locations that haven’t been used for the longest time, the least-recently-used replacement strategy should, in theory, be replacing locations that have the lowest probability of being accessed in the future.
+ </p></div>
+</li>
+<li>
+<p>What would be the reasons behind improved caching performance when increasing the block size of a cache?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Increased block size means that more words are fetched when filling a cache line after a miss on a particular location. If this leads to increased performance, then the nearby words in the block must have been accessed by the program later on, ie, the program is exhibiting locality of reference.
+ </p></div>
+</li>
+</ol>
+<h2 id="miswiring-the-beta-intermediate">Miswiring The Beta (Intermediate)</h2>
+<p>A student has miswired the address lines going to the memory of an unpipelined <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU. The wires in question carry a 30-bit word address to the memory subsystem, and the hapless student has in fact reversed the order of all 30 address bits. Much to his surprise, the machine continues to <strong>work perfectly.</strong></p>
+<ol>
+<li>
+<p>Explain why the miswiring doesn’t affect the operation of the machine.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Since the Beta reverses the order of the 30 bit address in the same manner for each memory access, the Beta will use the same reversed address to access a particular memory location for both stores and loads. Thus, the operation of the machine will not be affected. </p></div>
+</li>
+<li>
+<p>The student now replaces the memory in his miswired <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> with a supposedly higher performance unit that contains both a fast fully associative cache and the same memory as before. The reversed wiring still exists between the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> and this new unit. To his surprise, the new unit does not significantly improve the performance of his machine. In desperation, the student then fixes the reversal of his address lines and the machine’s performance improves tremendously. <strong>Explain why this happens.</strong></p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Caches take advantage of locality of reference by reading in an entire block of related data at one time, thereby reducing main memory accesses. By reversing the order of the 30 bit address, locality of the memory addresses is disrupted. The low-order bits that would normally place related data close to one another are instead the high-order bits and related data is more spread out through the main memory. This reduction in locality reduces cache performance significantly. When the student fixes the address line reversal problem, locality of the memory is restored, and the cache can perform as intended
+ </p></div>
+</li>
+</ol>
+<h2 id="cache-competition-basic">Cache Competition (Basic)</h2>
+<p>The following questions ask you to evaluate alternative cache designs using patterns of memory references taken from running programs. Each of the caches under consideration has a total capacity of 8 (4-byte) words, with one word stored in each cache line. The cache designs under consideration are:</p>
+<ul>
+<li>DM: a direct-mapped cache.</li>
+<li>S2: a 2-way set-associative cache with a least-recently-used replacement policy.</li>
+<li>FA: a fully-associative cache with a least-recently-used replacement policy.</li>
+</ul>
+<p>The questions below present a sequence of addresses for memory reads. You should assume the sequences repeat from the start whenever you see ”…”. Keep in mind that byte addressing is used; addresses of consecutive words in memory differ by 4.</p>
+<p>Each question asks which cache(s) give the best hit rate for the sequence. Answer by considering the steady-state hit rate, i.e., the percentage of memory references that hit in the cache after the sequence has been repeated many times.</p>
+<ol>
+<li>
+<p>Which cache(s) have the best hit rate for the sequence 0, 16, 4, 36, …?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <strong>DM:</strong> locations 4 and 36 collide, so each iteration has 2 hits, 2 misses.<br><br>
+ <strong>S2:</strong> 100% hit rate. 0 and 16 map to the same cache line, as do 4 and 36, but since the cache is 2-way associative they don’t collide.<br><br>
+ <strong>FA:</strong> 100% hit rate. The cache is only half filled by this loop.
+ </p></div>
+</li>
+<li>
+<p>Which cache(s) have the best hit rate for the sequence 0, 4, 8, 12, 16, 20, 24, 28, 32, …?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <strong>DM:</strong> locations 0 and 32 collide, so each iteration has 7 hits, 2 misses.<br><br>
+ <strong>S2:</strong> locations 0, 16 and 32 all map to the same cache line. The LRU replacement strategy replaces 0 when accessing 32, 16 when accesing 0, 32 when accessing 16, etc., so each iteration has 6 hits, 3 misses.<br><br>
+ <strong>FA:</strong> has 0% hit rate in the steady state since the LRU replacement strategy throws out each location just before it’s accessed by the loop
+ </p></div>
+</li>
+<li>
+<p>Which cache(s) have the best hit rate for the sequence 0, 4, 8, 12, 16, 20, 24, 28, 32, 28, 24, 20, 16, 12, 8, 4, …?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ All caches perform the same. Locations 0 and 32 trade places in the caches, so each iteration has 14 hits and 2 misses.
+ </p></div>
+</li>
+<li>
+<p>Which cache(s) have the best hit rate for the sequence 0, 4, 8, 12, 32, 36, 40, 44, 16, …?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <strong>DM:</strong> 32 collides with 0, 36 with 4, 40 with 8, 44 with 12, so each iteration has only 1 hit and 8 misses.<br><br>
+ <strong>S2:</strong>  locations 0, 16 and 32 trade places in the cache, so each iteration has 6 hits and 3 misses.<br><br>
+ <strong>FA:</strong> 0 hits since LRU throws out each location just before it’s accessed by the loop.<br><br>
+ </p></div>
+</li>
+<li>
+<p>Assume that a cache access takes 1 cycle and a memory access takes 4 cycles. If a memory access is initiated only after the cache has missed, what is the maximum miss rate we can tolerate before use of the cache actually slows down accesses?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ If accesses always go to Memory, it takes 4 cycles per access. With the cache, the <strong>average</strong> number of cycles per access is 1 + (miss rate)*4. Hence if the miss rate is larger than 75% then the average number of cycles per access is more than 4. Our maximum miss rate is therefore <strong>75%</strong>.
+ </p></div>
+</li>
+</ol>
+<h2 id="dm-cache-arithmetic-basic">DM Cache Arithmetic (Basic)</h2>
+<p>The diagram below illustrates a blocked, direct-mapped cache for a computer that uses 32-bit data words and 32-bit byte addresses. Assume that memory location <code>0x0012347B</code> was present in the cache.<br>
+<img src="https://www.dropbox.com/s/z5hvlhyk97wa2xa/QnCache.png?raw=1" width="70%" height="70%"></p>
+<ol>
+<li>
+<p>Using the row and column labels from the figure, in what cache location could we find the data from that memory location? You may assume that e.g: Row 15 means index <code>0xF</code>, Row 14 means index <code>0xE</code>, and so on.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Expanding the last 8-bit of the memory location we have <code>0111 1011</code>. There are two bits for block indexing and four bits for row indexing. Since last two bits are disregarded as indicted in the image, the block index is 10 and the row index is 0111. This corresponds to "DATA 10" column and "Row 7" row. 
+ </p></div>
+</li>
+<li>
+<p>Can data from locations <code>0x0012347B</code> and <code>0x00234570</code> be present in the cache at the same time?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Expanding the last 8-bit of the memory location we have <code>0111 1011</code> and <code>0111 0000</code> respectively. So <strong>yes</strong>, they can be both present in the cache at the same time. <code>0x0012347B</code> stays at "DATA 10" column and <code>0x00123470</code> stays at "DATA 00" column, and both resides in Row 7.
+ </p></div>
+</li>
+</ol>
+<h2 id="way-set-associative-cache-arithmetic-intermediate">3-Way Set Associative Cache Arithmetic (Intermediate)</h2>
+<p>Take a look at the following 3-way set associative cache:</p>
+<img src="https://www.dropbox.com/s/eou2p0yh6j56s3k/3w.png?raw=1" width="70%" height="70%">
+<p>The shaded region indicates that the tag-data cells are filled with some data. For the LRU bit, the higher value means that the item is more recently used. Assume that word addressing is used. The label A, B, C, and 0 to 7 drawn in the picture is for you to identify which corresponding set and DM cache a particular data resides. According to the diagram, we have 8 sets, indexed from 0 to 7, and three DM caches (A to C) in total.</p>
+<p>For each of the question below, assume higher bits of the address is zero and therefore isn’t written.</p>
+<ol>
+<li>
+<p>The computer now requests for <code>Mem[0x1304]</code>, and results in <strong>cache miss</strong>. It accesses the memory and write it onto the cache above. Where can <code>Mem[0x1304]</code> reside at?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ It can reside in either A4, B4, or C4.
+ </p></div>
+</li>
+<li>
+<p>The computer now requests for <code>Mem[0x1305]</code>, and results in another <strong>cache miss</strong>. It accesses the memory and write it onto the cache above. Where can <code>Mem[0x1305]</code> reside at?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 	It can reside at B5 only.
+ </p></div>
+</li>
+<li>
+<p>The computer now requests for <code>Mem[0xB317]</code>, and results in yet another cache miss. It accesses the memory and write it onto the cache above. Where can <code>Mem[0xB317]</code> reside at?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 	It replaces A7 and resides at A7.
+ </p></div>
+</li>
+<li>
+<p>How many bits of data can be contained in this 3-way set associative cache in total if it is meant to be used with a Beta CPU?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 	768.
+ </p></div>
+</li>
+<li>
+<p>What is the value of t (i.e: the number of bits stored in the ‘Tag’ column) if this 3- way set associative cache is used with a Beta CPU? Recall that word addressing is used.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 	27.
+ </p></div>
+</li>
+</ol>
+<p>Another engineer would like to expand this 3-way set associative cache such that its block size is two.</p>
+<ol>
+<li>
+<p>What is the value of k now?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 3.
+ </p></div>
+</li>
+<li>
+<p>What is the value of t now? i.e: How many bits are stored in the ‘Tag’ column of the cache? Recall that word addressing is used.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 26.
+ </p></div>
+</li>
+<li>
+<p>How many bits of data can be stored in this 3-way set associative cache in total if it is meant to be used with a Beta CPU?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 1536.
+ </p></div>
+</li>
+</ol>
+
+    </div>
+  </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  >
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+  >
+  </script>
+</body>
+
+<style>
+.blueborder{
+ border-style:solid;
+ border-color:#287EC7;
+ padding: 10px;
+}
+
+.redborder{
+ border-style:solid;
+ border-color:#FF0000;
+ padding: 10px;
+}
+
+
+.greenbox{
+background-color: #cfc ;
+padding: 10px; 
+border: 1px solid green;
+}
+
+.orangebox{
+background-color: #FFE4B5 ;
+padding: 10px; 
+border: 1px solid #FF8C00;
+}
+
+.redbox{
+    background-color: #FFE4E1;
+    border: 1px solid #FA8072;
+    display: block;
+    padding: 10px;
+}
+
+.bluebox{
+    background-color: #F0F8FF;
+    border: 1px solid #87CEFA;
+    display: block;
+    padding: 10px;
+}
+
+.yellowbox{
+    background-color: #FFFACD;
+    border: 1px solid #FFFF66;
+    display: block;
+    padding: 10px;
+}
+
+.redtext{
+	color:red;
+}
+
+.bluetext{
+	color:blue;
+}
+
+.orangetext{
+	color:#FF791A;
+}
+
+.greentext{
+	color:green;
+}
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #efffef;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccffcc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #efffef;
+}
+</style>
+
+
+
+
+</html>
