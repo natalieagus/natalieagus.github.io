@@ -16,9 +16,9 @@
 <li><a href="#problem-set-6">Problem Set 6</a>
 <ul>
 <li><a href="#byte-memory-array-loading-basic">Byte Memory Array Loading (Basic)</a></li>
-<li><a href="#the-gcd-basic">The GCD (Basic)</a></li>
+<li><a href="#the-remainder-basic">The Remainder (Basic)</a></li>
+<li><a href="#the-gcd-intermediate">The GCD (Intermediate)</a></li>
 <li><a href="#beta-assembly-exercise-intermediate">Beta Assembly Exercise (Intermediate)</a></li>
-<li><a href="#the-remainder">The Remainder</a></li>
 </ul>
 </li>
 </ul>
@@ -48,7 +48,88 @@ Singapore University of Technology and Design<br>
 <div class="collapsible">Show Answer</div><div class="content"><p>
 <code>MEM[0x18] = 00 00 00 04</code>, and <code>MEM[0x1C] = 00 00 00 06</code>.
 </p></div>
-<h2 id="the-gcd-basic">The GCD (Basic)</h2>
+<h2 id="the-remainder-basic">The Remainder (Basic)</h2>
+<p>Refer to the C-code below:</p>
+<pre><code>int f(int a, int b){
+	 if (a&lt;b) return [6];
+	 else return f(a-b, b);
+} 
+</code></pre>
+<p>The above C-code compiles to the following Beta assembly code:</p>
+<pre><code>F:	PUSH(LP)
+	PUSH(BP)
+	MOVE(SP, BP)
+	PUSH(R1)
+	PUSH(R2)
+	LD(BP, -12, R0)			| #1
+	LD(BP, -16, R1)
+	CMPLT([4A], [4B], R2)	
+
+LL01: BNE(R2, LL02)			| #2
+	  SUB(R0, R1, R0)
+	  PUSH(R1)
+	  PUSH(R0)
+	  BR(F, LP)				| #3
+	  DEALLOCATE(2)
+
+LL02: POP([5a])
+      POP([5b])
+      MOVE(BP, SP)
+      POP(BP)
+      POP(LP)
+      JMP(LP)
+</code></pre>
+<ol>
+<li>
+<p>You are given a C function code and its equivalent compiled beta assembly code above. What is the 32-bit binary instruction code of “LD(BP,-12,R0)” (instruction #1)?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>0110 0000 0001 1011 1111 1111 1111 0100</code>
+ </p></div>
+</li>
+<li>
+<p>What is the 32-bit binary instruction code of “BNE(R2,LL02)” (instruction #2)?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>01111 0111 1100 0100 0000 000 0000 0111</code>
+ </p></div>
+</li>
+<li>
+<p>What is the 32-bit binary instruction code of “BR(F,LP)” (instruction #3)?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>0111 0111 1001 1111 1111 1111 1110 1101</code>
+ </p></div>
+</li>
+<li>
+<p>Complete the assembly code line “CMPLT([4a],[4b],R2)”.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>CMPLT(R0,R1,R2).</code>
+ </p></div>
+</li>
+<li>
+<p>Complete the assembly code lines “POP([5a])” and “POP([5b])”.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>POP(R2), POP(R1)</code>
+ </p></div>
+</li>
+<li>
+<p>What is the return value marked by the placeholder [6] in the C code?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>POP(R2), POP(R1)</code>
+ </p></div>
+</li>
+<li>
+<p>What is the result of the (potentially recursive) function call “f(7,4)”?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ The result is 3. 
+ </p></div>
+</li>
+<li>
+<p>If the stack pointer register SP contains the address 0x00001004 before the function f is called (e.g. here, by the instruction “BR(F,LP)”, then what is value of SP before the subsequent instruction in the code is executed (e.g. here, the instruction “DEALLOCATE(2)”).</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <code>Reg[SP] = 0x00001004</code>
+ </p></div>
+</li>
+</ol>
+<h2 id="the-gcd-intermediate">The GCD (Intermediate)</h2>
 <p>Consider the following implementation of an algorithm for finding the greatest common divisor of two integers <strong>recursively</strong>:</p>
 <pre><code>int gcd(int a,int b) { 
 	if (a == b) return a; 
@@ -314,87 +395,6 @@ endwhile001:
 <p>What should <code>&lt;III&gt;</code> be in the assembly code?</p>
  <div class="collapsible">Show Answer</div><div class="content"><p>
  R1.
- </p></div>
-</li>
-</ol>
-<h2 id="the-remainder">The Remainder</h2>
-<p>Refer to the C-code below:</p>
-<pre><code>int f(int a, int b){
-	 if (a&lt;b) return [6];
-	 else return f(a-b, b);
-} 
-</code></pre>
-<p>The above C-code compiles to the following Beta assembly code:</p>
-<pre><code>F:	PUSH(LP)
-	PUSH(BP)
-	MOVE(SP, BP)
-	PUSH(R1)
-	PUSH(R2)
-	LD(BP, -12, R0)			| #1
-	LD(BP, -16, R1)
-	CMPLT([4A], [4B], R2)	
-
-LL01: BNE(R2, LL02)			| #2
-	  SUB(R0, R1, R0)
-	  PUSH(R1)
-	  PUSH(R0)
-	  BR(F, LP)				| #3
-	  DEALLOCATE(2)
-
-LL02: POP([5a])
-      POP([5b])
-      MOVE(BP, SP)
-      POP(BP)
-      POP(LP)
-      JMP(LP)
-</code></pre>
-<ol>
-<li>
-<p>You are given a C function code and its equivalent compiled beta assembly code above. What is the 32-bit binary instruction code of “LD(BP,-12,R0)” (instruction #1)?</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>0110 0000 0001 1011 1111 1111 1111 0100</code>
- </p></div>
-</li>
-<li>
-<p>What is the 32-bit binary instruction code of “BNE(R2,LL02)” (instruction #2)?</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>01111 0111 1100 0100 0000 000 0000 0111</code>
- </p></div>
-</li>
-<li>
-<p>What is the 32-bit binary instruction code of “BR(F,LP)” (instruction #3)?</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>0111 0111 1001 1111 1111 1111 1110 1101</code>
- </p></div>
-</li>
-<li>
-<p>Complete the assembly code line “CMPLT([4a],[4b],R2)”.</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>CMPLT(R0,R1,R2).</code>
- </p></div>
-</li>
-<li>
-<p>Complete the assembly code lines “POP([5a])” and “POP([5b])”.</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>POP(R2), POP(R1)</code>
- </p></div>
-</li>
-<li>
-<p>What is the return value marked by the placeholder [6] in the C code?</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>POP(R2), POP(R1)</code>
- </p></div>
-</li>
-<li>
-<p>What is the result of the (potentially recursive) function call “f(7,4)”?</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- The result is 3. 
- </p></div>
-</li>
-<li>
-<p>If the stack pointer register SP contains the address 0x00001004 before the function f is called (e.g. here, by the instruction “BR(F,LP)”, then what is value of SP before the subsequent instruction in the code is executed (e.g. here, the instruction “DEALLOCATE(2)”).</p>
- <div class="collapsible">Show Answer</div><div class="content"><p>
- <code>Reg[SP] = 0x00001004</code>
  </p></div>
 </li>
 </ol>
