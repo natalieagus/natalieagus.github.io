@@ -58,4 +58,6 @@
 
 [Problem Set Week 5](https://natalieagus.github.io/50002/PSet5.html)
 
-[Problem Set Week 6](https://natalieagus.github.io/50002/PSet6.html)
+[Problem Set Week 9](https://natalieagus.github.io/50002/PSet6.html)
+
+[Problem Set Week 10](https://natalieagus.github.io/50002/PSet7.html)
