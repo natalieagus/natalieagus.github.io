@@ -291,7 +291,7 @@ instruction is considered <strong>atomic</strong> and is presumed to <strong>com
 </li>
 </ol>
 <blockquote>
-<p>The reason for this Type 2  instruction is that some operations require a constant instead. For example we want to add the <em>content</em> of register <code>Ra</code> with a constant <code>c</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">4</span></span></span></span></span> instead. Then we can encode <code>c=0000 0000 0000 0100</code> as the last 16 bits of the instruction.</p>
+<p>The reason for this Type 2  instruction is that some operations require a constant instead. For examplem we want to add the <em>content</em> of register <code>Ra</code> with a constant <code>c</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">= 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">4</span></span></span></span></span> instead. Then we can encode <code>c=0000 0000 0000 0100</code> as the last 16 bits of the instruction.</p>
 </blockquote>
 <p><strong>Example 1:</strong></p>
 <ul>
@@ -309,7 +309,7 @@ instruction is considered <strong>atomic</strong> and is presumed to <strong>com
 <li><code>Reg[Rc]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Ra]</code>  + <code>SEXT[c]</code></li>
 </ul>
 <blockquote>
-<p>Since <code>c</code> is 16 bits, it has to be sign-extended (<code>SEXT</code>) to be 32 bits before added with the content of <code>Ra</code>. <code>Reg</code> refers to the REGFILE and <code>Reg[Rx]</code>  means the <em>content</em> of register addressed as <code>Rx</code> in the REGFILE.</p>
+<p>Since <code>c</code> is 16 bits, it has to be sign-extended (<code>SEXT</code>) to be 32 bits before added with the content of <code>Ra</code>. <code>Reg</code> refers to the REGFILE and <code>Reg[Rx]</code>  means the <em>content</em> of register addressed as <code>Rx</code> in the REGFILE. We end up with <code>c=0xFFFFFFFD</code>.</p>
 </blockquote>
 </li>
 </ul>
@@ -331,7 +331,7 @@ instruction is considered <strong>atomic</strong> and is presumed to <strong>com
 <li><code>Mem[EA]</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[Rc]</code></li>
 </ul>
 <blockquote>
-<p><code>EA</code> means effective address. <code>Mem[EA]</code> refers to the content of the Memory Unit at address EA.</p>
+<p><code>EA</code> means effective address. <code>Mem[EA]</code> refers to the content of the Memory Unit at address EA. Again <code>c</code> is sign extended to form 32 bits: <code>0x00000008</code>.</p>
 </blockquote>
 </li>
 </ul>
