@@ -492,7 +492,7 @@ Execute for 3 cycles:
 <li> If fault E is not present, the  instruction writes the value <code>1</code>  into <code>Mem[X]</code>, which is then <code>LD</code>-ed (loaded) into <code>R0</code>. </li>
 <li> If fault E is present, the <code>ST</code> instruction has no effect, so now the <code>LD</code> instruction loads the original value of location <code>X</code> into <code>R0</code>.</li>
 </ul>
-<p></p></div><p><strong>Fault F:</strong> Input 0 of <code>WDSEL</code> mux has a value of <code>0</code> instead of <code>PC+4</code>.</p>
+<p></p></div><p><strong>Fault F:</strong> Input <code>0</code> of <code>WDSEL</code> mux has a value of <code>0</code> instead of <code>PC+4</code>.</p>
 <div class="collapsible">Show Answer</div><div class="content"><p>
 </p><pre><code>| starts at address 0
 . = 0
@@ -503,18 +503,7 @@ Execute for 2 cycles:
 <ul>
 <li> If fault F is not present, the <code>BEQ</code> instruction loads <code>4</code> into <code>R1</code> and the <code>SUBC</code> loads <code>1</code> into <code>R0</code>.</li>
 <li> If fault F is present, the <code>BEQ</code> instruction loads <code>4</code> (which is the current <code>PC + 4</code>) into <code>R1</code> and the <code>SUBC</code> loads 8 (which is the current <code>PC+4</code>) into <code>R0</code>.</li>
-</ul>
-<i>Shorter alternative:</i>
-<pre><code>| starts at address 0
-. = 0
-ADDC(R0,1,R0)
-</code></pre>
-Execute for 1 cycle:
-<ul>
-<li> If fault F is not present, the <code>ADDC</code> instruction will write <code>1</code> into <code>R0</code>,</li>
-<li> Otherwise, <code>4</code> (which is the current <code>PC+4</code>) will be written into <code>R0</code>.</li>
-</ul>
-<p></p></div>
+</ul><p></p></div>
 
     </div>
   </div>
