@@ -502,8 +502,9 @@ SUBC(R1,3,R0)
 Execute for 2 cycles:
 <ul>
 <li> If fault F is not present, the <code>BEQ</code> instruction loads <code>4</code> into <code>R1</code> and the <code>SUBC</code> loads <code>1</code> into <code>R0</code>.</li>
-<li> If fault F is present, the <code>BEQ</code> instruction loads <code>4</code> (which is the current <code>PC + 4</code>) into <code>R1</code> and the <code>SUBC</code> loads 8 (which is the current <code>PC+4</code>) into <code>R0</code>.</li>
-</ul><p></p></div>
+<li> If fault F is present, the <code>BEQ</code> instruction loads <code>0</code> into <code>R1</code> and the <code>SUBC</code> loads -3 into <code>R0</code>.</li>
+</ul>
+<p></p></div>
 
     </div>
   </div>
