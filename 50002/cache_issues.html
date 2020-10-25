@@ -357,12 +357,12 @@ Singapore University of Technology and Design<br>
 </thead>
 <tbody>
 <tr>
-<td><code>0x0004</code></td>
-<td><code>Mem[0x0004]</code></td>
-</tr>
-<tr>
 <td><code>0xAACC</code></td>
 <td><code>Mem[0xAACC]</code></td>
+</tr>
+<tr>
+<td><code>0x000C</code></td>
+<td><code>Mem[0x000C]</code></td>
 </tr>
 <tr>
 <td><code>0x0C08</code></td>
@@ -657,7 +657,7 @@ Oldest entry is bolded.</p>
 
 	check for A in TAG field of cache lines with V==1
 	
-	if HIT:
+	if MISS:
 		if DM cache:
 			selected cache line to replace 
 			is cache line with index matching last K bits of A
@@ -677,28 +677,28 @@ Oldest entry is bolded.</p>
 				and update physical memory
 		
 		// at this point the cache line is safe to be overwritten
-		if DM cache:
-			write higher T bits of A to the 
-			TAG field of the selected cache line, 
-			and  new_content from CPU as its content
+	if DM cache:
+		write higher T bits of A to the 
+		TAG field of the selected cache line, 
+		and  new_content from CPU as its content
 
-		if FA cache:
-			write A to TAG field of the 
-			selected cache line, 
-			and new_content from CPU as its content
+	if FA cache:
+		write A to TAG field of the 
+		selected cache line, 
+		and new_content from CPU as its content
 
-			if replacement policy == LRU:
-				update LRU bit
-			else if replacement policy == LRR:
-				update LRR pointer
+		if replacement policy == LRU:
+			update LRU bit
+		else if replacement policy == LRR:
+			update LRR pointer
 		
-		if write policy == WRITE-THROUGH:
-			compute the content's address 
-			and update physical memory
-			return to CPU
-		else:
-			set cache line's dirty bit to 1
-			return to CPU
+	if write policy == WRITE-THROUGH:
+		compute the content's address 
+		and update physical memory
+		return to CPU
+	else:
+		set cache line's dirty bit to 1
+		return to CPU
 			
 </code></pre>
 <h2 id="summary">Summary</h2>
