@@ -203,7 +203,7 @@ Singapore University of Technology and Design<br>
 <p><strong>Example:</strong> Given an FA cache of size <code>N=4</code>, and the event where we request addresses in this sequence: <code>0x0004,0x000C,0x0C08,0x0004,0xFF00,0xAACC</code> at <code>t=0,1,2,3,4,5</code> respectively.</p>
 <p>At <code>t=2</code>, the state of the FA cache with LRU as replacement policy will be:</p>
 <blockquote>
-<p>The smallest LRU bit indicates the most recently accessed data</p>
+<p>Assume the <strong>smallest</strong> LRU bit indicates the <strong>most</strong> recently accessed data</p>
 </blockquote>
 
 <table>
@@ -236,7 +236,7 @@ Singapore University of Technology and Design<br>
 <td>-</td>
 </tr>
 </tbody>
-</table><p>At <code>t=3</code>, we access <code>A=0x000C</code> again. This <strong>updates</strong> all LRU bits:</p>
+</table><p>At <code>t=3</code>, we access <code>A=0x0004</code> again. This <strong>updates</strong> all LRU bits:</p>
 
 <table>
 <thead>
@@ -268,7 +268,7 @@ Singapore University of Technology and Design<br>
 <td>-</td>
 </tr>
 </tbody>
-</table><p>At <code>t=5</code>, the entry <code>0x0011-Mem[0x0011]</code> is replaced because its the <em>least recently used</em> entry:</p>
+</table><p>At <code>t=5</code>, the entry <code>0x000C-Mem[0x000C]</code> is replaced because its the <em>least recently used</em> entry:</p>
 
 <table>
 <thead>
@@ -616,26 +616,35 @@ Oldest entry is bolded.</p>
 
 	else if MISS:
 		if DM cache:
-			selected cache line to replace is cache line with index matching last K bits of A
+			selected cache line to replace 
+			is cache line with index matching last K bits of A
 		else if FA cache:
-			selected cache line to replace depends on replacement policy
+			selected cache line to replace 
+			depends on replacement policy
 		else if NWSA cache:
-			selected cache line to replace depends on replacement policy in the set with index matching last K bits of A
+			selected cache line to replace 
+			depends on replacement policy in the set with index matching last K bits of A
 		
 		if cache line is dirty:
 			if write policy == WRITE-BACK:
-				compute the content's address and update physical memory
+				compute the content's address 
+				and update physical memory
 			else if write policy == WRITE-BEHIND: 
 				wait until update is done
 
 		// at this point, selected cache line is safe to be overwritten 
 		
 		fetch A and Mem[A] from physical memory
+		
 		if DM cache:
-			write higher T bits of A to the TAG field of the selected cache line, and Mem[A] as its content
+			write higher T bits of A to the 
+			TAG field of the selected cache line, 
+			and Mem[A] as its content
 
 		if FA cache:
-			write A to TAG field of the selected cache line, and Mem[A] as its content
+			write A to TAG field of the 
+			selected cache line, and Mem[A] 
+			as its content
 
 			if replacement policy == LRU:
 				update LRU bit
@@ -643,31 +652,40 @@ Oldest entry is bolded.</p>
 				update LRR pointer
 
 		return Mem[A] to CPU
-
-On CPU WRITE/STORE (new_content) request to address A:
+</code></pre>
+<pre><code>On CPU WRITE/STORE (new_content) request to address A:
 
 	check for A in TAG field of cache lines with V==1
 	
 	if HIT:
 		if DM cache:
-			selected cache line to replace is cache line with index matching last K bits of A
+			selected cache line to replace 
+			is cache line with index matching last K bits of A
 		else if FA cache:
-			selected cache line to replace depends on replacement policy
+			selected cache line to replace 
+			depends on replacement policy
 		else if NWSA cache:
-			selected cache line to replace depends on replacement policy in the set with index matching last K bits of A
+			selected cache line to replace 
+			depends on replacement policy in 
+			the set with index matching last K bits of A
 			
 		if cache line is dirty:
 			if write policy == WRITE-BEHIND:
 				wait
 			else if write policy == WRITE-BACK:
-				compute the content's address and update physical memory
+				compute the content's address 
+				and update physical memory
 		
 		// at this point the cache line is safe to be overwritten
 		if DM cache:
-			write higher T bits of A to the TAG field of the selected cache line, and  new_content from CPU as its content
+			write higher T bits of A to the 
+			TAG field of the selected cache line, 
+			and  new_content from CPU as its content
 
 		if FA cache:
-			write A to TAG field of the selected cache line, and new_content from CPU as its content
+			write A to TAG field of the 
+			selected cache line, 
+			and new_content from CPU as its content
 
 			if replacement policy == LRU:
 				update LRU bit
@@ -675,7 +693,8 @@ On CPU WRITE/STORE (new_content) request to address A:
 				update LRR pointer
 		
 		if write policy == WRITE-THROUGH:
-			compute the content's address and update physical memory
+			compute the content's address 
+			and update physical memory
 			return to CPU
 		else:
 			set cache line's dirty bit to 1
