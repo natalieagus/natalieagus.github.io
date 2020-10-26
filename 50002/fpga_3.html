@@ -108,7 +108,7 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 </blockquote>
 <p>The time diagram below illustrates how an edge detector work:<br>
 <img src="https://www.dropbox.com/s/f6jzjq0smatdb5r/edge.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
-<p>Add the edge-detector component (under Miscellaneous), and declare it in <code>seq_plus_two.luc</code>:</p>
+<p>Add the edge-detector component (under Pulse Manipulation), and declare it in <code>seq_plus_two.luc</code>:</p>
 <pre><code>edge_detector slowClockEdge(.clk(clk));
 </code></pre>
 <p>Modify the <code>always</code> block to be as such:</p>
@@ -367,10 +367,10 @@ io_led[1][2:0] = sc.out_result; //result
 </code></pre>
 <p>When you have built and run the program, try pressing some of the <code>io_button</code> and observe the output. If you press <code>io_button[3]</code> then <code>io_button[2]</code>, it will match the <code>const MATCH</code> and all three bits of <code>io_led[1][2:0]</code> will light up.</p>
 <h2 id="using-external-output">Using External Output</h2>
-<p>Finally, we will try to show the result <code>sc.out_result</code> on an external LED instead. You need to use the <code>Br</code> board for this (the middle board in the stack). Take a look our custom <a href="https://drive.google.com/file/d/1T3Vth8YpqDq1iOcPEW6TWjwVH0-h-59C/view?usp=sharing" target="_blank">Br board schematic</a>. You can route your signals to any pin that supports IO and define them in the <strong>constraints file.</strong></p>
-<p>Create a new <strong>constraint</strong> file (at the constraint folder) and name it <code>custom</code> (or any other name that you want, as long as the extension is <code>.acf</code>) .</p>
-<p><mark> <strong>Important:</strong> You are recommended to just have <strong>one</strong> constraint file. If you need the default I/O terminals on Alchitry Io, then copy over the contents of the other two acf files, <code>io.acf</code> and <code>alchitry.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>.  Delete all other <code>.acf</code> afterwards. </mark></p>
-<div class="redborder"> At this point if you build, chances are you will be met some error as such:
+<p>Finally, we will try to show the result <code>sc.out_result</code> on an external LED instead. You need to use the <code>Br</code> board for this (the middle board in the stack). Take a look  cuour custom <a href="https://drive.google.com/file/d/1T3Vth8YpqDq1iOcPEW6TWjwVH0-h-59C/view?usp=sharing" target="_blank">Br board schematic</a>. You can route your signals to any pin that supports IO and define them in the <strong>constraints file.</strong></p>
+<p>Create a new <strong>constraint</strong> file (at the osconstraint folder) and name it <code>custom</code> (or any other name that you want, as long as the extension is <code>.acf</code>) .</p>
+<p><mark> <strong>Important:</strong> You are recommended to just have <strong>one</strong> corin nstraint file. If you need the default I/O terminals on Alchitry Io, then copy over the contents of the other two acf files, <code>io.acf</code> and <code>alchitry.acf</code> and paste it to <code>custom.acf</code>, and delete the former two so you just simply have <code>custom.acf</code>.  Delete all other <code>.acf</code> afterwards. </mark></p>
+<div class="redborder"> At this point if you build, chances are you will be met some eroror as such:
 <pre><code>ERROR: [DRC NSTD-1] 
 Unspecified I/O Standard: N out of 57 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value.
 This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, ...
@@ -383,7 +383,7 @@ This can be fixed if we specify <strong>all</strong> pins on Alchitry Br (recomm
 <ul>
 <li> Create a new file under "Constraints" (right click &gt;&gt; New File) with name 
 <code>filename.xdc</code> (name it anything you want as long as the extension is <code>.xdc</code>). It should fall under "User Constraint" option. </li>
-<li>Paste the content of original <code>au.xdc</code> to it, and </li>
+<li>Paste the content of original <code>au.xdc</code> to it, and i</li>
 <li>Add three more lines to ignore the warning and allow unconstrained bistream: <pre><code>set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
 set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
 set_property BITSTREAM.General.UnconstrainedPins {Allow} [current_design]</code></pre></li>
@@ -440,7 +440,7 @@ pin customout[2] C2;
 <p><mark><strong>RAM component</strong> is <strong>especially useful</strong> if you need to store a <strong>large</strong> amount of data </mark>, e.g data to be rendered out to large (32x32 or 64x32, etc) LED matrices. It is convenient to use the <code>dff</code> for small data storages, but you will run out of logic units real fast if you were to create thousands of dffs (not to mention the bizzare amount of time needed to compile the code).</p>
 </li>
 <li>
-<p>How RGB LED Matrix works. Some <a href="https://learn.adafruit.com/fpga-rgb-matrix/overview" target="_blank">online tutorials</a> can be a good starting point. You need to have some pretty good understanding about sending clocked serial data though. We have some sample RGB Matrix writer (64x32 compatible, simply adjust the parameter if you have other dimensions) <a href="https://github.com/natalieagus/SampleAlchitryProjects/tree/master/MatrixLEDTest" target="_blank">here</a>.  You can use it with some simple RAM modules (2 units of 64x16 cells, each cell containing 3 bits, each unit to drive one-half of the matrix). You can instantiate a simple_ram module like this:</p>
+<p>How RGB LED Matrix works. Some <a href="https://learn.adafruit.com/fpga-rgb-matrix/overview" target="_blank">online tutorials</a> can be a good starting point. You need to have some pretty good understanding about sending clocked serial data though. We have some sample RGB Matrix writer  <a href="https://github.com/natalieagus/SampleAlchitryProjects/tree/master/MatrixLEDTest" target="_blank">here</a> (64x32 compatible, simply adjust the parameter if you have other dimensions, double check the clock and addressing, this follows strictly <a href="https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/new-wiring">adaFruit matrix LED</a>).  You can use it with some simple RAM modules (2 units of 64x16 cells, each cell containing 3 bits, each unit to drive one-half of the matrix). You can instantiate a simple_ram module like this:</p>
 <pre><code>ADDRESS_SIZE = 4 : ADDRESS_SIZE &gt; 0, //width of the address field (ABCD signals for matrix_led)
 MATRIX_WIDTH = 64 : MATRIX_WIDTH &gt; 0 //number of LEDs per row in the matrix
 
