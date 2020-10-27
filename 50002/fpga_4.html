@@ -54,7 +54,7 @@ Singapore University of Technology and Design<br>
 </ul>
 <p>We shall use another component instead: <code>simple_ram</code> or <code>simple_dual_ram</code>. The difference is that in <code>simple_dual_ram</code> you can perform read and write at the same clock cycle, whereas in <code>simple_ram</code> you only have 1 address port for <em>either</em> read or write.</p>
 <p>To create a memory unit, you can first import the component <code>simple_dual_ram</code> (under <em>memory</em>) to your project. You can instantiate a memory unit like this:</p>
-<pre><code>simple_dual_ram memory_unit(#SIZE(16), #DEPTH(128), .wclk(clk), .rclk(clk)); // 128 entries, 16 words each
+<pre><code>simple_dual_ram memory_unit(#SIZE(16), #DEPTH(128), .wclk(clk), .rclk(clk)); // 128 entries (words), 16 bits each
 </code></pre>
 <ul>
 <li>The parameter <code>#SIZE</code>(word size) and <code>#DEPTH</code>(entries) can be set accordingly, depending on how many bits you want to have per entry.</li>
