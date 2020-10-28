@@ -61,3 +61,5 @@
 [Problem Set Week 9](https://natalieagus.github.io/50002/PSet6.html)
 
 [Problem Set Week 10](https://natalieagus.github.io/50002/PSet7.html)
+
+[Problem Set Week 11](https://natalieagus.github.io/50002/PSet8.html)
