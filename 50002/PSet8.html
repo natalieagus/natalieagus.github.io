@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS8</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#problem-set-8">Problem Set 8</a>
+<ul>
+<li><a href="#virtual-memory-trivia-basic">Virtual Memory Trivia (Basic)</a></li>
+<li><a href="#page-replacement-basic">Page Replacement (Basic)</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>50.002 Computation Structures<br>
+Information Systems Technology and Design<br>
+Singapore University of Technology and Design<br>
+<strong>Natalie Agus (Fall 2020)</strong></p>
+<h1 id="problem-set-8">Problem Set 8</h1>
+<p>This page contains all practice questions that constitutes the topics learned in <ins>Week 11</ins>:  <strong>Virtual Memory</strong>, <strong>Virtual Machine</strong>.</p>
+<p>Each topic’s questions are grouped into <strong>three</strong> categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further.</p>
+<h2 id="virtual-memory-trivia-basic">Virtual Memory Trivia (Basic)</h2>
+<p>Consider a virtual memory system that uses a single-level page map to translate virtual addresses into physical addresses. Each of the questions below asks you to consider what happens when one of the design parameters of the original system is changed.</p>
+<ol>
+<li>
+<p>If the physical memory size (in bytes) is <strong>doubled</strong>, how does the number of bits in each entry of the page table change?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Increases by 1 bit. Assuming the page size remains the same, there are now twice as many physical pages, so the physical page number needs to expand by 1 bit.
+ </p></div>
+</li>
+<li>
+<p>If the physical memory size (in bytes) is <strong>doubled</strong>, how does the number of entries in the page map change?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ No change. The number of entries in the page table is determined by the size of the virtual address and the size of a page – it’s not affected by the size of physical memory.
+ </p></div>
+</li>
+<li>
+<p>If the virtual memory size (in bytes) is doubled, how does the number of bits in each entry of the page table change?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ No change. The number of bits in a page table entry is determined by the number of control bits (usually 2: dirty and resident) and the number of physical pages – the size of each entry is not affected by the size of virtual memory.
+ </p></div>
+</li>
+<li>
+<p>If the virtual memory size (in bytes) is doubled, how does the number of entries in the page map change?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ The number of entries doubles. Assuming the page size remains the same, there are now twice as many virtual pages and so there needs to be twice as many entries in the page map.
+ </p></div>
+</li>
+<li>
+<p>If the page size (in bytes) is doubled, how does the number of bits in each entry of the page table change?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Each entry is one bit smaller. Doubling the page size while maintaining the size of physical memory means there are half as many physical pages as before. So the size of the physical page number field decreases by one bit.
+ </p></div>
+</li>
+<li>
+<p>If the page size (in bytes) is doubled, how does the number of entries in the page map change?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ There are half as many entries. Doubling the page size while maintaining the size of virtual memory means there are half as many virtual pages as before. So the number of page table entries is also cut in half.
+ </p></div>
+</li>
+<li>
+<p>The following table shows the first 8 entries in the page map. Recall that the valid bit is 1 if the page is resident in physical memory and 0 if the page is on disk or hasn’t been allocated. If there are 1024 (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">2^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8141079999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>) bytes per page, what is the physical address corresponding to the decimal virtual address 3956?<br>
+<span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><menclose notation="right"><mtable rowspacing="0.15999999999999992em" columnspacing="1em" rowlines="solid none none none none none none none"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Virtual&nbsp;Page</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Valid&nbsp;bit</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mtext>Physical&nbsp;page</mtext></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>7</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>9</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>2</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>3</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>3</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>2</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>4</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>5</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>5</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>5</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>6</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>4</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>7</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr></mtable></menclose></mrow><annotation encoding="application/x-tex">
+ \begin{matrix}
+ \text{Virtual Page} &amp; \text{Valid bit} &amp; \text{Physical page}\\
+ \hline
+ 0 &amp; 0 &amp; 7\\
+ 1 &amp; 1 &amp; 9\\
+ 2 &amp; 0 &amp; 3\\
+ 3 &amp; 1 &amp; 2\\
+ 4 &amp; 1 &amp; 5\\
+ 5 &amp; 0 &amp; 5\\
+ 6 &amp; 0 &amp; 4\\
+ 7 &amp; 1 &amp; 1\\
+ \hline
+ \end{matrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 10.8em; vertical-align: -5.15em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 5.65em;"><span class="" style="top: -7.6499999999999995em;"><span class="pstrut" style="height: 7.6499999999999995em;"></span><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 5.6499999999999995em;"><span class="" style="top: -7.81em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">Virtual&nbsp;Page</span></span></span></span><span class="" style="top: -6.609999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">0</span></span></span><span class="" style="top: -5.409999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span><span class="" style="top: -4.209999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -3.0099999999999985em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">3</span></span></span><span class="" style="top: -1.8099999999999985em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">4</span></span></span><span class="" style="top: -0.6099999999999983em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">5</span></span></span><span class="" style="top: 0.590000000000001em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">6</span></span></span><span class="" style="top: 1.7900000000000003em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 5.15em;"><span class=""></span></span></span></span></span><span class="arraycolsep" style="width: 0.5em;"></span><span class="arraycolsep" style="width: 0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 5.6499999999999995em;"><span class="" style="top: -7.81em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">Valid&nbsp;bit</span></span></span></span><span class="" style="top: -6.609999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">0</span></span></span><span class="" style="top: -5.409999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span><span class="" style="top: -4.209999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">0</span></span></span><span class="" style="top: -3.0099999999999985em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span><span class="" style="top: -1.8099999999999985em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span><span class="" style="top: -0.6099999999999983em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">0</span></span></span><span class="" style="top: 0.590000000000001em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">0</span></span></span><span class="" style="top: 1.7900000000000003em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 5.15em;"><span class=""></span></span></span></span></span><span class="arraycolsep" style="width: 0.5em;"></span><span class="arraycolsep" style="width: 0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 5.6499999999999995em;"><span class="" style="top: -7.81em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord text"><span class="mord">Physical&nbsp;page</span></span></span></span><span class="" style="top: -6.609999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">7</span></span></span><span class="" style="top: -5.409999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">9</span></span></span><span class="" style="top: -4.209999999999999em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">3</span></span></span><span class="" style="top: -3.0099999999999985em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">2</span></span></span><span class="" style="top: -1.8099999999999985em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">5</span></span></span><span class="" style="top: -0.6099999999999983em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">5</span></span></span><span class="" style="top: 0.590000000000001em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">4</span></span></span><span class="" style="top: 1.7900000000000003em;"><span class="pstrut" style="height: 3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 5.15em;"><span class=""></span></span></span></span></span></span></span><span class="" style="top: -2.499999999999999em;"><span class="pstrut" style="height: 7.6499999999999995em;"></span><span class="hline" style="border-bottom-width: 0.05em;"></span></span><span class="" style="top: -12.099999999999996em;"><span class="pstrut" style="height: 7.6499999999999995em;"></span><span class="hline" style="border-bottom-width: 0.05em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 5.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span></p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ 3956 = 0xF74. So the virtual page number is 3 with a page offset of 0x374. Looking up page table entry for virtual page 3, we see that the page is resident in memory (valid bit = 1) and lives in physical page 2. So the corresponding physical address is (2&lt;&lt;10)+0x374 = 0xB74 = 2932.
+ </p></div>
+</li>
+</ol>
+<h2 id="page-replacement-basic">Page Replacement (Basic)</h2>
+<p>Consider two possible page-replacement strategies: LRU (the least recently used page is replaced) and FIFO (the page that has been in the memory longest is replaced). The merit of a page-replacement strategy is judged by its hit ratio. Assume that, after space has been reserved for the page table, the interrupt service routines, and the operating-system kernel, there is only sufficient room left in the main memory for four user-program pages. Assume also that initially virtual pages 1, 2, 3, and 4 of the user program are brought into physical memory in that order.</p>
+<ol>
+<li>
+<p>For each of the two strategies, what pages will be in the memory at the end of the following sequence of virtual page accesses? Read the sequence from left to right: (6, 3, 2, 8, 4).</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ LRU:<br>
+ start: 4 3 2 1<br>
+ access 6: replace 1 =&gt; 6 4 3 2<br>
+ access 3: reorder list =&gt; 3 6 4 2<br>
+ access 2: reorder list =&gt; 2 3 6 4<br>
+ access 8: replace 4 =&gt; 8 2 3 6<br>
+ access 4: replace 6 =&gt; 4 8 2 3<br>
+ <br>
+ FIFO:<br>
+ start: 4 3 2 1<br>
+ access 6: replace 1 =&gt; 6 4 3 2<br>
+ access 3: no change =&gt; 6 4 3 2<br>
+ access 2: no change =&gt; 6 4 3 2<br>
+ access 8: replace 2 =&gt; 8 6 4 3<br>
+ access 4: no change =&gt; 8 6 4 3
+ </p></div>
+</li>
+<li>
+<p>Which (if either) replacement strategy will work best when the machine accesses pages in the following (stack) order: (3, 4, 5, 6, 7, 6, 5, 4, 3, 4, 5, 6, 7, 6, …)?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ LRU misses on pages 3 &amp; 7, hence having 2/8 miss rate. FIFO doesn’t work well on stack accesses, as it will have 5/8 miss rate.
+ </p></div>
+</li>
+<li>
+<p>Which (if either) replacement strategy will work best when the machine accesses pages in the following (repeated sequence) order: (3, 4, 5, 6, 7, 3, 4, 5, 6, 7, …)?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Both strategies have a 100% miss rate in the steady state.
+ </p></div>
+</li>
+<li>
+<p>Which (if either) replacement strategy will work best when the machine accesses pages in a randomly selected order, such as (3, 4, 2, 8, 7, 2, 5, 6, 3, 4, 8, …)?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ Neither FIFO nor LRU is guaranteed to be the better strategy in dealing with random accesses since there is no locality to the reference stream.
+ </p></div>
+</li>
+</ol>
+
+    </div>
+  </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  >
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+  >
+  </script>
+</body>
+
+<style>
+.blueborder{
+ border-style:solid;
+ border-color:#287EC7;
+ padding: 10px;
+}
+
+.redborder{
+ border-style:solid;
+ border-color:#FF0000;
+ padding: 10px;
+}
+
+
+.greenbox{
+background-color: #cfc ;
+padding: 10px; 
+border: 1px solid green;
+}
+
+.orangebox{
+background-color: #FFE4B5 ;
+padding: 10px; 
+border: 1px solid #FF8C00;
+}
+
+.redbox{
+    background-color: #FFE4E1;
+    border: 1px solid #FA8072;
+    display: block;
+    padding: 10px;
+}
+
+.bluebox{
+    background-color: #F0F8FF;
+    border: 1px solid #87CEFA;
+    display: block;
+    padding: 10px;
+}
+
+.yellowbox{
+    background-color: #FFFACD;
+    border: 1px solid #FFFF66;
+    display: block;
+    padding: 10px;
+}
+
+.redtext{
+	color:red;
+}
+
+.bluetext{
+	color:blue;
+}
+
+.orangetext{
+	color:#FF791A;
+}
+
+.greentext{
+	color:green;
+}
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #efffef;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccffcc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #efffef;
+}
+</style>
+
+
+
+
+</html>
