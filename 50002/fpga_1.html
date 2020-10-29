@@ -294,7 +294,7 @@ io_led[2][0] = eightbitadder.cout;
 <p>A multiplexer can be easily implemented using the keyword <code>case</code> in Lucid. Consider a new combinational logic module that does left shifting with the following schematic (<code>a</code>, <code>b</code> are inputs, and <code>s</code> is output):<br>
 <img src="https://www.dropbox.com/s/ub55j7rdohnl0o6/shifter8.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <blockquote>
-<p>The module above can shift the 8-bit <code>a</code> input by <code>n</code> bits to the left where <code>n=0,...,7</code>, and pad the shifted digits with zeroes. In Lab 3, you implement the 16-bit version of this module.</p>
+<p>The module above can shift the 8-bit <code>a</code> input by <code>n</code> bits to the left where <code>n=0,...,7</code>, and pad the shifted digits with zeroes. In Lab 3, you implement the 32-bit version of this module.</p>
 </blockquote>
 <p>The three multiplexers can be easily implemented as follows. First, declare the input and output terminals:</p>
 <pre><code>module eight_bit_shiftleft (
