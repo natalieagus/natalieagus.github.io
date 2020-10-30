@@ -162,10 +162,11 @@ Singapore University of Technology and Design<br>
 <p><em>Think its a little overkill to create an FSM just for this feature of toggling the values of b?  Well, there’s many other ways to do this. One possible way is to create a ROM to store the 3 versions of <code>y</code> values:</em></p>
 <blockquote></blockquote>
 <p><code>const Y_VALUES = {8h0, 8h0C, 8h07, 8h02}</code></p>
-<p>*and use a 2-bit <code>dff</code> whose output value is used as an  input <code>address</code> to the ROM. We increment the content of the <code>dff</code> by 1 at each clock cycle, and reset it back to <code>00</code> once it reaches <code>10</code> (because we don’t need <code>11</code>):</p>
+<p><em>Note: <code>Y_VALUES[0]</code> is <code>8h02</code> <strong>and not</strong> <code>8h0</code></em></p>
+<p>and use a 2-bit <code>dff</code> whose output value is used as an  input <code>address</code> to the ROM. We increment the content of the <code>dff</code> by 1 at each clock cycle, and reset it back to <code>00</code> once it reaches <code>10</code> (because we don’t need <code>11</code>):</p>
 </blockquote>
 <pre><code>dff counter[2](.clk(clk), .rst(rst));
-eight_bit_adder adder;
+eight_bit_adder adder; 
 
 ...
 // somewhere inside always
