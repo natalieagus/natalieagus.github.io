@@ -159,7 +159,7 @@ Singapore University of Technology and Design<br>
 <p>We now have that additional FSM unit that controls the value of <code>y</code> instead of just feeding it with the constant <code>2</code> like we did previously.</p>
 <p>Thankfully Lucid comes with a built-in <code>fsm</code> declaration, so we don’t have to define that FSM by ourselves. <code>fsm</code> is similar to <code>dff</code> except that it is used to store <strong>state</strong> and not a value.</p>
 <blockquote>
-<p><em>Think its a little overkill to create an FSM just for this feature of toggling the values of b?  Well, there’s an many other ways to do this. One possible way is to create a ROM to store the 3 versions of <code>x</code> values:</em></p>
+<p><em>Think its a little overkill to create an FSM just for this feature of toggling the values of b?  Well, there’s many other ways to do this. One possible way is to create a ROM to store the 3 versions of <code>y</code> values:</em></p>
 <blockquote></blockquote>
 <p><code>const Y_VALUES = {8h0, 8h0C, 8h07, 8h02}</code></p>
 <p>*and use a 2-bit <code>dff</code> whose output value is used as an  input <code>address</code> to the ROM. We increment the content of the <code>dff</code> by 1 at each clock cycle, and reset it back to <code>00</code> once it reaches <code>10</code> (because we don’t need <code>11</code>):</p>
