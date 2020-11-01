@@ -200,7 +200,7 @@ buttoncond.in = io_button[3:0];
 <h2 id="using-button-presses-as-triggers">Using Button Presses as Triggers</h2>
 <p>There’s two usages for button inputs in general:</p>
 <ol>
-<li>You just a user to <em>trigger</em> something <strong>once</strong> by pressing it.</li>
+<li>You just want a user to <em>trigger</em> something <strong>once</strong> by pressing it.</li>
 <li>You need a user to press and <strong>hold</strong> continuously.</li>
 </ol>
 <p>Regardless, you need to know that since the system clock is running so fast at 100MHz, a button press will result in a value of <code>1</code> being produced as <code>buttoncond.out</code> <strong>for at least thousands of clock cycles</strong>. In other words, if you were to load this as an input to some register,</p>
