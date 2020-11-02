@@ -17,6 +17,8 @@
 <ul>
 <li><a href="#virtual-memory-trivia-basic">Virtual Memory Trivia (Basic)</a></li>
 <li><a href="#page-replacement-basic">Page Replacement (Basic)</a></li>
+<li><a href="#va-pa-address-translation-basic">VA-PA Address Translation (Basic)</a></li>
+<li><a href="#vm-party-intermediate">VM Party (Intermediate)</a></li>
 </ul>
 </li>
 </ul>
@@ -131,6 +133,54 @@ Singapore University of Technology and Design<br>
 <p>Which (if either) replacement strategy will work best when the machine accesses pages in a randomly selected order, such as (3, 4, 2, 8, 7, 2, 5, 6, 3, 4, 8, …)?</p>
  <div class="collapsible">Show Answer</div><div class="content"><p>
  Neither FIFO nor LRU is guaranteed to be the better strategy in dealing with random accesses since there is no locality to the reference stream.
+ </p></div>
+</li>
+</ol>
+<h2 id="va-pa-address-translation-basic">VA-PA Address Translation (Basic)</h2>
+<p>Consider a virtual memory system that uses a single-level page map to translate virtual addresses into physical addresses. The following table shows the first 8 entries in the page map. If there are 1024 (<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">2^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8141079999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span></span>) bytes per page, what is the physical address corresponding to the virtual address <code>0x1C92</code>?</p>
+<img src="https://www.dropbox.com/s/93f6hoa3nk9iyah/vapa.png?raw=1" width="50%" height="50%">
+<div class="collapsible">Show Answer</div><div class="content"><p>
+The PA is <code>0x0492</code>. You can obtain it by figuring out how many bits is the VPN. Given that there's 1024 bytes per page, this gives us the clue that PO is 10 bits, which means that VPN is consisted of 6 bits: <code> 000111</code>. From the table, we find that the PPN is <code>1</code> for VPN 7. Appending PPN and PO and making it 16 bits hex representation, we have PO: <code> 0010010010 </code> and PPN: <code> 000001 </code>. Appending them together and converting them to results in <code>0x0492</code>.
+</p></div>
+<h2 id="vm-party-intermediate">VM Party (Intermediate)</h2>
+<p>Refer to the state of RAM, pagetable, and TLB above. The addresses in the RAM, D, and R bits are written in binary, while the VPN, PPN, and LRU are written in Hex.</p>
+<p><strong>The biggest LRU number refers to the MOST recently used item and vice versa,</strong> and that BYTE addressing is used. The total size of the RAM is 8 PAGES and the total number of entries in the pagetable is 16. The letter A, B, C, and D written above refers to the entire page, meaning that address <code>000000</code> to <code>001100</code> belong to page A, address <code>010000</code> to <code>011100</code> belong to page B, and so on.</p>
+<img src="https://www.dropbox.com/s/rddyib7t32636a2/VMqns.png?raw=1" width="70%" height="70%">
+<ol>
+<li>
+<p>How many bits is PO, PPN, and VPN?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ #bits of PO is 4, #bits of PPN is 2, #bits of VPN is 3
+ </p></div>
+</li>
+<li>
+<p>Which of the following instructions <strong>does not</strong> require access to the pagetable?</p>
+<ul>
+<li><code>ST(R0, 0b1111100, R31)</code></li>
+<li><code>ST(R0, 0b0110100, R31)</code></li>
+<li><code>ADD(R31, 0x3, R0), ST(R0, 0b0010100, R31)</code></li>
+<li><code>LD(R31, 0b0011000, R2), SHLC(R2, 0x4, R2)</code></li>
+</ul>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ You don't require access to the pagetable if the entry is already cached at the TLB. The second instruction and the third instruction requires translation of VPN 3 and VPN 1 which are both present in the TLB -- this means we don't need to access the pagetable anymore. 
+ </p></div>
+</li>
+<li>
+<p>We want to call the following instruction: <code>ST(R31, 0b1100100, R31)</code>. Where is this data with VA of<code>0b1100100</code> located?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ VPN 6 is not resident. Therefore it is on disk. 
+ </p></div>
+</li>
+<li>
+<p>Where will the content for VPN 6 be located in the RAM after the instruction <code>ST(R31, 0b1100100, R31)</code> is executed, i.e: which data – A, B, C, or D will be replaced by the content of VPN 6?</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ It will replace data B since PPN 2 has the smallest LRU bits (which means that its the least recently used). 
+ </p></div>
+</li>
+<li>
+<p>Draw the state of the TLB after <code>ST(R31, 0b1100100, R31)</code> is executed.</p>
+ <div class="collapsible">Show Answer</div><div class="content"><p>
+ <img src="https://www.dropbox.com/s/3q2ydp6117bq1dm/TLBANS.png?raw=1" width="70%" height="70%">
  </p></div>
 </li>
 </ol>
