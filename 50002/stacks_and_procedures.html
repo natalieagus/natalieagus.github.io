@@ -166,7 +166,7 @@ int result_2 = fact(9); --- (8)
 <li>Return value is always stored at <code>R0</code></li>
 <li>Arguments can be found in a dedicated space in the Memory Unit, called the <strong>Stack</strong>. The address of the <em>top</em> of the stack (first unused location) can always be found in <code>R29</code>. The address of the <em>base</em> of the stack can always be found in <code>R27</code>.
 <blockquote>
-<p>We label <code>R29</code> as <code>SP</code> (<em><strong>Stack Pointer</strong></em>), and <code>R28</code> as <code>BP</code> (<em><strong>Base Pointer</strong></em>).</p>
+<p>We label <code>R29</code> as <code>SP</code> (<em><strong>Stack Pointer</strong></em>), and <code>R27</code> as <code>BP</code> (<em><strong>Base Pointer</strong></em>).</p>
 </blockquote>
 </li>
 <li>Return address is always stored at <code>R28</code>.
