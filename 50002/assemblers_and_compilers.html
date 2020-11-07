@@ -250,7 +250,7 @@ x = 20
 y = x + 5
 </code></pre>
 <p>Translates to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly code:</p>
-<pre><code>include beta.uasm
+<pre><code>.include beta.uasm
 
 LD(R31, x, R1)		| load the content of memory address x to R1
 ADDC(R1, 5, R0)	| now that '20' is in R1, add it with 5, store it at R0
@@ -268,7 +268,7 @@ x[1] = 13;
 x[2] = x[0] + x[1];
 </code></pre>
 <p>Translates to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly code:</p>
-<pre><code>include beta.uasm
+<pre><code>.include beta.uasm
 
 ADDC(R31, 12, R0)	| supposed content of x[0]
 ST(R0, x)			| store '12' in R0 at address x
@@ -294,7 +294,7 @@ while (true){
 }
 </code></pre>
 <p>Might translate to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly code:</p>
-<pre><code>include beta.uasm
+<pre><code>.include beta.uasm
 
 LD(R31, n, R1)
 LD(R31, r, R2) 
