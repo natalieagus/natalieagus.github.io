@@ -136,7 +136,7 @@ int result_2 = fact(9); --- (8)
 <p>The first line of instruction that is executed is labeled with (1) above. We then enter the function, executing the lines labeled as (2)  to (7) in sequence.</p>
 </li>
 <li>
-<p><mark> After (7), the CPU must know how to return to the caller, that is the address of instruction (8).</mark></p>
+<p><mark> After (7), the CPU must know how to return to the caller, that is the address of instruction (1).</mark></p>
 </li>
 <li>
 <p>Instruction (8) tells the CPU to enter the function again for the <strong>second run</strong>, thus executing (2) to (7) for another round, before finally stopping.</p>
@@ -523,7 +523,7 @@ PUSH(R3)	| temp reg
 PUSH(R4) 	| for constant
 
 LD(BP, -12, R1) | get first argument
-ADDC(R31, 1, R4) | put 2 to R4 as a constant 
+ADDC(R31, 1, R4) | put 1 to R4 as a constant 
 
 ||| Computation Part 1
 begin_fact_check: CMPLT(R4, R1, R2) | compare if 1 &lt; n, store in R2
