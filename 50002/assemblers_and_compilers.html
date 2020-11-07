@@ -257,7 +257,7 @@ ADDC(R1, 5, R0)	| now that '20' is in R1, add it with 5, store it at R0
 ST(R0, y, R31) 		| store the result (at R0) to location y
 HALT()
 
-x : LONG(20)	| label x points to where 20 is stored
+x : LONG(20)	| label x points to where 10 is stored
 y : LONG(0)		| label y points to where 0 is stored
 </code></pre>
 <h3 id="example-2-arrays">Example 2: Arrays</h3>
@@ -288,7 +288,7 @@ x : . = .+4*5 | leave room for 5 ints
 int r = 1;
 
 while (true){
-	if (n &lt; 0) break;
+	if (n &lt;= 0) break;
 	r = r*n;
 	n = n-1;
 }
