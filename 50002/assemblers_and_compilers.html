@@ -257,7 +257,7 @@ ADDC(R1, 5, R0)	| now that '20' is in R1, add it with 5, store it at R0
 ST(R0, y, R31) 		| store the result (at R0) to location y
 HALT()
 
-x : LONG(20)	| label x points to where 10 is stored
+x : LONG(20)	| label x points to where 20 is stored
 y : LONG(0)		| label y points to where 0 is stored
 </code></pre>
 <h3 id="example-2-arrays">Example 2: Arrays</h3>
@@ -301,7 +301,7 @@ LD(R31, r, R2)
 
 check_while: CMPLT(R31, R1, R0)	| compute whether n &gt; 0
 BNE(R0, while_true, R31) | if R0 != 0, go to while_true
-ST(R2, r, R31)			 | store the result to location 'n'
+ST(R2, r, R31)			 | store the result to location 'r'
 HALT()
 
 while_true: MUL(R1, R2, R2) | r = r*n
