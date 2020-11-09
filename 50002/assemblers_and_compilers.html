@@ -46,7 +46,7 @@ Singapore University of Technology and Design<br>
 </blockquote>
 <p>We can do this by writing various <strong>softwares</strong> that allow us to abstract some details so that it is easier to fulfil our tasks.</p>
 <h2 id="software-abstraction-strategy">Software: Abstraction Strategy</h2>
-<p>Abstraction is a fundamental concept in software engineering and computer science. It refers to process of removing physical, spatial, or temporal details to allow us to focus out attention on matters of <strong>greater importance.</strong></p>
+<p>Abstraction is a fundamental concept in software engineering and computer science. It refers to process of removing physical, spatial, or temporal details to allow us to focus our attention on matters of <strong>greater importance.</strong></p>
 <p>We can engineer various softwares to provide abstraction in a computer system. A central form of abstraction in computing is the language abstraction.</p>
 <blockquote>
 <p>Language abstraction: generational development of programming languages from the <em>machine language</em> to the <em>assembly language</em> and the <em>high-level language.</em> Each stage can be used as a stepping stone for the next stage.</p>
@@ -257,7 +257,7 @@ ADDC(R1, 5, R0)	| now that '20' is in R1, add it with 5, store it at R0
 ST(R0, y, R31) 		| store the result (at R0) to location y
 HALT()
 
-x : LONG(20)	| label x points to where 10 is stored
+x : LONG(20)	| label x points to where 0 is stored
 y : LONG(0)		| label y points to where 0 is stored
 </code></pre>
 <h3 id="example-2-arrays">Example 2: Arrays</h3>
@@ -280,7 +280,7 @@ ADDC(R31, 8, R2) 	| index 2 (x[2] -&gt; x+8)
 ST(R3, x, R2) 		| store '25' in R3 at address (x+8)
 HALT()
 
-x : . = .+4*5 | leave room for 5 ints
+x : . 
 </code></pre>
 <h3 id="example-3-conditionals-and-loops">Example 3: Conditionals and Loops</h3>
 <p>C Code:</p>
