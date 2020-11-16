@@ -154,7 +154,7 @@ put together on a shaft, and they make up a <em>cylinder</em>. The cylinders are
 <p>Of course the charge  stored in the NAND flash can still fade over time if we never power it back up anymore. Therefore it is important to power the flash storage from time to time to retain its data.</p>
 <p>Although not needed for our course syllabus, if you’re curious you can read more about how HDD and SSD work <a href="https://www.dropbox.com/s/tlaek0wyljpr74s/Hard%20Drives%3A%20How%20Do%20They%20Work%3F%20%E2%80%93%20Techbytes.pdf?dl=1">here</a> to understand how each of the work and the pros and cons of each device.</p>
 <h2 id="memory-addressing">Memory Addressing</h2>
-<p>Billions of these SRAM or DRAM cells are assembled together to form a large memory unit. Each <em>byte</em> (4 cells) has a <em>specific address</em>.</p>
+<p>Billions of these SRAM or DRAM cells are assembled together to form a large memory unit. Each <em>byte</em> (8 cells) has a <em>specific address</em>.</p>
 <p>To decode an address, we can split the address into higher <code>N</code> address bits (selecting one of the rows) and lower <code>M</code> address bits (selecting a group of the columns), then read the information out of the bitlines as shown in the figure:</p>
 <img src="https://www.dropbox.com/s/kc5atqtnyuo5dg7/decoding.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>We often read hundreds of bits in parallel, for example, one <em>“row”</em> might contains hundreds of bit lines, and the lower <code>M</code> address bits will select which of group of 32 bits (or 64 bits, depending on the ISA) we want to read.</p>
