@@ -438,7 +438,7 @@ Singapore University of Technology and Design<br>
 <p>The dirty bit (<code>1</code> or <code>0</code>) is used to indicate whether we need to update the memory unit to reflect the new updated version in the cache.</p>
 <p>The dirty bit is set to <code>1</code> <strong>iff</strong> the cache line is updated (CPU writes new values to cache) but this new value <strong>hasn’t been stored</strong> to the physical memory. In other words, the copy in the physical memory is <em>outdated</em>.</p>
 <h3 id="lru-least-recently-used-bits"><code>LRU</code>: Least Recently Used Bits</h3>
-<p>The LRU bit is present in each cache line for FA and NWSA cache only regardless of the block size.  DM cache does not have a replacement policy. For a cache of size <code>N</code>, we need <code>N log N</code> bits per cache line.</p>
+<p>The LRU bit is present in each cache line for FA and NWSA cache only regardless of the block size.  DM cache does not have a replacement policy. For a cache of size <code>N</code>, we need <code>N log N</code> bits per cache.</p>
 <p>The helper bits can be illustrated in a diagram like below. Below we have a sample of 3WSA cache with <code>b=2</code>:</p>
 <img src="https://www.dropbox.com/s/jdzkblgoyb6dh7i/3way.png?raw=1" alt="“F1”" width="100%" height="100%">
 <blockquote>
