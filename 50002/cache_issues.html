@@ -52,7 +52,7 @@ Singapore University of Technology and Design<br>
 <p>The cache design issues are categorised as follows:</p>
 <ol>
 <li>
-<p><strong>Associativity</strong> : we need to determine how many <em>different</em> addresses can be stored in a cache line. <mark> It implies <strong>choice</strong> </mark>.</p>
+<p><strong>Associativity</strong> : we need to determine how many <em>different</em> cache lines can one address be stored to. <mark> It implies <strong>choice</strong> </mark>. Of course note that there can only be one copy of that address (tag) in the entire cache.</p>
 <ul>
 <li>For DM cache, there is no choice on which cache line is used or looked up. <strong>A 1-to-1 mapping</strong> between each combination of the last <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathdefault" style="margin-right: 0.03148em;">k</span></span></span></span></span> bit of the query address <code>A</code> to the cache line (entry) is required. Hence, the DM cache has <strong>no associativity</strong>.</li>
 <li>An FA cache, as the name suggests: has <strong>complete associativity</strong>. We have <code>N</code> choices of cache lines in an FA cache of size <code>N</code>: any <code>Tag</code>-<code>Content</code> can reside on any cache line in FA cache.</li>
