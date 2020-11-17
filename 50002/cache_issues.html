@@ -612,8 +612,9 @@ Oldest entry is bolded.</p>
 	check for A in TAG field of cache lines with V==1
 
 	if HIT: 
+		update all helper bits necessary
 		return the corresponding content from cache to CPU
-
+		
 	else if MISS:
 		if DM cache:
 			selected cache line to replace 
