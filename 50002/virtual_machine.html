@@ -233,7 +233,7 @@ Singapore University of Technology and Design<br>
 <blockquote>
 <p>Consider the scenario where the interrupt handler is in the middle of saving program states. Allowing another interrupt to occur in the middle of a save might cause data corruption.</p>
 </blockquote>
-<p>The drawback to an interruptible kernel is that there’s no way to get the system to work again if the kernel is buggy and runs into an infinite loop, except via hard reset. The kernel program has to be written very carefully so as not to contain such bugs.</p>
+<p>The drawback to an uninterruptible kernel is that there’s no way to get the system to work again if the kernel is buggy and runs into an infinite loop, except via hard reset. The kernel program has to be written very carefully so as not to contain such bugs.</p>
 <h3 id="timer-example">Timer Example</h3>
 <p>In this section, we illustrate an example of how a basic Kernel Scheduler works with the support of hardware.</p>
 <p>Consider a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> computer having a 16-bit counter (<em>hardware</em>) with frequency of 50 Hz that runs <strong>asynchronously</strong> with the CPU. This counter will be used as a timer for process scheduling.</p>
@@ -319,9 +319,11 @@ c = getchar();
 </blockquote>
 <h2 id="summary">Summary</h2>
 <p>In summary, we have learned how the presence of OS Kernel and hardware support provide an abstraction for each running process, thus allowing them to run in an isolated manner; on their own virtual machine.</p>
-<p>The Kernel <strong>manages</strong>  the execution of all processes, as well as all I/O devices, and provides <strong>services</strong> to all these processes. There are two ways to transfer CPU control between user programs to kernel programs:<br>
-*Firstly, is through <strong>asynchronous interrupt</strong>: <code>IRQ</code> is set to <code>1</code><br>
-*Secondly, is through <strong>synchronous interrupt</strong>: when the process generates an <strong>exception</strong> hence <strong>trapping</strong> itself to the handler and enters Kernel mode.</p>
+<p>The Kernel <strong>manages</strong>  the execution of all processes, as well as all I/O devices, and provides <strong>services</strong> to all these processes. There are two ways to transfer CPU control between user programs to kernel programs:</p>
+<ul>
+<li>Firstly, is through <strong>asynchronous interrupt</strong>: <code>IRQ</code> is set to <code>1</code></li>
+<li>Secondly, is through <strong>s	ynchronous interrupt</strong>: when the process generates an <strong>exception</strong> hence <strong>trapping</strong> itself to the handler and enters Kernel mode.</li>
+</ul>
 <p>During either case of interrupt, <code>PC+4</code> is stored at <code>Reg[XP]</code> so that the system knows how to resume the process later on.</p>
 <p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the Kernel is <strong>non-preemptive</strong> (the CPU cannot be interrupted while in Kernel Mode). It is designed as such to prevent security breach, data loss if it traps into itself while still being in the Kernel Mode, etc. However, careful writing and construction of the Kernel program is required.</p>
 
