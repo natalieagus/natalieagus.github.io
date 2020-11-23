@@ -37,16 +37,9 @@ Singapore University of Technology and Design<br>
 <h2 id="byte-memory-array-loading-basic">Byte Memory Array Loading (Basic)</h2>
 <p>The memory is loaded as a byte array <code>{14, 00, 3F, 60, 18, 00, 5F, 60, 00, 10, 01, 80, 1C, 00, 1F, 64, 00, 00, 00, 00, 02, 00, 00, 00, 04, 00, 00, 00, 00, 00, 00, 00}</code> before starting execution.</p>
 <p>For example, this means that <code>MEM[0] = 0x14</code> and <code>MEM[2] = 0x3F</code> and so on.</p>
-<p>Before execution, what is the word at memory address <code>0xC</code>? And what is the word at memory address <code>0x14</code>?</p>
+<p>What is the word at memory address <code>0xC</code>? And what is the word at memory address <code>0x14</code>?</p>
 <div class="collapsible">Show Answer</div><div class="content"><p>
 <code>MEM[0xC] = 64 1F 00 1C</code>, and <code>MEM[0x14] = 00 00 00 02</code>.
-</p></div>
-<p>After execution, what is the word at memory address <code>0x18</code>? And what is the word at memory address <code>0x1C</code>?</p>
-<blockquote>
-<p>Note: you need to convert the machine language into instructions first, and figure out what it does.</p>
-</blockquote>
-<div class="collapsible">Show Answer</div><div class="content"><p>
-<code>MEM[0x18] = 00 00 00 04</code>, and <code>MEM[0x1C] = 00 00 00 06</code>.
 </p></div>
 <h2 id="the-remainder-basic">The Remainder (Basic)</h2>
 <p>Refer to the C-code below:</p>
