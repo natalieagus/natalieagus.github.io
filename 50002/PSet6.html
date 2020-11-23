@@ -265,7 +265,7 @@ BEQ(R9,0x1C,R27): 0x77690002</code></pre> <p></p></div>
 	int z[5]={1,2,3,4,5};
 	int r1, r2;
 	r1 = f(3,z);
-	r2 = f(1, z+1);
+	r2 = f(1, z+1); // z+1 is the address of the second element of z
 }  
 </code></pre>
 <p>Refering to the C code in Part 2, state whether each of the following is stored in the: stack, data, or code part of the memory.</p>
