@@ -202,7 +202,7 @@ Singapore University of Technology and Design<br>
 <p>Kernel program and kernel data (privileged information, data structures, etc) are stored in the Kernel space. The rest of the program in the system live in the user space.</p>
 <p>With this notion, it is easy to enforce restricted access to the kernel space:</p>
 <ul>
-<li>Programs runing in user mode (<code>PC31 == 0</code>) can never <em>branch</em> or <em>jump</em> to instructions in the kernel space.
+<li>Programs running in user mode (<code>PC31 == 0</code>) can never <em>branch</em> or <em>jump</em> to instructions in the kernel space.
 <blockquote>
 <p>Computations of next instruction address in<code>BEQ</code>, <code>BNE</code>, and <code>JMP</code> cannot change <code>PC31</code> value from <code>0</code> to <code>1</code>.</p>
 </blockquote>
@@ -247,7 +247,7 @@ Singapore University of Technology and Design<br>
 <p>If at first the CPU is executing instructions of Program <code>P1</code>:</p>
 <ol>
 <li>
-<p>After 0.32 seconds, <code>IRQ</code> turns to <code>1</code>. This triggers an interrupt, and the control signals will cause PC will execute the interrupt handler instruction at <code>XAddr</code> in the next cycle (and saving the <em>supposed</em> <em>next</em> instruction at <code>Reg[XP]</code>).</p>
+<p>After 0.32 seconds, <code>IRQ</code> turns to <code>1</code>. This triggers an interrupt, and the control signals will cause the PC will execute the interrupt handler instruction at <code>XAddr</code> in the next cycle (and saving the <em>supposed</em> <em>next</em> instruction at <code>Reg[XP]</code>).</p>
 </li>
 <li>
 <p>The handler at <code>XAddr</code> must <em>save register states</em>, branch to the <em>scheduler</em>, and resume the program after the scheduler returns. Note that <code>Reg[XP]</code> may or may not be the same as when <em>before</em> <code>BR(scheduler_handler, LP)</code> is executed.</p>
