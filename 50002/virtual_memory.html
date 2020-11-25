@@ -135,7 +135,7 @@ Singapore University of Technology and Design<br>
 <p>Each VA has to be then mapped to a PA, so that the system may return the requested data to the CPU (upon instruction fetch, or <code>LD</code>), or complete the execution of <code>ST</code> related instructions. This mapping is done via the <strong>memory management unit</strong> (MMU).</p>
 <img src="https://www.dropbox.com/s/s5mgxqim69a98o6/cpummu.png?raw=1" alt="“F1”" width="70%" height="70%">
 <blockquote>
-<p>An MMU is a small hardware unit where  all <em>memory references</em> from the CPU  is <em>passed through itself,</em> and its primary function is to translate of VA to PA. Refer to the next section on MMU for further information</p>
+<p>An MMU is a small hardware unit where  all <em>memory references</em> from the CPU  is <em>passed through itself,</em> and its primary function is to translate VA to PA. Refer to the next section on MMU for further information</p>
 </blockquote>
 <blockquote>
 <p>The CPU frequently makes memory references through instruction fetch from <code>PC</code>, or <code>LD</code> and <code>ST</code> related instructions.</p>
@@ -278,7 +278,7 @@ Singapore University of Technology and Design<br>
 <p>Pages will only be brought up to physical memory if the program code asks for it.</p>
 </li>
 </ul>
-<p>When a computer is turned off, every bits of information is stored its non-volatile memory storage (disk, NAND flash, etc).</p>
+<p>When a computer is turned off, every bits of information is stored in its non-volatile memory storage (disk, NAND flash, etc).</p>
 <blockquote>
 <p>The physical memory is incapable of storing any information when it does not receive any power source. *.</p>
 </blockquote>
@@ -315,7 +315,7 @@ Singapore University of Technology and Design<br>
 <p>If a non-resident VA is enquired and the physical memory is <strong>full</strong>, the OS Kernel needs to <em>remove</em> some pages  (LRU/FIFO, depends on the replacement policy)  that are currently resident to make space for this newly requested page.</p>
 <p>If these to-be-removed pages are <em>dirty</em>, a <strong>write</strong> onto the disk swap space is required before they’re being overwritten.</p>
 <h3 id="termination">Termination</h3>
-<p>Finally when the program terminates, the OS Kernel  and free up all the space initially allocated for this program’s VM (both on physical memory and disk swap space).</p>
+<p>Finally when the program terminates, the OS Kernel  and frees up all the space initially allocated for this program’s VM (both on physical memory and disk swap space).</p>
 <h3 id="an-example">An example</h3>
 <img src="https://www.dropbox.com/s/r8nia46u4gdw6gk/vmexample.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>The figure above shows a snapshot of the physical memory state at some point in time. There exist a pagetable with 16 entries and 8 pages of data labeled as <code>A</code> to <code>H</code> in the physical memory. LRU replacement policy with write back policy is used. <strong>Lower</strong> LRU means that the data is <strong>more recently used.</strong></p>
@@ -396,7 +396,7 @@ Singapore University of Technology and Design<br>
 </ul>
 <p>To distinguish between one program’s VA address space with another, the OS Kernel assigns a unique identifier<code>C</code> called <strong>context number</strong> <em>for each program</em>.</p>
 <blockquote>
-<p>“<em>Context</em>” means the set of crucial information required for a process to run (to run a program). They’re made up of  the <code>PC</code> state, all register states, its stack and heap state, etc. We will not dive into what makes up a process’ <em>context</em> in this course, and will only learn about that next term.</p>
+<p>“<em>Context</em>” is  <strong>a set of mapping</strong> of VA to PA.</p>
 </blockquote>
 <p>The context number can be appended to the requested VPN to find its correct PPN mapping:</p>
 <ul>
@@ -461,9 +461,9 @@ Singapore University of Technology and Design<br>
 <p>Since each program is running in an isolated manner from one another (in its own <em>virtual space</em>, unaware of the presence of other programs), the OS Kernel can switch execution between programs – giving the users an <em>illusion</em> as if these programs are running <strong>simultaneously</strong> with just a single CPU. The procedure that allows for this to happen seamlessly is called <strong>rapid context switching.</strong></p>
 <p>Context switching allows for <strong>timesharing</strong> among several programs.</p>
 <blockquote>
-<p>The OS Kernel simply loads the appropriate context number and pagetable pointer when switching among programs. This way, the CPU can have access to instructions or data required to execute each program and seamlessly restore or resume any of them later on.</p>
+<p>The OS Kernel simply loads the appropriate context number and pagetable pointer when switching among programs. This way, the CPU can have access to instructions or data required to execute each program and switch executions between program.</p>
 </blockquote>
-<p>In the next chapter we will learn more about how there exist a separate <em>context</em> for the OS Kernel, and it can seamlessly perform process management, thus allowing each process  to run idenpendently on its own <em><strong>virtual machine.</strong></em></p>
+<p>In the next chapter we will learn more about how the OS Kernel is specially privileged program is responsible of managing hardware resources in a system and scheduling processes to share these limited resources, thus allowing each process  to run independently on its own <em><strong>virtual machine.</strong></em></p>
 
     </div>
   </div>
