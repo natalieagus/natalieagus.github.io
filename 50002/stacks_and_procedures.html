@@ -412,7 +412,7 @@ ADDC(R31, 1, R2)
 <ol>
 <li>Put return value at <code>R0</code>.</li>
 <li>Restore all registers’ state that were used by the function computations using <code>POP</code>, in <strong>reverse</strong> order.</li>
-<li><code>ADDC(BP, R31, SP)</code>: move the content of <code>BP</code> to <code>SP</code>.  This is to set the stack pointer back to the <strong>stack frame base</strong> for this function call.
+<li><code>ADD(BP, R31, SP)</code>: move the content of <code>BP</code> to <code>SP</code>.  This is to set the stack pointer back to the <strong>stack frame base</strong> for this function call.
 <blockquote>
 <p>Remember, we need to leave the stack state as per the original state when the function returns. So whatever stuffs are added to the stack by this function must be removed.<br>
 We can also use the macro for this: <code>MOVE(BP, SP)</code></p>
