@@ -99,7 +99,7 @@ Singapore University of Technology and Design<br>
 <p>After some time <code>t</code>, imagine that a <em>timed  interrupt</em> (caused by other asynchronous hardware, e.g: a <em>timer</em>) occurs. This causes the CPU to execute part of the kernel program that handles such <strong>asynchronous interrupt</strong>, hence <em>pausing</em> the execution of <code>P1</code>.</p>
 </li>
 <li>
-<p>This <em>interrupt handler</em> takes control of the CPU when hardware interrupt occurs, and <strong>saves</strong> the  current <strong>states</strong> (PC, Registers, etc)  of P1 to the Memory (<em>so that P1’s progress is not lost and can be resumed later on</em>) before performing a “<em>context switch</em>”:</p>
+<p>This <em>interrupt handler</em> takes control of the CPU when hardware interrupt occurs, and <strong>saves</strong> the  current <strong>states</strong> (PC, Registers, etc)  of P1 to a dedicated space <strong>(Kernel Stack)</strong> in the Memory Unit  (<em>so that P1’s progress is not lost and can be resumed later on</em>) before performing a “<em>context switch</em>”:</p>
 <ol>
 <li>Load the states of <code>P2</code> to the CPU (and also the required resources, mapping, etc), and</li>
 <li>Resume the execution of <code>P2</code>.</li>
@@ -295,7 +295,7 @@ JMP(XP)  || Resume execution
 <img src="https://www.dropbox.com/s/w963kj8ugebu9xr/illop.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>During this event,</p>
 <ul>
-<li>Control unit sets <code>PCSEL = 100</code>, and saves <code>PC+4</code> into <code>Reg[XP]</code></li>
+<li>Control unit sets <code>PCSEL = 011</code>, and saves <code>PC+4</code> into <code>Reg[XP]</code></li>
 <li>The PC will execute the instruction at location <code>ILLOP</code> in the <em>next cycle</em> where the illegal operation handler resides.</li>
 <li>The <em>illop</em> handler will  look at <code>Reg[R0]</code> and invoke the right <em>service routine</em> to provide the requested service.
 <ul>
