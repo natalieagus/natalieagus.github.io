@@ -51,7 +51,7 @@ Singapore University of Technology and Design<br>
 <p>In this chapter, we will learn how I/O requests are handled. The main idea for asynchronous I/O handling is follows:</p>
 <ul>
 <li>
-<p>Each process that requires usage of I/O devices will make have to make a supervisor call. This <strong>traps</strong> to the Kernel mode, and the Kernel will handle this request.</p>
+<p>Each process that requires usage of I/O devices will  have to make a supervisor call. This <strong>traps</strong> to the Kernel mode, and the Kernel will handle this request.</p>
 </li>
 <li>
 <p>Each I/O devices will invoke an (asynchronous) <strong>interrupt request</strong> when there’s data in it that has to be fetched (mouse click, keyboard touch, touch screen input, incoming fax, etc). Whenever possible, the execution of the running process will be paused, and the Kernel will tend to this request.</p>
@@ -202,7 +202,7 @@ UUO(YieldH) | SVC(7): Yield()
 </li>
 </ol>
 <h3 id="setting-handler-priority-level">Setting Handler Priority Level</h3>
-<p>Th <strong>priority level</strong> for each interrupt handler can be illustrated using the  higher <code>p</code> bits of PC – meaning that the <em>location</em> of the handler in memory <em>matters</em>; it defines the handler’s priority level.</p>
+<p>The <strong>priority level</strong> for each interrupt handler can be illustrated using the  higher <code>p</code> bits of PC – meaning that the <em>location</em> of the handler in memory <em>matters</em>; it defines the handler’s priority level.</p>
 <blockquote>
 <p>Some hardware tweaks on the CPU is needed to support this feature, but we don’t have to dwell too deep into that at this point.</p>
 </blockquote>
@@ -349,7 +349,7 @@ UUO(YieldH) | SVC(7): Yield()
 </li>
 </ul>
 <h3 id="case-3-stricter-deadline-with-weak-policy">Case 3: Stricter Deadline with Weak Policy</h3>
-<p>Suppose the system requires a stricter <strong>deadline</strong> as shown int he table below.</p>
+<p>Suppose the system requires a stricter <strong>deadline</strong> as shown in the table below.</p>
 <p>The hardware priority ordering: <strong>Disk <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Printer <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="mrel">&gt;</span></span></span></span></span> Keyboard</strong> with <em>weak policy</em> results in the following worst-case latency:</p>
 
 <table>
