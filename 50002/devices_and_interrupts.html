@@ -72,7 +72,7 @@ Singapore University of Technology and Design<br>
 <code>000001</code> <code>26 SVC-bits</code>,<br>
 where up to lower 26 bits can be used to “<em>index</em>” the Kernel service requested.</p>
 <blockquote>
-<p>In Lab 8, we have only 7 service routines by default, so only 3 lower bits of the instruction will encode the index of the requested service routines.</p>
+<p>In Lab 8, we have only 8 service routines by default, so only 3 lower bits of the instruction will encode the index of the requested service routines.</p>
 </blockquote>
 <p>This instruction allows processes to “<em>communicate</em>” with the Kernel by interrupting its own operation and transferring CPU control to the Kernel (<em>illop</em> handler)</p>
 <p>The Illop handler saves the states of the calling process, before it checks if the Opcode of the instruction that triggers the trap is <code>000001</code>.</p>
