@@ -196,8 +196,8 @@ Singapore University of Technology and Design<br>
 </ul>
 <p>That means we can divide the physical memory address space into two sections:</p>
 <ul>
-<li><strong>User space</strong>: Addresses which MSB is <code>0</code>: from <code>0x0000 0000</code> to <code>0x0111 1111</code></li>
-<li><strong>Kernel space</strong>: Addresses which MSB is <code>1</code>: from <code>0x1000 0000</code> to <code>0x1111 1111</code>.</li>
+<li><strong>User space</strong>: Addresses which MSB is <code>0</code>: from <code>0x0000 0000</code> to <code>0x7FFF FFFF</code></li>
+<li><strong>Kernel space</strong>: Addresses which MSB is <code>1</code>: from <code>0x8000 0000</code> to <code>0xFFFF FFFF</code>.</li>
 </ul>
 <p>Kernel program and kernel data (privileged information, data structures, etc) are stored in the Kernel space. The rest of the program in the system live in the user space.</p>
 <p>With this notion, it is easy to enforce restricted access to the kernel space:</p>
