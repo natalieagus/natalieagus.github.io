@@ -155,7 +155,7 @@ Singapore University of Technology and Design<br>
 <p>One solution is increase the associativity of a DM cache is to build an <strong><code>N</code>-way set associative cache</strong> (NWSA cache).</p>
 <ul>
 <li>NWSA cache will be <em>cheaper</em> to produce than FA cache (of the same storage capacity), but slightly more expensive than its full DM cache counterpart.</li>
-<li>NWSA cache has lesser risk of contention (proportional to the value of <code>N</code>).</li>
+<li>NWSA cache has less risk of contention (proportional to the value of <code>N</code>).</li>
 </ul>
 <p>The figure below illustrates the structure of an NWSA cache:</p>
 <img src="https://www.dropbox.com/s/jbg0b7ajjcn79mg/nway.png?raw=1" alt="“F1”" width="100%" height="100%">
@@ -447,11 +447,11 @@ Singapore University of Technology and Design<br>
 <h2 id="word-addressing">Word Addressing</h2>
 <p>Previously, we learned that byte addressing is used by convention.</p>
 <p>However <strong>for ease of calculation in practice questions</strong> and <strong>problem sets</strong>, we can use <strong>word addressing</strong> instead (we give an address for each word instead of each byte).</p>
-<p>Given a memory unit of fixed size <code>M</code>, can use 2 bits lesser if we were to use word addressing instead of byte addressing.</p>
+<p>Given a memory unit of fixed size <code>M</code>, can use 2 bits less if we were to use word addressing instead of byte addressing.</p>
 <p>For DM/NWSA cache with <code>B</code> blocks and <strong>word addressing</strong>, we need to divide the original requested address into the same <strong>three segments</strong>, but we don’t have the default <code>00</code> in the lowest 2 bits of the address (as when byte addressing is used) anymore:<br>
 <img src="https://www.dropbox.com/s/2dsjsjurxtndevq/wordbyte.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <ul>
-<li>Lowest<code>B</code>-bits to index each word in a cache line block.</li>
+<li>Lowest<code>b</code>-bits to index each word in a cache line block.</li>
 <li><code>K</code>-bits to index each cache line or set.</li>
 <li>Highest (remainder) <code>T</code>-bits of the original requested address to be stored in the <code>TAG</code> field.</li>
 </ul>
@@ -595,7 +595,7 @@ Oldest entry is bolded.</p>
 </blockquote>
 <p>That means out of the 18 address calls, we have 15 <code>MISS</code>. The miss rate of this cache is therefore pretty high at <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>83.33</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">83.33\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">8</span><span class="mord">3</span><span class="mord">.</span><span class="mord">3</span><span class="mord">3</span><span class="mord">%</span></span></span></span></span>.</p>
 <blockquote>
-<p>Test yourself: If the FA cache uses LRU, will it have a better performance? i.e: lesser miss rate. What about when DM cache of same size (4 cache lines) is used? <em>Which cache design is better for this particular program running in a loop</em>?</p>
+<p>Test yourself: If the FA cache uses LRU, will it have a better performance? i.e: less miss rate. What about when DM cache of same size (4 cache lines) is used? <em>Which cache design is better for this particular program running in a loop</em>?</p>
 </blockquote>
 <h2 id="the-caching-algorithm">The Caching Algorithm</h2>
 <p>The caching algorithm computes what the cache must do in general when:</p>
