@@ -174,7 +174,7 @@ The PA is <code>0x0492</code>. You can obtain it by figuring out how many bits i
 <li>
 <p>Where will the content for VPN 6 be located in the RAM after the instruction <code>ST(R31, 0b1100100, R31)</code> is executed, i.e: which data – A, B, C, or D will be replaced by the content of VPN 6?</p>
  <div class="collapsible">Show Answer</div><div class="content"><p>
- It will replace data C since PPN 2 has the smallest LRU bits (which means that its the least recently used). 
+ It will replace data B since its PPN is not in the pagetable (means that its not a relevant content and can be overwritten). 
  </p></div>
 </li>
 <li>
