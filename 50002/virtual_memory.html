@@ -223,7 +223,7 @@ Singapore University of Technology and Design<br>
 <ul>
 <li>There are <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>v</mi></msup></mrow><annotation encoding="application/x-tex">2^v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.664392em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.664392em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right: 0.03588em;">v</span></span></span></span></span></span></span></span></span></span></span></span> rows,</li>
 <li>each row stores <code>m</code> bits of <code>PPN</code></li>
-<li>plus helper bits:  <code>2</code> bits for <code>D</code> and <code>R</code>, <code>v</code> bits for <code>LRU</code> ordering.</li>
+<li>plus helper bits:  <code>2</code> bits for <code>D</code> and <code>R</code>, <code>v</code> bits for <code>LRU</code> ordering if LRU policy is used <em>(otherwise depends on what policy is used – it is possible to have no policy as well).</em></li>
 </ul>
 </li>
 <li>
