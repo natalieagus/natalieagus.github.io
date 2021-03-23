@@ -39,7 +39,7 @@ Singapore University of Technology and Design<br>
 <p>Each topic’s questions are grouped into <strong>three</strong> categories: basic, intermediate, and challenging. You are recommended to do all basic problem set before advancing further.</p>
 <h2 id="ram-hardware-basic">RAM Hardware (Basic)</h2>
 <p>Take a look at the following memory cells. The rightmost bit line corresponds to the LSB, and the leftmost bit line corresponds to the MSB.<br>
-<img src="https://www.dropbox.com/s/472uv0zpzuuwtyf/ramtech.png?raw=1" width="70%" height="70%"></p>
+<img src="https://dl.dropboxusercontent.com/s/472uv0zpzuuwtyf/ramtech.png?raw=1" width="70%" height="70%"></p>
 <ol>
 <li>Are these cells made up of SRAM or DRAM? <div class="collapsible">Show Answer</div><div class="content"><p>
  SRAM.
@@ -132,7 +132,7 @@ Singapore University of Technology and Design<br>
 </li>
 </ol>
 <h2 id="miswiring-the-beta-intermediate">Miswiring The Beta (Intermediate)</h2>
-<p>A student has miswired the address lines going to the memory of an unpipelined <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU. The wires in question carry a 30-bit word address to the memory subsystem, and the hapless student has in fact reversed the order of all 30 address bits. Much to his surprise, the machine continues to <strong>work perfectly.</strong></p>
+<p>A student has miswired the address lines going to the memory of an unpipelined <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU. The wires in question carry a 30-bit word address to the memory subsystem, and the hapless student has in fact reversed the order of all 30 address bits. Much to his surprise, the machine continues to <strong>work perfectly.</strong></p>
 <ol>
 <li>
 <p>Explain why the miswiring doesn’t affect the operation of the machine.</p>
@@ -140,7 +140,7 @@ Singapore University of Technology and Design<br>
  Since the Beta reverses the order of the 30 bit address in the same manner for each memory access, the Beta will use the same reversed address to access a particular memory location for both stores and loads. Thus, the operation of the machine will not be affected. </p></div>
 </li>
 <li>
-<p>The student now replaces the memory in his miswired <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> with a supposedly higher performance unit that contains both a fast fully associative cache and the same memory as before. The reversed wiring still exists between the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> and this new unit. To his surprise, the new unit does not significantly improve the performance of his machine. In desperation, the student then fixes the reversal of his address lines and the machine’s performance improves tremendously. <strong>Explain why this happens.</strong></p>
+<p>The student now replaces the memory in his miswired <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> with a supposedly higher performance unit that contains both a fast fully associative cache and the same memory as before. The reversed wiring still exists between the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> and this new unit. To his surprise, the new unit does not significantly improve the performance of his machine. In desperation, the student then fixes the reversal of his address lines and the machine’s performance improves tremendously. <strong>Explain why this happens.</strong></p>
  <div class="collapsible">Show Answer</div><div class="content"><p>
  Caches take advantage of locality of reference by reading in an entire block of related data at one time, thereby reducing main memory accesses. By reversing the order of the 30 bit address, locality of the memory addresses is disrupted. The low-order bits that would normally place related data close to one another are instead the high-order bits and related data is more spread out through the main memory. This reduction in locality reduces cache performance significantly. When the student fixes the address line reversal problem, locality of the memory is restored, and the cache can perform as intended
  </p></div>
@@ -195,7 +195,7 @@ Singapore University of Technology and Design<br>
 </ol>
 <h2 id="dm-cache-arithmetic-basic">DM Cache Arithmetic (Basic)</h2>
 <p>The diagram below illustrates a blocked, direct-mapped cache for a computer that uses 32-bit data words and 32-bit byte addresses. Assume that memory location <code>0x0012347B</code> was present in the cache.<br>
-<img src="https://www.dropbox.com/s/z5hvlhyk97wa2xa/QnCache.png?raw=1" width="70%" height="70%"></p>
+<img src="https://dl.dropboxusercontent.com/s/z5hvlhyk97wa2xa/QnCache.png?raw=1" width="70%" height="70%"></p>
 <ol>
 <li>
 <p>Using the row and column labels from the figure, in what cache location could we find the data from that memory location? You may assume that e.g: Row 15 means index <code>0xF</code>, Row 14 means index <code>0xE</code>, and so on.</p>
@@ -212,7 +212,7 @@ Singapore University of Technology and Design<br>
 </ol>
 <h2 id="way-set-associative-cache-arithmetic-intermediate">3-Way Set Associative Cache Arithmetic (Intermediate)</h2>
 <p>Take a look at the following 3-way set associative cache:</p>
-<img src="https://www.dropbox.com/s/eou2p0yh6j56s3k/3w.png?raw=1" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/eou2p0yh6j56s3k/3w.png?raw=1" width="70%" height="70%">
 <p>The shaded region indicates that the tag-data cells are filled with some data. For the LRU bit, the higher value means that the item is more recently used. Assume that word addressing is used. The label A, B, C, and 0 to 7 drawn in the picture is for you to identify which corresponding set and DM cache a particular data resides. According to the diagram, we have 8 sets, indexed from 0 to 7, and three DM caches (A to C) in total.</p>
 <p>For each of the question below, assume higher bits of the address is zero and therefore isn’t written.</p>
 <ol>
