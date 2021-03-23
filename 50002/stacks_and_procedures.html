@@ -38,7 +38,7 @@ Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="stack-and-procedures">Stack and Procedures</h1>
 <h2 id="overview">Overview</h2>
-<p>In the previous chapter, we learned the basics of how to naively compile C-language into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly language. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> UASM provides a layer of abstraction such that we don’t need to bother ourselves with the details on how to load each and every bytes of instruction onto the memory unit, or keeping up with accounting matters such as physical memory addresses (we can replace these with <em>labels</em> instead).</p>
+<p>In the previous chapter, we learned the basics of how to naively compile C-language into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly language. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> UASM provides a layer of abstraction such that we don’t need to bother ourselves with the details on how to load each and every bytes of instruction onto the memory unit, or keeping up with accounting matters such as physical memory addresses (we can replace these with <em>labels</em> instead).</p>
 <p>In this chapter, we will learn about <em>function call procedures</em>, and why we need to understand another concept called the <em>stacks</em>. Both will allow us to have reusable code fragments that are <em>called</em> as needed.</p>
 <h2 id="procedures-and-functions">Procedures and Functions</h2>
 <p>Consider the following declaration and implementation of function <code>fact</code>  below. It receives one argument <code>int n</code>, and returns an <code>int</code>.</p>
@@ -55,7 +55,7 @@ Singapore University of Technology and Design<br>
 <pre><code>int result_1 = fact(4);
 int result_2 = fact(9);
 </code></pre>
-<p>If we were to naively assemble this, we can translate this into the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly source code:</p>
+<p>If we were to naively assemble this, we can translate this into the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly source code:</p>
 <pre><code>.include beta.uasm
 || we call fact(4) first
 LD(R31, n_1, R1)	| load 4 to R1
@@ -194,7 +194,7 @@ int result_2 = fact(9); --- (8)
 <p>You always add item via <code>PUSH</code> operation to the top of the stack, and can only remove the topmost item in succession via <code>POP</code> operation from the top of the stack.</p>
 <p><mark> How do we implement the stack data structure to aid our function execution? </mark></p>
 <p>We <strong>reserve</strong> an arbitrary block of location in our Memory Unit to be space for the stack. Illustrated below is a block of memory unit from address <code>0x010C</code> to <code>0x0128</code> reserved as our stack:</p>
-<img src="https://www.dropbox.com/s/zwaa983jxrmq78n/stack_empty.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/zwaa983jxrmq78n/stack_empty.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>We have conventions as mentioned:</p>
 <ul>
 <li><code>R29 (SP)</code> contains the address of the <em>top</em> of the stack (available location to write to).</li>
@@ -210,7 +210,7 @@ int result_2 = fact(9); --- (8)
 <li><code>LD(SP , -4, Rx)</code> (load the content pointed by <code>Reg[SP]-4</code> to a chosen <code>Rx</code>)</li>
 <li><code>SUBC(SP, 4, SP)</code> (decrease <code>SP</code>'s content by <code>4</code> so that it points to the previous line address)</li>
 </ul>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> <code>uasm</code>, we simply create these macros for <code>PUSH</code> and <code>POP</code>:</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> <code>uasm</code>, we simply create these macros for <code>PUSH</code> and <code>POP</code>:</p>
 <ul>
 <li><code>PUSH(Rx)</code> : push <code>Reg[Rx]</code> onto the stack</li>
 <li><code>POP(Rx)</code>: pop the value on top of the stack to <code>Reg[Rx]</code></li>
@@ -247,7 +247,7 @@ PUSH(R2)
 PUSH(R3)
 </code></pre>
 <p>Upon execution of these series of instruction, the state of the stack is:</p>
-<img src="https://www.dropbox.com/s/h6ra945bysxu8tb/stack_3.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/h6ra945bysxu8tb/stack_3.png?raw=1" alt="“F1”" width="60%" height="60%">
 <blockquote>
 <p>Notice that the “top” of the stack is at the <em>bottom</em>, and that the stack grows <em>downwards</em> by convention.</p>
 </blockquote>
@@ -259,7 +259,7 @@ MULC(R3, 4, R3)
 </code></pre>
 <p>The <strong>new</strong> state of the registers are now written in red. <strong>The stack stays the same,</strong> and so does <code>SP</code>.</p>
 <p>We can now say that <strong>the stack contains the old value of the registers</strong> <code>R1, R2, R3</code>, as shown:</p>
-<img src="https://www.dropbox.com/s/4v4l61monn1ktwy/stack_new.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/4v4l61monn1ktwy/stack_new.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p><mark> <strong>Removing items from the stack</strong> </mark></p>
 <p>To remove items from the top of the stack, we can use <code>POP</code> instruction:</p>
 <pre><code>POP(R3)
@@ -270,7 +270,7 @@ POP(R1)
 <blockquote>
 <p>The remnants of data that was pushed to the stack actually stays in memory, but its rendered <em>irrelevant</em> because it can be overwritten again by other instructions (hence space is seen as <em>freed</em>). In fact, there’s no such thing as <strong>erasing</strong> contents in the memory unit unless we explicitly write a bunch of zeroes to make it disappear. We simply always <em>overwrite</em> them.</p>
 </blockquote>
-<img src="https://www.dropbox.com/s/u5r91wv4dbfmxv4/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/u5r91wv4dbfmxv4/stack_popped.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p><mark> <strong>Resetting the stack</strong> </mark><br>
 Finally, we reset a stack by simply changing the value <code>SP</code>. For example, we can return the state of <code>SP</code> to <code>0</code> as it was before <strong>Step 1</strong>.</p>
 <pre><code>DEALLOCATE(67)
@@ -498,7 +498,7 @@ JMP(LP,R31) | step (6)
 <p>In this course, you are expected to mentally run each instruction line by line and give the state of all registers involved, the PC, and the stack at all times. Lots of practice is definitely needed.</p>
 </blockquote>
 <p>At the end of the program, you should see that you have each answer in the memory address <code>0x01B0</code> and <code>0x01B4</code>:</p>
-<img src="https://www.dropbox.com/s/g7l4l0tkcyl08jj/mem_Res.png?raw=1" alt="“F1”" width="30%" height="30%">
+<img src="https://dl.dropboxusercontent.com/s/g7l4l0tkcyl08jj/mem_Res.png?raw=1" alt="“F1”" width="30%" height="30%">
 <h2 id="an-example-with-recursion">An example with recursion</h2>
 <p>We can also implement <code>fact</code> recursively:</p>
 <pre><code>int fact(int n){
@@ -571,7 +571,7 @@ HALT()
 <p>You can add <code>.breakpoint</code> in the code to allow for debugging, and observe the stack frame for each function call.</p>
 <p>In this example, calling <code>fact(3)</code> will cause <code>fact(2)</code>, and <code>fact(1)</code>  to be called recursively.</p>
 <p>The state of the stack frame <em>right</em> before <code>fact(3)</code> branching, <em>right</em> before <code>fact(2)</code> branching, <em>right</em> before <code>fact(1)</code> branching, and <em>right</em> before <code>fact(1)</code>calls its <code>exit_sequence</code> is as follows:</p>
-<img src="https://www.dropbox.com/s/mu8aq0id2y1pir5/stack_states.png?raw=1" alt="“F1”" width="100%" height="100%">
+<img src="https://dl.dropboxusercontent.com/s/mu8aq0id2y1pir5/stack_states.png?raw=1" alt="“F1”" width="100%" height="100%">
 <p>Notice several things:</p>
 <ul>
 <li>
@@ -608,7 +608,7 @@ HALT()
 <h2 id="instruction-loading-address">Instruction Loading Address</h2>
 <p>To figure out the address of each instruction, we can assume (if not given) that the address of the first instruction is at <code>0x0000</code>.</p>
 <ul>
-<li>Recall that each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instruction is 32 bits long (4 bytes).</li>
+<li>Recall that each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> instruction is 32 bits long (4 bytes).</li>
 <li>Therefore, the address of subsequent instructions are always increased by 4.</li>
 </ul>
 <p>For instance, if we simply load this instruction into the memory unit starting from address <code>0x0000</code>:</p>
@@ -630,7 +630,7 @@ MOVE(SP, BP)
 ...
 </code></pre>
 <p>It will obtain the following addresses:<br>
-<img src="https://www.dropbox.com/s/ae8mgejz3jgyavo/instr_eg.png?raw=1" alt="“F1”" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/ae8mgejz3jgyavo/instr_eg.png?raw=1" alt="“F1”" width="50%" height="50%"></p>
 <blockquote>
 <p>This screenshot is taken from <code>bsim</code> just before we branch to <code>fact</code> for the first time with argument <code>3</code>. That is why the <code>PC</code> is pointing to address <code>0x0010</code>.</p>
 </blockquote>
@@ -641,8 +641,8 @@ MOVE(SP, BP)
 <blockquote>
 <p>Remember that memory write is synchronized with the clock.</p>
 </blockquote>
-<p>Take for example this particular execution state in the  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU:</p>
-<img src="https://www.dropbox.com/s/raqf5k421kfi2i7/pc_state.png?raw=1" alt="“F1”" width="100%" height="100%">
+<p>Take for example this particular execution state in the  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU:</p>
+<img src="https://dl.dropboxusercontent.com/s/raqf5k421kfi2i7/pc_state.png?raw=1" alt="“F1”" width="100%" height="100%">
 <ul>
 <li>
 <p>The current content of register <code>PC</code> is <code>0x004</code>, that is where instruction: <code>ADDC(R31, 3, R1)</code> resides.</p>
@@ -657,10 +657,10 @@ MOVE(SP, BP)
 <p>However, notice <code>Reg[R1]</code> still contains <code>0</code> and not the new result <code>3</code> <em>yet</em>. In this cycle, we are trying to <strong>write</strong> <code>3</code> into <code>R1</code>.</p>
 </li>
 <li>
-<p>Only at the next cycle,<code>Reg[R1]</code> finally stores the new value <code>3</code>. The figure below shows the state of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU at the following cycle:</p>
+<p>Only at the next cycle,<code>Reg[R1]</code> finally stores the new value <code>3</code>. The figure below shows the state of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU at the following cycle:</p>
 </li>
 </ul>
-<img src="https://www.dropbox.com/s/qzf1rxs5rshfzeo/pc_state_2.png?raw=1" alt="“F1”" width="100%" height="100%">
+<img src="https://dl.dropboxusercontent.com/s/qzf1rxs5rshfzeo/pc_state_2.png?raw=1" alt="“F1”" width="100%" height="100%">
 <p>Therefore, what we <em>actually mean</em> when we say that the <code>PC</code> always point to the <code>next</code> instruction executed is precisely that the <strong>result</strong> will only be synchronized in the <strong>next</strong> cycle (but computation is done in the current cycle).</p>
 <blockquote>
 <p>Don’t worry too much about it. It’s just some subtle detail to appreciate.</p>
@@ -760,7 +760,7 @@ print(*p);
 <h2 id="summary">Summary</h2>
 <p>The calling and callee sequence is designed such that we have a fixed convention for <strong>linking procedures</strong>. The data structure needed for procedure linkage is a <strong>stack</strong>, and it can simply be implemented using macroinstructions: <code>PUSH</code> and <code>POP</code> on some unused memory block, which address is stored in register <code>R29: SP</code>.</p>
 <p>It is extremely important to change the content of <code>SP</code> (reserved stack pointer register) to reflect a memory address where there isn’t any important instruction or data in it.</p>
-<p><mark> Remember that <code>PUSH</code> and <code>POP</code> each require <strong>two clock cycles to complete</strong>, because each of them is consisted of two atomic <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions. </mark></p>
+<p><mark> Remember that <code>PUSH</code> and <code>POP</code> each require <strong>two clock cycles to complete</strong>, because each of them is consisted of two atomic <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> instructions. </mark></p>
 <p>We also <strong>reserve</strong> two other registers: <code>R27: BP</code> and <code>R28: LP</code> for this purpose, so that we know where to get the function arguments from the stack, and return address (back to the caller).</p>
 <blockquote>
 <p>We do not use these registers <code>R27, R28, and R29</code> for other purposes.</p>
@@ -769,7 +769,7 @@ print(*p);
 <blockquote>
 <p>e.g: pointer that points to an address that is no longer used.</p>
 </blockquote>
-<p>when we try to access a function’s local variable long after the function has returned. ,</p>
+<p>when we try to access a function’s local variable long after the function has returned.</p>
 
     </div>
   </div>
