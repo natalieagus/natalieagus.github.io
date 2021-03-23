@@ -64,10 +64,10 @@ Singapore University of Technology and Design<br>
 <p>Note that the Kernel <strong>is not</strong> the entire OS. There are other parts of an OS (that is not run in kernel mode), and we will learn more about these other parts of the OS next semester.</p>
 </blockquote>
 <p>Kernel serves as an <em>intermediary</em> between any I/O devices (hardware) and user processes. It provides a level of abstraction such that programs can be written and run as if it has access to the entire machine to itself.</p>
-<img src="https://www.dropbox.com/s/5p53t1w1towhslg/osview.png?raw=1" alt="“F1”" width="80%" height="80%">
+<img src="https://dl.dropboxusercontent.com/s/5p53t1w1towhslg/osview.png?raw=1" alt="“F1”" width="80%" height="80%">
 <h2 id="the-supervisor-call">The Supervisor Call</h2>
 <p>SVC is a 32-bit instruction that  triggers an <em>illop</em> exception, hence trapping the process onto the Kernel whenever it is executed.</p>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the SVC has the opcode: <code>000001</code>.</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> ISA, the SVC has the opcode: <code>000001</code>.</p>
 <p>It has the following format:<br>
 <code>000001</code> <code>26 SVC-bits</code>,<br>
 where up to lower 26 bits can be used to “<em>index</em>” the Kernel service requested.</p>
@@ -150,7 +150,7 @@ UUO(YieldH) | SVC(7): Yield()
 <li>
 <p>This will <em>interrupt</em> the execution of the current process in the CPU, causing the PC to switch to <code>XAddr</code> (<em>interrupt handler</em>).</p>
 <blockquote>
-<p>Recall how <code>IRQ</code> works in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
+<p>Recall how <code>IRQ</code> works in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>.</p>
 </blockquote>
 </li>
 <li>
@@ -169,7 +169,7 @@ UUO(YieldH) | SVC(7): Yield()
 </li>
 </ul>
 <h2 id="real-time-io-handling">Real-Time I/O Handling</h2>
- <img src="https://www.dropbox.com/s/npup101nnubwohm/rth.png?raw=1" alt="“F1”" width="60%" height="60%">
+ <img src="https://dl.dropboxusercontent.com/s/npup101nnubwohm/rth.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>When I/O interrupt requests are made by devices, they may not be immediately serviced by the Kernel. The figure above illustrates a general timeline from when a particular <strong>interrupt request</strong> is first made to the moment it is serviced.</p>
 <p>Each interrupt request usually have a <strong>deadline</strong>, and the Kernel has to service the request before the said deadline.</p>
 <blockquote>
@@ -206,7 +206,7 @@ UUO(YieldH) | SVC(7): Yield()
 <blockquote>
 <p>Some hardware tweaks on the CPU is needed to support this feature, but we don’t have to dwell too deep into that at this point.</p>
 </blockquote>
-<img src="https://www.dropbox.com/s/7w7oy1jyaa5trnq/pc.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/7w7oy1jyaa5trnq/pc.png?raw=1" alt="“F1”" width="60%" height="60%">
 <ul>
 <li>The value <code>p</code> depends on how many priority levels you want the machine to have, e.g: 3 bits for 8 levels.</li>
 </ul>
@@ -435,10 +435,10 @@ UUO(YieldH) | SVC(7): Yield()
 <p>The <em>keyboard</em> with the lowest priority still has to wait for the disk and printer to <em>complete</em> regardless.</p>
 <p>The interrupt requests from these devices are recurring with certain frequency. For example, the keyboard interrupt occurs once every 10ms, and so on.</p>
 <p>We can draw the timeline of these interrupts as follows:</p>
-<img src="https://www.dropbox.com/s/vn644mg6ifqnqd1/irqstimeline.png?raw=1" alt="“F1”" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/vn644mg6ifqnqd1/irqstimeline.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>Since the <em>disk</em> has the highest priority, it will be serviced first. Once finished, the <em>printer</em> will be serviced.</p>
 <p>After both <em>disk</em> and <em>printer</em> are serviced, the <em>keyboard</em> is serviced at <code>t=0.9</code>. However, it will be interrupted by the printer at <code>t=1</code>. Therefore, the keyboard service time is spread out due to interrupts from printer and disks:</p>
-<img src="https://www.dropbox.com/s/5wodlj3hwpx9ltm/interruptsvc.png?raw=1" alt="“F1”" width="100%" height="100%">
+<img src="https://dl.dropboxusercontent.com/s/5wodlj3hwpx9ltm/interruptsvc.png?raw=1" alt="“F1”" width="100%" height="100%">
 <ul>
 <li>The keyboard service time is spread out (red region) due to interrupts from printer and disks</li>
 </ul>
