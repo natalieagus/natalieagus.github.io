@@ -35,8 +35,8 @@ Information Systems Technology and Design<br>
 Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="getting-good-with-fpga-building-the-beta-cpu">Getting Good with FPGA: Building the Beta CPU</h1>
-<p>This document is created for the sake of enhancing our understanding in how basic CPU works by actually implementing it onto an FPGA. We will create our 32-bit <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU and use simple dual-port RAM to simulate some of the instructions that we have learned in class and <strong>test</strong> if they’re working properly.</p>
-<p>You are recommended to read this document only after you’ve understood <strong>completely</strong> up until the chapter on <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> datapath and are comfortable enough with HDL programming:</p>
+<p>This document is created for the sake of enhancing our understanding in how basic CPU works by actually implementing it onto an FPGA. We will create our 32-bit <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU and use simple dual-port RAM to simulate some of the instructions that we have learned in class and <strong>test</strong> if they’re working properly.</p>
+<p>You are recommended to read this document only after you’ve understood <strong>completely</strong> up until the chapter on <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> datapath and are comfortable enough with HDL programming:</p>
 <ul>
 <li>You’re <strong>confident</strong> with your understanding about sequential logic and synchronization.</li>
 <li>You’re <strong>comfortable</strong> with how memory read and write works, and memory addressing.</li>
@@ -49,7 +49,7 @@ Singapore University of Technology and Design<br>
 <h2 id="creating-a-memory-unit">Creating a Memory Unit</h2>
 <p>You can use a bunch of <code>dff</code>s as a memory unit, but its going to take a lot of the logic cells of your FPGA. Let’s do the math:</p>
 <ul>
-<li>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU is a 32-bit architecture.</li>
+<li>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU is a 32-bit architecture.</li>
 <li>If you want your memory unit to support 128 words, then you need 32 <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.66666em; vertical-align: -0.08333em;"></span><span class="mord">×</span></span></span></span></span> 128 <code>dff</code>s = 4096 <code>dff</code>s. If we’re being optimistic and assume that 1 <code>dff</code> use 1 logic cell, that’s alot of logic cells used simply for the memory unit (about 12% of the Au’s cells).</li>
 </ul>
 <p>We shall use another component instead: <code>simple_ram</code> or <code>simple_dual_ram</code>. The difference is that in <code>simple_dual_ram</code> you can perform read and write at the same clock cycle, whereas in <code>simple_ram</code> you only have 1 address port for <em>either</em> read or write.</p>
@@ -126,11 +126,11 @@ io_led[1] = ram.out[7:0];
 </blockquote>
 </li>
 </ul>
-<p>Now that we understand how the <code>simple_ram</code> module works, lets create a module that corresponds to this memory unit in the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> schematic shown our notes:</p>
+<p>Now that we understand how the <code>simple_ram</code> module works, lets create a module that corresponds to this memory unit in the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> schematic shown our notes:</p>
 <blockquote>
 <p>Note: there’s two read ports, and one write port.</p>
 </blockquote>
-<img src="https://www.dropbox.com/s/4v5wpc0sw7xlbml/memunit.png?raw=1" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/4v5wpc0sw7xlbml/memunit.png?raw=1" width="70%" height="70%">
 <p>Create a new script  <code>memoryunit.luc</code> and define the terminals as follows. The names are self explanatory.</p>
 <pre><code>// supports byte addressable
 module memoryunit #(
@@ -176,14 +176,14 @@ module memoryunit #(
   }
 }
 </code></pre>
-<p>Then in the <code>always</code> block we simply make the correct connections. One thing to pay attention to is the fact that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assumes byte-addressable memory unit but the <code>ram</code> modules uses <strong>word addressing.</strong></p>
-<p>Therefore we need to <strong>truncate</strong> the two LSB off the addresses supplied by <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>: <code>ia</code> (instruction address), <code>radr</code> and <code>wadr</code> (read and write address to the data memory, both are supplied by the same source the output of the <code>ALU</code>).</p>
+<p>Then in the <code>always</code> block we simply make the correct connections. One thing to pay attention to is the fact that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assumes byte-addressable memory unit but the <code>ram</code> modules uses <strong>word addressing.</strong></p>
+<p>Therefore we need to <strong>truncate</strong> the two LSB off the addresses supplied by <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>: <code>ia</code> (instruction address), <code>radr</code> and <code>wadr</code> (read and write address to the data memory, both are supplied by the same source the output of the <code>ALU</code>).</p>
 <p>The complete implementation of <code>memory_unit.luc</code> can be found <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/BetaComponents/source/memoryunit.luc
 " target="_blank">here</a>.</p>
 <h2 id="the-alu">The ALU</h2>
 <p>The ALU is a combinational logic unit, so creating it is pretty straightforward.</p>
 <blockquote>
-<p>Just remember that in this document we are recreating the original <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU (32-bit architecture) so we need to create a <code>32-bit</code> ALU instead of the <code>16-bit</code> we used for 1D project.</p>
+<p>Just remember that in this document we are recreating the original <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU (32-bit architecture) so we need to create a <code>32-bit</code> ALU instead of the <code>16-bit</code> we used for 1D project.</p>
 </blockquote>
 <p>We need to ensure that it performs the right operation given an <code>ALUFN</code> input. The unit should have the following input and output terminals:</p>
 <blockquote>
@@ -233,7 +233,7 @@ compareUnit.n = n;
 <p>You can find the complete implementation of <code>alu.luc</code> <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/BetaComponents/source/alu.luc" target="_blank">here</a>.</p>
 <h2 id="the-regfile-unit">The Regfile Unit</h2>
 <p>The <code>REGFILE</code> unit has 32 <code>32-bit</code> registers, where each register is 5-bit addressable. We have 2 combinational read ports and 1 sequential write port. Also, our special register <code>R31</code> should always return <code>32b0</code> when read, and writing to <code>R31</code> should not change its value (it remains zero). The schematic for the <code>REGFILE</code> is:</p>
-<img src="https://www.dropbox.com/s/yi9exbpy2vhgz14/regfile_inside.png?raw=1" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/yi9exbpy2vhgz14/regfile_inside.png?raw=1" width="70%" height="70%">
 <p>We can easily create a module for this unit using <code>dff</code>. Create a script called <code>regfile.luc</code> with the same I/O terminals:</p>
 <pre><code> module regfile (
     input clk,  // clock
@@ -271,7 +271,7 @@ compareUnit.n = n;
 <p>The complete implementation of <code>regfile.luc</code> can be found <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/BetaComponents/source/regfile.luc" target="_blank">here</a>.</p>
 <h2 id="the-control-unit">The Control Unit</h2>
 <p>Now our job is to create the control unit module. Here’s the schematic of the <code>CU</code>:<br>
-<img src="https://www.dropbox.com/s/p73ywj1ju4fu3ed/Cu.png?raw=1" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/p73ywj1ju4fu3ed/Cu.png?raw=1" width="50%" height="50%"></p>
 <p>The small 1-bit register’s job is to sample an <strong>asynchronous interrupt signal.</strong> We can use a 1-bit <code>dff</code> for this:</p>
 <pre><code>{
 	dff irq_sampler(#INIT(0), .clk(clk));
@@ -320,8 +320,8 @@ const CU_ROM = {
 </code></pre>
 <p>The complete implementation of <code>control_unit.luc</code> can be found <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/BetaComponents/source/control_unit.luc" target="_blank">here</a>.</p>
 <h2 id="assembling-the-beta">Assembling the Beta</h2>
-<p>Now that we have all the three major components: the alu, the control unit, and the regfile, we can assemble the rest of the parts together to form a complete <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU.  Its complete schematic is shown below:</p>
-<img src="https://www.dropbox.com/s/7vn4p9ucsydqu9e/beta.png?raw=1" width="70%" height="70%">
+<p>Now that we have all the three major components: the alu, the control unit, and the regfile, we can assemble the rest of the parts together to form a complete <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU.  Its complete schematic is shown below:</p>
+<img src="https://dl.dropboxusercontent.com/s/7vn4p9ucsydqu9e/beta.png?raw=1" width="70%" height="70%">
 <p>Create a new script <code>beta_cpu.luc</code> with the following I/O terminals:</p>
 <pre><code>module beta_cpu (
     input clk,  // clock
@@ -340,9 +340,9 @@ const CU_ROM = {
 </code></pre>
 <blockquote>
 <p>The <code>slowclk</code> is used to <em>slow down</em> the rate at which the content of <code>pcreg</code> is changed, so that we can <strong>have enough time</strong> to <strong>observe</strong> the output and test our device. It is an input signal that produces a <code>1</code> <strong>once</strong> every second and <code>0</code> otherwise.</p>
-<p>All the I/O terminals of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU will be connected to the memory unit later on in <code>au_top.luc</code>.</p>
+<p>All the I/O terminals of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU will be connected to the memory unit later on in <code>au_top.luc</code>.</p>
 </blockquote>
-<p>Then, declare all major components for the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU that we have previously created.  <code>pc</code> register can be created as a 32-bit <code>dff</code>:</p>
+<p>Then, declare all major components for the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU that we have previously created.  <code>pc</code> register can be created as a 32-bit <code>dff</code>:</p>
 <pre><code>  control_unit control_system(.clk(clk));
   alu alu_system;
   regfile regfile_system(.clk(clk));
@@ -372,7 +372,7 @@ const CU_ROM = {
 </code></pre>
 <p>In order for us to <strong>observe</strong> the output, we need to slow down the rate of change of <code>ia</code> supplied by <code>pc</code> register.  We can do this by triggering a change in <code>pc.d</code> only when <code>slowclk == b1</code>.</p>
 <blockquote>
-<p>Note: <code>pc</code> reg produces a <em>new</em> <code>ia</code> at the time when <code>slowclk == b1</code> + 1 system <code>clk</code> period and the output of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> stays the same until the next <code>slowclk == b1</code> is triggered, hence giving us enough time to study it.</p>
+<p>Note: <code>pc</code> reg produces a <em>new</em> <code>ia</code> at the time when <code>slowclk == b1</code> + 1 system <code>clk</code> period and the output of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> stays the same until the next <code>slowclk == b1</code> is triggered, hence giving us enough time to study it.</p>
 </blockquote>
 <pre><code>if (slowclk){ 
    // PCSEL mux 
@@ -508,35 +508,35 @@ beta.rst = 0;
   led[2:0] = memory_unit.data_memory_output; //32 bit output from data memory 
 </code></pre>
 <p>Instruction loading should happen pretty fast that we won’t even notice it. The first instruction to be executed is <code>ADDC(R31, 7, R1)</code>, hence the output that you should see is as follows:<br>
-<img src="https://www.dropbox.com/s/d4jc6s59uvkpinc/instr_pc0.png?raw=1" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/d4jc6s59uvkpinc/instr_pc0.png?raw=1" width="50%" height="50%"></p>
 <ul>
 <li><code>PC</code> register is at <code>0x0</code></li>
 <li><code>ALU</code> output is <code>0x7</code></li>
 <li>…and <code>rb_data</code> output is <code>0x0</code> (since all registers in the <code>REGFILE</code> initially contains <code>0</code>).</li>
 </ul>
 <p>One second later, you should see this output due to instruction <code>CMPEQ(R1, R1, R2)</code>:<br>
-<img src="https://www.dropbox.com/s/fi6d5htp5drqakh/instr_pc1.png?raw=1" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/fi6d5htp5drqakh/instr_pc1.png?raw=1" width="50%" height="50%"></p>
 <ul>
 <li><code>PC</code> register is at <code>0x4</code></li>
 <li><code>ALU</code> output is <code>0x1</code> because comparing the same register contents should always result in a <code>1</code></li>
 <li>…and <code>rb_data</code> output is <code>0x7</code> (showing that loading	<code>7</code> to <code>R1</code> in the previous cycle is successful)</li>
 </ul>
 <p>The third instruction <code>ST(R1, 32)</code> should result in this output:<br>
-<img src="https://www.dropbox.com/s/reihm5lswrjhabw/instr_pc2.png?raw=1" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/reihm5lswrjhabw/instr_pc2.png?raw=1" width="50%" height="50%"></p>
 <ul>
 <li><code>PC</code> register is at <code>0x8</code></li>
 <li><code>ALU</code> output is <code>0x20</code> because that’s the address that we’re storing to (<code>32</code> in decimal)</li>
 <li>…and <code>rb_data</code> output is <code>0x7</code> (showing that implementation of <code>ra2sel</code> mux is successful)</li>
 </ul>
 <p>Let’s test whether the value <code>0x7</code> was properly stored to the <code>data_memory</code> by loading it in the next cycle with this instruction: <code>LD(R31, 32, R3)</code>. The output that we should see is:<br>
-<img src="https://www.dropbox.com/s/cvyt1m24xk814ge/instr_pc3.png?raw=1" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/cvyt1m24xk814ge/instr_pc3.png?raw=1" width="50%" height="50%"></p>
 <ul>
 <li><code>PC</code> register is at <code>0xC</code></li>
 <li><code>ALU</code> output is <code>0x20</code> because that’s the address that we’re loading from (<code>32</code> in decimal)</li>
 <li>…and <code>rb_data</code> output is <code>0x0</code> (content of <code>R0</code> as per <code>instruction[16:11]</code>)</li>
 </ul>
 <p>And then perform a branch based on the content of <code>R3</code>: <code>BNE(R3, 0, R1)</code>. This should result in a branch if the load was successful, as <code>Reg[R3]</code> will be nonzero. The output you should see is:<br>
-<img src="https://www.dropbox.com/s/0it220j8pjxd82d/instr_pc4.png?raw=1" width="50%" height="50%"></p>
+<img src="https://dl.dropboxusercontent.com/s/0it220j8pjxd82d/instr_pc4.png?raw=1" width="50%" height="50%"></p>
 <ul>
 <li><code>PC</code> register is at <code>0x10</code></li>
 <li><code>asel</code> is set to <code>1</code> during <code>BNE</code> (actually it doesnt matter what <code>asel</code> is) and this routes <code>PC+4+4*SXT(c)</code> to <code>ALU</code>'s output. The effective “target” address if <code>BNE</code> is successful is <code>0</code> and therefore <code>ALU</code> output that shows <code>0</code> above is <em>correct</em></li>
