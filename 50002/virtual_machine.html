@@ -66,7 +66,7 @@ Singapore University of Technology and Design<br>
 <blockquote>
 <p>These processes are <strong>isolated</strong> from one another, meaning that <code>Pi</code> cannot access (or corrupt) the memory space of other process  <code>Pj</code> because each of them run on a separate virtual memory.</p>
 </blockquote>
-<img src="https://www.dropbox.com/s/fvo6fllqrwwg2qr/context.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/fvo6fllqrwwg2qr/context.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>Writing an Operating System Kernel is not a trivial task as one has to take into consideration a plethora of <em>issues</em> (security, performance, memory management, scheduling, etc). However with its presence, it makes <em>easier to write all other programs</em>. <strong>It provides a layer of abstraction, allowing each program to run on a  <em>virtual machine</em></strong>, devoid of any knowledge about any other processes.</p>
 <h3 id="building-a-virtual-machine">Building a Virtual Machine</h3>
 <h4 id="kernel-mode-and-user-mode">Kernel Mode and User Mode</h4>
@@ -89,7 +89,7 @@ Singapore University of Technology and Design<br>
 <h2 id="os-multiplexing-and-context-switching">OS Multiplexing and Context Switching</h2>
 <p><strong>Multiplexing</strong> is a method of sharing the resources in a computer <strong>system</strong> for multiple running programs at the same time. The OS kernel handles the multiplexed execution of various running programs in a single CPU – <strong>switching between <em>contexts</em> so rapidly</strong> – so that for the users, the computer is seemingly able to run multiple processes in “<em>parallel</em>”.</p>
 <p>The main idea of OS multiplexing is illustrated below using two processes <code>P1</code> and <code>P2</code>, sharing a single system:</p>
-<img src="https://www.dropbox.com/s/p5r7q2uit6vbdkz/process.png?raw=1" alt="“F1”" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/p5r7q2uit6vbdkz/process.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p>The “<em>arrow</em>” illustrates the timeline of execution:</p>
 <ul>
 <li>
@@ -136,9 +136,9 @@ Singapore University of Technology and Design<br>
 <p>Other interrupts must be <strong>disabled</strong> when this process of “saving state” occurs  (otherwise data will be lost).</p>
 </li>
 </ol>
-<h3 id="beta-asynchronous-interrupt-hardware"><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> Asynchronous Interrupt Hardware</h3>
+<h3 id="beta-asynchronous-interrupt-hardware"><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> Asynchronous Interrupt Hardware</h3>
 <p>Recall the <strong>asynchronous interrupt</strong> datapath as shown in the figure below:</p>
-<img src="https://www.dropbox.com/s/hzzbg7lqy626zon/IRQ.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/hzzbg7lqy626zon/IRQ.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>One of the inputs that is received by the Control Unit is <code>IRQ</code> (1-bit).  In the event of <em>interrupt</em>, the <code>IRQ</code> value will be <code>1</code>.</p>
 <p>At each CLK cycle, the Control Unit always checks whether <code>IRQ</code> is <code>1</code> or <code>0</code>.</p>
 <blockquote>
@@ -163,11 +163,11 @@ Singapore University of Technology and Design<br>
 	PC &lt;- Xaddr
 </code></pre>
 <h3 id="asynchronous-interrupt-handler">Asynchronous Interrupt Handler</h3>
-<p>The asynchronous interrupt handler is located at <code>XAddr</code>, which is usually pre-determined memory address. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU, <code>XAddr</code> is set at <code>0x8000 0008</code>.</p>
+<p>The asynchronous interrupt handler is located at <code>XAddr</code>, which is usually pre-determined memory address. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU, <code>XAddr</code> is set at <code>0x8000 0008</code>.</p>
 <p>The first few instructions of the interrupt handler saves current process states (<code>R0</code> to <code>R30</code> contents, PC state, stack, and others) in <strong>process table</strong>.</p>
 <blockquote>
 <p><strong>Process table:</strong> a Kernel data structure that stores all the states of running processes in the machine. It lives in the Kernel memory space. The kernel keeps track on which process is currently scheduled to run in the CPU.<br>
-<img src="https://www.dropbox.com/s/ypgac0w1uotc471/proctable.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/ypgac0w1uotc471/proctable.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 </blockquote>
 <p>Then, the handler will figure out which specific <strong>service routine</strong> needs to be called to <em>service</em> the interrupt, e.g: scheduler, or I/O routines.</p>
 <p>Afterwards, the service routine returns back to this interrupt handler. The handler finally sets  <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[XP]-4</code>.</p>
@@ -212,7 +212,7 @@ Singapore University of Technology and Design<br>
 <p>Computations of addresses in <code>LD</code>, <code>LDR</code> and <code>ST</code> ignores the MSB.</p>
 </blockquote>
 </li>
-<li>Entry to the kernel mode can only be done via restricted entry points. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span>, there are only three entry points:
+<li>Entry to the kernel mode can only be done via restricted entry points. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>, there are only three entry points:
 <ul>
 <li>Interrupts (setting PC to <code>Xaddr</code>),</li>
 <li>Illegal operations (setting PC to <code>ILLOP: 0x8000 0004</code>), or</li>
@@ -222,7 +222,7 @@ Singapore University of Technology and Design<br>
 </ul>
 <h3 id="reentrancy">Reentrancy</h3>
 <p>When the CPU is in the kernel mode (<code>PC31 == 1</code>), i.e: handling an interrupt – it is important to consider whether or not we should allow interrupts to occur. Handlers which are interruptible are called <strong>re-entrant</strong>.</p>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU, handlers are <strong>not re-entrant.</strong> Interrupts are <strong>disabled</strong> when it is in kernel mode:</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU, handlers are <strong>not re-entrant.</strong> Interrupts are <strong>disabled</strong> when it is in kernel mode:</p>
 <ul>
 <li><code>IRQ</code> signal is ignored in the hardware when <code>PC31 == 1</code></li>
 </ul>
@@ -236,7 +236,7 @@ Singapore University of Technology and Design<br>
 <p>The drawback to an uninterruptible kernel is that there’s no way to get the system to work again if the kernel is buggy and runs into an infinite loop, except via hard reset. The kernel program has to be written very carefully so as not to contain such bugs.</p>
 <h3 id="timer-example">Timer Example</h3>
 <p>In this section, we illustrate an example of how a basic Kernel Scheduler works with the support of hardware.</p>
-<p>Consider a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> computer having a 16-bit counter (<em>hardware</em>) with frequency of 50 Hz that runs <strong>asynchronously</strong> with the CPU. This counter will be used as a timer for process scheduling.</p>
+<p>Consider a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> computer having a 16-bit counter (<em>hardware</em>) with frequency of 50 Hz that runs <strong>asynchronously</strong> with the CPU. This counter will be used as a timer for process scheduling.</p>
 <p>Upon start-up, the Kernel can set the IRQ signal to point to the an arbitrary bit of the counter (assume that the pointer’s output is passed through a rising-edge detector so IRQ is <code>1</code> for 1 CPU clock cycle during a rising edge only).</p>
 <p>For example, if it points to the <code>4</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span> bit:</p>
 <ul>
@@ -292,7 +292,7 @@ JMP(XP)  || Resume execution
 <p>There are many types of Kernel services, one of them includes read/write access from/to the I/O devices. They are typically <em>indexed</em>, and the process needs to leave the index of the needed system call in <code>Reg[R0]</code> before trapping itself to the Kernel Program. We will learn about Kernel services next term.</p>
 </blockquote>
 <p>The datapath in the event of <em>illegal operation</em> is:<br>
-<img src="https://www.dropbox.com/s/w963kj8ugebu9xr/illop.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/w963kj8ugebu9xr/illop.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>During this event,</p>
 <ul>
 <li>Control unit sets <code>PCSEL = 011</code>, and saves <code>PC+4</code> into <code>Reg[XP]</code></li>
@@ -325,7 +325,7 @@ c = getchar();
 <li>Secondly, is through <strong>s	ynchronous interrupt</strong>: when the process generates an <strong>exception</strong> hence <strong>trapping</strong> itself to the handler and enters Kernel mode.</li>
 </ul>
 <p>During either case of interrupt, <code>PC+4</code> is stored at <code>Reg[XP]</code> so that the system knows how to resume the process later on.</p>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the Kernel is <strong>non-preemptive</strong> (the CPU cannot be interrupted while in Kernel Mode). It is designed as such to prevent security breach, data loss if it traps into itself while still being in the Kernel Mode, etc. However, careful writing and construction of the Kernel program is required.</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> ISA, the Kernel is <strong>non-preemptive</strong> (the CPU cannot be interrupted while in Kernel Mode). It is designed as such to prevent security breach, data loss if it traps into itself while still being in the Kernel Mode, etc. However, careful writing and construction of the Kernel program is required.</p>
 
     </div>
   </div>
