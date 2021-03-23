@@ -79,7 +79,7 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 <p>Now if you <strong>hold</strong> <code>io_button[0]</code> <strong>long enough</strong> then the output is reset back to start at <code>2</code> onwards.</p>
 <h3 id="manual-reset-issue">Manual Reset Issue</h3>
 <p>Consider the following time-plot of <code>reset</code>, <code>slowclock</code> and actual FPGA <code>clk</code>:</p>
-<img src="https://www.dropbox.com/s/u8hh5xcjpej97yl/timesync.png?raw=1" alt="“F1”" width="60%" height="60%">
+<img src="https://dl.dropboxusercontent.com/s/u8hh5xcjpej97yl/timesync.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>It is <strong>entirely possible</strong> for the slowclock (rising edge) to entirely <strong>miss</strong> the “reset” button (in our example, we used <code>io_button[0]</code> as manual reset) press <em>if the press isn’t covering the shaded region</em> (depending on how slow the clock is).</p>
 <p>Plus, if it happens to <em>change</em> at the shaded region then we might run into <em>metastability</em> problem.  Even worse, since we don’t know how button input from external source will change in relation to the rising edge of the clock (be it system or custom), it is possible that some flip flops are reset and some others aren’t. This is disastrous!</p>
 <p><mark> Bottomline is, external inputs are <strong>unreliable</strong>, and can be disastrous if its used to trigger important events like a <code>reset</code> </mark>.</p>
@@ -107,7 +107,7 @@ seq_plus_two seqplustwo(.clk(slowclock.value), .rst(rst));
 <p>In 1 second, 100 million cycles of the FPGA clock have passed. We only one ONE out of the 100 million cycles to trigger the +2.</p>
 </blockquote>
 <p>The time diagram below illustrates how an edge detector work:<br>
-<img src="https://www.dropbox.com/s/f6jzjq0smatdb5r/edge.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/f6jzjq0smatdb5r/edge.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>Add the edge-detector component (under Pulse Manipulation), and declare it in <code>seq_plus_two.luc</code>:</p>
 <pre><code>edge_detector slowClockEdge(.clk(clk));
 </code></pre>
@@ -413,7 +413,7 @@ pin customout[2] C2;
 <li>Connect the resistor anywhere within the circuit loop.</li>
 </ul>
 <p>All three LEDs should light up if you key in the right sequence:<br>
-<img src="https://www.dropbox.com/s/d4il3wbpcvtshx9/outputvalues.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<img src="https://dl.dropboxusercontent.com/s/d4il3wbpcvtshx9/outputvalues.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
 <p><mark> Likewise, you can define an <strong>input</strong> pin in the following format,</mark></p>
 <pre><code>pin &lt;pin name&gt; &lt;Br terminal pin name&gt; pulldown
 </code></pre>
