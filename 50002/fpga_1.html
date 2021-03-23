@@ -56,8 +56,8 @@ Singapore University of Technology and Design<br>
 <li>Sign-up for a <strong>free</strong> Xilinx account</li>
 <li>Then, when you obtain the installer, install the <strong>Vivado HL WebPACK Edition</strong> (this is the free edition)</li>
 <li>To avoid installing too many things, select just <strong>Vivado</strong> and <strong>Artix7</strong>:<br>
-<img src="https://www.dropbox.com/s/vqcvos3ram702u9/vivado1.png?raw=1" alt="“F1”" width="40%" height="40%"><br>
-<img src="	https://www.dropbox.com/s/9ixj1lxu6vvi2so/vivado2.png?raw=1" alt="“F1”" width="40%" height="40%"></li>
+<img src="https://dl.dropboxusercontent.com/s/vqcvos3ram702u9/vivado1.png?raw=1" alt="“F1”" width="40%" height="40%"><br>
+<img src="	https://dl.dropboxusercontent.com/s/9ixj1lxu6vvi2so/vivado2.png?raw=1" alt="“F1”" width="40%" height="40%"></li>
 </ul>
 </li>
 <li>Install  <a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank">Java SE</a> (Java  JDK &amp; JRE included in it), although it is likely that you already have these installed due to your other subject.</li>
@@ -78,11 +78,11 @@ Singapore University of Technology and Design<br>
 <p>Alternatively, we can use an FPGA to prove our concept. You can load your program (describing how your Full Adder works) onto an FPGA, and now the FPGA can be an actual working Full Adder unit.</p>
 <p><strong>How can we write this module/unit in Lucid?</strong></p>
 <p>Firstly, create a project in Alchitry Lab,<br>
-<img src="https://www.dropbox.com/s/yn3r5mnet0cbega/1a.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/yn3r5mnet0cbega/1a.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>Give it some name, ensure that it is Au and Lucid. Also, use the IO Element Base template. It sets the IO Unit for you:<br>
-<img src="https://www.dropbox.com/s/rng6k9awy6a95qp/1b.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/rng6k9awy6a95qp/1b.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>Now you should see that you have a project with several files:<br>
-<img src="https://www.dropbox.com/s/qpvoetamz6vz9xw/1c.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/qpvoetamz6vz9xw/1c.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <blockquote>
 <p>You need to do your own self-study part to fill in the gaps and understand how the code works better by reading the <a href="https://alchitry.com/pages/lucid-fpga-tutorials" target="_blank">tutorials</a> provided by the original developer. The course handout also provides you some useful self-study materials. This document is only made to <em>complement</em> and <em>speed up</em> your self-study process, but it doesn’t mean that you can forget about reading anything else.</p>
 </blockquote>
@@ -102,7 +102,7 @@ Singapore University of Technology and Design<br>
 </li>
 <li>
 <p>Under <code>Components</code> is where you can <strong>add</strong> standard components (like standard library modules). Right click on it and click <code>Add Components</code>, and you’ll be faced with a phethora of modules which you may or may not use depending on your application:<br>
-<img src="https://www.dropbox.com/s/guc9ll03qiivdrx/1d.png?raw=1" alt="“F1”" width="40%" height="40%"><br>
+<img src="https://dl.dropboxusercontent.com/s/guc9ll03qiivdrx/1d.png?raw=1" alt="“F1”" width="40%" height="40%"><br>
 But a few important ones that you probably can’t live without are: <strong>counter, edge detector, button conditioner.</strong> We will meet them soon.</p>
 </li>
 <li>
@@ -110,7 +110,7 @@ But a few important ones that you probably can’t live without are: <strong>cou
 </li>
 </ul>
 <p>So now back to creating a <strong>Full Adder.</strong> By now you should know that this circuit implements a full adder functionality:</p>
-<img src="https://www.dropbox.com/s/n1aqlz9dry92efk/FA.png?raw=1" alt="“F1”" width="40%" height="40%">
+<img src="https://dl.dropboxusercontent.com/s/n1aqlz9dry92efk/FA.png?raw=1" alt="“F1”" width="40%" height="40%">
 <p>We can describe this schematic in Lucid, by first defining the input and output.</p>
 <h3 id="define-input-and-output-terminals">Define Input and Output terminals</h3>
 <p><strong>Create a new source file</strong> and name it <code>full_adder.luc</code>. <strong>You will see that all lucid files should begin with terminals definition.</strong> In a full adder, we have 3 1-bit inputs: <code>x, y, cin</code> and 2 1-bit outputs: <code>s, cout</code> . Therefore we shall modify the header as such:</p>
@@ -158,7 +158,7 @@ io_led[2][0] = fulladder.cout;
 </code></pre>
 <p><em>Note:</em> It is highly recommended that you <strong>do not implement</strong> any further combinational logic modules in <code>au_top.luc</code>. Your code has to be as <mark> <strong>modular</strong> </mark> as possible for the sake of easy debugging and development. <strong>As a good practice, the module <code>au_top.luc</code> should be only used to simply connect big module(s) to the input/output terminal.</strong></p>
 <p>Here’s a visual representation of the schematic. In other words, <code>au_top.luc</code> is the script that <strong>interfaces</strong> your custom modules with the <strong>board’s input and output unit:</strong></p>
-<img src="https://www.dropbox.com/s/ljwrcth2eu3fdw8/FAau.png?raw=1" alt="“F1”" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/ljwrcth2eu3fdw8/FAau.png?raw=1" alt="“F1”" width="70%" height="70%">
 <p><em>Its not as complicated as it looks, we simply want to use:</em></p>
 <ul>
 <li><code>io_dip[0][0]</code> as <code>x</code></li>
@@ -168,10 +168,10 @@ io_led[2][0] = fulladder.cout;
 <li><code>io_led[2][0]</code> as <code>cout</code></li>
 </ul>
 <p>Where are these stuffs on Alchitry Io? See below:<br>
-<img src="https://www.dropbox.com/s/v4baxwf8e33utm0/alc_io.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/v4baxwf8e33utm0/alc_io.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>Therefore can use the dips (switch up for <code>1</code> and down for <code>0</code>) to supply various combinations of input <code>x,y,cin</code> and observe the output at the two rightmost LED in <code>IO_LED[2]</code>.</p>
 <p>Now build your code (it may take awhile, 2-3 minutes depending on your computer stats), and flash it to the Alchitry Au:<br>
-<img src="https://www.dropbox.com/s/6vwvgyan4y60l4d/buildfile.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
+<img src="https://dl.dropboxusercontent.com/s/6vwvgyan4y60l4d/buildfile.png?raw=1" alt="“F1”" width="70%" height="70%"></p>
 <p><strong>After it is successfully loaded:</strong></p>
 <ul>
 <li>Try using the dip switch (three rightmost of <code>io_dip[0]</code>) to supply different values of input to the <code>fulladder</code> (all 8 combinations).</li>
@@ -180,7 +180,7 @@ io_led[2][0] = fulladder.cout;
 </ul>
 <p>Alchitry Io is basically our <strong>input-output device</strong>. We use the LEDs to debug like a monitor, and buttons to supply input. ye<em>s, it is very very primitive, and <strong>it is very difficult</strong>  to <strong>debug</strong> so always test each small module before integrating it!</em></p>
 <p>The template <strong>Io Base</strong> already prepare these terminal namings for you, and define it under <code>Constraints</code> file. Open io.acf and you will see the following:<br>
-<img src="https://www.dropbox.com/s/bjtd5hrfo3ejvwj/constraintfile.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/bjtd5hrfo3ejvwj/constraintfile.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>The <code>.acf</code> file defines input and output pins from the original schematic of <code>Alchitry Au</code> to its symbols to be used when we code, e.g: <code>io_led</code>, <code>io_dip</code>, etc. The ones with the keyword <code>pulldown</code> signifies <strong>input</strong> pins, while the rest are digital output.</p>
 <blockquote>
 <p>An input pin with <code>pulldown</code> resistor will by default give a value of <code>0</code> if there’s no input being supplied to prevent a <em>floating/undefined</em> input volrage.** It is useful to read abit about <a href="https://www.electronics-tutorials.ws/logic/pull-up-resistor.html" target="_blank">pull-down and pull-up resistors</a>  if you were to implement a unit from scratch like our Mini-Hardware Project.</p>
@@ -256,7 +256,7 @@ io_led[1] = eightbitadder.s;
 io_led[2][0] = eightbitadder.cout;
 </code></pre>
 <p>The simple circuit that’s described by this code is:<br>
-<img src="https://www.dropbox.com/s/3i5ax6btfrmdcqy/8bfa.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
+<img src="https://dl.dropboxusercontent.com/s/3i5ax6btfrmdcqy/8bfa.png?raw=1" alt="“F1”" width="80%" height="80%"></p>
 <p>Build the program and flash to the Alchitry Au:</p>
 <ul>
 <li>We can use the rightmost and the middle 8 <code>io_dip</code> to set the <code>8-bit</code> <code>x</code> and <code>y</code> values, and <code>io_dip[2][0]</code> to set <code>cin</code>.</li>
@@ -264,7 +264,7 @@ io_led[2][0] = eightbitadder.cout;
 </ul>
 <h2 id="building-rom">Building ROM</h2>
 <p>Remember how we can also implement the full adder as ROM instead? Here’s how it looks like and the truth table:<br>
-<img src="https://www.dropbox.com/s/mpgdm1d5isbc62r/romadd.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/mpgdm1d5isbc62r/romadd.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <p>You can say that implementing anything as ROM means that we “hardcode” the answer, instead of synthesizing it using basic logic components like the gates: AND, XOR, OR, etc. The benefit of implementing the output as ROM is to minimise the hassle in synthesizing the logic out, but at the cost of <em>space</em> and <em>money</em>.</p>
 <p>We can implement a ROM in the FPGA very easily. The following module shows an example of implementing a Full Adder as ROM:</p>
 <pre><code>module full_adder_ROM (
@@ -292,9 +292,9 @@ io_led[2][0] = eightbitadder.cout;
 <p>You can download <code>full_adder_ROM.luc</code>  <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/GettingStartedWithFPGA/source/full_adder_ROM.luc" target="_blank">here</a>.</p>
 <h2 id="building-multiplexer">Building Multiplexer</h2>
 <p>A multiplexer can be easily implemented using the keyword <code>case</code> in Lucid. Consider a new combinational logic module that does left shifting with the following schematic (<code>a</code>, <code>b</code> are inputs, and <code>s</code> is output):<br>
-<img src="https://www.dropbox.com/s/ub55j7rdohnl0o6/shifter8.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
+<img src="https://dl.dropboxusercontent.com/s/ub55j7rdohnl0o6/shifter8.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 <blockquote>
-<p>The module above can shift the 8-bit <code>a</code> input by <code>n</code> bits to the left where <code>n=0,...,7</code>, and pad the shifted digits with zeroes. In Lab 3, you implement the 32-bit version of this module.</p>
+<p>The module above can shift the 8-bit <code>a</code> input by <code>n</code> bits to the left where <code>n=0,...,7</code>, and pad the shifted digits with zeroes. In Lab 3, you implement the -bit version of this module.</p>
 </blockquote>
 <p>The three multiplexers can be easily implemented as follows. First, declare the input and output terminals:</p>
 <pre><code>module eight_bit_shiftleft (
