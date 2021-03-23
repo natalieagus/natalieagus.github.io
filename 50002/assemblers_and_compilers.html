@@ -35,10 +35,10 @@ Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="assemblers-and-compilers">Assemblers and Compilers</h1>
 <h2 id="overview">Overview</h2>
-<p>The goal of this chapter is to help us understand how to improve the programmability of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> (or any ISA in general). The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> machine language is encoded into 32-bit instructions each.</p>
+<p>The goal of this chapter is to help us understand how to improve the programmability of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> (or any ISA in general). The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> machine language is encoded into 32-bit instructions each.</p>
 <p>For example, the 32-bit <code>ADD</code> instruction is:<br>
 <code>100000 | 00100 | 00010 | 00011 | 00000000000</code></p>
-<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> understands it as: <code>Reg[R4] = Reg[R2] + Reg[R3]</code></p>
+<p>The <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> understands it as: <code>Reg[R4] = Reg[R2] + Reg[R3]</code></p>
 <p>However, most of us would prefer to write: <code>ADD(R2, R3, R4)</code>, or even <code>a = b+c</code> because we couldn’t care less which registers are used as long as the CPU can add two variables together and produce the correct result.</p>
 <p>We need to improve the programmability and usability of our machine by <strong>providing abstraction</strong>.</p>
 <blockquote>
@@ -89,7 +89,7 @@ Singapore University of Technology and Design<br>
 <li>A <strong>symbolic language</strong> (UASM) for representing strings of bits</li>
 <li>A Program for translating UASM source code into binary.</li>
 </ul>
-<img src="https://www.dropbox.com/s/5krjxvccdmeesge/uasmstuff.png?raw=1" width="70%" height="70%">
+<img src="https://dl.dropboxusercontent.com/s/5krjxvccdmeesge/uasmstuff.png?raw=1" width="70%" height="70%">
 <p>A UASM source file contains, in symbolic text, <strong>values of successive bytes to be loaded into memory.</strong> We can define various things in UASM source file:</p>
 <ul>
 <li><strong>Basic values</strong>: <strong>Decimals</strong>, <strong>binary</strong> (with <code>0b</code> prefix), and <strong>hexadecimal</strong> (with <code>0x</code> prefix) – all will be loaded (from low to high address) as 1 byte each, separated by spaces.</li>
@@ -166,7 +166,7 @@ LONG(0xDEADBEEF)
 </blockquote>
 <pre><code>DE AD BE EF
 </code></pre>
-<p><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions are created by writing convenient macroinstructions. For example, we want to load the following instruction into memory:<br>
+<p><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> instructions are created by writing convenient macroinstructions. For example, we want to load the following instruction into memory:<br>
 <code>110000 00000 01111 1000 0000 0000 0000</code><br>
 The above is an <code>ADDC</code> instruction, to add contents of <code>R15</code> with <code>-32768</code> and store it at <code>R0</code>.</p>
 <p>Without any symbols, would need to write them as:<br>
@@ -186,7 +186,7 @@ The above is an <code>ADDC</code> instruction, to add contents of <code>R15</cod
 <p>Then we can utilise it easily to load our instruction above in a more intuitive way:</p>
 <pre><code>ADDC(R15, -32768, R0)
 </code></pre>
-<p><code>beta.uasm</code> provides support for all <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions so that we can write instructions for <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> in a <em>much more intuitive way without caring about the details on how to load these values properly into memory</em> (<strong>abstraction provided</strong>).</p>
+<p><code>beta.uasm</code> provides support for all <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> instructions so that we can write instructions for <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> in a <em>much more intuitive way without caring about the details on how to load these values properly into memory</em> (<strong>abstraction provided</strong>).</p>
 <pre><code>| BETA Instructions:
 
 || OP instructions
@@ -224,7 +224,7 @@ The above is an <code>ADDC</code> instruction, to add contents of <code>R15</cod
 <p>There’s not too much <em>analysing</em> of source code done, and will translate the program on the fly. It will execute the program until the first error is met, hence debugging will be comparatively easier than debugging compiled languages.</p>
 </blockquote>
 <h2 id="compiling-expressions">Compiling Expressions</h2>
-<p>In this course, we will not dive into how compilers, assemblers, or interpreters work in too much detail. In fact, we are going to <strong>hand compile</strong> the high-level language (we will use C) ourselves into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly (and then hand assemble them into the binary executable).</p>
+<p>In this course, we will not dive into how compilers, assemblers, or interpreters work in too much detail. In fact, we are going to <strong>hand compile</strong> the high-level language (we will use C) ourselves into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly (and then hand assemble them into the binary executable).</p>
 <blockquote>
 <p>Don’t worry. Compilation to <em>unoptimized</em> code is pretty straightforward. You won’t be required to write C-code either, only to read them.</p>
 </blockquote>
@@ -249,7 +249,7 @@ The above is an <code>ADDC</code> instruction, to add contents of <code>R15</cod
 x = 20
 y = x + 5
 </code></pre>
-<p>Translates to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly code:</p>
+<p>Translates to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly code:</p>
 <pre><code>.include beta.uasm
 
 LD(R31, x, R1)		| load the content of memory address x to R1
@@ -267,7 +267,7 @@ x[0] = 12;
 x[1] = 13;
 x[2] = x[0] + x[1];
 </code></pre>
-<p>Translates to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly code:</p>
+<p>Translates to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly code:</p>
 <pre><code>.include beta.uasm
 
 ADDC(R31, 12, R0)	| supposed content of x[0]
@@ -293,7 +293,7 @@ while (true){
 	n = n-1;
 }
 </code></pre>
-<p>Might translate to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly code:</p>
+<p>Might translate to the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly code:</p>
 <pre><code>.include beta.uasm
 
 LD(R31, n, R1)
@@ -326,7 +326,7 @@ r : LONG(1)
 <blockquote>
 <p>We will address them in the next chapter.</p>
 </blockquote>
-<p>Note that optimization in compilation is not a trivial task. For now, don’t worry too much about it. We simply only need to hand assemble C into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span class="mord mathdefault" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly language, and have a general idea on what a compiler, interpreter, and assembler are for – that is to enhance the programmability of a computer by providing <strong>software abstraction.</strong></p>
+<p>Note that optimization in compilation is not a trivial task. For now, don’t worry too much about it. We simply only need to hand assemble C into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly language, and have a general idea on what a compiler, interpreter, and assembler are for – that is to enhance the programmability of a computer by providing <strong>software abstraction.</strong></p>
 
     </div>
   </div>
