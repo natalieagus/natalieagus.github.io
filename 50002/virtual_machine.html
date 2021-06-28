@@ -107,7 +107,7 @@ Singapore University of Technology and Design<br>
 </li>
 </ul>
 <blockquote>
-<p>In practice, the <em>interrupt handler</em> will examine the <em>cause</em> of the asynchronous interrupt. In the event of periodic interrupt caused by a timer, the handler will delegate the task to the  <strong>kernel scheduler</strong> whose job is to decide <em>which</em> process to run next, and prepare the necessary information / context to load this process back into the CPU so that the selected process may resume smoothly. When the scheduler returns to the handler, the handler resumes execution of the CPU by simply setting <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[XP] - 4</code>.</p>
+<p>In practice, the <em>interrupt handler</em> will examine the <em>cause</em> of the asynchronous interrupt. In the event of periodic interrupt caused by a timer, the handler will delegate the task to the  <strong>kernel scheduler</strong> whose job is to decide <em>which</em> process to run next, and prepare the necessary information / context to load this process back into the CPU so that the selected process may resume smoothly. When the scheduler returns to the handler, the handler resumes execution of the CPU by simply setting <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[XP] - 4</code>.</p>
 </blockquote>
 <ul>
 <li><code>P2</code> runs and progresses for some time <code>t</code> before another <em>hardware interrupt</em> occurs. The entire context switch process is repeated to pause <code>P2</code>, resume <code>P1</code>, and so forth.</li>
@@ -136,7 +136,7 @@ Singapore University of Technology and Design<br>
 <p>Other interrupts must be <strong>disabled</strong> when this process of “saving state” occurs  (otherwise data will be lost).</p>
 </li>
 </ol>
-<h3 id="beta-asynchronous-interrupt-hardware"><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> Asynchronous Interrupt Hardware</h3>
+<h3 id="beta-asynchronous-interrupt-hardware"><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> Asynchronous Interrupt Hardware</h3>
 <p>Recall the <strong>asynchronous interrupt</strong> datapath as shown in the figure below:</p>
 <img src="https://dl.dropboxusercontent.com/s/hzzbg7lqy626zon/IRQ.png?raw=1" alt="“F1”" width="60%" height="60%">
 <p>One of the inputs that is received by the Control Unit is <code>IRQ</code> (1-bit).  In the event of <em>interrupt</em>, the <code>IRQ</code> value will be <code>1</code>.</p>
@@ -163,14 +163,14 @@ Singapore University of Technology and Design<br>
 	PC &lt;- Xaddr
 </code></pre>
 <h3 id="asynchronous-interrupt-handler">Asynchronous Interrupt Handler</h3>
-<p>The asynchronous interrupt handler is located at <code>XAddr</code>, which is usually pre-determined memory address. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU, <code>XAddr</code> is set at <code>0x8000 0008</code>.</p>
+<p>The asynchronous interrupt handler is located at <code>XAddr</code>, which is usually pre-determined memory address. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU, <code>XAddr</code> is set at <code>0x8000 0008</code>.</p>
 <p>The first few instructions of the interrupt handler saves current process states (<code>R0</code> to <code>R30</code> contents, PC state, stack, and others) in <strong>process table</strong>.</p>
 <blockquote>
 <p><strong>Process table:</strong> a Kernel data structure that stores all the states of running processes in the machine. It lives in the Kernel memory space. The kernel keeps track on which process is currently scheduled to run in the CPU.<br>
 <img src="https://dl.dropboxusercontent.com/s/ypgac0w1uotc471/proctable.png?raw=1" alt="“F1”" width="60%" height="60%"></p>
 </blockquote>
 <p>Then, the handler will figure out which specific <strong>service routine</strong> needs to be called to <em>service</em> the interrupt, e.g: scheduler, or I/O routines.</p>
-<p>Afterwards, the service routine returns back to this interrupt handler. The handler finally sets  <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[XP]-4</code>.</p>
+<p>Afterwards, the service routine returns back to this interrupt handler. The handler finally sets  <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>Reg[XP]-4</code>.</p>
 <blockquote>
 <p>What is the value of <code>Reg[XP]-4</code>?</p>
 </blockquote>
@@ -212,7 +212,7 @@ Singapore University of Technology and Design<br>
 <p>Computations of addresses in <code>LD</code>, <code>LDR</code> and <code>ST</code> ignores the MSB.</p>
 </blockquote>
 </li>
-<li>Entry to the kernel mode can only be done via restricted entry points. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>, there are only three entry points:
+<li>Entry to the kernel mode can only be done via restricted entry points. In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span>, there are only three entry points:
 <ul>
 <li>Interrupts (setting PC to <code>Xaddr</code>),</li>
 <li>Illegal operations (setting PC to <code>ILLOP: 0x8000 0004</code>), or</li>
@@ -222,7 +222,7 @@ Singapore University of Technology and Design<br>
 </ul>
 <h3 id="reentrancy">Reentrancy</h3>
 <p>When the CPU is in the kernel mode (<code>PC31 == 1</code>), i.e: handling an interrupt – it is important to consider whether or not we should allow interrupts to occur. Handlers which are interruptible are called <strong>re-entrant</strong>.</p>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU, handlers are <strong>not re-entrant.</strong> Interrupts are <strong>disabled</strong> when it is in kernel mode:</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU, handlers are <strong>not re-entrant.</strong> Interrupts are <strong>disabled</strong> when it is in kernel mode:</p>
 <ul>
 <li><code>IRQ</code> signal is ignored in the hardware when <code>PC31 == 1</code></li>
 </ul>
@@ -236,11 +236,11 @@ Singapore University of Technology and Design<br>
 <p>The drawback to an uninterruptible kernel is that there’s no way to get the system to work again if the kernel is buggy and runs into an infinite loop, except via hard reset. The kernel program has to be written very carefully so as not to contain such bugs.</p>
 <h3 id="timer-example">Timer Example</h3>
 <p>In this section, we illustrate an example of how a basic Kernel Scheduler works with the support of hardware.</p>
-<p>Consider a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> computer having a 16-bit counter (<em>hardware</em>) with frequency of 50 Hz that runs <strong>asynchronously</strong> with the CPU. This counter will be used as a timer for process scheduling.</p>
+<p>Consider a <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> computer having a 16-bit counter (<em>hardware</em>) with frequency of 50 Hz that runs <strong>asynchronously</strong> with the CPU. This counter will be used as a timer for process scheduling.</p>
 <p>Upon start-up, the Kernel can set the IRQ signal to point to the an arbitrary bit of the counter (assume that the pointer’s output is passed through a rising-edge detector so IRQ is <code>1</code> for 1 CPU clock cycle during a rising edge only).</p>
-<p>For example, if it points to the <code>4</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span> bit:</p>
+<p>For example, if it points to the <code>4</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span> bit:</p>
 <ul>
-<li>The value of the <code>4</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span> bit of the counter changes every <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0.02</mn><mo>×</mo><msup><mn>2</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">0.02 \times 2^{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">2</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height: 0.8141079999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8141079999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> = 0.16 seconds because it takes 0.02 seconds for the counter to increase by 1.</li>
+<li>The value of the <code>4</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class=""></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span> bit of the counter changes every <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.02</mn><mo>×</mo><msup><mn>2</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">0.02 \times 2^{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">0.02</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.814108em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.814108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> = 0.16 seconds because it takes 0.02 seconds for the counter to increase by 1.</li>
 <li>There’s 0.32 seconds between rising edges.</li>
 </ul>
 <p>This means that the <code>IRQ</code> value will be <code>1</code> <strong>once</strong> every 0.32 seconds.</p>
@@ -278,7 +278,7 @@ JMP(XP)  || Resume execution
 <p>Observation:  in this simple example, the handler is written such that it <em>always branches to the scheduler</em>. In practice, there are many kinds of hardware interrupts (not just from a timer) that needs to be handled differently depending on its <em>type</em>. We will have a hands-on experience about this in Lab 8, and also in the next term.</p>
 <h2 id="trap">Trap</h2>
 <p>A trap, is type of <strong>synchronous interrupt</strong> caused by an <em>exceptional</em> condition when the CPU executes an instruction, such as illegal operations, division by zero, invalid memory access, system calls etc.</p>
-<p>This results in a switch to kernel mode via trap handler (e.g: <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>ILLOP</code>). The handler will examine the cause of the trap, and perform the appropriate action before (<em>if possible</em>) returning control to the originating process.</p>
+<p>This results in a switch to kernel mode via trap handler (e.g: <code>PC</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">←</span></span></span></span></span> <code>ILLOP</code>). The handler will examine the cause of the trap, and perform the appropriate action before (<em>if possible</em>) returning control to the originating process.</p>
 <blockquote>
 <p>If it is not possible to return control to the originating processes, then the Kernel may choose to terminate it.</p>
 </blockquote>
@@ -325,10 +325,142 @@ c = getchar();
 <li>Secondly, is through <strong>s	ynchronous interrupt</strong>: when the process generates an <strong>exception</strong> hence <strong>trapping</strong> itself to the handler and enters Kernel mode.</li>
 </ul>
 <p>During either case of interrupt, <code>PC+4</code> is stored at <code>Reg[XP]</code> so that the system knows how to resume the process later on.</p>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> ISA, the Kernel is <strong>non-preemptive</strong> (the CPU cannot be interrupted while in Kernel Mode). It is designed as such to prevent security breach, data loss if it traps into itself while still being in the Kernel Mode, etc. However, careful writing and construction of the Kernel program is required.</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> ISA, the Kernel is <strong>non-preemptive</strong> (the CPU cannot be interrupted while in Kernel Mode). It is designed as such to prevent security breach, data loss if it traps into itself while still being in the Kernel Mode, etc. However, careful writing and construction of the Kernel program is required.</p>
 
     </div>
   </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  >
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+  >
+  </script>
 </body>
+
+<style>
+.blueborder{
+ border-style:solid;
+ border-color:#287EC7;
+ padding: 10px;
+}
+
+.redborder{
+ border-style:solid;
+ border-color:#FF0000;
+ padding: 10px;
+}
+
+
+.greenbox{
+background-color: #cfc ;
+padding: 10px; 
+border: 1px solid green;
+}
+
+.orangebox{
+background-color: #FFE4B5 ;
+padding: 10px; 
+border: 1px solid #FF8C00;
+}
+
+.redbox{
+    background-color: #FFE4E1;
+    border: 1px solid #FA8072;
+    display: block;
+    padding: 10px;
+}
+
+.bluebox{
+    background-color: #F0F8FF;
+    border: 1px solid #87CEFA;
+    display: block;
+    padding: 10px;
+}
+
+.yellowbox{
+    background-color: #FFFACD;
+    border: 1px solid #FFFF66;
+    display: block;
+    padding: 10px;
+}
+
+.redtext{
+	color:red;
+}
+
+.bluetext{
+	color:blue;
+}
+
+.orangetext{
+	color:#FF791A;
+}
+
+.greentext{
+	color:green;
+}
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #efffef;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccffcc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #efffef;
+}
+</style>
+
+
+
 
 </html>
