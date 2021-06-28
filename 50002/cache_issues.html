@@ -54,7 +54,7 @@ Singapore University of Technology and Design<br>
 <li>
 <p><strong>Associativity</strong> : we need to determine how many <em>different</em> cache lines can one address be stored to. <mark> It implies <strong>choice</strong> </mark>. Of course note that there can only be one copy of that address (tag) in the entire cache.</p>
 <ul>
-<li>For DM cache, there is no choice on which cache line is used or looked up. <strong>A 1-to-1 mapping</strong> between each combination of the last <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span></span></span></span></span> bit of the query address <code>A</code> to the cache line (entry) is required. Hence, the DM cache has <strong>no associativity</strong>.</li>
+<li>For DM cache, there is no choice on which cache line is used or looked up. <strong>A 1-to-1 mapping</strong> between each combination of the last <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.03148em;">k</span></span></span></span></span> bit of the query address <code>A</code> to the cache line (entry) is required. Hence, the DM cache has <strong>no associativity</strong>.</li>
 <li>An FA cache, as the name suggests: has <strong>complete associativity</strong>. We have <code>N</code> choices of cache lines in an FA cache of size <code>N</code>: any <code>Tag</code>-<code>Content</code> can reside on any cache line in FA cache.</li>
 </ul>
 </li>
@@ -98,7 +98,7 @@ Singapore University of Technology and Design<br>
 <tr>
 <td><strong>Cache Size</strong></td>
 <td>Any</td>
-<td><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>K</mi></msup></mrow><annotation encoding="application/x-tex">2^K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8413309999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right: 0.07153em;" class="mord mathdefault mtight">K</span></span></span></span></span></span></span></span></span></span></span></span></td>
+<td><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>K</mi></msup></mrow><annotation encoding="application/x-tex">2^K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.841331em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.841331em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.07153em;">K</span></span></span></span></span></span></span></span></span></span></span></span></td>
 </tr>
 <tr>
 <td><strong>Memory Cell Technology</strong></td>
@@ -167,7 +167,7 @@ Singapore University of Technology and Design<br>
 <p>The cells in the same ‘<em>row</em>’ marked in red is called as belonging in the same <strong>set</strong>.</p>
 </li>
 <li>
-<p>The cells in the same ‘<em>column</em>’ of DM caches  is said to belong in the same <strong>way</strong>. Each <strong>way</strong> is basically a DM cache that has <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right: 0.03148em;" class="mord mathdefault mtight">k</span></span></span></span></span></span></span></span></span></span></span></span> cache lines.</p>
+<p>The cells in the same ‘<em>column</em>’ of DM caches  is said to belong in the same <strong>way</strong>. Each <strong>way</strong> is basically a DM cache that has <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.849108em; vertical-align: 0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.849108em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></span> cache lines.</p>
 </li>
 <li>
 <p>Given a combination of <code>K</code>-bits lower address, the higher <code>T</code> bits <code>TAG</code> and its <code>Content</code> can be stored in <strong>any</strong> <em>of the N cache lines in the same set.</em></p>
@@ -194,7 +194,7 @@ Singapore University of Technology and Design<br>
 <p><strong>Overhead computation:</strong></p>
 <ul>
 <li>
-<p>To know which item is the least recently used, we need to <strong>keep an ordered list</strong> of <code>N</code> items in the cache (FA) or set <em>at all times</em>. This takes up <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mopen">(</span><span style="margin-right: 0.10903em;" class="mord mathdefault">N</span><span class="mclose">)</span></span></span></span></span> bits <em>per cache line</em>. In total, there’s <code>N</code> cache lines, hence we need to have some hardware of size <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N\log_2(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.10903em;" class="mord mathdefault">N</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.20696799999999996em;"><span class="" style="top: -2.4558600000000004em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span style="margin-right: 0.10903em;" class="mord mathdefault">N</span><span class="mclose">)</span></span></span></span></span> bits to contain the necessary information for  supporting LRU replacement policy.</p>
+<p>To know which item is the least recently used, we need to <strong>keep an ordered list</strong> of <code>N</code> items in the cache (FA) or set <em>at all times</em>. This takes up <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\log(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span> bits <em>per cache line</em>. In total, there’s <code>N</code> cache lines, hence we need to have some hardware of size <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N\log_2(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.206968em;"><span class="" style="top: -2.45586em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span> bits to contain the necessary information for  supporting LRU replacement policy.</p>
 </li>
 <li>
 <p>We also need a <strong>complex logic unit</strong> for implementing LRU algorithm and to re-order the LRU bits <em>after every cache access.</em></p>
@@ -306,7 +306,7 @@ Singapore University of Technology and Design<br>
 <p><strong>Overhead computation:</strong></p>
 <ul>
 <li>We need to know which is <strong>oldest</strong> cache line  in the device.</li>
-<li>If there are <code>N</code> items in the cache, we need  to have a pointer of size <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log_2 N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.20696799999999996em;"><span class="" style="top: -2.4558600000000004em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span style="margin-right: 0.10903em;" class="mord mathdefault">N</span><span class="mclose">)</span></span></span></span></span> bits that can point to the oldest cache line.</li>
+<li>If there are <code>N</code> items in the cache, we need  to have a pointer of size <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log_2 N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.206968em;"><span class="" style="top: -2.45586em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span> bits that can point to the oldest cache line.</li>
 <li>+ (not as complex) logic unit to perform the LRR algorithm.</li>
 </ul>
 <p><strong>Example:</strong> (Same example as above) Given an FA cache of size <code>N=4</code>, and the event where we request addresses in this sequence: <code>0x0004,0x000C,0x0C08,0x0004,0xFF00,0xAACC</code> at <code>t=0,1,2,3,4,5</code> respectively.</p>
@@ -390,7 +390,7 @@ Singapore University of Technology and Design<br>
 <img src="https://dl.dropboxusercontent.com/s/ceamhyfon0dsofw/blocksize.png?raw=1" alt="“F1”" width="80%" height="80%">
 <p><mark> The number of data <strong>words</strong> in each cache line is called the <strong>block size</strong> and is always a power of two. </mark></p>
 <p><mark> Recall that <code>1 word = 32 bits</code>, and we address the entire word by its smallest byte address. </mark></p>
-<p>Hence to index or address each word in the cache line, we need <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>=</mo><msub><mo><mi>log</mi><mo>⁡</mo></mo><mn>2</mn></msub><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">b = \log_2(B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.20696799999999996em;"><span class="" style="top: -2.4558600000000004em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span style="margin-right: 0.05017em;" class="mord mathdefault">B</span><span class="mclose">)</span></span></span></span></span> bits. In the example above, we need <code>b=2</code> to address each column, taken from <code>A[3:2]</code> (assuming that <code>A</code> uses byte addressing).</p>
+<p>Hence to index or address each word in the cache line, we need <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">b = \log_2(B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.206968em;"><span class="" style="top: -2.45586em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.24414em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right: 0.05017em;">B</span><span class="mclose">)</span></span></span></span></span> bits. In the example above, we need <code>b=2</code> to address each column, taken from <code>A[3:2]</code> (assuming that <code>A</code> uses byte addressing).</p>
 <p>There are tradeoffs in determining the block size of our cache, since we always fetch (and / or overwrite) <code>B</code> words – the entire block – together at a time:</p>
 <ul>
 <li>
@@ -489,102 +489,102 @@ And repeated again, for the third “round”, and so on.</p>
 </blockquote>
 <p>To benchmark this cache, we need to count how many <code>MISS</code> and <code>HIT</code> are there at the <strong>steady state.</strong> Hence, <em>we need to figure out which rounds make up the steady state.</em></p>
 <p><strong>At the first round</strong>, <code>t=0</code> to <code>t=8</code>, we have:</p>
-<p><code>At t=0: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached)</p>
+<p><code>At t=0: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code></strong>, <code>EMPTY</code>, <code>EMPTY</code>, <code>EMPTY</code>.<br>
 Oldest entry is bolded.</p>
 </blockquote>
-<p><code>At t=1: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached).</p>
+<p><code>At t=1: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached).</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code>,</strong> <code>0x0011</code>, <code>EMPTY</code>, <code>EMPTY</code>.</p>
 </blockquote>
-<p><code>At t=2: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached).</p>
+<p><code>At t=2: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached).</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>EMPTY</code>.</p>
 </blockquote>
-<p><code>At t=3: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code><br>
-<code>At t=4: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached)</p>
+<p><code>At t=3: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code><br>
+<code>At t=4: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>0x0043</code>.</p>
 </blockquote>
-<p><code>At t=5: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<p><code>At t=5: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0011</code></strong>, <code>0x0022</code>, <code>0x0043</code>, <code>0x0012</code>.</p>
 </blockquote>
-<p><code>At t=6: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
+<p><code>At t=6: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0022</code></strong>, <code>0x0043</code>, <code>0x0012</code>, <code>0x0014</code>.</p>
 </blockquote>
-<p><code>At t=7: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
+<p><code>At t=7: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0043</code></strong>, <code>0x0012</code>, <code>0x0014</code>, <code>0x00AB</code>.</p>
 </blockquote>
-<p><code>At t=8: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
+<p><code>At t=8: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0012</code></strong>, <code>0x0014</code>, <code>0x00AB</code>, <code>0x0033</code>.</p>
 </blockquote>
 <p>Now during the <strong>second round</strong>, <code>t=10</code> to <code>t=19</code>, we have the same 9 input sequences. Let’s observe the result:</p>
-<p><code>At t=10: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
-<p><code>At t=11: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0012</code>)</p>
+<p><code>At t=10: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
+<p><code>At t=11: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0012</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x00AB</code>, <code>0x0033</code>, <code>0x0011</code>.</p>
 </blockquote>
-<p><code>At t=12: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<p><code>At t=12: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x00AB</code></strong>, <code>0x0033</code>, <code>0x0011</code>, <code>0x0022</code>.</p>
 </blockquote>
-<p><code>At t=13: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x00AB</code>)</p>
+<p><code>At t=13: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x00AB</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0033</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>0x0014</code>.</p>
 </blockquote>
-<p><code>At t=14: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached by replacing oldest entry:<code>0x0033</code>)</p>
+<p><code>At t=14: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached by replacing oldest entry:<code>0x0033</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0011</code></strong>, <code>0x0022</code>, <code>0x0014</code>, <code>0x0043</code>.</p>
 </blockquote>
-<p><code>At t=15: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
+<p><code>At t=15: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0022</code></strong>, <code>0x0014</code>, <code>0x0043</code>, <code>0x0012</code>.</p>
 </blockquote>
-<p><code>At t=16: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
-<p><code>At t=17: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
+<p><code>At t=16: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
+<p><code>At t=17: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0043</code>, <code>0x0012</code>, <code>0x00AB</code>.</p>
 </blockquote>
-<p><code>At t=18: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<p><code>At t=18: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0043</code></strong>, <code>0x0012</code>, <code>0x00AB</code>, <code>0x0033</code>.</p>
 </blockquote>
 <p>Running the cache for <strong>another round</strong> (the third time) at <code>t=19</code> to <code>t=27</code> with the same 9 input sequences:</p>
-<p><code>At t=19: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span>  <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
+<p><code>At t=19: 0x0014</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span>  <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0012</code></strong>, <code>0x00AB</code>, <code>0x0033</code>, <code>0x0014</code>.</p>
 </blockquote>
-<p><code>At t=20: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0012</code>)</p>
+<p><code>At t=20: 0x0011</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0012</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x00AB</code></strong>, <code>0x0033</code>, <code>0x0014</code>, <code>0x0011</code>.</p>
 </blockquote>
-<p><code>At t=21: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x00AB</code>)</p>
+<p><code>At t=21: 0x0022</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x00AB</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0033</code></strong>, <code>0x0014</code>, <code>0x0011</code>, <code>0x0022</code>.</p>
 </blockquote>
-<p><code>At t=22: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
-<p><code>At t=23: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached by replacing oldest entry:<code>0x0033</code>)</p>
+<p><code>At t=22: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>HIT</code></p>
+<p><code>At t=23: 0x0043</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code> (and cached by replacing oldest entry:<code>0x0033</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0014</code></strong>, <code>0x0011</code>, <code>0x0022</code>, <code>0x0043</code>.</p>
 </blockquote>
-<p><code>At t=24: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
+<p><code>At t=24: 0x0012</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0014</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0011</code></strong>, <code>0x0022</code>, <code>0x0043</code>, <code>0x0012</code>.</p>
 </blockquote>
-<p><code>At t=25: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span>  <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
+<p><code>At t=25: 0x0014</code><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span>  <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0011</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0022</code></strong>, <code>0x0043</code>, <code>0x0012</code>, <code>0x0014</code>.</p>
 </blockquote>
-<p><code>At t=26: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
+<p><code>At t=26: 0x00AB</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0022</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0043</code></strong>, <code>0x0012</code>, <code>0x0014</code>, <code>0x00AB</code>.</p>
 </blockquote>
-<p><code>At t=27: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
+<p><code>At t=27: 0x0033</code> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.36687em; vertical-align: 0em;"></span><span class="mrel">→</span></span></span></span></span> <code>MISS</code>  (and cached by replacing oldest entry:<code>0x0043</code>)</p>
 <blockquote>
 <p>Cache content after:  <strong><code>0x0012</code></strong>, <code>0x0014</code>, <code>0x00AB</code>, <code>0x0033</code>.</p>
 </blockquote>
@@ -593,7 +593,7 @@ Oldest entry is bolded.</p>
 <blockquote>
 <p>We ignore results from the first round because that result will never repeat itself again as we begin with empty cache only once in the beginning.</p>
 </blockquote>
-<p>That means out of the 18 address calls, we have 15 <code>MISS</code>. The miss rate of this cache is therefore pretty high at <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>83.33</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">83.33\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">8</span><span class="mord">3</span><span class="mord">.</span><span class="mord">3</span><span class="mord">3</span><span class="mord">%</span></span></span></span></span>.</p>
+<p>That means out of the 18 address calls, we have 15 <code>MISS</code>. The miss rate of this cache is therefore pretty high at <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>83.33</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">83.33\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.80556em; vertical-align: -0.05556em;"></span><span class="mord">83.33%</span></span></span></span></span>.</p>
 <blockquote>
 <p>Test yourself: If the FA cache uses LRU, will it have a better performance? i.e: less miss rate. What about when DM cache of same size (4 cache lines) is used? <em>Which cache design is better for this particular program running in a loop</em>?</p>
 </blockquote>
@@ -711,6 +711,138 @@ Oldest entry is bolded.</p>
 
     </div>
   </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  >
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+  >
+  </script>
 </body>
+
+<style>
+.blueborder{
+ border-style:solid;
+ border-color:#287EC7;
+ padding: 10px;
+}
+
+.redborder{
+ border-style:solid;
+ border-color:#FF0000;
+ padding: 10px;
+}
+
+
+.greenbox{
+background-color: #cfc ;
+padding: 10px; 
+border: 1px solid green;
+}
+
+.orangebox{
+background-color: #FFE4B5 ;
+padding: 10px; 
+border: 1px solid #FF8C00;
+}
+
+.redbox{
+    background-color: #FFE4E1;
+    border: 1px solid #FA8072;
+    display: block;
+    padding: 10px;
+}
+
+.bluebox{
+    background-color: #F0F8FF;
+    border: 1px solid #87CEFA;
+    display: block;
+    padding: 10px;
+}
+
+.yellowbox{
+    background-color: #FFFACD;
+    border: 1px solid #FFFF66;
+    display: block;
+    padding: 10px;
+}
+
+.redtext{
+	color:red;
+}
+
+.bluetext{
+	color:blue;
+}
+
+.orangetext{
+	color:#FF791A;
+}
+
+.greentext{
+	color:green;
+}
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #efffef;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccffcc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #efffef;
+}
+</style>
+
+
+
 
 </html>
