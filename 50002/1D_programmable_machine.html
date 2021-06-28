@@ -83,7 +83,7 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 </ol>
 <p><em>Note: As stated above, if you were to use a large 7-segment display then purchase some BJT transistors to amplify the power to be high enough e.g: 6V/10V to run the displays.</em></p>
 <h2 id="planning-the-datapath">Planning the Datapath</h2>
-<p>It is recommended that you follow a generic simplified  <strong>custom</strong> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>-like structure (without the PC and RAM unless you want to design a generic instruction set):</p>
+<p>It is recommended that you follow a generic simplified  <strong>custom</strong> <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span>-like structure (without the PC and RAM unless you want to design a generic instruction set):</p>
 <ol>
 <li>You have a <strong>REGFILE</strong> system, where it stores a bunch of registers inside that’s addressable. It’s up to you to define how many combinational read ports and how many sequential write ports.</li>
 <li><strong>Combinational Logic Unit:</strong> <strong>You must utilize a 16-bit ALU, so you have no choice on this.</strong> <mark>Therefore this makes your datapath to be a 16-bit architecture by default. </mark></li>
@@ -132,7 +132,7 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 <li>Specify a data write in port: <code>Rx_writedata</code>. Number of bits depend on the number of bits each dff can store.</li>
 </ul>
 <blockquote>
-<p>For this example, we follow the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>: to have 2 read ports and 1 write ports. Three addresses should be received by the REGFILE: <code>Ra</code> and <code>Rb</code> for read addresses and <code>Rc</code> for write addresses.</p>
+<p>For this example, we follow the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span>: to have 2 read ports and 1 write ports. Three addresses should be received by the REGFILE: <code>Ra</code> and <code>Rb</code> for read addresses and <code>Rc</code> for write addresses.</p>
 </blockquote>
 <ul>
 <li>
@@ -164,7 +164,7 @@ For the small matrix, you can use easy registers / dff to manage the data. For t
 </ul>
 <p>Coding a REGFILE on an FPGA is not an issue after you have solidly <strong>define</strong> the addressing system, and input/output ports of the module. This REGFILE should be implemented as a single file, e.g: <code>regfile.luc</code>. See <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/game_miniRegfiles.luc">this github file</a> for its sample implementation.</p>
 <h2 id="designing-the-alu-and-support-datapath">Designing the ALU and Support Datapath</h2>
-<p>We can easily adapt the design of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> when we want to connect the ALU with the REGFILE. It is an art to design a good, programmable datapath.</p>
+<p>We can easily adapt the design of <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> when we want to connect the ALU with the REGFILE. It is an art to design a good, programmable datapath.</p>
 <p>A super simple support datapath should have some kind of <code>ASEL</code> mux, <code>BSEL</code> mux, and <code>WDSEL</code> mux:</p>
 <ul>
 <li><code>ASEL</code>: to decide what’s fed into the <code>A</code> port of the ALU</li>
@@ -207,7 +207,7 @@ case(game_controlunit.asel){
 }
 </code></pre>
 <h2 id="designing-the-control-logic">Designing the Control Logic</h2>
-<p>The control logic unit is technically an FSM, unless you have designed an <strong>instruction set</strong> for your game, complete with its OPCODE and such like the actual <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>.</p>
+<p>The control logic unit is technically an FSM, unless you have designed an <strong>instruction set</strong> for your game, complete with its OPCODE and such like the actual <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
 <p>The number of states depends on how complicated your game is. However you can begin your planning easily by starting with <em>four generic state groups:</em></p>
 <ul>
 <li><code>START</code> state: prepare necessary values when game begins.</li>
@@ -266,7 +266,7 @@ case(game_controlunit.asel){
 </li>
 <li>Create a combinational logic module that randomly produce a value of <code>1</code> (denoted as <code>VARIABLE INCREMENTER</code>). You can see the code <a href="https://github.com/natalieagus/SampleAlchitryProjects/blob/master/CounterGame/source/variable_counter.luc">here</a>.</li>
 </ol>
-<p>Notice the bootstrapped REGFILE output : all 16-bits <code>Rb_data</code> straight to the FSM. This is like the <code>Z</code> unit in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>, used for <strong>branching</strong> after a comparison check in the previous state.  You can also use this to branch and <em>perform next check</em> in <strong>1 cycle</strong>. The relevant state illustration and its sample lucid code is:<br>
+<p>Notice the bootstrapped REGFILE output : all 16-bits <code>Rb_data</code> straight to the FSM. This is like the <code>Z</code> unit in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span>, used for <strong>branching</strong> after a comparison check in the previous state.  You can also use this to branch and <em>perform next check</em> in <strong>1 cycle</strong>. The relevant state illustration and its sample lucid code is:<br>
 <img src="https://dl.dropboxusercontent.com/s/wh5rs5dakly3jtv/bcheck.png?raw=1" alt="“F1”" width="40%" height="40%"></p>
 <pre><code>game_fsm.BRANCHCHECK_P1P2BUTTONCOUNT:
 
@@ -283,7 +283,7 @@ case(game_controlunit.asel){
 		game_fsm.d = game_fsm.IDLE;
 	}
 </code></pre>
-<p>Therefore actually the <strong>same game</strong> can be implemented with lesser states if we merge all the <em>branch</em> + <em>next check/computation</em> states into a single state. As an example, we chose to display almost all branching state except the <code>BRANCH CHECK BUTTON COUNT P=3</code> state above as purely a branching state without performing further computation – similar to how its done in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span>.</p>
+<p>Therefore actually the <strong>same game</strong> can be implemented with lesser states if we merge all the <em>branch</em> + <em>next check/computation</em> states into a single state. As an example, we chose to display almost all branching state except the <code>BRANCH CHECK BUTTON COUNT P=3</code> state above as purely a branching state without performing further computation – similar to how its done in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span>.</p>
 <p><mark> <strong>Tips</strong>: If you are a beginner, then perhaps it is easier to debug if you simplify your states (even though you end up with more states) </mark>.</p>
 <h2 id="summary">Summary</h2>
 <p>It will help tremendously if you started by designing the blueprint of your game machine before you start coding. <strong>For Checkoff 2, you are required to present to us the:</strong></p>
@@ -297,6 +297,138 @@ case(game_controlunit.asel){
 
     </div>
   </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  >
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+  >
+  </script>
 </body>
+
+<style>
+.blueborder{
+ border-style:solid;
+ border-color:#287EC7;
+ padding: 10px;
+}
+
+.redborder{
+ border-style:solid;
+ border-color:#FF0000;
+ padding: 10px;
+}
+
+
+.greenbox{
+background-color: #cfc ;
+padding: 10px; 
+border: 1px solid green;
+}
+
+.orangebox{
+background-color: #FFE4B5 ;
+padding: 10px; 
+border: 1px solid #FF8C00;
+}
+
+.redbox{
+    background-color: #FFE4E1;
+    border: 1px solid #FA8072;
+    display: block;
+    padding: 10px;
+}
+
+.bluebox{
+    background-color: #F0F8FF;
+    border: 1px solid #87CEFA;
+    display: block;
+    padding: 10px;
+}
+
+.yellowbox{
+    background-color: #FFFACD;
+    border: 1px solid #FFFF66;
+    display: block;
+    padding: 10px;
+}
+
+.redtext{
+	color:red;
+}
+
+.bluetext{
+	color:blue;
+}
+
+.orangetext{
+	color:#FF791A;
+}
+
+.greentext{
+	color:green;
+}
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #efffef;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccffcc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #efffef;
+}
+</style>
+
+
+
 
 </html>
