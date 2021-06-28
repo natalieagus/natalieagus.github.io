@@ -38,7 +38,7 @@ Singapore University of Technology and Design<br>
 <strong>Natalie Agus (Fall 2020)</strong></p>
 <h1 id="stack-and-procedures">Stack and Procedures</h1>
 <h2 id="overview">Overview</h2>
-<p>In the previous chapter, we learned the basics of how to naively compile C-language into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly language. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> UASM provides a layer of abstraction such that we don’t need to bother ourselves with the details on how to load each and every bytes of instruction onto the memory unit, or keeping up with accounting matters such as physical memory addresses (we can replace these with <em>labels</em> instead).</p>
+<p>In the previous chapter, we learned the basics of how to naively compile C-language into <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly language. <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> UASM provides a layer of abstraction such that we don’t need to bother ourselves with the details on how to load each and every bytes of instruction onto the memory unit, or keeping up with accounting matters such as physical memory addresses (we can replace these with <em>labels</em> instead).</p>
 <p>In this chapter, we will learn about <em>function call procedures</em>, and why we need to understand another concept called the <em>stacks</em>. Both will allow us to have reusable code fragments that are <em>called</em> as needed.</p>
 <h2 id="procedures-and-functions">Procedures and Functions</h2>
 <p>Consider the following declaration and implementation of function <code>fact</code>  below. It receives one argument <code>int n</code>, and returns an <code>int</code>.</p>
@@ -55,7 +55,7 @@ Singapore University of Technology and Design<br>
 <pre><code>int result_1 = fact(4);
 int result_2 = fact(9);
 </code></pre>
-<p>If we were to naively assemble this, we can translate this into the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> assembly source code:</p>
+<p>If we were to naively assemble this, we can translate this into the following <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> assembly source code:</p>
 <pre><code>.include beta.uasm
 || we call fact(4) first
 LD(R31, n_1, R1)	| load 4 to R1
@@ -210,7 +210,7 @@ int result_2 = fact(9); --- (8)
 <li><code>LD(SP , -4, Rx)</code> (load the content pointed by <code>Reg[SP]-4</code> to a chosen <code>Rx</code>)</li>
 <li><code>SUBC(SP, 4, SP)</code> (decrease <code>SP</code>'s content by <code>4</code> so that it points to the previous line address)</li>
 </ul>
-<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> <code>uasm</code>, we simply create these macros for <code>PUSH</code> and <code>POP</code>:</p>
+<p>In <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> <code>uasm</code>, we simply create these macros for <code>PUSH</code> and <code>POP</code>:</p>
 <ul>
 <li><code>PUSH(Rx)</code> : push <code>Reg[Rx]</code> onto the stack</li>
 <li><code>POP(Rx)</code>: pop the value on top of the stack to <code>Reg[Rx]</code></li>
@@ -608,7 +608,7 @@ HALT()
 <h2 id="instruction-loading-address">Instruction Loading Address</h2>
 <p>To figure out the address of each instruction, we can assume (if not given) that the address of the first instruction is at <code>0x0000</code>.</p>
 <ul>
-<li>Recall that each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> instruction is 32 bits long (4 bytes).</li>
+<li>Recall that each <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> instruction is 32 bits long (4 bytes).</li>
 <li>Therefore, the address of subsequent instructions are always increased by 4.</li>
 </ul>
 <p>For instance, if we simply load this instruction into the memory unit starting from address <code>0x0000</code>:</p>
@@ -641,7 +641,7 @@ MOVE(SP, BP)
 <blockquote>
 <p>Remember that memory write is synchronized with the clock.</p>
 </blockquote>
-<p>Take for example this particular execution state in the  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU:</p>
+<p>Take for example this particular execution state in the  <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU:</p>
 <img src="https://dl.dropboxusercontent.com/s/raqf5k421kfi2i7/pc_state.png?raw=1" alt="“F1”" width="100%" height="100%">
 <ul>
 <li>
@@ -657,7 +657,7 @@ MOVE(SP, BP)
 <p>However, notice <code>Reg[R1]</code> still contains <code>0</code> and not the new result <code>3</code> <em>yet</em>. In this cycle, we are trying to <strong>write</strong> <code>3</code> into <code>R1</code>.</p>
 </li>
 <li>
-<p>Only at the next cycle,<code>Reg[R1]</code> finally stores the new value <code>3</code>. The figure below shows the state of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> CPU at the following cycle:</p>
+<p>Only at the next cycle,<code>Reg[R1]</code> finally stores the new value <code>3</code>. The figure below shows the state of the <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> CPU at the following cycle:</p>
 </li>
 </ul>
 <img src="https://dl.dropboxusercontent.com/s/qzf1rxs5rshfzeo/pc_state_2.png?raw=1" alt="“F1”" width="100%" height="100%">
@@ -760,7 +760,7 @@ print(*p);
 <h2 id="summary">Summary</h2>
 <p>The calling and callee sequence is designed such that we have a fixed convention for <strong>linking procedures</strong>. The data structure needed for procedure linkage is a <strong>stack</strong>, and it can simply be implemented using macroinstructions: <code>PUSH</code> and <code>POP</code> on some unused memory block, which address is stored in register <code>R29: SP</code>.</p>
 <p>It is extremely important to change the content of <code>SP</code> (reserved stack pointer register) to reflect a memory address where there isn’t any important instruction or data in it.</p>
-<p><mark> Remember that <code>PUSH</code> and <code>POP</code> each require <strong>two clock cycles to complete</strong>, because each of them is consisted of two atomic <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8888799999999999em; vertical-align: -0.19444em;"></span><span style="margin-right: 0.05278em;" class="mord mathdefault">β</span></span></span></span></span> instructions. </mark></p>
+<p><mark> Remember that <code>PUSH</code> and <code>POP</code> each require <strong>two clock cycles to complete</strong>, because each of them is consisted of two atomic <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.05278em;">β</span></span></span></span></span> instructions. </mark></p>
 <p>We also <strong>reserve</strong> two other registers: <code>R27: BP</code> and <code>R28: LP</code> for this purpose, so that we know where to get the function arguments from the stack, and return address (back to the caller).</p>
 <blockquote>
 <p>We do not use these registers <code>R27, R28, and R29</code> for other purposes.</p>
@@ -773,6 +773,138 @@ print(*p);
 
     </div>
   </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  >
+  </script>
+  <script
+    type="text/javascript"
+    charset="utf-8"
+    src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+  >
+  </script>
 </body>
+
+<style>
+.blueborder{
+ border-style:solid;
+ border-color:#287EC7;
+ padding: 10px;
+}
+
+.redborder{
+ border-style:solid;
+ border-color:#FF0000;
+ padding: 10px;
+}
+
+
+.greenbox{
+background-color: #cfc ;
+padding: 10px; 
+border: 1px solid green;
+}
+
+.orangebox{
+background-color: #FFE4B5 ;
+padding: 10px; 
+border: 1px solid #FF8C00;
+}
+
+.redbox{
+    background-color: #FFE4E1;
+    border: 1px solid #FA8072;
+    display: block;
+    padding: 10px;
+}
+
+.bluebox{
+    background-color: #F0F8FF;
+    border: 1px solid #87CEFA;
+    display: block;
+    padding: 10px;
+}
+
+.yellowbox{
+    background-color: #FFFACD;
+    border: 1px solid #FFFF66;
+    display: block;
+    padding: 10px;
+}
+
+.redtext{
+	color:red;
+}
+
+.bluetext{
+	color:blue;
+}
+
+.orangetext{
+	color:#FF791A;
+}
+
+.greentext{
+	color:green;
+}
+
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #efffef;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccffcc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #efffef;
+}
+</style>
+
+
+
 
 </html>
